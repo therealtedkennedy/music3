@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>name:</b>
+  <%= @artist.name %>
+</p>
+
+<p>
+  <b>URL Slug</b>
+  <%= @artist.url_slug %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @artist.city %>
+</p>
+
+<p>
+  <b>Province:</b>
+  <%= @artist.province %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @artist.country %>
+</p>
+
+<p>
+  <b>Influence:</b>
+  <%= @artist.influence %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @artist.bio %>
+</p>
+
+<p>
+  <b>Contact info:</b>
+  <%= @artist.contact_info %>
+</p>
+
+<p>
+  <b>Date founded:</b>
+  <%= @artist.date_founded %>
+</p>
+
+<p>
+  <b>Created date:</b>
+  <%= @artist.created_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_artist_path(@artist.url_slug) %> |
+<%= link_to 'Back', artists_path %>
