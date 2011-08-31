@@ -8,6 +8,8 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Music3
   class Application < Rails::Application
+
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -39,5 +41,11 @@ module Music3
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
+        AWS::S3::Base.establish_connection!(
+        :access_key_id => 'AKIAJBCDYICH6VCMN6ZA',
+        :secret_access_key => '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'
+    )
+
+    BUCKET ='ted_kennedy'
   end
 end

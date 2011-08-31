@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'jquery-rails'
 gem 'client_side_validations'
+gem 'aws-s3',:require => 'aws/s3'
 
 
 # Use unicorn as the web server

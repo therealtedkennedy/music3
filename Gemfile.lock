@@ -29,6 +29,10 @@ GEM
       activesupport (= 3.0.7)
     activesupport (3.0.7)
     arel (2.0.10)
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
     bcrypt-ruby (2.1.4-x86-mingw32)
     builder (2.1.2)
     client_side_validations (3.1.0)
@@ -77,11 +81,13 @@ GEM
     tzinfo (0.3.29)
     warden (1.0.5)
       rack (>= 1.0)
+    xml-simple (1.1.0)
 
 PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  aws-s3
   client_side_validations
   devise
   jquery-rails
