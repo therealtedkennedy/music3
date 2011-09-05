@@ -82,11 +82,14 @@ class ArtistsController < ApplicationController
   # DELETE /artists/1.xml
   def destroy
     @artist = Artist.find(params[:id])
+    # searchString  = params[:url_slug]
+
+    #@artist = Artist.find_by_url_slug(searchString)
     @artist.destroy
 
     respond_to do |format|
-      format.html { redirect_to(artists_url) }
-      format.xml  { head :ok }
+      format.html { redirect_to(artists_path)}
+      format.json {render :json => {}, :status => :ok}
     end
   end
 end

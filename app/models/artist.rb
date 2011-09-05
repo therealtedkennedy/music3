@@ -1,5 +1,5 @@
 class Artist < ActiveRecord::Base
-  has_many :users
+  has_many :songs
   before_create :generate_slug
 
  validates_presence_of :name

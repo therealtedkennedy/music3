@@ -5,7 +5,7 @@ Music3::Application.routes.draw do |map|
 
   get "songs/delete"
 
-  resources :artists, :artist_home
+  resources :artists, :artist_home, :songs
      devise_for :users
 
   map.artist_link '/:url_slug', :controller => "artists", :action => 'show'
@@ -62,8 +62,8 @@ Music3::Application.routes.draw do |map|
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  #root :to => "homepage#index"
-  root :to => "songs#index"
+  root :to => "homepage#index"
+  #root :to => "songs#index"
 
 
   # See how all your routes lay out with "rake routes"

@@ -31,7 +31,7 @@
     <td><%= artist.created_date %></td>
     <td><%= link_to 'Show', artist_link_path(artist.url_slug) %></td>
     <td><%= link_to 'Edit', edit_artist_path(artist.url_slug) %></td>
-    <td><%= link_to 'Destroy', artist, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', artist, :confirm => 'Are you sure?',:method => :delete %></td>
   </tr>
 <% end %>
 </table>

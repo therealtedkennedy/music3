@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  [song_name: MyString
+  song_artist: MyString
+  song_contribute_artist: MyString
+  song_written: MyString
+  song_licence_type: MyString
+  song_licence_date: 2011-09-05
+  song_plays: 1
+  lyrics: 
+
+two:
+  [song_name: MyString
+  song_artist: MyString
+  song_contribute_artist: MyString
+  song_written: MyString
+  song_licence_type: MyString
+  song_licence_date: 2011-09-05
+  song_plays: 1
+  lyrics: 

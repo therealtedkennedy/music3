@@ -12,7 +12,7 @@
 
 <h2>Download and Delete Existing MP3</h2>
 <table>
-  <% @songs.each do |song| %>
+  <% @s3_songs.each do |song| %>
     <tr>
     <td><%= song.key %> </td>
     <td><%=link_to "Download", download_url_for(song.key) %></td>
@@ -22,3 +22,43 @@
    </tr>
   <% end %>
 </table>
+
+
+<h1>Listing songs</h1>
+
+<table>
+  <tr>
+    <th>Song Name </th>
+    <th>Artist</th>
+    <th>Contributing Artists</th>
+    <th>Written By:</th>
+    <th>Licence Type</th>
+    <th>Licence Date</th>
+    <th>Licence Date</th>
+    <th>Number of Plays</th>
+    <th>Lyrics</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @songs.each do |song| %>
+  <tr>
+    <td><%= song.song_name %></td>
+    <td><%= song.song_artist%></td>
+    <td><%= song.song_contribute_artist %></td>
+    <td><%= song.song_written %></td>
+    <td><%= song.song_licence_type %></td>
+    <td><%= song.song_licence_date %></td>
+    <td><%= song.song_plays %></td>
+    <td><%= song.lyrics%></td>
+    <td><%= link_to 'Show', song %></td>
+    <td><%= link_to 'Edit', edit_song_path(song) %></td>
+    <td><%= link_to 'Destroy', song, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Song', new_song_path %>
