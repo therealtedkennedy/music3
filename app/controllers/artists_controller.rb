@@ -78,6 +78,17 @@ class ArtistsController < ApplicationController
     end
   end
 
+  def add_song
+      #@artist = Artist.find(params[:id])
+      @artist = Artist.find_by_url_slug(params[:url_slug])
+      @song = Song.new
+
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @artist }
+      end
+    end
+
   # DELETE /artists/1
   # DELETE /artists/1.xml
   def destroy
@@ -93,3 +104,4 @@ class ArtistsController < ApplicationController
     end
   end
 end
+

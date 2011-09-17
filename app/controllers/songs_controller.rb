@@ -13,6 +13,7 @@ class SongsController < ApplicationController
     end
   end
 
+
   def show
       @song = Song.find(params[:id])
 
@@ -28,6 +29,8 @@ class SongsController < ApplicationController
     #@artist = Artist.find_by_url_slug(searchString)
   end
 
+
+# Updates Artist Info
   def update
     @song = Song.find(params[:id])
 
@@ -53,11 +56,16 @@ class SongsController < ApplicationController
 
   def create
     @song = Song.new(params[:song])
+    if params[:artist_id]
+      @song.artists << Artist.find(params[:artist_id])
+    end
 
     respond_to do |format|
       if @song.save
 
-        format.html { redirect_to(songs_path, :notice => 'Artist was successfully created.') }
+        format.html {
+          redirect_to(songs_path, :notice => 'Song was successfully created.')
+        }
         format.xml  { render :xml => @artist, :status => :created, :location => @artist }
       else
         format.html { render :action => "new" }

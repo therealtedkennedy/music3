@@ -29,7 +29,7 @@
 <table>
   <tr>
     <th>Song Name </th>
-    <th>Artist</th>
+    <th>Song Artist</th>
     <th>Contributing Artists</th>
     <th>Written By:</th>
     <th>Licence Type</th>
@@ -55,6 +55,7 @@
     <td><%= link_to 'Show', song %></td>
     <td><%= link_to 'Edit', edit_song_path(song) %></td>
     <td><%= link_to 'Destroy', song, :confirm => 'Are you sure?', :method => :delete %></td>
+
   </tr>
 <% end %>
 </table>
@@ -62,3 +63,4 @@
 <br />
 
 <%= link_to 'New Song', new_song_path %>
+<%= link_to 'Artist List', artists_path%>

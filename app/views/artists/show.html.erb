@@ -50,6 +50,17 @@
   <%= @artist.created_date %>
 </p>
 
+<p>
+ <b>Songs</b>
+
+<ul>
+<% @artist.songs.uniq.each do |songs| %>
+<li><%= songs.song_name %></li>
+<% end %>
+</ul>
+
+</p>
+
 
 <%= link_to 'Edit', edit_artist_path(@artist.url_slug) %> |
 <%= link_to 'Back', artists_path %>

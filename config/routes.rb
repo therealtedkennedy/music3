@@ -8,8 +8,11 @@ Music3::Application.routes.draw do |map|
   resources :artists, :artist_home, :songs
      devise_for :users
 
+  # mapping for url slug
   map.artist_link '/:url_slug', :controller => "artists", :action => 'show'
   map.edit_artist '/:url_slug/edit', :controller => "artists", :action => 'edit'
+  map.add_song '/:url_slug/add_song', :controller => "artists", :action => 'add_song'
+  map.
 
   match "songs/upload", :as => "upload"
   match "songs/delete", :as => "delete"
