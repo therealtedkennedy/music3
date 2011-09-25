@@ -1,21 +1,31 @@
 Music3::Application.routes.draw do |map|
-  get "songs/index"
-
-  get "songs/upload"
-
-  get "songs/delete"
-
   resources :artists, :artist_home, :songs
      devise_for :users
 
-  # mapping for url slug
-  map.artist_link '/:url_slug', :controller => "artists", :action => 'show'
-  map.edit_artist '/:url_slug/edit', :controller => "artists", :action => 'edit'
-  map.add_song '/:url_slug/add_song', :controller => "artists", :action => 'add_song'
-  map.
+  root :to => "homepage#index"
 
-  match "songs/upload", :as => "upload"
-  match "songs/delete", :as => "delete"
+  # Artist Routes
+  # Url Slug Routing
+  match "/:url_slug" => "artists#show", :as => :artist_link
+  match "/:url_slug/edit" => "artists#edit", :as => :edit_artist
+  match "/:url_slug/add_song" => "artists#add_song", :as => :add_song
+
+  #Song Routes
+  # Url Slug Routing
+  match "/:url_slug/songs/:song_url_slug" => "songs#show", :as => :artist_show_song
+
+
+
+ # songs routing
+
+  #match "/hooper/:test" => "songs#show", :as => :song_link
+  match "/songs/upload", :as => "upload"
+  match "/songs/delete", :as => "delete"
+
+ get "songs/index"
+ get "songs/upload"
+ get "songs/delete"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -65,7 +75,7 @@ Music3::Application.routes.draw do |map|
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "homepage#index"
+
   #root :to => "songs#index"
 
 

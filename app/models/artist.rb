@@ -1,6 +1,9 @@
 class Artist < ActiveRecord::Base
   has_and_belongs_to_many:songs
+
+  # Creates Url Slug
   before_create :generate_slug
+  before_update :generate_slug
 
  validates_presence_of :name
  validates_uniqueness_of :name

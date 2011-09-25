@@ -15,15 +15,30 @@ class SongsController < ApplicationController
 
 
   def show
+    if params[:song_url_slug]
+    #@artist = Artist.find(params[:id])
+    #@artist = Artist.find_by_url_slug(params[:url_slug])
+
+     @song = Song.find_by_song_url_slug(params[:song_url_slug])
+
+        respond_to do |format|
+          format.html # show.html.erb
+          format.xml  { render :xml => @song }
+        end
+
+
+    else
+
       @song = Song.find(params[:id])
 
-      respond_to do |format|
-        format.html  #show.html.erb
-        format.xml  { render :xml => @song }
-      end
+         respond_to do |format|
+           format.html  #show.html.erb
+           format.xml  { render :xml => @song }
+          end
     end
+  end
 
-    def edit
+  def edit
     @song = Song.find(params[:id])
     #searchString  = params[:url_slug]
     #@artist = Artist.find_by_url_slug(searchString)
@@ -54,16 +69,19 @@ class SongsController < ApplicationController
     end
   end
 
+
+
+
   def create
+
     @song = Song.new(params[:song])
-    if params[:artist_id]
-      @song.artists << Artist.find(params[:artist_id])
-    end
+     if params[:artist_id]
+       @song.artists << Artist.find(params[:artist_id])
+     end
 
     respond_to do |format|
       if @song.save
-
-        format.html {
+          format.html {
           redirect_to(songs_path, :notice => 'Song was successfully created.')
         }
         format.xml  { render :xml => @artist, :status => :created, :location => @artist }
@@ -79,9 +97,9 @@ class SongsController < ApplicationController
   def upload
     begin
       AWS::S3::S3Object.store(sanitize_filename(params[:mp3file].original_filename), params[:mp3file].read, BUCKET, :access => :public_read)
-      redirect_to root_path
+     #redirect_to root_path
     rescue
-        render :text => "Couldn't complete the upload"
+        #render :text => "Couldn't complete the upload"
     end
 
   end
@@ -97,16 +115,21 @@ class SongsController < ApplicationController
     end
   end
 
-  #delets songs of s3 server
 
-  def delete
-    if(params[:song])
-      AWS::S3::S3Object.find(params[:song], BUCKET).delete
-      redirect_to root_path
-    else
-      render :text => "No song was found to delete!"
+    # Shows a specific artists song
+  def artist_show_song
+
+      #@artist = Artist.find(params[:id])
+      searchString  = params[:url_slug]
+      @artist = Artist.find_by_url_slug(searchString)
+      @song = @artist.song.find.by_url_slug(params[:song_name])
+
+     respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @artist }
+      end
     end
-  end
+
 
   private
   # Internet Explorer work around see - http://net.tutsplus.com/tutorials/create-a-simple-music-streaming-app-with-ruby-on-rails/

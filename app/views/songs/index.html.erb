@@ -3,8 +3,7 @@
 <h2>Listen to a MP3 with HTML5 Audio</h2>
 <section id="audio">
 </section>
-
-<h2>Upload a new MP3:</h2>
+  <h2>Upload a new MP3:</h2>
 <%= form_tag upload_path, :method => "post", :multipart => true do %>
     <%= file_field_tag "mp3file" %>
     <%= submit_tag "Upload" %>
@@ -30,12 +29,14 @@
   <tr>
     <th>Song Name </th>
     <th>Song Artist</th>
+    <th>Artist Name</th>
     <th>Contributing Artists</th>
     <th>Written By:</th>
     <th>Licence Type</th>
     <th>Licence Date</th>
     <th>Licence Date</th>
     <th>Number of Plays</th>
+    <th>Url Slug</th>
     <th>Lyrics</th>
     <th></th>
     <th></th>
@@ -46,11 +47,15 @@
   <tr>
     <td><%= song.song_name %></td>
     <td><%= song.song_artist%></td>
+    <% song.artists.uniq.each do |artist_name| %>
+          <td><%= artist_name.name %></td>
+    <% end %>
     <td><%= song.song_contribute_artist %></td>
     <td><%= song.song_written %></td>
     <td><%= song.song_licence_type %></td>
     <td><%= song.song_licence_date %></td>
     <td><%= song.song_plays %></td>
+    <td><%= song.song_url_slug %></td>
     <td><%= song.lyrics%></td>
     <td><%= link_to 'Show', song %></td>
     <td><%= link_to 'Edit', edit_song_path(song) %></td>
