@@ -4,10 +4,12 @@
 <section id="audio">
 </section>
   <h2>Upload a new MP3:</h2>
-<%= form_tag upload_path, :method => "post", :multipart => true do %>
+<%= form_tag upload_path, :method => "post",  :multipart => true, :remote =>true do %>
     <%= file_field_tag "mp3file" %>
     <%= submit_tag "Upload" %>
+
 <% end %>
+
 
 <h2>Download and Delete Existing MP3</h2>
 <table>
