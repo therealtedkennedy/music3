@@ -1,0 +1,46 @@
+
+
+<p>
+  <b>Song:</b>
+  <%= @song.song_name %>
+</p>
+
+<p>
+  <b>Song Artist</b>
+  <%= @song.song_artist %>
+</p>
+
+<p>
+  <b>Contributing Artist</b>
+  <%= @song.song_contribute_artist %>
+</p>
+
+<p>
+  <b>Written By</b>
+  <%= @song.song_written %>
+</p>
+
+<p>
+  <b>Licence Type:</b>
+  <%= @song.song_licence_type %>
+</p>
+
+<p>
+  <b>Licence Date </b>
+  <%= @song.song_licence_date %>
+</p>
+
+<p>
+  <b>Song Plays</b>
+  <%= @song.song_plays%>
+</p>
+
+<p>
+  <b>Lyrics</b>
+  <%= @song.lyrics %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_song_path(@song.id) %> |
+<%= link_to 'Back', songs_path %>

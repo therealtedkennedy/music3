@@ -1,6 +1,8 @@
 #Explanation here - http://net.tutsplus.com/tutorials/create-a-simple-music-streaming-app-with-ruby-on-rails/
 
 class SongsController < ApplicationController
+respond_to :html, :xml, :json
+
   #lists songs called from S3 Server
   def index
     @s3_songs = AWS::S3::Bucket.find(BUCKET).objects
@@ -72,23 +74,34 @@ class SongsController < ApplicationController
 
 
 
+
   def create
 
     @song = Song.new(params[:song])
-     if params[:artist_id]
-       @song.artists << Artist.find(params[:artist_id])
-     end
+    @song.artists << Artist.find(params[:artist_id])
 
-    respond_to { |format|
       if @song.save
-        format.js
-        format.html {redirect_to(add_song_path(params[:artist_id]), :notice => 'Song was successfully created.')}
-        format.xml { render :xml => @artist, :status => :created, :location => @artist }
+        respond_with do |format|
+          format.html do
+            if request.xhr?
+              render :partial => "songs/show", :locals => {:song => @song}, :layout => false, :status => :created
+            else
+              redirect_to @song
+          end
+        end
+      end
       else
-        format.html { render :action => "new" }
-        format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
-      end }
-  end
+        respond_with do |format|
+          format.html do
+            if request.xhr?
+              render :json => @song.errors, :status => :unprocessable_entity
+            else
+              render :action => :new, :status => :unprocessable_entity
+            end
+          end
+        end
+    end
+end
 
 
   #uploads songs from S3 Server
