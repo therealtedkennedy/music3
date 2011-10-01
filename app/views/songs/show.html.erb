@@ -1,5 +1,8 @@
-
-
+<p id="notice"><%= notice %></p>
+<h1>
+    <% @song.artists.uniq.each do |artist_name| %>
+          <td><%= link_to artist_name.name, artist_link_path (artist_name.url_slug) %></td>
+    <% end %></h1>
 <p>
   <b>Song:</b>
   <%= @song.song_name %>

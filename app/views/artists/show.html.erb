@@ -60,7 +60,7 @@
 
 <ul>
 <% @artist.songs.uniq.each do |songs| %>
-<li><%= songs.song_name %></li>
+<li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %></li>
 <% end %>
 </ul>
 

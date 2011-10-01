@@ -6,16 +6,10 @@ gem 'rails', '3.0.7'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-# ?
 gem 'devise'
-# Installs Jquery Rails
 gem 'jquery-rails'
-# Java validations (i think)
 gem 'client_side_validations'
-# Aws-s3
 gem 'aws-s3',:require => 'aws/s3'
-#Ajex like form fills in rails
-gem 'remotipart', '~> 1.0'
 
 
 # Use unicorn as the web server

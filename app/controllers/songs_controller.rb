@@ -1,8 +1,6 @@
 #Explanation here - http://net.tutsplus.com/tutorials/create-a-simple-music-streaming-app-with-ruby-on-rails/
 
 class SongsController < ApplicationController
-respond_to :html, :xml, :json
-
   #lists songs called from S3 Server
   def index
     @s3_songs = AWS::S3::Bucket.find(BUCKET).objects
@@ -74,47 +72,36 @@ respond_to :html, :xml, :json
 
 
 
-
   def create
 
     @song = Song.new(params[:song])
-    @song.artists << Artist.find(params[:artist_id])
+     if params[:artist_id]
+       @song.artists << Artist.find(params[:artist_id])
+     end
 
+    respond_to do |format|
       if @song.save
-        respond_with do |format|
-          format.html do
-            if request.xhr?
-              render :partial => "songs/show_song_after_ad", :locals => {:song => @song}, :layout => false, :status => :created
-            else
-              redirect_to @song
-          end
-        end
-      end
+          format.html {
+          redirect_to(songs_path, :notice => 'Song was successfully created.')
+        }
+        format.xml  { render :xml => @artist, :status => :created, :location => @artist }
       else
-        respond_with do |format|
-          format.html do
-            if request.xhr?
-              render :json => @song.errors, :status => :unprocessable_entity
-            else
-              render :action => :new, :status => :unprocessable_entity
-            end
-          end
-        end
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @artist.errors, :status => :unprocessable_entity }
+      end
     end
-end
+  end
 
 
   #uploads songs from S3 Server
   def upload
-     begin
+    begin
       AWS::S3::S3Object.store(sanitize_filename(params[:mp3file].original_filename), params[:mp3file].read, BUCKET, :access => :public_read)
-
+     #redirect_to root_path
     rescue
-        render :text => "Couldn't complete the upload"
-     end
-    # respond_to do |format|
-      # format.js
-    # end
+        #render :text => "Couldn't complete the upload"
+    end
+
   end
     #deletes song info from Model
   def destroy
