@@ -84,7 +84,7 @@ respond_to :html, :xml, :json
         respond_with do |format|
           format.html do
             if request.xhr?
-              render :partial => "songs/show", :locals => {:song => @song}, :layout => false, :status => :created
+              render :partial => "songs/show_song_after_ad", :locals => {:song => @song}, :layout => false, :status => :created
             else
               redirect_to @song
           end

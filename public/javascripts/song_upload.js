@@ -19,7 +19,7 @@ $(document).ready(function(){
       $form.find('div.validation-error').empty();
 
       // Insert response partial into page below the form.
-      $('#song').append(xhr.responseText);
+      $('#show_song_after_ad').append(xhr.responseText);
 
     })
     .bind('ajax:complete', function(evt, xhr, status){

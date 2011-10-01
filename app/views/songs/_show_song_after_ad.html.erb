@@ -1,19 +1,29 @@
-<%= form_for @song, :url => { :controller => :songs, :action => :create,:artist_id => @artist.id}, :validate => true, :remote => true, :html => {:'data-type'=>'html', :id => 'create_song_form'} do |f| %>
-  <% if @song.errors.any? %>
+<%= form_for @song , :validate => true do |f| %>
+  <% if @song .errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@song .errors.count, "error") %> prohibited this song  from being saved:</h2>
 
       <ul>
-      <% @song.errors.full_messages.each do |msg| %>
+      <% @song .errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :song_name %><br />
     <%= f.text_field :song_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :song_artist %><br />
+    <%= f.text_field :song_artist %>
+  </div>
+
+
+  <div class="field">
+    <%=f.label :song_contribute_artist %><br />
+    <%=f.text_field :song_contribute_artist %>
   </div>
 
   <div class="field">
@@ -32,7 +42,7 @@
     <%= f.label :song_plays %><br />
     <%= f.text_field :song_plays %>
   </div>
-  <div class="field">
+   <div class="field">
     <%= f.label :song_url_slug %><br />
     <%= f.text_field :song_url_slug %>
   </div>
@@ -40,12 +50,9 @@
     <%= f.label :lyrics %><br />
     <%= f.text_area :lyrics %>
   </div>
-
-
- <div class="actions">
-  <%= f.submit %>
+   <div class="validation=error"></div>
+   <div class="actions">
+    <%= f.submit %>
   </div>
 
 <% end %>
-
-<div id="show_song_after_ad"></div>
