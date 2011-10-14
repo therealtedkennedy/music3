@@ -84,17 +84,40 @@ class ArtistsController < ApplicationController
       #@artist = Artist.find(params[:id])
       @artist = Artist.find_by_url_slug(params[:url_slug])
       @song = Song.new
+      @song.artists << Artist.find(@artist.id)
+      @song.save
 
-      respond_to do |format|
-        format.html # show.html.erb
-        format.xml  { render :xml => @artist }
-      end
+      redirect_to(edit_song_path(@song.id), :notice => 'Song was successfully created.')
+
+    #  respond_to do |format|
+     #   format.html # show.html.erb
+     #   format.xml  { render :xml => @artist }
+   #   end
     end
 
   # DELETE /artists/1
   # DELETE /artists/1.xml
 
+  # on to something...but too tired to think about it.
 
+  def upload_song
+      @song = Song.new(params[:song])
+     if params[:artist_id]
+       @song.artists << Artist.find(params[:artist_id])
+     end
+
+      respond_to do |format|
+      if @song.save
+          format.html {
+          redirect_to(add_song_path(artist.url_slug), :notice => 'Song was successfully created.')
+        }
+        format.xml  { render :xml => @artist, :status => :created, :location => @artist }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @artist.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
 
 
 

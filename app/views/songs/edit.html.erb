@@ -1,6 +1,9 @@
-<h1>Editing Song</h1>
-
+<h1>Update Song Info</h1>
+<h2>Song ID</h2>
+<%= @song.id %>
 <%= render 'form' %>
+<h3>Upload Song </h3>
+<%= render 'form_upload_song' %>
 
 <%= link_to 'Show', song_path %>
 <%= link_to 'Back', song_path %>

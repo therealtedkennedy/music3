@@ -39,8 +39,10 @@ class SongsController < ApplicationController
   end
 
   def edit
+
     @song = Song.find(params[:id])
-    #searchString  = params[:url_slug]
+    @id = @song.id
+       #searchString  = params[:url_slug]
     #@artist = Artist.find_by_url_slug(searchString)
   end
 
@@ -48,6 +50,8 @@ class SongsController < ApplicationController
 # Updates Artist Info
   def update
     @song = Song.find(params[:id])
+
+
 
     respond_to do |format|
       if @song.update_attributes(params[:song])
@@ -95,9 +99,12 @@ class SongsController < ApplicationController
 
   #uploads songs from S3 Server
   def upload
+    @song_id = params[:song_id]
+    @file_name = @song_id+".mp3"
+
     begin
-      AWS::S3::S3Object.store(sanitize_filename(params[:mp3file].original_filename), params[:mp3file].read, BUCKET, :access => :public_read)
-     #redirect_to root_path
+      AWS::S3::S3Object.store(@file_name, params[:mp3file].read, BUCKET, :access => :public_read)
+     redirect_to songs_path
     rescue
         #render :text => "Couldn't complete the upload"
     end
@@ -129,6 +136,9 @@ class SongsController < ApplicationController
         format.xml  { render :xml => @artist }
       end
     end
+
+
+
 
 
   private

@@ -2,7 +2,7 @@ class Song< ActiveRecord::Base
  has_and_belongs_to_many:artists
 
  #creates Url Slug
- before_create :generate_slug
+ #before_create :generate_slug
  before_update :generate_slug
 
  #validate :url_slug_uniqueness

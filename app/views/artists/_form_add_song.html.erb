@@ -1,3 +1,5 @@
+
+
 <%= form_for @song, :url => { :controller => :songs, :action => :create,:artist_id => @artist.id}, :validate => true do |f| %>
   <% if @song.errors.any? %>
     <div id="error_explanation">
@@ -10,7 +12,6 @@
       </ul>
     </div>
   <% end %>
-
    <div class="field">
     <%= f.label :song_name %><br />
     <%= f.text_field :song_name %>
