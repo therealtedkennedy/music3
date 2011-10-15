@@ -3,14 +3,30 @@
     <% @song.artists.uniq.each do |artist_name| %>
           <td><%= link_to artist_name.name, artist_link_path (artist_name.url_slug) %></td>
     <% end %></h1>
+
 <p>
   <b>Song:</b>
-  <%= @song.song_name %>
+
+  <%= link_to @song.song_name, download_url_for(@song.s3_name), :class => "html5" %> </br>
+</p>
+
+<section id="audio">
+</section>
+
+
+<p>
+  <b>S3 name:</b>
+  <%= @song.s3_name %>
 </p>
 
 <p>
   <b>Song Artist</b>
   <%= @song.song_artist %>
+</p>
+
+<p>
+  <b>Url Slug</b>
+  <%= @song.song_url_slug %>
 </p>
 
 <p>
@@ -42,6 +58,10 @@
   <b>Lyrics</b>
   <%= @song.lyrics %>
 </p>
+
+
+<%=link_to "Download", download_url_for(@song.s3_name) %> </br>
+<%= link_to "Torrent", torrent_url_for(@song.s3_name) %>  </br>
 
 
 

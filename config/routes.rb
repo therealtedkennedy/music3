@@ -12,15 +12,15 @@ Music3::Application.routes.draw do |map|
 
   #Song Routes
   # Url Slug Routing
-  match "/:url_slug/songs/:song_url_slug" => "songs#show", :as => :artist_show_song
+  match "/:url_slug/song/:song_url_slug" => "songs#show", :as => :artist_show_song
 
 
 
  # songs routing
 
   #match "/hooper/:test" => "songs#show", :as => :song_link
-  match "/songs/upload", :as => "upload"
-  match "/songs/delete", :as => "delete"
+  match "songs/upload", :as => "upload"
+  match "song/delete" => "songs#delete", :as => "delete"
 
  get "songs/index"
  get "songs/upload"

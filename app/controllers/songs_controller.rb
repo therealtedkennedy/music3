@@ -13,6 +13,14 @@ class SongsController < ApplicationController
     end
   end
 
+  def delete
+   if (params[:song])
+      AWS::S3::S3Object.find(params[:song], BUCKET).delete
+      redirect_to songs_path
+   else
+       render :text => "No song was found to delete!"
+    end
+  end
 
   def show
     if params[:song_url_slug]
@@ -42,7 +50,8 @@ class SongsController < ApplicationController
 
     @song = Song.find(params[:id])
     @id = @song.id
-       #searchString  = params[:url_slug]
+
+    #searchString  = params[:url_slug]
     #@artist = Artist.find_by_url_slug(searchString)
   end
 
@@ -50,8 +59,9 @@ class SongsController < ApplicationController
 # Updates Artist Info
   def update
     @song = Song.find(params[:id])
-
-
+     if @song.s3_name.blank?
+        @song.s3_name= @song.id.to_s + ".mp3"
+     end
 
     respond_to do |format|
       if @song.update_attributes(params[:song])
@@ -99,17 +109,24 @@ class SongsController < ApplicationController
 
   #uploads songs from S3 Server
   def upload
-    @song_id = params[:song_id]
-    @file_name = @song_id+".mp3"
+     @id = params[:song_id]
+     @s3_key = @id+".mp3"
 
     begin
-      AWS::S3::S3Object.store(@file_name, params[:mp3file].read, BUCKET, :access => :public_read)
+      AWS::S3::S3Object.store(@s3_key, params[:mp3file].read, BUCKET, :access => :public_read)
      redirect_to songs_path
     rescue
         #render :text => "Couldn't complete the upload"
     end
 
   end
+
+
+
+
+
+
+
     #deletes song info from Model
   def destroy
     @song = Song.find(params[:id])

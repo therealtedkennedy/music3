@@ -79,26 +79,27 @@ class ArtistsController < ApplicationController
     end
   end
 
-  # adds a song for a specific artist
+  # First step in adding song, creates and saves blank song before being passed to the song model
   def add_song
       #@artist = Artist.find(params[:id])
       @artist = Artist.find_by_url_slug(params[:url_slug])
       @song = Song.new
+      #assocaites artist and song
       @song.artists << Artist.find(@artist.id)
       @song.save
 
-      redirect_to(edit_song_path(@song.id), :notice => 'Song was successfully created.')
+       redirect_to(edit_song_path(@song.id), :notice => 'Song was successfully created.')
+          #  respond_to do |format|
+           #   format.html # show.html.erb
+           #   format.xml  { render :xml => @artist }
+         #   end
 
-    #  respond_to do |format|
-     #   format.html # show.html.erb
-     #   format.xml  { render :xml => @artist }
-   #   end
-    end
+        # DELETE /artists/1
+        # DELETE /artists/1.xml
+      end
+  end
 
-  # DELETE /artists/1
-  # DELETE /artists/1.xml
-
-  # on to something...but too tired to think about it.
+   # on to something...but too tired to think about it.
 
   def upload_song
       @song = Song.new(params[:song])
@@ -133,5 +134,5 @@ class ArtistsController < ApplicationController
       format.json {render :json => {}, :status => :ok}
     end
   end
-end
+
 

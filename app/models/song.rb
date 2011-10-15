@@ -3,14 +3,16 @@ class Song< ActiveRecord::Base
 
  #creates Url Slug
  #before_create :generate_slug
+
  before_update :generate_slug
+
 
  #validate :url_slug_uniqueness
 
 
    protected
  def generate_slug
-   self.song_url_slug = song_name.gsub(/\W+/, ' ').strip.downcase.gsub(/\ +/, '-')
+     self.song_url_slug = song_name.gsub(/\W+/, ' ').strip.downcase.gsub(/\ +/, '-')
  end
 
 #private
