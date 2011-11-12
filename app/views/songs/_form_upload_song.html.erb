@@ -1,9 +1,53 @@
 <h2>Upload a new MP3 song</h2>
 
-<%= form_tag upload_path,:method => "post", :multipart => true do  %>
+<%=form_for @song,:url => "/songs/create", :html => {:multipart => true} do |f| %>
 
     <h2>Ready!!!  <%= @id %></h2>
-    <%= file_field_tag "mp3file" %>
-    <%= submit_tag "Upload" %>
-    <input id="song_id" name="song_id" type="hidden" value=<%=@id %> />
+   <%= f.file_field :s3_name%>
+
+   <div class="field">
+     <%= f.label :song_name %>
+     <%= f.text_field :song_name %>
+   </div>
+
+  <div class="field">
+    <%= f.label :song_artist %><br />
+    <%= f.text_field :song_artist %>
+  </div>
+
+  <div class="field">
+    <%=f.label :song_contribute_artist %><br />
+    <%=f.text_field :song_contribute_artist %>
+  </div>
+
+  <div class="field">
+    <%= f.label :song_written %><br />
+    <%= f.text_field :song_written %>
+  </div>
+  <div class="field">
+    <%= f.label :song_licence_type %><br />
+    <%= f.text_field :song_licence_type %>
+  </div>
+  <div class="field">
+    <%= f.label :song_licence_date %><br />
+    <%= f.date_select :song_licence_date %>
+  </div>
+  <div class="field">
+    <%= f.label :song_plays %><br />
+    <%= f.text_field :song_plays %>
+  </div>
+   <div class="field">
+    <%= f.label :song_url_slug %><br />
+    <%= f.text_field :song_url_slug %>
+  </div>
+  <div class="field">
+    <%= f.label :lyrics %><br />
+    <%= f.text_area :lyrics %>
+  </div>
+
+  <div class="actions">
+    </div>
+    <%= f.submit "Upload" %>
+    <input id="artist_id" name="artist_id" type="hidden" value="<%=@artist_id %>" />
+  </div>
 <% end %>

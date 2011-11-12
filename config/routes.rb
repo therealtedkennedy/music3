@@ -8,7 +8,7 @@ Music3::Application.routes.draw do |map|
   # Url Slug Routing
   match "/:url_slug" => "artists#show", :as => :artist_link
   match "/:url_slug/edit" => "artists#edit", :as => :edit_artist
-  match "/:url_slug/add_song" => "artists#add_song", :as => :add_song
+  match "/:url_slug/add_song" => "songs#new", :as => :add_song
 
   #Song Routes
   # Url Slug Routing
@@ -20,7 +20,9 @@ Music3::Application.routes.draw do |map|
 
   #match "/hooper/:test" => "songs#show", :as => :song_link
   match "songs/upload", :as => "upload"
-  match "song/delete" => "songs#delete", :as => "delete"
+  #match "song/delete" => "songs#delete", :as => "delete"
+  #match "song/new/:id" => "songs#new", :as => "new_song_id"
+  match "songs/create" => "songs#create", :as => "new_song_post"
 
  get "songs/index"
  get "songs/upload"

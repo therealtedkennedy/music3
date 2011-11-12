@@ -59,7 +59,7 @@
 <% @artist.songs.uniq.each do |songs| %>
     <% unless songs.song_url_slug.blank?%>
     <li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %>
-      <%= link_to "Play", download_url_for(songs.s3_name), :class => "html5" %></li>
+      <%= link_to "Play", download_url_for(songs.s3_id), :class => "html5" %></li>
   <% end %>
 <% end %>
 </ul>

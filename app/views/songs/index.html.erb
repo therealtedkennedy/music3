@@ -45,7 +45,8 @@
   </tr>
 
 <% @songs.each do |song| %>
-  <tr>
+
+    <tr>
     <td><%= song.song_name %></td>
     <td><%= song.song_artist%></td>
     <% song.artists.uniq.each do |artist_name| %>
@@ -58,15 +59,17 @@
     <td><%= song.song_plays %></td>
     <td><%= song.song_url_slug %></td>
     <td><%= song.lyrics%></td>
+
     <td><%= link_to 'Show', song %></td>
     <td><%= link_to 'Edit', edit_song_path(song) %></td>
     <td><%= link_to 'Destroy', song, :confirm => 'Are you sure?', :method => :delete %></td>
 
+
   </tr>
+
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Song', new_song_path %>
 <%= link_to 'Artist List', artists_path%>

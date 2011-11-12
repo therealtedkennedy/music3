@@ -17,12 +17,13 @@
   </tr>
 
 <% @artists.each do |artist| %>
-  <tr>
-    <td><%= artist.name %></td>
+
+  <tr id = "<%=artist.id%>" >
+     <td><%= artist.name %></td>
     <td><%= artist.url_slug %></td>
     <td><%= artist.city %></td>
     <td><%= artist.province %></td>
-    <td><%= artist.country %></td>
+    <td><%= artist.country %></td>       ``
     <td><%= artist.influence %></td>
     <td><%= artist.bio %></td>
     <td><%= artist.contact_info %></td>
@@ -30,13 +31,17 @@
     <td><%= artist.created_date %></td>
     <td><%= link_to 'Show', artist_link_path(artist.url_slug) %></td>
     <td><%= link_to 'Edit', edit_artist_path(artist.url_slug) %></td>
-    <td><%= link_to 'Destroy', artist, :confirm => 'Are you sure?',:method => :delete %></td>
+    <td><%= link_to 'Destroy', artist, :confirm => 'Are you sure?',:method => :delete, :remote => true %></td>
     <td><%= link_to 'Add Song', add_song_path(artist.url_slug) %></td>
+
   </tr>
+
 <% end %>
 </table>
 
 <br />
+
+</br>
 
 <%= link_to 'New Artist', new_artist_path %>
 <%= link_to 'Song List', songs_path %>

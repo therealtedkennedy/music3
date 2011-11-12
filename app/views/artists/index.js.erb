@@ -1,0 +1,3 @@
+
+$('tr#<%= @artist.id  %>').append("<%= escape_javascript(render @artist) %>");
+$('tr#<%= @artist.id  %>').effect('highlight')

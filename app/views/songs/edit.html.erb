@@ -1,9 +1,13 @@
 <h1>Update Song Info</h1>
 <p> Song ID: <%= @song.id %>   </br>
-  S3_name: <%= @song.s3_name %> </p>
-<%= render 'form' %>
-<h3>Upload Song </h3>
-<%= render 'form_upload_song' %>
+  S3_name: <%= @song.s3_id %> </p>
 
+<h3>Upload Song </h3>
+<h4><%= link_to 'Re-Up Song', new_song_path(@song.id)%> </h4>
+
+
+<%= render 'form' %>
+</br>
 <%= link_to 'Show', song_path %>
 <%= link_to 'Back', song_path %>
+<%= link_to 're-up song', new_song_path(@song.id)%>

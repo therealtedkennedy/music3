@@ -13,7 +13,7 @@ class SongsController < ApplicationController
     end
   end
 
-  def delete
+  def delete (song)
    if (params[:song])
       AWS::S3::S3Object.find(params[:song], BUCKET).delete
       redirect_to songs_path
@@ -28,6 +28,8 @@ class SongsController < ApplicationController
     #@artist = Artist.find_by_url_slug(params[:url_slug])
 
      @song = Song.find_by_song_url_slug(params[:song_url_slug])
+
+
 
         respond_to do |format|
           format.html # show.html.erb
@@ -50,22 +52,34 @@ class SongsController < ApplicationController
 
     @song = Song.find(params[:id])
     @id = @song.id
-
     #searchString  = params[:url_slug]
     #@artist = Artist.find_by_url_slug(searchString)
+
+
+     respond_to do |format|
+           format.html  #show.html.erb
+           format.xml  { render :xml => @song }
+           format.js
+     end
+  end
+
+  def save_amazon_file(amazon_id, mp3file)
+    if(AWS::S3::S3Object.store(amazon_id, mp3file.read, BUCKET, :access => :public_read))
+      return true;
+    else
+      return false;
+    end
   end
 
 
 # Updates Artist Info
   def update
-    @song = Song.find(params[:id])
-     if @song.s3_name.blank?
-        @song.s3_name= @song.id.to_s + ".mp3"
-     end
+       @song = Song.find(params[:id])
+
 
     respond_to do |format|
       if @song.update_attributes(params[:song])
-        format.html { redirect_to(song_path :notice => 'Artist was successfully updated.') }
+        format.html { redirect_to(song_path(@song.id), :notice => 'Artist was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -76,32 +90,52 @@ class SongsController < ApplicationController
 
   def new
     @song = Song.new
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+    @artist_id = @artist.id
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @song }
-    end
-  end
+
+    #@song = Song.find(params[:id])
+    #@id = @song.id
+    #searchString  = params[:url_slug]
+    #@artist = Artist.find_by_url_slug(searchString)
+
+
+     respond_to do |format|
+           format.html  #create.html.erb
+           format.xml  { render :xml => @song }
+           format.js
+     end
+   end
 
 
 
 
   def create
-
     @song = Song.new(params[:song])
-     if params[:artist_id]
-       @song.artists << Artist.find(params[:artist_id])
-     end
+    @song.artists << Artist.find(params[:artist_id])
+    @song.save
+
+   #song s3 key, download link and torrent link
+    @song.s3_id= @song.id.to_s + ".mp3"
+    #@amazon_id = @song.id.to_s + ".mp3"
+
+
+
+    save_amazon_file(@song.s3_id, params[:song][:s3_name])
+
+     #if @song.s3_id.blank?
+        #@song.s3_id= params[:id].to_s + ".mp3"
+       # @song.download_link = download_url_for(@song.s3_id)
+        #@song.torrent_link= link_to(torrent_url_for(@song.s3_name))
+     #end
 
     respond_to do |format|
-      if @song.save
-          format.html {
-          redirect_to(songs_path, :notice => 'Song was successfully created.')
-        }
-        format.xml  { render :xml => @artist, :status => :created, :location => @artist }
+      if @song.update_attributes(@song.s3_id)
+        format.html { redirect_to(song_path(@song.id), :notice => 'Artist was successfully created.') }
+        format.xml { head :ok }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @artist.errors, :status => :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -109,17 +143,24 @@ class SongsController < ApplicationController
 
   #uploads songs from S3 Server
   def upload
-     @id = params[:song_id]
-     @s3_key = @id+".mp3"
+     #@id = params[:song_id]
+     #@s3_key = @id+".mp3"
 
     begin
-      AWS::S3::S3Object.store(@s3_key, params[:mp3file].read, BUCKET, :access => :public_read)
-     redirect_to songs_path
-    rescue
-        #render :text => "Couldn't complete the upload"
+      AWS::S3::S3Object.store(sanitize_filename(params[:mp3file].original_filename), params[:mp3file].read, BUCKET, :access => :public_read)
+
     end
 
+    rescue
+        render :text => "Couldn't complete the upload"
+
+
+      respond_to do |format|
+         format.js  {render}
+
+      end
   end
+
 
 
 
@@ -132,9 +173,13 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
     @song.destroy
 
+   (@song.s3_id)
+    AWS::S3::S3Object.find(@song.s3_id, BUCKET).delete
+
     respond_to do |format|
       format.html {redirect_to(songs_path)}
       format.json {render :json => {}, :status => :ok}
+      format.js
       #format.xml  { head :ok }
     end
   end
