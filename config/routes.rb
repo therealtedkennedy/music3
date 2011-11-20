@@ -23,6 +23,7 @@ Music3::Application.routes.draw do |map|
   #match "song/delete" => "songs#delete", :as => "delete"
   #match "song/new/:id" => "songs#new", :as => "new_song_id"
   match "songs/create" => "songs#create", :as => "new_song_post"
+  match "/:url_slug/song/download/:song_url_slug" => "songs#download", :as => "download_song"
 
  get "songs/index"
  get "songs/upload"

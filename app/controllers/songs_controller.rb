@@ -63,8 +63,10 @@ class SongsController < ApplicationController
      end
   end
 
-  def save_amazon_file(amazon_id, mp3file)
-    if(AWS::S3::S3Object.store(amazon_id, mp3file.read, BUCKET, :access => :public_read))
+  def save_amazon_file(amazon_id, mp3file,name)
+
+   #patched aw3 object.rb with - http://rubyforge.org/pipermail/amazon-s3-dev/2006-December/000007.html
+    if(AWS::S3::S3Object::store(amazon_id, mp3file.read, BUCKET, :access => :public_read,'x-amz-meta-my-file-name'=> name, 'Content-Disposition' => 'attachment;filename='+name+'.mp3'))
       return true;
     else
       return false;
@@ -121,7 +123,7 @@ class SongsController < ApplicationController
 
 
 
-    save_amazon_file(@song.s3_id, params[:song][:s3_name])
+    save_amazon_file(@song.s3_id, params[:song][:s3_name],@song.song_name)
 
      #if @song.s3_id.blank?
         #@song.s3_id= params[:id].to_s + ".mp3"
@@ -162,10 +164,18 @@ class SongsController < ApplicationController
   end
 
 
+  def download
+      @song = Song.find_by_song_url_slug(params[:song_url_slug])
+      @song_file = AWS::S3::S3Object.value(@song.s3_id, BUCKET)
+      send_file(@song_file,
+            :filename  =>  @song.song_name+".mp3")
 
-
-
-
+       respond_to do |format|
+           format.html  redirect_to(song_path(@song.id), :notice => 'Song was downloaded.')
+           format.xml
+           format.js
+       end
+  end
 
 
     #deletes song info from Model
