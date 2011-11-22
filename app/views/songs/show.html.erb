@@ -10,11 +10,6 @@
   <%= link_to @song.song_name, download_url_for(@song.s3_id), :class => "html5" %> </br>
 </p>
 
-<p>
-  <b>Original Song Name</b>
-  <%= @original_name %>
-</p>
-
 <section id="audio">
 </section>
 
@@ -22,6 +17,11 @@
 <p>
   <b>S3 name:</b>
   <%= @song.s3_id %>
+</p>
+
+<p>
+  <b>S_A_ID</b>
+  <%= @song.s_a_id %>
 </p>
 
 <p>
@@ -75,7 +75,7 @@
 </p>
 
 
-<%=link_to "Download S3", download_url_for(@song.s3_id) %> </br>
+<%=link_to "Download", download_url_for(@song.s3_id) %> </br>
 <%= link_to "Torrent", torrent_url_for(@song.s3_id) %>  </br>
 
 

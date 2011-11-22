@@ -8,4 +8,4 @@ class AddUrlSlugTooSong < ActiveRecord::Migration
   end
 end
 
-#'jquery', 'rails.validations', 'application.js', ,'jquery_ujs'
+'jquery', 'rails.validations', 'application.js', ,'jquery_ujs'

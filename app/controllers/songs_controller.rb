@@ -75,7 +75,7 @@ class SongsController < ApplicationController
 
 
 # Updates Artist Info
-  def update
+  def used_to_be_upadate
        @song = Song.find(params[:id])
 
 
@@ -94,6 +94,8 @@ class SongsController < ApplicationController
     @song = Song.new
     @artist = Artist.find_by_url_slug(params[:url_slug])
     @artist_id = @artist.id
+    @song.s_a_id = @artist.id
+    @song.update_attributes(@song.s_a_id)
 
 
     #@song = Song.find(params[:id])
@@ -112,10 +114,10 @@ class SongsController < ApplicationController
 
 
 
-  def create
-    @song = Song.new(params[:song])
+  def update
+    @song = Song.find(params[:form_song_id])
     @song.artists << Artist.find(params[:artist_id])
-    @song.save
+    @song.update_attributes(params[:song])
 
    #song s3 key, download link and torrent link
     @song.s3_id= @song.id.to_s + ".mp3"
@@ -133,7 +135,7 @@ class SongsController < ApplicationController
 
     respond_to do |format|
       if @song.update_attributes(@song.s3_id)
-        format.html { redirect_to(song_path(@song.id), :notice => 'Artist was successfully created.') }
+        format.html { redirect_to(song_path(@song.id), :notice => 'Song was successfully created.') }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }
@@ -183,7 +185,7 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
     @song.destroy
 
-   (@song.s3_id)
+    (@song.s3_id)
     AWS::S3::S3Object.find(@song.s3_id, BUCKET).delete
 
     respond_to do |format|

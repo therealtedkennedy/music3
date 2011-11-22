@@ -4,22 +4,17 @@ class Song< ActiveRecord::Base
  #creates Url Slug
  #before_create :generate_slug
 
- before_update :generate_slug, :slug_unique
+ before_update :generate_slug
 
-# validates_uniqueness_of :song_url_slug, :scope => self.artist.id
+ validates_presence_of :song_name, :on => :update
+ validates_uniqueness_of :song_name, :scope => :s_a_id
 
-
+ #validate :url_slug_uniqueness
 
 
    protected
  def generate_slug
      self.song_url_slug = song_name.gsub(/\W+/, ' ').strip.downcase.gsub(/\ +/, '-')
- end
-
- #not working!!!
- def slug_unique
-   artist_id = self.artists.id.map{|t| t.artist.id}
-   Artist.has_song_slug?(artist_id, self.song_url_slug)
  end
 
 #private
@@ -29,11 +24,9 @@ class Song< ActiveRecord::Base
       # errors.add(:song_name, :name_taken, :song_name=> "#{artist_song}1")
     # end
 #  end
-end
+ end
 
-#Song goodTune;
-#Artist Ted;
-#var allSlugs = Ted.songs.map{|t| t.url_slug}
-#allSlugs.contains(sketchySlug)
+
+
 
 

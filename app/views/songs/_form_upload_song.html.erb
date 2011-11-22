@@ -1,6 +1,6 @@
 <h2>Upload a new MP3 song</h2>
 
-<%=form_for @song,:url => "/songs/create", :html => {:multipart => true} do |f| %>
+<%=form_for @song,:url => "/songs/create", :html => {:multipart => true}, :validate => true do |f| %>
 
     <h2>Ready!!!  <%= @id %></h2>
    <%= f.file_field :s3_name%>
@@ -49,5 +49,7 @@
     </div>
     <%= f.submit "Upload" %>
     <input id="artist_id" name="artist_id" type="hidden" value="<%=@artist_id %>" />
+    <input id="form_song_id" name="form_song_id" type="hidden" value="<%= @song.id %>" />
+
   </div>
 <% end %>
