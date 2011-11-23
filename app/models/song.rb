@@ -6,8 +6,10 @@ class Song< ActiveRecord::Base
 
  before_update :generate_slug
 
+
  validates_presence_of :song_name, :on => :update
- validates_uniqueness_of :song_name, :scope => :s_a_id
+ validates_uniqueness_of :song_name, :scope => :s_a_id, :case_sensitive => false, :allow_nil => :true
+
 
  #validate :url_slug_uniqueness
 

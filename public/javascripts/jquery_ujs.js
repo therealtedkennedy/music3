@@ -79,7 +79,7 @@
     },
 
     // Triggers an event on an element and returns false if the event result is false
-    fire: function(obj, name, data) {
+    fire: function(obj, name) {
       var event = $.Event(name);
       obj.trigger(event, data);
       return event.result !== false;
@@ -101,53 +101,56 @@
         crossDomain = element.data('cross-domain') || null,
         dataType = element.data('type') || ($.ajaxSettings && $.ajaxSettings.dataType);
 
-      if (rails.fire(element, 'ajax:before')) {
+        var options;
+        if (rails.fire(element, 'ajax:before')) {
 
-        if (element.is('form')) {
-          method = element.attr('method');
-          url = element.attr('action');
-          data = element.serializeArray();
-          // memoized value from clicked submit button
-          var button = element.data('ujs:submit-button');
-          if (button) {
-            data.push(button);
-            element.data('ujs:submit-button', null);
-          }
-        } else if (element.is('select')) {
-          method = element.data('method');
-          url = element.data('url');
-          data = element.serialize();
-          if (element.data('params')) data = data + "&" + element.data('params'); 
-        } else {
-           method = element.data('method');
-           url = element.attr('href');
-           data = element.data('params') || null; 
-        }
-
-        options = {
-          type: method || 'GET', data: data, dataType: dataType, crossDomain: crossDomain,
-          // stopping the "ajax:beforeSend" event will cancel the ajax request
-          beforeSend: function(xhr, settings) {
-            if (settings.dataType === undefined) {
-              xhr.setRequestHeader('accept', '*/*;q=0.5, ' + settings.accepts.script);
+            if (element.is('form')) {
+                method = element.attr('method');
+                url = element.attr('action');
+                data = element.serializeArray();
+                // memoized value from clicked submit button
+                var button = element.data('ujs:submit-button');
+                if (button) {
+                    data.push(button);
+                    element.data('ujs:submit-button', null);
+                }
+            } else if (element.is('select')) {
+                method = element.data('method');
+                url = element.data('url');
+                data = element.serialize();
+                if (element.data('params')) data = data + "&" + element.data('params');
+            } else {
+                method = element.data('method');
+                url = element.attr('href');
+                data = element.data('params') || null;
             }
-            return rails.fire(element, 'ajax:beforeSend', [xhr, settings]);
-          },
-          success: function(data, status, xhr) {
-            element.trigger('ajax:success', [data, status, xhr]);
-          },
-          complete: function(xhr, status) {
-            element.trigger('ajax:complete', [xhr, status]);
-          },
-          error: function(xhr, status, error) {
-            element.trigger('ajax:error', [xhr, status, error]);
-          }
-        };
-        // Do not pass url to `ajax` options if blank
-        if (url) { $.extend(options, { url: url }); }
 
-        rails.ajax(options);
-      }
+            options = {
+                type: method || 'GET', data: data, dataType: dataType, crossDomain: crossDomain,
+                // stopping the "ajax:beforeSend" event will cancel the ajax request
+                beforeSend: function(xhr, settings) {
+                    if (settings.dataType === undefined) {
+                        xhr.setRequestHeader('accept', '*/*;q=0.5, ' + settings.accepts.script);
+                    }
+                    return rails.fire(element, 'ajax:beforeSend');
+                },
+                success: function(data, status, xhr) {
+                    element.trigger('ajax:success', [data, status, xhr]);
+                },
+                complete: function(xhr, status) {
+                    element.trigger('ajax:complete', [xhr, status]);
+                },
+                error: function(xhr, status, error) {
+                    element.trigger('ajax:error', [xhr, status, error]);
+                }
+            };
+            // Do not pass url to `ajax` options if blank
+            if (url) {
+                $.extend(options, { url: url });
+            }
+
+            rails.ajax(options);
+        }
     },
 
     // Handles "data-method" on links such as:
@@ -211,7 +214,7 @@
 
       if (rails.fire(element, 'confirm')) {
         answer = rails.confirm(message);
-        callback = rails.fire(element, 'confirm:complete', [answer]);
+        callback = rails.fire(element, 'confirm:complete');
       }
       return answer && callback;
     },
@@ -287,13 +290,13 @@
     if (!rails.allowAction(form)) return rails.stopEverything(e);
 
     // skip other logic when required values are missing or file upload is present
-    if (blankRequiredInputs && form.attr("novalidate") == undefined && rails.fire(form, 'ajax:aborted:required', [blankRequiredInputs])) {
+    if (blankRequiredInputs && form.attr("novalidate") == undefined && rails.fire(form, 'ajax:aborted:required')) {
       return rails.stopEverything(e);
     }
 
     if (remote) {
       if (nonBlankFileInputs) {
-        return rails.fire(form, 'ajax:aborted:file', [nonBlankFileInputs]);
+        return rails.fire(form, 'ajax:aborted:file');
       }
 
       // If browser does not support submit bubbling, then this live-binding will be called before direct

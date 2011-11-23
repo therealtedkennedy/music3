@@ -95,7 +95,7 @@ class SongsController < ApplicationController
     @artist = Artist.find_by_url_slug(params[:url_slug])
     @artist_id = @artist.id
     @song.s_a_id = @artist.id
-    @song.update_attributes(@song.s_a_id)
+    @song.save
 
 
     #@song = Song.find(params[:id])

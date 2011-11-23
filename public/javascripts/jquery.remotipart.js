@@ -27,7 +27,7 @@
           settings.data.push({name: 'remotipart_submitted', value: true});
 
           // Allow remotipartSubmit to be cancelled if needed
-          if ($.rails.fire(form, 'ajax:remotipartSubmit', [xhr, settings])) {
+          if ($.rails.fire(form, 'ajax:remotipartSubmit')) {
             // Second verse, same as the first
             $.rails.ajax(settings);
           }

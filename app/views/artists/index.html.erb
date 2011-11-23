@@ -15,10 +15,8 @@
     <th></th>
     <th></th>
   </tr>
-
-<% @artists.each do |artist| %>
-
-  <tr id = "<%=artist.id%>" >
+ <% @artists.each do |artist| %>
+   <tr id = "<%=artist.id%>" >
      <td><%= artist.name %></td>
     <td><%= artist.url_slug %></td>
     <td><%= artist.city %></td>
@@ -39,7 +37,6 @@
 <% end %>
 </table>
 
-<br />
 
 </br>
 

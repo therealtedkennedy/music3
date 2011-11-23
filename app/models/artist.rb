@@ -5,8 +5,10 @@ class Artist < ActiveRecord::Base
   before_create :generate_slug
   before_update :generate_slug
 
+
+#patch for possible db issue = https://rails.lighthouseapp.com/projects/8994-ruby-on-rails/tickets/3486-alternative-to-validates_uniqueness_of-using-db-constraints
  validates_presence_of :name
- validates_uniqueness_of :name
+ validates_uniqueness_of :name, :case_sensitive => false
 
 
   protected
