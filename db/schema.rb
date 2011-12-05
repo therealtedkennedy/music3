@@ -10,7 +10,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111105143008) do
+ActiveRecord::Schema.define(:version => 20111203171015) do
+
+  create_table "albums", :force => true do |t|
+    t.string   "al_name"
+    t.string   "al_type"
+    t.string   "pri_artist"
+    t.string   "contrib_artist"
+    t.string   "al_copy_write"
+    t.date     "al_rel_date"
+    t.string   "pay_type"
+    t.integer  "al_amount"
+    t.string   "producer"
+    t.string   "al_producer"
+    t.string   "al_label"
+    t.text     "liner_notes"
+    t.integer  "downloads"
+    t.integer  "plays"
+    t.integer  "shares"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "al_a_id"
+    t.integer  "al_s_id"
+    t.string   "album_url_slug"
+  end
+
+  create_table "albums_artists", :id => false, :force => true do |t|
+    t.integer "album_id"
+    t.integer "artist_id"
+  end
+
+  create_table "albums_songs", :id => false, :force => true do |t|
+    t.integer "album_id"
+    t.integer "song_id"
+  end
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -48,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20111105143008) do
     t.string   "download_link"
     t.string   "torrent_link"
     t.string   "s3_id"
+    t.integer  "s_a_id"
   end
 
   create_table "users", :force => true do |t|

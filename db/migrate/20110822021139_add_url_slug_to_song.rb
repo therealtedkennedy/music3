@@ -1,4 +1,4 @@
-class AddUrlSlugToArtist < ActiveRecord::Migration
+class AddUrlSlugToSong < ActiveRecord::Migration
   def self.up
     add_column :songs, :song_url_slug, :string
   end

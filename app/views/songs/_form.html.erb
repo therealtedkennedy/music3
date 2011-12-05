@@ -50,8 +50,12 @@
     <%= f.label :lyrics %><br />
     <%= f.text_area :lyrics %>
   </div>
+
    <div class="actions">
     <%= f.submit %>
   </div>
+
+    <input id="artist_id" name="artist_id" type="hidden" value="<%=@song.s_a_id %>" />
+    <input id="form_song_id" name="form_song_id" type="hidden" value="<%= params[:id] %>" />
 
 <% end %>

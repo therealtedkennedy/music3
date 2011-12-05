@@ -1,4 +1,6 @@
 Music3::Application.routes.draw do |map|
+  resources :albums
+
   resources :artists, :artist_home, :songs
      devise_for :users
 
@@ -15,6 +17,12 @@ Music3::Application.routes.draw do |map|
   match "/:url_slug/song/:song_url_slug" => "songs#show", :as => :artist_show_song
 
 
+  #Albums Slug Routing
+  match "/:url_slug/album/:album_url_slug" => "albums#show", :as => :artist_show_album
+
+  #Artist Home
+
+  match "/:url_slug/admin" => "artists#admin", :as => :artist_admin
 
  # songs routing
 
@@ -27,6 +35,9 @@ Music3::Application.routes.draw do |map|
  get "songs/index"
  get "songs/upload"
  get "songs/delete"
+
+
+ # Albums routing
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

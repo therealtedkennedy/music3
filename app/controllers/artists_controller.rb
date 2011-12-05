@@ -122,6 +122,10 @@ class ArtistsController < ApplicationController
    # end
  # end
 
+def admin
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+
+end
 
 
   def destroy

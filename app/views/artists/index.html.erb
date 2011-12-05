@@ -29,7 +29,7 @@
     <td><%= artist.created_date %></td>
     <td><%= link_to 'Show', artist_link_path(artist.url_slug) %></td>
     <td><%= link_to 'Edit', edit_artist_path(artist.url_slug) %></td>
-    <td><%= link_to 'Destroy', artist, :confirm => 'Are you sure?',:method => :delete, :remote => true %></td>
+    <td><%= link_to 'Destroy', artist,:method => :delete, :confirm => 'Are you sure?', :remote => true %></td>
     <td><%= link_to 'Add Song', add_song_path(artist.url_slug) %></td>
 
   </tr>

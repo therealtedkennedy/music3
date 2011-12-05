@@ -117,32 +117,40 @@ class SongsController < ApplicationController
   def update
     @song = Song.find(params[:form_song_id])
     @song.artists << Artist.find(params[:artist_id])
+    @s3_test = params[:s3_name]
+
     @song.update_attributes(params[:song])
+
+
+
 
    #song s3 key, download link and torrent link
     @song.s3_id= @song.id.to_s + ".mp3"
     #@amazon_id = @song.id.to_s + ".mp3"
 
 
+    if params[:song].has_key?("s3_name")
+      save_amazon_file(@song.s3_id, params[:song][:s3_name],@song.song_name)
 
-    save_amazon_file(@song.s3_id, params[:song][:s3_name],@song.song_name)
 
-     #if @song.s3_id.blank?
-        #@song.s3_id= params[:id].to_s + ".mp3"
-       # @song.download_link = download_url_for(@song.s3_id)
-        #@song.torrent_link= link_to(torrent_url_for(@song.s3_name))
-     #end
+    end
 
-    respond_to do |format|
-      if @song.update_attributes(@song.s3_id)
-        format.html { redirect_to(song_path(@song.id), :notice => 'Song was successfully created.') }
-        format.xml { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
+       #if @song.s3_id.blank?
+          #@song.s3_id= params[:id].to_s + ".mp3"
+         # @song.download_link = download_url_for(@song.s3_id)
+          #@song.torrent_link= link_to(torrent_url_for(@song.s3_name))
+       #end
+
+      respond_to do |format|
+        if @song.update_attributes(@song.s3_id)
+          format.html { redirect_to(song_path(@song.id), :notice => 'Song was successfully created.') }
+          format.xml { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
+        end
       end
     end
-  end
 
 
   #uploads songs from S3 Server

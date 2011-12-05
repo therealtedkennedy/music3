@@ -1,0 +1,23 @@
+<h1><%= @artist.name %></h1>
+<p id="notice"><%= notice %></p>
+<section id="audio">
+</section>
+<p>
+
+<p>
+ <b>Songs</b>
+
+<ul>
+<% @artist.songs.uniq.each do |songs| %>
+    <% unless songs.song_url_slug.blank?%>
+    <li><%= link_to songs.song_name, song_path(songs.id) %>
+      <%= link_to "Play", download_url_for(songs.s3_id), :class => "html5" %>
+      <%= link_to 'Edit', edit_song_path(songs.id) %></li>
+  <% end %>
+<% end %>
+</ul>
+
+</p>
+
+<%= link_to 'Song List', songs_path %>
+<%= link_to 'Artist List', artists_path%>
