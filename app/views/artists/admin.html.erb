@@ -4,8 +4,62 @@
 </section>
 <p>
 
+<h2>Admin</h2>
+ <%= link_to 'Show', artist_link_path(@artist.url_slug) %>
+
+ <%= link_to 'Destroy', :method => :delete, :confirm => 'Are you sure?', :remote => true %>
+
+
+
+<h2>Info: <%= link_to 'Edit', edit_artist_path(@artist.url_slug) %></h2>
 <p>
- <b>Songs</b>
+  <b>URL Slug</b>
+  <%= @artist.url_slug %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @artist.city %>
+</p>
+
+<p>
+  <b>Province:</b>
+  <%= @artist.province %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @artist.country %>
+</p>
+
+<p>
+  <b>Influence:</b>
+  <%= @artist.influence %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @artist.bio %>
+</p>
+
+<p>
+  <b>Contact info:</b>
+  <%= @artist.contact_info %>
+</p>
+
+<p>
+  <b>Date founded:</b>
+  <%= @artist.date_founded %>
+</p>
+
+<p>
+  <b>Created date:</b>
+  <%= @artist.created_date %>
+</p>
+
+
+<p>
+<h2>Songs: <%= link_to 'Add Song', add_song_path(@artist.url_slug) %></h2>
 
 <ul>
 <% @artist.songs.uniq.each do |songs| %>

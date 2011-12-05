@@ -72,7 +72,7 @@ class ArtistsController < ApplicationController
 
     respond_to do |format|
       if @artist.update_attributes(params[:artist])
-        format.html { redirect_to(artist_link_path(@artist.url_slug), :notice => 'Artist was successfully updated.') }
+        format.html { redirect_to(artist_admin_path(@artist.url_slug), :notice => 'Artist was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

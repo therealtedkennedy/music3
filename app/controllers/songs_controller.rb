@@ -52,6 +52,8 @@ class SongsController < ApplicationController
 
     @song = Song.find(params[:id])
     @id = @song.id
+    @artist = Artist.find(@song.s_a_id)
+
     #searchString  = params[:url_slug]
     #@artist = Artist.find_by_url_slug(searchString)
 
