@@ -13,20 +13,42 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.xml
   def show
-    @album = Album.find(params[:id])
+
+   if params[:album_url_slug]
+
+    @album = Album.find_by_album_url_slug(params[:album_url_slug])
+
 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @album }
     end
+
+   else
+
+     @album = Album.find(params[:id])
+
+
+     respond_to do |format|
+       format.html # show.html.erb
+       format.xml  { render :xml => @album }
+     end
+
+   end
   end
 
   # GET /albums/new
   # GET /albums/new.xml
   def new
     @album = Album.new
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+    @album.al_a_id = @artist.id
+    @album.artists << Artist.find(@artist_id)
+    @album.save
 
-    respond_to do |format|
+
+
+     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @album }
     end

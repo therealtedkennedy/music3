@@ -11,6 +11,7 @@ Music3::Application.routes.draw do |map|
   match "/:url_slug" => "artists#show", :as => :artist_link
   match "/:url_slug/edit" => "artists#edit", :as => :edit_artist
   match "/:url_slug/add_song" => "songs#new", :as => :add_song
+  match "/:url_slug/new_album" => "albums#new", :as => :add_album
 
   #Song Routes
   # Url Slug Routing

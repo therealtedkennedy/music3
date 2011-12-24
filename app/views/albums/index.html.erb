@@ -2,6 +2,20 @@
 
 <table>
   <tr>
+       <th>Name</th>
+       <th>Type</th>
+       <th>Pri_artist</th>
+       <th>Contributing Artist</th>
+	   <th>CopyWrite</th>
+       <th>Release Date</th>
+       <th>Payment type</th>
+       <th>Amount</th>
+       <th>Producer</th>
+       <th>Alternate producer</th>
+       <th>Label</th>
+       <th>Liner Notes</th>
+       <th>Downloads</th>
+       <th>Plays</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,9 +23,23 @@
 
 <% @albums.each do |album| %>
   <tr>
+    <td><%= album.al_name%></td>
+    <td><%= album.al_type%></td>
+    <td><%= album.pri_artist%></td>
+    <td><%= album.contrib_artist%></td>
+    <td><%= album.al_copy_write%></td>
+    <td><%= album.al_rel_date%></td>
+    <td><%= album.pay_type%></td>
+    <td><%= album.al_amount%></td>
+    <td><%= album.producer%></td>
+    <td><%= album.al_producer%></td>
+    <td><%= album.al_label%></td>
+    <td><%= album.liner_notes%></td>
+    <td><%= album.downloads%></td>
+    <td><%= album.plays%></td>
     <td><%= link_to 'Show', album %></td>
     <td><%= link_to 'Edit', edit_album_path(album) %></td>
-    <td><%= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', album, :method => :delete, :confirm => 'Are you sure?'%></td>
   </tr>
 <% end %>
 </table>

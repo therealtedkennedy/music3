@@ -1,5 +1,72 @@
 <p id="notice"><%= notice %></p>
 
+<h1>
+    <% @album.artists.uniq.each do |artist_name| %>
+          <td><%= link_to artist_name.name, artist_link_path (artist_name.url_slug) %></td>
+    <% end %>
+</h1>
 
-<%= link_to 'Edit', edit_album_path(@album) %> |
+ <p>
+  <b> Artist ID </b>
+  <%= @album.al_a_id %>
+ </p>
+
+<p>
+ <b>Album Name:</b>
+ <%= @album.al_name%>
+ </p>
+
+
+ <p><b>Album Type:</b>
+ <%= @album.al_type%>
+ </p>
+ <p>
+ <b>Primary Artist:</b>
+ <%= @album.pri_artist%>
+ </p>
+
+ <p>
+ <b>Contributing Artist:</b>
+ <%= @album.contrib_artist%>
+ </p>
+ <p>
+ <b>Copywrite Type:</b>
+ <%= @album.al_copy_write%>
+ </p>
+ <p>
+ <b>Release Date:</b>
+ <%= @album.al_rel_date%>
+ </p>
+ <p>
+ <b>Payment Type:</b>
+ <%= @album.pay_type%></p>
+
+ <p>
+ <b>Amount:</b>
+ <%= @album.al_amount%></p>
+
+ <p>
+ <b>Producer:</b>
+ <%= @album.producer%></p>
+ <p>
+ <b>Album Producer:</b>
+ <%= @album.al_producer%></p>
+
+ <p>
+ <b>Label:</b>
+ <%= @album.al_label%></p>
+
+ <p>
+ <b>Liner Notes:</b>
+ <%= @album.liner_notes%></p>
+
+ <p>
+ <b>Number Of Downloads:</b>
+ <%= @album.downloads%></p>
+
+ <p>
+ <b>Number of Plays:</b>
+ <%= @album.plays%></p>
+
+
 <%= link_to 'Back', albums_path %>

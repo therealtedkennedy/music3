@@ -1,4 +1,4 @@
-<%= form_for(@album) do |f| %>
+<%= form_for @album, :validate => true do |f| %>
   <% if @album.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
@@ -10,6 +10,54 @@
       </ul>
     </div>
   <% end %>
+<div class="field">
+    <%= f.label "Name" %><br />
+    <%= f.text_field :al_name %>
+  </div>
+  <div class="field">
+    <%=f.label "Type" %><br />
+    <%=f.text_field :al_type %>
+  </div>
+  <div class="field">
+    <%= f.label "Primary Artist" %><br />
+    <%= f.text_field :pri_artist %>
+  </div>
+  <div class="field">
+    <%= f.label "Contributing Artist" %><br />
+    <%= f.text_field :contrib_artist %>
+  </div>
+  <div class="field">
+    <%= f.label "Copywrite"  %><br />
+    <%= f.text_field :al_copy_write %>
+  </div>
+  <div class="field">
+    <%= f.label "Release Date" %><br />
+    <%= f.date_select :al_rel_date %>
+  </div>
+  <h2>Payment Options</h2>
+  <div class="field">
+    <%= f.label "Payment Type" %><br />
+    <%= f.text_field :pay_type %>
+  </div>
+  <div class="field">
+    <%= f.label "Amount" %><br />
+    <%= f.text_field :al_amount %>
+  </div>
+
+  <h2>More Info </h2>
+  <div class="field">
+    <%= f.label "Producer" %><br />
+    <%= f.text_field :producer %>
+  </div>
+  <div class="field">
+    <%= f.label "Engineer"  %><br />
+    <%= f.text_field :al_producer %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Liner Notes"  %><br />
+    <%= f.text_area :liner_notes %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

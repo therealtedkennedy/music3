@@ -56,7 +56,17 @@
   <b>Created date:</b>
   <%= @artist.created_date %>
 </p>
+<h2>Albums: <%= link_to 'New Album',add_album_path(@artist.url_slug)%></h2>
 
+<ul>
+   <% @artist.albums.uniq.each do |albums| %>
+      <% unless albums.album_url_slug.blank?%>
+      <li><%= link_to albums.al_name, artist_show_album_path(@artist.url_slug,albums.album_url_slug) %>
+      <%= link_to 'Edit', edit_album_path(albums.id) %> |
+      </li>
+    <% end %>
+   <% end %>
+</ul>
 
 <p>
 <h2>Songs: <%= link_to 'Add Song', add_song_path(@artist.url_slug) %></h2>
