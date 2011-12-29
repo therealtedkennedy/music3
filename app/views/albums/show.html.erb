@@ -5,7 +5,8 @@
           <td><%= link_to artist_name.name, artist_link_path (artist_name.url_slug) %></td>
     <% end %>
 </h1>
-
+<section id="audio">
+</section>
  <p>
   <b> Artist ID </b>
   <%= @album.al_a_id %>
@@ -14,6 +15,11 @@
 <p>
  <b>Album Name:</b>
  <%= @album.al_name%>
+ </p>
+
+<p>
+ <b>Album ID:</b>
+ <%= @album.id%>
  </p>
 
 
@@ -68,5 +74,15 @@
  <b>Number of Plays:</b>
  <%= @album.plays%></p>
 
+
+<h2> Songs </h2>
+ <ul>
+<% @album.songs.uniq.each do |songs| %>
+    <% unless songs.song_url_slug.blank?%>
+        <li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %>
+     <%= link_to "Play", download_url_for(songs.s3_id), :class => "html5" %></li>
+  <% end %>
+<% end %>
+</ul>
 
 <%= link_to 'Back', albums_path %>

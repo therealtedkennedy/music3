@@ -17,7 +17,7 @@ class AlbumsController < ApplicationController
    if params[:album_url_slug]
 
     @album = Album.find_by_album_url_slug(params[:album_url_slug])
-
+    @artist = Artist.find_by_url_slug(params[:url_slug])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +27,7 @@ class AlbumsController < ApplicationController
    else
 
      @album = Album.find(params[:id])
-
+     @artist = Artist.find(@album.al_a_id)
 
      respond_to do |format|
        format.html # show.html.erb
@@ -43,7 +43,7 @@ class AlbumsController < ApplicationController
     @album = Album.new
     @artist = Artist.find_by_url_slug(params[:url_slug])
     @album.al_a_id = @artist.id
-    @album.artists << Artist.find(@artist_id)
+    @album.artists << Artist.find(@artist.id)
     @album.save
 
 
@@ -57,6 +57,13 @@ class AlbumsController < ApplicationController
   # GET /albums/1/edit
   def edit
     @album = Album.find(params[:id])
+    @artist = Artist.find(@album.al_a_id)
+
+   #For Check Box - Creates an Array of song Id's for a particular artist to select songs that already exsist
+    @song_ids = Array.new
+    @album.songs.uniq.each do |s|
+      @song_ids << s.id
+    end
   end
 
   # POST /albums
@@ -78,7 +85,11 @@ class AlbumsController < ApplicationController
   # PUT /albums/1
   # PUT /albums/1.xml
   def update
+   #  params[:album_songs][:songs_id] ||= []
     @album = Album.find(params[:id])
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+    @album.songs << Song.find(params[:album_songs][:songs_id])
+
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
