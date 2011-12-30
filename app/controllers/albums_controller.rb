@@ -88,7 +88,13 @@ class AlbumsController < ApplicationController
    #  params[:album_songs][:songs_id] ||= []
     @album = Album.find(params[:id])
     @artist = Artist.find_by_url_slug(params[:url_slug])
-    @album.songs << Song.find(params[:album_songs][:songs_id])
+
+    if params.has_key?(:album_songs)
+      @album.songs = Song.find(params[:album_songs][:songs_id])
+    else
+      @album.songs = []
+    end
+
 
 
     respond_to do |format|
