@@ -13,7 +13,6 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.xml
   def show
-
    if params[:album_url_slug]
 
     @album = Album.find_by_album_url_slug(params[:album_url_slug])
@@ -95,8 +94,6 @@ class AlbumsController < ApplicationController
       @album.songs = []
     end
 
-
-
     respond_to do |format|
       if @album.update_attributes(params[:album])
         format.html { redirect_to(@album, :notice => 'Album was successfully updated.') }
@@ -119,4 +116,64 @@ class AlbumsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def download_album
+    @song = Song.find(10)
+    @song_file = AWS::S3::S3Object.value(@song.s3_id, BUCKET)
+
+    #saves file
+    name =  @song.song_name+".mp3"
+    directory = "D:/Test Projects/music3/Zipped Files"
+      # create the file path
+    path = File.join(directory, name)
+      # write the file
+     File.open(path, 'wb') { |f| f.write(@song_file) }
+
+
+     respond_to do |format|
+      format.html { redirect_to(albums_url) }
+      format.xml  { head :ok }
+     end
+
+
+  end
+
+
+   # if params[:album_url_slug]
+   #  @album = Album.find_by_album_url_slug(params[:album_url_slug])
+  # else
+  #   @album = Album.find(params[:id])
+  # end
+   #  @album.songs unque each do |download|
+
+
+
+     #end
+
+
+
+
+  def zip
+      require 'rubygems'
+      require 'zip/zip'
+
+      puts "Zipping files!"
+
+      file_path = "D:/Test Projects/music3/Zipped Files"
+      file_list = ['overit.mp3']
+
+      zipfile_name = "D:/Test Projects/music3/Zipped Files/test.zip"
+
+      Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
+        file_list.each do |filename|
+          # Two arguments:
+          # - The name of the file as it will appear in the archive
+          # - The original file, including the path to find it
+          zipfile.add(filename, file_path + '/' + filename)
+        end
+      end
+    end
 end
+
+
+
