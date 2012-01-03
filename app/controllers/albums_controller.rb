@@ -118,20 +118,61 @@ class AlbumsController < ApplicationController
   end
 
   def download_album
-    @song = Song.find(10)
-    @song_file = AWS::S3::S3Object.value(@song.s3_id, BUCKET)
-
-    #saves file
-    name =  @song.song_name+".mp3"
-    directory = "D:/Test Projects/music3/Zipped Files"
-      # create the file path
-    path = File.join(directory, name)
-      # write the file
-     File.open(path, 'wb') { |f| f.write(@song_file) }
 
 
-     respond_to do |format|
-      format.html { redirect_to(albums_url) }
+
+   @album = Album.find(params[:id])
+   @artist = Artist.find_by_url_slug(params[:url_slug])
+
+
+    #Sets Directory Path
+    directory_path = "D:/Test Projects/Zipped Files"
+    directory_artist_path = directory_path+"/"+@artist.url_slug
+    directory = directory_artist_path+"/"+@album.album_url_slug
+    zipfile = @album.al_name+".zip"
+
+      #Finds and Makes the Directory
+
+       unless (File.directory?(directory_artist_path))
+        Dir.chdir(directory_path)
+        Dir.mkdir(@artist.url_slug)
+       end
+
+       unless (File.directory?(directory))
+
+         Dir.chdir(directory_artist_path)
+         Dir.mkdir(@album.album_url_slug)
+
+        end
+
+         #Saves Songs into Directory
+          songs_list = Dir.entries(directory)
+          @album.songs.uniq.each do |songs|
+            unless songs.song_url_slug.blank?
+            name =  songs.song_name+".mp3"
+
+            unless songs_list.include?(name)
+            #finds the data
+              @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
+                #saves file
+
+              # create the file path
+                path = File.join(directory, name)
+
+              # write the file
+
+                 File.open(path, 'wb') { |f| f.write(@song_file) }
+             end
+           end
+          end
+
+      unless (Dir.entries(directory_artist_path).include?(zipfile))
+        zip(directory_artist_path,@album.al_name,directory)
+      end
+
+
+    respond_to do |format|
+      format.html { redirect_to(albums_url, :notice => 'Album was successfully downloaded.')}
       format.xml  { head :ok }
      end
 
@@ -153,16 +194,19 @@ class AlbumsController < ApplicationController
 
 
 
-  def zip
+  def zip (directory_artist_path, album_name,directory)
       require 'rubygems'
       require 'zip/zip'
 
       puts "Zipping files!"
 
-      file_path = "D:/Test Projects/music3/Zipped Files"
-      file_list = ['overit.mp3']
+      file_path = directory
+      file_list = Dir.entries(directory)
+      file_list.delete(".")
+      file_list.delete("..")
 
-      zipfile_name = "D:/Test Projects/music3/Zipped Files/test.zip"
+
+      zipfile_name = directory_artist_path+"/"+album_name+".zip"
 
       Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
         file_list.each do |filename|

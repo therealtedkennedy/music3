@@ -20,7 +20,7 @@ Music3::Application.routes.draw do |map|
 
   #Albums Slug Routing
   match "/:url_slug/album/:album_url_slug" => "albums#show", :as => :artist_show_album
-  match "/Ted/34/download2" => "albums#download_album", :as => :album_download
+  match "/:url_slug/album/download/:id" => "albums#download_album", :as => :album_download
   #Artist Home
 
   match "/:url_slug/admin" => "artists#admin", :as => :artist_admin
