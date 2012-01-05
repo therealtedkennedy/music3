@@ -170,11 +170,13 @@ class AlbumsController < ApplicationController
         zip(directory_artist_path,@album.al_name,directory)
       end
 
+    send_file(directory_artist_path+"/"+zipfile,
+            :filename  =>  @album.al_name+".zip")
 
-    respond_to do |format|
-      format.html { redirect_to(albums_url, :notice => 'Album was successfully downloaded.')}
-      format.xml  { head :ok }
-     end
+   # respond_to do |format|
+      #format.html { redirect_to(albums_url, :notice => 'Album was successfully downloaded.')}
+      #format.xml  { head :ok }
+     #end
 
 
   end

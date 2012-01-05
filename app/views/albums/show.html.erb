@@ -7,7 +7,13 @@
 </h1>
 <section id="audio">
 </section>
- <p>
+
+
+<h2><%= link_to "Download",album_download_path(@artist.url_slug, @album.id) %></h2>
+
+
+<p>
+
   <b> Artist ID </b>
   <%= @album.al_a_id %>
  </p>
