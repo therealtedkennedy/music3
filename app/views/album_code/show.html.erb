@@ -1,0 +1,14 @@
+<h1><%= @album.al_name %> </h1>
+
+<%= render 'form' %>
+
+
+<h2>Down Load Keys</h2>
+
+
+<ul>
+ <%= @album.album_codes.uniq.each do |t| %>
+    <li><%= t.album_code %></li>
+ <% end %>
+
+</ul>

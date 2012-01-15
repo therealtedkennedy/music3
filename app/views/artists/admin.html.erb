@@ -62,7 +62,8 @@
    <% @artist.albums.uniq.each do |albums| %>
       <% unless albums.album_url_slug.blank?%>
       <li><%= link_to albums.al_name, artist_show_album_path(@artist.url_slug,albums.album_url_slug) %>
-      <%= link_to 'Edit', edit_album_path(albums.id) %> |
+      <%= link_to 'Edit', edit_album_path(albums.id) %>
+       <%= link_to 'Album Codes', album_create_code_path(@artist.url_slug,albums.id) %>
       </li>
     <% end %>
    <% end %>

@@ -1,0 +1,9 @@
+<%= form_tag("/album_codes/create") do %>
+
+
+  <%= label_tag(:times, "Number of Codes") %>
+  <%= number_field_tag(:to_create) %>
+  <%= hidden_field_tag 'id', @album.id %>
+  <%= submit_tag("Create") %>
+
+<% end %>

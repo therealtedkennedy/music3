@@ -44,7 +44,7 @@ class AlbumsController < ApplicationController
     @album.al_a_id = @artist.id
     @album.artists << Artist.find(@artist.id)
     @album.save
-
+    @song_ids = []
 
 
      respond_to do |format|
@@ -119,10 +119,13 @@ class AlbumsController < ApplicationController
 
   def download_album
 
-
-
-   @album = Album.find(params[:id])
-   @artist = Artist.find_by_url_slug(params[:url_slug])
+   if(params.has_key?(:id))
+      @album = Album.find(params[:id])
+      @artist = Artist.find_by_url_slug(params[:url_slug])
+   else
+      @album = album
+      @artist = artist
+   end
 
 
     #Sets Directory Path
@@ -218,7 +221,32 @@ class AlbumsController < ApplicationController
           zipfile.add(filename, file_path + '/' + filename)
         end
       end
+  end
+
+  def album_code_download
+
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+    @url_slug = params[:url_slug]
+
+  end
+
+  def album_code_find
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+
+    if @code =  AlbumCode.find_by_album_code(params[:code])
+
+      redirect_to(album_download_path(@artist.url_slug,@code.code_album_id))
+
+    else
+        respond_to do |format|
+           format.html { redirect_to(album_code_download_path(@artist.url_slug), :notice => "Code not found please try again.") }
+           format.xml  { head :ok }
+        end
     end
+
+
+  end
+
 end
 
 

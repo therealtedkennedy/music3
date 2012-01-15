@@ -1,0 +1,9 @@
+<%= form_tag("/album/album_code_find") do %>
+
+
+  <%= label_tag(:enter_code, "Enter Code") %>
+  <%= text_field_tag(:code) %>
+  <%= hidden_field_tag 'url_slug', params[:url_slug] %>
+  <%= submit_tag("Create") %>
+
+<% end %>

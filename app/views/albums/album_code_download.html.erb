@@ -1,0 +1,6 @@
+<h1><%=@artist.name%></h1>
+<h2>Download</h2>
+
+<%= render 'code_find' %>
+
+<%= link_to "Back to Artist", artist_link_path(@artist.url_slug)%>
