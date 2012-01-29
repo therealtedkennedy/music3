@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120105022412) do
+ActiveRecord::Schema.define(:version => 20120129205242) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -72,6 +72,22 @@ ActiveRecord::Schema.define(:version => 20120105022412) do
     t.integer "song_id"
   end
 
+  create_table "orders", :force => true do |t|
+    t.integer  "cart_id"
+    t.integer  "user_id"
+    t.string   "ip_address"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "card_type"
+    t.date     "card_expires_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "express_token"
+    t.string   "express_payer_id"
+    t.integer  "album_id"
+  end
+
   create_table "songs", :force => true do |t|
     t.string   "song_name"
     t.string   "song_artist"
@@ -89,6 +105,18 @@ ActiveRecord::Schema.define(:version => 20120105022412) do
     t.string   "torrent_link"
     t.string   "s3_id"
     t.integer  "s_a_id"
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.integer  "order_id"
+    t.string   "action"
+    t.integer  "amount"
+    t.boolean  "success"
+    t.string   "authorization"
+    t.text     "params",        :limit => 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "message"
   end
 
   create_table "users", :force => true do |t|

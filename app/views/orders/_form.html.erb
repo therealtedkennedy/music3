@@ -1,0 +1,62 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @order.express_token.blank? %>
+
+
+      <div class="field">
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name %>
+      </div>
+      <div class="field">
+        <%= f.label :last_name %><br />
+        <%= f.text_field :last_name %>
+      </div>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.text_field :email %>
+      </div>
+       <div class="field">
+        <p>
+          <%= f.label :card_type %><br />
+          <%= f.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["American Express", "american_express"]] %>
+        </p>
+       </div>
+       <div class="field">
+        <p>
+          <%= f.label :card_number %><br />
+          <%= f.text_field :card_number %>
+        </p>
+        </div>
+        <div class="field">
+        <p>
+          <%= f.label :card_verification, "Card Verification Value (CVV)" %><br />
+          <%= f.text_field :card_verification %>
+        </p>
+        </div>
+        <div class="field">
+        <p>
+          <%= f.label :card_expires_on %><br />
+          <%= f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
+        </p>
+        </div>
+        <%= f.hidden_field :album_id %>
+   <% else %>
+        <%= f.hidden_field :express_token %>
+        <%= f.hidden_field :album_id %>
+        <p>Name: <%=h @order.first_name %> <%=h @order.last_name %></p>
+        <p>TODO Display order confirmation details</p>
+   <% end %>
+
+ <p><%= f.submit "Complete Order" %></p>
+<% end %>

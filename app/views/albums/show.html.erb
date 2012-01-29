@@ -18,6 +18,13 @@
   <%= @album.al_a_id %>
  </p>
 
+<h2>Buy Album</h2>
+<%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_new_order_path(@artist.url_slug,@album.id) %>
+<h3>Or </h3>
+
+<h3><%= link_to "Pay With Credit Card", new_order_w_album_id_path(@album.id)%> </h3>
+
+
 <p>
  <b>Album Name:</b>
  <%= @album.al_name%>

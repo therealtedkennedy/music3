@@ -1,4 +1,6 @@
 Music3::Application.routes.draw do |map|
+  resources :orders
+
   resources :albums
 
   resources :artists, :artist_home, :songs
@@ -6,8 +8,11 @@ Music3::Application.routes.draw do |map|
 
   root :to => "homepage#index"
 
+  match "orders/paypal/express/:url_slug/:album_id" => "orders#express", :as => :express_new_order, :via => :get
+  match "orders/paypal/to_express/new/:album_id" => "orders#new", :as => :new_order_w_album_id
   # Artist Routes
   # Url Slug Routing
+
   match "/:url_slug" => "artists#show", :as => :artist_link
   match "/:url_slug/edit" => "artists#edit", :as => :edit_artist
   match "/:url_slug/add_song" => "songs#new", :as => :add_song
