@@ -1,15 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>
+<h2>
     <% @album.artists.uniq.each do |artist_name| %>
-          <td><%= link_to artist_name.name, artist_link_path (artist_name.url_slug) %></td>
+          <td><%= link_to artist_name.name, artist_link_path(artist_name.url_slug) %></td>
     <% end %>
+</h2>
+
+<h1>
+  <%= @album.al_name %>
+
 </h1>
+
+
 <section id="audio">
 </section>
 
 
-<h2><%= link_to "Download",album_download_path(@artist.url_slug, @album.id) %></h2>
+<h3><%= link_to "Download",album_download_path(@artist.url_slug,@album.id) %></h3>
 
 
 <p>
@@ -98,4 +105,7 @@
 <% end %>
 </ul>
 
-<%= link_to 'Back', albums_path %>
+
+  <% @album.artists.uniq.each do |artist_name| %>
+          <td><%= link_to 'To '+artist_name.name, artist_link_path(artist_name.url_slug) %></td>
+  <% end %>

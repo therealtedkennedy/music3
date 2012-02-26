@@ -3,7 +3,7 @@
 class SongsController < ApplicationController
   #lists songs called from S3 Server
   def index
-    @s3_songs = AWS::S3::Bucket.find(BUCKET).objects
+   @s3_songs = AWS::S3::Bucket.find(BUCKET).objects
 
     @songs = Song.all
 
@@ -30,7 +30,9 @@ class SongsController < ApplicationController
      @song = Song.find_by_song_url_slug(params[:song_url_slug])
 
 
-
+    # @song.artists.uniq.each do |artist|
+     #   @artist_slug = artist.url_slug
+    # end
         respond_to do |format|
           format.html # show.html.erb
           format.xml  { render :xml => @song }
@@ -40,6 +42,7 @@ class SongsController < ApplicationController
     else
 
       @song = Song.find(params[:id])
+
 
          respond_to do |format|
            format.html  #show.html.erb
@@ -119,7 +122,9 @@ class SongsController < ApplicationController
   def update
     @song = Song.find(params[:form_song_id])
     @song.artists << Artist.find(params[:artist_id])
-    @s3_test = params[:s3_name]
+    @s3  = params[:s3_name]
+
+    params[:song].delete :s3_name
 
     @song.update_attributes(params[:song])
 
@@ -132,7 +137,7 @@ class SongsController < ApplicationController
 
 
     if params[:song].has_key?("s3_name")
-      save_amazon_file(@song.s3_id, params[:song][:s3_name],@song.song_name)
+      save_amazon_file(@song.s3_id, @s3,@song.song_name)
 
 
     end

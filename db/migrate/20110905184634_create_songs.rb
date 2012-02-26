@@ -9,6 +9,7 @@ class CreateSongs < ActiveRecord::Migration
       t.date :song_licence_date
       t.integer :song_plays
       t.text :lyrics
+      #t.string :song_url_slug
 
       t.timestamps
     end

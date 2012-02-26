@@ -32,8 +32,8 @@ class OrdersController < ApplicationController
 
   #your at minute 8:28...have to figure out how this works and what this does
   response = EXPRESS_GATEWAY.setup_purchase(@album.al_amount*100,
-    :ip                => request.remote_ip,
-    :return_url        => new_order_w_album_id_url(@album.id),
+    :ip => request.remote_ip,
+    :return_url => new_order_w_album_id_url(@album.id),
     :cancel_return_url => artist_show_album_url(params[:url_slug],@album.album_url_slug)
   )
 
@@ -64,17 +64,17 @@ end
     @order = params[:order]
     @album = Album.find(params[:order][:album_id])
     @order = @album.orders.build(@order)
-    @order.ip_address = request.remote_ip
+    #@order.ip_address = request.remote_ip
 
     if @order.save
       if @order.purchase
         render :action => "success"
-      else
-        render :action => "failure"
+       else
+       render :action => "failure"
       end
     else
       render :action => 'new'
-    end
+   end
   end
 
   # PUT /orders/1

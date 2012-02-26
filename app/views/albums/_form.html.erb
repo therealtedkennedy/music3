@@ -19,11 +19,12 @@
 
   <div class="field">
     <%=f.label "Type" %><br />
-    <%=f.text_field :al_type %>
+    <%=f.select :al_type, [["Album", "album"], ["Set", "set"], ["EP", "ep"],["Track List", "track_list"] ] %>
   </div>
+
   <div class="field">
     <%= f.label "Primary Artist" %><br />
-    <%= f.text_field :pri_artist %>
+    <%= f.text_field :pri_artist,  :value => @artist.name%>
   </div>
   <div class="field">
     <%= f.label "Contributing Artist" %><br />
@@ -35,16 +36,16 @@
   </div>
   <div class="field">
     <%= f.label "Release Date" %><br />
-    <%= f.date_select :al_rel_date %>
+    <%= f.date_select :al_rel_date, :start_year => 1900 %>
   </div>
   <h2>Payment Options</h2>
   <div class="field">
     <%= f.label "Payment Type" %><br />
-    <%= f.text_field :pay_type %>
+    <%=f.select :pay_type, [["Free", "free"], ["PWYC", "pwyc"], ["Pay", "pay"] ] %>
   </div>
   <div class="field">
     <%= f.label "Amount" %><br />
-    <%= f.text_field :al_amount %>
+    <%= f.text_field :al_amount, :size => 2%>
   </div>
 
   <h2>More Info </h2>

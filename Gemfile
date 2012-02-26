@@ -12,6 +12,7 @@ gem 'client_side_validations'
 gem 'aws-s3',:require => 'aws/s3'
 gem 'rubyzip'
 gem 'activemerchant'
+gem "cancan"
 
 
 

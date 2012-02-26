@@ -3,7 +3,7 @@ class AlbumCodeController < ApplicationController
  def new
    @album_code = AlbumCode.new
    @album_code.save
-   @album = (album)
+  # @album = (album)
 
 
 

@@ -1,14 +1,13 @@
 <p id="notice"><%= notice %></p>
-<h1>
+<h2>
     <% @song.artists.uniq.each do |artist_name| %>
-          <td><%= link_to artist_name.name, artist_link_path (artist_name.url_slug) %></td>
-    <% end %></h1>
+          <td><%= link_to artist_name.name, artist_link_path(artist_name.url_slug) %></td>
+    <% end %></h2>
 
-<p>
-  <b>Song:</b>
+<h1>
 
   <%= link_to @song.song_name, download_url_for(@song.s3_id), :class => "html5" %> </br>
-</p>
+</h1>
 
 <section id="audio">
 </section>
@@ -27,7 +26,7 @@
 <p>
   <b>Song Artist</b>
   <%= @song.song_artist %>
-</p>
+  </p>
 
 <p>
   <b>Url Slug</b>
@@ -75,10 +74,23 @@
 </p>
 
 
+
+
 <%=link_to "Download", download_url_for(@song.s3_id) %> </br>
 <%= link_to "Torrent", torrent_url_for(@song.s3_id) %>  </br>
 
+    <p>
+ <b>Where it was releasesd</b>
 
+<ul>
+<% @song.albums.uniq.each do |albums| %>
+    <% unless albums.album_url_slug.blank?%>
+       <%  albums.artists.uniq.each do |artist|  %>
+        <li><%= link_to albums.al_name, artist_show_album_path(artist.url_slug,albums.album_url_slug) %> by <%= link_to artist.name, artist_link_path(artist.url_slug) %>
+      <% end %>
+    <% end %>
+<% end %>
+</ul>
 
-<%= link_to 'Edit', edit_song_path(@song.id) %> |
-<%= link_to 'Back', songs_path %>
+</p>
+
