@@ -51,6 +51,15 @@ Music3::Application.routes.draw do |map|
  get "songs/upload"
  get "songs/delete"
 
+ #user routing
+
+  devise_scope :user do
+      match "users/show/:id" => "users#show"
+      match "users/index" => "users#index"
+  end
+
+
+
 
  # Albums routing
 

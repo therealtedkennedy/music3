@@ -48,6 +48,8 @@ class ArtistsController < ApplicationController
   # POST /artists.xml
   def create
     @artist = Artist.new(params[:artist])
+    @user = current_user
+    @artist.users << @user
 
     respond_to do |format|
       if @artist.save

@@ -1,0 +1,19 @@
+<h1> <%= @user.email %> </h1>
+
+
+<b>Created At: </b>
+<%= @user.created_at %>
+</br>
+
+<b>Last Login: </b>
+<%= @user.last_sign_in_at %>
+</br>
+
+<b>Number of Sign In's: </b>
+<%= @user.sign_in_count %>
+
+ <h2>
+    <% @user.artists.uniq.each do |artist_name| %>
+          <td><%= link_to artist_name.name, artist_link_path(artist_name.url_slug) %></td>
+  <% end %>
+ </h2>

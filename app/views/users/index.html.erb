@@ -1,0 +1,20 @@
+<table>
+
+  <tr>
+    <th> Email </th>
+    <th> Created </th>
+    <th> Last Login </th>
+    <th> Number of Login's </th>
+
+  </tr>
+
+  <% @user.each do |user| %>
+  <tr>
+    <th> <%= user.email %> </th>
+    <th> <%= user.created_at %> </th>
+    <th> <%= user.last_sign_in_at %> </th>
+    <th> <%= user.sign_in_count %> </th>
+  </tr>
+
+  <% end %>
+</table>

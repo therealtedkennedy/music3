@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120129205242) do
+ActiveRecord::Schema.define(:version => 20120301041332) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -72,6 +72,11 @@ ActiveRecord::Schema.define(:version => 20120129205242) do
     t.integer "song_id"
   end
 
+  create_table "artists_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "artist_id"
+  end
+
   create_table "orders", :force => true do |t|
     t.integer  "cart_id"
     t.integer  "user_id"
@@ -97,9 +102,9 @@ ActiveRecord::Schema.define(:version => 20120129205242) do
     t.date     "song_licence_date"
     t.integer  "song_plays"
     t.text     "lyrics"
-    t.string   "song_url_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "song_url_slug"
     t.string   "s3_name"
     t.string   "download_link"
     t.string   "torrent_link"

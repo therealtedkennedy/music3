@@ -122,6 +122,7 @@ class SongsController < ApplicationController
   def update
     @song = Song.find(params[:form_song_id])
     @song.artists << Artist.find(params[:artist_id])
+
     @s3  = params[:s3_name]
 
     params[:song].delete :s3_name
