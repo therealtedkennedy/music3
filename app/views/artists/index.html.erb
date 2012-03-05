@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>ID </th>
     <th>Name</th>
     <th>Url Slug</th>
     <th>City</th>
@@ -16,7 +17,8 @@
     <th></th>
   </tr>
  <% @artists.each do |artist| %>
-   <tr id = "<%=artist.id%>" >
+  <tr>
+      <td> <%=artist.id%> </td>
      <td><%= artist.name %></td>
     <td><%= artist.url_slug %></td>
     <td><%= artist.city %></td>
@@ -27,13 +29,15 @@
     <td><%= artist.contact_info %></td>
     <td><%= artist.date_founded %></td>
     <td><%= artist.created_date %></td>
-    <td><%= link_to 'Show', artist_link_path(artist.url_slug) %></td>
-    <td><%= link_to 'Edit', edit_artist_path(artist.url_slug) %></td>
-    <td><%= link_to 'Admin', artist_admin_path(artist.url_slug)%></td>
-    <td><%= link_to 'Destroy', artist,:method => :delete, :confirm => 'Are you sure?', :remote => true %></td>
-    <td><%= link_to 'Add Song', add_song_path(artist.url_slug) %></td>
 
-  </tr>
+    <td><%= link_to 'Show', artist_link_path(artist.url_slug) %></td>
+    <% if can? :update, artist %>
+        <td><%= link_to 'Edit', edit_artist_path(artist.url_slug) %></td>
+        <td><%= link_to 'Admin', artist_admin_path(artist.url_slug)%></td>
+        <td><%= link_to 'Destroy', artist,:method => :delete, :confirm => 'Are you sure?', :remote => true %></td>
+        <td><%= link_to 'Add Song', add_song_path(artist.url_slug) %></td>
+    <% end %>
+ </tr>
 
 <% end %>
 </table>

@@ -1,6 +1,10 @@
 class ArtistsController < ApplicationController
+  load_and_authorize_resource
+  #skip_load_and_authorize_resource :only => :edit
   # GET /artists
   # GET /artists.xml
+
+  before_filter :authenticate_user!,  :except => [:show, :index]
   def index
     @artists = Artist.all
     @artist = Artist.new
@@ -40,8 +44,8 @@ class ArtistsController < ApplicationController
   # GET /artists/1/edit
   def edit
     #@artist = Artist.find(params[:id])
-    searchString  = params[:url_slug]
-    @artist = Artist.find_by_url_slug(searchString)
+     @artist = Artist.find_by_url_slug(params[:url_slug])
+     authorize! :update, @artist
   end
 
   # POST /artists
@@ -125,18 +129,20 @@ class ArtistsController < ApplicationController
  # end
 
 def admin
-    @artist = Artist.find_by_url_slug(params[:url_slug])
 
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+    authorize! :admin, @artist
 end
 
 
   def destroy
+
     @artist = Artist.find(params[:id])
     # searchString  = params[:url_slug]
 
     #@artist = Artist.find_by_url_slug(searchString)
     @artist.destroy
-
+     authorize! :delete, @artist
     respond_to do |format|
       format.html { redirect_to(artists_path)}
       format.json {render :json => {}, :status => :ok}

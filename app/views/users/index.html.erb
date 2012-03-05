@@ -1,6 +1,7 @@
 <table>
 
   <tr>
+    <th> ID </th>
     <th> Email </th>
     <th> Created </th>
     <th> Last Login </th>
@@ -9,7 +10,9 @@
   </tr>
 
   <% @user.each do |user| %>
+
   <tr>
+    <th> <%= user.id %> </th>
     <th> <%= user.email %> </th>
     <th> <%= user.created_at %> </th>
     <th> <%= user.last_sign_in_at %> </th>

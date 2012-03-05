@@ -2,6 +2,10 @@
 
 class SongsController < ApplicationController
   #lists songs called from S3 Server
+
+
+  before_filter :authenticate_user!,  :except => [:show, :index]
+
   def index
    @s3_songs = AWS::S3::Bucket.find(BUCKET).objects
 
