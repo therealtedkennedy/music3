@@ -1,6 +1,17 @@
 <p id="notice"><%= notice %></p>
 <section id="audio">
 </section>
+
+ <% if can? :update, @artist %>
+    <table>
+
+        <td><%= link_to 'Admin', artist_admin_path(@artist.url_slug)%></td>
+        <td><%= link_to 'Destroy', @artist, :method => :delete, :confirm => 'Are you sure?' %></td>
+
+    </table>
+
+ <% end %>
+
 <h1>
 
   <%= @artist.name %>
@@ -76,8 +87,5 @@
 </ul>
 
 </p>
-<% if can? :update, @artist %>
-    <%= link_to 'Edit', edit_artist_path %>
-<% end %>
 <%= link_to 'Back', artists_path %>
 <%= link_to 'Have download code?', code_download_path(@artist.url_slug) %>

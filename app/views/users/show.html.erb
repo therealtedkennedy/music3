@@ -14,6 +14,8 @@
 
  <h2>
     <% @user.artists.uniq.each do |artist_name| %>
-          <td><%= link_to artist_name.name, artist_link_path(artist_name.url_slug) %></td>
+          <%= link_to artist_name.name, artist_link_path(artist_name.url_slug) %>     <%= link_to 'Admin', artist_admin_path(artist_name.url_slug)%>
+          </br>
+
   <% end %>
  </h2>

@@ -136,18 +136,19 @@ end
 
 
   def destroy
-
+    authorize! :destroy, @artist
     @artist = Artist.find(params[:id])
     # searchString  = params[:url_slug]
 
     #@artist = Artist.find_by_url_slug(searchString)
     @artist.destroy
-     authorize! :delete, @artist
+
     respond_to do |format|
-      format.html { redirect_to(artists_path)}
+      format.html { redirect_to( show_user_path(current_user.id), :notice => 'Artist was successfully Deleted.') }
       format.json {render :json => {}, :status => :ok}
       format.js
     end
+
   end
 end
 

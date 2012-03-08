@@ -54,7 +54,7 @@ Music3::Application.routes.draw do |map|
  #user routing
 
   devise_scope :user do
-      match "users/show/:id" => "users#show"
+      match "users/show/:id" => "users#show", :as => "show_user"
       match "users/index" => "users#index"
   end
 
