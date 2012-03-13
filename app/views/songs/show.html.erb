@@ -1,6 +1,18 @@
 <p id="notice"><%= notice %></p>
+
+ <% if can? :update, @artist %>
+    <table>
+
+        <td><%= link_to 'Edit', edit_song_path(@song.id)%></td>
+        <td><%= link_to 'Destroy', @song, :method => :delete, :confirm => 'Are you sure?' %></td>
+
+    </table>
+
+  <% end %>
+
 <h2>
     <% @song.artists.uniq.each do |artist_name| %>
+
           <td><%= link_to artist_name.name, artist_link_path(artist_name.url_slug) %></td>
     <% end %></h2>
 

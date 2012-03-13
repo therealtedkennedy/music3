@@ -4,9 +4,12 @@ class SongsController < ApplicationController
   #lists songs called from S3 Server
 
 
-  before_filter :authenticate_user!,  :except => [:show, :index]
+ before_filter :authenticate_user!,  :except => [:show, :index]
+
+
 
   def index
+   #not #nessisary
    @s3_songs = AWS::S3::Bucket.find(BUCKET).objects
 
     @songs = Song.all
@@ -17,14 +20,15 @@ class SongsController < ApplicationController
     end
   end
 
-  def delete (song)
-   if (params[:song])
-      AWS::S3::S3Object.find(params[:song], BUCKET).delete
-      redirect_to songs_path
-   else
-       render :text => "No song was found to delete!"
-    end
-  end
+  #not used should delete in production.  Deletes S3 songs from Index
+  #def delete (song)
+   # if (params[:song])
+    #  AWS::S3::S3Object.find(params[:song], BUCKET).delete
+     # redirect_to songs_path
+ #  else
+     #  render :text => "No song was found to delete!"
+  #  end
+ # end
 
   def show
     if params[:song_url_slug]
@@ -32,6 +36,7 @@ class SongsController < ApplicationController
     #@artist = Artist.find_by_url_slug(params[:url_slug])
 
      @song = Song.find_by_song_url_slug(params[:song_url_slug])
+     @artist = Artist.find(@song.s_a_id)
 
 
     # @song.artists.uniq.each do |artist|
@@ -59,8 +64,9 @@ class SongsController < ApplicationController
 
     @song = Song.find(params[:id])
     @id = @song.id
+    #finds the assoicated artist
     @artist = Artist.find(@song.s_a_id)
-
+    authorize! :update, @artist
     #searchString  = params[:url_slug]
     #@artist = Artist.find_by_url_slug(searchString)
 
@@ -72,8 +78,8 @@ class SongsController < ApplicationController
      end
   end
 
-  def save_amazon_file(amazon_id, mp3file,name)
-
+  def save_amazon_file(amazon_id, mp3file,name,artist)
+    authorize! :update, artist
    #patched aw3 object.rb with - http://rubyforge.org/pipermail/amazon-s3-dev/2006-December/000007.html
     if(AWS::S3::S3Object::store(amazon_id, mp3file.read, BUCKET, :access => :public_read,'x-amz-meta-my-file-name'=> name, 'Content-Disposition' => 'attachment;filename='+name+'.mp3'))
       return true;
@@ -83,7 +89,7 @@ class SongsController < ApplicationController
   end
 
 
-# Updates Artist Info
+# Updates Artist Info ...not sure if this is used anymore
   def used_to_be_upadate
        @song = Song.find(params[:id])
 
@@ -100,8 +106,8 @@ class SongsController < ApplicationController
   end
 
   def new
-    @song = Song.new
     @artist = Artist.find_by_url_slug(params[:url_slug])
+    @song = Song.new
     @artist_id = @artist.id
     @song.s_a_id = @artist.id
     @song.save
@@ -123,13 +129,12 @@ class SongsController < ApplicationController
 
 
 
-  def update
+   def update
+    @artist = Artist.find(params[:artist_id])
+    authorize! :update, @artist
     @song = Song.find(params[:form_song_id])
-    @song.artists << Artist.find(params[:artist_id])
-
-    @s3  = params[:s3_name]
-
-    params[:song].delete :s3_name
+    @song.artists <<  @artist
+    @s3_test = params[:s3_name]
 
     @song.update_attributes(params[:song])
 
@@ -142,7 +147,7 @@ class SongsController < ApplicationController
 
 
     if params[:song].has_key?("s3_name")
-      save_amazon_file(@song.s3_id, @s3,@song.song_name)
+      save_amazon_file(@song.s3_id, params[:song][:s3_name],@song.song_name, @artist )
 
 
     end
@@ -155,7 +160,7 @@ class SongsController < ApplicationController
 
       respond_to do |format|
         if @song.update_attributes(@song.s3_id)
-          format.html { redirect_to(song_path(@song.id), :notice => 'Song was successfully created.') }
+          format.html { redirect_to (artist_show_song_path(@artist.url_slug, @song.song_url_slug), :notice => 'Song was successfully created.') }
           format.xml { head :ok }
         else
           format.html { render :action => "edit" }
@@ -164,8 +169,8 @@ class SongsController < ApplicationController
       end
     end
 
+  #uploads songs from S3 Server. Not sure if this is used any more.
 
-  #uploads songs from S3 Server
   def upload
      #@id = params[:song_id]
      #@s3_key = @id+".mp3"
@@ -202,14 +207,23 @@ class SongsController < ApplicationController
 
     #deletes song info from Model
   def destroy
+
+
+
     @song = Song.find(params[:id])
+    @artist = Artist.find(@song.s_a_id)
+    authorize! :update, @artist
+
+
     @song.destroy
+
+
 
     (@song.s3_id)
     AWS::S3::S3Object.find(@song.s3_id, BUCKET).delete
 
     respond_to do |format|
-      format.html {redirect_to(songs_path)}
+      format.html {redirect_to(artist_admin_path(@artist.url_slug))}
       format.json {render :json => {}, :status => :ok}
       format.js
       #format.xml  { head :ok }
