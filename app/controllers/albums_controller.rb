@@ -13,7 +13,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.xml
   def show
-   if params[:album_url_slug]
+    params[:album_url_slug]
 
     @album = Album.find_by_album_url_slug(params[:album_url_slug])
     @artist = Artist.find_by_url_slug(params[:url_slug])
@@ -21,17 +21,9 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @album }
-    end
 
-   else
 
-     @album = Album.find(params[:id])
-     @artist = Artist.find(@album.al_a_id)
 
-     respond_to do |format|
-       format.html # show.html.erb
-       format.xml  { render :xml => @album }
-     end
 
    end
   end
@@ -41,6 +33,7 @@ class AlbumsController < ApplicationController
   def new
     @album = Album.new
     @artist = Artist.find_by_url_slug(params[:url_slug])
+    authorize! :update, @artist
     @album.al_a_id = @artist.id
     @album.artists << Artist.find(@artist.id)
     @album.save
@@ -57,6 +50,7 @@ class AlbumsController < ApplicationController
   def edit
     @album = Album.find(params[:id])
     @artist = Artist.find(@album.al_a_id)
+    authorize! :update, @artist
 
    #For Check Box - Creates an Array of song Id's for a particular artist to select songs that already exsist
     @song_ids = Array.new
@@ -72,7 +66,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to(@album, :notice => 'Album was successfully created.') }
+        format.html { artist_show_album_path(@album , :notice => 'Album was successfully created.') }
         format.xml  { render :xml => @album, :status => :created, :location => @album }
       else
         format.html { render :action => "new" }
@@ -87,6 +81,7 @@ class AlbumsController < ApplicationController
    #  params[:album_songs][:songs_id] ||= []
     @album = Album.find(params[:id])
     @artist = Artist.find_by_url_slug(params[:url_slug])
+    authorize! :update, @artist
 
     if params.has_key?(:album_songs)
       @album.songs = Song.find(params[:album_songs][:songs_id])
@@ -96,7 +91,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
-        format.html { redirect_to(@album, :notice => 'Album was successfully updated.') }
+        format.html { redirect_to(artist_show_album_path(@artist.url_slug, @album.album_url_slug), :notice => 'Album was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -122,9 +117,12 @@ class AlbumsController < ApplicationController
    if(params.has_key?(:id))
       @album = Album.find(params[:id])
       @artist = Artist.find_by_url_slug(params[:url_slug])
+      authorize! :create, @artist
    else
       @album = album
       @artist = artist
+      authorize! :create, @artist
+
    end
 
 
@@ -227,6 +225,7 @@ class AlbumsController < ApplicationController
 
     @artist = Artist.find_by_url_slug(params[:url_slug])
     @url_slug = params[:url_slug]
+    authorize! :create, @artist
 
   end
 

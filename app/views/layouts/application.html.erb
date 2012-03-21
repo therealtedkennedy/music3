@@ -2,26 +2,27 @@
 <html>
 <head>
   <title>Music3</title>
-    <%= stylesheet_link_tag :all %>
-    <%= javascript_include_tag :'defaults','rails.validations', 'jquery','jquery.rails'%>
-    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" %>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :'defaults','rails.validations', 'jquery','jquery.rails'%>
+  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" %>
 
-    <%= csrf_meta_tag %>
+  <%= csrf_meta_tag %>
 </head>
 <body>
 <div id= "user_nav">
   <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>. Not you?
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-   <% else %>
-     <%= link_to "sign in", new_user_session_path %>
-     <%= link_to "register", new_user_registration_path %>
+      Signed in as <%= current_user.email %>. Not you?
+      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%#= render :partial => 'login_form' %>
+      <%= link_to "sign in", new_user_session_path %>
+    <%= link_to "register", new_user_registration_path %>
+  <% end %>
 
-   <% end %>
 
 </div>
 
-   <%= yield %>
+<%= yield %>
 
 </body>
 </html>

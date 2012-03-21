@@ -192,7 +192,12 @@ class SongsController < ApplicationController
 
 
   def download
+
+
       @song = Song.find_by_song_url_slug(params[:song_url_slug])
+      @artist =  Artist
+
+
       @song_file = AWS::S3::S3Object.value(@song.s3_id, BUCKET)
       send_file(@song_file,
             :filename  =>  @song.song_name+".mp3")

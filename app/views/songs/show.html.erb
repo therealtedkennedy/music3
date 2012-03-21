@@ -88,8 +88,13 @@
 
 
 
-<%=link_to "Download", download_url_for(@song.s3_id) %> </br>
-<%= link_to "Torrent", torrent_url_for(@song.s3_id) %>  </br>
+<%  if can? :create, @artist%>
+    <%=link_to "Download", download_url_for(@song.s3_id) %> </br>
+    <%= link_to "Torrent", torrent_url_for(@song.s3_id) %>  </br>
+<% else %>
+  <h2>  <%= link_to "Sign In", user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %>  to Download </h2>
+
+<%end %>
 
     <p>
  <b>Where it was releasesd</b>
