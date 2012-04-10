@@ -44,35 +44,10 @@
 
 
 </script>
-<div id = "cookieData"></div>
+<div id = "cookieData"></div> </br>
 
+<h1>Keep it forever!</h1>
 
+  <h2>  <%= link_to "Sign In", user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %>   </h2>
 
-
-
-
-
-<h1> <%= @user.email %> </h1>
-
-
-<b>Created At: </b>
-<%= @user.created_at %>
-</br>
-
-<b>Last Login: </b>
-<%= @user.last_sign_in_at %>
-</br>
-
-<b>Number of Sign In's: </b>
-<%= @user.sign_in_count %>
-
- <h2>
-    <% @user.artists.uniq.each do |artist_name| %>
-          <%= link_to artist_name.name, artist_link_path(artist_name.url_slug) %>     <%= link_to 'Admin', artist_admin_path(artist_name.url_slug)%>
-          </br>
-
-  <% end %>
- </h2>
-
-
-<%= link_to "Artists List", artists_path %>
+<% end %>

@@ -1,4 +1,46 @@
 <h1>New order</h1>
+<script type="text/javascript">
+    window.onload = showCookies
+
+    function showCookies() {
+        var outMsg = "";
+
+
+         var thisCookie = document.cookie.split("; ");
+
+         for (var i=0;i<thisCookie.length;i++){
+
+             var cookie_name = thisCookie[i].split("=")[0]
+             var value = thisCookie[i].split("=")[1]
+
+             if (value =="" && cookie_name =="next_step") {
+                outMsg = "There are no cookies here.";
+                }
+
+             else {
+                outMsg += "Cookie name is '" + cookie_name;
+                outMsg += "', and the value is " +
+                value + "<br />";
+                var raw_link = thisCookie[i].split("=")[1];
+                var link = raw_link.replace(/%3A/g,":" );
+                var link = link.replace(/%2F/g, "/");
+                outMsg += "clean link is " + link
+                window.location = link
+                }
+             }
+
+
+            document.getElementById("cookieData").innerHTML = outMsg;
+
+
+
+    }
+
+
+
+
+</script>
+<div id = "cookieData"></div> </br>
 
 <%= render 'form' %>
 

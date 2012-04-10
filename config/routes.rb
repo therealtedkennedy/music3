@@ -8,8 +8,10 @@ Music3::Application.routes.draw do |map|
 
   root :to => "homepage#index"
 
-  match "orders/paypal/express/:url_slug/:album_id" => "orders#express", :as => :express_new_order, :via => :get
-  match "orders/paypal/to_express/new/:album_id" => "orders#new", :as => :new_order_w_album_id
+  match "orders/paypal/express/:object/:url_slug/:song_album_or_event_slug" => "orders#express", :as => :express_new_order, :via => :get
+  match "orders/paypal/to_express/new/:url_slug/:album_id" => "orders#new", :as => :new_order_w_album_id
+  match "orders/payment_method/:object/:url_slug/:song_album_or_event_slug" => "orders#payment_method", :as => :payment_method
+  match "orders/paypal/login_prompt" => "orders#login_prompt", :as => :login_prompt
   # Artist Routes
   # Url Slug Routing
 
@@ -26,7 +28,7 @@ Music3::Application.routes.draw do |map|
 
   #Albums Slug Routing
   match "/:url_slug/album/:album_url_slug" => "albums#show", :as => :artist_show_album
-  match "/:url_slug/album/download/:id" => "albums#download_album", :as => :album_download
+  match "/:url_slug/album/download/:album_url_slug" => "albums#download_album", :as => :album_download
   #Artist Home
 
   #albums code routing
@@ -57,6 +59,8 @@ Music3::Application.routes.draw do |map|
   devise_scope :user do
       match "users/show/:id" => "users#show", :as => "show_user"
       match "users/index" => "users#index"
+      match "users/sign_out" => "users#destroy"
+
   end
 
 

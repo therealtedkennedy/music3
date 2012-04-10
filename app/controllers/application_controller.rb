@@ -43,6 +43,36 @@ class ApplicationController < ActionController::Base
       super
     end
   end
+
+
+
+
+  def order_create (object,token)
+
+
+
+    @order = object.orders.build(@order)
+    @order.express_token = token
+    @order.ip_address = request.remote_ip
+
+
+
+
+
+    if @order.save
+      @order.purchase
+       # if @order.purchase
+          #redirect_to(album_download_path(@album.al_a_id, @album.id), :notice => 'Artist was successfully updated.')
+        # render :action => "success"
+      #  else
+       #  render :action => "failure"
+      #  end
+      # else
+      #  render :action => 'new'
+     end
+
+
+  end
 end
 
 

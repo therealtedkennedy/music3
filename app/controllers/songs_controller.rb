@@ -30,13 +30,28 @@ class SongsController < ApplicationController
   #  end
  # end
 
+  #finds song objects, when album and URL slug are given
+  def find_song(artist,url_slug)
+
+     artist.songs.uniq.each do |song|
+        if song.song_url_slug == url_slug
+          @song = song
+
+        else
+
+        end
+      end
+   end
+
+
+
   def show
     if params[:song_url_slug]
     #@artist = Artist.find(params[:id])
     #@artist = Artist.find_by_url_slug(params[:url_slug])
+     @artist = Artist.find_by_url_slug(params[:url_slug])
+     find_song(@artist,params[:song_url_slug])
 
-     @song = Song.find_by_song_url_slug(params[:song_url_slug])
-     @artist = Artist.find(@song.s_a_id)
 
 
     # @song.artists.uniq.each do |artist|
@@ -191,23 +206,23 @@ class SongsController < ApplicationController
   end
 
 
-  def download
+ # def download
 
 
-      @song = Song.find_by_song_url_slug(params[:song_url_slug])
-      @artist =  Artist
+    #  @song = Song.find_by_song_url_slug(params[:song_url_slug])
+    #  @artist =  Artist
 
 
-      @song_file = AWS::S3::S3Object.value(@song.s3_id, BUCKET)
-      send_file(@song_file,
-            :filename  =>  @song.song_name+".mp3")
+    #  @song_file = AWS::S3::S3Object.value(@song.s3_id, BUCKET)
+    #  send_file(@song_file,
+    #        :filename  =>  @song.song_name+".mp3")
 
-       respond_to do |format|
-           format.html  redirect_to(song_path(@song.id), :notice => 'Song was downloaded.')
-           format.xml
-           format.js
-       end
-  end
+   #    respond_to do |format|
+    #       format.html  redirect_to(song_path(@song.id), :notice => 'Song was downloaded.')
+    #       format.xml
+     #      format.js
+    #   end
+#  end
 
 
     #deletes song info from Model

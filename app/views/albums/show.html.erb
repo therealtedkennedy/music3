@@ -19,17 +19,29 @@
 <h3><%= link_to "Download",album_download_path(@artist.url_slug,@album.id) %></h3>
 
 
+
 <p>
 
   <b> Artist ID </b>
   <%= @album.al_a_id %>
  </p>
 
-<h2>Buy Album</h2>
-<%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_new_order_path(@artist.url_slug,@album.id) %>
-<h3>Or </h3>
+<h2>Want it? Get it!</h2>
 
-<h3><%= link_to "Pay With Credit Card", new_order_w_album_id_path(@album.id)%> </h3>
+    <% if @album.pay_type = "pay" %>
+        <%= link_to "Buy Now:", payment_method_path("album",params[:url_slug],params[:album_url_slug] ) %>
+
+
+    <% else %>
+
+        <h3><%= link_to "Download Free",album_download_path(@artist.url_slug,@album.id) %></h3>
+    <% end %>
+
+
+
+
+
+
 
 
 <p>

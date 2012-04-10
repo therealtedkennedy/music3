@@ -15,8 +15,11 @@ class AlbumsController < ApplicationController
   def show
     params[:album_url_slug]
 
-    @album = Album.find_by_album_url_slug(params[:album_url_slug])
+
     @artist = Artist.find_by_url_slug(params[:url_slug])
+    find_album(@artist,params[:album_url_slug])
+    @download_url = album_download_url(@album.album_url_slug, @album.id)
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,6 +30,17 @@ class AlbumsController < ApplicationController
 
    end
   end
+
+  #finds album objects, when only album url slug is given
+  def find_album(artist,url_slug)
+
+     artist.albums.uniq.each do |album|
+        if album.album_url_slug == url_slug
+          @album = album
+        end
+      end
+   end
+
 
   # GET /albums/new
   # GET /albums/new.xml
@@ -112,21 +126,26 @@ class AlbumsController < ApplicationController
     end
   end
 
+
+
   def download_album
 
-   if(params.has_key?(:id))
-      @album = Album.find(params[:id])
-      @artist = Artist.find_by_url_slug(params[:url_slug])
-      authorize! :create, @artist
+   if(params.has_key?(:album_url_slug))
+
+     @artist = Artist.find_by_url_slug(params[:url_slug])
+     find_album(@artist,params[:album_url_slug])
+
+
+
+      #authorize! :create, @artist
    else
       @album = album
       @artist = artist
-      authorize! :create, @artist
+     # authorize! :create, @artist
 
    end
 
-
-    #Sets Directory Path
+       #Sets Directory Path
     directory_path = "D:/Test Projects/Zipped Files"
     directory_artist_path = directory_path+"/"+@artist.url_slug
     directory = directory_artist_path+"/"+@album.album_url_slug
@@ -174,25 +193,12 @@ class AlbumsController < ApplicationController
     send_file(directory_artist_path+"/"+zipfile,
             :filename  =>  @album.al_name+".zip")
 
-   # respond_to do |format|
-      #format.html { redirect_to(albums_url, :notice => 'Album was successfully downloaded.')}
-      #format.xml  { head :ok }
-     #end
+    order_create(@album,params[:token])
+    cookies[:next_step] = {:expires => 1.year.ago}
 
 
-  end
+    end
 
-
-   # if params[:album_url_slug]
-   #  @album = Album.find_by_album_url_slug(params[:album_url_slug])
-  # else
-  #   @album = Album.find(params[:id])
-  # end
-   #  @album.songs unque each do |download|
-
-
-
-     #end
 
 
 

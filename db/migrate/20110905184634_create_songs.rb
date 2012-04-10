@@ -6,6 +6,7 @@ class CreateSongs < ActiveRecord::Migration
       t.string :song_contribute_artist
       t.string :song_written
       t.string :song_licence_type
+      t.string :song_url_slug
       t.date :song_licence_date
       t.integer :song_plays
       t.text :lyrics

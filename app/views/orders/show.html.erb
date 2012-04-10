@@ -2,7 +2,7 @@
 
 
 <p>
-  <b>[cart:</b>
+  <b>cart:</b>
   <%= @order.album.id%>
 </p>
 
@@ -41,6 +41,15 @@
   <%= @order.card_expires_on %>
 </p>
 
+<p>
+  <b>Express Token:</b>
+  <%= @order.express_token %>
+</p>
+
+<p>
+  <b>Album</b>
+  <%= @order.album.album_url_slug %>
+</p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
