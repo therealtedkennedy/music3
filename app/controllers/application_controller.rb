@@ -71,7 +71,6 @@ class ApplicationController < ActionController::Base
       #  render :action => 'new'
      end
 
-
   end
 end
 

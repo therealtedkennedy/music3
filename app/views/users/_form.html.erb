@@ -1,0 +1,26 @@
+<%= form_for @user, :validate => true do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@song .errors.count, "error") %> prohibited this song  from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="field">
+    <%=f.label :Email %><br />
+    <%=f.text_field :email %>
+  </div>
+
+
+    <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

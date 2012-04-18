@@ -13,6 +13,7 @@ gem 'aws-s3',:require => 'aws/s3'
 gem 'rubyzip'
 gem 'activemerchant'
 gem "cancan"
+gem "active_paypal_adaptive_payment"
 
 
 

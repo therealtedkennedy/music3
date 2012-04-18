@@ -53,7 +53,9 @@
 
 
 <h1> <%= @user.email %> </h1>
-
+<%= link_to "Edit", edit_user_path(@user.id) %>
+<br />
+<br />
 
 <b>Created At: </b>
 <%= @user.created_at %>

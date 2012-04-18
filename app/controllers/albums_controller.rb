@@ -51,6 +51,7 @@ class AlbumsController < ApplicationController
     @album.al_a_id = @artist.id
     @album.artists << Artist.find(@artist.id)
     @album.save
+    #creates blank song ids?
     @song_ids = []
 
 
@@ -193,10 +194,16 @@ class AlbumsController < ApplicationController
     send_file(directory_artist_path+"/"+zipfile,
             :filename  =>  @album.al_name+".zip")
 
-    order_create(@album,params[:token])
+    if cookies[:paykey].to_s.blank?
+
+       order_create(@album,params[:token])
+
+    else
+
+      order_create(@album, cookies[:paykey] )
+    end
     cookies[:next_step] = {:expires => 1.year.ago}
-
-
+    cookies[:paykey] = {:expires => 1.year.ago}
     end
 
 

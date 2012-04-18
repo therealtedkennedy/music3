@@ -7,11 +7,19 @@ Music3::Application.routes.draw do |map|
      devise_for :users
 
   root :to => "homepage#index"
-
+  #orders
   match "orders/paypal/express/:object/:url_slug/:song_album_or_event_slug" => "orders#express", :as => :express_new_order, :via => :get
   match "orders/paypal/to_express/new/:url_slug/:album_id" => "orders#new", :as => :new_order_w_album_id
+  match "orders/paypal/to_chained/:object/:url_slug/:song_album_or_event_slug" => "orders#chained_payment", :as => :chained_payment
   match "orders/payment_method/:object/:url_slug/:song_album_or_event_slug" => "orders#payment_method", :as => :payment_method
   match "orders/paypal/login_prompt" => "orders#login_prompt", :as => :login_prompt
+
+
+  #transaction
+
+  match "transactions" => "transactions#index", :as => :transactions
+  match "transactions/paypal/ipn" => "transactions#ipn_save", :as => :ipn_save
+
   # Artist Routes
   # Url Slug Routing
 
@@ -58,6 +66,7 @@ Music3::Application.routes.draw do |map|
 
   devise_scope :user do
       match "users/show/:id" => "users#show", :as => "show_user"
+      match "users/edit/:id" => "users#edit", :as => "edit_user"
       match "users/index" => "users#index"
       match "users/sign_out" => "users#destroy"
 

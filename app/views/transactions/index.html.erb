@@ -1,0 +1,28 @@
+<h1>Listing transactions</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th>ID</th>
+    <th>Amount</th>
+    <th>Success</th>
+    <th>Authorization</th>
+    <th>Params</th>
+      <th></th>
+  </tr>
+
+
+
+<% @trans.each do |trans| %>
+  <tr>
+    <td><%= trans.id %></td>
+    <td><%= trans.amount %></td>
+    <td><%= trans.success %></td>
+    <td><%= trans.authorization %></td>
+    <td><%= trans.params%></td>
+
+  </tr>
+<% end %>
+</table>
+
+<br />

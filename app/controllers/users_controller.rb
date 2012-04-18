@@ -66,6 +66,20 @@ class UsersController < Devise::SessionsController
    end
  end
 
+   def edit
+
+    @user = User.find(params[:id])
+
+    #searchString  = params[:url_slug]
+    #@artist = Artist.find_by_url_slug(searchString)
+
+
+     respond_to do |format|
+           format.html  #show.html.erb
+           format.xml  { render :xml => @song }
+           format.js
+     end
+  end
 
 end
 

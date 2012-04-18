@@ -42,6 +42,38 @@ class OrdersController < ApplicationController
   redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
 
+  def chained_payment
+  #uses https://github.com/jpablobr/active_paypal_adaptive_payment
+
+  payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_slug], params[:amount])
+
+  recipients = [{:email => 'therea_1326852847_biz@gmail.com',
+                 :amount => 20,
+                 :primary => true},
+                {:email => 'bruce_1332811041_per@gmail.com',
+                 :amount => 15,
+                 :primary => false}
+                 ]
+  response = CHAINED_GATEWAY.setup_purchase(
+    :return_url => login_prompt_url,
+    :cancel_url => login_prompt_url,
+    #:ipn_notification_url => ipn_save_url,
+    :receiver_list => recipients
+  )
+
+  # for redirecting the customer to the actual paypal site to finish the payment.
+  @paykey = (CHAINED_GATEWAY.redirect_url_for(response["payKey"])).split('&')
+  @paykey = @paykey.fetch(1)
+
+
+
+  cookies[:paykey] = {
+      :value => [@paykey],
+      :expires => 30.minutes.from_now
+
+       }
+  redirect_to (CHAINED_GATEWAY.redirect_url_for(response["payKey"])) end
+
   #creates download link, payment amount, and object vars, and sets a cookie
  def payment_prep(object,artist_url_slug,song_album_or_event_slug,amount)
    @object = object

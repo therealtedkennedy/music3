@@ -6,12 +6,19 @@ has_many :transactions
 attr_accessor :card_number, :card_verification
 
  validate :validate_card, :on => :create
-
+ #comes from Order Controller
  def purchase
+  if express_token.include?("paykey=AP")
+
+  else
+
+  #processes payment for express payment and on site with credit card.
   response = process_purchase
+  #creates a transaction to store info from express payment and paywith Credit card
   transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
   #cart.update_attribute(:purchased_at, Time.now) if response.success?
   response.success?
+  end
  end
 
 
