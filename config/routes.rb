@@ -3,7 +3,7 @@ Music3::Application.routes.draw do |map|
 
   resources :albums
 
-  resources :artists, :artist_home, :songs
+  resources :artists, :artist_home, :songs, :settings
      devise_for :users
 
   root :to => "homepage#index"
@@ -14,6 +14,17 @@ Music3::Application.routes.draw do |map|
   match "orders/payment_method/:object/:url_slug/:song_album_or_event_slug" => "orders#payment_method", :as => :payment_method
   match "orders/paypal/login_prompt" => "orders#login_prompt", :as => :login_prompt
 
+  #user routing
+
+  devise_scope :user do
+     root :to => "users#new"
+      match "users/show/:id" => "users#show", :as => "show_user"
+      match "users/edit/:id" => "users#edit", :as => "edit_user"
+      match "users/index" => "users#index"
+      match "users/sign_out" => "users#destroy"
+      match "users/update" => "users#boo"
+
+  end
 
   #transaction
 
@@ -62,15 +73,7 @@ Music3::Application.routes.draw do |map|
  get "songs/upload"
  get "songs/delete"
 
- #user routing
 
-  devise_scope :user do
-      match "users/show/:id" => "users#show", :as => "show_user"
-      match "users/edit/:id" => "users#edit", :as => "edit_user"
-      match "users/index" => "users#index"
-      match "users/sign_out" => "users#destroy"
-
-  end
 
 
 

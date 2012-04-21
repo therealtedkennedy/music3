@@ -11,6 +11,22 @@ class UsersController < Devise::SessionsController
     respond_with_navigational(resource, stub_options(resource)){ render_with_scope :new }
   end
 
+   def user_update
+    @user = User.find(current_user.id)
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+         sign_in @user, :bypass => true
+         format.html { redirect_to(show_user_path(@user.id), :notice => 'Artist was successfully updated.') }
+         format.xml  { head :ok }
+      else
+       # format.html { render :action => "edit" }
+      #  format.xml  { render :xml => @users.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+
   # POST /resource/sign_in
   def create
     resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#new")
@@ -80,6 +96,9 @@ class UsersController < Devise::SessionsController
            format.js
      end
   end
+
+
+
 
 end
 

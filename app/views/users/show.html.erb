@@ -53,7 +53,7 @@
 
 
 <h1> <%= @user.email %> </h1>
-<%= link_to "Edit", edit_user_path(@user.id) %>
+<%= link_to "Edit", edit_setting_path(@user.id) %>
 <br />
 <br />
 
@@ -67,6 +67,20 @@
 
 <b>Number of Sign In's: </b>
 <%= @user.sign_in_count %>
+</br>
+
+<b>First Name: </b>
+<%= @user.first_name %>
+</br>
+
+<b>Last Name: </b>
+<%= @user.last_name %>
+</br>
+
+<b>Email Associated with Pay Pal Account: </b>
+<%= @user.pay_pal_email %>
+</br>
+
 
  <h2>
     <% @user.artists.uniq.each do |artist_name| %>
