@@ -48,10 +48,10 @@ class OrdersController < ApplicationController
   payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_slug], params[:amount])
 
   recipients = [{:email => 'therea_1326852847_biz@gmail.com',
-                 :amount => 20,
+                 :amount => @amount,
                  :primary => true},
-                {:email => 'bruce_1332811041_per@gmail.com',
-                 :amount => 15,
+                {:email => @artist.pay_pal,
+                 :amount => "%.2f" % (@amount*0.85),
                  :primary => false}
                  ]
   response = CHAINED_GATEWAY.setup_purchase(
@@ -78,7 +78,10 @@ class OrdersController < ApplicationController
  def payment_prep(object,artist_url_slug,song_album_or_event_slug,amount)
    @object = object
 
+   #finds Artist
+   @artist = Artist.find_by_url_slug(artist_url_slug)
    #prep for album
+
    if @object = "album"
      @album = Album.find_by_album_url_slug(song_album_or_event_slug)
      @download_url = album_download_url(artist_url_slug,song_album_or_event_slug)
@@ -86,6 +89,7 @@ class OrdersController < ApplicationController
 
      if @album.pay_type = "pay"
          @amount = @album.al_amount
+
      else
         @amount = 100
         # @amount = amount.to_i
@@ -93,6 +97,8 @@ class OrdersController < ApplicationController
 
    else
 
+   #don't know why this didn't work. Just did the calculation in the chained payment model
+   #@amount_to_artist = "%.2f" % (@amount*0.85)
 
   end
   cookies[:next_step] = {

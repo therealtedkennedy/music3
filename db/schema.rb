@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418024722) do
+ActiveRecord::Schema.define(:version => 20120423010931) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20120418024722) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url_slug"
+    t.string   "pay_pal"
   end
 
   create_table "artists_songs", :id => false, :force => true do |t|
@@ -140,6 +141,7 @@ ActiveRecord::Schema.define(:version => 20120418024722) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "pay_pal_email"
+    t.string   "pay_pal"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

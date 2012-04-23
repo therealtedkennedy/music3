@@ -11,7 +11,9 @@ class UsersController < Devise::SessionsController
     respond_with_navigational(resource, stub_options(resource)){ render_with_scope :new }
   end
 
-   def user_update
+   def boo
+
+  #updates user.  For some strang reason only works when controller is called boo
     @user = User.find(current_user.id)
 
     respond_to do |format|
