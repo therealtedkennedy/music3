@@ -11,6 +11,21 @@ class UsersController < Devise::SessionsController
     respond_with_navigational(resource, stub_options(resource)){ render_with_scope :new }
   end
 
+  #a devise work around to choose the page after sign in or sign up.  Comes from the Application controller
+  def sign_in_routing
+
+    if cookies[:object].blank?
+      redirect_to(show_user_path(current_user.id))
+
+
+    else
+      assign_to_user (cookies[:object],cookies[:song_album_or_event_slug])
+      redirect_to(show_user_path(current_user.id))
+    end
+  end
+
+
+
    def boo
 
   #updates user.  For some strang reason only works when controller is called boo
@@ -34,7 +49,9 @@ class UsersController < Devise::SessionsController
     resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#new")
     set_flash_message(:notice, :signed_in) if is_navigational_format?
     sign_in(resource_name, resource)
-    respond_with resource, :location => after_sign_in_path_for(resource)
+     #Assigns object to user after signing in
+    # assign_to_user (@object,@song_album_or_event_slug)
+      respond_with resource, :location => after_sign_in_path_for(resource)
   end
 
   # DELETE /resource/sign_out

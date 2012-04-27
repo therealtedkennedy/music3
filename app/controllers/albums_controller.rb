@@ -194,17 +194,32 @@ class AlbumsController < ApplicationController
     send_file(directory_artist_path+"/"+zipfile,
             :filename  =>  @album.al_name+".zip")
 
-    if cookies[:paykey].to_s.blank?
 
-       order_create(@album,params[:token])
+
+    #checks to see if album has been redownloaded already trough the redown param and by passes paykey, orders and assign ablum to user
+    if params[:redown]=="true"
 
     else
+      #creates an oder.  Might be able to make it into its own app controller
+      if cookies[:paykey].to_s.blank?
 
-      order_create(@album, cookies[:paykey] )
-    end
-    cookies[:next_step] = {:expires => 1.year.ago}
-    cookies[:paykey] = {:expires => 1.year.ago}
-    end
+         order_create(@album,params[:token])
+
+      else
+
+        order_create(@album, cookies[:paykey] )
+      end
+      # deletes the download cookie so that muliple downloads won't happen
+      cookies[:next_step] = {:expires => 1.year.ago}
+        #Deletes the pay key for tranactions
+      cookies[:paykey] = {:expires => 1.year.ago}
+
+     #checks if user is signed in. If signed in assigns user found in application controller
+       if user_signed_in?
+         assign_to_user("album",@album.album_url_slug)
+       end
+   end
+  end
 
 
 

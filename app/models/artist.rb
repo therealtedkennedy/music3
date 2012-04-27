@@ -11,7 +11,7 @@ class Artist < ActiveRecord::Base
 #patch for possible db issue = https://rails.lighthouseapp.com/projects/8994-ruby-on-rails/tickets/3486-alternative-to-validates_uniqueness_of-using-db-constraints
  validates_presence_of :name
  validates_uniqueness_of :name, :case_sensitive => false
- validates_format_of :pay_pal, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+ validates_format_of :pay_pal, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :allow_blank => true
 
   before_validation :strip_whitespace
 

@@ -39,14 +39,25 @@
     <%= f.date_select :al_rel_date, :start_year => 1900 %>
   </div>
   <h2>Payment Options</h2>
-  <div class="field">
-    <%= f.label "Payment Type" %><br />
-    <%=f.select :pay_type, [["Free", "free"], ["PWYC", "pwyc"], ["Pay", "pay"] ] %>
+
+  <% if @artist.pay_pal.blank? %>
+
+    <div class="field">
+    <%= f.label "Payment Type" %>  No Paypal account on primary Artist. <br />
+    <%=f.select :pay_type, [["Free", "free"]] %>
   </div>
-  <div class="field">
-    <%= f.label "Amount" %><br />
-    <%= f.text_field :al_amount, :size => 2%>
+  <% else %>
+      <div class="field">
+        <%= f.label "Payment Type" %><br />
+        <%=f.select :pay_type, [["Free", "free"], ["PWYC", "pwyc"], ["Pay", "pay"] ] %>
+      </div>
+
+    <div class="field">
+        <%= f.label "Amount" %><br />
+        <%= f.text_field :al_amount, :size => 2%>
   </div>
+  <% end %>
+
 
   <h2>More Info </h2>
   <div class="field">

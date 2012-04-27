@@ -23,8 +23,12 @@ Music3::Application.routes.draw do |map|
       match "users/index" => "users#index"
       match "users/sign_out" => "users#destroy"
       match "users/update" => "users#boo"
-
+      match "devise_work_around" => "users#sign_in_routing", :as => "sign_in_routing"
   end
+
+
+  #devise redirect work around
+
 
   #transaction
 

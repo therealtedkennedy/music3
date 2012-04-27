@@ -32,18 +32,33 @@ class ApplicationController < ActionController::Base
 
   # Customize the Devise after_sign_in_path_for() for redirecct to previous page after login
 
-  def after_sign_in_path_for(resource_or_scope)
+  #def after_sign_in_path_for(resource_or_scope)
 
-    case resource_or_scope
-    when :user, User
-      store_location = session[:return_to]
-      clear_stored_location
-      (store_location.nil?) ? "/artists" : store_location.to_s
-    else
-      super
-    end
-  end
+  #  case resource_or_scope
+  #  when :user, User
+   #   store_location = session[:return_to]
+    #  clear_stored_location
+    #  (store_location.nil?) ? "/artists" : store_location.to_s
+  #  else
+   #   super
+ #   end
+# end
 
+
+#over rides devise default rout after sign in
+ private
+ #don't know
+ def stored_location_for(resource_or_scope)
+     nil
+ end
+ #redirects to the sign_in_routing_path in the user model
+ def after_sign_in_path_for(resource_or_scope)
+      sign_in_routing_path
+
+     # @object = cookies[:object]
+     #@song_album_or_event_slug = cookies[:song_album_or_event_slug]
+     # assign_to_user (cookies[:object],cookies[:song_album_or_event_slug])
+ end
 
 
 
@@ -71,6 +86,18 @@ class ApplicationController < ActionController::Base
       #  render :action => 'new'
      end
 
+  end
+
+  #assigns an object to a user (album, artist, song, ticket, anything you want)
+  def assign_to_user (object,object_url_slug)
+    if object == "album"
+      @user = User.find(current_user.id)
+      @album = Album.find_by_album_url_slug(object_url_slug)
+      @album.users << @user
+      @album.save
+      cookies[:object] = {:expires => 1.year.ago}
+      cookies[:song_album_or_event_slug] = {:expires => 1.year.ago}
+    end
   end
 end
 

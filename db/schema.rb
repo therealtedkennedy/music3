@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423010931) do
+ActiveRecord::Schema.define(:version => 20120426020407) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -50,6 +50,11 @@ ActiveRecord::Schema.define(:version => 20120423010931) do
   create_table "albums_songs", :id => false, :force => true do |t|
     t.integer "album_id"
     t.integer "song_id"
+  end
+
+  create_table "albums_users", :id => false, :force => true do |t|
+    t.integer "album_id"
+    t.integer "user_id"
   end
 
   create_table "artists", :force => true do |t|

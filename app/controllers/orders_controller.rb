@@ -82,7 +82,7 @@ class OrdersController < ApplicationController
    @artist = Artist.find_by_url_slug(artist_url_slug)
    #prep for album
 
-   if @object = "album"
+   if @object == "album"
      @album = Album.find_by_album_url_slug(song_album_or_event_slug)
      @download_url = album_download_url(artist_url_slug,song_album_or_event_slug)
      @cnx_url = artist_show_album_url(artist_url_slug,song_album_or_event_slug)
@@ -101,11 +101,28 @@ class OrdersController < ApplicationController
    #@amount_to_artist = "%.2f" % (@amount*0.85)
 
   end
+
+  #Passes Cookie Download
   cookies[:next_step] = {
       :value => [@download_url],
       :expires => 30.minutes.from_now
 
        }
+
+   #passes values to assign object to users who are not signed in.
+   if user_signed_in? != true
+     cookies[:object] = {
+        :value => [object],
+        :expires => 30.minutes.from_now
+
+         }
+
+     cookies[:song_album_or_event_slug] = {
+        :value => [song_album_or_event_slug],
+        :expires => 30.minutes.from_now
+
+       }
+    end
   end
      # GET /orders/new
   # GET /orders/new.xml
