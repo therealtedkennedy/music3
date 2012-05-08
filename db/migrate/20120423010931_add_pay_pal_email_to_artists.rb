@@ -1,5 +1,5 @@
 class AddPayPalEmailToArtists < ActiveRecord::Migration
-    def self.up
+   def self.up
     add_column :artists, :pay_pal, :string
 
    end

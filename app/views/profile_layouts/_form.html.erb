@@ -1,0 +1,114 @@
+<%= form_for @profile_layout, :url => {:action => "update"} do |f| %>
+
+  <h1> H1 </h1>
+  <div class="field">
+    <%= f.label :h1_size %><br />
+    <%= f.text_field :h1_size %>
+  </div>
+
+  <div class="field">
+    <%=f.label :h1_font %><br />
+    <%=f.select :h1_font, [["Helvetica", "helvetica"], ["Courier", "courier"], ["Times", "times"],["Impact", "impact"] ] %>
+  </div>
+  <div class="field">
+    <%=f.label :h1_colour %><br />
+    <%=f.text_field :h1_colour %>
+  </div>
+
+
+  <h1> H2 </h1>
+    <div class="field">
+    <%= f.label :h2_size %><br />
+    <%= f.text_field :h2_size %>
+  </div>
+  <div class="field">
+    <%= f.label :h2_font %><br />
+    <%=f.select :h2_font, [["Helvetica", "helvetica"], ["Courier", "courier"], ["Times", "times"],["Impact", "impact"] ] %>
+  </div>
+  <div class="field">
+    <%= f.label :h2_colour %><br />
+    <%= f.text_field :h2_colour %>
+  </div>
+
+ <h1> H3 </h1>
+  <div class="field">
+    <%= f.label :h3_size %><br />
+    <%= f.text_field :h3_size %>
+  </div>
+  <div class="field">
+    <%= f.label :h3_font %><br />
+    <%=f.select :h3_font, [["Helvetica", "helvetica"], ["Courier", "courier"], ["Times", "times"],["Impact", "impact"] ] %>
+  </div>
+  <div class="field">
+    <%= f.label :h3_colour %><br />
+    <%= f.text_field :h3_colour %>
+  </div>
+
+  <h1> P </h1>
+   <div class="field">
+    <%= f.label :p_size %><br />
+    <%= f.text_field :p_size %>
+  </div>
+  <div class="field">
+    <%= f.label :p_font %><br />
+    <%=f.select :p_font, [["Helvetica", "helvetica"], ["Courier", "courier"], ["Times", "times"],["Impact", "impact"] ] %>
+  </div>
+  <div class="field">
+    <%= f.label :p_colour %><br />
+    <%= f.text_field :p_colour %>
+  </div>
+
+
+
+  <h1> Div 1 </h1>
+   <div class="field">
+    <%= f.label :div_1_colour %><br />
+    <%= f.text_field :div_1_colour %>
+  </div>
+  <div class="field">
+    <%= f.label :div_1_transparency %><br />
+    <%= f.text_field :div_1_transparency %>
+  </div>
+   <div class="field">
+    <%= f.label :div_1_border_colour %><br />
+    <%= f.text_field :div_1_border_colour %>
+  </div>
+   <div class="field">
+    <%= f.label :div_1_background_colour %><br />
+    <%= f.text_field :div_1_background_colour %>
+  </div>
+  <div class="field">
+    <%= f.label :div_1_border_width %><br />
+    <%= f.text_field :div_1_border_width %>
+  </div>
+
+  <h1> Div 2 </h1>
+   <div class="field">
+    <%= f.label :div_2_colour %><br />
+    <%= f.text_field :div_2_colour %>
+  </div>
+  <div class="field">
+    <%= f.label :div_2_transparency %><br />
+    <%= f.text_field :div_2_transparency %>
+  </div>
+   <div class="field">
+    <%= f.label :div_2_border_colour %><br />
+    <%= f.text_field :div_2_border_colour %>
+  </div>
+   <div class="field">
+    <%= f.label :div_2_background_colour %><br />
+    <%= f.text_field :div_2_background_colour %>
+  </div>
+  <div class="field">
+    <%= f.label :div_2_border_width %><br />
+    <%= f.text_field :div_2_border_width %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+ <input id="url_slug" name="url_slug" type="hidden" value="<%=@artist.url_slug %>" />
+
+<% end %>

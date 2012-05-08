@@ -14,6 +14,9 @@ gem 'rubyzip'
 gem 'activemerchant'
 gem "cancan"
 gem "active_paypal_adaptive_payment"
+gem "carrierwave"
+
+
 
 
 

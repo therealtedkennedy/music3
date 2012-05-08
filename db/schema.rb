@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120426020407) do
+ActiveRecord::Schema.define(:version => 20120508020536) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20120426020407) do
     t.datetime "updated_at"
     t.string   "url_slug"
     t.string   "pay_pal"
+    t.string   "image"
   end
 
   create_table "artists_songs", :id => false, :force => true do |t|
@@ -81,6 +82,11 @@ ActiveRecord::Schema.define(:version => 20120426020407) do
   create_table "artists_users", :id => false, :force => true do |t|
     t.integer "user_id"
     t.integer "artist_id"
+  end
+
+  create_table "layouts", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "orders", :force => true do |t|
@@ -97,6 +103,34 @@ ActiveRecord::Schema.define(:version => 20120426020407) do
     t.string   "express_token"
     t.string   "express_payer_id"
     t.integer  "album_id"
+  end
+
+  create_table "profile_layouts", :force => true do |t|
+    t.string   "h1_size"
+    t.string   "h1_font"
+    t.string   "h1_colour"
+    t.string   "h2_size"
+    t.string   "h2_font"
+    t.string   "h2_colour"
+    t.string   "h3_size"
+    t.string   "h3_font"
+    t.string   "h3_colour"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "artist_id"
+    t.string   "p_size"
+    t.string   "p_font"
+    t.string   "p_colour"
+    t.string   "div_1_colour"
+    t.string   "div_1_transparency"
+    t.string   "div_1_border_colour"
+    t.string   "div_1_background_colour"
+    t.string   "div_1_border_width"
+    t.string   "div_2_colour"
+    t.string   "div_2_transparency"
+    t.string   "div_2_border_colour"
+    t.string   "div_2_background_colour"
+    t.string   "div_2_border_width"
   end
 
   create_table "songs", :force => true do |t|

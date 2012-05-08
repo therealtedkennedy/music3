@@ -3,7 +3,7 @@ Music3::Application.routes.draw do |map|
 
   resources :albums
 
-  resources :artists, :artist_home, :songs, :settings
+  resources :artists, :artist_home, :songs, :profile_layouts, :settings
      devise_for :users
 
   root :to => "homepage#index"
@@ -13,6 +13,8 @@ Music3::Application.routes.draw do |map|
   match "orders/paypal/to_chained/:object/:url_slug/:song_album_or_event_slug" => "orders#chained_payment", :as => :chained_payment
   match "orders/payment_method/:object/:url_slug/:song_album_or_event_slug" => "orders#payment_method", :as => :payment_method
   match "orders/paypal/login_prompt" => "orders#login_prompt", :as => :login_prompt
+
+  match "go_suck_a_fucking_dick/rails_forms_are/dumb_cunts" => "profile_layouts#update"
 
   #user routing
 
@@ -42,11 +44,20 @@ Music3::Application.routes.draw do |map|
   match "/:url_slug/edit" => "artists#edit", :as => :edit_artist
   match "/:url_slug/add_song" => "songs#new", :as => :add_song
   match "/:url_slug/new_album" => "albums#new", :as => :add_album
+  match "/:url_slug/profile_edit" => "profile_layouts#edit", :as => :profile_edit
+
+  #temp for deveopment
+  #creates a profile for artists already in the DB
+  match "/:url_slug/create/new_layout"  => "profile_layouts#new"
+
+
+
 
   #Song Routes
   # Url Slug Routing
   match "/:url_slug/song/:song_url_slug" => "songs#show", :as => :artist_show_song
  # match "/:url_slug/song/:song_url_slug/edit => "
+
 
 
   #Albums Slug Routing

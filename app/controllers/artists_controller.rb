@@ -52,8 +52,13 @@ class ArtistsController < ApplicationController
   # POST /artists.xml
   def create
     @artist = Artist.new(params[:artist])
+    #assigns User
+
     @user = current_user
     @artist.users << @user
+
+    #creates and assigns layout
+    @artist.profile_layout = ProfileLayout.new
 
     respond_to do |format|
       if @artist.save

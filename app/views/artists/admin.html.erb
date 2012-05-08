@@ -9,7 +9,7 @@
 
  <%= link_to 'Destroy', @artist, :method => :delete, :confirm => 'Are you sure?' %>
 
-
+ <%= link_to 'Edit Profile', profile_edit_path(@artist.url_slug) %>
 
 <h2>Info: <%= link_to 'Edit', edit_artist_path(@artist.url_slug) %></h2>
 <p>
