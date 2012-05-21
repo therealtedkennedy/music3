@@ -1,31 +1,54 @@
 <style>
-p {font-family: <%= @artist.profile_layout.p_font %>; font-size: <%= @artist.profile_layout.p_size %>pt; color: <%= @artist.profile_layout.p_colour %>; }
+p {font-family: <%= @artist.profile_layout.p_font %>; font-size: <%= @artist.profile_layout.p_size %>pt; color: <%= @artist.profile_layout.p_colour %>;}
 h1 {font-family: <%= @artist.profile_layout.h1_font %>; font-size: <%= @artist.profile_layout.h1_size %>pt; color: <%= @artist.profile_layout.h1_colour %>;text-align: center; }
 h2 {font-family: <%= @artist.profile_layout.h2_font %>; font-size: <%= @artist.profile_layout.h2_size %>pt; color: <%= @artist.profile_layout.h2_colour %>;text-align: center; }
 h3 {font-family: <%= @artist.profile_layout.h3_font %>; font-size: <%= @artist.profile_layout.h3_size %>pt; color: <%= @artist.profile_layout.h3_colour %>;text-align: center; }
 ol {font-family: <%= @artist.profile_layout.p_font %>; font-size: <%= @artist.profile_layout.p_size %>pt;}
 ul {font-family: <%= @artist.profile_layout.p_font %>; font-size: <%= @artist.profile_layout.p_size %>pt;}
 table {font-face: <%= @artist.profile_layout.p_font %>; font-size: <%= @artist.profile_layout.p_size %>pt;color:<%= @artist.profile_layout.p_colour %>}
-.div1 {max-width: 400px; position:absolute;top:5%;left:5%;background-color: <%= @artist.profile_layout.div_1_background_colour %>;overflow: hidden;padding:10px;border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;}
-.div2 {top:5%;left:5%;background-color: <%= @artist.profile_layout.div_2_background_colour %>; overflow:  hidden;padding:10px;border:  <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;}
+body {margin: 20px 100px }
+.div1 {max-width: 400px; position:absolute;top:5%;left:5%;background-color: <%= @artist.profile_layout.div_1_background_colour %>;overflow: hidden;padding:10px;border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;border-radius: 5px;   }
+.div1a {display: block; float: left; overflow: hidden;margin-right: 10%;max-width: 400px; background-color: <%= @artist.profile_layout.div_1_background_colour %>;padding:10px;border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;border-radius: 5px; }
+
+
+.button {margin: 2%; background-color: <%= @artist.profile_layout.div_2_background_colour %>; overflow:  hidden;padding:30px;border:  <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;box-shadow: 3px 3px 7px #777;border-radius: 2px; }
+.div2 {margin: 2%; background-color: <%= @artist.profile_layout.div_2_background_colour %>; overflow:  hidden;padding:30px;border:  <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;box-shadow: 3px 3px 7px #777;border-radius: 2px; }
+.div3 {width:400px; height:80px;margin:30px;background-color: <%= @artist.profile_layout.div_2_background_colour %>; overflow:  hidden;padding:10px;border:  <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;box-shadow: 3px 3px 7px #777;border-radius: 2px; }
+.image {float: left;width:70px; height:70px;margin:1%;overflow:  hidden;border:  <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;box-shadow: 1px 1px 2px #777;border-radius: 2px; }
+.div1r {max-width: 1000px;min-width:800px; position:absolute;top:5%;right:5%;background-color: <%= @artist.profile_layout.div_1_background_colour %>;overflow: hidden;padding:10px;border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;border-radius: 5px; }
+.div1ra {display: block; float: left; overflow:hidden;max-width: 800px;min-width:300px;background-color: <%= @artist.profile_layout.div_1_background_colour %>;padding:10px;border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;border-radius: 5px;display: none;}
+.button:hover { background-color:blue; }
 </style>
 
+<body>
 
-
- <script >
+<script >
      $(function(){
         $.backstretch("<%=@artist.image_url.to_s%>");
     });
 </script>
 
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+
+       $('.show_hide').showHide({
+            speed: 300,  // speed you want the toggle to happen
+            easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
+            changeText: 0, // if you dont want the button text to change, set this to 0
+            showText: 'View',// the button text to show when a div is closed
+            hideText: 'Close' // the button text to show when a div is open
+
+        });
+
+
+    });
+</script>
+
 <p id="notice"><%= notice %></p>
 
-
-
-
-
-
-<div class= "div1">
+<div class= "div1a">
 
 <% if can? :update, @artist %>
     <table>
@@ -41,94 +64,135 @@ table {font-face: <%= @artist.profile_layout.p_font %>; font-size: <%= @artist.p
 
   <%= @artist.name %>
 </h1>
-<section id="audio">
-</section>
 
- <div class="div2">
+  <div class="show_hide" rel="#info" >
+  <div class="button"  >
+
+
       <h2>
-      Your from where?
-      </h2>
-    <p>
-      <b>City:</b>
-      <%= @artist.city %>
-    </p>
-
-
-    <p>
-      <b>Province:</b>
-      <%= @artist.province %>
-    </p>
-
-    <p>
-      <b>Country:</b>
-      <%= @artist.country %>
-    </p>
-</div>
-
-<div class="div2">
-
-    <h2>
       Info
-    </h2>
+      </h2>
+  <!--  <button class="show_hide" href="#" rel="#sliding_div1">Show it</button> -->
 
-    <p>
-      <b>Date founded:</b>
-      <%= @artist.date_founded %>
-    </p>
-    <p>
-      <b>Influence:</b>
-      <%= @artist.influence %>
-    </p>
 
-    <p>
-      <b>Bio:</b>
-      <%= @artist.bio %>
-    </p>
 
-    <p>
-      <b>Contact info:</b>
-      <%= @artist.contact_info %>
-    </p>
+
+  </div>
  </div>
 
+   <div class="show_hide" rel="#songs" >
+    <div class="button">
 
-<!--<p>
-  <b>Created date:</b>
-  <%= @artist.created_date %>
-</p>  -->
+     <h2>Songs</h2>
 
 
-<div class="div2">
-<p>
- <h2>Songs</h2>
 
-<ul>
-<% @artist.songs.uniq.each do |songs| %>
-    <% unless songs.song_url_slug.blank?%>
-    <li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %>
-      <%= link_to "Play", download_url_for(songs.s3_id), :class => "html5" %></li>
-  <% end %>
-<% end %>
-</ul>
+    </div>
+ </div>
 
-</div>
+ <div class="show_hide" rel="#albums" >
+ <div class="button" >
 
- <div class="div2">
-<p>
  <h2>Albums</h2>
 
-<ul>
-<% @artist.albums.uniq.each do |albums| %>
-    <% unless albums.album_url_slug.blank?%>
-    <li><%= link_to albums.al_name, artist_show_album_path(@artist.url_slug,albums.album_url_slug) %>
-    <% end %>
-<% end %>
-</ul>
 
-</p>
+
+ </div>
 </div>
 
 <%= link_to 'Have download code?', code_download_path(@artist.url_slug) %>  </br>
 <%= link_to 'More Artists', artists_path %>
 
 </div>
+
+
+
+<!-------------  Second Div ---------->
+
+
+<!------------  Info Section ----->
+
+<div  class= "div1ra" id= "info">
+
+   <div  class="div2">
+
+    <p>
+      <b>Date founded:</b>
+      <%= @artist.date_founded %>
+    </br>
+    </br>
+
+      <b>City:</b>
+      <%= @artist.city %>
+    </br>
+    </br>
+
+     <b>Province:</b>
+      <%= @artist.province %>
+    </br>
+    </br>
+
+     <b>Country:</b>
+      <%= @artist.country %>
+    </br>
+    </br>
+      <b>Influence:</b>
+      <%= @artist.influence %>
+    </br>
+    </br>
+      <b>Bio:</b>
+      <%= @artist.bio %>
+    </br>
+    </br>
+
+      <b>Contact info:</b>
+      <%= @artist.contact_info %>
+    </br>
+    </br>
+
+    </p>
+  </div>
+</div>
+
+
+ <!-- Songs Section -->
+ <div  class= "div1ra" id= "songs">
+ <!-- <div class="div2">  -->
+
+
+        <% @artist.songs.uniq.each do |songs| %>
+
+            <% unless songs.song_url_slug.blank?%></h3>
+              <div class= "div3">
+                <div class= "image"><h3><%= link_to "Play", download_url_for(songs.s3_id), :class => "html5" %></h3></div>
+                      <h3><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %> </h3>
+                <section id="audio">
+                </section>
+
+              </div>
+          <% end %>
+        <% end %>
+
+
+  <!-- </div> -->
+
+</div>
+
+ <!-- Albums Section -->
+
+<div  class= "div1ra" id= "albums">
+
+<% @artist.albums.uniq.each do |albums| %>
+    <% unless albums.album_url_slug.blank?%>
+        <div class ="div3">
+          <div class= "image"></div>
+          <h3><%= link_to albums.al_name, artist_show_album_path(@artist.url_slug,albums.album_url_slug) %> </h3>
+        </div>
+    <% end %>
+<% end %>
+
+</div>
+
+
+
+</body>
