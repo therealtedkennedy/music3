@@ -16,8 +16,9 @@ body {margin: 20px 100px }
 .div3 {width:400px; height:80px;margin:30px;background-color: <%= @artist.profile_layout.div_2_background_colour %>; overflow:  hidden;padding:10px;border:  <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;box-shadow: 3px 3px 7px #777;border-radius: 2px; }
 .image {float: left;width:70px; height:70px;margin:1%;overflow:  hidden;border:  <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;box-shadow: 1px 1px 2px #777;border-radius: 2px; }
 .div1r {max-width: 1000px;min-width:800px; position:absolute;top:5%;right:5%;background-color: <%= @artist.profile_layout.div_1_background_colour %>;overflow: hidden;padding:10px;border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;border-radius: 5px; }
-.div1ra {display: block; float: left; overflow:hidden;max-width: 800px;min-width:300px;background-color: <%= @artist.profile_layout.div_1_background_colour %>;padding:10px;border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;border-radius: 5px;display: none;}
+.div1ra {display: block; float: left; overflow:hidden;max-width: 800px;min-width:300px;background-color: <%= @artist.profile_layout.div_1_background_colour %>;padding:10px;border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;border-radius: 5px;}
 .button:hover { background-color:blue; }
+.toggleDiv {display: none}
 </style>
 
 <body>
@@ -112,87 +113,92 @@ body {margin: 20px 100px }
 
 <!------------  Info Section ----->
 
-<div  class= "div1ra" id= "info">
+<div class= "toggleDiv" id= "info"> <!--hides div -->
+    <div  class= "div1ra" >
 
-   <div  class="div2">
+       <div  class="div2">
 
-    <p>
-      <b>Date founded:</b>
-      <%= @artist.date_founded %>
-    </br>
-    </br>
+        <p>
+          <b>Date founded:</b>
+          <%= @artist.date_founded %>
+        </br>
+        </br>
 
-      <b>City:</b>
-      <%= @artist.city %>
-    </br>
-    </br>
+          <b>City:</b>
+          <%= @artist.city %>
+        </br>
+        </br>
 
-     <b>Province:</b>
-      <%= @artist.province %>
-    </br>
-    </br>
+         <b>Province:</b>
+          <%= @artist.province %>
+        </br>
+        </br>
 
-     <b>Country:</b>
-      <%= @artist.country %>
-    </br>
-    </br>
-      <b>Influence:</b>
-      <%= @artist.influence %>
-    </br>
-    </br>
-      <b>Bio:</b>
-      <%= @artist.bio %>
-    </br>
-    </br>
+         <b>Country:</b>
+          <%= @artist.country %>
+        </br>
+        </br>
+          <b>Influence:</b>
+          <%= @artist.influence %>
+        </br>
+        </br>
+          <b>Bio:</b>
+          <%= @artist.bio %>
+        </br>
+        </br>
 
-      <b>Contact info:</b>
-      <%= @artist.contact_info %>
-    </br>
-    </br>
+          <b>Contact info:</b>
+          <%= @artist.contact_info %>
+        </br>
+        </br>
 
-    </p>
-  </div>
+        </p>
+      </div>
+    </div>
 </div>
 
-
  <!-- Songs Section -->
- <div  class= "div1ra" id= "songs">
- <!-- <div class="div2">  -->
+
+<div class= "toggleDiv" id= "songs">     <!--hides div -->
+
+     <div  class= "div1ra" >
+     <!-- <div class="div2">  -->
 
 
-        <% @artist.songs.uniq.each do |songs| %>
+            <% @artist.songs.uniq.each do |songs| %>
 
-            <% unless songs.song_url_slug.blank?%></h3>
-              <div class= "div3">
-                <div class= "image"><h3><%= link_to "Play", download_url_for(songs.s3_id), :class => "html5" %></h3></div>
-                      <h3><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %> </h3>
-                <section id="audio">
-                </section>
-
-              </div>
-          <% end %>
-        <% end %>
+                <% unless songs.song_url_slug.blank?%>
+                  <div class= "div3">
+                    <div class= "image"><h3><%= link_to "Play", download_url_for(songs.s3_id), :class => "html5" %></h3></div>
+                          <h3><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %> </h3>
 
 
-  <!-- </div> -->
+                  </div>
+              <% end %>
+            <% end %>
 
+
+      <!-- </div> -->
+
+    </div>
 </div>
 
  <!-- Albums Section -->
+<div class= "toggleDiv" id= "albums">     <!--hides div -->
+    <div  class= "div1ra" >
 
-<div  class= "div1ra" id= "albums">
-
-<% @artist.albums.uniq.each do |albums| %>
-    <% unless albums.album_url_slug.blank?%>
-        <div class ="div3">
-          <div class= "image"></div>
-          <h3><%= link_to albums.al_name, artist_show_album_path(@artist.url_slug,albums.album_url_slug) %> </h3>
-        </div>
+    <% @artist.albums.uniq.each do |albums| %>
+        <% unless albums.album_url_slug.blank?%>
+            <div class ="div3">
+              <div class= "image"></div>
+              <h3><%= link_to albums.al_name, artist_show_album_path(@artist.url_slug,albums.album_url_slug) %> </h3>
+            </div>
+        <% end %>
     <% end %>
-<% end %>
 
+    </div>
 </div>
-
-
+ <section id="audio">
+                </section>
 
 </body>
