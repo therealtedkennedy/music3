@@ -11,7 +11,7 @@
 		//default vars for the plugin
         var defaults = {
             speed: 1000,
-			easing: '',
+			easing: 'hh',
 			changeText: 0,
 			showText: 'Show',
 			hideText: 'Hide'

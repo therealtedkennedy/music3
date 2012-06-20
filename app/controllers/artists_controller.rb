@@ -23,6 +23,8 @@ class ArtistsController < ApplicationController
     searchString  = params[:url_slug]
     @artist = Artist.find_by_url_slug(searchString)
 
+    @playlist = @artist.songs
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @artist }

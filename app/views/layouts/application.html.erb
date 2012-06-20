@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html>
+<style>
+
+
+ .body {
+     margin-top: 50px;
+
+ }
+
+
+</style>
+
+
 <head>
   <title>Music3</title>
   <%= stylesheet_link_tag :all %>
   <!--<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" %>-->
   <!--<%= javascript_include_tag 'jquery'%>-->
   <%= javascript_include_tag :'defaults', 'rails.validations', 'jquery.rails','jquery.backstretch.min','showHide.js'%>
+  <script type="text/javascript" src="/javascripts/jPlayer/jquery.jplayer.min.js" ></script>
+  <script type="text/javascript" src="/javascripts/jPlayer/add-on/jplayer.playlist.min.js"> </script>
+  <script type="text/javascript" src="/javascripts/jPlayer/add-on/jquery.jplayer.inspector.js"> </script>
 
+
+
+  <link type="text/css" href="/skin/blue_monday/jplayer.blue.monday.css" rel="stylesheet" />
 
   <%= csrf_meta_tag %>
 </head>
+
 <body>
+
+
+</div>
 <div id= "user_nav">
   <% if user_signed_in? %>
       Signed in as <%= link_to current_user.email, show_user_path(current_user.id)%>. Not you?
@@ -24,7 +46,9 @@
 
 </div>
 
+</body>
+
 <%= yield %>
 
-</body>
+
 </html>

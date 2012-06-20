@@ -175,7 +175,7 @@ class SongsController < ApplicationController
 
       respond_to do |format|
         if @song.update_attributes(@song.s3_id)
-          format.html { redirect_to (artist_show_song_path(@artist.url_slug, @song.song_url_slug), :notice => 'Song was successfully created.') }
+          format.html { redirect_to (artist_show_song_path(@artist.url_slug, @song.song_url_slug)), :notice => 'Song was successfully created.' }
           format.xml { head :ok }
         else
           format.html { render :action => "edit" }
