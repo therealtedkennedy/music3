@@ -206,7 +206,7 @@
             wmode: "window"
         });
     }
-
+     var DEBUGGING = true;
     $(document).ready(function() {
 
         myPlaylist = initializePlayList(playlistSongs);
@@ -240,12 +240,41 @@
             myPlaylist.play(songIndex);
 
         });
-    });
+
+
+
+
+    <!-- var testFunc = function(){ }; -->
+       <!-- Not called.  Need to call testFunc(). Can call in console. -->
+
+        $(".album-link").click(function(event) {
+            event.preventDefault();
+
+        $.ajax({
+            url : $(this).attr('href'),
+
+            success: function(json){
+                ted_log(json);
+
+                $.each(json, function(key, value){
+						$(key).html(value);
+                });
+
+            },
+            dataType: "json"
+        });
+       });
+     });
+
+   function ted_log(json){
+	if(typeof console !== undefined && DEBUGGING)
+		console.log(json);
+	else if(DEBUGGING)
+		alert(json);
+   }
+
+
 </script>
-
-
-
-
 
 
 <div id="jquery_jplayer_1" class="jp-jplayer"></div>
@@ -299,6 +328,7 @@
 <p id="notice"><%= notice %></p>
 
 
+
 <div class="div1a">
 
   <% if can? :update, @artist %>
@@ -315,6 +345,8 @@
 
     <%= @artist.name %>
   </h1>
+
+
 
   <div class="show_hide" rel="#info">
     <div class="button">
@@ -356,51 +388,7 @@
 <!-------------  Second Div ---------->
 
 
-<!------------  Info Section ----->
-
-<div class="toggleDiv" id="info"> <!--hides div -->
-  <div class="div1ra">
-
-    <div class="div2">
-
-      <p>
-        <b>Date founded:</b>
-        <%= @artist.date_founded %>
-        </br>
-        </br>
-
-        <b>City:</b>
-        <%= @artist.city %>
-        </br>
-        </br>
-
-        <b>Province:</b>
-        <%= @artist.province %>
-        </br>
-        </br>
-
-        <b>Country:</b>
-        <%= @artist.country %>
-        </br>
-        </br>
-        <b>Influence:</b>
-        <%= @artist.influence %>
-        </br>
-        </br>
-        <b>Bio:</b>
-        <%= @artist.bio %>
-        </br>
-        </br>
-
-        <b>Contact info:</b>
-        <%= @artist.contact_info %>
-        </br>
-        </br>
-
-      </p>
-    </div>
-  </div>
-</div>
+<%= render "info" %>
 
 <!-- Songs Section -->
 
@@ -433,13 +421,14 @@
 
 <!-- Albums Section -->
 <div class="toggleDiv" id="albums">     <!--hides div -->
-  <div class="div1ra">
+  <div class="div1ra" id="content">
 
     <% @artist.albums.uniq.each do |albums| %>
         <% unless albums.album_url_slug.blank? %>
             <div class="div3">
               <div class="image"></div>
-              <h3><%= link_to albums.al_name, artist_show_album_path(@artist.url_slug, albums.album_url_slug) %> </h3>
+              <h3><%= link_to albums.al_name,artist_show_album_path(@artist.url_slug,albums.album_url_slug),:class => "album-link"%>  </h3>
+
             </div>
         <% end %>
     <% end %>

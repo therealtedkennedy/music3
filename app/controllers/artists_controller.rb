@@ -4,15 +4,16 @@ class ArtistsController < ApplicationController
   # GET /artists
   # GET /artists.xml
 
-  before_filter :authenticate_user!,  :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show, :index]
+
   def index
     @artists = Artist.all
     @artist = Artist.new
 
+
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @artists }
-      format.js
+      format.xml { render :xml => @artists }
     end
   end
 
@@ -20,14 +21,18 @@ class ArtistsController < ApplicationController
   # GET /artists/1.xml
   def show
     #@artist = Artist.find(params[:id])
-    searchString  = params[:url_slug]
+    searchString = params[:url_slug]
     @artist = Artist.find_by_url_slug(searchString)
+
 
     @playlist = @artist.songs
 
-    respond_to do |format|
+
+
+
+  respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @artist }
+      format.xml { render :xml => @artist }
 
     end
   end
@@ -39,15 +44,15 @@ class ArtistsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @artist }
+      format.xml { render :xml => @artist }
     end
   end
 
   # GET /artists/1/edit
   def edit
     #@artist = Artist.find(params[:id])
-     @artist = Artist.find_by_url_slug(params[:url_slug])
-     authorize! :update, @artist
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+    authorize! :update, @artist
   end
 
   # POST /artists
@@ -66,10 +71,10 @@ class ArtistsController < ApplicationController
       if @artist.save
 
         format.html { redirect_to(artist_link_path(@artist.url_slug), :notice => 'Artist was successfully created.') }
-        format.xml  { render :xml => @artist, :status => :created, :location => @artist }
+        format.xml { render :xml => @artist, :status => :created, :location => @artist }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @artist.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -86,60 +91,60 @@ class ArtistsController < ApplicationController
     respond_to do |format|
       if @artist.update_attributes(params[:artist])
         format.html { redirect_to(artist_admin_path(@artist.url_slug), :notice => 'Artist was successfully updated.') }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @artist.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # First step in adding song, creates and saves blank song before being passed to the song model
   #def add_song
-    #  #@artist = Artist.find(params[:id])
-     # @artist = Artist.find_by_url_slug(params[:url_slug])
-     # @song = Song.new
-     # #assocaites artist and song
-     # @song.artists << Artist.find(@artist.id)
-     # @song.save
+  #  #@artist = Artist.find(params[:id])
+  # @artist = Artist.find_by_url_slug(params[:url_slug])
+  # @song = Song.new
+  # #assocaites artist and song
+  # @song.artists << Artist.find(@artist.id)
+  # @song.save
 
-      # redirect_to(new_song_id_path(@song.id))
-          #  respond_to do |format|
-           #   format.html # show.html.erb
-           #   format.xml  { render :xml => @artist }
-         #   end
+  # redirect_to(new_song_id_path(@song.id))
+  #  respond_to do |format|
+  #   format.html # show.html.erb
+  #   format.xml  { render :xml => @artist }
+  #   end
 
-        # DELETE /artists/1
-        # DELETE /artists/1.xml
-     # end
- # end
+  # DELETE /artists/1
+  # DELETE /artists/1.xml
+  # end
+  # end
 
-   # on to something...but too tired to think about it.
+  # on to something...but too tired to think about it.
 
- # def upload_song
+  # def upload_song
   #    @song = Song.new(params[:song])
-   #  if params[:artist_id]
-    #   @song.artists << Artist.find(params[:artist_id])
-    # end
+  #  if params[:artist_id]
+  #   @song.artists << Artist.find(params[:artist_id])
+  # end
 
-     # respond_to do |format|
-     # if @song.save
-       #   format.html {
-       #   redirect_to(add_song_path(artist.url_slug), :notice => 'Song was successfully created.')
-       # }
-       # format.xml  { render :xml => @artist, :status => :created, :location => @artist }
-     # else
-       # format.html { render :action => "new" }
-       # format.xml  { render :xml => @artist.errors, :status => :unprocessable_entity }
-      #end
-   # end
- # end
+  # respond_to do |format|
+  # if @song.save
+  #   format.html {
+  #   redirect_to(add_song_path(artist.url_slug), :notice => 'Song was successfully created.')
+  # }
+  # format.xml  { render :xml => @artist, :status => :created, :location => @artist }
+  # else
+  # format.html { render :action => "new" }
+  # format.xml  { render :xml => @artist.errors, :status => :unprocessable_entity }
+  #end
+  # end
+  # end
 
-def admin
+  def admin
 
     @artist = Artist.find_by_url_slug(params[:url_slug])
     authorize! :admin, @artist
-end
+  end
 
 
   def destroy
@@ -151,8 +156,8 @@ end
     @artist.destroy
 
     respond_to do |format|
-      format.html { redirect_to( show_user_path(current_user.id), :notice => 'Artist was successfully Deleted.') }
-      format.json {render :json => {}, :status => :ok}
+      format.html { redirect_to(show_user_path(current_user.id), :notice => 'Artist was successfully Deleted.') }
+      format.json { render :json => {}, :status => :ok }
       format.js
     end
 

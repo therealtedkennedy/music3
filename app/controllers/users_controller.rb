@@ -19,7 +19,7 @@ class UsersController < Devise::SessionsController
 
 
     else
-      assign_to_user (cookies[:object],cookies[:song_album_or_event_slug])
+      assign_to_user (cookies[:object]),(cookies[:song_album_or_event_slug])
       redirect_to(show_user_path(current_user.id))
     end
   end

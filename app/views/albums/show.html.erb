@@ -29,7 +29,8 @@
 <h2>Want it? Get it!</h2>
 
     <% if @album.pay_type = "pay" %>
-        <%= link_to "Buy Now:", payment_method_path("album",params[:url_slug],params[:album_url_slug] ) %>
+
+        <%= link_to "Buy Now:", payment_method_path("album",@artist.url_slug,@album.album_url_slug ) %>
 
 
     <% else %>

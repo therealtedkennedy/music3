@@ -24,7 +24,16 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @album }
+      format.json {
+        render :json => {
+           :success => true,
+           :"#content" => render_to_string(
+           :action => 'albums/show.html.erb',
+           :layout => false
+           )
 
+        }
+      }
 
 
 
