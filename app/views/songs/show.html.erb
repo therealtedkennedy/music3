@@ -18,7 +18,8 @@
 
 <h1>
 
-  <%= link_to @song.song_name, download_url_for(@song.s3_id), :class => "html5" %> </br>
+   <a href="<%= download_url_for(@song.s3_id) %>" data-song-name="<%=@song.song_name%>" data-artist-name="<%=@song.song_artist%>" class="music-button"> <%= @song.song_name %> </a></br>
+
 </h1>
 
 <section id="audio">

@@ -31,8 +31,20 @@ class ArtistsController < ApplicationController
 
 
   respond_to do |format|
-      format.html # show.html.erb
-      format.xml { render :xml => @artist }
+    format.html # show.html.erb
+    format.xml { render :xml => @artist }
+    format.json {
+        render :json => {
+           :success => true,
+           :"#content" => render_to_string(
+           :action => 'artists/show.html.erb',
+           :layout => false
+           )
+
+        }
+      }
+
+
 
     end
   end

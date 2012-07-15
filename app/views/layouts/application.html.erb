@@ -3,11 +3,182 @@
 <style>
 
 
- .body {
-     margin-top: 50px;
+    html, body {
+        overflow-x: hidden;
+        margin: 0 auto;
 
- }
+    }
+    .container {
+        margin-top: 50px;
+    }
 
+    .player_nav {
+        width: 100%;
+        background-color: #FFFFFF;
+        height: 50px;
+        position: fixed;
+        top: 0;
+        left: 0;
+
+    }
+
+        p {
+        font-family: <%= @artist.profile_layout.p_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+        color: <%= @artist.profile_layout.p_colour %>;
+    }
+
+    h1 {
+        font-family: <%= @artist.profile_layout.h1_font %>;
+        font-size: <%= @artist.profile_layout.h1_size %>pt;
+        color: <%= @artist.profile_layout.h1_colour %>;
+        text-align: center;
+    }
+
+    h2 {
+        font-family: <%= @artist.profile_layout.h2_font %>;
+        font-size: <%= @artist.profile_layout.h2_size %>pt;
+        color: <%= @artist.profile_layout.h2_colour %>;
+        text-align: center;
+    }
+
+    h3 {
+        font-family: <%= @artist.profile_layout.h3_font %>;
+        font-size: <%= @artist.profile_layout.h3_size %>pt;
+        color: <%= @artist.profile_layout.h3_colour %>;
+        text-align: center;
+    }
+
+    ol {
+        font-family: <%= @artist.profile_layout.p_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+    }
+
+    ul {
+        font-family: <%= @artist.profile_layout.p_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+    }
+
+    table {
+        font-face: <%= @artist.profile_layout.p_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+        color: <%= @artist.profile_layout.p_colour %>
+    }
+
+    .div1 {
+        max-width: 400px;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        overflow: hidden;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .div1a {
+        display: block;
+        float: left;
+        overflow: hidden;
+        margin-left: 10%;
+        margin-top: 5%;
+        max-width: 400px;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .div1ra {
+        margin-top: 5%;
+        margin-left: 10%;
+        display: block;
+        float: left;
+        overflow: hidden;
+        max-width: 800px;
+        min-width: 300px;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .audio {
+        position: fixed;
+        top: 0;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        width: 9999px;
+        height: 50px
+    }
+
+    .button {
+        margin: 2%;
+        background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+        overflow: hidden;
+        padding: 30px;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 3px 3px 7px #777;
+        border-radius: 2px;
+    }
+
+    .div2 {
+        margin: 2%;
+        background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+        overflow: hidden;
+        padding: 30px;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 3px 3px 7px #777;
+        border-radius: 2px;
+    }
+
+    .div3 {
+        width: 400px;
+        height: 80px;
+        margin: 30px;
+        background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+        overflow: hidden;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 3px 3px 7px #777;
+        border-radius: 2px;
+    }
+
+    .image {
+        float: left;
+        width: 70px;
+        height: 70px;
+        margin: 1%;
+        overflow: hidden;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 1px 1px 2px #777;
+        border-radius: 2px;
+    }
+
+    .div1r {
+        max-width: 1000px;
+        min-width: 800px;
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        overflow: hidden;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .button:hover {
+        background-color: blue;
+    }
+
+    .toggleDiv {
+        display: none
+    }
+    #loading {
+       display: none;
+    }
 
 </style>
 
@@ -16,39 +187,226 @@
   <title>Music3</title>
   <%= stylesheet_link_tag :all %>
   <!--<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" %>-->
-  <!--<%= javascript_include_tag 'jquery'%>-->
-  <%= javascript_include_tag :'defaults', 'rails.validations', 'jquery.rails','jquery.backstretch.min','showHide.js'%>
-  <script type="text/javascript" src="/javascripts/jPlayer/jquery.jplayer.min.js" ></script>
-  <script type="text/javascript" src="/javascripts/jPlayer/add-on/jplayer.playlist.min.js"> </script>
-  <script type="text/javascript" src="/javascripts/jPlayer/add-on/jquery.jplayer.inspector.js"> </script>
+  <!--<%= javascript_include_tag 'jquery' %>-->
+  <%= javascript_include_tag :'defaults', 'rails.validations', 'jquery.rails', 'jquery.backstretch.min', 'showHide.js' %>
+  <script type="text/javascript" src="/javascripts/jPlayer/jquery.jplayer.min.js"></script>
+  <script type="text/javascript" src="/javascripts/jPlayer/add-on/jplayer.playlist.min.js"></script>
+  <script type="text/javascript" src="/javascripts/jPlayer/add-on/jquery.jplayer.inspector.js"></script>
+  <link type="text/css" href="/skin/black_and_yellow/jplayer-black-and-yellow.css" rel="stylesheet"/>
+
+  <!-- Master template -->
+<script>
+    $(function() {
+        $.backstretch("<%=@artist.image_url.to_s%>");
+    });
+
+
+</script>
+
+
+<script type="text/javascript">
+    <!-- Java Script effect -->
+    $(document).ready(function() {
+
+
+        $('.show_hide').showHide({
+            speed: 300,  // speed you want the toggle to happen
+            easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
+            changeText: 0, // if you dont want the button text to change, set this to 0
+            showText: 'View',// the button text to show when a div is closed
+            hideText: 'Close' // the button text to show when a div is open
+
+        });
+
+
+    });
 
 
 
-  <link type="text/css" href="/skin/blue_monday/jplayer.blue.monday.css" rel="stylesheet" />
+
+
+    //<![CDATA[
+
+   <!-- Global Varaibles for playing song in playlist with click -->
+    var myPlaylist;
+    var playlistSongs = [];
+    var artistSongs = {};
+
+   <!-- Initializes the play list -->
+    function initializePlayList(newPlaylist){
+
+        return new jPlayerPlaylist({
+            jPlayer: "#jquery_jplayer_1",
+            cssSelectorAncestor: "#jp_container_1"
+        },
+        newPlaylist,
+        {
+            swfPath: "../js",
+            supplied: "mp3",
+            wmode: "window"
+        });
+    }
+     var DEBUGGING = true;
+    $(document).ready(function() {
+
+        myPlaylist = initializePlayList(playlistSongs);
+
+      <!-- Click Handler to add song to playlist.  Songs are stored in Artists, Index's are assocated with songs -->
+        $(".music-button").click(function(event) {
+            event.preventDefault();
+
+            <!-- Assigns varibles from click  -->
+            var songName = $(this).attr('data-song-name');
+            var artistName = $(this).attr('data-artist-name');
+
+            <!-- checks to see if artist already exisits in the playlist -->
+            if(artistSongs[artistName] == undefined)
+                artistSongs[artistName] = {};
+            <!-- Assigns the song index to varaible songindex, if it does not exist then become undefined and will be added below -->
+            var songIndex =  artistSongs[artistName][songName];
+
+            <!-- If undefined then will ad the song to the play list -->
+            if(songIndex === undefined){
+               <!-- Creates play list object and ads it to play list.  If you need to add more song attributes, or file types this is where you do it -->
+                myPlaylist.add({
+                    title : songName,
+                    mp3: $(this).attr('href')
+                });
+
+            <!-- sets the song index. By take the length of the playist (with the song added see above) and subtracts 1 because index starts at 0, length starts at 1 -->
+                songIndex = artistSongs[artistName][songName] = myPlaylist.playlist.length -1;
+            }
+
+            myPlaylist.play(songIndex);
+
+        });
+
+
+
+
+    <!-- var testFunc = function(){ }; -->
+       <!-- Not called.  Need to call testFunc(). Can call in console. -->
+
+        $(".content-link").click(function(event) {
+            event.preventDefault();
+            href = $(this).attr('href');
+            loadContent(href);
+
+            // HISTORY.PUSHSTATE
+			history.pushState('', 'New URL: '+href, href);
+           });
+
+            // BACK/FORWARD BUTTONS WORK AS WELL
+        window.onpopstate = function(event) {
+            $("#loading").show();
+            console.log("pathname: "+window.location.href);
+            loadContent(window.location.href);
+        };
+
+     });
+
+    function loadContent(href){
+           $.ajax({
+
+                url : href,
+                success: function(json){
+                    ted_log(json);
+
+                    $.each(json, function(key, value){
+                            $(key).html(value);
+                    });
+
+                },
+                dataType: "json"
+            });
+     };
+
+   function ted_log(json){
+	if(typeof console !== undefined && DEBUGGING)
+		console.log(json);
+	else if(DEBUGGING)
+		alert(json);
+   }
+
+
+</script>
+
 
   <%= csrf_meta_tag %>
 </head>
 
 <body>
 
+<div class="container">
+  <div class="player_nav">
+    <div id="user_nav">
+      <% if user_signed_in? %>
+          Signed in as <%= link_to current_user.email, show_user_path(current_user.id) %>. Not you?
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+      <% else %>
+          <%#= render :partial => 'login_form' %>
+          <%= link_to "sign in", new_user_session_path %>
+          <%= link_to "register", new_user_registration_path %>
+      <% end %>
+  </div>
 
+<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+
+
+<div id="jp_container_1" >
+  <div class="jp-type-playlist">
+      <div class ="jp-audio-container">
+
+
+			<div class="jp-audio">
+				<div class="jp-type-single">
+					<div id="jp_interface_1" class="jp-interface">
+						<ul class="jp-controls">
+							<li><a href="#" class="jp-play" tabindex="1">play</a></li>
+							<li><a href="#" class="jp-pause" tabindex="1">pause</a></li>
+							<li><a href="#" class="jp-mute" tabindex="1">mute</a></li>
+							<li><a href="#" class="jp-unmute" tabindex="1">unmute</a></li>
+						</ul>
+						<div class="jp-progress-container">
+							<div class="jp-progress">
+								<div class="jp-seek-bar">
+									<div class="jp-play-bar"></div>
+								</div>
+							</div>
+						</div>
+						<div class="jp-volume-bar-container">
+							<div class="jp-volume-bar">
+								<div class="jp-volume-bar-value"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        <div class="jp-playlist">
+          <ul>
+            <li></li>
+          </ul>
+        </div>
+        <div class="jp-no-solution">
+          <span>Update Required</span>
+          To play the media you will need to either update your browser to a recent version or update your
+          <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+        </div>
+    </div>
+  </div>
 </div>
-<div id= "user_nav">
-  <% if user_signed_in? %>
-      Signed in as <%= link_to current_user.email, show_user_path(current_user.id)%>. Not you?
-      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%#= render :partial => 'login_form' %>
-      <%= link_to "sign in", new_user_session_path %>
-    <%= link_to "register", new_user_registration_path %>
-  <% end %>
 
 
-</div>
 
-</body>
+
+  </div>
+
+ <div id="loading">
+   <p>Loading..</p>
+ </div>
 
 <%= yield %>
 
-
+</div>
+</body>
 </html>

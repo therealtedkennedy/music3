@@ -60,6 +60,16 @@ class SongsController < ApplicationController
         respond_to do |format|
           format.html # show.html.erb
           format.xml  { render :xml => @song }
+          format.json {
+            render :json => {
+               :success => true,
+               :"#content" => render_to_string(
+               :action => 'songs/show.html.erb',
+               :layout => false
+               )
+
+            }
+          }
         end
 
 
