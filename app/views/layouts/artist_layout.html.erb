@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
 <style>
-    h1 {
-       color: #E00000;
 
-
-    }
 
     html, body {
         overflow-x: hidden;
@@ -26,7 +22,163 @@
 
     }
 
+        p {
+        font-family: <%= @artist.profile_layout.p_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+        color: <%= @artist.profile_layout.p_colour %>;
+    }
 
+    h1 {
+        font-family: <%= @artist.profile_layout.h1_font %>;
+        font-size: <%= @artist.profile_layout.h1_size %>pt;
+        color: <%= @artist.profile_layout.h1_colour %>;
+        text-align: center;
+    }
+
+    h2 {
+        font-family: <%= @artist.profile_layout.h2_font %>;
+        font-size: <%= @artist.profile_layout.h2_size %>pt;
+        color: <%= @artist.profile_layout.h2_colour %>;
+        text-align: center;
+    }
+
+    h3 {
+        font-family: <%= @artist.profile_layout.h3_font %>;
+        font-size: <%= @artist.profile_layout.h3_size %>pt;
+        color: <%= @artist.profile_layout.h3_colour %>;
+        text-align: center;
+    }
+
+    ol {
+        font-family: <%= @artist.profile_layout.p_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+    }
+
+    ul {
+        font-family: <%= @artist.profile_layout.p_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+    }
+
+    table {
+        font-face: <%= @artist.profile_layout.p_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+        color: <%= @artist.profile_layout.p_colour %>
+    }
+
+    .div1 {
+        max-width: 400px;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        overflow: hidden;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .div1a {
+        display: block;
+        float: left;
+        overflow: hidden;
+        margin-left: 10%;
+        margin-top: 5%;
+        max-width: 400px;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .div1ra {
+        margin-top: 5%;
+        margin-left: 10%;
+        display: block;
+        float: left;
+        overflow: hidden;
+        max-width: 800px;
+        min-width: 300px;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .audio {
+        position: fixed;
+        top: 0;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        width: 9999px;
+        height: 50px
+    }
+
+    .button {
+        margin: 2%;
+        background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+        overflow: hidden;
+        padding: 30px;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 3px 3px 7px #777;
+        border-radius: 2px;
+    }
+
+    .div2 {
+        margin: 2%;
+        background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+        overflow: hidden;
+        padding: 30px;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 3px 3px 7px #777;
+        border-radius: 2px;
+    }
+
+    .div3 {
+        width: 400px;
+        height: 80px;
+        margin: 30px;
+        background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+        overflow: hidden;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 3px 3px 7px #777;
+        border-radius: 2px;
+    }
+
+    .image {
+        float: left;
+        width: 70px;
+        height: 70px;
+        margin: 1%;
+        overflow: hidden;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 1px 1px 2px #777;
+        border-radius: 2px;
+    }
+
+    .div1r {
+        max-width: 1000px;
+        min-width: 800px;
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        overflow: hidden;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .button:hover {
+        background-color: blue;
+    }
+
+    .toggleDiv {
+        display: none
+    }
+    #loading {
+       display: none;
+    }
 
 </style>
 
@@ -45,7 +197,7 @@
   <!-- Master template -->
 <script>
     $(function() {
-        $.backstretch("/skrillex.jpeg");
+        $.backstretch("<%=@artist.image_url.to_s%>");
     });
 
 
@@ -249,6 +401,9 @@
 
   </div>
 
+ <div id="loading">
+   <p>Loading..</p>
+ </div>
 
 <%= yield %>
 

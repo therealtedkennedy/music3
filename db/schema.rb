@@ -139,12 +139,12 @@ ActiveRecord::Schema.define(:version => 20120508020536) do
     t.string   "song_contribute_artist"
     t.string   "song_written"
     t.string   "song_licence_type"
+    t.string   "song_url_slug"
     t.date     "song_licence_date"
     t.integer  "song_plays"
     t.text     "lyrics"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "song_url_slug"
     t.string   "s3_name"
     t.string   "download_link"
     t.string   "torrent_link"
@@ -180,7 +180,6 @@ ActiveRecord::Schema.define(:version => 20120508020536) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "pay_pal_email"
-    t.string   "pay_pal"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

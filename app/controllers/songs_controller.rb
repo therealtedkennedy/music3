@@ -6,7 +6,8 @@ class SongsController < ApplicationController
 
  before_filter :authenticate_user!,  :except => [:show, :index]
 
-
+ #changes from default layout to custom layout
+ layout "artist_layout", only: [:show, :edit]
 
   def index
    #not #nessisary
@@ -161,27 +162,28 @@ class SongsController < ApplicationController
     @song.artists <<  @artist
     @s3_test = params[:s3_name]
 
-    @song.update_attributes(params[:song])
-
-
-
 
    #song s3 key, download link and torrent link
-    @song.s3_id= @song.id.to_s + ".mp3"
-    #@amazon_id = @song.id.to_s + ".mp3"
+   @song.s3_id= @song.id.to_s + ".mp3"
+   #@amazon_id = @song.id.to_s + ".mp3"
 
 
-    if params[:song].has_key?("s3_name")
-      save_amazon_file(@song.s3_id, params[:song][:s3_name],@song.song_name, @artist )
+   if params[:song].has_key?("s3_name")
+      save_amazon_file(@song.s3_id, params[:song][:s3_name],params[:song][:song_name], @artist )
 
 
-    end
+   end
 
        #if @song.s3_id.blank?
           #@song.s3_id= params[:id].to_s + ".mp3"
          # @song.download_link = download_url_for(@song.s3_id)
           #@song.torrent_link= link_to(torrent_url_for(@song.s3_name))
        #end
+
+    params[:song].delete :s3_name
+
+
+    @song.update_attributes(params[:song])
 
       respond_to do |format|
         if @song.update_attributes(@song.s3_id)

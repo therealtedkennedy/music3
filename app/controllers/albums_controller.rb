@@ -1,6 +1,11 @@
 class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.xml
+
+
+  #changes from default layout to custom layout
+  layout "artist_layout", only: [:show, :edit]
+
   def index
     @albums = Album.all
 

@@ -6,6 +6,9 @@ class ArtistsController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:show, :index]
 
+  #changes from default layout to custom layout
+  layout "artist_layout", only: [:show, :admin, :update]
+
   def index
     @artists = Artist.all
     @artist = Artist.new

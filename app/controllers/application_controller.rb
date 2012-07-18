@@ -51,6 +51,14 @@ class ApplicationController < ActionController::Base
  def stored_location_for(resource_or_scope)
      nil
  end
+
+
+  before_filter :instantiate_controller_and_action_names
+
+  def instantiate_controller_and_action_names
+    @current_action = action_name
+    @current_controller = controller_name
+  end
  #redirects to the sign_in_routing_path in the user model
  def after_sign_in_path_for(resource_or_scope)
       sign_in_routing_path

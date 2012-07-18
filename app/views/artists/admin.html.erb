@@ -81,12 +81,13 @@
 <ul>
 <% @artist.songs.uniq.each do |songs| %>
     <% unless songs.song_url_slug.blank?%>
-    <li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %>
-      <%= link_to "Play", download_url_for(songs.s3_id), :class => "html5" %>
-      <%= link_to 'Edit', edit_song_path(songs.id) %>
-      <%= link_to 'Destroy', songs, :confirm => 'Are you sure?', :method => :delete %>
-      </li>
-
+     <% unless songs.s3_id.nil? %>
+        <li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %>
+          <%= link_to "Play", download_url_for(songs.s3_id), :class => "html5" %>
+          <%= link_to 'Edit', edit_song_path(songs.id) %>
+          <%= link_to 'Destroy', songs, :confirm => 'Are you sure?', :method => :delete %>
+          </li>
+    <% end %>
   <% end %>
 <% end %>
 </ul>
