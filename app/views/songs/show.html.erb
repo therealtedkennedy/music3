@@ -13,7 +13,7 @@
 <h2>
     <% @song.artists.uniq.each do |artist_name| %>
 
-          <td><%= link_to artist_name.name, artist_link_path(artist_name.url_slug) %></td>
+          <td><%= link_to artist_name.name, artist_link_path(artist_name.url_slug), class:"content-link" %></td>
     <% end %></h2>
 
 <h1>
@@ -104,7 +104,7 @@
 <% @song.albums.uniq.each do |albums| %>
     <% unless albums.album_url_slug.blank?%>
        <%  albums.artists.uniq.each do |artist|  %>
-        <li><%= link_to albums.al_name, artist_show_album_path(artist.url_slug,albums.album_url_slug) %> by <%= link_to artist.name, artist_link_path(artist.url_slug) %>
+        <li><%= link_to albums.al_name, artist_show_album_path(artist.url_slug,albums.album_url_slug), class:"content-link" %> by <%= link_to artist.name, artist_link_path(artist.url_slug), class:"content-link" %>
       <% end %>
     <% end %>
 <% end %>

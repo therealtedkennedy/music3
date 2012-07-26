@@ -292,13 +292,17 @@
         };
 
         $(".content-link").live("click", function (event) {
-            event.preventDefault();
-            url = $(this).attr('href');
-            console.log("pathname: " + url);
-            loadContent(url);
+            <% if browser.ie? %>
+                alert("Music will stop playing, do you wish to continue? To stop this from appearing download chrome.")
+            <% else %>
+                event.preventDefault();
+                url = $(this).attr('href');
+                console.log("pathname: " + url);
+                loadContent(url);
 
-            // HISTORY.PUSHSTATE
-            history.pushState('', 'New URL: ' + url, url);
+                // HISTORY.PUSHSTATE
+                history.pushState('', 'New URL: ' + url, url);
+            <% end %>
         });
     });
 
@@ -404,6 +408,10 @@
   </div>
 
   <p id="notice"><%= notice %></p>
+
+  <% if browser.ie? %>
+      <h1>Hey, Internet explorer sucks. We suggest you upgrade your browser to <a href="www.google.com/chrome/">Chrome</a>. Cant do it? Don't Want to do it? Don't know what a browser is? Three Repeater will work, but not well.</h1>
+  <% end %>
 
 
   <div id="content">

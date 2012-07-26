@@ -19,7 +19,7 @@
         };
         var options = $.extend(defaults, options);
 
-        $(this).click(function () {	
+        $(this).live("click", function () {
              var toggleDiv = $(this).attr('rel');
              $('.toggleDiv').not(toggleDiv).slideUp(options.speed, options.easing);
 			 // this var stores which button you've clicked

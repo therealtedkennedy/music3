@@ -100,58 +100,58 @@
         myPlaylist = initializePlayList(playlistSongs);
 
       <!-- Click Handler to add song to playlist.  Songs are stored in Artists, Index's are assocated with songs -->
-        $(".music-button").click(function(event) {
+        $(".music-button").live("click", function (event) {
             event.preventDefault();
 
-            <!-- Assigns varibles from click  -->
+            //<!-- Assigns varibles from click  -->
             var songName = $(this).attr('data-song-name');
             var artistName = $(this).attr('data-artist-name');
 
-            <!-- checks to see if artist already exisits in the playlist -->
-            if(artistSongs[artistName] == undefined)
+            //<!-- checks to see if artist already exisits in the playlist -->
+            if (artistSongs[artistName] == undefined)
                 artistSongs[artistName] = {};
-            <!-- Assigns the song index to varaible songindex, if it does not exist then become undefined and will be added below -->
-            var songIndex =  artistSongs[artistName][songName];
+            //<!-- Assigns the song index to varaible songindex, if it does not exist then become undefined and will be added below -->
+            var songIndex = artistSongs[artistName][songName];
 
-            <!-- If undefined then will ad the song to the play list -->
-            if(songIndex === undefined){
-               <!-- Creates play list object and ads it to play list.  If you need to add more song attributes, or file types this is where you do it -->
+            //<!-- If undefined then will ad the song to the play list -->
+            if (songIndex === undefined) {
+                //<!-- Creates play list object and ads it to play list.  If you need to add more song attributes, or file types this is where you do it -->
                 myPlaylist.add({
-                    title : songName,
-                    mp3: $(this).attr('href')
+                    title:songName,
+                    mp3:$(this).attr('href')
                 });
 
-            <!-- sets the song index. By take the length of the playist (with the song added see above) and subtracts 1 because index starts at 0, length starts at 1 -->
-                songIndex = artistSongs[artistName][songName] = myPlaylist.playlist.length -1;
+                //<!-- sets the song index. By take the length of the playist (with the song added see above) and subtracts 1 because index starts at 0, length starts at 1 -->
+                songIndex = artistSongs[artistName][songName] = myPlaylist.playlist.length - 1;
             }
 
             myPlaylist.play(songIndex);
 
+
         });
 
-
-
-
-    <!-- var testFunc = function(){ }; -->
-       <!-- Not called.  Need to call testFunc(). Can call in console. -->
-
-        $(".content-link").click(function(event) {
-            event.preventDefault();
-            href = $(this).attr('href');
-            loadContent(href);
-
-            // HISTORY.PUSHSTATE
-			history.pushState('', 'New URL: '+href, href);
-           });
-
-            // BACK/FORWARD BUTTONS WORK AS WELL
-        window.onpopstate = function(event) {
+        // BACK/FORWARD BUTTONS WORK AS WELL
+        window.onpopstate = function (event) {
             $("#loading").show();
-            console.log("pathname: "+window.location.href);
-            loadContent(window.location.href);
+            var location = window.location.href + "?redir=true";
+            console.log("location: " + location)
+            loadContent(location);
         };
 
-     });
+        $(".content-link").live("click", function (event) {
+            <% if browser.ie? %>
+            alert("Music will stop playing, do you wish to continue? To stop this from appearing download chrome.")
+            <% else %>
+            event.preventDefault();
+            url = $(this).attr('href');
+            console.log("pathname: " + url);
+            loadContent(url);
+
+            // HISTORY.PUSHSTATE
+            history.pushState('', 'New URL: ' + url, url);
+            <% end %>
+        });
+    });
 
     function loadContent(href){
            $.ajax({
@@ -184,6 +184,8 @@
 </head>
 
 <body>
+
+
 
 <div class="container">
   <div class="player_nav">
@@ -248,7 +250,9 @@
 
 
   </div>
-
+  <% if browser.ie? %>
+      <h1>Hey, Internet explorer sucks. We suggest you upgrade your browser to <a href="www.google.com/chrome/">Chrome</a>. Cant do it? Don't Want to do it? Don't know what a browser is? Three Repeater will work, but not well.</h1>
+  <% end %>
 
 <%= yield %>
 

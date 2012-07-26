@@ -88,11 +88,12 @@
 
 <% @artist.songs.uniq.each do |s| %>
     <% unless s.song_url_slug.blank?%>
-    <li><%= link_to s.song_name, artist_show_song_path(@artist.url_slug, s.song_url_slug) %>
-      <%= link_to "Play", download_url_for(s.s3_id), :class => "html5" %>
-      <%=check_box_tag "album_songs[songs_id][]", s.id, @song_ids.include?(s.id) %>
-       </li>
-
+        <% unless s.s3_id.nil? %>
+          <li><%= link_to s.song_name, artist_show_song_path(@artist.url_slug, s.song_url_slug) %>
+          <%= link_to "Play", download_url_for(s.s3_id), :class => "html5" %>
+          <%=check_box_tag "album_songs[songs_id][]", s.id, @song_ids.include?(s.id) %>
+          </li>
+        <% end %>
   <% end %>
 <% end %>
 </ul>

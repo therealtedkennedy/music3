@@ -19,9 +19,7 @@ gem 'rake', '0.8.7'
 gem 'activerecord', '3.0.7'
 gem 'activerecord-sqlserver-adapter', '3.0.19'
 gem 'orm_adapter', '0.0.7'
-
-
-
+gem 'browser'
 
 
 # Use unicorn as the web server

@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<div class="div1ra">
 <h2>
     <% @album.artists.uniq.each do |artist_name| %>
-          <td><%= link_to artist_name.name, artist_link_path(artist_name.url_slug) %></td>
+          <td><%= link_to artist_name.name, artist_link_path(artist_name.url_slug), :class => "content-link" %></td>
     <% end %>
 </h2>
 
@@ -112,8 +112,11 @@
  <ul>
     <% @album.songs.uniq.each do |songs| %>
        <% unless songs.song_url_slug.blank?%>
-            <li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %>
-            <%= link_to "Play", download_url_for(songs.s3_id), :class => "html5" %></li>
+
+           <li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug), :class => "content-link" %> <a href="<%= download_url_for(songs.s3_id) %>" data-song-name="<%=songs.song_name%>" data-artist-name="<%=@artist.name%>" class="music-button"> Play </a>
+             </li>
+
+
       <% end %>
     <% end %>
     </ul>
@@ -122,3 +125,5 @@
   <% @album.artists.uniq.each do |artist_name| %>
           <td><%= link_to 'To '+artist_name.name, artist_link_path(artist_name.url_slug) %></td>
   <% end %>
+
+</div>
