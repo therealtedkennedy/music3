@@ -31,23 +31,19 @@ class ArtistsController < ApplicationController
     @playlist = @artist.songs
 
 
-
-
-  respond_to do |format|
-    format.html # show.html.erb
-    format.xml { render :xml => @artist }
-    format.json {
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml { render :xml => @artist }
+      format.json {
         render :json => {
-           :success => true,
-           :"#content" => render_to_string(
-           :action => 'artists/show.html.erb',
-           :layout => false
-           )
+            :success => true,
+            :"#content" => render_to_string(
+                :action => 'artists/show.html.erb',
+                :layout => false
+            )
 
         }
       }
-
-
 
     end
   end

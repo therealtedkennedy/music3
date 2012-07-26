@@ -6,25 +6,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.generators" afterPath="$PROJECT_DIR$/.idea/.generators" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/music3.iml" afterPath="$PROJECT_DIR$/.idea/music3.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/albums_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/artists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/artists_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/songs_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/songs_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/artists/admin.html.erb" afterPath="$PROJECT_DIR$/app/views/artists/admin.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/artists/show.html.erb" afterPath="$PROJECT_DIR$/app/views/artists/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/homepage.erb" afterPath="$PROJECT_DIR$/app/views/shared/homepage.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/songs/_form_upload_song.html.erb" afterPath="$PROJECT_DIR$/app/views/songs/_form_upload_song.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/show.html.erb" afterPath="$PROJECT_DIR$/app/views/users/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/songs/show.html.erb" afterPath="$PROJECT_DIR$/app/views/songs/show.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/scaffold.css" afterPath="$PROJECT_DIR$/public/stylesheets/scaffold.css" />
     </list>
     <ignored path="music3.iws" />
@@ -51,28 +38,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="songs_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/songs_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="261" selection-end="353" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="artists_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/artists_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="56" selection-start="234" selection-end="337" vertical-scroll-proportion="0.0">
+            <state line="45" column="12" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="albums_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/songs/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="1" selection-start="86" selection-end="86" vertical-scroll-proportion="0.14745308">
+            <state line="114" column="3" selection-start="2220" selection-end="2220" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="artist.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/artist.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="artist_layout.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="239" column="103" selection-start="6934" selection-end="6934" vertical-scroll-proportion="-0.32904884">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scaffold.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/scaffold.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="14" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/profile_layouts/edit.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/profile_layouts/_form.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -81,83 +104,8 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/artists/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="135" column="21" selection-start="2707" selection-end="2707" vertical-scroll-proportion="-13.870968">
+            <state line="127" column="138" selection-start="3033" selection-end="3033" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_form_add_song.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/artists/_form_add_song.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="13" selection-start="449" selection-end="449" vertical-scroll-proportion="5.612903">
-              <folding>
-                <marker date="1342376911785" expanded="true" signature="202:436" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="316:425" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="471:551" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="574:660" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="682:778" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="800:897" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="919:1001" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="1023:1111" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="1133:1206" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/artists/_form.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding>
-                <marker date="1342376911785" expanded="true" signature="143:381" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="259:370" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="416:486" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="509:548" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="571:647" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="669:743" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="765:835" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="857:935" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="957:1033" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="1055:1134" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="1156:1223" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="1245:1330" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="1352:1439" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="1461:1547" placeholder="..." />
-                <marker date="1342376911785" expanded="true" signature="1571:1600" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_form_upload_song_from_artist.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/artists/_form_upload_song_from_artist.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/songs/_form.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding>
-                <marker date="1342376911795" expanded="true" signature="110:345" placeholder="..." />
-                <marker date="1342376911795" expanded="true" signature="224:334" placeholder="..." />
-                <marker date="1342376911795" expanded="true" signature="379:459" placeholder="..." />
-                <marker date="1342376911795" expanded="true" signature="482:591" placeholder="..." />
-                <marker date="1342376911795" expanded="true" signature="615:719" placeholder="..." />
-                <marker date="1342376911795" expanded="true" signature="742:828" placeholder="..." />
-                <marker date="1342376911795" expanded="true" signature="850:946" placeholder="..." />
-                <marker date="1342376911795" expanded="true" signature="968:1088" placeholder="..." />
-                <marker date="1342376911795" expanded="true" signature="1110:1192" placeholder="..." />
-                <marker date="1342376911795" expanded="true" signature="1215:1303" placeholder="..." />
-                <marker date="1342376911795" expanded="true" signature="1325:1398" placeholder="..." />
-                <marker date="1342376911795" expanded="true" signature="1424:1453" placeholder="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -165,7 +113,7 @@
       <file leaf-file-name="_form_upload_song.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/songs/_form_upload_song.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="2" selection-start="172" selection-end="172" vertical-scroll-proportion="-4.2580647">
+            <state line="6" column="2" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -174,7 +122,7 @@
       <file leaf-file-name="admin.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/artists/admin.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="30" selection-start="1422" selection-end="1422" vertical-scroll-proportion="-53.935482">
+            <state line="99" column="0" selection-start="2445" selection-end="2445" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -193,15 +141,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Rails console: music3" root0="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/devise-1.4.2/app/controllers/devise/confirmations_controller.rb" />
-        <option value="C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/devise-1.4.2/app/controllers/devise/unlocks_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/users2_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
@@ -210,11 +152,14 @@
         <option value="$PROJECT_DIR$/Gemfile.lock" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/views/songs/_form_upload_song.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/artists/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/artists/admin.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/artists_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/songs_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/songs/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/artists_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/artists/admin.html.erb" />
+        <option value="$PROJECT_DIR$/public/stylesheets/scaffold.css" />
+        <option value="$PROJECT_DIR$/app/views/artists/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb" />
       </list>
     </option>
   </component>
@@ -273,22 +218,22 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="RailsProjectView">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="music3" />
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -477,6 +422,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stylesheets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="music3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="music3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -586,6 +549,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="songs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="music3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="music3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="profile_layouts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1034,11 +1019,11 @@
       <item index="0" class="java.lang.String" itemvalue="Rake.db:migrate" />
       <item index="1" class="java.lang.String" itemvalue="Rake.routes" />
       <item index="2" class="java.lang.String" itemvalue="Rake.db:rollback" />
-      <item index="3" class="java.lang.String" itemvalue="Rails.Development: music3" />
-      <item index="4" class="java.lang.String" itemvalue="Rails.Production: music3" />
-      <item index="5" class="java.lang.String" itemvalue="Rake.spec" />
-      <item index="6" class="java.lang.String" itemvalue="Rake.test" />
-      <item index="7" class="java.lang.String" itemvalue="Rake.db:migrate:status" />
+      <item index="3" class="java.lang.String" itemvalue="Rake.db:migrate:status" />
+      <item index="4" class="java.lang.String" itemvalue="Rails.Development: music3" />
+      <item index="5" class="java.lang.String" itemvalue="Rails.Production: music3" />
+      <item index="6" class="java.lang.String" itemvalue="Rake.spec" />
+      <item index="7" class="java.lang.String" itemvalue="Rake.test" />
     </list>
     <configuration default="true" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda">
       <predefined_log_file id="RUBY_TESTUNIT" enabled="true" />
@@ -1117,11 +1102,11 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33668903" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997763" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15647922" sideWeight="0.81493866" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17379679" sideWeight="0.7891683" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17860962" sideWeight="0.8500967" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37472036" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21083172" sideWeight="0.10962567" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21083172" sideWeight="0.886631" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14990328" sideWeight="0.13262032" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14990328" sideWeight="0.8636364" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3232662" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1198,151 +1183,84 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="0" selection-start="1201" selection-end="1201" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/song.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="51" selection-start="222" selection-end="248" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/railties-3.0.7/lib/rails/commands.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="48" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/songs/upload.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/songs/song_upload.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/songs/upload.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/songs/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-          <folding>
-            <marker date="1342376911795" expanded="true" signature="110:345" placeholder="..." />
-            <marker date="1342376911795" expanded="true" signature="224:334" placeholder="..." />
-            <marker date="1342376911795" expanded="true" signature="379:459" placeholder="..." />
-            <marker date="1342376911795" expanded="true" signature="482:591" placeholder="..." />
-            <marker date="1342376911795" expanded="true" signature="615:719" placeholder="..." />
-            <marker date="1342376911795" expanded="true" signature="742:828" placeholder="..." />
-            <marker date="1342376911795" expanded="true" signature="850:946" placeholder="..." />
-            <marker date="1342376911795" expanded="true" signature="968:1088" placeholder="..." />
-            <marker date="1342376911795" expanded="true" signature="1110:1192" placeholder="..." />
-            <marker date="1342376911795" expanded="true" signature="1215:1303" placeholder="..." />
-            <marker date="1342376911795" expanded="true" signature="1325:1398" placeholder="..." />
-            <marker date="1342376911795" expanded="true" signature="1424:1453" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artists/_form_upload_song_from_artist.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="5" column="1" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/artists/_form_add_song.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="449" selection-end="449" vertical-scroll-proportion="5.612903">
-          <folding>
-            <marker date="1342376911785" expanded="true" signature="202:436" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="316:425" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="471:551" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="574:660" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="682:778" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="800:897" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="919:1001" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="1023:1111" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="1133:1206" placeholder="..." />
-          </folding>
-        </state>
+        <state line="13" column="13" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/artists/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1342376911785" expanded="true" signature="143:381" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="259:370" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="416:486" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="509:548" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="571:647" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="669:743" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="765:835" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="857:935" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="957:1033" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="1055:1134" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="1156:1223" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="1245:1330" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="1352:1439" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="1461:1547" placeholder="..." />
-            <marker date="1342376911785" expanded="true" signature="1571:1600" placeholder="..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/songs/_form_upload_song.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/artists/_form_upload_song_from_artist.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="2" selection-start="172" selection-end="172" vertical-scroll-proportion="-4.2580647">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artists/show.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/songs/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="135" column="21" selection-start="2707" selection-end="2707" vertical-scroll-proportion="-13.870968">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artists/admin.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="30" selection-start="1422" selection-end="1422" vertical-scroll-proportion="-53.935482">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/songs_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="261" selection-end="353" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="72" column="28" selection-start="1577" selection-end="1826" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/artists_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="56" selection-start="234" selection-end="337" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="45" column="12" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/songs/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="1" selection-start="86" selection-end="86" vertical-scroll-proportion="0.14745308">
+        <state line="114" column="3" selection-start="2220" selection-end="2220" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/artist.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/scaffold.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="14" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/profile_layouts/edit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/profile_layouts/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/artists/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="138" selection-start="3033" selection-end="3033" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/songs/_form_upload_song.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="2" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/artists/admin.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="0" selection-start="2445" selection-end="2445" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="239" column="103" selection-start="6934" selection-end="6934" vertical-scroll-proportion="-0.32904884">
           <folding />
         </state>
       </provider>
