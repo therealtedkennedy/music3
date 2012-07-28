@@ -44,6 +44,7 @@ class OrdersController < ApplicationController
 
   def chained_payment
   #uses https://github.com/jpablobr/active_paypal_adaptive_payment
+  # SSL error - http://stackoverflow.com/questions/4528101/ssl-connect-returned-1-errno-0-state-sslv3-read-server-certificate-b-certificat
 
   payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_slug], params[:amount])
 

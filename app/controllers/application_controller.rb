@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   BUCKET ='ted_kennedy'
-
-
+  # Fixes SSL Error - http://www.techques.com/question/1-5360622/Problems-with-SSL-dependent-gems-OAuth2---ActiveMerchant
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   #
   #def after_sign_in_path_for(resource_or_scope)
   #
