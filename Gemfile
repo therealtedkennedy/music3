@@ -5,7 +5,7 @@ gem 'rails', '3.0.7'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'pg'
 gem 'devise', '1.4.2'
 gem 'jquery-rails'
 gem 'client_side_validations'
@@ -21,6 +21,13 @@ gem 'activerecord-sqlserver-adapter', '3.0.19'
 gem 'orm_adapter', '0.0.7'
 gem 'browser'
 
+group :development do
+  gem "sqlite3"
+end
+
+group :production do
+  gem "pg"
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'

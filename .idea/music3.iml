@@ -51,6 +51,7 @@
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.3.6, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.5.5, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.0.7, ruby-1.9.3-p125 (1)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pg (v0.14.0, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyglot (v0.3.3, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v1.2.5, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-mount (v0.6.14, ruby-1.9.3-p125 (1)) [gem]" level="application" />
@@ -59,7 +60,6 @@
     <orderEntry type="library" scope="PROVIDED" name="railties (v3.0.7, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v0.8.7, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v0.9.9, ruby-1.9.3-p125 (1)) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.6, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v0.14.6, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="treetop (v1.4.10, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v0.3.33, ruby-1.9.3-p125 (1)) [gem]" level="application" />
