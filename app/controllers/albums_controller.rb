@@ -161,7 +161,7 @@ class AlbumsController < ApplicationController
    end
 
        #Sets Directory Path
-    directory_path = "C:/Sites/Zipped"
+    directory_path = "http://mighty-refuge-6115.herokuapp.com/tmp"
     directory_artist_path = directory_path+"/"+@artist.url_slug
     directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.al_name+".zip"

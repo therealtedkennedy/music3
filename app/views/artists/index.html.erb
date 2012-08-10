@@ -45,5 +45,14 @@
 
 </br>
 
-<%= link_to 'New Artist', new_artist_path %>
+<% if can? :update, @artist %>
+
+      <%= link_to 'New Artist', new_artist_path %>
+  <% else %>
+
+    <%= link_to "sign in", new_user_session_path %> or <%= link_to "sign up", new_user_registration_path %> to Create and Artist </br>
+
+<% end %>
+
+
 <%= link_to 'Song List', songs_path %>
