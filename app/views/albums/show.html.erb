@@ -16,7 +16,7 @@
 </section>
 
 
-<h3><%= link_to "Download",album_download_path(@artist.url_slug,@album.id) %></h3>
+
 
 
 
@@ -28,14 +28,14 @@
 
 <h2>Want it? Get it!</h2>
 
-    <% if @album.pay_type = "pay" %>
+    <% if @album.pay_type == "pay" %>
 
         <%= link_to "Buy Now:", payment_method_path("album",@artist.url_slug,@album.album_url_slug ) %>
 
 
     <% else %>
 
-        <h3><%= link_to "Download Free",album_download_path(@artist.url_slug,@album.id) %></h3>
+        <h3><%= link_to "Download Free",album_download_path(@artist.url_slug,@album.album_url_slug) %></h3>
     <% end %>
 
 
@@ -106,6 +106,10 @@
  <p>
  <b>Number of Plays:</b>
  <%= @album.plays%></p>
+
+  <p>
+    <b>Number of Plays:</b>
+    <%= @album.album_url_slug %></p>
 
 
 <h2> Songs </h2>

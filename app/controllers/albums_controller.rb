@@ -161,6 +161,13 @@ class AlbumsController < ApplicationController
    end
 
        #Sets Directory Path
+
+
+
+
+
+
+    #directory_path = "C:/Sites/Zipped"
     directory_path = "http://mighty-refuge-6115.herokuapp.com/tmp"
     directory_artist_path = directory_path+"/"+@artist.url_slug
     directory = directory_artist_path+"/"+@album.album_url_slug
@@ -211,7 +218,7 @@ class AlbumsController < ApplicationController
 
 
     #checks to see if album has been redownloaded already trough the redown param and by passes paykey, orders and assign ablum to user
-    if params[:redown]=="true"
+    if params[:redown]=="true" or @album.al_amount.nil?
 
     else
       #creates an oder.  Might be able to make it into its own app controller
