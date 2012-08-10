@@ -5,7 +5,7 @@ gem 'rails', '3.0.7'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+
 gem 'devise', '1.4.2'
 gem 'jquery-rails'
 gem 'client_side_validations'
@@ -15,7 +15,7 @@ gem 'activemerchant'
 gem "cancan"
 gem "active_paypal_adaptive_payment"
 gem "carrierwave"
-gem 'rake', '0.8.7'
+gem 'rake', '0.9.2'
 gem 'activerecord', '3.0.7'
 gem 'activerecord-sqlserver-adapter', '3.0.19'
 gem 'orm_adapter', '0.0.7'
