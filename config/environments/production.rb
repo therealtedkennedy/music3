@@ -47,14 +47,24 @@ Music3::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   config.after_initialize do
-  ActiveMerchant::Billing::Base.mode = :production
-  paypal_options = {
-    :login => "",
-    :password => "",
-    :signature => ""
-  }
-  ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
-  ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+    ActiveMerchant::Billing::Base.mode = :test
+    paypal_options = {
+        :login => "therea_1326852847_biz_api1.gmail.com",
+        :password => "1326852885",
+        :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31ASJSfLthOmKchEACDPMUl0iUA9Kt",
+
+    }
+    ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+    ::CHAINED_GATEWAY =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
+        :login => "therea_1326852847_biz_api1.gmail.com",
+        :password => "1326852885",
+        :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31ASJSfLthOmKchEACDPMUl0iUA9Kt",
+        :appid => "APP-80W284485P519543T"
+    )
+
+
   end
+
 
 end
