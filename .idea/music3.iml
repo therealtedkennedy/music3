@@ -30,6 +30,7 @@
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v3.0.7, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v2.0.10, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="aws-s3 (v0.6.3, ruby-1.9.3-p125 (1)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="aws_cf_signer (v0.1.1, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bcrypt-ruby (v2.1.4, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="browser (v0.1.4, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v2.1.2, ruby-1.9.3-p125 (1)) [gem]" level="application" />
@@ -37,6 +38,7 @@
     <orderEntry type="library" scope="PROVIDED" name="cancan (v1.6.8, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="carrierwave (v0.5.8, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="client_side_validations (v3.1.4, ruby-1.9.3-p125 (1)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="cloudinary (v1.0.33, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="devise (v1.4.2, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.6.6, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="hashie (v1.2.0, ruby-1.9.3-p125 (1)) [gem]" level="application" />
@@ -59,6 +61,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rails (v3.0.7, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v3.0.7, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v0.9.2, ruby-1.9.3-p125 (1)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rest-client (v1.6.7, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v0.9.9, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.6, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v0.14.6, ruby-1.9.3-p125 (1)) [gem]" level="application" />

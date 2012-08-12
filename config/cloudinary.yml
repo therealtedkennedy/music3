@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hyy026ob8
+  api_key: '592368527114415'
+  api_secret: HSExCXLThutqIIRIdnx0FkfTM9Q
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hyy026ob8
+  api_key: '592368527114415'
+  api_secret: HSExCXLThutqIIRIdnx0FkfTM9Q
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hyy026ob8
+  api_key: '592368527114415'
+  api_secret: HSExCXLThutqIIRIdnx0FkfTM9Q
+  enhance_image_tag: true
+  static_image_support: false

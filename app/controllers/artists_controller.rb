@@ -78,6 +78,7 @@ class ArtistsController < ApplicationController
     #creates and assigns layout
     @artist.profile_layout = ProfileLayout.new
 
+
     respond_to do |format|
       if @artist.save
 
@@ -88,6 +89,8 @@ class ArtistsController < ApplicationController
         format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
       end
     end
+
+
   end
 
   # PUT /artists/1
@@ -99,8 +102,14 @@ class ArtistsController < ApplicationController
   def update
     @artist = Artist.find(params[:id])
 
+   # @file_name = params[:artist][:image].filename
+   # @image_location = "/Sites/music3/public/uploads/artist/image/"+@artist.id+"/"+@file_name
+
     respond_to do |format|
       if @artist.update_attributes(params[:artist])
+
+     #   Cloudinary::Uploader.upload(File.open(@image_location),
+          #                          :public_id => 'pretty-lights')
         format.html { redirect_to(artist_admin_path(@artist.url_slug), :notice => 'Artist was successfully updated.') }
         format.xml { head :ok }
       else
