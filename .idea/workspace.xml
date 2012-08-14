@@ -7,7 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Sites\music3\public\uploads\artist\image\12\HARDSummer2011TN001.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/albums_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
     </list>
     <ignored path="music3.iws" />
@@ -46,7 +45,16 @@
       <file leaf-file-name="albums_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="169" column="5" selection-start="3844" selection-end="3844" vertical-scroll-proportion="0.12205271">
+            <state line="174" column="61" selection-start="4088" selection-end="4088" vertical-scroll-proportion="0.26768377">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="songs_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/songs_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="185" column="42" selection-start="4655" selection-end="4655" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -56,15 +64,6 @@
         <entry file="file://$PROJECT_DIR$/app/uploaders/bk_image_uploader.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="41" column="33" selection-start="1091" selection-end="1091" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="post_data.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/active_utils-1.0.3/lib/active_utils/common/post_data.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -845,7 +844,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1179" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1179" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40114614" sideWeight="0.77911645" order="3" side_tool="false" content_ui="tabs" />
@@ -933,11 +932,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/bundler-1.1.4/lib/bundler.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/bundler-1.1.4/lib/bundler/lockfile_parser.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -1020,9 +1014,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/songs_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="185" column="42" selection-start="4655" selection-end="4655" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="5" selection-start="3844" selection-end="3844" vertical-scroll-proportion="0.12205271">
+        <state line="174" column="61" selection-start="4088" selection-end="4088" vertical-scroll-proportion="0.26768377">
           <folding />
         </state>
       </provider>

@@ -170,7 +170,7 @@ class AlbumsController < ApplicationController
     #directory_path = "C:/Sites/Zipped"
     directory_path = "#{Rails.root}/tmp"
     directory_artist_path = directory_path+"/"+@artist.url_slug
-    directory = directory_artist_path+"/"+@album.album_url_slug
+    directory = directory_artist_path+"/"+@album.album_url_slug+"/"
     zipfile = @album.al_name+".zip"
 
       #Finds and Makes the Directory
@@ -203,7 +203,7 @@ class AlbumsController < ApplicationController
 
               # write the file
 
-                 File.open(path, 'wb') { |f| f.write(@song_file) }
+                File.open(path, 'wb') { |f| f.write(@song_file) }
              end
            end
           end
