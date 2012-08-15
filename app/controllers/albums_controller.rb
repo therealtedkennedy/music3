@@ -189,24 +189,37 @@ class AlbumsController < ApplicationController
 
          #Saves Songs into Directory
           songs_list = Dir.entries(directory)
-          @album.songs.uniq.each do |songs|
-            unless songs.song_url_slug.blank?
-            name =  songs.song_name+".mp3"
+         # @album.songs.uniq.each do |songs|
+          #  unless songs.song_url_slug.blank?
+            #sets the name of the file to be loaded
+            #name =  songs.song_name+".mp3"
 
-            unless songs_list.include?(name)
+           # unless songs_list.include?(name)
             #finds the data
-              @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
+              #@song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
+              @song_file = AWS::S3::S3Object.value(11, BUCKET)
                 #saves file
 
               # create the file path
-                path = File.join(directory, name)
+                path = File.join(directory, "anything1")
 
               # write the file
 
                 File.open(path, 'wb') { |f| f.write(@song_file) }
-             end
-           end
-          end
+
+              @song_file2 = AWS::S3::S3Object.value(11, BUCKET)
+              #saves file
+
+              # create the file path
+              path1 = File.join(directory, "anything")
+
+              # write the file
+
+              File.open(path1, 'wb') { |f| f.write(@song_file2) }
+
+           #  end
+          # end
+         # end
 
       unless (Dir.entries(directory_artist_path).include?(zipfile))
         zip(directory_artist_path,@album.al_name,directory)
