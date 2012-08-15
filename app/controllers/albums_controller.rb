@@ -168,7 +168,7 @@ class AlbumsController < ApplicationController
 
 
     #directory_path = "C:/Sites/Zipped"
-    directory_path = "#{Rails.root}/tmp"
+    directory_path = "#{Rails.root}/tmp/uploads"
     directory_artist_path = directory_path+"/"+@artist.url_slug
     directory = directory_artist_path+"/"+@album.album_url_slug+"/"
     zipfile = @album.al_name+".zip"
@@ -188,32 +188,26 @@ class AlbumsController < ApplicationController
         end
 
          #Saves Songs into Directory
-         # songs_list = Dir.entries(directory)
-         # @album.songs.uniq.each do |songs|
-           # unless songs.song_url_slug.blank?
+          songs_list = Dir.entries(directory)
+           @album.songs.uniq.each do |songs|
+             unless songs.song_url_slug.blank?
             #sets the name of the file to be loaded
-           # name =  songs.song_name+".mp3"
+             name =  songs.song_name+".mp3"
 
-           # unless songs_list.include?(name)
+             unless songs_list.include?(name)
             #finds the data
               @song_file = AWS::S3::S3Object.value("11.mp3", BUCKET)
-                #saves file
+             #saves file
 
               # create the file path
                 path = File.join(directory, "anything")
 
               # write the file
 
-               # File.open(path, 'wb') { |f| f.write(@song_file) }
-
-               io.get_output_stream(path) do |out|
-                  out.write File.binread(@song_file)
-               end
-
-
-             #end
-           #end
-          #end
+                File.open(path, 'wb') { |f| f.write(@song_file) }
+             end
+           end
+          end
 
       unless (Dir.entries(directory_artist_path).include?(zipfile))
         zip(directory_artist_path,@album.al_name,directory)
