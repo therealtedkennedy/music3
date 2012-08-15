@@ -204,7 +204,13 @@ class AlbumsController < ApplicationController
 
               # write the file
 
-                File.open(path, 'wb') { |f| f.write(@song_file) }
+               # File.open(path, 'wb') { |f| f.write(@song_file) }
+
+               io.get_output_stream(path) do |out|
+                  out.write File.binread(@song_file)
+               end
+
+
              #end
            #end
           #end
