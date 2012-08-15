@@ -196,7 +196,7 @@ class AlbumsController < ApplicationController
 
            # unless songs_list.include?(name)
             #finds the data
-              @song_file = AWS::S3::S3Object.value("11", BUCKET)
+              @song_file = AWS::S3::S3Object.value("11.mp3", BUCKET)
                 #saves file
 
               # create the file path
