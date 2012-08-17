@@ -204,7 +204,12 @@ class AlbumsController < ApplicationController
 
               # write the file
 
-                File.open(path, 'w') { |f| f.write(@song_file) }
+               #File.open(path, 'w') { |f| f.write(@song_file) }
+
+              File.open(path, 'w')  { |f|
+              f.force_encoding("utf-8")
+              f.write(fixup(@song_file))
+              }
              end
            end
           end
