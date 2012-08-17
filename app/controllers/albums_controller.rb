@@ -207,8 +207,8 @@ class AlbumsController < ApplicationController
                #File.open(path, 'w') { |f| f.write(@song_file) }
 
               File.open(path, 'w') do |f|
-              @file = @song_file.force_encoding("utf-8")
-              f.write(@file)
+              f.force_encoding("utf-8")
+              f.write(@song_file)
               end
              end
            end
