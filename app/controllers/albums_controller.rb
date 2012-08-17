@@ -204,7 +204,7 @@ class AlbumsController < ApplicationController
 
               # write the file
 
-                File.open(path, 'wb') { |f| f.write(@song_file) }
+                File.open(path, 'w') { |f| f.write(@song_file) }
              end
            end
           end
