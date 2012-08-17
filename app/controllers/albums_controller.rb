@@ -170,7 +170,7 @@ class AlbumsController < ApplicationController
     #directory_path = "C:/Sites/Zipped"
     directory_path = "#{Rails.root}/tmp"
     directory_artist_path = directory_path+"/"+@artist.url_slug
-    directory = directory_artist_path+"/"+@album.album_url_slug+"/"
+    directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.al_name+".zip"
 
       #Finds and Makes the Directory
@@ -196,20 +196,20 @@ class AlbumsController < ApplicationController
 
              unless songs_list.include?(name)
             #finds the data
-              @song_file = AWS::S3::S3Object.value("11.mp3", BUCKET)
+              @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
              #saves file
 
               # create the file path
-                path = File.join(directory, "anything")
+                path = File.join(directory,name)
 
               # write the file
 
                #File.open(path, 'w') { |f| f.write(@song_file) }
 
-              File.open(path, 'w')  { |f|
-              f.force_encoding("utf-8")
-              f.write(fixup(@song_file))
-              }
+              File.open(path, 'wb') do |f|
+              @file = @song_file.force_encoding("utf-8")
+              f.write(@file)
+              end
              end
            end
           end
@@ -224,7 +224,7 @@ class AlbumsController < ApplicationController
 
 
     #checks to see if album has been redownloaded already trough the redown param and by passes paykey, orders and assign ablum to user
-    if params[:redown]=="true" or @album.al_amount.nil?
+    if params[:redown]=="true" or @album.al_amount.nil? or @album.pay_type = "free"
 
     else
       #creates an oder.  Might be able to make it into its own app controller
