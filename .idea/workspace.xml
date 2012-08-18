@@ -36,7 +36,7 @@
       <file leaf-file-name="albums_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="196" column="86" selection-start="4767" selection-end="4767" vertical-scroll-proportion="0.4299584">
+            <state line="229" column="62" selection-start="5658" selection-end="5658" vertical-scroll-proportion="0.7558946">
               <folding />
             </state>
           </provider>
@@ -857,7 +857,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-62" y="0" width="1934" height="1179" extended-state="1" />
+    <frame x="-62" y="0" width="1934" height="1179" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40114614" sideWeight="0.77911645" order="3" side_tool="false" content_ui="tabs" />
@@ -1026,7 +1026,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="196" column="86" selection-start="4767" selection-end="4767" vertical-scroll-proportion="0.4299584">
+        <state line="229" column="62" selection-start="5658" selection-end="5658" vertical-scroll-proportion="0.7558946">
           <folding />
         </state>
       </provider>

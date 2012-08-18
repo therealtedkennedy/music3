@@ -144,6 +144,8 @@ class AlbumsController < ApplicationController
 
 
   def download_album
+    require 'rubygems'
+    require 'zip/zip'
 
    if(params.has_key?(:album_url_slug))
 
@@ -172,6 +174,7 @@ class AlbumsController < ApplicationController
     directory_artist_path = directory_path+"/"+@artist.url_slug
     directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.al_name+".zip"
+    zipfile_name = directory_artist_path+"/"+zipfile
 
      FileUtils.mkdir_p directory
 
@@ -197,18 +200,34 @@ class AlbumsController < ApplicationController
                  file.write(resp.body)
                }
              }
-
-             send_file(path,
-                  :filename  => name)
+           # Testing if files are written
+           #  send_file(path,
+                #  :filename  => name)
 
         end
 
+   file_list = Dir.entries(directory)
+   file_path = directory
+
+   Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
+     file_list.each do |filename|
+       # Two arguments:
+       # - The name of the file as it will appear in the archive
+       # - The original file, including the path to find it
+       zipfile.add(filename, file_path + '/' + filename)
+     end
+   end
+
+
+
+
+
     #  unless (Dir.entries(directory_artist_path).include?(zipfile))
-        zip(directory_artist_path,@album.al_name,directory)
+      #  zip(directory_artist_path,@album.al_name,directory)
     #  end
 
-   # send_file(directory_artist_path+"/"+zipfile,
-      #      :filename  =>  @album.al_name+".zip")
+   send_file(directory_artist_path+"/"+zipfile,
+             :filename  =>  @album.al_name+".zip")
 
 
 
