@@ -7,7 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Sites\music3\public\uploads\artist\image\12\HARDSummer2011TN001.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/albums_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
     </list>
     <ignored path="music3.iws" />
@@ -37,7 +36,7 @@
       <file leaf-file-name="albums_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="180" column="62" selection-start="4277" selection-end="4277" vertical-scroll-proportion="0.42718446">
+            <state line="187" column="50" selection-start="4427" selection-end="4427" vertical-scroll-proportion="0.73231626">
               <folding />
             </state>
           </provider>
@@ -46,7 +45,7 @@
       <file leaf-file-name="orders_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/orders_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="155" column="20" selection-start="4326" selection-end="4326" vertical-scroll-proportion="0.0">
+            <state line="161" column="3" selection-start="4619" selection-end="4619" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -977,13 +976,6 @@
         <state line="10" column="29" selection-start="237" selection-end="237" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/orders_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="20" selection-start="4326" selection-end="4326" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/order.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="16" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0" />
@@ -1024,9 +1016,16 @@
         <state line="32" column="35" selection-start="602" selection-end="602" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/orders_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="161" column="3" selection-start="4619" selection-end="4619" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="180" column="62" selection-start="4277" selection-end="4277" vertical-scroll-proportion="0.42718446">
+        <state line="187" column="50" selection-start="4427" selection-end="4427" vertical-scroll-proportion="0.73231626">
           <folding />
         </state>
       </provider>
