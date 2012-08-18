@@ -171,10 +171,11 @@ class AlbumsController < ApplicationController
 
     #directory_path = "C:/Sites/Zipped"
     directory = "#{Rails.root}/tmp/#{Process.pid}_mp3"
-    directory_artist_path = directory_path+"/"+@artist.url_slug
+    #directory_artist_path = directory_path+"/"+@artist.url_slug
     #directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.al_name+".zip"
-    zipfile_name = directory_artist_path+"/"+zipfile
+    #zipfile_name = directory_artist_path+"/"+zipfile
+    #zipfile_name = directory+"/"+zipfile
 
      FileUtils.mkdir_p directory
 
@@ -209,7 +210,7 @@ class AlbumsController < ApplicationController
 
         end
 
-  system "cd #{Rails.root}/tmp/#{Process.pid}_mp3/; zip -r x.zip something_nice"
+  system "cd #{Rails.root}/tmp/#{Process.pid}_mp3/; zip -r x.zip "
    #file_list = Dir.entries(directory)
    #file_path = directory
 
@@ -230,8 +231,8 @@ class AlbumsController < ApplicationController
       #  zip(directory_artist_path,@album.al_name,directory)
     #  end
 
-   send_file(directory_artist_path+"/"+zipfile,
-             :filename  =>  @album.al_name+".zip")
+   send_file(directory+"/"+zipfile,
+             :filename  =>  x.zip)
 
 
 
