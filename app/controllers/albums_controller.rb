@@ -170,9 +170,9 @@ class AlbumsController < ApplicationController
 
 
     #directory_path = "C:/Sites/Zipped"
-    directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
+    directory = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+@artist.url_slug
-    directory = directory_artist_path+"/"+@album.album_url_slug
+    #directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.al_name+".zip"
     zipfile_name = directory_artist_path+"/"+zipfile
 
@@ -209,7 +209,7 @@ class AlbumsController < ApplicationController
 
         end
 
-  system "cd "+directory+"; zip -r x.zip something_nice"
+  system "cd #{Rails.root}/tmp/#{Process.pid}_mp3/; zip -r x.zip something_nice"
    #file_list = Dir.entries(directory)
    #file_path = directory
 
