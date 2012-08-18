@@ -180,43 +180,46 @@ class AlbumsController < ApplicationController
 
      #Saves Songs into Directory
      songs_list = Dir.entries(directory)
-     @album.songs.uniq.each do |songs|
-        #unless songs.song_url_slug.blank?
-        #sets the name of the file to be loaded
-        name =  songs.song_name+".mp3"
+
+
+     Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
+       @album.songs.uniq.each do |songs|
+          #unless songs.song_url_slug.blank?
+          #sets the name of the file to be loaded
+          name =  songs.song_name+".mp3"
 
 
 
-              # create the file path
-              path = File.join(directory,name)
+                # create the file path
+                path = File.join(directory,name)
 
 
-              s3_path = "/ted_kennedy/"+songs.s3_id
+                s3_path = "/ted_kennedy/"+songs.s3_id
 
-             #  File.open(path, 'wb') { |f| f.write(@song_file) }
-             Net::HTTP.start("s3.amazonaws.com") { |http|
-               resp = http.get(s3_path)
-               open( path, "wb") { |file|
-                 file.write(resp.body)
+               #  File.open(path, 'wb') { |f| f.write(@song_file) }
+               Net::HTTP.start("s3.amazonaws.com") { |http|
+                 resp = http.get(s3_path)
+                 open( path, "wb") { |file|
+                   file.write(resp.body)
+                 }
                }
-             }
-           # Testing if files are written
-           #  send_file(path,
-                #  :filename  => name)
-
+             # Testing if files are written
+             #  send_file(path,
+                  #  :filename  => name)
+             zipfile.add(name, path)
         end
+     end
+   #file_list = Dir.entries(directory)
+   #file_path = directory
 
-   file_list = Dir.entries(directory)
-   file_path = directory
-
-   Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
-     file_list.each do |filename|
+  # Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
+   #  file_list.each do |filename|
        # Two arguments:
        # - The name of the file as it will appear in the archive
-       # - The original file, including the path to find it
-       zipfile.add(filename, file_path + '/' + filename)
-     end
-   end
+   #    # - The original file, including the path to find it
+   #    zipfile.add(filename, file_path + '/' + filename)
+   #  end
+   #end
 
 
 
