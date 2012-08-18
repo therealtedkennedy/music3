@@ -173,51 +173,42 @@ class AlbumsController < ApplicationController
     directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.al_name+".zip"
 
-      #Finds and Makes the Directory
+     FileUtils.mkdir_p directory
 
-      # unless (File.directory?(directory_artist_path))
-     #   Dir.chdir(directory_path)
-    #    Dir.mkdir(@artist.url_slug)
-     #  end
+     #Saves Songs into Directory
+     songs_list = Dir.entries(directory)
+     @album.songs.uniq.each do |songs|
+        #unless songs.song_url_slug.blank?
+        #sets the name of the file to be loaded
+        name =  songs.song_name+".mp3"
 
-     #  unless (File.directory?(directory))
 
-        # Dir.chdir(directory_artist_path)
-        # Dir.mkdir(@album.album_url_slug)
-
-      #  end
-      FileUtils.mkdir_p directory
-
-         #Saves Songs into Directory
-          songs_list = Dir.entries(directory)
-           @album.songs.uniq.each do |songs|
-             unless songs.song_url_slug.blank?
-            #sets the name of the file to be loaded
-             name =  songs.song_name+".mp3"
-
-             unless songs_list.include?(name)
-            #finds the data
-              @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
-             #saves file
 
               # create the file path
-                path = File.join(directory,name)
-
-              # write the file
-
-               File.open(path, 'wb') { |f| f.write(@song_file) }
+              path = File.join(directory,name)
 
 
-             end
-           end
-          end
+              s3_path = "/ted_kennedy/"+songs.s3_id
 
-      unless (Dir.entries(directory_artist_path).include?(zipfile))
+             #  File.open(path, 'wb') { |f| f.write(@song_file) }
+             Net::HTTP.start("s3.amazonaws.com") { |http|
+               resp = http.get(s3_path)
+               open( path, "wb") { |file|
+                 file.write(resp.body)
+               }
+             }
+
+             send_file(path,
+                  :filename  => name)
+
+        end
+
+    #  unless (Dir.entries(directory_artist_path).include?(zipfile))
         zip(directory_artist_path,@album.al_name,directory)
-      end
+    #  end
 
-    send_file(directory_artist_path+"/"+zipfile,
-            :filename  =>  @album.al_name+".zip")
+   # send_file(directory_artist_path+"/"+zipfile,
+      #      :filename  =>  @album.al_name+".zip")
 
 
 
@@ -244,9 +235,9 @@ class AlbumsController < ApplicationController
          assign_to_user("album",@album.album_url_slug)
        end
    end
-  end
 
 
+ end
 
 
 
