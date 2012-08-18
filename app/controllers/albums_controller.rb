@@ -182,7 +182,7 @@ class AlbumsController < ApplicationController
      songs_list = Dir.entries(directory)
 
 
-     Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
+
        @album.songs.uniq.each do |songs|
           #unless songs.song_url_slug.blank?
           #sets the name of the file to be loaded
@@ -206,9 +206,10 @@ class AlbumsController < ApplicationController
              # Testing if files are written
              #  send_file(path,
                   #  :filename  => name)
-             zipfile.add(name, path)
+
         end
-     end
+
+  system "cd "+directory+"; zip -r x.zip something_nice"
    #file_list = Dir.entries(directory)
    #file_path = directory
 
