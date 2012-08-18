@@ -176,17 +176,13 @@ class AlbumsController < ApplicationController
     zipfile = @album.al_name+".zip"
     zipfile_name = directory_artist_path+"/"+zipfile
 
-     FileUtils.mkdir_p directory
-
-     #Saves Songs into Directory
-     songs_list = Dir.entries(directory)
-
+    FileUtils.mkdir_p directory
 
     Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
        @album.songs.uniq.each do |songs|
-          #unless songs.song_url_slug.blank?
+
           #sets the name of the file to be loaded
-          name =  songs.song_name+".mp3"
+              name =  songs.song_name+".mp3"
 
 
                @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
@@ -196,7 +192,7 @@ class AlbumsController < ApplicationController
 
                # s3_path = "/ted_kennedy/"+songs.s3_id
 
-               File.open(path, 'wb') { |f| f.write(@song_file) }
+               File.open(path, 'w') { |f| f.write(@song_file) }
 
              # Testing if files are written
               #send_file(path,
