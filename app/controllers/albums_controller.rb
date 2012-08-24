@@ -170,13 +170,14 @@ class AlbumsController < ApplicationController
 
 
     #directory_path = "C:/Sites/Zipped"
+
     directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+@artist.url_slug
     directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.al_name+".zip"
     zipfile_name = directory_artist_path+"/"+zipfile
 
-    FileUtils.mkdir_p directory
+    FileUtils.mkdir_p zipfile_name
 
     Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
        @album.songs.uniq.each do |songs|
@@ -192,7 +193,7 @@ class AlbumsController < ApplicationController
 
                # s3_path = "/ted_kennedy/"+songs.s3_id
 
-               File.open(path, 'w') { |f| f.write(@song_file) }
+               File.open(path, 'wb') { |f| f.write(@song_file) }
 
              # Testing if files are written
               #send_file(path,
