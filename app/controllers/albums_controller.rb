@@ -198,7 +198,7 @@ class AlbumsController < ApplicationController
              # Testing if files are written
               #send_file(path,
                    # :filename  => name)
-             zipfile.add(name, path)
+
         end
 
     system "cd #{directory}; zip -r #{zipfile} #{@album.album_url_slug}"
