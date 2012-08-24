@@ -196,7 +196,7 @@ class AlbumsController < ApplicationController
                # s3_path = "/ted_kennedy/"+songs.s3_id
 
                File.open(path, 'wb') { |f| f.write(@song_file) }
-               logger.debug
+
              # Testing if files are written
               #send_file(path,
                    # :filename  => name)
