@@ -176,6 +176,8 @@ class AlbumsController < ApplicationController
     directory = directory_artist_path+"/"+@album.album_url_slug+"/"
     zipfile = @album.al_name+".zip"
     zipfile_name = directory_artist_path+"/"+zipfile
+    album_dir = @album.album_url_slug}+"/"
+
 
     FileUtils.mkdir_p directory
 
@@ -194,14 +196,14 @@ class AlbumsController < ApplicationController
                # s3_path = "/ted_kennedy/"+songs.s3_id
 
                File.open(path, 'wb') { |f| f.write(@song_file) }
-
+               logger.debug
              # Testing if files are written
               #send_file(path,
                    # :filename  => name)
 
         end
 
-    system "cd #{directory}; zip -r #{zipfile} #{@album.album_url_slug}"
+    system "cd #{directory}; zip -r #{zipfile} #{album_dir}"
 
 
 

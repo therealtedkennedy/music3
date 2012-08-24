@@ -2,11 +2,12 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/app/views/albums/show.html.erb" line="31" />
-    <bookmark url="file://$PROJECT_DIR$/app/controllers/albums_controller.rb" line="217" mnemonic="3" />
+    <bookmark url="file://$PROJECT_DIR$/app/controllers/albums_controller.rb" line="219" mnemonic="3" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Sites\music3\public\uploads\artist\image\12\HARDSummer2011TN001.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/albums_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
     </list>
     <ignored path="music3.iws" />
@@ -36,7 +37,7 @@
       <file leaf-file-name="albums_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="200" column="13" selection-start="4781" selection-end="4781" vertical-scroll-proportion="0.627907">
+            <state line="206" column="61" selection-start="4927" selection-end="4927" vertical-scroll-proportion="0.90697676">
               <folding />
             </state>
           </provider>
@@ -1027,7 +1028,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="200" column="13" selection-start="4781" selection-end="4781" vertical-scroll-proportion="0.627907">
+        <state line="206" column="61" selection-start="4927" selection-end="4927" vertical-scroll-proportion="0.90697676">
           <folding />
         </state>
       </provider>
