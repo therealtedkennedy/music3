@@ -2,7 +2,7 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/app/views/albums/show.html.erb" line="31" />
-    <bookmark url="file://$PROJECT_DIR$/app/controllers/albums_controller.rb" line="213" mnemonic="3" />
+    <bookmark url="file://$PROJECT_DIR$/app/controllers/albums_controller.rb" line="217" mnemonic="3" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
@@ -37,7 +37,7 @@
       <file leaf-file-name="albums_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="187" column="51" selection-start="4448" selection-end="4448" vertical-scroll-proportion="0.55813956">
+            <state line="180" column="74" selection-start="4239" selection-end="4239" vertical-scroll-proportion="0.23255815">
               <folding />
             </state>
           </provider>
@@ -1028,7 +1028,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="187" column="51" selection-start="4448" selection-end="4448" vertical-scroll-proportion="0.55813956">
+        <state line="180" column="74" selection-start="4239" selection-end="4239" vertical-scroll-proportion="0.23255815">
           <folding />
         </state>
       </provider>
