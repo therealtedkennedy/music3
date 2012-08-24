@@ -176,7 +176,7 @@ class AlbumsController < ApplicationController
     directory = directory_artist_path+"/"+@album.album_url_slug+"/"
     zipfile = @album.al_name+".zip"
     zipfile_name = directory_artist_path+"/"+zipfile
-    album_dir = @album.album_url_slug}+"/"
+    album_dir = @album.album_url_slug+"/"
 
 
     FileUtils.mkdir_p directory
