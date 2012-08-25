@@ -174,8 +174,8 @@ class AlbumsController < ApplicationController
 
 
 
-    #directory_path = "C:/Sites/Zipped"
-    directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
+    directory_path = "C:/Sites/Zipped"
+    #directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+@artist.url_slug
     directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.al_name+".zip"
@@ -204,20 +204,28 @@ class AlbumsController < ApplicationController
         unless songs_list.include?(name)
           #finds the data
           @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
+          logger.info
           #saves file
 
           # create the file path
           path = File.join(directory, name)
-
+          logger.info
           # write the file
 
           File.open(path, 'wb') { |f| f.write(@song_file) }
+
+
+          #test if file is being written
+          #send_file(path,
+           # :filename  => name)
+
         end
       end
     end
 
     unless (Dir.entries(directory_artist_path).include?(zipfile))
       zip(directory_artist_path,@album.al_name,directory)
+      logger.info
     end
 
     send_file(directory_artist_path+"/"+zipfile,
@@ -257,6 +265,7 @@ class AlbumsController < ApplicationController
   def zip (directory_artist_path, album_name,directory)
     require 'rubygems'
     require 'zip/zip'
+    require 'zip/zipfilesystem'
 
     puts "Zipping files!"
 
@@ -274,6 +283,7 @@ class AlbumsController < ApplicationController
         # - The name of the file as it will appear in the archive
         # - The original file, including the path to find it
         zipfile.add(filename, file_path + '/' + filename)
+        logger.info
       end
     end
   end

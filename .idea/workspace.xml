@@ -35,7 +35,7 @@
       <file leaf-file-name="albums_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="196" column="4" selection-start="4595" selection-end="4595" vertical-scroll-proportion="0.68705547">
+            <state line="277" column="82" selection-start="6773" selection-end="6773" vertical-scroll-proportion="0.59317213">
               <folding />
             </state>
           </provider>
@@ -45,7 +45,27 @@
         <entry file="file://$PROJECT_DIR$/app/views/albums/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="14.903226">
-              <folding />
+              <folding>
+                <marker date="1343271044584" expanded="true" signature="110:345" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="224:334" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="377:451" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="476:626" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="649:760" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="782:878" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="900:986" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="1008:1116" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="1203:1340" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="1379:1524" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="1549:1646" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="1704:1783" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="1805:1888" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="1911:1996" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="2095:2106" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="2127:2634" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="2133:2571" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="2259:2525" placeholder="..." />
+                <marker date="1343271044584" expanded="true" signature="2658:2687" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1018,13 +1038,33 @@
     <entry file="file://$PROJECT_DIR$/app/views/albums/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="14.903226">
-          <folding />
+          <folding>
+            <marker date="1343271044584" expanded="true" signature="110:345" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="224:334" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="377:451" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="476:626" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="649:760" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="782:878" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="900:986" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="1008:1116" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="1203:1340" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="1379:1524" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="1549:1646" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="1704:1783" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="1805:1888" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="1911:1996" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="2095:2106" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="2127:2634" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="2133:2571" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="2259:2525" placeholder="..." />
+            <marker date="1343271044584" expanded="true" signature="2658:2687" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="196" column="4" selection-start="4595" selection-end="4595" vertical-scroll-proportion="0.68705547">
+        <state line="277" column="82" selection-start="6773" selection-end="6773" vertical-scroll-proportion="0.59317213">
           <folding />
         </state>
       </provider>
