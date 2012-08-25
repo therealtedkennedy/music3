@@ -24,6 +24,7 @@ gem 'cloudinary'
 gem 'aws_cf_signer'
 
 
+
 group :development do
   gem "sqlite3"
 end
