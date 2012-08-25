@@ -142,29 +142,30 @@ class AlbumsController < ApplicationController
   end
 
 
+  def album_code_download
 
-  def download_album
-    require 'rubygems'
-    require 'zip/zip'
-    require 'zip/zipfilesystem'
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+    @url_slug = params[:url_slug]
+    authorize! :create, @artist
 
+enddef download_album
 
-   if(params.has_key?(:album_url_slug))
+    if(params.has_key?(:album_url_slug))
 
-     @artist = Artist.find_by_url_slug(params[:url_slug])
-     find_album(@artist,params[:album_url_slug])
+      @artist = Artist.find_by_url_slug(params[:url_slug])
+      find_album(@artist,params[:album_url_slug])
 
 
 
       #authorize! :create, @artist
-   else
+    else
       @album = album
       @artist = artist
-     # authorize! :create, @artist
+      # authorize! :create, @artist
 
-   end
+    end
 
-       #Sets Directory Path
+    #Sets Directory Path
 
 
 
@@ -172,84 +173,63 @@ class AlbumsController < ApplicationController
 
 
     #directory_path = "C:/Sites/Zipped"
-
     directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+@artist.url_slug
-    directory = directory_artist_path+"/"+@album.album_url_slug+"/"
+    directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.al_name+".zip"
-    zipfile_name = directory_artist_path+"/"+zipfile
-    album_dir = @album.album_url_slug+"/"
 
+    #Finds and Makes the Directory
 
-    FileUtils.mkdir_p zipfile_name
-
-    if File.file?(zipfile_name)
-      File.delete(zipfile_name)
+    unless (File.directory?(directory_artist_path))
+      Dir.chdir(directory_path)
+      Dir.mkdir(@artist.url_slug)
     end
 
-    Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
-      #collects songs
-      @album.songs.uniq.each do |songs|
+    unless (File.directory?(directory))
 
-        #sets the name of the file to be loaded
+      Dir.chdir(directory_artist_path)
+      Dir.mkdir(@album.album_url_slug)
+
+    end
+
+    #Saves Songs into Directory
+    songs_list = Dir.entries(directory)
+    @album.songs.uniq.each do |songs|
+      unless songs.song_url_slug.blank?
         name =  songs.song_name+".mp3"
 
+        unless songs_list.include?(name)
+          #finds the data
+          @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
+          #saves file
 
-        @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
-        # create the file path
-        path = File.join(directory,name)
+          # create the file path
+          path = File.join(directory, name)
 
+          # write the file
 
-        # s3_path = "/ted_kennedy/"+songs.s3_id
-
-        File.open(path, 'wb') { |f| f.write(@song_file) }
-
-        # Testing if files are written
-        #send_file(path,
-        # :filename  => name)
-        zipfile.add(name, path)
+          File.open(path, 'wb') { |f| f.write(@song_file) }
+        end
       end
     end
 
-    File.chmod(0644,zipfile_name)
+    unless (Dir.entries(directory_artist_path).include?(zipfile))
+      zip(directory_artist_path,@album.al_name,directory)
+    end
 
-    #system "cd #{directory}; zip -r #{zipfile} #{album_dir}"
-
-
-
-   #file_list = Dir.entries(directory)
-   #file_path = directory
-
-  # Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
-   #  file_list.each do |filename|
-       # Two arguments:
-       # - The name of the file as it will appear in the archive
-   #    # - The original file, including the path to find it
-   #    zipfile.add(filename, file_path + '/' + filename)
-   #  end
-   #end
-
-
-
-
-
-    #  unless (Dir.entries(directory_artist_path).include?(zipfile))
-      #  zip(directory_artist_path,@album.al_name,directory)
-    #  end
-
-   send_file(directory_artist_path+"/"+zipfile,
-             :filename  =>  @album.al_name+".zip")
+    send_file(directory_artist_path+"/"+zipfile,
+              :filename  =>  @album.al_name+".zip")
 
 
 
     #checks to see if album has been redownloaded already trough the redown param and by passes paykey, orders and assign ablum to user
-    if params[:redown]=="true" or @album.al_amount.nil? or @album.pay_type = "free"
+    if params[:redown]=="true" or @album.al_amount.nil? or @album.pay_type == "free"
 
     else
       #creates an oder.  Might be able to make it into its own app controller
       if cookies[:paykey].to_s.blank?
 
-         order_create(@album,params[:token])
+        order_create(@album,params[:token])
 
       else
 
@@ -257,51 +237,44 @@ class AlbumsController < ApplicationController
       end
       # deletes the download cookie so that muliple downloads won't happen
       cookies[:next_step] = {:expires => 1.year.ago}
-        #Deletes the pay key for tranactions
+      #Deletes the pay key for tranactions
       cookies[:paykey] = {:expires => 1.year.ago}
 
-     #checks if user is signed in. If signed in assigns user found in application controller
-       if user_signed_in?
-         assign_to_user("album",@album.album_url_slug)
-       end
-   end
+      #checks if user is signed in. If signed in assigns user found in application controller
+      if user_signed_in?
+        assign_to_user("album",@album.album_url_slug)
+      end
+    end
+  end
 
 
- end
 
 
 
   def zip (directory_artist_path, album_name,directory)
-      require 'rubygems'
-      require 'zip/zip'
+    require 'rubygems'
+    require 'zip/zip'
 
-      puts "Zipping files!"
+    puts "Zipping files!"
 
-      file_path = directory
-      file_list = Dir.entries(directory)
-      file_list.delete(".")
-      file_list.delete("..")
+    file_path = directory
+    file_list = Dir.entries(directory)
+    file_list.delete(".")
+    file_list.delete("..")
 
 
-      zipfile_name = directory_artist_path+"/"+album_name+".zip"
+    zipfile_name = directory_artist_path+"/"+album_name+".zip"
 
-      Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
-        file_list.each do |filename|
-          # Two arguments:
-          # - The name of the file as it will appear in the archive
-          # - The original file, including the path to find it
-          zipfile.add(filename, file_path + '/' + filename)
-        end
+    Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
+      file_list.each do |filename|
+        # Two arguments:
+        # - The name of the file as it will appear in the archive
+        # - The original file, including the path to find it
+        zipfile.add(filename, file_path + '/' + filename)
       end
+    end
   end
 
-  def album_code_download
-
-    @artist = Artist.find_by_url_slug(params[:url_slug])
-    @url_slug = params[:url_slug]
-    authorize! :create, @artist
-
-  end
 
   def album_code_find
     @artist = Artist.find_by_url_slug(params[:url_slug])
