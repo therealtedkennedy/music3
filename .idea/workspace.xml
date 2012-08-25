@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Sites\music3\public\uploads\artist\image\12\HARDSummer2011TN001.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/albums_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
     </list>
     <ignored path="music3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,7 +43,7 @@
       <file leaf-file-name="zip_file.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/rubyzip-0.9.9/lib/zip/zip_file.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="177" column="82" selection-start="6227" selection-end="6227" vertical-scroll-proportion="0.6396648">
+            <state line="61" column="66" selection-start="2240" selection-end="2240" vertical-scroll-proportion="0.67597765">
               <folding />
             </state>
           </provider>
@@ -1104,7 +1103,7 @@
     </entry>
     <entry file="file://C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/rubyzip-0.9.9/lib/zip/zip_file.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="177" column="82" selection-start="6227" selection-end="6227" vertical-scroll-proportion="0.6396648">
+        <state line="61" column="66" selection-start="2240" selection-end="2240" vertical-scroll-proportion="0.67597765">
           <folding />
         </state>
       </provider>
