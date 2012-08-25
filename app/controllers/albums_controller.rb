@@ -146,6 +146,8 @@ class AlbumsController < ApplicationController
   def download_album
     require 'rubygems'
     require 'zip/zip'
+    require 'zip/zipfilesystem'
+
 
    if(params.has_key?(:album_url_slug))
 
@@ -179,31 +181,39 @@ class AlbumsController < ApplicationController
     album_dir = @album.album_url_slug+"/"
 
 
-    FileUtils.mkdir_p directory
+    FileUtils.mkdir_p zipfile_name
+
+    if File.file?(zipfile_name)
+      File.delete(zipfile_name)
+    end
+
+    Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
+      #collects songs
+      @album.songs.uniq.each do |songs|
+
+        #sets the name of the file to be loaded
+        name =  songs.song_name+".mp3"
 
 
-       @album.songs.uniq.each do |songs|
-
-          #sets the name of the file to be loaded
-              name =  songs.song_name+".mp3"
-
-
-               @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
-                # create the file path
-                path = File.join(directory,name)
+        @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
+        # create the file path
+        path = File.join(directory,name)
 
 
-               # s3_path = "/ted_kennedy/"+songs.s3_id
+        # s3_path = "/ted_kennedy/"+songs.s3_id
 
-               File.open(path, 'wb') { |f| f.write(@song_file) }
+        File.open(path, 'wb') { |f| f.write(@song_file) }
 
-             # Testing if files are written
-              #send_file(path,
-                   # :filename  => name)
+        # Testing if files are written
+        #send_file(path,
+        # :filename  => name)
+        zipfile.add(name, path)
+      end
+    end
 
-        end
+    File.chmod(0644,zipfile_name)
 
-    system "cd #{directory}; zip -r #{zipfile} #{album_dir}"
+    #system "cd #{directory}; zip -r #{zipfile} #{album_dir}"
 
 
 
