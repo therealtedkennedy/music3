@@ -182,17 +182,17 @@ class AlbumsController < ApplicationController
 
     #Finds and Makes the Directory
 
-    unless (File.directory?(directory_artist_path))
-      Dir.chdir(directory_path)
-      Dir.mkdir(@artist.url_slug)
-    end
+   # unless (File.directory?(directory_artist_path))
+     # Dir.chdir(directory_path)
+     # Dir.mkdir(@artist.url_slug)
+   # end
 
-    unless (File.directory?(directory))
+   # unless (File.directory?(directory))
 
-      Dir.chdir(directory_artist_path)
-      Dir.mkdir(@album.album_url_slug)
+   #   Dir.chdir(directory_artist_path)
+    #  Dir.mkdir(@album.album_url_slug)
 
-    end
+   # end
 
     #Saves Songs into Directory
     songs_list = Dir.entries(directory)
