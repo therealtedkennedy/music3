@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Sites\music3\public\uploads\artist\image\12\HARDSummer2011TN001.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/albums_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
     </list>
     <ignored path="music3.iws" />
@@ -36,7 +35,7 @@
       <file leaf-file-name="albums_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="180" column="37" selection-start="4292" selection-end="4292" vertical-scroll-proportion="0.2802276">
+            <state line="150" column="2" selection-start="3653" selection-end="3653" vertical-scroll-proportion="0.2802276">
               <folding />
             </state>
           </provider>
@@ -1025,7 +1024,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="180" column="37" selection-start="4292" selection-end="4292" vertical-scroll-proportion="0.2802276">
+        <state line="150" column="2" selection-start="3653" selection-end="3653" vertical-scroll-proportion="0.2802276">
           <folding />
         </state>
       </provider>

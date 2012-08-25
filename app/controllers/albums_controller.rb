@@ -148,7 +148,9 @@ class AlbumsController < ApplicationController
     @url_slug = params[:url_slug]
     authorize! :create, @artist
 
-enddef download_album
+  end
+
+  def download_album
 
     if(params.has_key?(:album_url_slug))
 
