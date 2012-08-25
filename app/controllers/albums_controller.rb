@@ -284,7 +284,7 @@ class AlbumsController < ApplicationController
         # - The name of the file as it will appear in the archive
         # - The original file, including the path to find it
         zipfile.add(filename, file_path + '/' + filename)
-        logger.info
+
       end
     end
   end
