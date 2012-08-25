@@ -35,7 +35,7 @@
       <file leaf-file-name="albums_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="196" column="36" selection-start="4595" selection-end="4595" vertical-scroll-proportion="0.49928877">
+            <state line="196" column="4" selection-start="4595" selection-end="4595" vertical-scroll-proportion="0.68705547">
               <folding />
             </state>
           </provider>
@@ -1024,7 +1024,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="196" column="36" selection-start="4595" selection-end="4595" vertical-scroll-proportion="0.49928877">
+        <state line="196" column="4" selection-start="4595" selection-end="4595" vertical-scroll-proportion="0.68705547">
           <folding />
         </state>
       </provider>

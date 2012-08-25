@@ -193,6 +193,7 @@ class AlbumsController < ApplicationController
     #  Dir.mkdir(@album.album_url_slug)
 
    # end
+    FileUtils.mkdir_p directory
 
     #Saves Songs into Directory
     songs_list = Dir.entries(directory)
