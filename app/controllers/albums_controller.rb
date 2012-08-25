@@ -181,7 +181,7 @@ class AlbumsController < ApplicationController
     album_dir = @album.album_url_slug+"/"
 
 
-    FileUtils.mkdir_p zipfile_name
+    #FileUtils.mkdir_p zipfile_name
 
     if File.file?(zipfile_name)
       File.delete(zipfile_name)
