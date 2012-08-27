@@ -233,8 +233,8 @@ class AlbumsController < ApplicationController
 
     end
 
-    send_file(directory_artist_path+"/"+no_zip,
-              :filename  =>  @album.al_name+".zip")
+    send_file(directory_artist_path+"/"+zipfile,
+              :filename  =>  @album.al_name)
 
 
 
