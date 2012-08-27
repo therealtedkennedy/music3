@@ -174,8 +174,8 @@ class AlbumsController < ApplicationController
 
 
 
-    #directory_path = "C:/Sites/Zipped"
-    directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
+    directory_path = "C:/Sites/Zipped"
+    #directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+@artist.url_slug
     directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.al_name+".zip"
@@ -204,12 +204,12 @@ class AlbumsController < ApplicationController
         unless songs_list.include?(name)
           #finds the data
           @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
-          logger.info
+          logger.info "Song downlaoded from s3"
           #saves file
 
           # create the file path
           path = File.join(directory, name)
-          logger.info
+          logger.info  "File Created"
           # write the file
 
           File.open(path, 'wb') { |f| f.write(@song_file) }
@@ -225,7 +225,7 @@ class AlbumsController < ApplicationController
 
     unless (Dir.entries(directory_artist_path).include?(zipfile))
       zip(directory_artist_path,@album.al_name,directory)
-      logger.info
+      logger.info "Zipped"
     end
 
     send_file(directory_artist_path+"/"+zipfile,
