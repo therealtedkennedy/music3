@@ -36,7 +36,7 @@
       <file leaf-file-name="albums_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="279" column="51" selection-start="6877" selection-end="6877" vertical-scroll-proportion="0.0">
+            <state line="231" column="7" selection-start="5563" selection-end="5563" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -45,7 +45,7 @@
       <file leaf-file-name="zip_file.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/rubyzip-0.9.9/lib/zip/zip_file.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="175" column="19" selection-start="6105" selection-end="6105" vertical-scroll-proportion="0.3644315">
+            <state line="183" column="43" selection-start="6416" selection-end="6416" vertical-scroll-proportion="0.42857143">
               <folding />
             </state>
           </provider>
@@ -1096,14 +1096,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="279" column="51" selection-start="6877" selection-end="6877" vertical-scroll-proportion="0.0">
+        <state line="231" column="7" selection-start="5563" selection-end="5563" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/rubyzip-0.9.9/lib/zip/zip_file.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="175" column="19" selection-start="6105" selection-end="6105" vertical-scroll-proportion="0.3644315">
+        <state line="183" column="43" selection-start="6416" selection-end="6416" vertical-scroll-proportion="0.42857143">
           <folding />
         </state>
       </provider>

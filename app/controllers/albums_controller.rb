@@ -226,6 +226,9 @@ class AlbumsController < ApplicationController
     unless (Dir.entries(directory_artist_path).include?(zipfile))
       zip(directory_artist_path,@album.al_name,directory)
       logger.info "Zipped"
+      file_list = Dir.entries(directory_artist_path)
+      puts file_list
+
     end
 
     send_file(directory_artist_path+"/"+zipfile,
@@ -273,8 +276,6 @@ class AlbumsController < ApplicationController
     file_list = Dir.entries(directory)
     file_list.delete(".")
     file_list.delete("..")
-
-
     zipfile_name = directory_artist_path+"/"+album_name+".zip"
 
     Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
