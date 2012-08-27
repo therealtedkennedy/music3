@@ -174,8 +174,8 @@ class AlbumsController < ApplicationController
 
 
 
-    directory_path = "C:/Sites/Zipped"
-    #directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
+    #directory_path = "C:/Sites/Zipped"
+    directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+@artist.url_slug
     directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.al_name+".zip"
@@ -227,6 +227,7 @@ class AlbumsController < ApplicationController
       zip(directory_artist_path,@album.al_name,directory)
       logger.info "Zipped"
       file_list = Dir.entries(directory_artist_path)
+      puts "file list"
       puts file_list
 
     end
@@ -280,6 +281,7 @@ class AlbumsController < ApplicationController
 
     Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
       file_list.each do |filename|
+        puts "this is a file name"
         puts filename
         # Two arguments:
         # - The name of the file as it will appear in the archive
