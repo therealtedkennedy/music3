@@ -225,7 +225,7 @@ class AlbumsController < ApplicationController
     end
 
     unless (Dir.entries(directory_artist_path).include?(zipfile))
-      zip(directory_artist_path,@album.al_name,directory)
+      zip(directory_artist_path,@album.album_url_slug,directory)
       logger.info "Zipped"
       file_list = Dir.entries(directory_artist_path)
       puts "file list"
