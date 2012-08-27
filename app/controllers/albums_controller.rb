@@ -199,39 +199,14 @@ class AlbumsController < ApplicationController
     #Saves Songs into Directory
    # songs_list = Dir.entries(directory)
 
-
-    @album.songs.uniq.each do |songs|
-      unless songs.song_url_slug.blank?
-        name =  songs.song_name+".mp3"
-
-       # unless songs_list.include?(name)
-          #finds the data
-          @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
-          logger.info "Song downlaoded from s3"
-          #saves file
-
-          # create the file path
-          path = File.join(directory, name)
-          logger.info  "File Created"
-          # write the file
-
-          File.open(path, 'wb') { |f| f.write(@song_file) }
-
-
-          #test if file is being written
-          #send_file(path,
-           # :filename  => name)
-
-       # end
-      end
-    end
+    create_songs(@album,directory)
 
    # unless (Dir.entries(directory_artist_path).include?(zipfile))
-      zip(directory_artist_path,@album.album_url_slug,directory)
-      logger.info "Zipped"
-      file_list = Dir.entries(directory_artist_path)
-      puts "file list"
-      puts file_list
+    zip(directory_artist_path,@album.album_url_slug,directory)
+    logger.info "Zipped"
+    file_list = Dir.entries(directory_artist_path)
+    puts "file list"
+    puts file_list
 
    # end
 
@@ -312,6 +287,36 @@ class AlbumsController < ApplicationController
         end
     end
 
+
+  end
+
+
+  def create_songs (album,directory)
+    album.songs.uniq.each do |songs|
+      unless songs.song_url_slug.blank?
+        name =  songs.song_name+".mp3"
+
+        # unless songs_list.include?(name)
+        #finds the data
+        @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
+        logger.info "Song downlaoded from s3"
+        #saves file
+
+        # create the file path
+        path = File.join(directory, name)
+        logger.info  "File Created"
+        # write the file
+
+        File.open(path, 'wb') { |f| f.write(@song_file) }
+
+
+        #test if file is being written
+        #send_file(path,
+        # :filename  => name)
+
+        # end
+      end
+    end
 
   end
 
