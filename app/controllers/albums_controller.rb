@@ -267,7 +267,7 @@ class AlbumsController < ApplicationController
 
 
 
-  def zip (directory_artist_path, album_name,directory)
+  def zip (directory_artist_path, zip_file_name,directory)
     require 'rubygems'
     require 'zip/zip'
     require 'zip/zipfilesystem'
@@ -278,7 +278,7 @@ class AlbumsController < ApplicationController
     file_list = Dir.entries(directory)
     file_list.delete(".")
     file_list.delete("..")
-    zipfile_name = directory_artist_path+"/"+album_name+".zip"
+    zipfile_name = directory_artist_path+"/"+zip_file_name+".zip"
 
     Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
       file_list.each do |filename|
@@ -288,7 +288,7 @@ class AlbumsController < ApplicationController
         # - The name of the file as it will appear in the archive
         # - The original file, including the path to find it
         something = zipfile.add(filename, file_path + '/' + filename)
-        puts "This is"
+        puts "This is after add"
         puts something
 
       end
