@@ -201,14 +201,21 @@ class AlbumsController < ApplicationController
 
     create_songs(@album,directory)
 
-   # unless (Dir.entries(directory_artist_path).include?(zipfile))
-    zip(directory_artist_path,@album.album_url_slug,directory)
-    logger.info "Zipped"
-    file_list = Dir.entries(directory_artist_path)
-    puts "file list"
-    puts file_list
+    until @finshed ="true"
+      puts "wating"
+
+    end
+
+
+     # unless (Dir.entries(directory_artist_path).include?(zipfile))
+      zip(directory_artist_path,@album.album_url_slug,directory)
+      logger.info "Zipped"
+      file_list = Dir.entries(directory_artist_path)
+      puts "file list"
+      puts file_list
 
    # end
+
 
     send_file(directory_artist_path+"/"+zipfile,
               :filename  =>  @album.album_url_slug+".zip")
@@ -315,6 +322,7 @@ class AlbumsController < ApplicationController
         # :filename  => name)
 
         # end
+        @finished = "true"
       end
     end
 
