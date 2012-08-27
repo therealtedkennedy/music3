@@ -197,12 +197,14 @@ class AlbumsController < ApplicationController
     FileUtils.mkdir_p directory
 
     #Saves Songs into Directory
-    songs_list = Dir.entries(directory)
+   # songs_list = Dir.entries(directory)
+
+
     @album.songs.uniq.each do |songs|
       unless songs.song_url_slug.blank?
         name =  songs.song_name+".mp3"
 
-        unless songs_list.include?(name)
+       # unless songs_list.include?(name)
           #finds the data
           @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
           logger.info "Song downlaoded from s3"
@@ -220,18 +222,18 @@ class AlbumsController < ApplicationController
           #send_file(path,
            # :filename  => name)
 
-        end
+       # end
       end
     end
 
-    unless (Dir.entries(directory_artist_path).include?(zipfile))
+   # unless (Dir.entries(directory_artist_path).include?(zipfile))
       zip(directory_artist_path,@album.album_url_slug,directory)
       logger.info "Zipped"
       file_list = Dir.entries(directory_artist_path)
       puts "file list"
       puts file_list
 
-    end
+   # end
 
     send_file(directory_artist_path+"/"+zipfile,
               :filename  =>  @album.album_url_slug+".zip")
