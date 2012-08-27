@@ -179,6 +179,7 @@ class AlbumsController < ApplicationController
     directory_artist_path = directory_path+"/"+@artist.url_slug
     directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.al_name+".zip"
+    no_zip =   @album.album_url_slug
 
     #Finds and Makes the Directory
 
@@ -232,7 +233,7 @@ class AlbumsController < ApplicationController
 
     end
 
-    send_file(directory_artist_path+"/"+zipfile,
+    send_file(directory_artist_path+"/"+no_zip,
               :filename  =>  @album.al_name+".zip")
 
 
