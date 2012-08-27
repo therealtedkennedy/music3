@@ -178,7 +178,7 @@ class AlbumsController < ApplicationController
     directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+@artist.url_slug
     directory = directory_artist_path+"/"+@album.album_url_slug
-    zipfile = @album.al_name+".zip"
+    zipfile = @album.album_url_slug+".zip"
     no_zip =   @album.album_url_slug
 
     #Finds and Makes the Directory
@@ -234,7 +234,7 @@ class AlbumsController < ApplicationController
     end
 
     send_file(directory_artist_path+"/"+zipfile,
-              :filename  =>  @album.al_name)
+              :filename  =>  @album.album_url_slug+".zip")
 
 
 
