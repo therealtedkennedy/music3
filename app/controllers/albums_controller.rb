@@ -227,7 +227,7 @@ class AlbumsController < ApplicationController
         File.open(path,'wb') do |file|
           AWS::S3::S3Object.stream(songs.s3_id, BUCKET) do |chunk|
             file.write chunk
-            logger.info "after write"
+            #logger.info "after write"
           end
         end
        logger.info "after File open"
