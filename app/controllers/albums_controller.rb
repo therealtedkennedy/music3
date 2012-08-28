@@ -241,14 +241,20 @@ class AlbumsController < ApplicationController
       zip(directory_artist_path,@album.album_url_slug,directory)
       logger.info "Zipped"
       file_list = Dir.entries(directory_artist_path)
-      song_list = Dir.entries(directory)
+
       logger.info "Artist Zip File Directory after zip"
       logger.info file_list
+      song_list = Dir.entries(directory)
       logger.info "List of Song Files after zip"
       logger.info song_list
    # end
 
-    logger.info "before send file"
+    logger.info "before send file, zip file name"
+    logger.info zipfile
+    logger.info "file size"
+    zipfile_location = directory_artist_path+"/"+zipfile
+    size = File.size(zipfile_location)
+    logger.info size
     send_file(directory_artist_path+"/"+zipfile,
               :filename  =>  @album.album_url_slug+".zip")
 
@@ -306,7 +312,7 @@ class AlbumsController < ApplicationController
         # - The original file, including the path to find it
         something = zipfile.add(filename, file_path + '/' + filename)
         logger.info "After Zip File Add"
-        logger.info something
+
 
       end
     end
