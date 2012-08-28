@@ -241,9 +241,11 @@ class AlbumsController < ApplicationController
       zip(directory_artist_path,@album.album_url_slug,directory)
       logger.info "Zipped"
       file_list = Dir.entries(directory_artist_path)
-      puts "file list"
-      puts file_list
-
+      song_list = Dir.entries(directory)
+      logger.info "Artist Zip File Directory after zip"
+      logger.info file_list
+      logger.info "List of Song Files after zip"
+      logger.info song_list
    # end
 
     logger.info "before send file"
@@ -286,7 +288,7 @@ class AlbumsController < ApplicationController
     require 'zip/zip'
     require 'zip/zipfilesystem'
 
-    puts "Zipping files!"
+    logger.info "Before Zipping files inside Zip Method"
 
     file_path = directory
     file_list = Dir.entries(directory)
@@ -296,14 +298,15 @@ class AlbumsController < ApplicationController
 
     Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
       file_list.each do |filename|
-        puts "this is a file name"
-        puts filename
+
+        logger.info "In Zip file loop.  Below Zip File name"
+        logger.info filename
         # Two arguments:
         # - The name of the file as it will appear in the archive
         # - The original file, including the path to find it
         something = zipfile.add(filename, file_path + '/' + filename)
-        puts "This is after add"
-        puts something
+        logger.info "After Zip File Add"
+        logger.info something
 
       end
     end
