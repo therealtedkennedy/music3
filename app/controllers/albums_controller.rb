@@ -174,8 +174,8 @@ class AlbumsController < ApplicationController
 
 
 
-    directory_path = "C:/Sites/Zipped"
-    #directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
+    #directory_path = "C:/Sites/Zipped"
+    directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+@artist.url_slug
     directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.album_url_slug+".zip"
