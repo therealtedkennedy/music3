@@ -174,8 +174,8 @@ class AlbumsController < ApplicationController
 
 
 
-    #directory_path = "C:/Sites/Zipped"
-    directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
+    directory_path = "C:/Sites/Zipped"
+    #directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+@artist.url_slug
     directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.album_url_slug+".zip"
@@ -239,7 +239,7 @@ class AlbumsController < ApplicationController
 
      # unless (Dir.entries(directory_artist_path).include?(zipfile))
       zip(directory_artist_path,@album.album_url_slug,directory)
-      logger.info "Zipped"
+      logger.info "after zip method"
       file_list = Dir.entries(directory_artist_path)
 
       logger.info "Artist Zip File Directory after zip"
@@ -255,8 +255,10 @@ class AlbumsController < ApplicationController
     zipfile_location = directory_artist_path+"/"+zipfile
     size = File.size(zipfile_location)
     logger.info size
-    send_file(directory_artist_path+"/"+zipfile,
-              :filename  =>  @album.album_url_slug+".zip")
+    s3_file = File.open(zipfile_location)
+    save_amazon_file("9999", s3_file,@album.album_url_slug, @artist )
+   # send_file(directory_artist_path+"/"+zipfile,
+   #           :filename  =>  @album.album_url_slug+".zip")
 
 
 
@@ -337,9 +339,14 @@ class AlbumsController < ApplicationController
   end
 
 
-  def create_songs (album,directory)
-
-
+  def save_amazon_file(amazon_id, zipfile,name,artist)
+    authorize! :update, artist
+    #patched aw3 object.rb with - http://rubyforge.org/pipermail/amazon-s3-dev/2006-December/000007.html
+    if(AWS::S3::S3Object::store(amazon_id, zipfile.read, BUCKET, :access => :public_read,'x-amz-meta-my-file-name'=> name, 'Content-Disposition' => 'attachment;filename='+name+'.zip'))
+      return true;
+    else
+      return false;
+    end
   end
 
 end
