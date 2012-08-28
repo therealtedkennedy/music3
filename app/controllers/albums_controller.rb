@@ -174,8 +174,8 @@ class AlbumsController < ApplicationController
 
 
 
-    #directory_path = "C:/Sites/Zipped"
-    directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
+    directory_path = "C:/Sites/Zipped"
+    #directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+@artist.url_slug
     directory = directory_artist_path+"/"+@album.album_url_slug
     zipfile = @album.album_url_slug+".zip"
@@ -198,23 +198,23 @@ class AlbumsController < ApplicationController
 
     #Saves Songs into Directory
    # songs_list = Dir.entries(directory)
-
+   logger.info "before writing loop"
    @album.songs.uniq.each do |songs|
       unless songs.song_url_slug.blank?
         name =  songs.song_name+".mp3"
 
         # unless songs_list.include?(name)
         #finds the data
-        @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
-        logger.info "Song downlaoded from s3"
+        # @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
+        # logger.info "Song downlaoded from s3"
         #saves file
 
         # create the file path
         path = File.join(directory, name)
-        logger.info  "File Created"
+        #logger.info  "File Created"
         # write the file
 
-        File.open(path, 'wb') { |f| f.write(@song_file) }
+       # File.open(path, 'wb') { |f| f.write(@song_file) }
 
 
         #test if file is being written
@@ -223,10 +223,18 @@ class AlbumsController < ApplicationController
 
         # end
 
+        logger.info "before file Open"
+        File.open(path,'wb') do |file|
+          AWS::S3::S3Object.stream(songs.s3_id, BUCKET) do |chunk|
+            file.write chunk
+            logger.info "after write"
+          end
+        end
+       logger.info "after File open"
       end
     end
 
-    sleep 60
+      logger.info "After writing loop before zip"
 
 
      # unless (Dir.entries(directory_artist_path).include?(zipfile))
@@ -238,7 +246,7 @@ class AlbumsController < ApplicationController
 
    # end
 
-
+    logger.info "before send file"
     send_file(directory_artist_path+"/"+zipfile,
               :filename  =>  @album.album_url_slug+".zip")
 
