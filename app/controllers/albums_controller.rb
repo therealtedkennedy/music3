@@ -252,11 +252,15 @@ class AlbumsController < ApplicationController
     logger.info "before send file, zip file name"
     logger.info zipfile
     logger.info "file size"
+
     zipfile_location = directory_artist_path+"/"+zipfile
     size = File.size(zipfile_location)
     logger.info size
     s3_file = File.open(zipfile_location)
     save_amazon_file("9999", s3_file,@album.album_url_slug, @artist )
+    album_s3_url = AWS::S3::S3Object.url_for("9999", BUCKET, :authenticated => false)
+    redirect_to album_s3_url
+
    # send_file(directory_artist_path+"/"+zipfile,
    #           :filename  =>  @album.album_url_slug+".zip")
 
