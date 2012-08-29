@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   BUCKET ='ted_kennedy'
+  ALBUM_BUCKET = 'ted_kennedy_album'
   # Fixes SSL Error - http://www.techques.com/question/1-5360622/Problems-with-SSL-dependent-gems-OAuth2---ActiveMerchant
   #this might be a security problem.
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE

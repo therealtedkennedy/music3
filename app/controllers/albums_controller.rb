@@ -86,15 +86,23 @@ class AlbumsController < ApplicationController
     @album.songs.uniq.each do |s|
       @song_ids << s.id
     end
+
+
+
   end
+
+
 
   # POST /albums
   # POST /albums.xml
   def create
     @album = Album.new(params[:album])
+    @artist = Artist.find_by_url_slug(params[url_slug])
+
 
     respond_to do |format|
       if @album.save
+
         format.html { artist_show_album_path(@album , :notice => 'Album was successfully created.') }
         format.xml  { render :xml => @album, :status => :created, :location => @album }
       else
@@ -118,8 +126,12 @@ class AlbumsController < ApplicationController
       @album.songs = []
     end
 
+    #zips and creates and album in S3
+
+
     respond_to do |format|
       if @album.update_attributes(params[:album])
+
         format.html { redirect_to(artist_show_album_path(@artist.url_slug, @album.album_url_slug), :notice => 'Album was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -150,7 +162,108 @@ class AlbumsController < ApplicationController
 
   end
 
+
+  #creates a zip file for the album.  Stores it in S3
+  def zip_album (artist, album)
+
+    #directory_path = "C:/Sites/Zipped"
+    #directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
+    directory_artist_path = directory_path+"/"+artist.url_slug
+    directory = directory_artist_path+"/"+album.album_url_slug
+    zipfile = album.album_url_slug+".zip"
+    no_zip =   album.album_url_slug
+
+    #Makes the Directory
+    FileUtils.mkdir_p directory
+
+    #Saves Songs into Directory
+    # songs_list = Dir.entries(directory)
+    logger.info "before writing loop"
+    album.songs.uniq.each do |songs|
+      unless songs.song_url_slug.blank?
+        name =  songs.song_name+".mp3"
+
+        # unless songs_list.include?(name)
+        #finds the data
+        # @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
+        # logger.info "Song downlaoded from s3"
+        #saves file
+
+        # create the file path
+        path = File.join(directory, name)
+        #logger.info  "File Created"
+        # write the file
+
+        # File.open(path, 'wb') { |f| f.write(@song_file) }
+
+
+        #test if file is being written
+        #send_file(path,
+        # :filename  => name)
+
+        # end
+
+        logger.info "before file Open"
+        File.open(path,'wb') do |file|
+          AWS::S3::S3Object.stream(songs.s3_id, BUCKET) do |chunk|
+            file.write chunk
+            #logger.info "after write"
+          end
+        end
+        logger.info "after File open"
+      end
+    end
+
+    logger.info "After writing loop before zip"
+
+
+    # unless (Dir.entries(directory_artist_path).include?(zipfile))
+    zip(directory_artist_path,album.album_url_slug,directory)
+    logger.info "after zip method"
+    file_list = Dir.entries(directory_artist_path)
+
+    #logger stuff
+    logger.info "Artist Zip File Directory after zip"
+    logger.info file_list
+    song_list = Dir.entries(directory)
+    logger.info "List of Song Files after zip"
+    logger.info song_list
+    # end
+
+    #logger stuff
+    logger.info "before send file, zip file name"
+    logger.info zipfile
+    logger.info "file size"
+
+    #sets Zip File Location
+    zipfile_location = directory_artist_path+"/"+zipfile
+
+    #logger stuff
+    size = File.size(zipfile_location)
+    logger.info size
+
+    #Saves to S3
+    s3_file = File.open(zipfile_location)
+    save_amazon_file(album.id.to_s, s3_file,album.al_name, @artist, ALBUM_BUCKET )
+
+
+
+    #album_s3_url = AWS::S3::S3Object.url_for("9999", BUCKET, :authenticated => false)
+
+
+    #redirect_to album_s3_url
+
+    # send_file(directory_artist_path+"/"+zipfile,
+    #           :filename  =>  @album.album_url_slug+".zip")
+
+
+  end
+
+
+  #downloads album and creates an order (if nessiary)
+
   def download_album
+
 
     if(params.has_key?(:album_url_slug))
 
@@ -167,104 +280,17 @@ class AlbumsController < ApplicationController
 
     end
 
-    #Sets Directory Path
+    if AWS::S3::S3Object.exists? @album.id.to_s,'ALBUM_BUCKET'
 
-
-
-
-
-
-    directory_path = "C:/Sites/Zipped"
-    #directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
-    directory_artist_path = directory_path+"/"+@artist.url_slug
-    directory = directory_artist_path+"/"+@album.album_url_slug
-    zipfile = @album.album_url_slug+".zip"
-    no_zip =   @album.album_url_slug
-
-    #Finds and Makes the Directory
-
-   # unless (File.directory?(directory_artist_path))
-     # Dir.chdir(directory_path)
-     # Dir.mkdir(@artist.url_slug)
-   # end
-
-   # unless (File.directory?(directory))
-
-   #   Dir.chdir(directory_artist_path)
-    #  Dir.mkdir(@album.album_url_slug)
-
-   # end
-    FileUtils.mkdir_p directory
-
-    #Saves Songs into Directory
-   # songs_list = Dir.entries(directory)
-   logger.info "before writing loop"
-   @album.songs.uniq.each do |songs|
-      unless songs.song_url_slug.blank?
-        name =  songs.song_name+".mp3"
-
-        # unless songs_list.include?(name)
-        #finds the data
-        # @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
-        # logger.info "Song downlaoded from s3"
-        #saves file
-
-        # create the file path
-        path = File.join(directory, name)
-        #logger.info  "File Created"
-        # write the file
-
-       # File.open(path, 'wb') { |f| f.write(@song_file) }
-
-
-        #test if file is being written
-        #send_file(path,
-        # :filename  => name)
-
-        # end
-
-        logger.info "before file Open"
-        File.open(path,'wb') do |file|
-          AWS::S3::S3Object.stream(songs.s3_id, BUCKET) do |chunk|
-            file.write chunk
-            #logger.info "after write"
-          end
-        end
-       logger.info "after File open"
-      end
-    end
-
-      logger.info "After writing loop before zip"
-
-
-     # unless (Dir.entries(directory_artist_path).include?(zipfile))
-      zip(directory_artist_path,@album.album_url_slug,directory)
-      logger.info "after zip method"
-      file_list = Dir.entries(directory_artist_path)
-
-      logger.info "Artist Zip File Directory after zip"
-      logger.info file_list
-      song_list = Dir.entries(directory)
-      logger.info "List of Song Files after zip"
-      logger.info song_list
-   # end
-
-    logger.info "before send file, zip file name"
-    logger.info zipfile
-    logger.info "file size"
-
-    zipfile_location = directory_artist_path+"/"+zipfile
-    size = File.size(zipfile_location)
-    logger.info size
-    s3_file = File.open(zipfile_location)
-    save_amazon_file("9999", s3_file,@album.album_url_slug, @artist )
-    album_s3_url = AWS::S3::S3Object.url_for("9999", BUCKET, :authenticated => false)
+    album_s3_url = AWS::S3::S3Object.url_for(@album.id, ALBUM_BUCKET, :authenticated => false)
     redirect_to album_s3_url
 
-   # send_file(directory_artist_path+"/"+zipfile,
-   #           :filename  =>  @album.album_url_slug+".zip")
+    else
+     zip_album(@artist,@album)
+     album_s3_url = AWS::S3::S3Object.url_for(@album.id.to_s, ALBUM_BUCKET, :authenticated => false)
+     redirect_to album_s3_url
 
-
+    end
 
     #checks to see if album has been redownloaded already trough the redown param and by passes paykey, orders and assign ablum to user
     if params[:redown]=="true" or @album.al_amount.nil? or @album.pay_type == "free"
@@ -342,11 +368,11 @@ class AlbumsController < ApplicationController
 
   end
 
-
-  def save_amazon_file(amazon_id, zipfile,name,artist)
+  #Saves S3 Album..should be universal in the applications controller.
+  def save_amazon_file(amazon_id, zipfile,name,artist,s3_bucket)
     authorize! :update, artist
     #patched aw3 object.rb with - http://rubyforge.org/pipermail/amazon-s3-dev/2006-December/000007.html
-    if(AWS::S3::S3Object::store(amazon_id, zipfile.read, BUCKET, :access => :public_read,'x-amz-meta-my-file-name'=> name, 'Content-Disposition' => 'attachment;filename='+name+'.zip'))
+    if(AWS::S3::S3Object::store(amazon_id, zipfile.read, s3_bucket, :access => :public_read,'x-amz-meta-my-file-name'=> name, 'Content-Disposition' => 'attachment;filename='+name+'.zip'))
       return true;
     else
       return false;
