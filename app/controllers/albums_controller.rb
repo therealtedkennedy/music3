@@ -172,8 +172,8 @@ class AlbumsController < ApplicationController
   #creates a zip file for the album.  Stores it in S3
   def zip_album (artist, album)
 
-    directory_path = "C:/Sites/Zipped"
-    #directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
+    #directory_path = "C:/Sites/Zipped"
+    directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+artist.url_slug
     directory = directory_artist_path+"/"+album.album_url_slug
     zipfile = album.album_url_slug+".zip"
