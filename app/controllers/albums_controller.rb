@@ -97,12 +97,15 @@ class AlbumsController < ApplicationController
   # POST /albums.xml
   def create
     @album = Album.new(params[:album])
-    @artist = Artist.find_by_url_slug(params[url_slug])
+    @artist = Artist.find_by_url_slug(params[:url_slug])
 
 
     respond_to do |format|
       if @album.save
-
+        if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
+        else
+          zip_album(@artist,@album)
+        end
         format.html { artist_show_album_path(@album , :notice => 'Album was successfully created.') }
         format.xml  { render :xml => @album, :status => :created, :location => @album }
       else
@@ -126,11 +129,14 @@ class AlbumsController < ApplicationController
       @album.songs = []
     end
 
-    #zips and creates and album in S3
-
-
     respond_to do |format|
       if @album.update_attributes(params[:album])
+        #zips and creates and album in S3
+        if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
+
+          else
+           zip_album(@artist,@album)
+        end
 
         format.html { redirect_to(artist_show_album_path(@artist.url_slug, @album.album_url_slug), :notice => 'Album was successfully updated.') }
         format.xml  { head :ok }
@@ -166,7 +172,7 @@ class AlbumsController < ApplicationController
   #creates a zip file for the album.  Stores it in S3
   def zip_album (artist, album)
 
-    #directory_path = "C:/Sites/Zipped"
+    directory_path = "C:/Sites/Zipped"
     #directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+artist.url_slug
     directory = directory_artist_path+"/"+album.album_url_slug
@@ -280,10 +286,10 @@ class AlbumsController < ApplicationController
 
     end
 
-    if AWS::S3::S3Object.exists? @album.id.to_s,'ALBUM_BUCKET'
+    if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
 
-    album_s3_url = AWS::S3::S3Object.url_for(@album.id, ALBUM_BUCKET, :authenticated => false)
-    redirect_to album_s3_url
+      album_s3_url = AWS::S3::S3Object.url_for(@album.id.to_s, ALBUM_BUCKET, :authenticated => false)
+      redirect_to album_s3_url
 
     else
      zip_album(@artist,@album)

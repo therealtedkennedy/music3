@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.xml
+  before_filter :authenticate_user!
+
   def index
     @orders = Order.all
 
@@ -23,6 +25,25 @@ class OrdersController < ApplicationController
 
   def payment_method
        #user selects payment type.  All relevant var's passed through params.  Amount is use for PWYC, all other times its just a place holder
+    @album = Album.find_by_album_url_slug(params[:album_url_slug])
+    @user = current_user
+    logger.info "User ID"
+    logger.info @user.id
+
+
+    @user.albums.uniq.each do |album|
+      logger.info "album Url Slug"
+      logger.info album.album_url_slug
+      logger.info "params album"
+      logger.info params[:song_album_or_event_slug]
+      if album.album_url_slug == params[:song_album_or_event_slug]
+        redirect_to show_user_path(@user.id), notice => "WHOA! YOU HAVE ALREADY DOWNLOADED THIS(SEE BELOW"
+      else
+
+
+      end
+
+    end
 
 
   end
@@ -73,7 +94,8 @@ class OrdersController < ApplicationController
       :expires => 30.minutes.from_now
 
        }
-  redirect_to (CHAINED_GATEWAY.redirect_url_for(response["payKey"])) end
+  redirect_to (CHAINED_GATEWAY.redirect_url_for(response["payKey"]))
+  end
 
   #creates download link, payment amount, and object vars, and sets a cookie
  def payment_prep(object,artist_url_slug,song_album_or_event_slug,amount)
@@ -199,10 +221,14 @@ class OrdersController < ApplicationController
   end
 
   def login_prompt
+    logger.info "Login Prompt"
 
     if can? :update, @artist
-        redirect_to(show_user_path(current_user.id, :token => params[:token], :PayerID =>params[:PayerID]))
+       Logger.info show_user_path(current_user.id, :token => params[:token], :PayerID =>params[:PayerID])
+       redirect_to(show_user_path(current_user.id, :token => params[:token], :PayerID =>params[:PayerID]))
+
     end
+
 
   end
 end
