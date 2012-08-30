@@ -224,7 +224,7 @@ class OrdersController < ApplicationController
     logger.info "Login Prompt"
 
     if can? :update, @artist
-       Logger.info show_user_path(current_user.id, :token => params[:token], :PayerID =>params[:PayerID])
+
        redirect_to(show_user_path(current_user.id, :token => params[:token], :PayerID =>params[:PayerID]))
 
     end
