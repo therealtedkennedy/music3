@@ -1,260 +1,251 @@
 <!DOCTYPE html>
 <html>
 <style>
-    h1, p {
-       color: #E00000;
+	h1, p {
+		color: #E00000;
 
+	}
 
-    }
+	html, body {
+		overflow-x: hidden;
+		margin: 0 auto;
 
-    html, body {
-        overflow-x: hidden;
-        margin: 0 auto;
+	}
 
-    }
-    .container {
-        margin-top: 50px;
-    }
+	.container {
+		margin-top: 50px;
+	}
 
-    .player_nav {
-        width: 100%;
-        background-color: #FFFFFF;
-        height: 50px;
-        position: fixed;
-        top: 0;
-        left: 0;
+	.player_nav {
+		width: 100%;
+		background-color: #FFFFFF;
+		height: 50px;
+		position: fixed;
+		top: 0;
+		left: 0;
 
-    }
-
+	}
 
 
 </style>
 
 
 <head>
-  <title>Music3</title>
-  <%= stylesheet_link_tag :all %>
-  <!--<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" %>-->
-  <!--<%= javascript_include_tag 'jquery' %>-->
-  <%= javascript_include_tag :'defaults', 'rails.validations', 'jquery.rails', 'jquery.backstretch.min', 'showHide.js' %>
-  <script type="text/javascript" src="/javascripts/jPlayer/jquery.jplayer.min.js"></script>
-  <script type="text/javascript" src="/javascripts/jPlayer/add-on/jplayer.playlist.min.js"></script>
-  <script type="text/javascript" src="/javascripts/jPlayer/add-on/jquery.jplayer.inspector.js"></script>
-  <link type="text/css" href="/skin/black_and_yellow/jplayer-black-and-yellow.css" rel="stylesheet"/>
+	<title>Music3</title>
+	<%= stylesheet_link_tag :all %>
+	<!--<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" %>-->
+	<!--<%= javascript_include_tag 'jquery' %>-->
+	<%= javascript_include_tag :'defaults', 'rails.validations', 'jquery.rails', 'jquery.backstretch.min', 'showHide.js' %>
+	<script type="text/javascript" src="/javascripts/jPlayer/jquery.jplayer.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jPlayer/add-on/jplayer.playlist.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jPlayer/add-on/jquery.jplayer.inspector.js"></script>
+	<link type="text/css" href="/skin/black_and_yellow/jplayer-black-and-yellow.css" rel="stylesheet"/>
 
-  <!-- Master template -->
-<script>
-    $(function() {
-        $.backstretch("/skrillex.jpeg");
-    });
-
-
-</script>
+	<!-- Master template -->
+	<script>
+		$(function () {
+			$.backstretch("/skrillex.jpeg");
+		});
 
 
-<script type="text/javascript">
-    <!-- Java Script effect -->
-    $(document).ready(function() {
+	</script>
 
 
-        $('.show_hide').showHide({
-            speed: 300,  // speed you want the toggle to happen
-            easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
-            changeText: 0, // if you dont want the button text to change, set this to 0
-            showText: 'View',// the button text to show when a div is closed
-            hideText: 'Close' // the button text to show when a div is open
-
-        });
+	<script type="text/javascript">
+		<!-- Java Script effect -->
+		$(document).ready(function () {
 
 
-    });
+			$('.show_hide').showHide({
+				speed:300, // speed you want the toggle to happen
+				easing:'', // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
+				changeText:0, // if you dont want the button text to change, set this to 0
+				showText:'View', // the button text to show when a div is closed
+				hideText:'Close' // the button text to show when a div is open
+
+			});
 
 
+		});
 
 
+		//<![CDATA[
 
-    //<![CDATA[
+		<!-- Global Varaibles for playing song in playlist with click -->
+		var myPlaylist;
+		var playlistSongs = [];
+		var artistSongs = {};
 
-   <!-- Global Varaibles for playing song in playlist with click -->
-    var myPlaylist;
-    var playlistSongs = [];
-    var artistSongs = {};
+		<!-- Initializes the play list -->
+		function initializePlayList(newPlaylist) {
 
-   <!-- Initializes the play list -->
-    function initializePlayList(newPlaylist){
+			return new jPlayerPlaylist({
+						jPlayer:"#jquery_jplayer_1",
+						cssSelectorAncestor:"#jp_container_1"
+					},
+					newPlaylist,
+					{
+						swfPath:"../js",
+						supplied:"mp3",
+						wmode:"window"
+					});
+		}
+		var DEBUGGING = true;
+		$(document).ready(function () {
 
-        return new jPlayerPlaylist({
-            jPlayer: "#jquery_jplayer_1",
-            cssSelectorAncestor: "#jp_container_1"
-        },
-        newPlaylist,
-        {
-            swfPath: "../js",
-            supplied: "mp3",
-            wmode: "window"
-        });
-    }
-     var DEBUGGING = true;
-    $(document).ready(function() {
+			myPlaylist = initializePlayList(playlistSongs);
 
-        myPlaylist = initializePlayList(playlistSongs);
+			<!-- Click Handler to add song to playlist.  Songs are stored in Artists, Index's are assocated with songs -->
+			$(".music-button").live("click", function (event) {
+				event.preventDefault();
 
-      <!-- Click Handler to add song to playlist.  Songs are stored in Artists, Index's are assocated with songs -->
-        $(".music-button").live("click", function (event) {
-            event.preventDefault();
+				//<!-- Assigns varibles from click  -->
+				var songName = $(this).attr('data-song-name');
+				var artistName = $(this).attr('data-artist-name');
 
-            //<!-- Assigns varibles from click  -->
-            var songName = $(this).attr('data-song-name');
-            var artistName = $(this).attr('data-artist-name');
+				//<!-- checks to see if artist already exisits in the playlist -->
+				if (artistSongs[artistName] == undefined)
+					artistSongs[artistName] = {};
+				//<!-- Assigns the song index to varaible songindex, if it does not exist then become undefined and will be added below -->
+				var songIndex = artistSongs[artistName][songName];
 
-            //<!-- checks to see if artist already exisits in the playlist -->
-            if (artistSongs[artistName] == undefined)
-                artistSongs[artistName] = {};
-            //<!-- Assigns the song index to varaible songindex, if it does not exist then become undefined and will be added below -->
-            var songIndex = artistSongs[artistName][songName];
+				//<!-- If undefined then will ad the song to the play list -->
+				if (songIndex === undefined) {
+					//<!-- Creates play list object and ads it to play list.  If you need to add more song attributes, or file types this is where you do it -->
+					myPlaylist.add({
+						title:songName,
+						mp3:$(this).attr('href')
+					});
 
-            //<!-- If undefined then will ad the song to the play list -->
-            if (songIndex === undefined) {
-                //<!-- Creates play list object and ads it to play list.  If you need to add more song attributes, or file types this is where you do it -->
-                myPlaylist.add({
-                    title:songName,
-                    mp3:$(this).attr('href')
-                });
+					//<!-- sets the song index. By take the length of the playist (with the song added see above) and subtracts 1 because index starts at 0, length starts at 1 -->
+					songIndex = artistSongs[artistName][songName] = myPlaylist.playlist.length - 1;
+				}
 
-                //<!-- sets the song index. By take the length of the playist (with the song added see above) and subtracts 1 because index starts at 0, length starts at 1 -->
-                songIndex = artistSongs[artistName][songName] = myPlaylist.playlist.length - 1;
-            }
-
-            myPlaylist.play(songIndex);
-
-
-        });
-
-        // BACK/FORWARD BUTTONS WORK AS WELL
-        window.onpopstate = function (event) {
-            $("#loading").show();
-            var location = window.location.href + "?redir=true";
-            console.log("location: " + location)
-            loadContent(location);
-        };
-
-        $(".content-link").live("click", function (event) {
-            <% if browser.ie? %>
-            alert("Music will stop playing, do you wish to continue? To stop this from appearing download chrome.")
-            <% else %>
-            event.preventDefault();
-            url = $(this).attr('href');
-            console.log("pathname: " + url);
-            loadContent(url);
-
-            // HISTORY.PUSHSTATE
-            history.pushState('', 'New URL: ' + url, url);
-            <% end %>
-        });
-    });
-
-    function loadContent(href){
-           $.ajax({
-
-                url : href,
-                success: function(json){
-                    ted_log(json);
-
-                    $.each(json, function(key, value){
-                            $(key).html(value);
-                    });
-
-                },
-                dataType: "json"
-            });
-     };
-
-   function ted_log(json){
-	if(typeof console !== undefined && DEBUGGING)
-		console.log(json);
-	else if(DEBUGGING)
-		alert(json);
-   }
+				myPlaylist.play(songIndex);
 
 
-</script>
+			});
+
+			// BACK/FORWARD BUTTONS WORK AS WELL
+			window.onpopstate = function (event) {
+				$("#loading").show();
+				var location = window.location.href + "?redir=true";
+				console.log("location: " + location)
+				loadContent(location);
+			};
+
+			$(".content-link").live("click", function (event) {
+				if (window.history === undefined || window.history.pushState === undefined) {
+					//save cookie on confirm to remember choice
+					alert("Music will stop playing, do you wish to continue? To stop this from appearing download chrome.")
+					return true;
+				}
+				event.preventDefault();
+				url = $(this).attr('href');
+				console.log("pathname: " + url);
+				loadContent(url);
+
+				// HISTORY.PUSHSTATE
+				history.pushState('', 'New URL: ' + url, url);
+			});
+		});
+
+		function loadContent(href) {
+			$.ajax({
+
+				url:href,
+				success:function (json) {
+					ted_log(json);
+
+					$.each(json, function (key, value) {
+						$(key).html(value);
+					});
+
+				},
+				dataType:"json"
+			});
+		}
+		;
+
+		function ted_log(json) {
+			if (typeof console !== undefined && DEBUGGING)
+				console.log(json);
+			else if (DEBUGGING)
+				alert(json);
+		}
 
 
-  <%= csrf_meta_tag %>
+	</script>
+
+
+	<%= csrf_meta_tag %>
 </head>
 
 <body>
 
 
-
 <div class="container">
-  <div class="player_nav">
-    <div id="user_nav">
-      <% if user_signed_in? %>
-          Signed in as <%= link_to current_user.email, show_user_path(current_user.id) %>. Not you?
-          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-      <% else %>
-          <%#= render :partial => 'login_form' %>
-          <%= link_to "sign in", new_user_session_path %>
-          <%= link_to "register", new_user_registration_path %>
-      <% end %>
-  </div>
+	<div class="player_nav">
+		<div id="user_nav">
+			<% if user_signed_in? %>
+				Signed in as <%= link_to current_user.email, show_user_path(current_user.id) %>. Not you?
+				<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+			<% else %>
+				<%#= render :partial => 'login_form' %>
+				<%= link_to "sign in", new_user_session_path %>
+				<%= link_to "register", new_user_registration_path %>
+			<% end %>
+		</div>
 
-<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-
-
-<div id="jp_container_1" >
-  <div class="jp-type-playlist">
-      <div class ="jp-audio-container">
+		<div id="jquery_jplayer_1" class="jp-jplayer"></div>
 
 
-			<div class="jp-audio">
-				<div class="jp-type-single">
-					<div id="jp_interface_1" class="jp-interface">
-						<ul class="jp-controls">
-							<li><a href="#" class="jp-play" tabindex="1">play</a></li>
-							<li><a href="#" class="jp-pause" tabindex="1">pause</a></li>
-							<li><a href="#" class="jp-mute" tabindex="1">mute</a></li>
-							<li><a href="#" class="jp-unmute" tabindex="1">unmute</a></li>
-						</ul>
-						<div class="jp-progress-container">
-							<div class="jp-progress">
-								<div class="jp-seek-bar">
-									<div class="jp-play-bar"></div>
-								</div>
-							</div>
-						</div>
-						<div class="jp-volume-bar-container">
-							<div class="jp-volume-bar">
-								<div class="jp-volume-bar-value"></div>
+		<div class="jp-type-playlist">
+			<div class="jp-audio-container">
+
+
+				<div id="jp_interface_1" class="jp-interface">
+					<ul class="jp-controls">
+						<li><a href="#" class="jp-play" tabindex="1">play</a></li>
+						<li><a href="#" class="jp-pause" tabindex="1">pause</a></li>
+						<li><a href="#" class="jp-mute" tabindex="1">mute</a></li>
+						<li><a href="#" class="jp-unmute" tabindex="1">unmute</a></li>
+					</ul>
+					<div class="jp-progress-container">
+						<div class="jp-progress">
+							<div class="jp-seek-bar">
+								<div class="jp-play-bar"></div>
 							</div>
 						</div>
 					</div>
+					<div class="jp-volume-bar-container">
+						<div class="jp-volume-bar">
+							<div class="jp-volume-bar-value"></div>
+						</div>
+					</div>
+				</div>
+				<div class="jp-playlist">
+					<ul>
+						<li></li>
+					</ul>
+				</div>
+				<div class="jp-no-solution">
+					<span>Update Required</span>
+					To play the media you will need to either update your browser to a recent version or update your
+					<a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
 				</div>
 			</div>
-        <div class="jp-playlist">
-          <ul>
-            <li></li>
-          </ul>
-        </div>
-        <div class="jp-no-solution">
-          <span>Update Required</span>
-          To play the media you will need to either update your browser to a recent version or update your
-          <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-        </div>
-    </div>
-  </div>
-</div>
+		</div>
 
 
+	</div>
+	<% if browser.ie? %>
+		<h1>Hey, Internet explorer sucks. We suggest you upgrade your browser to
+			<a href="www.google.com/chrome/">Chrome</a>. Cant do it? Don't Want to do it? Don't know what a browser is?
+			Three Repeater will work, but not well.</h1>
+	<% end %>
 
-
-  </div>
-  <% if browser.ie? %>
-      <h1>Hey, Internet explorer sucks. We suggest you upgrade your browser to <a href="www.google.com/chrome/">Chrome</a>. Cant do it? Don't Want to do it? Don't know what a browser is? Three Repeater will work, but not well.</h1>
-  <% end %>
-
-<%= yield %>
+	<%= yield %>
 
 </div>
 </body>
