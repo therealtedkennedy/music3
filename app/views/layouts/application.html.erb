@@ -12,19 +12,50 @@
 
 	}
 
+	@font-face{
+		font-family: 'icomoon';
+		src: url("/assets/fonts/iconmoon.eot");
+	}
 	.container {
 		margin-top: 50px;
 	}
 
+		/* Defines whole top nav, including sign in/out, and the player it self */
 	.player_nav {
 		width: 100%;
-		background-color: #FFFFFF;
+
 		height: 50px;
 		position: fixed;
 		top: 0;
 		left: 0;
+		background: #2E2E2E;
 
 	}
+
+		/* Sign in/sign out */
+	.user_nav {
+		position: fixed;
+		height: 50px;
+		line-height: 50px;
+		padding-right: 15px;
+		color: #C4C4C4;
+		right: 0;
+		top: 0;
+	}
+
+	a.nav {
+		color: #FFFFFF;
+		text-decoration: none;
+
+	}
+
+	a.nav:hover {
+		color: #FFFFFF;
+
+		font-weight: bold;
+		text-decoration: none;
+	}
+
 
 
 </style>
@@ -40,6 +71,7 @@
 	<script type="text/javascript" src="/javascripts/jPlayer/add-on/jplayer.playlist.min.js"></script>
 	<script type="text/javascript" src="/javascripts/jPlayer/add-on/jquery.jplayer.inspector.js"></script>
 	<link type="text/css" href="/skin/black_and_yellow/jplayer-black-and-yellow.css" rel="stylesheet"/>
+	<link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
 
 	<!-- Master template -->
 	<script>
@@ -186,43 +218,51 @@
 
 <div class="container">
 	<div class="player_nav">
-		<div id="user_nav">
-			<% if user_signed_in? %>
-				Signed in as <%= link_to current_user.email, show_user_path(current_user.id) %>. Not you?
-				<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-			<% else %>
-				<%#= render :partial => 'login_form' %>
-				<%= link_to "sign in", new_user_session_path %>
-				<%= link_to "register", new_user_registration_path %>
-			<% end %>
-		</div>
+
 
 		<div id="jquery_jplayer_1" class="jp-jplayer"></div>
 
 
-		<div class="jp-type-playlist">
-			<div class="jp-audio-container">
+		<div id="jp_container_1">
+			<div class="jp-type-playlist">
+				<div class="jp-audio-container">
+					<div class="branding">
+						<b><p class="branding" >3RPTR</p></b>
+					</div>
 
+					<div class="jp-audio">
+						<div class="jp-type-single">
+							<div id="jp_interface_1" class="jp-interface">
 
-				<div id="jp_interface_1" class="jp-interface">
-					<ul class="jp-controls">
-						<li><a href="#" class="jp-play" tabindex="1">play</a></li>
-						<li><a href="#" class="jp-pause" tabindex="1">pause</a></li>
-						<li><a href="#" class="jp-mute" tabindex="1">mute</a></li>
-						<li><a href="#" class="jp-unmute" tabindex="1">unmute</a></li>
-					</ul>
-					<div class="jp-progress-container">
-						<div class="jp-progress">
-							<div class="jp-seek-bar">
-								<div class="jp-play-bar"></div>
+								<ul class="jp-controls">
+
+									<li><a href="#" class="jp-play" tabindex="1" data-icon="!"></a></li>
+									<li><a href="#" class="jp-pause" tabindex="1" data-icon="&#x22;"></a></li>
+
+									<li><a href="#" class="jp-mute" tabindex="1">mute</a></li>
+									<li><a href="#" class="jp-unmute" tabindex="1">unmute</a></li>
+								</ul>
+
+								<div class="trackInfo">
+									<div class="track_name" id="track_name">&nbsp;</div>
+
+									<div class="progressBarContainer">
+										<div class="jp-current-time"></div>
+										<div class="jp-progress-container">
+											<div class="jp-seek-bar">
+												<div class="jp-play-bar"></div>
+											</div>
+										</div>
+										<div class="endTime">0:00?</div>
+									</div>
+								</div>
+
+								<span>After track info</span>
+
 							</div>
 						</div>
 					</div>
-					<div class="jp-volume-bar-container">
-						<div class="jp-volume-bar">
-							<div class="jp-volume-bar-value"></div>
-						</div>
-					</div>
+
 				</div>
 				<div class="jp-playlist">
 					<ul>
@@ -234,11 +274,26 @@
 					To play the media you will need to either update your browser to a recent version or update your
 					<a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
 				</div>
+				<!--<div class="clearfix"></div>-->
 			</div>
 		</div>
 
-
+		<div id="user_nav" class="user_nav">
+			<% if user_signed_in? %>
+				Signed in as <%= link_to current_user.email, show_user_path(current_user.id), :class => :nav %>. Not
+				you?
+				<%= link_to "Sign out", destroy_user_session_path, :class => :nav, :method => :delete %>
+			<% else %>
+				<%#= render :partial => 'login_form' %>
+				<%= link_to "sign in", new_user_session_path %>
+				<%= link_to "register", new_user_registration_path %>
+			<% end %>
+		</div>
 	</div>
+
+
+</div>
+
 	<% if browser.ie? %>
 		<h1>Hey, Internet explorer sucks. We suggest you upgrade your browser to
 			<a href="www.google.com/chrome/">Chrome</a>. Cant do it? Don't Want to do it? Don't know what a browser is?

@@ -89,34 +89,37 @@ p.branding {
 
 a.jp-play,
 a.jp-pause {
-	width: 33px;
-	height: 30px;
+	/*width: 33px;*/
+	/*height: 30px;*/
 	/*z-index: 1;
 	outline: none;    */
+	text-decoration:none;
+    color: #FFFFFF;
 }
 
 .jp-audio .jp-type-single a.jp-play,
 .jp-audio .jp-type-single a.jp-pause {
 	/*top: 0;
 	left: 0; */
-	border-right: 1px solid rgb(36, 37, 38);
+	/*border-right: 1px solid rgb(36, 37, 38);*/
 }
 
+
 a.jp-play {
-	background: url("jplayer-black-and-yellow.png") 0 0 no-repeat;
+
 }
 
 a.jp-play:hover {
-	background: url("jplayer-black-and-yellow.png") -33px 0 no-repeat;
+	/*background: url("jplayer-black-and-yellow.png") -33px 0 no-repeat;*/
 }
 
 a.jp-pause {
-	background: url("jplayer-black-and-yellow.png") 0 -30px no-repeat;
+	/*background: url("jplayer-black-and-yellow.png") 0 -30px no-repeat;*/
 	display: none;
 }
 
 a.jp-pause:hover {
-	background: url("jplayer-black-and-yellow.png") -33px -30px no-repeat;
+	/*background: url("jplayer-black-and-yellow.png") -33px -30px no-repeat;*/
 }
 
 .trackInfo {
@@ -194,7 +197,7 @@ a.jp-pause:hover {
 .jp-interface .jp-controls a {
 	display: inline-block;
 	overflow: hidden;
-	text-indent: -9999px;
+	/*text-indent: -9999px;*/
 }
 
 .jp-seek-bar {

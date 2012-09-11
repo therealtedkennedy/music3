@@ -39,7 +39,12 @@ module Music3
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+
+
+
+
+
+	config.filter_parameters += [:password]
 
         AWS::S3::Base.establish_connection!(
         :access_key_id => 'AKIAJBCDYICH6VCMN6ZA',
@@ -47,5 +52,7 @@ module Music3
     )
 
     BUCKET ='ted_kennedy'
+
+
   end
 end
