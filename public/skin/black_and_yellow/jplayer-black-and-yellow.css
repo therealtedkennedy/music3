@@ -131,6 +131,7 @@ a.jp-pause:hover {
 .trackInfo .track_name {
 	line-height: 50px;
 	display: inline-block;
+	font-style:italic;
 }
 
 .trackInfo .progressBarContainer {
@@ -263,10 +264,12 @@ a.jp-pause:hover {
 
 a.jp-mute,
 a.jp-unmute {
-	width: 17px;
-	height: 13px;
+	/*width: 17px;*/
+	/*height: 13px;*/
 	z-index: 1;
 	outline: none;
+	color: #ffffff;
+	text-decoration:none;
 }
 
 .jp-audio .jp-type-single a.jp-mute,
@@ -275,22 +278,22 @@ a.jp-unmute {
 	left: 290px;
 }
 
-a.jp-mute {
-	background: url("jplayer-black-and-yellow.png") -10px -68px no-repeat;
-}
+/*a.jp-mute {*/
+	/*background: url("jplayer-black-and-yellow.png") -10px -68px no-repeat;*/
+/*}*/
 
-a.jp-mute:hover {
-	background: url("jplayer-black-and-yellow.png") -43px -68px no-repeat;
-}
+/*a.jp-mute:hover {*/
+	/*background: url("jplayer-black-and-yellow.png") -43px -68px no-repeat;*/
+/*}*/
 
-a.jp-unmute {
-	background: url("jplayer-black-and-yellow.png") -10px -98px no-repeat;
-	display: none;
-}
+/*a.jp-unmute {*/
+	/*background: url("jplayer-black-and-yellow.png") -10px -98px no-repeat;*/
+	/*display: none;*/
+/*}*/
 
-a.jp-unmute:hover {
-	background: url("jplayer-black-and-yellow.png") -43px -98px no-repeat;
-}
+/*a.jp-unmute:hover {*/
+	/*background: url("jplayer-black-and-yellow.png") -43px -98px no-repeat;*/
+/*}*/
 
 /*.jp-jplayer {
 	width:0px;

@@ -126,7 +126,7 @@
                     <div class="div3">
 
                       <div class="image">
-                        <h3><a href="<%= download_url_for(song.s3_id) %>" data-song-name="<%=song.song_name%>" data-artist-name="<%=@artist.name%>" class="music-button"> <%= song.song_name %> </a>
+                        <h3><a href="<%= download_url_for(song.s3_id) %>" data-song-name="<%=song.song_name%>" data-artist-name="<%=@artist.name%>" class="music-button"> Play </a>
                         </h3></div>
                       <h3><%= link_to song.song_name, artist_show_song_path(@artist.url_slug, song.song_url_slug), :class => "content-link" %>   </h3>
 

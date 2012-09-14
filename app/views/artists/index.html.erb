@@ -45,7 +45,7 @@
 
 </br>
 
-<% if can? :update, @artist %>
+<% if can? :create, @artist %>
 
       <%= link_to 'New Artist', new_artist_path %>
   <% else %>
