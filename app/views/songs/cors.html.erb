@@ -1,0 +1,36 @@
+
+<head>
+	<title>S3 POST Form</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+
+</head>
+
+<body>
+<h1>Upload 1</h1>
+<%= @policy_test %>
+
+<form action="http://ted_kennedy.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="key" value="song6.mp3">
+	<input type="hidden" name="AWSAccessKeyId" value="AKIAJBCDYICH6VCMN6ZA">
+	<input type="hidden" name="acl" value="public-read">
+	<input type="hidden" name="success_action_redirect" value="http://localhost:3000/">
+	<input type="hidden" name="policy" value= <%= @policy%> >
+	<input type="hidden" name="signature" value=<%= @signature%>>
+	<input type="hidden" name="Content-Type" value="audio/mpeg">
+	<input type="hidden" name="x-amz-meta-my-file-name" value="Wow, work">
+	<input type="hidden" name="Content-Disposition" value ="attachment;filename=AMAZING.mp3">
+
+	<!-- Include any additional input fields here -->
+	File to upload to S3:
+	<input name="file" type="file">
+	<br>
+	<input type="submit" value="Upload File to S3">
+</form>
+
+
+
+<h1>Download</h1>
+<a href="https://s3.amazonaws.com/ted_kennedy/song4.mp3">download</a>
+</body>

@@ -288,4 +288,25 @@ class SongsController < ApplicationController
     just_filename.sub(/[^\w\.\-]/,'_')
   end
 
+
+	def cors
+		require 'base64'
+		require 'openssl'
+		require 'digest/sha1'
+
+		@policy_test = POLICY_DOCUMENT
+        @song1="testing1"
+		@song2="tesging2"
+
+
+		@policy = Base64.encode64(POLICY_DOCUMENT).gsub("\n","")
+
+		@signature = Base64.encode64(
+				OpenSSL::HMAC.digest(
+						OpenSSL::Digest::Digest.new('sha1'),
+						'z+DmlVpM1omU5AaTlyRxsqhHiq/57M9CGEQbc+gd', @policy)
+		).gsub("\n","")
+
+	end
+
 end
