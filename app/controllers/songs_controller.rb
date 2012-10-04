@@ -138,21 +138,12 @@ class SongsController < ApplicationController
     @song.s_a_id = @artist.id
     @song.save
 
-
-    #@song = Song.find(params[:id])
-    #@id = @song.id
-    #searchString  = params[:url_slug]
-    #@artist = Artist.find_by_url_slug(searchString)
-
-
      respond_to do |format|
            format.html  #create.html.erb
            format.xml  { render :xml => @song }
            format.js
      end
    end
-
-
 
 
    def update

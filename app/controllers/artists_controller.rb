@@ -9,6 +9,7 @@ class ArtistsController < ApplicationController
   #changes from default layout to custom layout
   layout "artist_layout", only: [:show, :admin, :update]
 
+
   def index
     @artists = Artist.all
     @artist = Artist.new
