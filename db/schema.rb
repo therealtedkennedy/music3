@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120508020536) do
+ActiveRecord::Schema.define(:version => 20121020205630) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -131,6 +131,8 @@ ActiveRecord::Schema.define(:version => 20120508020536) do
     t.string   "div_2_border_colour"
     t.string   "div_2_background_colour"
     t.string   "div_2_border_width"
+    t.text     "profile_css"
+    t.boolean  "use_css",                 :default => false
   end
 
   create_table "songs", :force => true do |t|

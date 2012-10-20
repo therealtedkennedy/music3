@@ -31,6 +31,12 @@
 
 	}
 
+	.Css_Editor {
+		margin-left:auto;
+		margin-right:auto;
+
+	}
+
 		/* Defines whole top nav, including sign in/out, and the player it self */
 
 	.player_nav {
@@ -77,7 +83,7 @@
 		text-decoration: none;
 
 	}
-
+/*user Can Edit.....*/
 	a.nav:hover, .adminLink:hover {
 		color: #FFFFFF;
 
@@ -547,6 +553,7 @@
 
 
 	<%= render 'form' %>
+	<%= link_to 'Custom CSS', css_editor_path(@artist.url_slug) %>
 	<%= link_to 'Back to Admin', artist_admin_path(@artist.url_slug) %>
 </div>
 
@@ -555,6 +562,7 @@
 <!--</div>-->
 
 <p id="notice"><%= notice %></p>
+
 
 
 <div id="content">

@@ -45,12 +45,15 @@ Music3::Application.routes.draw do |map|
   match "/:url_slug/edit" => "artists#edit", :as => :edit_artist
   match "/:url_slug/add_song" => "songs#new", :as => :add_song
   match "/:url_slug/new_album" => "albums#new", :as => :add_album
-  match "/:url_slug/profile_edit" => "profile_layouts#edit", :as => :profile_edit
+
+
 
   #temp for deveopment
   #creates a profile for artists already in the DB
   match "/:url_slug/create/new_layout"  => "profile_layouts#new"
-
+  match "/:url_slug/profile-edit/css-editor" => "profile_layouts#css_editor", :as => :css_editor
+  match "/:url_slug/profile-edit" => "profile_layouts#edit", :as => :profile_edit
+  match "/:url_slug/profile-edit/css-editor/update" => "profile_layouts#css_editor_update", :as => :css_editor_update
 
 
 
