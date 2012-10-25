@@ -385,6 +385,45 @@ class AlbumsController < ApplicationController
     end
   end
 
+	#creates album playlist
+	def album_play_list_create
+        @artist = Artist.find_by_url_slug(params[:url_slug])
+		@album = Album.find_by_album_url_slug(params[:album_url_slug])
+
+		@songs_for_playlist = Array.new
+		#@songs_for_playlist << "{
+		#				title:\"Kinda Toney\",
+		#				mp3:\"http://s3.amazonaws.com/ted_kennedy/37.mp3\"
+		#	        	}"
+		#@songs_for_playlist	<<	"{
+		#						title:\"Hidden\",
+		#						mp3:\"http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3\"
+		#				}"
+		@album.songs.uniq.each do |songs|
+			unless songs.song_url_slug.blank?
+				@song_name = songs.song_name
+				@download = AWS::S3::S3Object.url_for(songs.s3_id, BUCKET, :authenticated => false)
+
+				@songs_for_playlist << {:title => @song_name, :mp3 => @download }
+
+			end
+		end
+
+		respond_to do |format|
+			        format.html
+					format.json {
+						render :json => {
+								:success => true,
+								:playlist => @songs_for_playlist,
+						}
+
+
+					}
+		end
+
+	end
+
+
 end
 
 

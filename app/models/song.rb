@@ -12,7 +12,9 @@ class Song< ActiveRecord::Base
  validates_presence_of :song_name, :on => :update
  validates_uniqueness_of :song_name, :scope => :s_a_id, :case_sensitive => false, :allow_nil => :true
 
-
+ def get_download_link
+	 self.download_url_for(self.s3_id)
+ end
  #validate :url_slug_uniqueness
 
 
@@ -20,6 +22,8 @@ class Song< ActiveRecord::Base
  def generate_slug
      self.song_url_slug = song_name.gsub(/\W+/, ' ').strip.downcase.gsub(/\ +/, '-')
  end
+
+
 
 #private
 # def url_slug_uniqueness
