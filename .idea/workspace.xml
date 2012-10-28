@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Sites\music3\public\uploads\artist\image\12\HARDSummer2011TN001.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/artists/show.html.erb" afterPath="$PROJECT_DIR$/app/views/artists/show.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb" />
     </list>
     <ignored path="music3.iws" />
@@ -55,7 +53,7 @@
       <file leaf-file-name="artist_layout.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="284" column="24" selection-start="6539" selection-end="6539" vertical-scroll-proportion="11.6484375">
+            <state line="285" column="8" selection-start="6554" selection-end="6554" vertical-scroll-proportion="0.8613281">
               <folding />
             </state>
           </provider>
@@ -1194,7 +1192,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="284" column="24" selection-start="6539" selection-end="6539" vertical-scroll-proportion="11.6484375">
+        <state line="285" column="8" selection-start="6554" selection-end="6554" vertical-scroll-proportion="0.8613281">
           <folding />
         </state>
       </provider>
