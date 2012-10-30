@@ -282,19 +282,11 @@
 <!-- Twitter follow -->
 <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
 
+
 <!-- Master template -->
 <script>
 	$(function () {
 		$.backstretch("<%=@artist.image_url.to_s%>");
-	});
-
-
-</script>
-
-<script type="text/javascript">
-	//<!-- Java Script effect -->
-	$(document).ready(function () {
-
 
 		$('.show_hide').showHide({
 			speed:300, // speed you want the toggle to happen
@@ -371,13 +363,11 @@
 
 		});
 
-		// BACK/FORWARD BUTTONS WORK AS WELL
-		window.onpopstate = function (event) {
-			$("#loading").show();
-			var location = window.location.href + "?redir=true";
-			console.log("location: " + location)
-			loadContent(location);
-		};
+         //calls on popstate so that backbuttons work correctly in app.  Also prevents popstate from being called on pageload in chrome and safari
+		setTimeout( function(){
+			window.addEventListener('popstate',popstate(),false);
+		}, 500);
+
 
 		$(".content-link").live("click", function (event) {
 			<% if browser.ie? %>
@@ -387,6 +377,7 @@
 			url = $(this).attr('href');
 			console.log("pathname: " + url);
 			loadContent(url);
+
 
 			// HISTORY.PUSHSTATE
 			history.pushState('', 'New URL: ' + url, url);
@@ -404,7 +395,7 @@
 		// adds playlist
 		$(".load-playlist").live("click", function (event) {
 			event.preventDefault();
-			var location = "http://localhost:3000/grimes/album/tedsalbum8/playlist-create"
+			var location = $(this).attr('href')
 			console.log("location: " + location)
 			get_playlist(location);
 
@@ -415,6 +406,7 @@
 	function get_playlist(href) {
 		$.ajax({
 			url:href,
+
 			success:function (json) {
 				ted_log(json);
 
@@ -426,16 +418,30 @@
 
 	}
 
+	function popstate() {
+		// BACK/FORWARD BUTTONS WORK AS WELL
+		window.onpopstate = function (event) {
+			console.log("POPSTATE!");
+			console.log(event);
+			$("#loading").show();
+			var location = window.location.href + "?redir=true";
+			console.log("location: " + location)
+			loadContent(location);
+		};
+
+	}
+
 	function loadContent(href) {
 		$.ajax({
-
-			url:href,
-			success:function (json) {
-				ted_log(json);
-				//debugger;
-				$.each(json, function (key, value) {
-					$(key).html(value);
-				});
+				url:href,
+				success:function (json) {
+					ted_log(json);
+					//debugger;
+					//loads twitter script so follow button and the like will load when back button is hit.
+					$.getScript("https://platform.twitter.com/widgets.js")
+					$.each(json, function (key, value) {
+						$(key).html(value);
+					});
 
 			},
 			dataType:"json"

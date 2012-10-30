@@ -67,7 +67,7 @@ Music3::Application.routes.draw do |map|
   #Albums Slug Routing
   match "/:url_slug/album/:album_url_slug" => "albums#show", :as => :artist_show_album
   match "/:url_slug/album/download/:album_url_slug" => "albums#download_album", :as => :album_download
-  match ":url_slug/album/:album_url_slug/playlist-create" => "albums#album_play_list_create", :as => :album_play_list_create
+  match ":url_slug/album/:album_url_slug/playlist-create" => "albums#album_play_list_create", :as => :album_playlist_create
   #Artist Home
 
   #albums code routing

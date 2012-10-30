@@ -7,7 +7,8 @@
 </h2>
 
 <h1>
-  <%= @album.al_name %>
+  <%=link_to @album.al_name, album_playlist_create_path(@artist.url_slug, @album.album_url_slug), :class =>"load-playlist" %>
+
 
 </h1>
 

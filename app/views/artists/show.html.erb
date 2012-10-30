@@ -1,169 +1,168 @@
-
-
 <!-- puts the content into one div.  Stops yeild from double loading content.  I have no idea why, but it works -->
 <div class="artist_content">
 
 
+	<div class="div1a">
 
-    <div class="div1a">
+		<% if can? :update, @artist %>
+			<table>
 
-          <% if can? :update, @artist %>
-              <table>
+				<td><%= link_to 'Admin', artist_admin_path(@artist.url_slug) %></td>
+				<!-- <td><%= link_to 'Destroy', @artist, :method => :delete, :confirm => 'Are you sure?' %></td> -->
 
-                <td><%= link_to 'Admin', artist_admin_path(@artist.url_slug) %></td>
-                <!-- <td><%= link_to 'Destroy', @artist, :method => :delete, :confirm => 'Are you sure?' %></td> -->
+			</table>
 
-              </table>
+		<% end %>
 
-          <% end %>
+		<h1>
 
-          <h1>
-
-            <%= @artist.name %>
-          </h1>
-
+			<%= @artist.name %>
+		</h1>
 
 
-          <div class="show_hide" rel="#info">
-            <div class="button">
+		<div class="show_hide" rel="#info">
+			<div class="button">
 
 
-              <h2>
-                Info
-              </h2>
-              <!--  <button class="show_hide" href="#" rel="#sliding_div1">Show it</button> -->
+				<h2>
+					Info
+				</h2>
+				<!--  <button class="show_hide" href="#" rel="#sliding_div1">Show it</button> -->
 
 
-            </div>
-          </div>
+			</div>
+		</div>
 
-          <div class="show_hide" rel="#songs">
-            <div class="button">
+		<div class="show_hide" rel="#songs">
+			<div class="button">
 
-              <h2>Songs</h2>
-
-
-            </div>
-          </div>
-
-          <div class="show_hide" rel="#albums">
-            <div class="button">
-
-              <h2>Albums</h2>
+				<h2>Songs</h2>
 
 
-            </div>
-          </div>
+			</div>
+		</div>
 
-          <%= link_to 'Have download code?', code_download_path(@artist.url_slug) %>  </br>
-          <%= link_to 'More Artists', artists_path %>
+		<div class="show_hide" rel="#albums">
+			<div class="button">
 
-		<div class= "social">
-			<a href="https://twitter.com/edward_stephen" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @edward_stephen</a>
+				<h2>Albums</h2>
+
+
+			</div>
+		</div>
+
+		<%= link_to 'Have download code?', code_download_path(@artist.url_slug) %>  </br>
+		<%= link_to 'More Artists', artists_path %>
+
+		<div class="social">
+			<a href="https://twitter.com/edward_stephen" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow
+				@edward_stephen</a>
 		</div>
 
 
+	</div>
+
+
+</div>
+
+<!-------------  Second Div ---------->
+
+
+<!------------  Info Section ----->
+
+<div class="toggleDiv" id="info"> <!--hides div -->
+	<div class="div1ra">
+
+		<div class="div2">
+
+			<p>
+				<b>Date founded:</b>
+				<%= @artist.date_founded %>
+				</br>
+				</br>
+
+				<b>City:</b>
+				<%= @artist.city %>
+				</br>
+				</br>
+
+				<b>Province:</b>
+				<%= @artist.province %>
+				</br>
+				</br>
+
+				<b>Country:</b>
+				<%= @artist.country %>
+				</br>
+				</br>
+				<b>Influence:</b>
+				<%= @artist.influence %>
+				</br>
+				</br>
+				<b>Bio:</b>
+				<%= @artist.bio %>
+				</br>
+				</br>
+
+				<b>Contact info:</b>
+				<%= @artist.contact_info %>
+				</br>
+				</br>
+
+			</p>
 		</div>
+	</div>
+</div>
+
+<!-- Songs Section -->
+
+<div class="toggleDiv" id="songs">     <!--hides div -->
+
+	<div class="div1ra">
+		<!-- <div class="div2">  -->
 
 
-    </div>
+		<% @artist.songs.uniq.each_with_index do |song, index| %>
 
-    <!-------------  Second Div ---------->
+			<% unless song.song_url_slug.blank? %>
+				<% unless song.s3_id.nil? %>
 
+					<div class="div3">
 
-    <!------------  Info Section ----->
+						<div class="image">
+							<h3>
+								<a href="<%= download_url_for(song.s3_id) %>" data-song-name="<%= song.song_name %>" data-artist-name="<%= @artist.name %>" class="music-button">
+									Play </a>
+							</h3></div>
+						<h3><%= link_to song.song_name, artist_show_song_path(@artist.url_slug, song.song_url_slug), :class => "content-link" %>   </h3>
 
-    <div class="toggleDiv" id="info"> <!--hides div -->
-      <div class="div1ra">
-
-        <div class="div2">
-
-          <p>
-            <b>Date founded:</b>
-            <%= @artist.date_founded %>
-            </br>
-            </br>
-
-            <b>City:</b>
-            <%= @artist.city %>
-            </br>
-            </br>
-
-            <b>Province:</b>
-            <%= @artist.province %>
-            </br>
-            </br>
-
-            <b>Country:</b>
-            <%= @artist.country %>
-            </br>
-            </br>
-            <b>Influence:</b>
-            <%= @artist.influence %>
-            </br>
-            </br>
-            <b>Bio:</b>
-            <%= @artist.bio %>
-            </br>
-            </br>
-
-            <b>Contact info:</b>
-            <%= @artist.contact_info %>
-            </br>
-            </br>
-
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Songs Section -->
-
-    <div class="toggleDiv" id="songs">     <!--hides div -->
-
-      <div class="div1ra">
-        <!-- <div class="div2">  -->
+					</div>
+				<% end %>
+			<% end %>
+		<% end %>
 
 
-        <% @artist.songs.uniq.each_with_index do |song, index| %>
+		<!-- </div> -->
 
-            <% unless song.song_url_slug.blank? %>
-               <% unless song.s3_id.nil? %>
+	</div>
+</div>
 
-                    <div class="div3">
+<!-- Albums Section -->
+<div class="toggleDiv" id="albums">     <!--hides div -->
+	<div class="div1ra">
 
-                      <div class="image">
-                        <h3><a href="<%= download_url_for(song.s3_id) %>" data-song-name="<%=song.song_name%>" data-artist-name="<%=@artist.name%>" class="music-button"> Play </a>
-                        </h3></div>
-                      <h3><%= link_to song.song_name, artist_show_song_path(@artist.url_slug, song.song_url_slug), :class => "content-link" %>   </h3>
+		<% @artist.albums.uniq.each do |albums| %>
+			<% unless albums.album_url_slug.blank? %>
+				<div class="div3">
+					<div class="image"><%=link_to "Play", album_playlist_create_path(@artist.url_slug, albums.album_url_slug), :class =>"load-playlist" %></div>
+					<h3><%= link_to albums.al_name, artist_show_album_path(@artist.url_slug, albums.album_url_slug), :class => "content-link" %>  </h3>
 
-                    </div>
-              <% end %>
-            <% end %>
-        <% end %>
+				</div>
+			<% end %>
+		<% end %>
 
-
-        <!-- </div> -->
-
-      </div>
-    </div>
-
-    <!-- Albums Section -->
-    <div class="toggleDiv" id="albums">     <!--hides div -->
-      <div class="div1ra" >
-
-        <% @artist.albums.uniq.each do |albums| %>
-            <% unless albums.album_url_slug.blank? %>
-                <div class="div3">
-                  <div class="image"></div>
-                  <h3><%= link_to albums.al_name,artist_show_album_path(@artist.url_slug,albums.album_url_slug),:class => "content-link"%>  </h3>
-
-                </div>
-            <% end %>
-        <% end %>
-
-      </div>
-    </div>
+	</div>
+</div>
 
 
 

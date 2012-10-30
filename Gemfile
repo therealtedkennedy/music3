@@ -22,6 +22,7 @@ gem 'orm_adapter', '0.0.7'
 gem 'browser'
 gem 'cloudinary'
 gem 'aws_cf_signer'
+gem 'twitter'
 
 
 
