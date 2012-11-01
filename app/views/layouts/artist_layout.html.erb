@@ -282,9 +282,11 @@
 <!-- Twitter follow -->
 <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
 
-
 <!-- Master template -->
 <script>
+
+
+
 	$(function () {
 		$.backstretch("<%=@artist.image_url.to_s%>");
 
@@ -363,10 +365,10 @@
 
 		});
 
-         //calls on popstate so that backbuttons work correctly in app.  Also prevents popstate from being called on pageload in chrome and safari
 		setTimeout( function(){
+			ted_log("about to hit window event listersetTimeout")
 			window.addEventListener('popstate',popstate(),false);
-		}, 500);
+		}, 1000);
 
 
 		$(".content-link").live("click", function (event) {
@@ -376,6 +378,7 @@
 			event.preventDefault();
 			url = $(this).attr('href');
 			console.log("pathname: " + url);
+			ted_log("about to load content in content link")
 			loadContent(url);
 
 
@@ -421,21 +424,26 @@
 	function popstate() {
 		// BACK/FORWARD BUTTONS WORK AS WELL
 		window.onpopstate = function (event) {
-			console.log("POPSTATE!");
+ 		    ted_log("POPSTATE!");
 			console.log(event);
 			$("#loading").show();
 			var location = window.location.href + "?redir=true";
-			console.log("location: " + location)
+			ted_log("location: " + location);
+			ted_log("about to load content");
+			ted_log(location);
 			loadContent(location);
 		};
 
 	}
 
 	function loadContent(href) {
+		ted_log(href);
 		$.ajax({
+
 				url:href,
 				success:function (json) {
 					ted_log(json);
+					ted_log("about to load json")
 					//debugger;
 					//loads twitter script so follow button and the like will load when back button is hit.
 					$.getScript("https://platform.twitter.com/widgets.js")

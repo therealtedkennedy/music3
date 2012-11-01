@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121020205630) do
+ActiveRecord::Schema.define(:version => 20121101002821) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20121020205630) do
     t.string   "url_slug"
     t.string   "pay_pal"
     t.string   "image"
+    t.string   "twitter_name"
   end
 
   create_table "artists_songs", :id => false, :force => true do |t|
