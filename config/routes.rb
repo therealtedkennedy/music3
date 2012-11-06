@@ -14,6 +14,8 @@ Music3::Application.routes.draw do |map|
   match "orders/payment_method/:object/:url_slug/:song_album_or_event_slug" => "orders#payment_method", :as => :payment_method
   match "orders/paypal/login_prompt" => "orders#login_prompt", :as => :login_prompt
 
+
+
   match "go_suck_a_fucking_dick/rails_forms_are/dumb_cunts" => "profile_layouts#update"
 
   match "testing/cors" => "songs#cors", :as => :cors

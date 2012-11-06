@@ -1,3 +1,21 @@
+<head>
+<meta property="og:title" content="localhost:3000" />
+<meta property="og:type" content="band" />
+<meta property="og:url" content="http://mighty-refuge-6115.herokuapp.com/artists" />
+<meta property="og:image" content="" />
+<meta property="og:site_name" content="Three Repeater" />
+<meta property="fb:admins" content="513047468" />
+</head>
+
+<div id="fb-root"></div>\
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <h1>Listing artists</h1>
 
 <table>
@@ -56,3 +74,12 @@
 
 
 <%= link_to 'Song List', songs_path %>
+
+<br/>
+<br/>
+<br/>
+
+
+
+<div class="fb-like" data-href="http://localhost:3000/artists" data-send="false" data-width="450" data-show-faces="true"></div>
+
