@@ -12,18 +12,18 @@
 <meta property="og:url" content="http://mighty-refuge-6115.herokuapp.com/grimes" />
 <meta property="og:image" content="http://mighty-refuge-6115.herokuapp.com/logo.jpeg" />
 <meta property="og:site_name" content="Hey this is my Site Name" />
-<meta property="fb:app_id" content="513047468" />
+<meta property="fb:admins" content="513047468" />
 
 <!--Twitter Metta Info-->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@ted_kennedy">
-<meta name="twitter:creator" content="@3rptr">
-<meta name="twitter:url" content="http://mighty-refuge-6115.herokuapp.com/grimes/song/kinda-toney">
-<meta name="twitter:title" content="Grimes-Kinda Toney"/>
-<meta name="twitter:description" content="Check out Grimes!!!! Thi is soo good"/>
-<meta name="twitter:image" content="http://mighty-refuge-6115.herokuapp.com/logo.jpeg"/>
+<meta class="fbMeta" name="twitter:card" content="summary">
+<meta class="fbMeta" name="twitter:site" content="@ted_kennedy">
+<meta class="fbMeta" name="twitter:creator" content="@3rptr">
+<meta class="fbMeta" name="twitter:url" content="http://mighty-refuge-6115.herokuapp.com/grimes/song/kinda-toney">
+<meta class="fbMeta" name="twitter:title" content="Grimes-Kinda Toney">
+<meta class="fbMeta" name="twitter:description" content="Check out Grimes!!!!">
+<meta class="fbMeta" name="twitter:image" content="http://mighty-refuge-6115.herokuapp.com/logo.jpeg">
 
-
+<meta class="area">
 
 
 <style>
@@ -458,6 +458,7 @@
 
 	}
 
+
 	function loadContent(href) {
 		ted_log(href);
 		$.ajax({
@@ -468,6 +469,7 @@
 					ted_log("about to load json")
 					//debugger;
 					//loads twitter script so follow button and the like will load when back button is hit.
+					change_meta()
 					$.getScript("https://platform.twitter.com/widgets.js")
 					$.each(json, function (key, value) {
 						$(key).html(value);
@@ -477,6 +479,13 @@
 			dataType:"json"
 		});
 	}
+
+	function change_meta() {
+		$("meta[name='twitter:card']").attr("content", "<%= @artist.name %>")
+
+
+	}
+
 
 
 	function ted_log() {

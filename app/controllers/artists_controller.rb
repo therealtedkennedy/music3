@@ -41,8 +41,9 @@ class ArtistsController < ApplicationController
             :"#content" => render_to_string(
                 :action => 'artists/show.html.erb',
                 :layout => false
-            )
+            ),
 
+		    :"#area" => "hello world"
         }
       }
 

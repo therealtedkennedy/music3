@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101002821) do
+ActiveRecord::Schema.define(:version => 20121110174847) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(:version => 20121101002821) do
     t.string   "pay_pal"
     t.string   "image"
     t.string   "twitter_name"
+    t.string   "social_title"
+    t.string   "fb_page_url"
   end
 
   create_table "artists_songs", :id => false, :force => true do |t|
