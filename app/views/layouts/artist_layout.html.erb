@@ -3,26 +3,28 @@
 
 
 <head>
-<title>Music3</title>
+<!--Google Meta-->
+<title><%=@social_title%></title>
+<meta name="description" content="<%= @social_descrip %>" />
 
 <!--Facebook Meta Infomation-->
 
-<meta property="og:title" content="Music3" />
+<meta property="og:title" content="<%=@social_title%>" />
 <meta property="og:type" content="band" />
-<meta property="og:url" content="http://mighty-refuge-6115.herokuapp.com/grimes" />
-<meta property="og:image" content="http://mighty-refuge-6115.herokuapp.com/logo.jpeg" />
-<meta property="og:site_name" content="Hey this is my Site Name" />
+<meta property="og:url" content="<%=@social_fb_url%>" />
+<meta property="og:image" content="<%=@social_image%>" />
+<meta property="og:site_name" content="Three Repeater" />
 <meta property="fb:admins" content="513047468" />
-<meta property="og:description" content="Grimes is a super aweome artist from vancouver"
+<meta property="og:description" content="<%= @social_descrip %>" />
 
 <!--Twitter Metta Info-->
-<meta class="fbMeta" name="twitter:card" content="summary">
-<meta class="fbMeta" name="twitter:site" content="@ted_kennedy">
-<meta class="fbMeta" name="twitter:creator" content="@3rptr">
-<meta class="fbMeta" name="twitter:url" content="http://mighty-refuge-6115.herokuapp.com/grimes/song/kinda-toney">
-<meta class="fbMeta" name="twitter:title" content="Grimes-Kinda Toney">
-<meta class="fbMeta" name="twitter:description" content="Check out Grimes!!!!">
-<meta class="fbMeta" name="twitter:image" content="http://mighty-refuge-6115.herokuapp.com/logo.jpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="<%=@social_twitter_name %>">
+<meta name="twitter:creator" content="@3rptr">
+<meta name="twitter:url" content="<%=url_for(:only_path => false) %>">
+<meta name="twitter:title" content="<%=@social_title%>">
+<meta name="twitter:description" content="<%= @social_descrip %>">
+<meta name="twitter:image" content="<%=@social_image%>">
 
 <meta class="area">
 

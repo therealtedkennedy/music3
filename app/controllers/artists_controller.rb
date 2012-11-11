@@ -31,6 +31,25 @@ class ArtistsController < ApplicationController
 
     @playlist = @artist.songs
 
+	#-----------For Artist Meta Tags----------------
+
+	#Page Title, Facebook Title and Twitter Title
+	@social_title = @artist.name+" on Three Repeater"
+	#Meta description (google), Facebook Description, and Twitter Card Description
+	@social_descrip = @artist.bio
+
+	#facebook url
+    if @artist.fb_page_url.blank?
+		@social_fb_url = artist_link_url(@artist.url_slug)
+	else
+		@social_fb_url = @artist.fb_page_url
+	end
+
+	#Twitter ID
+	@social_twitter_name = @artist.twitter_name
+
+	#Image for twitter and FB
+	@social_image = @artist.logo_url.to_s
 
     respond_to do |format|
       format.html # show.html.erb
@@ -43,7 +62,7 @@ class ArtistsController < ApplicationController
                 :layout => false
             ),
 
-		    :"#area" => "hello world"
+
         }
       }
 
