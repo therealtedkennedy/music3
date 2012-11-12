@@ -53,7 +53,24 @@ class SongsController < ApplicationController
      @artist = Artist.find_by_url_slug(params[:url_slug])
      find_song(@artist,params[:song_url_slug])
 
+	 #-----------For Songs Meta Tags----------------
 
+	 #Page Title, Facebook Title and Twitter Title
+	 @social_title = @song.song_name+" by "+ @artist.name+" on Three Repeater"
+	 #Meta description (google), Facebook Description, and Twitter Card Description
+	 @social_descrip = "Listen to "+@song.song_name+" by "+ @artist.name + "on Three Repeater today!"
+
+	 #facebook url
+		 @social_fb_url = artist_show_song_url(@artist.url_slug,@song.song_url_slug)
+
+
+	 #Twitter ID
+	 @social_twitter_name = @artist.twitter_name
+
+	 #Image for twitter and FB
+	 @social_image = @artist.logo_url.to_s
+
+	 #------------------------------------------------
 
     # @song.artists.uniq.each do |artist|
      #   @artist_slug = artist.url_slug

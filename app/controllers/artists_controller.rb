@@ -51,6 +51,8 @@ class ArtistsController < ApplicationController
 	#Image for twitter and FB
 	@social_image = @artist.logo_url.to_s
 
+	#------------------------------------------------
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml { render :xml => @artist }

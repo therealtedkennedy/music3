@@ -1,4 +1,6 @@
-<%= form_for @album, :validate => true do |f| %>
+
+<%= form_for @album, :html => {:multipart => true}, :validate => true do |f| %>
+
   <% if @album.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
@@ -11,16 +13,31 @@
     </div>
   <% end %>
 <div class="field">
-    <%= f.label "Name" %><br />
+    <%= f.label :al_name %><br />
     <%= f.text_field :al_name %>
   </div>
 
+	<h2>Your Art Work</h2>
+	<div class="field">
+		<%=f.file_field :art %>
+		<%=f.hidden_field :art_cache %>
+	</div>
 
+	<div class="field">
+		<%= f.label "Album Description - Used when people share it"  %><br />
+		<%= f.text_field :description %>
+	</div>
 
   <div class="field">
     <%=f.label "Type" %><br />
     <%=f.select :al_type, [["Album", "album"], ["Set", "set"], ["EP", "ep"],["Track List", "track_list"] ] %>
   </div>
+
+
+
+
+
+
 
   <div class="field">
     <%= f.label "Primary Artist" %><br />

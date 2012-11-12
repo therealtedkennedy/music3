@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121111223349) do
+ActiveRecord::Schema.define(:version => 20121111225758) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(:version => 20121111223349) do
     t.integer  "al_a_id"
     t.integer  "al_s_id"
     t.string   "album_url_slug"
+    t.string   "art"
+    t.string   "description"
   end
 
   create_table "albums_artists", :id => false, :force => true do |t|
