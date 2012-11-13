@@ -2,6 +2,13 @@
 <div class="artist_content">
 
 	<div class="div1a">
+		<div class="social">
+			<a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow
+				<%= @artist.twitter_name %></a>
+
+			<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
+
+		</div>
 
 		<% if can? :update, @artist %>
 			<table>
@@ -53,13 +60,7 @@
 		<%= link_to 'Have download code?', code_download_path(@artist.url_slug) %>  </br>
 		<%= link_to 'More Artists', artists_path %>
 
-		<div class="social">
-			<a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow
-				<%= @artist.twitter_name %></a>
 
-			<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
-
-		</div>
 
 
 	</div>

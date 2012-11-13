@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Sites\music3\public\uploads\artist\image\12\HARDSummer2011TN001.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/albums/show.html.erb" afterPath="$PROJECT_DIR$/app/views/albums/show.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/artists/show.html.erb" afterPath="$PROJECT_DIR$/app/views/artists/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/songs/show.html.erb" afterPath="$PROJECT_DIR$/app/views/songs/show.html.erb" />
     </list>
     <ignored path="music3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,19 +77,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/songs/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="3" selection-start="1227" selection-end="1227" vertical-scroll-proportion="0.47049925">
+            <state line="38" column="3" selection-start="1227" selection-end="1227" vertical-scroll-proportion="-13.851851">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/artists/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="129" selection-start="1203" selection-end="1320" vertical-scroll-proportion="-10.740741">
+            <state line="10" column="14" selection-start="494" selection-end="494" vertical-scroll-proportion="0.31770045">
               <folding />
             </state>
           </provider>
@@ -156,9 +152,9 @@
         <option value="$PROJECT_DIR$/app/controllers/songs_controller.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/views/albums/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/artists/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb" />
         <option value="$PROJECT_DIR$/app/views/songs/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/artists/show.html.erb" />
       </list>
     </option>
   </component>
@@ -1062,13 +1058,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artists/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="129" selection-start="1203" selection-end="1320" vertical-scroll-proportion="-10.740741">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="438" column="7" selection-start="11257" selection-end="11257" vertical-scroll-proportion="-9.222222">
@@ -1078,7 +1067,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/songs/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="3" selection-start="1227" selection-end="1227" vertical-scroll-proportion="0.47049925">
+        <state line="38" column="3" selection-start="1227" selection-end="1227" vertical-scroll-proportion="-13.851851">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/artists/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="14" selection-start="494" selection-end="494" vertical-scroll-proportion="0.31770045">
           <folding />
         </state>
       </provider>
