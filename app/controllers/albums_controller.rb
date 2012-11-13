@@ -42,7 +42,12 @@ class AlbumsController < ApplicationController
 	@social_twitter_name = @artist.twitter_name
 
 	#Image for twitter and FB
-	@social_image = @album.art_url.to_s
+	if @album.art.blank?
+		@social_image = @artist.logo
+	else
+		@social_image = @album.art_url.to_s
+	end
+
 
 	#------------------------------------------------
 
