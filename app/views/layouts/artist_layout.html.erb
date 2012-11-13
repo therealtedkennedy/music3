@@ -431,6 +431,13 @@
 		)
 	});
 
+//	Loads Facebook like button script after ajax call
+	$(document).ajaxComplete(function(){
+		try{
+			FB.XFBML.parse();
+		}catch(ex){}
+	});
+
 	function get_playlist(href) {
 		$.ajax({
 			url:href,
@@ -474,6 +481,7 @@
 					//loads twitter script so follow button and the like will load when back button is hit.
 					change_meta()
 					$.getScript("https://platform.twitter.com/widgets.js")
+
 					$.each(json, function (key, value) {
 						$(key).html(value);
 					});
@@ -617,7 +625,7 @@
 
 <p id="notice"><%= notice %></p>
 
-<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
+
 <!--<div class="facebook" style="overflow:visible; display:inline-block; margin: 10px;">-->
 
 

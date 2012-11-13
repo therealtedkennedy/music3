@@ -1,7 +1,5 @@
-<% content_for :meta do %>
-	<meta name="your_in_the_album_now" content="fuck_ya">
+<div id="fb-root"></div>
 
-<% end %>
 
 <p id="notice"><%= notice %></p>
 <div class="div1ra">
@@ -59,6 +57,8 @@
 
 	<div class="social">
 		<a href="https://twitter.com/share" class="twitter-share-button"  data-text="Check out <%=@album.al_name %> by <%=@artist.twitter_name%>"  data-url="<%=artist_show_album_url(@artist.url_slug,@album.album_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a>
+		<br/>
+		<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
 	</div>
 
 <p>
