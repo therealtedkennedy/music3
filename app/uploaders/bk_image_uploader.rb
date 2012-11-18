@@ -7,7 +7,7 @@ class BkImageUploader < CarrierWave::Uploader::Base
   process :tags => ['post_picture']
 
   def public_id
-    return model.id
+    return SecureRandom.uuid+"-"+original_filename
   end
 
 

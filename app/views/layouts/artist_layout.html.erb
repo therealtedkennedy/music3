@@ -377,7 +377,9 @@
 				//<!-- Creates play list object and ads it to play list.If you need to add more song attributes, or file types this is where you do it -->
 				myPlaylist.add({
 					title:songName,
+					artist:artistName,
 					mp3:$(this).attr('href')
+
 				});
 
 				//<!-- sets the song index. By take the length of the playist (with the song added see above) and subtracts 1 because index starts at 0, length starts at 1 -->
@@ -385,7 +387,7 @@
 			}
             artistSong = artistName+"&mdash;"+songName
 			myPlaylist.play(songIndex);
-			document.getElementById("track_name").innerHTML = artistSong
+			$("#track_name").html(artistSong);
 
 
 		});
@@ -424,6 +426,7 @@
 		$(".load-playlist").live("click", function (event) {
 			event.preventDefault();
 			var location = $(this).attr('href')
+
 			console.log("location: " + location)
 			get_playlist(location);
 
@@ -439,18 +442,19 @@
 	});
 
 	function get_playlist(href) {
+//      To display current song info in the player the below code needs to be added jplayer.playlist.min.js in the "_highlight:" function
+//		var trackInfo = (this.playlist[a].artist)+"&mdash;"+(this.playlist[a].title)
+//		$("#track_name").html(trackInfo);
+
+
 		$.ajax({
 			url:href,
-
 			success:function (json) {
 				ted_log(json);
-
 				myPlaylist.setPlaylist(json["playlist"])
 			},
 			dataType:"json"
 		});
-
-
 	}
 
 	function popstate() {
@@ -479,7 +483,7 @@
 					ted_log("about to load json")
 					//debugger;
 					//loads twitter script so follow button and the like will load when back button is hit.
-					change_meta()
+
 					$.getScript("https://platform.twitter.com/widgets.js")
 
 					$.each(json, function (key, value) {
@@ -491,11 +495,12 @@
 		});
 	}
 
-	function change_meta() {
-		$("meta[name='twitter:card']").attr("content", "<%= @artist.name %>")
-
-
-	}
+	//was for changing meta information on content load
+//	function change_meta() {
+//		$("meta[name='twitter:card']").attr("content", "<%= @artist.name %>")
+//
+//
+//	}
 
 
 

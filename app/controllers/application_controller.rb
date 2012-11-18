@@ -133,6 +133,12 @@ class ApplicationController < ActionController::Base
       cookies[:song_album_or_event_slug] = {:expires => 1.year.ago}
     end
   end
+
+	#For resizing profile picks
+	#def limit_image_url (file_name)
+	#	@name = file_name.split("/")[1]
+	#	@image_url = "http://res.cloudinary.com/hyy026ob8/image/upload/w_50,h_50,c_limit/"+@name
+	#end
 end
 
 
