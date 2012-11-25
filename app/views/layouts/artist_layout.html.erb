@@ -414,6 +414,7 @@
 			<% end %>
 		});
 
+//	 	Displays track Info
 		$(".trackInfo").live('mouseenter', function(){
 			$(this).find(".progressBarContainer").show();
 		});
@@ -421,16 +422,35 @@
 			$(this).find(".progressBarContainer").hide();
 		});
 
+//		Displays playlist
+
+		$(".playlist").live('mouseenter', function(){
+			console.log("hover enter");
+			$(".jp-playlist").show();
+		});
+		$(".playlist").live('mouseleave', function(){
+			console.log("hover leave");
+			$(".jp-playlist").hide();
+		});
+
+
 
 		// adds playlist
-		$(".load-playlist").live("click", function (event) {
-			event.preventDefault();
-			var location = $(this).attr('href')
+		$(".payment").live("click", function (event) {
 
-			console.log("location: " + location)
-			get_playlist(location);
 
 			}
+		)
+
+
+		$(".load-playlist").live("click", function (event) {
+					event.preventDefault();
+					var location = $(this).attr('href')
+
+					console.log("location: " + location)
+					get_playlist(location);
+
+				}
 		)
 	});
 
@@ -497,7 +517,7 @@
 
 	//was for changing meta information on content load
 //	function change_meta() {
-//		$("meta[name='twitter:card']").attr("content", "<%= @artist.name %>")
+//		$("meta[name='twitter:card']").attr("content", "<@artist.name")
 //
 //
 //	}
@@ -577,18 +597,22 @@
 									</div>
 								</div>
 
-								<span>After track info</span>
+								<div class = "playlist">
+									Playlist
+									<div class="jp-playlist">
+										<ul class="songList">
+											<li class="playlistSong"></li>
+										</ul>
+									</div>
+								</div>
+
 
 							</div>
 						</div>
 					</div>
 
 				</div>
-				<div class="jp-playlist">
-					<ul>
-						<li></li>
-					</ul>
-				</div>
+
 				<div class="jp-no-solution">
 					<span>Update Required</span>
 					To play the media you will need to either update your browser to a recent version or update your
@@ -629,6 +653,9 @@
 <!--</div>-->
 
 <p id="notice"><%= notice %></p>
+
+
+
 
 
 <!--<div class="facebook" style="overflow:visible; display:inline-block; margin: 10px;">-->

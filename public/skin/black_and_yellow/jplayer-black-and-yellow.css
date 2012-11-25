@@ -37,14 +37,49 @@
 
 }
 
+/* Playlist Styling */
 .jp-playlist {
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	font-size: 12px;
-	background-color: #000;
+	display: none;
+	line-height: 50px;
+	position: absolute;
+	top: 100%;
+	font-style:italic;
+	background-color: #2e2e2e;
 	color: #fff;
-	padding-right: 10px;
+	border-top: 2px solid #fff;
+
+}
+
+.playlist {
+	line-height: 50px;
+
+	display: inline-block;
+	font-style:italic;
+	color: #ffffff;
+	border-left: 1px solid #fff;
+}
+
+a.playlist {
+	color: #ffffff;
+
+
+}
+
+.songList {
+	padding: 0 2em;
+}
+.songList li {
+	list-style-type: none;
+}
+
+.testPlaylist {
+	display: none;
+	line-height: 50px;
+	position: absolute;
+	top: 100%;
+	font-style:italic;
+	background-color: #2e2e2e;
+	color: #fff;
 }
 
 /*.jp-no-solution {
@@ -132,7 +167,10 @@ a.jp-pause:hover {
 	line-height: 50px;
 	display: inline-block;
 	font-style:italic;
+
 }
+
+
 
 .trackInfo .progressBarContainer {
 	display: none;

@@ -2,13 +2,17 @@
 <div class="artist_content">
 
 	<div class="div1a">
-		<div class="social">
+
+			<div class="social">
+			<% if @artist.twitter_name.blank? %>
+
+			<% else %>
 			<a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow
-				<%= @artist.twitter_name %></a>
+					<%= @artist.twitter_name %></a>
+			<% end %>
+				<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
 
-			<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
-
-		</div>
+			</div>
 
 		<% if can? :update, @artist %>
 			<table>

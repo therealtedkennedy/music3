@@ -4,6 +4,10 @@ class UsersController < Devise::SessionsController
   prepend_before_filter :allow_params_authentication!, :only => :create
   include Devise::Controllers::InternalHelpers
 
+
+
+
+
   # GET /resource/sign_in
   def new
     resource = build_resource
@@ -16,7 +20,7 @@ class UsersController < Devise::SessionsController
 
     if cookies[:object].blank?
       redirect_to(show_user_path(current_user.id))
-
+g
 
     else
       assign_to_user (cookies[:object]),(cookies[:song_album_or_event_slug])

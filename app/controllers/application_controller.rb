@@ -79,6 +79,8 @@ class ApplicationController < ActionController::Base
  end
 
 
+
+
   before_filter :instantiate_controller_and_action_names
 
   def instantiate_controller_and_action_names

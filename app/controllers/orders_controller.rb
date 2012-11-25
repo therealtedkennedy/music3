@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
     logger.info "User ID"
     logger.info @user.id
 
-
+    #checks to see if user allready downloaded album
     @user.albums.uniq.each do |album|
       logger.info "album Url Slug"
       logger.info album.album_url_slug
