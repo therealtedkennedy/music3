@@ -78,7 +78,23 @@ class ApplicationController < ActionController::Base
      nil
  end
 
+ def user_auth_redirect_path
+	 cookies[:object] = {
+			 :value => params[:object],
+			 :expires => 30.minutes.from_now
+	 }
 
+	 cookies[:artist] = {
+			 :value => params[:url_slug],
+			 :expires => 30.minutes.from_now
+	 }
+
+	 cookies[:song_album_or_event_slug] = {
+			 :value => params[:song_album_or_event_slug],
+			 :expires => 30.minutes.from_now
+	 }
+
+ end
 
 
   before_filter :instantiate_controller_and_action_names

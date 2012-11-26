@@ -20,11 +20,17 @@ class UsersController < Devise::SessionsController
 
     if cookies[:object].blank?
       redirect_to(show_user_path(current_user.id))
-g
 
-    else
-      assign_to_user (cookies[:object]),(cookies[:song_album_or_event_slug])
-      redirect_to(show_user_path(current_user.id))
+	#artist is only assigned when its coming from payment routing.
+	elsif cookies[:artist].blank?
+		#assing_to_user is in the Application controller, assings song and albums to the user
+		assign_to_user (cookies[:object]),(cookies[:song_album_or_event_slug])
+		redirect_to(show_user_path(current_user.id))
+	else
+
+		redirect_to(payment_method_path(cookies[:object],cookies[:artist],cookies[:song_album_or_event_slug]))
+		# deletes the download cookie so that muliple downloads won't happen
+		cookies[:artist] = {:expires => 1.year.ago}
     end
   end
 

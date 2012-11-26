@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.xml
-  before_filter :authenticate_user!
+    before_filter :user_auth_redirect_path
+	before_filter :authenticate_user!
 
   def index
     @orders = Order.all
@@ -223,7 +224,9 @@ class OrdersController < ApplicationController
   def login_prompt
     logger.info "Login Prompt"
 
-    if can? :update, @artist
+    if current_user.nil?
+
+	else
 
        redirect_to(show_user_path(current_user.id, :token => params[:token], :PayerID =>params[:PayerID]))
 
