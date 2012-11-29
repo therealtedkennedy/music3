@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.xml
     before_filter :user_auth_redirect_path
-	before_filter :authenticate_user!
+	#before_filter :authenticate_user!
 
   def index
     @orders = Order.all
@@ -27,25 +27,33 @@ class OrdersController < ApplicationController
   def payment_method
        #user selects payment type.  All relevant var's passed through params.  Amount is use for PWYC, all other times its just a place holder
     @album = Album.find_by_album_url_slug(params[:album_url_slug])
-    @user = current_user
-    logger.info "User ID"
-    logger.info @user.id
-
-    #checks to see if user allready downloaded album
-    @user.albums.uniq.each do |album|
-      logger.info "album Url Slug"
-      logger.info album.album_url_slug
-      logger.info "params album"
-      logger.info params[:song_album_or_event_slug]
-      if album.album_url_slug == params[:song_album_or_event_slug]
-        redirect_to show_user_path(@user.id), notice => "WHOA! YOU HAVE ALREADY DOWNLOADED THIS(SEE BELOW"
-      else
 
 
-      end
+	#checks if user is logged in.
 
+	unless current_user.nil?
+
+		@user = current_user
+		logger.info "User ID"
+		logger.info @user.id
+
+		#checks to see if user allready downloaded album
+		@user.albums.uniq.each do |album|
+		  logger.info "album Url Slug"
+		  logger.info album.album_url_slug
+		  logger.info "params album"
+		  logger.info params[:song_album_or_event_slug]
+
+		  if album.album_url_slug == params[:song_album_or_event_slug]
+
+			flash[:notice] = "WHOA! YOU HAVE ALREADY DOWNLOADED THIS(SEE BELOW)"
+			redirect_to show_user_path(@user.id)
+		  else
+
+		  end
+
+		end
     end
-
 
   end
 
@@ -100,54 +108,54 @@ class OrdersController < ApplicationController
 
   #creates download link, payment amount, and object vars, and sets a cookie
  def payment_prep(object,artist_url_slug,song_album_or_event_slug,amount)
-   @object = object
+	   @object = object
 
-   #finds Artist
-   @artist = Artist.find_by_url_slug(artist_url_slug)
-   #prep for album
+	   #finds Artist
+	   @artist = Artist.find_by_url_slug(artist_url_slug)
+	   #prep for album
 
-   if @object == "album"
-     @album = Album.find_by_album_url_slug(song_album_or_event_slug)
-     @download_url = album_download_url(artist_url_slug,song_album_or_event_slug)
-     @cnx_url = artist_show_album_url(artist_url_slug,song_album_or_event_slug)
+	   if @object == "album"
+		 @album = Album.find_by_album_url_slug(song_album_or_event_slug)
+		 @download_url = album_download_url(artist_url_slug,song_album_or_event_slug)
+		 @cnx_url = artist_show_album_url(artist_url_slug,song_album_or_event_slug)
 
-     if @album.pay_type = "pay"
-         @amount = @album.al_amount
+		 if @album.pay_type = "pay"
+			 @amount = @album.al_amount
 
-     else
-        @amount = 100
-        # @amount = amount.to_i
-     end
+		 else
+			@amount = 100
+			# @amount = amount.to_i
+		 end
 
-   else
+	   else
 
-   #don't know why this didn't work. Just did the calculation in the chained payment model
-   #@amount_to_artist = "%.2f" % (@amount*0.85)
+	   #don't know why this didn't work. Just did the calculation in the chained payment model
+	   #@amount_to_artist = "%.2f" % (@amount*0.85)
 
-  end
+	  end
 
-  #Passes Cookie Download
-  cookies[:next_step] = {
-      :value => [@download_url],
-      :expires => 30.minutes.from_now
+	  #Passes Cookie Download
+	  cookies[:next_step] = {
+		  :value => [@download_url],
+		  :expires => 30.minutes.from_now
 
-       }
+		   }
 
-   #passes values to assign object to users who are not signed in.
-   if user_signed_in? != true
-     cookies[:object] = {
-        :value => [object],
-        :expires => 30.minutes.from_now
+	   #passes values to assign object to users who are not signed in.
+	   if user_signed_in? != true
+		 cookies[:object] = {
+			:value => [object],
+			:expires => 30.minutes.from_now
 
-         }
+			 }
 
-     cookies[:song_album_or_event_slug] = {
-        :value => [song_album_or_event_slug],
-        :expires => 30.minutes.from_now
+		 cookies[:song_album_or_event_slug] = {
+			:value => [song_album_or_event_slug],
+			:expires => 30.minutes.from_now
 
-       }
-    end
-  end
+		   }
+		end
+	end
      # GET /orders/new
   # GET /orders/new.xml
   def new

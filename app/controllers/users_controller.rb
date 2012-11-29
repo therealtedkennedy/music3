@@ -3,7 +3,7 @@ class UsersController < Devise::SessionsController
   prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, :only => :create
   include Devise::Controllers::InternalHelpers
-
+  layout "artist_layout", only: [:show, :edit]
 
 
 
@@ -11,8 +11,14 @@ class UsersController < Devise::SessionsController
   # GET /resource/sign_in
   def new
     resource = build_resource
+
     clean_up_passwords(resource)
     respond_with_navigational(resource, stub_options(resource)){ render_with_scope :new }
+
+	unless cookies[:object].blank?
+		assign_object_user
+	end
+
   end
 
   #a devise work around to choose the page after sign in or sign up.  Comes from the Application controller
@@ -24,17 +30,19 @@ class UsersController < Devise::SessionsController
 	#artist is only assigned when its coming from payment routing.
 	elsif cookies[:artist].blank?
 		#assing_to_user is in the Application controller, assings song and albums to the user
-		assign_to_user (cookies[:object]),(cookies[:song_album_or_event_slug])
+		assign_object_user
 		redirect_to(show_user_path(current_user.id))
 	else
-
+    #this is the part is currently not being used
 		redirect_to(payment_method_path(cookies[:object],cookies[:artist],cookies[:song_album_or_event_slug]))
 		# deletes the download cookie so that muliple downloads won't happen
 		cookies[:artist] = {:expires => 1.year.ago}
     end
   end
 
-
+   def assign_object_user
+	   assign_to_user (cookies[:object]),(cookies[:song_album_or_event_slug])
+   end
 
    def boo
 
@@ -95,7 +103,7 @@ class UsersController < Devise::SessionsController
  def show
     @user = User.find(params[:id])
 
-
+	@artist = Artist.find_by_url_slug("grimes")
    respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }

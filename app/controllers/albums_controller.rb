@@ -199,8 +199,8 @@ class AlbumsController < ApplicationController
 
   #creates a zip file for the album.  Stores it in S3
   def zip_album (artist, album)
-
-    #directory_path = "C:/Sites/Zipped"
+    #sets the directory path the album is going to be stored in
+    #directory_path = "C:/Sites/Zipped"  (for testing)
     directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+artist.url_slug
     directory = directory_artist_path+"/"+album.album_url_slug
@@ -210,32 +210,13 @@ class AlbumsController < ApplicationController
     #Makes the Directory
     FileUtils.mkdir_p directory
 
-    #Saves Songs into Directory
-    # songs_list = Dir.entries(directory)
+    #Saves Songs into album Directory
+
     logger.info "before writing loop"
     album.songs.uniq.each do |songs|
       unless songs.song_url_slug.blank?
         name =  songs.song_name+".mp3"
-
-        # unless songs_list.include?(name)
-        #finds the data
-        # @song_file = AWS::S3::S3Object.value(songs.s3_id, BUCKET)
-        # logger.info "Song downlaoded from s3"
-        #saves file
-
-        # create the file path
         path = File.join(directory, name)
-        #logger.info  "File Created"
-        # write the file
-
-        # File.open(path, 'wb') { |f| f.write(@song_file) }
-
-
-        #test if file is being written
-        #send_file(path,
-        # :filename  => name)
-
-        # end
 
         logger.info "before file Open"
         File.open(path,'wb') do |file|
@@ -251,7 +232,7 @@ class AlbumsController < ApplicationController
     logger.info "After writing loop before zip"
 
 
-    # unless (Dir.entries(directory_artist_path).include?(zipfile))
+    #zips the file
     zip(directory_artist_path,album.album_url_slug,directory)
     logger.info "after zip method"
     file_list = Dir.entries(directory_artist_path)
@@ -280,17 +261,6 @@ class AlbumsController < ApplicationController
     s3_file = File.open(zipfile_location)
     save_amazon_file(album.id.to_s, s3_file,album.al_name, @artist, ALBUM_BUCKET )
 
-
-
-    #album_s3_url = AWS::S3::S3Object.url_for("9999", BUCKET, :authenticated => false)
-
-
-    #redirect_to album_s3_url
-
-    # send_file(directory_artist_path+"/"+zipfile,
-    #           :filename  =>  @album.album_url_slug+".zip")
-
-
   end
 
 
@@ -313,14 +283,16 @@ class AlbumsController < ApplicationController
       # authorize! :create, @artist
 
     end
-
+    #checks to see if album object exsists in S3.
     if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
-
+      #downloads the album
       album_s3_url = AWS::S3::S3Object.url_for(@album.id.to_s, ALBUM_BUCKET, :authenticated => false)
       redirect_to album_s3_url
 
-    else
+	else
+	 #zips the file and uploads to S3
      zip_album(@artist,@album)
+	 #downloads the album
      album_s3_url = AWS::S3::S3Object.url_for(@album.id.to_s, ALBUM_BUCKET, :authenticated => false)
      redirect_to album_s3_url
 
@@ -354,7 +326,7 @@ class AlbumsController < ApplicationController
 
 
 
-
+  #zips the actual file comes from Zip album
   def zip (directory_artist_path, zip_file_name,directory)
     require 'rubygems'
     require 'zip/zip'

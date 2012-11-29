@@ -78,6 +78,12 @@
 			font-size: <%= @artist.profile_layout.p_size %>pt;
 		}
 
+	 .notice {
+		font-family: <%= @artist.profile_layout.p_font %>;
+		font-size: <%= @artist.profile_layout.p_size %>;
+		 color: <%= @artist.profile_layout.p_colour %>;
+	}
+
 		table {
 			font-face: <%= @artist.profile_layout.p_font %>;
 			font-size: <%= @artist.profile_layout.p_size %>pt;
@@ -99,6 +105,7 @@
 			color: <%= @artist.profile_layout.h2_colour %>;
 
 		}
+
 
 		.div1 {
 			max-width: 400px;
@@ -652,7 +659,7 @@
 <!--<p>Loading..</p>-->
 <!--</div>-->
 
-<p id="notice"><%= notice %></p>
+
 
 
 
@@ -663,7 +670,9 @@
 
 <!--</div>-->
 
-
+<% if flash[:notice] %>
+	<div class="notice"><%= flash[:notice] %></div>
+<% end %>
 
 <div id="content">
 

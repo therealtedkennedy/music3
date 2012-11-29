@@ -78,6 +78,9 @@ class ApplicationController < ActionController::Base
      nil
  end
 
+
+  #not sure if  this is used anymore
+
  def user_auth_redirect_path
 	 cookies[:object] = {
 			 :value => params[:object],
