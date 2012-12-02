@@ -37,11 +37,15 @@
 
         <%= link_to "Buy Now:", payment_method_path("album",@artist.url_slug,@album.album_url_slug ) %>
 
+    <% elsif @album.pay_type == "pwyc" %>
 
-    <% else %>
+		<%= render 'form_pwyc' %>
 
-        <h3><%= link_to "Download Free",album_download_path(@artist.url_slug,@album.album_url_slug) %></h3>
-    <% end %>
+	<% else %>
+
+        <h3><%= link_to "Download Free",download_free_path("album",@artist.url_slug,@album.album_url_slug) %></h3>
+
+	<% end %>
 
 
 

@@ -311,16 +311,17 @@ class AlbumsController < ApplicationController
 
         order_create(@album, cookies[:paykey] )
       end
-      # deletes the download cookie so that muliple downloads won't happen
-      cookies[:next_step] = {:expires => 1.year.ago}
-      #Deletes the pay key for tranactions
-      cookies[:paykey] = {:expires => 1.year.ago}
 
       #checks if user is signed in. If signed in assigns user found in application controller
       if user_signed_in?
         assign_to_user("album",@album.album_url_slug)
       end
-    end
+	end
+
+	# deletes the download cookie so that muliple downloads won't happen
+	cookies[:next_step] = {:expires => 1.year.ago}
+	#Deletes the pay key for tranactions
+	cookies[:paykey] = {:expires => 1.year.ago}
   end
 
 

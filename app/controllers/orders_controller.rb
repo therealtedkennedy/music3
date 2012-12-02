@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.xml
-    before_filter :user_auth_redirect_path
+   # before_filter :user_auth_redirect_path
 	#before_filter :authenticate_user!
 
   def index
@@ -29,32 +29,39 @@ class OrdersController < ApplicationController
     @album = Album.find_by_album_url_slug(params[:album_url_slug])
 
 
-	#checks if user is logged in.
+	#checks if user has downloaded already
+    downloaded_already(params[:song_album_or_event_slug])
 
-	unless current_user.nil?
 
-		@user = current_user
-		logger.info "User ID"
-		logger.info @user.id
+  end
 
-		#checks to see if user allready downloaded album
-		@user.albums.uniq.each do |album|
-		  logger.info "album Url Slug"
-		  logger.info album.album_url_slug
-		  logger.info "params album"
-		  logger.info params[:song_album_or_event_slug]
 
-		  if album.album_url_slug == params[:song_album_or_event_slug]
+  def downloaded_already (song_album_or_event_slug)
+	  #checks if user is logged in.
 
-			flash[:notice] = "WHOA! YOU HAVE ALREADY DOWNLOADED THIS(SEE BELOW)"
-			redirect_to show_user_path(@user.id)
-		  else
+  unless current_user.nil?
+
+		  @user = current_user
+		  logger.info "User ID"
+		  logger.info @user.id
+
+		  #checks to see if user allready downloaded album
+		  @user.albums.uniq.each do |album|
+			  logger.info "album Url Slug"
+			  logger.info album.album_url_slug
+			  logger.info "params album"
+			  logger.info params[song_album_or_event_slug]
+
+			  if album.album_url_slug == params[song_album_or_event_slug]
+
+				  flash[:notice] = "WHOA! YOU HAVE ALREADY DOWNLOADED THIS(SEE BELOW)"
+				  redirect_to show_user_path(@user.id)
+			  else
+
+			  end
 
 		  end
-
-		end
-    end
-
+	  end
   end
 
   def express
@@ -72,11 +79,32 @@ class OrdersController < ApplicationController
   redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
 
+  #sets up cookies for payment process
+  def free_download
+	#checks if user has downloaded already
+	downloaded_already(params[:song_album_or_event_slug])
+
+	payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_slug], params[:amount])
+	redirect_to (login_prompt_url)
+  end
+
+    #pwyc payment process
+	def pwyc
+		#checks if user has downloaded already
+		downloaded_already(params[:song_album_or_event_slug])
+		#space param is a work around ?redir="true" is being added to the last paramter in this path..i have no idea why
+		redirect_to payment_method_path(params[:object], params[:url_slug], params[:song_album_or_event_slug],:amount => params[:amount],:space => "blah")
+	end
+
+
   def chained_payment
   #uses https://github.com/jpablobr/active_paypal_adaptive_payment
   # SSL error - http://stackoverflow.com/questions/4528101/ssl-connect-returned-1-errno-0-state-sslv3-read-server-certificate-b-certificat
 
   payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_slug], params[:amount])
+  logger.info "amount in chained payment"
+  logger.info @amount
+
 
   recipients = [{:email => 'therea_1326852847_biz@gmail.com',
                  :amount => @amount,
@@ -110,6 +138,9 @@ class OrdersController < ApplicationController
  def payment_prep(object,artist_url_slug,song_album_or_event_slug,amount)
 	   @object = object
 
+       logger.info "params amount"
+	   logger.info amount
+
 	   #finds Artist
 	   @artist = Artist.find_by_url_slug(artist_url_slug)
 	   #prep for album
@@ -119,14 +150,24 @@ class OrdersController < ApplicationController
 		 @download_url = album_download_url(artist_url_slug,song_album_or_event_slug)
 		 @cnx_url = artist_show_album_url(artist_url_slug,song_album_or_event_slug)
 
-		 if @album.pay_type = "pay"
+		 if @album.pay_type == "pay"
 			 @amount = @album.al_amount
+
+		 elsif @album.pay_type == "pwyc"
+			 @amount = amount
+
+			 logger.info "in pwyc in payment prep"
+			 logger.info "params amount"
+			 logger.info amount
+			 logger.info "@amount"
+			 @amount = @amount.to_i
+			 logger.info @amount
 
 		 else
 			@amount = 100
 			# @amount = amount.to_i
 		 end
-
+		 logger.info @amount
 	   else
 
 	   #don't know why this didn't work. Just did the calculation in the chained payment model
