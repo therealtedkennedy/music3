@@ -90,8 +90,7 @@ class OrdersController < ApplicationController
 
     #pwyc payment process
 	def pwyc
-		#checks if user has downloaded already
-		downloaded_already(params[:song_album_or_event_slug])
+
 		#space param is a work around ?redir="true" is being added to the last paramter in this path..i have no idea why
 		redirect_to payment_method_path(params[:object], params[:url_slug], params[:song_album_or_event_slug],:amount => params[:amount],:space => "blah")
 	end

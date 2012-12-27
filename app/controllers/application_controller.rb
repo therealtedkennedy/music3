@@ -71,6 +71,14 @@ class ApplicationController < ActionController::Base
 # end
 
 
+
+# config/initializers/dev_environment.rb
+  #unless Rails.env.production?
+
+
+
+ # end
+
 #over rides devise default rout after sign in
  private
  #don't know

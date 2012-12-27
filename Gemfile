@@ -23,6 +23,7 @@ gem 'browser'
 gem 'cloudinary'
 gem 'aws_cf_signer'
 gem 'twitter'
+gem 'omniauth-twitter'
 
 
 

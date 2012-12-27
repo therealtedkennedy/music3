@@ -54,6 +54,10 @@
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.3.6, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multipart-post (v1.1.5, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.5.5, ruby-1.9.3-p125 (1)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="oauth (v0.4.7, ruby-1.9.3-p125 (1)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="omniauth (v1.1.1, ruby-1.9.3-p125 (1)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="omniauth-oauth (v1.0.1, ruby-1.9.3-p125 (1)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="omniauth-twitter (v0.0.14, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.0.7, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pg (v0.14.0, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyglot (v0.3.3, ruby-1.9.3-p125 (1)) [gem]" level="application" />

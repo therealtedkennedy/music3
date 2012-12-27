@@ -5,6 +5,24 @@ class UsersController < Devise::SessionsController
   include Devise::Controllers::InternalHelpers
   layout "artist_layout", only: [:show, :edit]
 
+  def api_login
+	  #raise env["omniauth.auth"].to_yaml
+
+      #user = User.find_by_find_by_provider_and_uid(auth['provider'], auth['uid'])
+	  user = User.from_omniauth(request.env["omniauth.auth"])
+	  logger.info "out of model, checking what user is "
+	  logger.info user
+		  if user.persisted?
+			  flash.notice = "Signed in!"
+			  sign_in_and_redirect user
+		  else
+			  session["devise.user_attributes"] = user.attributes
+			  redirect_to new_user_registration_url
+		  end
+
+  end
+
+  alias_method :twitter, :api_login
 
 
 

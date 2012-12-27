@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121111225758) do
+ActiveRecord::Schema.define(:version => 20121209202235) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -188,6 +188,10 @@ ActiveRecord::Schema.define(:version => 20121111225758) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "pay_pal_email"
+    t.string   "twitter_uid"
+    t.string   "twitter_nickname"
+    t.string   "twitter_name"
+    t.string   "provider"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

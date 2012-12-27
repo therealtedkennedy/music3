@@ -39,7 +39,22 @@
 
     <% elsif @album.pay_type == "pwyc" %>
 
-		<%= render 'form_pwyc' %>
+		<form accept-charset="UTF-8" action="/orders/pwyc" class="pwyc_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="X7fYhdSnvYDNQL+6gl5L8vCOqNx69ErioRhJn4omcSs=" /></div>
+
+
+			<label for="amount">download</label>
+			<input id="amount" name="amount" type="text" size="3" />
+			<input name="commit" type="submit" value="Donate" />
+
+			<!--For order processing-->
+
+			<!--defines the type of object it is-->
+			<input id="object" name="object" type="hidden" value="album" />
+			<input id="url_slug" name="url_slug" type="hidden" value="badbadnotgood" />
+			<input id="song_album_or_event_slug" name="song_album_or_event_slug" type="hidden" value="paywhatyoucan" />
+
+
+		</form>
 
 	<% else %>
 
