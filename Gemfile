@@ -16,8 +16,8 @@ gem "cancan"
 gem "active_paypal_adaptive_payment"
 gem "carrierwave"
 gem 'rake', '0.9.2'
-gem 'activerecord', '3.0.7'
-gem 'activerecord-sqlserver-adapter', '3.0.19'
+gem 'activerecord', '3.2.9'
+gem 'activerecord-sqlserver-adapter', '3.2.10'
 gem 'orm_adapter', '0.0.7'
 gem 'browser'
 gem 'cloudinary'
@@ -28,15 +28,15 @@ gem 'omniauth-twitter'
 
 
 group :development do
-  gem "sqlite3"
+	gem "sqlite3"
 end
 
 group :production do
-  gem "pg"
+	gem "pg"
 end
 
 # Use unicorn as the web server
-# gem 'unicorn'
+# gem 'unicorn'3.0.7
 
 # Deploy with Capistrano
 # gem 'capistrano'
