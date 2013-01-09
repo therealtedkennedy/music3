@@ -2,7 +2,7 @@ class UsersController < Devise::SessionsController
 
   prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, :only => :create
-  include Devise::Controllers::InternalHelpers
+  #include Devise::Controllers::InternalHelpers
   layout "artist_layout", only: [:show, :edit]
 
   def api_login
@@ -28,6 +28,7 @@ class UsersController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
+	logger.info "new controller"
     resource = build_resource
 
     clean_up_passwords(resource)
@@ -43,7 +44,7 @@ class UsersController < Devise::SessionsController
 
   #a devise work around to choose the page after sign in or sign up.  Comes from the Application controller
   def sign_in_routing
-
+    logger.info "Sing In Routing Controller"
     if cookies[:object].blank?
       redirect_to(show_user_path(current_user.id))
 
@@ -84,6 +85,7 @@ class UsersController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
+	logger.info "create controller"
     resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#new")
     set_flash_message(:notice, :signed_in) if is_navigational_format?
     sign_in(resource_name, resource)
@@ -111,6 +113,51 @@ class UsersController < Devise::SessionsController
     end
   end
 
+
+
+  def show
+	  logger.info "show controller"
+	  @user = User.find(params[:id])
+	  logger.info "User Found?"
+	  logger.info @user
+
+	  @artist = Artist.find_by_url_slug("grimes")
+	  respond_to do |format|
+		  format.html # show.html.erb
+		  format.xml  { render :xml => @user }
+	  end
+
+  end
+
+
+
+  def index
+	  @user = User.all
+
+	  respond_to do |format|
+		  format.html # show.html.erb
+		  format.xml  { render :xml => @user }
+	  end
+  end
+
+  def edit
+
+	  @user = User.find(params[:id])
+
+	  #searchString  = params[:url_slug]
+	  #@artist = Artist.find_by_url_slug(searchString)
+
+
+	  respond_to do |format|
+		  format.html  #show.html.erb
+		  format.xml  { render :xml => @song }
+		  format.js
+	  end
+  end
+
+
+
+  #don't know what protected does......
   protected
 
   def stub_options(resource)
@@ -118,43 +165,6 @@ class UsersController < Devise::SessionsController
     methods = methods.keys if methods.is_a?(Hash)
     methods << :password if resource.respond_to?(:password)
     { :methods => methods, :only => [:password] }
-  end
-
- def show
-    @user = User.find(params[:id])
-
-	@artist = Artist.find_by_url_slug("grimes")
-   respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
-   end
-
- end
-
-
-
- def index
-   @user = User.all
-
-     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
-   end
- end
-
-   def edit
-
-    @user = User.find(params[:id])
-
-    #searchString  = params[:url_slug]
-    #@artist = Artist.find_by_url_slug(searchString)
-
-
-     respond_to do |format|
-           format.html  #show.html.erb
-           format.xml  { render :xml => @song }
-           format.js
-     end
   end
 
 

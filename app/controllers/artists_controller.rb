@@ -60,7 +60,7 @@ class ArtistsController < ApplicationController
         render :json => {
             :success => true,
             :"#content" => render_to_string(
-                :action => 'artists/show.html.erb',
+                :action => 'show.html.erb',
                 :layout => false
             ),
 

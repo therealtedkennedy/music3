@@ -6,7 +6,7 @@ gem 'rails', '3.2.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-gem 'devise', '1.4.2'
+
 gem 'jquery-rails'
 gem 'client_side_validations', '3.1.4'
 gem 'aws-s3',:require => 'aws/s3'
@@ -18,12 +18,13 @@ gem "carrierwave"
 gem 'rake', '0.9.2'
 gem 'activerecord', '3.2.9'
 gem 'activerecord-sqlserver-adapter', '3.2.10'
-gem 'orm_adapter', '0.0.7'
+gem 'orm_adapter','>= 0.1.0'
 gem 'browser'
 gem 'cloudinary'
 gem 'aws_cf_signer'
 gem 'twitter'
 gem 'omniauth-twitter'
+gem 'devise', '2.1.2'
 
 
 

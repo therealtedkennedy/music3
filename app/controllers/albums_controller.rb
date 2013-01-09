@@ -61,7 +61,7 @@ class AlbumsController < ApplicationController
         render :json => {
            :success => true,
            :"#content" => render_to_string(
-           :action => 'albums/show.html.erb',
+           :action => 'show.html.erb',
            :layout => false
            )
 
