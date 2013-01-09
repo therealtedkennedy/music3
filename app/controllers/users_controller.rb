@@ -120,7 +120,7 @@ class UsersController < Devise::SessionsController
 	  @user = User.find(params[:id])
 	  logger.info "User Found?"
 	  logger.info @user
-
+      #work around to get background to load. Eventually users should have there own layouts
 	  @artist = Artist.find_by_url_slug("grimes")
 	  respond_to do |format|
 		  format.html # show.html.erb
@@ -143,11 +143,12 @@ class UsersController < Devise::SessionsController
   def edit
 
 	  @user = User.find(params[:id])
-
+      logger.info "In edit"
+	  logger.info @user
 	  #searchString  = params[:url_slug]
 	  #@artist = Artist.find_by_url_slug(searchString)
-
-
+      #work around...to make sure that the user profile loads using the artist layout template. Really the user should have there own.
+	  @artist = Artist.find_by_url_slug("grimes")
 	  respond_to do |format|
 		  format.html  #show.html.erb
 		  format.xml  { render :xml => @song }

@@ -1,8 +1,10 @@
 Music3::Application.routes.draw do
 
 
-	resources :artists, :albums,:orders,:artist_home, :songs, :profile_layouts, :settings
-    	devise_for :users
+	resources :artists, :albums,:orders,:artist_home, :songs, :profile_layouts
+    devise_for :users
+
+
 
 	root :to => "homepage#index"
 	#orders
