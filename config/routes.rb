@@ -18,7 +18,7 @@ Music3::Application.routes.draw do
 
 
 
-	match "go_suck_a_fucking_dick/rails_forms_are/dumb_cunts" => "profile_layouts#update"
+	#match "go_suck_a_fucking_dick/rails_forms_are/dumb_cunts" => "profile_layouts#update"
 
 	match "testing/cors" => "songs#cors", :as => :cors
 	#user routing

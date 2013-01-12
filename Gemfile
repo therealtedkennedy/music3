@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -16,7 +16,7 @@ gem "cancan"
 gem "active_paypal_adaptive_payment"
 gem "carrierwave"
 gem 'rake', '0.9.2'
-gem 'activerecord', '3.2.9'
+gem 'activerecord', '3.2.11'
 gem 'activerecord-sqlserver-adapter', '3.2.10'
 gem 'orm_adapter','>= 0.1.0'
 gem 'browser'
