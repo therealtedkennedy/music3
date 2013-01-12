@@ -32,10 +32,11 @@ class ProfileLayoutsController < ApplicationController
 
 		respond_to do |format|
 			if @artist.profile_layout.update_attributes(params[:profile_layout])
-				    logger.info "in json"
 
-				    format.json {
-						render :json => {
+
+			  logger.info "in json"
+				  format.json {
+				 		render :json => {
 								:success => true}
 						}
 			else

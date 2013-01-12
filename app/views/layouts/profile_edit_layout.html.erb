@@ -83,6 +83,9 @@
 		text-decoration: none;
 
 	}
+	.field {
+		color: #FFFFFF;
+	}
 /*user Can Edit.....*/
 	a.nav:hover, .adminLink:hover {
 		color: #FFFFFF;
@@ -549,10 +552,165 @@
 </div>
 
 <div class="edit-controls">
-	<h1>From Edit Layoutt</h1>
+	<h1>From Edit Layout</h1>
 
 
-	<%= render 'form' %>
+	<form accept-charset="UTF-8" action="/<%=params[:url_slug]%>/update_profile_layout" class="edit_profile_layout" id="edit_profile_layout_1" method="post">
+
+		<div style="margin:0;padding:0;display:inline">
+			<input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" />
+			<input name="authenticity_token" type="hidden" value="CJPszSMzg0DyS6ct/V9j3jAywNxLnYCqD02LLpKF3ak=" />
+		</div>
+
+		<h1> H1 </h1>
+		<div class="field">
+			<label for="profile_layout_h1_size">H1 size</label><br />
+			<input id="profile_layout_h1_size" name="profile_layout[h1_size]" size="30" type="text" value="<%= @artist.profile_layout.h1_size %>" />
+		</div>
+
+		<div class="field">
+			<label for="profile_layout_h1_font">H1 font</label><br />
+			<select id="profile_layout_h1_font" name="profile_layout[h1_font]"><option value="<%= @artist.profile_layout.h1_font %>" selected="selected"><%= @artist.profile_layout.h1_font %></option>
+				<option value="Courier">Courier</option>
+				<option value="Times">Times</option>
+				<option value="Helvetica">Helvetica</option>
+				<option value="Impact">Impact</option>
+			   </select>
+		</div>
+		<div class="field">
+			<label for="profile_layout_h1_colour">H1 colour</label><br />
+			<input id="profile_layout_h1_colour" name="profile_layout[h1_colour]" size="30" type="text" value="<%=@artist.profile_layout.h1_colour %>" />
+		</div>
+
+
+		<h1> H2 </h1>
+		<div class="field">
+			<label for="profile_layout_h2_size">H2 size</label><br />
+			<input id="profile_layout_h2_size" name="profile_layout[h2_size]" size="30" type="text" value="<%=@artist.profile_layout.h2_size %>" />
+		</div>
+		<div class="field">
+			<label for="profile_layout_h2_font">H2 font</label><br />
+			<select id="profile_layout_h2_font" name="profile_layout[h2_font]"><option value="<%= @artist.profile_layout.h2_font %>" selected="selected"><%= @artist.profile_layout.h2_font %></option>
+				<option value="courier">Courier</option>
+				<option value="times">Times</option>
+				<option value="Helvetica">Helvetica</option>
+				<option value="impact">Impact</option></select>
+		</div>
+		<div class="field">
+			<label for="profile_layout_h2_colour">H2 colour</label><br />
+			<input id="profile_layout_h2_colour" name="profile_layout[h2_colour]" size="30" type="text" value="<%= @artist.profile_layout.h2_colour %>" />
+		</div>
+
+		<h1> H3 </h1>
+		<div class="field">
+			<label for="profile_layout_h3_size">H3 size</label><br />
+			<input id="profile_layout_h3_size" name="profile_layout[h3_size]" size="30" type="text" value="<%= @artist.profile_layout.h3_size %>" />
+		</div>
+		<div class="field">
+			<label for="profile_layout_h3_font">H3 font</label><br />
+			<select id="profile_layout_h3_font" name="profile_layout[h3_font]"><option value="<%= @artist.profile_layout.h3_font %>" selected="selected"> <%= @artist.profile_layout.h3_font %></option>
+				<option value="courier">Courier</option>
+				<option value="times">Times</option>
+				<option value="Helvetica">Helvetica</option>
+				<option value="impact">Impact</option></select>
+		</div>
+		<div class="field">
+			<label for="profile_layout_h3_colour">H3 colour</label><br />
+			<input id="profile_layout_h3_colour" name="profile_layout[h3_colour]" size="30" type="text" value="<%= @artist.profile_layout.h3_colour %>" />
+		</div>
+
+		<h1> P </h1>
+		<div class="field">
+			<label for="profile_layout_p_size">P size</label><br />
+			<input id="profile_layout_p_size" name="profile_layout[p_size]" size="30" type="text" value="<%=@artist.profile_layout.p_size %>" />
+		</div>
+		<div class="field">
+			<label for="profile_layout_p_font">P font</label><br />
+			<select id="profile_layout_p_font" name="profile_layout[p_font]"><option value="<%= @artist.profile_layout.p_font %>" selected="selected"><%= @artist.profile_layout.p_font %></option>
+				<option value="courier">Courier</option>
+				<option value="times">Times</option>
+				<option value="Helvetica">Helvetica</option>
+				<option value="impact">Impact</option></select>
+		</div>
+		<div class="field">
+			<label for="profile_layout_p_colour">P colour</label><br />
+			<input id="profile_layout_p_colour" name="profile_layout[p_colour]" size="30" type="text" value="<%= @artist.profile_layout.p_colour %>" />
+		</div>
+
+
+
+		<h1> Div 1 </h1>
+
+		<!--not added to css yet-->
+	<!--	<div class="field">
+			<label for="profile_layout_div_1_colour">Div 1 colour</label><br />
+			<input id="profile_layout_div_1_colour" name="profile_layout[div_1_colour]" size="30" type="text" value="#FFFFFF" />
+		</div>-->
+		<!--<div class="field">
+			<label for="profile_layout_div_1_transparency">Div 1 transparency</label><br />
+			<input id="profile_layout_div_1_transparency" name="profile_layout[div_1_transparency]" size="30" type="text" value="" />
+		</div>-->
+
+
+		<div class="field">
+			<label for="profile_layout_div_1_border_colour">Div 1 border colour</label><br />
+			<input id="profile_layout_div_1_border_colour" name="profile_layout[div_1_border_colour]" size="30" type="text" value="<%= @artist.profile_layout.div_1_border_colour %>" />
+		</div>
+		<div class="field">
+			<label for="profile_layout_div_1_background_colour">Div 1 background colour</label><br />
+			<input id="profile_layout_div_1_background_colour" name="profile_layout[div_1_background_colour]" size="30" type="text" value="<%=@artist.profile_layout.div_1_background_colour %>" />
+		</div>
+		<div class="field">
+			<label for="profile_layout_div_1_border_width">Div 1 border width</label><br />
+			<input id="profile_layout_div_1_border_width" name="profile_layout[div_1_border_width]" size="30" type="text" value="<%=@artist.profile_layout.div_1_border_width %>" />
+		</div>
+
+		<h1> Div 2 </h1>
+
+		<!--not in css yet-->
+	<!--	<div class="field">
+			<label for="profile_layout_div_2_colour">Div 2 colour</label><br />
+			<input id="profile_layout_div_2_colour" name="profile_layout[div_2_colour]" size="30" type="text" value="#FFFFFF" />
+		</div>
+		<div class="field">
+			<label for="profile_layout_div_2_transparency">Div 2 transparency</label><br />
+			<input id="profile_layout_div_2_transparency" name="profile_layout[div_2_transparency]" size="30" type="text" value="" />
+		</div>-->
+
+		<div class="field">
+			<label for="profile_layout_div_2_border_colour">Div 2 border colour</label><br />
+			<input id="profile_layout_div_2_border_colour" name="profile_layout[div_2_border_colour]" size="30" type="text" value="<%= @artist.profile_layout.div_2_border_colour %>" />
+		</div>
+		<div class="field">
+			<label for="profile_layout_div_2_background_colour">Div 2 background colour</label><br />
+			<input id="profile_layout_div_2_background_colour" name="profile_layout[div_2_background_colour]" size="30" type="text" value="<%=@artist.profile_layout.div_2_background_colour %>" />
+		</div>
+		<div class="field">
+			<label for="profile_layout_div_2_border_width">Div 2 border width</label><br />
+			<input id="profile_layout_div_2_border_width" name="profile_layout[div_2_border_width]" size="30" type="text" value="<%= @artist.profile_layout.div_2_border_width %>" />
+		</div>
+		<h1>Custom CSS</h1>
+		<div class="field">
+			<p>Use custom css? <input name="profile_layout[use_css]" type="hidden" value="0" />
+				<input id="profile_layout_use_css" name="profile_layout[use_css]" type="checkbox" value="1" /></p>
+		</div>
+
+		<input id="url_slug" name="url_slug" type="hidden" value="<%=params[:url_slug]%>" />
+
+		<div class="actions">
+			<input name="commit" type="submit" value="Update Profile layout" />
+
+		</div>
+
+    </form>
+
+
+
+
+
+
+
+
 	<%= link_to 'Custom CSS', css_editor_path(@artist.url_slug) %>
 	<%= link_to 'Back to Admin', artist_admin_path(@artist.url_slug) %>
 </div>

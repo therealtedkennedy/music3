@@ -18,7 +18,7 @@ Music3::Application.routes.draw do
 
 
 
-	#match "go_suck_a_fucking_dick/rails_forms_are/dumb_cunts" => "profile_layouts#update"
+   match "/go_suck_a_fucking_dick/rails_forms_are/dumb_cunts" => "profile_layouts#update_profile_layout"
 
 	match "testing/cors" => "songs#cors", :as => :cors
 	#user routing
@@ -65,6 +65,8 @@ Music3::Application.routes.draw do
 	match "/:url_slug/profile-edit/css-editor" => "profile_layouts#css_editor", :as => :css_editor
 	match "/:url_slug/profile-edit" => "profile_layouts#edit", :as => :profile_edit
 	match "/:url_slug/profile-edit/css-editor/update" => "profile_layouts#css_editor_update", :as => :css_editor_update
+	match "/:url_slug/update_profile_layout" => "profile_layouts#update"
+
 
 
 
