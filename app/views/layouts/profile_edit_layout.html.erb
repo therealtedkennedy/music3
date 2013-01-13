@@ -87,6 +87,13 @@
 		color: #FFFFFF;
 	}
 /*user Can Edit.....*/
+
+
+	<% if @artist.profile_layout.use_css == true %>
+
+		<%= @artist.profile_layout.profile_css %>
+
+	<% else %>
 	a.nav:hover, .adminLink:hover {
 		color: #FFFFFF;
 
@@ -269,6 +276,8 @@
 	#loading {
 		display: none;
 	}
+
+ <% end %>
 
 </style>
 
@@ -555,7 +564,7 @@
 	<h1>From Edit Layout</h1>
 
 
-	<form accept-charset="UTF-8" action="/<%=params[:url_slug]%>/update_profile_layout" class="edit_profile_layout" id="edit_profile_layout_1" method="post">
+<!--	<form accept-charset="UTF-8" action="/<%=params[:url_slug]%>/update_profile_layout" class="edit_profile_layout" id="edit_profile_layout_1" method="post">
 
 		<div style="margin:0;padding:0;display:inline">
 			<input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" />
@@ -641,15 +650,15 @@
 
 		<h1> Div 1 </h1>
 
-		<!--not added to css yet-->
-	<!--	<div class="field">
+		&lt;!&ndash;not added to css yet&ndash;&gt;
+	&lt;!&ndash;	<div class="field">
 			<label for="profile_layout_div_1_colour">Div 1 colour</label><br />
 			<input id="profile_layout_div_1_colour" name="profile_layout[div_1_colour]" size="30" type="text" value="#FFFFFF" />
-		</div>-->
-		<!--<div class="field">
+		</div>&ndash;&gt;
+		&lt;!&ndash;<div class="field">
 			<label for="profile_layout_div_1_transparency">Div 1 transparency</label><br />
 			<input id="profile_layout_div_1_transparency" name="profile_layout[div_1_transparency]" size="30" type="text" value="" />
-		</div>-->
+		</div>&ndash;&gt;
 
 
 		<div class="field">
@@ -667,15 +676,15 @@
 
 		<h1> Div 2 </h1>
 
-		<!--not in css yet-->
-	<!--	<div class="field">
+		&lt;!&ndash;not in css yet&ndash;&gt;
+	&lt;!&ndash;	<div class="field">
 			<label for="profile_layout_div_2_colour">Div 2 colour</label><br />
 			<input id="profile_layout_div_2_colour" name="profile_layout[div_2_colour]" size="30" type="text" value="#FFFFFF" />
 		</div>
 		<div class="field">
 			<label for="profile_layout_div_2_transparency">Div 2 transparency</label><br />
 			<input id="profile_layout_div_2_transparency" name="profile_layout[div_2_transparency]" size="30" type="text" value="" />
-		</div>-->
+		</div>&ndash;&gt;
 
 		<div class="field">
 			<label for="profile_layout_div_2_border_colour">Div 2 border colour</label><br />
@@ -702,12 +711,12 @@
 
 		</div>
 
-    </form>
+    </form>-->
 
 
 
 
-
+	<%= render 'form' %>
 
 
 
