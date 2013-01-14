@@ -151,6 +151,8 @@ class AlbumsController < ApplicationController
     @artist = Artist.find_by_url_slug(params[:url_slug])
     authorize! :update, @artist
 
+	#used check to see if albums songs have changed
+
     if params.has_key?(:album_songs)
       @album.songs = Song.find(params[:album_songs][:songs_id])
     else
@@ -160,9 +162,13 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       if @album.update_attributes(params[:album])
         #zips and creates and album in S3
-        if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
 
-          else
+        #checks to see the albums songs have changed.
+        #if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
+		if  params[:album_songs] == @album.album_songs
+		  logger.info "album_songs true"
+		else
+			logger.info "in zip album"
            zip_album(@artist,@album)
         end
 
@@ -203,9 +209,15 @@ class AlbumsController < ApplicationController
     #directory_path = "C:/Sites/Zipped"  (for testing)
     directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+artist.url_slug
-    directory = directory_artist_path+"/"+album.album_url_slug
+	directory = directory_artist_path+"/"+album.album_url_slug
+
     zipfile = album.album_url_slug+".zip"
     no_zip =   album.album_url_slug
+
+    #deletes the directory if it already exsists.  Means something has changed.
+	if File.directory?(directory)
+		File.delete(directory)
+	end
 
     #Makes the Directory
     FileUtils.mkdir_p directory
@@ -340,6 +352,11 @@ class AlbumsController < ApplicationController
     file_list.delete(".")
     file_list.delete("..")
     zipfile_name = directory_artist_path+"/"+zip_file_name+".zip"
+
+	#checks to see if the zip file already exsisits.  If it does it deletes it
+	if File.directory?(zipfile_name)
+		File.delete(zipfile_name)
+	end
 
     Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
       file_list.each do |filename|

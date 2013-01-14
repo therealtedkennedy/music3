@@ -35,7 +35,7 @@
 
     <% if @album.pay_type == "pay" %>
 
-        <%= link_to "Buy Now:", payment_method_path("album",@artist.url_slug,@album.album_url_slug ) %>
+        <%= link_to "Buy Now: Only $"+@album.al_amount.to_s+"!", payment_method_path("album",@artist.url_slug,@album.album_url_slug ) %>
 
     <% elsif @album.pay_type == "pwyc" %>
 
@@ -50,7 +50,7 @@
 
 			<!--defines the type of object it is-->
 			<input id="object" name="object" type="hidden" value="album" />
-			<input id="url_slug" name="url_slug" type="hidden" value="badbadnotgood" />
+			<input id="url_slug" name="url_slug" type="hidden" value="<%=@album.album_url_slug%>" />
 			<input id="song_album_or_event_slug" name="song_album_or_event_slug" type="hidden" value="paywhatyoucan" />
 
 
@@ -140,7 +140,7 @@
  <%= @album.plays%></p>
 
   <p>
-    <b>Number of Plays:</b>
+    <b>Album URL Slug</b>
     <%= @album.album_url_slug %></p>
 
 

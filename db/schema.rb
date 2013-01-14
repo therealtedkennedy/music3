@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209202235) do
+ActiveRecord::Schema.define(:version => 20130113234417) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20121209202235) do
     t.string   "album_url_slug"
     t.string   "art"
     t.string   "description"
+    t.string   "album_songs"
   end
 
   create_table "albums_artists", :id => false, :force => true do |t|

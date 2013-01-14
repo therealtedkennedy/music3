@@ -51,9 +51,6 @@ class ProfileLayoutsController < ApplicationController
 		@artist = Artist.find_by_url_slug(params[:url_slug])
 		@profile_layout = @artist.profile_layout
 
-
-
-
 	end
 
  	def css_editor_update

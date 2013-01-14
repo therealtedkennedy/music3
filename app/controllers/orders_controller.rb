@@ -103,7 +103,8 @@ class OrdersController < ApplicationController
   payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_slug], params[:amount])
   logger.info "amount in chained payment"
   logger.info @amount
-
+  logger.info "Artist?"
+  logger.info @artist
 
   recipients = [{:email => 'therea_1326852847_biz@gmail.com',
                  :amount => @amount,
