@@ -165,12 +165,12 @@ class AlbumsController < ApplicationController
 
         #checks to see the albums songs have changed.
         #if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
-		if  params[:album_songs] == @album.album_songs
-		  logger.info "album_songs true"
-		else
-			logger.info "in zip album"
-           zip_album(@artist,@album)
-        end
+		#if  params[:album_songs] == @album.album_songs
+		 # logger.info "album_songs true"
+		#else
+			#logger.info "in zip album"
+        #   zip_album(@artist,@album)
+        #end
 
         format.html { redirect_to(artist_show_album_path(@artist.url_slug, @album.album_url_slug), :notice => 'Album was successfully updated.') }
         format.xml  { head :ok }
@@ -215,9 +215,9 @@ class AlbumsController < ApplicationController
     no_zip =   album.album_url_slug
 
     #deletes the directory if it already exsists.  Means something has changed.
-	if File.directory?(directory)
-		File.delete(directory)
-	end
+	#if File.directory?(directory)
+		#File.delete(directory)
+	#end
 
     #Makes the Directory
     FileUtils.mkdir_p directory
