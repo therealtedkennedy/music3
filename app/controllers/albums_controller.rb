@@ -165,12 +165,12 @@ class AlbumsController < ApplicationController
 
         #checks to see the albums songs have changed.
         #if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
-		#if  params[:album_songs] == @album.album_songs
-		 # logger.info "album_songs true"
-		#else
-			#logger.info "in zip album"
-        #   zip_album(@artist,@album)
-        #end
+		if  params[:album_songs] == @album.album_songs
+		  logger.info "album_songs true"
+		else
+			logger.info "in zip album"
+           zip_album(@artist,@album)
+        end
 
         format.html { redirect_to(artist_show_album_path(@artist.url_slug, @album.album_url_slug), :notice => 'Album was successfully updated.') }
         format.xml  { head :ok }
@@ -209,9 +209,11 @@ class AlbumsController < ApplicationController
     #directory_path = "C:/Sites/Zipped"  (for testing)
     directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"
     directory_artist_path = directory_path+"/"+artist.url_slug
-	directory = directory_artist_path+"/"+album.album_url_slug
+    #sets date to avoid duplicates if changes are made to album songs
+	date = Time.now.to_s(:number)
+    directory = directory_artist_path+"/"+album.album_url_slug+"_"+date
 
-    zipfile = album.album_url_slug+".zip"
+    #zipfile = album.album_url_slug+".zip"
     no_zip =   album.album_url_slug
 
     #deletes the directory if it already exsists.  Means something has changed.
@@ -245,7 +247,14 @@ class AlbumsController < ApplicationController
 
 
     #zips the file
-    zip(directory_artist_path,album.album_url_slug,directory)
+	#Sets Zip file name.  Date is included to avoid duplicates when changing songs in ablums
+    # HHHHHHHHHHHHHHHHHHHHHHHHEEEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRRRRRRRRRREEEEEEEEEEEEEEEEEEEEEEEEEEEE
+
+	zipfile_name = album.album_url_slug+"_"+date+".zip"
+	#sets Zip File Location
+	zipfile_location = directory_artist_path+"/"+zipfile_name
+
+	zip(zipfile_location,directory)
     logger.info "after zip method"
     file_list = Dir.entries(directory_artist_path)
 
@@ -259,19 +268,25 @@ class AlbumsController < ApplicationController
 
     #logger stuff
     logger.info "before send file, zip file name"
-    logger.info zipfile
+    logger.info zipfile_name
     logger.info "file size"
 
-    #sets Zip File Location
-    zipfile_location = directory_artist_path+"/"+zipfile
 
     #logger stuff
     size = File.size(zipfile_location)
     logger.info size
 
     #Saves to S3
-    s3_file = File.open(zipfile_location)
-    save_amazon_file(album.id.to_s, s3_file,album.al_name, @artist, ALBUM_BUCKET )
+
+	#checks if it already exsists and deletes it if i does.  For when album is updated with songs
+	if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
+		logger.info "in delete...would be amazing if this happend"
+	   AWS::S3::S3Object.delete @album.id.to_s, ALBUM_BUCKET
+	end
+
+	s3_file = File.open(zipfile_location)
+	save_amazon_file(album.id.to_s, s3_file,album.al_name, @artist, ALBUM_BUCKET )
+
 
   end
 
@@ -340,7 +355,7 @@ class AlbumsController < ApplicationController
 
 
   #zips the actual file comes from Zip album
-  def zip (directory_artist_path, zip_file_name,directory)
+  def zip (zipfile_location,directory)
     require 'rubygems'
     require 'zip/zip'
     require 'zip/zipfilesystem'
@@ -351,14 +366,11 @@ class AlbumsController < ApplicationController
     file_list = Dir.entries(directory)
     file_list.delete(".")
     file_list.delete("..")
-    zipfile_name = directory_artist_path+"/"+zip_file_name+".zip"
+    #zipfile_name = directory_artist_path+"/"+zip_file_name+".zip"
 
-	#checks to see if the zip file already exsisits.  If it does it deletes it
-	if File.directory?(zipfile_name)
-		File.delete(zipfile_name)
-	end
 
-    Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
+
+    Zip::ZipFile.open(zipfile_location, Zip::ZipFile::CREATE) do |zipfile|
       file_list.each do |filename|
 
         logger.info "In Zip file loop.  Below Zip File name"
