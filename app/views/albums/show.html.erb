@@ -50,8 +50,8 @@
 
 			<!--defines the type of object it is-->
 			<input id="object" name="object" type="hidden" value="album" />
-			<input id="url_slug" name="url_slug" type="hidden" value="<%=@album.album_url_slug%>" />
-			<input id="song_album_or_event_slug" name="song_album_or_event_slug" type="hidden" value="paywhatyoucan" />
+			<input id="url_slug" name="url_slug" type="hidden" value="<%= @artist.url_slug %>" />
+			<input id="song_album_or_event_slug" name="song_album_or_event_slug" type="hidden" value="<%=@album.album_url_slug%>" />
 
 
 		</form>

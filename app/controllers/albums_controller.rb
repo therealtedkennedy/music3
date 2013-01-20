@@ -165,11 +165,12 @@ class AlbumsController < ApplicationController
 
         #checks to see the albums songs have changed.
         #if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
-		if  params[:album_songs] == @album.album_songs
-		  logger.info "album_songs true"
+		if  params[:album_songs].to_s == @album.album_songs
+		   logger.info "album_songs true"
 		else
-			logger.info "in zip album"
+		   logger.info "in zip album"
            zip_album(@artist,@album)
+		   @album.update_attribute(:album_songs, params[:album_songs].to_s)
         end
 
         format.html { redirect_to(artist_show_album_path(@artist.url_slug, @album.album_url_slug), :notice => 'Album was successfully updated.') }
@@ -248,7 +249,7 @@ class AlbumsController < ApplicationController
 
     #zips the file
 	#Sets Zip file name.  Date is included to avoid duplicates when changing songs in ablums
-    # HHHHHHHHHHHHHHHHHHHHHHHHEEEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRRRRRRRRRREEEEEEEEEEEEEEEEEEEEEEEEEEEE
+
 
 	zipfile_name = album.album_url_slug+"_"+date+".zip"
 	#sets Zip File Location
