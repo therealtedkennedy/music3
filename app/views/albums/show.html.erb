@@ -39,7 +39,17 @@
 
     <% elsif @album.pay_type == "pwyc" %>
 
-		<form accept-charset="UTF-8" action="/orders/pwyc" class="pwyc_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="X7fYhdSnvYDNQL+6gl5L8vCOqNx69ErioRhJn4omcSs=" /></div>
+		<script type="text/javascript">
+		$(function(){
+			var token = $('meta[name="csrf-token"]').attr('content');
+			$("#token").val(token);
+		});
+		</script>
+
+		<form accept-charset="UTF-8" action="<%=payment_method_path("album",@artist.url_slug,@album.album_url_slug )%>" class="pwyc_form" enctype="multipart/form-data" data-validate="true"  method="post" novalidate="novalidate"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" />
+
+
+			<input name="authenticity_token" id="token" type="hidden" value=""/></div>
 
 
 			<label for="amount">download</label>
@@ -52,6 +62,7 @@
 			<input id="object" name="object" type="hidden" value="album" />
 			<input id="url_slug" name="url_slug" type="hidden" value="<%= @artist.url_slug %>" />
 			<input id="song_album_or_event_slug" name="song_album_or_event_slug" type="hidden" value="<%=@album.album_url_slug%>" />
+
 
 
 		</form>
