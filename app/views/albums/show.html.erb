@@ -39,6 +39,8 @@
 
     <% elsif @album.pay_type == "pwyc" %>
 
+		<!--gets csrf token and passes into hidden field.  Keeps user logged in after form post-->
+
 		<script type="text/javascript">
 		$(function(){
 			var token = $('meta[name="csrf-token"]').attr('content');
