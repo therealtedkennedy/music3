@@ -1,41 +1,46 @@
 <script type="text/javascript">
     window.onload = showCookies
+    var refurl = <%= request.referer %>
 
-    function showCookies() {
+	function showCookies() {
         var outMsg = "";
 
+		/*makes sure it came through payment process */
+        if ("<%=params[:fully]%>" == "completely" ){
+
 //         checks if download cookie exists, if it does grabs link to download album
-         var thisCookie = document.cookie.split("; ");
+			 var thisCookie = document.cookie.split("; ");
 
-         for (var i=0;i<thisCookie.length;i++){
+			 for (var i=0;i<thisCookie.length;i++){
 
-             var cookie_name = thisCookie[i].split("=")[0]
-             var value = thisCookie[i].split("=")[1]
+				 var cookie_name = thisCookie[i].split("=")[0]
+				 var value = thisCookie[i].split("=")[1]
 
-             if (value =="" && cookie_name =="next_step") {
-                outMsg = "There are no cookies here.";
-                }
+				 if (value =="" && cookie_name =="next_step") {
+					outMsg = "There are no cookies here.";
+				     }
 
-             else if (cookie_name =="next_step"){
-                outMsg += "Cookie name is '" + cookie_name;
-                outMsg += "', and the value is " +
-                value + "<br />";
-                var raw_link = thisCookie[i].split("=")[1];
-                var link = raw_link.replace(/%3A/g,":" );
-                var link = link.replace(/%2F/g, "/");
-                var link = link + "?token=" + "<%= params[:token] %>" + "&PayerID=" + "<%= params[:PayerID]%>"
-
-
-                outMsg += "clean link is " + link
+				 else if (cookie_name =="next_step" ){
+					outMsg += "Cookie name is '" + cookie_name;
+					outMsg += "', and the value is " +
+					value + "<br />";
+					var raw_link = thisCookie[i].split("=")[1];
+					var link = raw_link.replace(/%3A/g,":" );
+					var link = link.replace(/%2F/g, "/");
+					var link = link + "?token=" + "<%= params[:token] %>" + "&PayerID=" + "<%= params[:PayerID]%>"
 
 
-                window.location = link
-                }
-             }
+					outMsg += "clean link is " + link + "referal site " + document.referrer
+
+
+					window.location = link
+					}
+				 }
 
 
             document.getElementById("cookieData").innerHTML = outMsg;
 
+		}
 
 
     }

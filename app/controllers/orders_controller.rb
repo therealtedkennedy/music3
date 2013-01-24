@@ -277,7 +277,7 @@ class OrdersController < ApplicationController
 
 	else
 
-       redirect_to(show_user_path(current_user.id, :token => params[:token], :PayerID =>params[:PayerID]))
+       redirect_to(show_user_path(current_user.id, :token => params[:token], :PayerID =>params[:PayerID], :fully =>"completely"))
 
     end
 

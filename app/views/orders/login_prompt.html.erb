@@ -1,12 +1,12 @@
 <script type="text/javascript">
     window.onload = showCookies
-
+    var refurl = <%= request.referer %>
     function showCookies() {
         var outMsg = "";
 
 	//         checks if download cookie exists, if it does grabs link to download album
          var thisCookie = document.cookie.split("; ");
-
+         var referrer = document.referrer
          for (var i=0;i<thisCookie.length;i++){
 
              var cookie_name = thisCookie[i].split("=")[0]
@@ -26,7 +26,7 @@
                 var link = link + "?token=" + "<%= params[:token] %>" + "&PayerID=" + "<%= params[:PayerID]%>"
 
 
-                outMsg += "clean link is " + link
+                outMsg += "clean link is " + link + " referal site" + referrer
 
 
                 window.location = link
