@@ -73,6 +73,7 @@ Music3::Application.routes.draw do
 	#Song Routes
 	# Url Slug Routing
 	match "/:url_slug/song/:song_url_slug" => "songs#show", :as => :artist_show_song
+	match "/api/incrementPlayCount/:song_id" => "songs#song_play_counter", :as => :song_play_counter
 	# match "/:url_slug/song/:song_url_slug/edit => "
 
 
