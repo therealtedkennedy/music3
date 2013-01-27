@@ -4,7 +4,7 @@ class SongsController < ApplicationController
 	#lists songs called from S3 Server
 
 
-	before_filter :authenticate_user!, :except => [:show, :index]
+	before_filter :authenticate_user!, :except => [:show, :index, :song_play_counter]
 
 	#changes from default layout to custom layout
 	layout "artist_layout", only: [:show, :edit]
