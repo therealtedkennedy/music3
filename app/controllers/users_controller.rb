@@ -2,7 +2,7 @@ class UsersController < Devise::SessionsController
 
   prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, :only => :create
-  skip_before_filter :verify_authenticity_token, :only => :create
+
 
   #include Devise::Controllers::InternalHelpers
   layout "artist_layout", only: [:show, :edit]
