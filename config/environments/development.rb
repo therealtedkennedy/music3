@@ -39,8 +39,9 @@ Music3::Application.configure do
 		  password:"three1234!!"
   }
 
-  ENV['TWITTER_KEY'] = 'PkEuRrYyt4wWlQIX9BCXA'
-  ENV['TWITTER_SECRET'] = 'm0nZf7OO7TSDymqdmlJeaIIhsO8hulOGSufFgm40'
+
+  ENV["TWITTER_KEY"] = "PkEuRrYyt4wWlQIX9BCXA"
+  ENV["TWITTER_SECRET"] = "m0nZf7OO7TSDymqdmlJeaIIhsO8hulOGSufFgm40"
 
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000'}

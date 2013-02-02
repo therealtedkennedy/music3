@@ -6,36 +6,36 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable,:omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :pay_pal_email
 
 
-  def self.from_omniauth(auth)
-
-	 user = self.find_by_twitter_uid(auth['uid'])
-
-	  logger.info "Is self Defined"
-	  logger.info user
-
-	  if user.nil?
-
-		    self.create!(:email => auth.email, :provider => auth.provider, :twitter_uid => auth.uid, :twitter_nickname => auth.info.nickname)
-    		#@user = self.new
-			#logger.info "after self.new"
-			#logger.info  self
-			#@user.provider = auth.provider
-		    #@user.twitter_uid = auth.uid
-		    #@self.twitter_nickname = auth.info.nickname
-
-
-			logger.info "in self.nil "
-
-	  end
-
-  end
+  #def self.from_omniauth(auth)
+  #
+	# user = self.find_by_twitter_uid(auth['uid'])
+  #
+	#  logger.info "Is self Defined"
+	#  logger.info user
+  #
+	#  if user.nil?
+  #
+	#	    self.create!(:email => auth.email, :provider => auth.provider, :twitter_uid => auth.uid, :twitter_nickname => auth.info.nickname)
+  #  		#@user = self.new
+	#		#logger.info "after self.new"
+	#		#logger.info  self
+	#		#@user.provider = auth.provider
+	#	    #@user.twitter_uid = auth.uid
+	#	    #@self.twitter_nickname = auth.info.nickname
+  #
+  #
+	#		logger.info "in self.nil "
+  #
+	#  end
+  #
+  #end
 
   def self.new_with_session(params, session)
 	  if session["devise.user_attributes"]

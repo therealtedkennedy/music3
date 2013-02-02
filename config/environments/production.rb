@@ -46,7 +46,8 @@ Music3::Application.configure do
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
-
+  ENV["TWITTER_KEY"] = "PkEuRrYyt4wWlQIX9BCXA"
+  ENV["TWITTER_SECRET"] = "m0nZf7OO7TSDymqdmlJeaIIhsO8hulOGSufFgm40"
 
   config.i18n.fallbacks = true
 
