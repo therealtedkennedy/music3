@@ -19,6 +19,7 @@ class Artist < ActiveRecord::Base
   before_validation :strip_whitespace
 
 
+
   protected
   def generate_slug
     self.url_slug = name.gsub(/\W+/, ' ').strip.downcase.gsub(/\ +/, '')

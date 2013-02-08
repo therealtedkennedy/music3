@@ -24,7 +24,7 @@ class AlbumCodeController < ApplicationController
 
   respond_to do |format|
         format.html { redirect_to(album_create_code_path(@album.artists,@album.id), :notice => 'Codes were successfully generated.') }
-        format.xml  { head :ok }
+        #format.xml  { head :ok }
    end
  end
 
@@ -32,8 +32,16 @@ class AlbumCodeController < ApplicationController
 
   @album = Album.find(params[:id])
 
+
+
+
    @times = 0
   #  if @album.album_codes.exists?
+
+	respond_to do |format|
+		format.html
+		format.csv { send_data @album.album_codes.to_csv_3, :filename => @album.al_name+"-Download Codes.csv"}
+	end
 
   end
 

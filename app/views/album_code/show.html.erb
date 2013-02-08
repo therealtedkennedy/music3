@@ -2,14 +2,15 @@
 
 <%= render 'form' %>
 
-
-<h2>Down Load Keys</h2>
-
+<h2>Download Keys</h2>
+<p><%= link_to "Download CSV", album_create_code_path(format: "csv") %></p>
 
 <ul>
- <%= @album.album_codes.uniq.each do |t| %>
-    <li><%= t.album_code %></li>
+ <% @album.album_codes.each do |t| %>
+	<li><%= t.album_code %></li>
+
  <% end %>
 
 </ul>
+
 
