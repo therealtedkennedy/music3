@@ -728,7 +728,9 @@
 <!--<p>Loading..</p>-->
 <!--</div>-->
 
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %>
+	<div class="notice"><%= flash[:notice] %></div>
+<% end %>
 
 
 

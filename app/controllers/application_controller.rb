@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
-
+  #Amazon buckets
   BUCKET ='ted_kennedy'
   ALBUM_BUCKET = 'ted_kennedy_album'
+  #Number of download codes avaible to artist
+  CODE_LIMIT = 250
 
   #
   #POLICY_DOCUMENT = ActiveSupport::JSON.encode(:expiration => "2012-10-01T00:00:00Z",

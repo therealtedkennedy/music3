@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130113234417) do
+ActiveRecord::Schema.define(:version => 20130209185625) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20130113234417) do
     t.string   "social_title"
     t.string   "fb_page_url"
     t.string   "logo"
+    t.integer  "number_of_codes", :default => 0
   end
 
   create_table "artists_songs", :id => false, :force => true do |t|

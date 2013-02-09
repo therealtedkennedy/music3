@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <style>
-	h1, p,table,a {
+	h1,h2, p,table,a,ul {
 		color: #FFFFFF;
 
 	}
@@ -19,6 +19,10 @@
 	}
 	.container {
 		margin-top: 50px;
+	}
+
+	.notice {
+		color: #8B0000
 	}
 
 		/* Defines whole top nav, including sign in/out, and the player it self */
@@ -301,6 +305,10 @@
 			<a href="www.google.com/chrome/">Chrome</a>. Cant do it? Don't Want to do it? Don't know what a browser is?
 			Three Repeater will work, but not well.</h1>
 	<% end %>
+
+    <% if flash[:notice] %>
+		<div class="notice"><%= flash[:notice] %></div>
+    <% end %>
 
 	<h1>This is the application page</h1>
 

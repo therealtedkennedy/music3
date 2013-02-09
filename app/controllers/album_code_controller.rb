@@ -13,25 +13,49 @@ class AlbumCodeController < ApplicationController
  def create
 
     @album = Album.find(params[:id])
+    @artist = Artist.find_by_url_slug(params[:url_slug_hidden])
 
+	#used to define total number of codes created
+	@number_of_codes = @artist.number_of_codes
 
-    @number = params[:to_create].to_i
-    @number.times do
-      @code = @album.album_codes.build
-      @code.album_code = SecureRandom.hex(3)
-      @code.save
+    #check to see if the total number codes is above the limit. CODE_LIMIT set in application controller
+	if @number_of_codes <= CODE_LIMIT
+        #generates codes
+		@number = params[:to_create].to_i
+		@number.times do
+		  #counts the number of codes generated
+		  @number_of_codes = @number_of_codes+1
+		  #actually creates the code
+		  @code = @album.album_codes.build
+		  @code.album_code = SecureRandom.hex(3)
+		  @code.save
+		end
+
+		#saves the number of codes created on the artist object
+		@artist.update_attribute(:number_of_codes, @number_of_codes)
+
+		#sets the notice
+		@notice = "Codes were successfully created"
+
+	else
+		#sets the notice if the total number is over
+		@notice = "You are over you limit please upgrade"
     end
 
-  respond_to do |format|
-        format.html { redirect_to(album_create_code_path(@album.artists,@album.id), :notice => 'Codes were successfully generated.') }
-        #format.xml  { head :ok }
-   end
+	respond_to do |format|
+
+		format.html { flash[:notice] = @notice
+		redirect_to(album_create_code_path(@artist.url_slug,@album.id))}
+		#format.xml  { head :ok }
+	end
+
  end
 
  def show
 
   @album = Album.find(params[:id])
-
+  @artist = Artist.find_by_url_slug(params[:url_slug])
+  @codes_left = CODE_LIMIT - @artist.number_of_codes
 
 
 

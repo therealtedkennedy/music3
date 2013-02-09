@@ -4,6 +4,7 @@
   <%= label_tag(:times, "Number of Codes") %>
   <%= number_field_tag(:to_create) %>
   <%= hidden_field_tag 'id', @album.id %>
+  <%= hidden_field_tag 'url_slug_hidden', params[:url_slug] %>
   <%= submit_tag("Create") %>
 
 
