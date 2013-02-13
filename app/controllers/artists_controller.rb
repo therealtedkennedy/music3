@@ -7,7 +7,7 @@ class ArtistsController < ApplicationController
   #before_filter :authenticate_user!, :except => [:show, :index]
 
   #changes from default layout to custom layout
-  layout "artist_layout", only: [:show, :admin, :update]
+  layout "artist_layout", only: [:show, :admin, :update, :social_promo]
 
 
   def index
@@ -32,27 +32,7 @@ class ArtistsController < ApplicationController
 
     @playlist = @artist.songs
 
-	#-----------For Artist Meta Tags----------------
-
-	#Page Title, Facebook Title and Twitter Title
-	@social_title = @artist.name+" on Three Repeater"
-	#Meta description (google), Facebook Description, and Twitter Card Description
-	@social_descrip = @artist.bio
-
-	#facebook url
-    if @artist.fb_page_url.blank?
-		@social_fb_url = artist_link_url(@artist.url_slug)
-	else
-		@social_fb_url = @artist.fb_page_url
-	end
-
-	#Twitter ID
-	@social_twitter_name = @artist.twitter_name
-
-	#Image for twitter and FB
-	@social_image = @artist.logo_url.to_s
-
-	#------------------------------------------------
+    artist_social(@artist)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -64,13 +44,13 @@ class ArtistsController < ApplicationController
                 :action => 'show.html.erb',
                 :layout => false
             ),
-
-
         }
       }
+	end
 
-    end
   end
+
+
 
   # GET /artists/new
   # GET /artists/new.xml
@@ -203,8 +183,55 @@ class ArtistsController < ApplicationController
       format.html { redirect_to(show_user_path(current_user.id), :notice => 'Artist was successfully Deleted.') }
       format.json { render :json => {}, :status => :ok }
       format.js
-    end
+	end
 
+  end
+
+
+  #intersitial page, for social promotion.
+  def social_promo
+
+	  @artist = Artist.find_by_url_slug(params[:url_slug])
+
+	  #params set with Query strings
+
+	  if params[:object] == "album"
+		  @album = Album.find(params[:id])
+
+		  #in application controller
+		  album_social(@artist,@album)
+
+	  elsif params[:object] == "song"
+
+          #in application controller 
+		  @song = Song.find(params[:id])
+
+		  song_social(@artist,@song)
+	  end
+
+	  #overides the album and or song default facebook url.  For the socail promo page, you have to like the artist. this is b/c following an artist is like subscribing to thier content
+	  facebook_url(@artist)
+
+
+
+
+
+	  respond_to do |format|
+		  format.html
+		  format.xml
+		  format.json {
+			  render :json => {
+					  :success => true,
+					  :"#content" => render_to_string(
+							  :action => 'show.html.erb',
+							  :layout => false
+					  ),
+
+
+			  }
+		  }
+
+	  end
   end
 end
 

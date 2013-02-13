@@ -81,6 +81,90 @@ class ApplicationController < ActionController::Base
 
  # end
 
+  #*************Everything social *********
+
+
+  #logic around witch faceboook url is used.  Used by #show and artist promo
+  def facebook_url(artist)
+	  if artist.fb_page_url.blank?
+		  @social_fb_url = artist_link_url(artist.url_slug)
+	  else
+		  @social_fb_url = artist.fb_page_url
+	  end
+  end
+
+   #artist social used by artist
+  def artist_social(artist)
+	  #-----------For Artist Meta Tags----------------
+
+	  #Page Title, Facebook Title and Twitter Title
+	  @social_title = artist.name+" on Three Repeater"
+	  #Meta description (google), Facebook Description, and Twitter Card Description
+	  @social_descrip = artist.bio
+
+	  #logic around figuring out which facebook url is used
+	  facebook_url(artist)
+
+	  #Twitter ID
+	  @social_twitter_name = artist.twitter_name
+
+	  #Image for twitter and FB
+	  @social_image = artist.logo_url.to_s
+
+	  #------------------------------------------------
+
+  end
+
+
+  #calls social info for albums.  Used by album show, and socail_promo
+  def album_social(artist,album)
+
+	  #-----------For Album Meta Tags----------------
+
+	  #Page Title, Facebook Title and Twitter Title
+	  @social_title = @album.al_name+" by "+ @artist.name+" on Three Repeater"
+	  #Meta description (google), Facebook Description, and Twitter Card Description
+	  @social_descrip = album.description
+
+	  #facebook url
+	  @social_fb_url = artist_show_album_url(artist.url_slug,album.album_url_slug)
+
+
+	  #Twitter ID
+	  @social_twitter_name = artist.twitter_name
+
+	  #Image for twitter and FB
+	  if album.art.blank?
+		  @social_image = artist.logo_url.to_s
+	  else
+		  @social_image = album.art_url.to_s
+	  end
+
+  end
+
+  def song_social(artist,song)
+
+	  #-----------For Songs Meta Tags----------------
+
+	  #Page Title, Facebook Title and Twitter Title
+	  @social_title = song.song_name+" by "+ artist.name+" on Three Repeater"
+	  #Meta description (google), Facebook Description, and Twitter Card Description
+	  @social_descrip = "Listen to "+song.song_name+" by "+ artist.name + "on Three Repeater today!"
+
+	  #facebook url
+	  @social_fb_url = artist_show_song_url(artist.url_slug, song.song_url_slug)
+
+
+	  #Twitter ID
+	  @social_twitter_name = artist.twitter_name
+
+	  #Image for twitter and FB
+	  @social_image = artist.logo_url.to_s
+
+	  #------------------------------------------------
+
+ end
+
 #over rides devise default rout after sign in
  private
  #don't know

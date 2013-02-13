@@ -28,27 +28,8 @@ class AlbumsController < ApplicationController
     find_album(@artist,params[:album_url_slug])
     @download_url = album_download_url(@album.album_url_slug, @album.id)
 
+     album_social(@artist,@album)
 
-	#-----------For Album Meta Tags----------------
-
-	#Page Title, Facebook Title and Twitter Title
-	@social_title = @album.al_name+" by "+ @artist.name+" on Three Repeater"
-	#Meta description (google), Facebook Description, and Twitter Card Description
-	@social_descrip = @album.description
-
-	#facebook url
-	@social_fb_url = artist_show_album_url(@artist.url_slug,@album.album_url_slug)
-
-
-	#Twitter ID
-	@social_twitter_name = @artist.twitter_name
-
-	#Image for twitter and FB
-	if @album.art.blank?
-		@social_image = @artist.logo_url.to_s
-	else
-		@social_image = @album.art_url.to_s
-	end
 
 
 	#------------------------------------------------
