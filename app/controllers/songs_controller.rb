@@ -31,25 +31,13 @@ class SongsController < ApplicationController
 	#  end
 	# end
 
-	#finds song objects, when album and URL slug are given
-	def find_song(artist, url_slug)
-
-		artist.songs.uniq.each do |song|
-			if song.song_url_slug == url_slug
-				@song = song
-
-			else
-
-			end
-		end
-	end
-
 
 	def show
 		if params[:song_url_slug]
 			#@artist = Artist.find(params[:id])
 			#@artist = Artist.find_by_url_slug(params[:url_slug])
 			@artist = Artist.find_by_url_slug(params[:url_slug])
+			#in the appication controller.  Used by profile edit.
 			find_song(@artist, params[:song_url_slug])
 
 			song_social(@artist,@song)

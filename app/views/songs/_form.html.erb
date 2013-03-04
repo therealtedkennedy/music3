@@ -20,6 +20,11 @@
     <%= f.text_field :song_artist, :value => @artist.name  %>
   </div>
 
+	<div class="field">
+		<%= f.label "Social Promotion (if you want a tweet, or fb like for sharing a song" %><br />
+		<%= f.check_box :social_on %>
+	</div>
+
 
   <div class="field">
     <%=f.label :song_contribute_artist %><br />

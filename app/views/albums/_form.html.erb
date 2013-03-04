@@ -29,6 +29,11 @@
 		<%= f.text_field :description %>
 	</div>
 
+	<div class="field">
+		<%= f.label "Social Promotion " %><br />
+		<%= f.check_box :social_on %>
+	</div>
+
   <div class="field">
     <%=f.label "Type" %><br />
     <%=f.select :al_type, [["Album", "album"], ["Set", "set"], ["EP", "ep"],["Track List", "track_list"] ] %>

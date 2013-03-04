@@ -1,6 +1,6 @@
 class ProfileLayoutsController < ApplicationController
 
-	layout "profile_edit_layout", only: [:edit,:css_editor]
+	layout "profile_edit_layout", only: [:edit,:css_editor,:edit_song]
 
 
 	def new
@@ -22,6 +22,38 @@ class ProfileLayoutsController < ApplicationController
 
 
 	end
+
+	#edits songs atrributes
+	def edit_song
+
+		@artist = Artist.find_by_url_slug(params[:url_slug])
+		@profile_layout = @artist.profile_layout
+        @song = Song.find(params[:song_id])
+
+		render 'songs/show'
+		#@profile_layout = ProfileLayout.new
+		# @artist.profile_layout = @profile_layout
+		# @artist.save
+
+
+	end
+
+	#edits album
+	def edit_album
+
+		@artist = Artist.find_by_url_slug(params[:url_slug])
+		@profile_layout = @artist.profile_layout
+		@ablum = Song.find(params[:ablum_id])
+
+		render 'albums/show'
+		#@profile_layout = ProfileLayout.new
+		# @artist.profile_layout = @profile_layout
+		# @artist.save
+
+
+	end
+
+
 
 	def update
 
@@ -51,6 +83,53 @@ class ProfileLayoutsController < ApplicationController
 		@artist = Artist.find_by_url_slug(params[:url_slug])
 		@profile_layout = @artist.profile_layout
 
+	end
+
+	def field_save
+		if params[:object] == "artist"
+			#field = params[:field_name]
+			logger.info "artist"
+			@artist = Artist.find_by_url_slug(params[:url_slug])
+			@artist[params[:field_name]] = params[:value]
+            object = @artist
+
+
+		elsif params[:object] == "song"
+			logger.info "song"
+			logger.info params[:song_id]
+	    	@song = Song.find(params[:song_id])
+			@song[params[:field_name]] = params[:value]
+            object = @song
+
+
+            logger.info "song info"
+			logger.info object
+
+			logger.info "artist"
+
+
+		elsif params[:object] == "album"
+			logger.info "album"
+            @album = Album.find(params[:album_id])
+			@album[params[:field_name]] = params[:value]
+			#@album = Song.find_by_url_slug(params[:album_url_slug])
+			#@album[params[:field_name]] = params[:value]
+			object = @album
+
+		end
+
+		respond_to do |format|
+
+			logger.info "Object"
+			logger.info object
+
+			if object.save
+				format.json {
+					render :json => {
+							:success => true}
+				}
+			end
+		end
 	end
 
  	def css_editor_update

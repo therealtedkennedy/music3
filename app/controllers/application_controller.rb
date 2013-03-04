@@ -249,6 +249,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+	#finds song objects, when album and URL slug are given
+	def find_song(artist, url_slug)
+
+		artist.songs.uniq.each do |song|
+			if song.song_url_slug == url_slug
+				@song = song
+
+			else
+
+			end
+		end
+	end
+
 	#For resizing profile picks
 	#def limit_image_url (file_name)
 	#	@name = file_name.split("/")[1]

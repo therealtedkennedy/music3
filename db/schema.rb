@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209185625) do
+ActiveRecord::Schema.define(:version => 20130217200132) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20130209185625) do
     t.string   "art"
     t.string   "description"
     t.string   "album_songs"
+    t.boolean  "social_on"
   end
 
   create_table "albums_artists", :id => false, :force => true do |t|
@@ -161,6 +162,7 @@ ActiveRecord::Schema.define(:version => 20130209185625) do
     t.string   "torrent_link"
     t.string   "s3_id"
     t.integer  "s_a_id"
+    t.boolean  "social_on"
   end
 
   create_table "transactions", :force => true do |t|

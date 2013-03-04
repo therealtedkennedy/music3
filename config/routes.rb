@@ -61,13 +61,19 @@ Music3::Application.routes.draw do
 
 
 
-	#temp for deveopment
+
 	#creates a profile for artists already in the DB
+
+	match "/:url_slug/edit/update_field" => "profile_layouts#field_save", :as => :field_save
+
 	match "/:url_slug/create/new_layout"  => "profile_layouts#new"
 	match "/:url_slug/profile-edit/css-editor" => "profile_layouts#css_editor", :as => :css_editor
 	match "/:url_slug/profile-edit" => "profile_layouts#edit", :as => :profile_edit
+	match "/:url_slug/profile-edit/song/:song_id" => "profile_layouts#edit_song", :as => :profile_edit_song
+	match "/:url_slug/profile-edit/album/:album_id" => "profile_layouts#edit_album", :as => :profile_edit_album
 	match "/:url_slug/profile-edit/css-editor/update" => "profile_layouts#css_editor_update", :as => :css_editor_update
 	match "/:url_slug/update_profile_layout" => "profile_layouts#update"
+
 
 
 

@@ -203,7 +203,7 @@ class ArtistsController < ApplicationController
 
 	  elsif params[:object] == "song"
 
-          #in application controller 
+          #in application controller
 		  @song = Song.find(params[:id])
 
 		  song_social(@artist,@song)

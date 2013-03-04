@@ -27,7 +27,7 @@
 
 
 <p>
-  <b>S3 name:</b>
+  <b>(for testing) S3 name:</b>
   <%= @song.s3_id %>
 </p>
 <div class="social">
@@ -37,24 +37,31 @@
 </div>
 
 <p>
-  <b>S_A_ID</b>
+  <b>(For testing)S_A_ID</b>
   <%= @song.s_a_id %>
 </p>
 
-<p>
-  <b>Song Artist</b>
-  <%= @song.song_artist %>
+
+	<p>
+		<b>(For testing)ID</b>
+		<%= @song.id %>
+	</p>
+
+  <p>
+	  <b>Song Artist</b>
+	  <%= @song.song_artist %>
   </p>
 
 <p>
-  <b>Url Slug</b>
+  <b>(for test) Url Slug:</b>
   <%= @song.song_url_slug %>
 </p>
 
-<p>
-  <b>Contributing Artist</b>
-  <%= @song.song_contribute_artist %>
-</p>
+
+ <b>Contributing Artist:</b>
+  <span class="editable" id="single_line" field_name="song_contribute_artist" object="song" >
+         <%= @song.song_contribute_artist.html_safe %>
+  </span>
 
 <p>
   <b>Written By</b>

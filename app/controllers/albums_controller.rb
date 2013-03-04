@@ -146,7 +146,7 @@ class AlbumsController < ApplicationController
 
         #checks to see the albums songs have changed.
         #if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
-		if  params[:album_songs].to_s == @album.album_songs
+		if  params[:album_songs].to_s == @album.album_songs.to_s
 		   logger.info "album_songs true"
 		else
 		   logger.info "in zip album"

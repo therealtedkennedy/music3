@@ -1,5 +1,5 @@
 <!-- puts the content into one div.  Stops yeild from double loading content.  I have no idea why, but it works -->
-<div class="artist_content">
+<div class="artist_content" xmlns="http://www.w3.org/1999/html">
 
 	<div class="div1a">
 
@@ -33,7 +33,7 @@
 		<div class="show_hide" rel="#info">
 			<div class="button">
 
-				<h2>
+				<h2 >
 					Info
 				</h2>
 				<!--  <button class="show_hide" href="#" rel="#sliding_div1">Show it</button> -->
@@ -44,10 +44,7 @@
 
 		<div class="show_hide" rel="#songs">
 			<div class="button">
-
 				<h2>Songs</h2>
-
-
 			</div>
 		</div>
 
@@ -82,41 +79,57 @@
 
 		<div class="div2">
 
-			<p>
+
 				<b>Date founded:</b>
-				<%= @artist.date_founded %>
+				 <%= @artist.date_founded %>
 				</br>
 				</br>
 
 				<b>City:</b>
-				<%= @artist.city %>
+
+			    <span class="editable" id="single_line" field_name="city" object="artist" >
+					<%= @artist.city.html_safe %>
+				</span>
+
 				</br>
 				</br>
 
 				<b>Province:</b>
-				<%= @artist.province %>
+				<span class="editable" id="single_line" field_name="province" object="artist" >
+					<%= @artist.province.html_safe %>
+				</span>
 				</br>
 				</br>
 
 				<b>Country:</b>
-				<%= @artist.country %>
-				</br>
-				</br>
+			    <span class="editable" id="single_line" field_name="country" object="artist" >
+					<%= @artist.country.html_safe %>
+				</span>
+                </br>
+			    </br>
+
+
 				<b>Influence:</b>
-				<%= @artist.influence %>
-				</br>
-				</br>
+
+			    <div class="editable" id="text_area" field_name="influence" object="artist" >
+					<%= @artist.influence.html_safe %>
+				</div>
+
 				<b>Bio:</b>
-				<%= @artist.bio %>
-				</br>
-				</br>
+			    <div class="editable" id="text_area" field_name="bio" object="artist" >
+					<%= @artist.bio.html_safe %>
+				</div>
+
 
 				<b>Contact info:</b>
-				<%= @artist.contact_info %>
+				<span class="editable" id="single_line" field_name="contact_info" object="artist" >
+					<%= @artist.contact_info.html_safe %>
+				</span>
+
 				</br>
 				</br>
 
-			</p>
+
 		</div>
 	</div>
 </div>

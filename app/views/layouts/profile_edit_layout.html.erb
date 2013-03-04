@@ -4,6 +4,9 @@
 
 <head>
 <title>Music3</title>
+<%= csrf_meta_tag %>
+
+
 <style>
 
 
@@ -228,6 +231,9 @@
 		box-shadow: 3px 3px 7px #777;
 		border-radius: 2px;
 	}
+	.div2 b {
+
+	}
 
 	.div3 {
 		width: 400px;
@@ -269,6 +275,8 @@
 		background-color: blue;
 	}
 
+
+
 	.toggleDiv {
 		display: none
 	}
@@ -277,19 +285,33 @@
 		display: none;
 	}
 
+	#text_area {
+		width: 350px;
+	    max-height: 200px;
+		overflow: auto;
+		margin-bottom: 15px;
+	}
+
+	.editable:hover {
+		border-style:solid;
+		border-color:#ff0000
+
+	}
+
  <% end %>
 
 </style>
 
 <%= stylesheet_link_tag :all %>
-<!--<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" %>-->
-<!--<%= javascript_include_tag 'jquery' %>-->
-<%= javascript_include_tag :'defaults', 'rails.validations', 'jquery.rails', 'jquery.backstretch.min', 'showHide.js' %>
+<%= javascript_include_tag 'jquery-1.8.3', 'rails.validations', 'jquery.backstretch.min', 'showHide' %>
+<%#= javascript_include_tag 'jquery-1.6.3','rails.validations', 'jquery.backstretch.min'%>
+
 <script type="text/javascript" src="/javascripts/jPlayer/jquery.jplayer.min.js"></script>
 <script type="text/javascript" src="/javascripts/jPlayer/add-on/jplayer.playlist.min.js"></script>
 <script type="text/javascript" src="/javascripts/jPlayer/add-on/jquery.jplayer.inspector.js"></script>
 <link type="text/css" href="/skin/black_and_yellow/jplayer-black-and-yellow.css" rel="stylesheet"/>
 <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
+
 
 <!-- Master template -->
 <script>
@@ -304,7 +326,7 @@
 <script type="text/javascript">
 	//<!-- Java Script effect -->
 	$(document).ready(function () {
-
+		$(".editable").attr('contenteditable','True');
 
 		$('.show_hide').showHide({
 			speed:300, // speed you want the toggle to happen
@@ -341,6 +363,14 @@
 				});
 	}
 	var DEBUGGING = true;
+
+
+	$(document).ajaxSend(function(e, xhr, options) {
+		var token = $("meta[name='csrf-token']").attr("content");
+		xhr.setRequestHeader("X-CSRF-Token", token);
+	});
+
+
 	$(document).ready(function () {
 
 		myPlaylist = initializePlayList(playlistSongs);
@@ -410,6 +440,44 @@
 		});
 
 
+
+
+    	$("#single_line").keypress(function(e){ return e.which != 13; });
+
+
+		$(".editable").on("blur", function(){
+			content = $(this).html();
+
+			field_name = $(this).attr('field_name');
+			object = $(this).attr('object');
+
+
+			console.log(field_name+" "+object+" "+content);
+
+			//creates url for album, song and artist edit
+
+			href = "<%= field_save_url(@artist.url_slug)%>";
+
+			<% if params.has_key?(:song_id) %>
+
+				href = href+"?song_id="+<%=params[:song_id] %>;
+			<% elsif params.has_key?(:album_id) %>
+
+				href = href+"?album_id="+<%=params[:album_id]%>;
+		    <%end%>
+
+					console.log(href);
+			console.log(content);
+			save_edit(href,field_name,object,content);
+
+
+		});
+
+
+
+	});
+
+
 		$("#edit_profile_layout_1").submit(function (e) {
 			e.preventDefault();
 			// get all the inputs into an array.
@@ -425,7 +493,7 @@
 				}
 			});
 
-		});
+
 
 		$(".trackInfo").live('mouseenter', function () {
 			$(this).find(".progressBarContainer").show();
@@ -436,6 +504,21 @@
 
 
 	});
+
+	function save_edit (href,field_name,object,content) {
+		$.ajax({
+			url:href,
+			type: "post",
+			data: {
+				value: content,
+				field_name: field_name,
+				object: object
+			},
+			success:
+					function(){console.log("saved")}
+
+		})
+	}
 
 
 	function loadContent(href) {
