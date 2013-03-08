@@ -22,92 +22,59 @@
 
 </h1>
 
-<section id="audio">
-</section>
 
 
-<p>
-  <b>(for testing) S3 name:</b>
-  <%= @song.s3_id %>
-</p>
 <div class="social">
 <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Check out <%=@song.song_name %> by <%=@artist.twitter_name%>"  data-url="<%=artist_show_song_url(@artist.url_slug, @song.song_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a>
  </br>
 	<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
 </div>
 
-<p>
-  <b>(For testing)S_A_ID</b>
-  <%= @song.s_a_id %>
-</p>
+   <br />
+   <br />
+
+   <b>Written By</b>
+   <span class="editable" id="single_line" field_name="song_written" object="song" >
+ 	     <%= @song.song_written.html_safe %>
+   </span>
 
 
-	<p>
-		<b>(For testing)ID</b>
-		<%= @song.id %>
-	</p>
-
-  <p>
-	  <b>Song Artist</b>
-	  <%= @song.song_artist %>
-  </p>
-
-<p>
-  <b>(for test) Url Slug:</b>
-  <%= @song.song_url_slug %>
-</p>
 
 
- <b>Contributing Artist:</b>
-  <span class="editable" id="single_line" field_name="song_contribute_artist" object="song" >
-         <%= @song.song_contribute_artist.html_safe %>
-  </span>
-
-<p>
-  <b>Written By</b>
-  <%= @song.song_written %>
-</p>
-
-<p>
-  <b>Licence Type:</b>
-  <%= @song.song_licence_type %>
-</p>
-
-<p>
-  <b>Licence Date </b>
-  <%= @song.song_licence_date %>
-</p>
 
 <p>
   <b>Song Plays</b>
   <%= @song.song_plays%>
 </p>
 
-<p>
-  <b>Lyrics</b>
-  <%= @song.lyrics %>
-</p>
+   <b>Lyrics</b>
+  <div class="editable" id="text_area" field_name="lyrics" object="song" >
+    	<%= @song.lyrics.html_safe %>
+  </div>
 
 
-<p>
-  <b>Song Download Link</b>
-  <%= download_url_for(@song.s3_id) %>   </br>
-  <b>stored download link:</b>
-  <%= @song.download_link %>    </br>
-  <b>stored torrent link:</b>
-  <%= @song.torrent_link %>    </br>
-</p>
+	<p>
+		<b>Created Date</b>
+		<%= @song.created_at.strftime("%d %b %Y") %>
+	</p>
+
+	<p>
+		<b>(not predominate)Licence Type:</b>
+		<%= @song.song_licence_type %>
+	</p>
+
+
+
 
 	<%  if can? :create, @artist%>
     <%=link_to "Download", download_url_for(@song.s3_id) %> </br>
-    <%= link_to "Torrent", torrent_url_for(@song.s3_id) %>  </br>
 <% else %>
   <h2>  <%= link_to "Sign In", user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %>  to Download </h2>
 
 <%end %>
 
     <p>
- <b>Where it was releasesd</b>
+ <b>(maybe) Where it was releasesd</b>
 
 <ul>
 <% @song.albums.uniq.each do |albums| %>
@@ -120,5 +87,45 @@
 </ul>
 
 </p>
+
+	<p>
+		<b>(maybe_Song Artist</b>
+		<%= @song.song_artist %>
+	</p>
+
+	<p>
+		<b>(not shown?)Licence Date </b>
+		<%= @song.song_licence_date %>
+	</p>
+
+	<b>(maybe)Contributing Artist:</b>
+  <span class="editable" id="single_line" field_name="song_contribute_artist" object="song" >
+         <%= @song.song_contribute_artist.html_safe %>
+  </span>
+
+	<p>
+		<b>(For testing)S_A_ID</b>
+		<%= @song.s_a_id %>
+	</p>
+
+	<p>
+		<b>(for testing) Song Download Link</b>
+		<%= download_url_for(@song.s3_id) %>   </br>
+	</p>
+
+	<p>
+		<b>(For testing)ID</b>
+		<%= @song.id %>
+	</p>
+
+	<p>
+		<b>(for testing) S3 name:</b>
+		<%= @song.s3_id %>
+	</p>
+
+	<p>
+		<b>(for test) Url Slug:</b>
+		<%= @song.song_url_slug %>
+	</p>
 
 </div>

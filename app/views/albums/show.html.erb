@@ -12,24 +12,8 @@
 <h1>
   <%=link_to @album.al_name, album_playlist_create_path(@artist.url_slug, @album.album_url_slug), :class =>"load-playlist" %>
 
-
 </h1>
 
-
-
-<section id="audio">
-</section>
-
-
-
-
-
-
-<p>
-
-  <b> Artist ID </b>
-  <%= @album.al_a_id %>
- </p>
 
 <h2>Want it? Get it!</h2>
 
@@ -77,84 +61,65 @@
 
 
 
-
-
-
-
-
-<p>
- <b>Album Name:</b>
- <%= @album.al_name%>
- </p>
-
 	<div class="social">
 		<a href="https://twitter.com/share" class="twitter-share-button"  data-text="Check out <%=@album.al_name %> by <%=@artist.twitter_name%>"  data-url="<%=artist_show_album_url(@artist.url_slug,@album.album_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a>
 		<br/>
 		<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
 	</div>
 
-<p>
- <b>Album ID:</b>
- <%= @album.id%>
- </p>
-<p><b>Album Description</b>
+ <div>
+ </br>
+ </br>
+
+<b>Album Description</b>
+ </br>
+	<span class="editable" id="text_area" field_name="description" object="album" >
 		<%= @album.description%>
-</p>
+    </span>
 
- <p><b>Album Type:</b>
- <%= @album.al_type%>
- </p>
- <p>
- <b>Primary Artist:</b>
- <%= @album.pri_artist%>
- </p>
-
- <p>
+ </br>
+ </br>
  <b>Contributing Artist:</b>
+ <span class="editable" id="single_line" field_name="contrib_artist" object="album" >
  <%= @album.contrib_artist%>
- </p>
- <p>
- <b>Copywrite Type:</b>
+ </span>
+ </br>
+ </br>
+
+ <b>(not big)Copywrite Type:</b>
  <%= @album.al_copy_write%>
- </p>
- <p>
+
+ </br>
+ </br>
+
  <b>Release Date:</b>
  <%= @album.al_rel_date%>
- </p>
- <p>
- <b>Payment Type:</b>
- <%= @album.pay_type%></p>
+ </br>
+ </br>
 
- <p>
- <b>Amount:</b>
- <%= @album.al_amount%></p>
-
- <p>
  <b>Producer:</b>
- <%= @album.producer%></p>
- <p>
- <b>Album Producer:</b>
- <%= @album.al_producer%></p>
+ <span class="editable" id="single_line" field_name="producer" object="album" >
+ <%= @album.producer%>
+ </span>
 
- <p>
+ </br>
+ </br>
+
  <b>Label:</b>
- <%= @album.al_label%></p>
+ <span class="editable" id="single_line" field_name="al_label" object="album" >
+ <%= @album.al_label%>
+ </span>
 
- <p>
+ </br>
+ </br>
+
+
  <b>Liner Notes:</b>
- <%= @album.liner_notes%></p>
+ </br>
+ <span class="editable" id="text_area" field_name="liner_notes" object="album" >
+	 <%= @album.liner_notes%>
+ </span>
 
- <p>
- <b>Number Of Downloads:</b>
- <%= @album.downloads%></p>
-
- <p>
- <b>Number of Plays:</b>
- <%= @album.plays%></p>
-
-  <p>
-    <b>Album URL Slug</b>
-    <%= @album.album_url_slug %></p>
 
 
 <h2> Songs </h2>
@@ -174,5 +139,51 @@
   <% @album.artists.uniq.each do |artist_name| %>
           <td><%= link_to 'To '+artist_name.name, artist_link_path(artist_name.url_slug) %></td>
   <% end %>
+
+
+	<h2>not to be included in actual layout</h2>
+
+	<p><b>Should be in layout - Album Type:</b>
+		<%= @album.al_type%>
+	</p>
+	<p>
+
+	<p>
+		<b>For testing Album ID:</b>
+		<%= @album.id%>
+	</p>
+
+	<p>
+		<b>For Testing - Payment Type:</b>
+		<%= @album.pay_type%></p>
+
+	<p>
+		<b>For test - Amount:</b>
+		<%= @album.al_amount%></p>
+
+	<p>
+		<b>For Testing - Album URL Slug</b>
+		<%= @album.album_url_slug %></p>
+
+	<b>Used for calling an album with just the - Primary Artist:</b>
+	<%= @album.pri_artist%>
+	</p>
+
+	<p>
+
+		<b> For testing - Artist ID </b>
+		<%= @album.al_a_id %>
+	</p>
+
+	<p>
+		<b>Not working yet - Number Of Downloads:</b>
+		<%= @album.downloads%></p>
+
+	<p>
+		<b>Not working yet - Number of Plays:</b>
+		<%= @album.plays%></p>
+
+ </div>
+
 
 </div>
