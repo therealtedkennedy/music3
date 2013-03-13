@@ -71,17 +71,18 @@
  </br>
  </br>
 
+  <% unless @album.description.nil? %>
 <b>Album Description</b>
  </br>
 	<span class="editable" id="text_area" field_name="description" object="album" >
-		<%= @album.description%>
+		<%= @album.description.html_safe%>
     </span>
-
+  <% end %>
  </br>
  </br>
  <b>Contributing Artist:</b>
  <span class="editable" id="single_line" field_name="contrib_artist" object="album" >
- <%= @album.contrib_artist%>
+ <%= @album.contrib_artist.html_safe%>
  </span>
  </br>
  </br>
@@ -97,27 +98,37 @@
  </br>
  </br>
 
- <b>Producer:</b>
- <span class="editable" id="single_line" field_name="producer" object="album" >
- <%= @album.producer%>
- </span>
+ <% unless @album.producer.nil? %>
+
+	 <b>Producer:</b>
+
+	 <span class="editable" id="single_line" field_name="producer" object="album" >
+	 	<%= @album.producer.html_safe%>
+	 </span>
+
+ <% end %>
 
  </br>
  </br>
 
- <b>Label:</b>
- <span class="editable" id="single_line" field_name="al_label" object="album" >
- <%= @album.al_label%>
- </span>
+ <% unless @album.al_label.nil? %>
 
- </br>
- </br>
+	 <b>Label:</b>
+ 	<span class="editable" id="single_line" field_name="al_label" object="album" >
+ 		<%= @album.al_label.html_safe%>
+ 	</span>
+
+    </br>
+    </br>
+
+ <% end %>
+
 
 
  <b>Liner Notes:</b>
  </br>
  <span class="editable" id="text_area" field_name="liner_notes" object="album" >
-	 <%= @album.liner_notes%>
+	 <%= @album.liner_notes.html_safe%>
  </span>
 
 

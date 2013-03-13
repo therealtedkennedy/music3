@@ -25,7 +25,14 @@ class AlbumsController < ApplicationController
 
 
     @artist = Artist.find_by_url_slug(params[:url_slug])
+
+
+	#Finds Album.  In application Controller
+
     find_album(@artist,params[:album_url_slug])
+	logger.info "album"
+	logger.info @album
+
     @download_url = album_download_url(@album.album_url_slug, @album.id)
 
      album_social(@artist,@album)
@@ -54,15 +61,6 @@ class AlbumsController < ApplicationController
    end
   end
 
-  #finds album objects, when only album url slug is given
-  def find_album(artist,url_slug)
-
-     artist.albums.uniq.each do |album|
-        if album.album_url_slug == url_slug
-          @album = album
-        end
-      end
-   end
 
 
   # GET /albums/new

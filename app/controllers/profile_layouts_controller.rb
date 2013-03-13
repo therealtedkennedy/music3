@@ -1,6 +1,6 @@
 class ProfileLayoutsController < ApplicationController
 
-	layout "profile_edit_layout", only: [:edit,:css_editor,:edit_song]
+	layout "profile_edit_layout", only: [:edit,:css_editor,:edit_song,:edit_album]
 
 
 	def new
@@ -28,7 +28,8 @@ class ProfileLayoutsController < ApplicationController
 
 		@artist = Artist.find_by_url_slug(params[:url_slug])
 		@profile_layout = @artist.profile_layout
-        @song = Song.find(params[:song_id])
+       # @song = Song.find(params[:song_id])
+		find_song(@artist, params[:song_url_slug])
 
 		render 'songs/show'
 		#@profile_layout = ProfileLayout.new
@@ -43,7 +44,7 @@ class ProfileLayoutsController < ApplicationController
 
 		@artist = Artist.find_by_url_slug(params[:url_slug])
 		@profile_layout = @artist.profile_layout
-		@ablum = Song.find(params[:ablum_id])
+		find_album(@artist,params[:album_url_slug])
 
 		render 'albums/show'
 		#@profile_layout = ProfileLayout.new
@@ -67,6 +68,7 @@ class ProfileLayoutsController < ApplicationController
 
 
 			  logger.info "in json"
+			  format.html { redirect_to(profile_edit_url(@artist.url_slug)) }
 				  format.json {
 				 		render :json => {
 								:success => true}
@@ -95,9 +97,12 @@ class ProfileLayoutsController < ApplicationController
 
 
 		elsif params[:object] == "song"
-			logger.info "song"
-			logger.info params[:song_id]
-	    	@song = Song.find(params[:song_id])
+
+			@artist = Artist.find_by_url_slug(params[:url_slug])
+			logger.info "Artist"
+			logger.info @artist
+
+			find_song(@artist, params[:song_url_slug])
 			@song[params[:field_name]] = params[:value]
             object = @song
 

@@ -414,11 +414,13 @@
 			var location = window.location.href + "?redir=true";
 			console.log("location: " + location)
 			loadContent(location);
+
 		};
 
 		// Get and claan current url so url links don't go crazy
 		current_url = window.location.href;
-		cleaned_url = current_url.split("#")[0];
+		cleaned_url = current_url.split("profile-edit")[0];
+		cleaned_url = cleaned_url+"profile-edit"
 
 		$(".content-link").live("click", function (event) {
 			<% if browser.ie? %>
@@ -432,8 +434,27 @@
 			loadContent(url);
 
 			// HISTORY.PUSHSTATE
-			edit_url = cleaned_url + "#" + url
+
+            // removes artist url slug from the url and builds new url for for push state that matcheds the routes for profile editing
+
+			// http://www.w3schools.com/jsref/jsref_indexof.asp
+			index_of = url.indexOf("/",1);
+
+			// Checks to see if there is less than one "/" which means its routing to the edit profile root, and artist_url should be removed
+			if (index_of < 0)
+			{
+				result = ""
+			}
+			else
+			{
+				result = url.substring(index_of);
+			}
+
+			ted_log ("Index of"+ index_of);
+			ted_log("result:" + result);
+			edit_url = cleaned_url + result
 			history.pushState('', 'New URL: ' + edit_url, edit_url);
+
 			<% end %>
 
 
@@ -444,36 +465,11 @@
     	$("#single_line").keypress(function(e){ return e.which != 13; });
 
 
-		$(".editable").on("blur", function(){
-			content = $(this).html();
-
-			field_name = $(this).attr('field_name');
-			object = $(this).attr('object');
 
 
-			console.log(field_name+" "+object+" "+content);
-
-			//creates url for album, song and artist edit
-
-			href = "<%= field_save_url(@artist.url_slug)%>";
-
-			<% if params.has_key?(:song_id) %>
-
-				href = href+"?song_id="+<%=params[:song_id] %>;
-			<% elsif params.has_key?(:album_id) %>
-
-				href = href+"?album_id="+<%=params[:album_id]%>;
-		    <%end%>
-
-					console.log(href);
-			console.log(content);
-			save_edit(href,field_name,object,content);
-
-
-		});
-
-
-
+//         Makes the content editable.
+         href_builder();
+         click_to_edit(href);
 
 
 	});
@@ -506,6 +502,27 @@
 
 	});
 
+	function click_to_edit(href){
+         console.log ("in click to edit")
+		$(".editable").on("blur", function(){
+			ted_log ("in on blur")
+			content = $(this).html();
+
+			field_name = $(this).attr('field_name');
+			object = $(this).attr('object');
+
+
+			console.log(field_name+" "+object+" "+content);
+
+			console.log(href);
+			console.log(content);
+			save_edit(href,field_name,object,content);
+
+
+		});
+	}
+
+
 	function save_edit (href,field_name,object,content) {
 		$.ajax({
 			url:href,
@@ -521,6 +538,28 @@
 		})
 	}
 
+	//creates url for album, song and artist edit
+	function href_builder(){
+
+		href = "<%= field_save_url(@artist.url_slug)%>";
+
+	<% if params.has_key?(:song_url_slug)%>
+
+		href = href+"?song_url_slug="+"<%=params[:song_url_slug]%>";
+
+	<% elsif params.has_key?(:album_url_slug) %>
+
+		href = href+"?album_url_slug="+"<%=params[:album_url_slug]%>";
+
+	<%end%>
+
+		//*************************************************
+
+
+
+	}
+
+
 
 	function loadContent(href) {
 		$.ajax({
@@ -532,10 +571,14 @@
 				$.each(json, function (key, value) {
 					$(key).html(value);
 				});
-
+				href_builder();
+				ted_log("clened href:  "+href)
+				click_to_edit(href);
 			},
 			dataType:"json"
 		});
+
+
 	}
 
 
