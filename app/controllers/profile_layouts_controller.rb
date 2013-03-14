@@ -102,7 +102,7 @@ class ProfileLayoutsController < ApplicationController
 			logger.info "Artist"
 			logger.info @artist
 
-			find_song(@artist, params[:song_url_slug])
+			find_song(@artist, params[:slug])
 			@song[params[:field_name]] = params[:value]
             object = @song
 
@@ -115,7 +115,8 @@ class ProfileLayoutsController < ApplicationController
 
 		elsif params[:object] == "album"
 			logger.info "album"
-            @album = Album.find(params[:album_id])
+			@artist = Artist.find_by_url_slug(params[:url_slug])
+			find_album(@artist,params[:slug])
 			@album[params[:field_name]] = params[:value]
 			#@album = Song.find_by_url_slug(params[:album_url_slug])
 			#@album[params[:field_name]] = params[:value]

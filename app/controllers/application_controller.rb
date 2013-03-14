@@ -265,12 +265,14 @@ class ApplicationController < ActionController::Base
 
 	#finds album objects, when only album url slug is given
 	def find_album(artist,url_slug)
-
+        logger.info "in find album"
 		artist.albums.uniq.each do |album|
 			if album.album_url_slug == url_slug
 				@album = album
 			end
 		end
+
+		logger.info @album
 	end
 	#For resizing profile picks
 	#def limit_image_url (file_name)

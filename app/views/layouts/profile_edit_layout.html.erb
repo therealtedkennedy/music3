@@ -326,7 +326,7 @@
 <script type="text/javascript">
 	//<!-- Java Script effect -->
 	$(document).ready(function () {
-		$(".editable").attr('contenteditable','True');
+
 
 		$('.show_hide').showHide({
 			speed:300, // speed you want the toggle to happen
@@ -455,6 +455,9 @@
 			edit_url = cleaned_url + result
 			history.pushState('', 'New URL: ' + edit_url, edit_url);
 
+			loadContent(url,edit_url);
+
+
 			<% end %>
 
 
@@ -462,20 +465,68 @@
 
 
 
-    	$("#single_line").keypress(function(e){ return e.which != 13; });
 
 
 
+          add_content_editable()
 
 //         Makes the content editable.
-         href_builder();
-         click_to_edit(href);
+         var download_link = href_builder()
+         click_to_edit(download_link);
 
 
+
+		//		Displays playlist
+
+		$(".playlist").live('mouseenter', function () {
+			console.log("hover enter");
+			$(".jp-playlist").show();
+		});
+		$(".playlist").live('mouseleave', function () {
+			console.log("hover leave");
+			$(".jp-playlist").hide();
+		});
+
+
+		// adds playlist
+		$(".payment").live("click", function (event) {
+
+
+				}
+		)
+
+
+		$(".load-playlist").live("click", function (event) {
+					event.preventDefault();
+					var location = $(this).attr('href')
+
+					console.log("location: " + location)
+					get_playlist(location);
+
+				}
+		)
 	});
 
 
-		$("#edit_profile_layout_1").submit(function (e) {
+	function get_playlist(href) {
+//      To display current song info in the player the below code needs to be added jplayer.playlist.min.js in the "_highlight:" function
+//		var trackInfo = (this.playlist[a].artist)+"&mdash;"+(this.playlist[a].title)
+//		$("#track_name").html(trackInfo);
+
+
+		$.ajax({
+			url:href,
+			success:function (json) {
+				ted_log(json);
+				myPlaylist.setPlaylist(json["playlist"])
+			},
+			dataType:"json"
+		});
+	}
+
+
+
+	$("#edit_profile_layout_1").submit(function (e) {
 			e.preventDefault();
 			// get all the inputs into an array.
 			var profile_layout = $('#edit_profile_layout_1').serialize();
@@ -502,7 +553,40 @@
 
 	});
 
-	function click_to_edit(href){
+	function add_content_editable(){
+		// Adds content editable to editable class
+		$(".editable").attr('contenteditable','True');
+		//stops enter on single line
+		$("#single_line").keypress(function(e){ return e.which != 13; });
+	}
+
+	//creates url for album, song and artist edit
+	function href_builder(slug){
+       ted_log("in href Builder")
+		var build_download_link = "<%= field_save_url(@artist.url_slug)%>";
+
+	<% if params.has_key?(:song_url_slug) %>
+        ted_log("in song")
+		build_download_link = build_download_link+"?slug="+"<%=params[:song_url_slug]%>";
+
+	<% elsif params.has_key?(:album_url_slug) %>
+
+		build_download_link = build_download_link+"?slug="+"<%=params[:album_url_slug]%>";
+
+	<% else %>
+
+		build_download_link = build_download_link+"?slug="+slug
+
+	<%end%>
+
+		return build_download_link;
+		//*************************************************
+	}
+
+
+
+
+	function click_to_edit(download_link){
          console.log ("in click to edit")
 		$(".editable").on("blur", function(){
 			ted_log ("in on blur")
@@ -514,18 +598,16 @@
 
 			console.log(field_name+" "+object+" "+content);
 
-			console.log(href);
+			console.log(download_link);
 			console.log(content);
-			save_edit(href,field_name,object,content);
-
-
+			save_edit(download_link,field_name,object,content);
 		});
 	}
 
 
-	function save_edit (href,field_name,object,content) {
+	function save_edit (download_link,field_name,object,content) {
 		$.ajax({
-			url:href,
+			url:download_link,
 			type: "post",
 			data: {
 				value: content,
@@ -538,30 +620,11 @@
 		})
 	}
 
-	//creates url for album, song and artist edit
-	function href_builder(){
-
-		href = "<%= field_save_url(@artist.url_slug)%>";
-
-	<% if params.has_key?(:song_url_slug)%>
-
-		href = href+"?song_url_slug="+"<%=params[:song_url_slug]%>";
-
-	<% elsif params.has_key?(:album_url_slug) %>
-
-		href = href+"?album_url_slug="+"<%=params[:album_url_slug]%>";
-
-	<%end%>
-
-		//*************************************************
 
 
 
-	}
 
-
-
-	function loadContent(href) {
+	function loadContent(href,edit_url) {
 		$.ajax({
 
 			url:href,
@@ -571,9 +634,22 @@
 				$.each(json, function (key, value) {
 					$(key).html(value);
 				});
-				href_builder();
-				ted_log("clened href:  "+href)
-				click_to_edit(href);
+
+
+				// http://www.w3schools.com/jsref/jsref_indexof.asp
+
+
+				var index_of = url.lastIndexOf("/");
+				var	slug = url.substring(index_of+1);
+
+				ted_log("slug: "+ slug)
+
+
+			add_content_editable()
+			var download_link_ajax = href_builder(slug);
+			ted_log("download link:  "+download_link_ajax)
+			click_to_edit(download_link_ajax);
+
 			},
 			dataType:"json"
 		});
@@ -642,18 +718,22 @@
 									</div>
 								</div>
 
-								<span>After track info</span>
+								<div class="playlist">
+									Playlist
+									<div class="jp-playlist">
+										<ul class="songList">
+											<li class="playlistSong"></li>
+										</ul>
+									</div>
+								</div>
+
 
 							</div>
 						</div>
 					</div>
 
 				</div>
-				<div class="jp-playlist">
-					<ul>
-						<li></li>
-					</ul>
-				</div>
+
 				<div class="jp-no-solution">
 					<span>Update Required</span>
 					To play the media you will need to either update your browser to a recent version or update your
