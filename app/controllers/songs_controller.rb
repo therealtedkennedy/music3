@@ -6,8 +6,10 @@ class SongsController < ApplicationController
 
 	before_filter :authenticate_user!, :except => [:show, :index, :song_play_counter]
 
+
 	#changes from default layout to custom layout
-	layout "artist_layout", only: [:show, :edit]
+	layout "artist_layout", only: [:show]
+	layout "artist_admin", only: [:edit]
 
 	def index
 		#not #nessisary

@@ -8,6 +8,7 @@ class ArtistsController < ApplicationController
 
   #changes from default layout to custom layout
   layout "artist_layout", only: [:show, :admin, :update, :social_promo]
+  layout "artist_admin", only: [:admin]
 
 
   def index

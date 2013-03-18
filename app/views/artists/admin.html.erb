@@ -1,121 +1,13 @@
-<div class="div1a">
-    <h1><%= @artist.name %></h1>
-    <p id="notice"><%= notice %></p>
-    <section id="audio">
-    </section>
-    <p>
-
-    <h2>Admin</h2>
-     <%= link_to 'Show', artist_link_path(@artist.url_slug) %>
-
-     <%= link_to 'Destroy', @artist, :method => :delete, :confirm => 'Are you sure?' %>
-
-     <%= link_to 'Edit Profile', profile_edit_path(@artist.url_slug) %>
-
-    <h2>Info: <%= link_to 'Edit', edit_artist_path(@artist.url_slug) %></h2>
-    <p>
-      <b>URL Slug</b>
-      <%= @artist.url_slug %>
-    </p>
-
-    <p>
-      <b>Pay Pal:</b>
-      <%= @artist.pay_pal %>
-    </p>
 
 
-    <p>
-      <b>City:</b>
-      <%= @artist.city %>
-    </p>
-
-    <p>
-      <b>Province:</b>
-      <%= @artist.province %>
-    </p>
 
 
-    <p>
-      <b>Country:</b>
-      <%= @artist.country %>
-    </p>
 
-    <p>
-      <b>Influence:</b>
-      <%= @artist.influence %>
-    </p>
 
-    <p>
-      <b>Bio:</b>
-      <%= @artist.bio %>
-    </p>
+	<h1>Editing artist</h1>
 
-    <p>
-      <b>Contact info:</b>
-      <%= @artist.contact_info %>
-    </p>
 
-    <p>
-      <b>Date founded:</b>
-      <%= @artist.date_founded %>
-    </p>
+	<%= render 'form' %>
 
-	<p>
-		<b>Created date:</b>
-		<%= @artist.created_date %>
-	</p>
-
-	<h2>Social</h2>
-	<p>
-		<b>Twitter ID</b>
-		<%= @artist.twitter_name %>
-	</p>
-    <p>
-	<p>
-		<b>Social Title. Something Fun to say about the page</b>
-		<%= @artist.social_title %>
-	</p>
-
-	<p>
-		<b>Social Title. Something Fun to say about the page</b>
-		<%= @artist.fb_page_url %>
-	</p>
-
-    </p>
-
-    <h2>Albums: <%= link_to 'New Album',add_album_path(@artist.url_slug)%></h2>
-
-    <ul>
-       <% @artist.albums.uniq.each do |albums| %>
-          <% unless albums.album_url_slug.blank?%>
-          <li><%= link_to albums.al_name, artist_show_album_path(@artist.url_slug,albums.album_url_slug) %>
-          <%= link_to 'Edit', edit_album_path(albums.id) %>
-           <%= link_to 'Album Codes', album_create_code_path(@artist.url_slug,albums.id) %>
-          </li>
-        <% end %>
-       <% end %>
-    </ul>
-
-    <p>
-    <h2>Songs: <%= link_to 'Add Song', add_song_path(@artist.url_slug) %></h2>
-
-    <ul>
-    <% @artist.songs.uniq.each do |songs| %>
-        <% unless songs.song_url_slug.blank?%>
-         <% unless songs.s3_id.nil? %>
-            <li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %>
-              <%= link_to "Play", download_url_for(songs.s3_id), :class => "html5" %>
-              <%= link_to 'Edit', edit_song_path(songs.id) %>
-              <%= link_to 'Destroy', songs, :confirm => 'Are you sure?', :method => :delete %>
-              </li>
-        <% end %>
-      <% end %>
-    <% end %>
-    </ul>
-
-    </p>
-
-    <%= link_to 'Song List', songs_path %>
-    <%= link_to 'Artist List', artists_path%>
-
-</div>
+	<%= link_to 'Show', artist_link_path(@artist.url_slug) %>
+	<%= link_to 'Back', artists_path %>
