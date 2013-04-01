@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   #Amazon buckets
   BUCKET ='ted_kennedy'
   ALBUM_BUCKET = 'ted_kennedy_album'
+  S3_KEY="z+DmlVpM1omU5AaTlyRxsqhHiq/57M9CGEQbc+gd"
   #Number of download codes avaible to artist
   CODE_LIMIT = 250
 

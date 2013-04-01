@@ -4,3 +4,21 @@
 <h2 class="editable" field_name="country" object="artist" id="3" contenteditable="true">Title </h2>
 
 <h2>something else</h2>
+
+<form action="https://<%=@bucket%>.s3.amazonaws.com" method="post" enctype="multipart/form-data" class='direct-upload'>
+	<input type="hidden" name= "key" />
+	<input type="hidden" name= "AWSAccessKeyId" value="AKIAJBCDYICH6VCMN6ZA" />
+	<input type="hidden" name="acl" value="public-read" />
+	<input type="hidden" name="x-amz-meta-my-file-name" value="Awesome song" />
+	<input type="hidden" name="Content-Disposition" value="attachment;filename=Feeling Pretty Right.mp3" />
+	<input type="hidden" name="policy"/>
+	<input type="hidden" name="signature"/>
+	<input type="hidden" name="success_action_status" value="201" />
+
+	<input type="file" name="file"/>
+
+<!--- # You can recognize some bootstrap markup here :)-->
+<!--.progress.progress-striped.active-->
+<!--.bar-->
+
+</form>

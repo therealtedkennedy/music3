@@ -3,7 +3,26 @@
   S3_name: <%= @song.s3_id %> </p>
 
 
-<h3>Upload Song </h3>
+<h3>Song upload </h3>
+<form action="https://<%=@bucket%>.s3.amazonaws.com" method="post" enctype="multipart/form-data" class='direct-upload'>
+	<input type="hidden" name= "key" />
+	<input type="hidden" name= "AWSAccessKeyId" value="AKIAJBCDYICH6VCMN6ZA" />
+	<input type="hidden" name="acl" value="public-read" />
+	<input type="hidden" name="x-amz-meta-my-file-name" value="" />
+	<input type="hidden" name="Content-Disposition" value="" />
+	<input type="hidden" name="policy"/>
+	<input type="hidden" name="signature"/>
+	<input type="hidden" name="success_action_status" value="201" />
+
+	<input type="file" name="file"/>
+
+	<!--- # You can recognize some bootstrap markup here :)-->
+	<!--.progress.progress-striped.active-->
+	<!--.bar-->
+
+</form>
+
+<h3>Info </h3>
 
 <%= render 'form_upload_song' %>
 </br>

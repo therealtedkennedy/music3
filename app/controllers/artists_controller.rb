@@ -7,8 +7,9 @@ class ArtistsController < ApplicationController
   #before_filter :authenticate_user!, :except => [:show, :index]
 
   #changes from default layout to custom layout
+
   layout "artist_layout", only: [:show, :admin, :update, :social_promo]
-  layout "artist_admin", only: [:admin]
+
 
 
   def index
@@ -169,6 +170,7 @@ class ArtistsController < ApplicationController
 
     @artist = Artist.find_by_url_slug(params[:url_slug])
     authorize! :admin, @artist
+	render :layout => 'artist_admin'
   end
 
 

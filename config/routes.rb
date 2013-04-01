@@ -1,8 +1,10 @@
 Music3::Application.routes.draw do
 
-
+	resources :signed_urls, only: :index
 	resources :artists, :albums,:orders,:artist_home, :songs, :profile_layouts
+
     devise_for :users
+
 
     #socail promo
 	match "/:url_slug/social_promo" => "artists#social_promo", :as => :social_promo

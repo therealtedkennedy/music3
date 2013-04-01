@@ -9,7 +9,7 @@ class SongsController < ApplicationController
 
 	#changes from default layout to custom layout
 	layout "artist_layout", only: [:show]
-	layout "artist_admin", only: [:edit]
+
 
 	def index
 		#not #nessisary
@@ -89,7 +89,7 @@ class SongsController < ApplicationController
 
 
 		respond_to do |format|
-			format.html #show.html.erb
+			format.html {render :layout => 'artist_admin'}
 			format.xml { render :xml => @song }
 			format.js
 		end
@@ -123,11 +123,19 @@ class SongsController < ApplicationController
 	end
 
 	def new
+
+		@s3_key = S3_KEY
+		@bucket = BUCKET
+
 		@artist = Artist.find_by_url_slug(params[:url_slug])
 		@song = Song.new
 		@artist_id = @artist.id
 		@song.s_a_id = @artist.id
 		@song.save
+
+		@song.s3_id= @song.id.to_s + ".mp3"
+		@song.save
+
 
 		respond_to do |format|
 			format.html #create.html.erb
