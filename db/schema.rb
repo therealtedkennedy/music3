@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217200132) do
+ActiveRecord::Schema.define(:version => 20130403002756) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(:version => 20130217200132) do
     t.string   "s3_id"
     t.integer  "s_a_id"
     t.boolean  "social_on"
+    t.string   "s3_meta_tag"
   end
 
   create_table "transactions", :force => true do |t|

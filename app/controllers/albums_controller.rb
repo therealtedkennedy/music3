@@ -75,6 +75,7 @@ class AlbumsController < ApplicationController
     @album.save
     #creates blank song ids?
     @song_ids = []
+	@meta_update_url = "nohting"
 
 
      respond_to do |format|

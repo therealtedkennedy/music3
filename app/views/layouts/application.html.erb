@@ -234,6 +234,10 @@
 
 					var form = $(this)
 
+					<% if defined?(@song.s3_id) %>
+						var s3_id = "<%=@song.s3_id %>"
+					<% end %>
+
 					$(this).fileupload({
 						url: form.attr('action'),
 						type: 'POST',
@@ -245,7 +249,8 @@
 								type: 'GET',
 								dataType: 'json',
 //								data: {doc: {title: data.files[0].name}}, // send the file name to the server so it can generate the key param
-								data: {doc: {title: "<%=@song.s3_id %>"}}, // send the file name to the server so it can generate the key param
+
+								data: {doc: {title: s3_id}}, // send the file name to the server so it can generate the key param
 								async: false,
 								success: function(ajaxData) {
 									// Now that we have our data, we update the form so it contains all
@@ -257,16 +262,23 @@
 									form.find('input[name=x-amz-meta-my-file-name]').val(data.files[0].name)
 									form.find('input[name=Content-Disposition]').val("attachment;filename="+data.files[0].name)
 									//updates name in form feild
-									form.find('input[name=song_song_name]').val("attachment;filename="+data.files[0].name)
+									var file_name_ext_remv = (data.files[0].name)
+								    file_name_ext_remv = file_name_ext_remv.substring(0, file_name_ext_remv.indexOf('.'));
+
+									save_s3_meta_name (file_name_ext_remv)
+									$('input[name="song[song_name]"]').val(file_name_ext_remv)
+
+
 
 									ted_log ('data from server')
-									ted_log ("<%=@song.s3_id %>")
+									ted_log (s3_id)
 									ted_log (ajaxData.key)
 									ted_log (ajaxData.policy)
 									ted_log (ajaxData.signature)
 									ted_log (ajaxData)
 								}
 							})
+
 							data.submit();
 						},
 //						send: function(e, data) {
@@ -300,19 +312,22 @@
 		});
 
 
-
-
-
-
-		function save_edit (href) {
+		function save_s3_meta_name (file_name_ext_remv) {
 			$.ajax({
-				url:href,
+				url:"<%=@meta_update_url%>",
 				type: "post",
+				data: {
+					s3_meta_name: file_name_ext_remv
+				},
 				success:
-						function(){console.log("saved")}
+						function(){console.log("saved")},
+
+				fail:
+						function(){ted_log("S3_meta_failed")}
 
 			})
-		}
+		};
+
 
 		function loadContent(href) {
 			$.ajax({
