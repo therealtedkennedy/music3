@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html>
-
-
+<html lang="en" xml:lang="en" class="" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <!--Google Meta-->
 <title><%= @social_title %></title>
@@ -28,6 +26,43 @@
 
 <meta class="area">
 
+<style type="text/css">
+		@font-face {
+    font-family: 'verb_regularbold';
+    src: url('/fonts/verb_bold/VerbBold-webfont.eot');
+    src: url('/fonts/verb_bold/VerbBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/verb_bold/VerbBold-webfont.woff') format('woff'),
+         url('/fonts/verb_bold/VerbBold-webfont.ttf') format('truetype'),
+         url('/fonts/verb_bold/VerbBold-webfont.svg#verb_regularbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'verb_regularregular';
+    src: url('/fonts/verb_regular/VerbRegular-webfont.eot');
+    src: url('/fonts/verb_regular/VerbRegular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/verb_regular/VerbRegular-webfont.woff') format('woff'),
+         url('/fonts/verb_regular/VerbRegular-webfont.ttf') format('truetype'),
+         url('/fonts/verb_regular/VerbRegular-webfont.svg#verb_regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'verb_lightregular';
+    src: url('/fonts/verb_light/VerbLight-webfont.eot');
+    src: url('/fonts/verb_light/VerbLight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/verb_light/VerbLight-webfont.woff') format('woff'),
+         url('/fonts/verb_light/VerbLight-webfont.ttf') format('truetype'),
+         url('/fonts/verb_light/VerbLight-webfont.svg#verb_lightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+	</style>
 
 <style>
 
@@ -38,7 +73,7 @@
 	<%= @artist.profile_layout.profile_css %>
 
 	<% else %>
-	p {
+	#content p {
 		font-family: <%= @artist.profile_layout.p_font %>;
 		font-size: <%= @artist.profile_layout.p_size %>pt;
 		color: <%= @artist.profile_layout.p_colour %>;
@@ -213,10 +248,18 @@
 
 	<% end %>
 
-	html, body {
-		overflow-x: hidden;
-		margin: 0 auto;
+	* {margin:0;padding:0}
 
+	html,body
+	{
+		margin:0;
+		padding:0;
+		overflow:hidden;
+	}
+
+	body
+	{
+		height:100%;
 	}
 
 	@font-face {
@@ -224,9 +267,167 @@
 		src: url("/assets/fonts/iconmoon.eot");
 	}
 
+
+
+
+
+
+
 	.container {
-		margin-top: 50px;
+		position:absolute;
+		left:0;
+		right:0;
+		top:0;
+		height:50px;
+		overflow:hidden;
 	}
+
+	#content
+	{
+		overflow:auto;
+		position:absolute;
+		left:0;
+		right:0;
+		top:50px;
+		bottom:0;
+		padding:70px;
+
+		background-color:#f4e2d2;
+	}
+
+	#content .floatingContent
+	{
+		width:960px;
+		height:100%;
+		display:block;
+		margin: 0 auto;
+		position: relative;
+	}
+
+
+
+	#content .artistLogoArea
+	{
+		position:absolute;
+		left:0;
+		right:0;
+		top:0;
+		height:150px;
+		text-align: center;
+		display:block;
+	}
+
+	#content .navArea
+	{
+		position:absolute;
+		left:0;
+		right:0;
+		top:150px;
+		height:50px;
+		text-align: center;
+		display:block;
+	}
+
+		#content .nav
+		{
+			width:25%;
+			text-align: center;
+			cursor: pointer;
+			height:50px;
+			display:inline-block;
+			font-family: 'verb_regularbold', sans-serif;
+			font-size:20px;
+			color:#96938f;
+			/*text-shadow: 0px 0px 1px rgba(0,0,0,0.4); */
+		}
+
+		#content .nav:hover
+		{
+			color:#5b5956;
+		}
+
+		#content .nav.selected
+		{
+			font-family: 'verb_regularbold', sans-serif;
+			color:#000;
+			background-image: url("/images/indicator.png");
+			background-position: bottom center;
+			background-repeat: no-repeat;
+		}
+
+	#content .miniPage
+	{
+		min-height:300px;
+		max-height:600px;
+		background-color:#000;
+		overflow:auto;
+		position:absolute;
+		left:0;
+		right:0;
+		top:200px;
+		bottom:0;
+		padding:15px;
+
+		font-family: 'verb_regularregular';
+		color:#fff;
+	}
+
+	.miniPage a
+	{
+		text-decoration: none;
+	}
+
+	.miniPage .album
+	{
+		width:300px;
+		height:300px;
+		text-align: center;
+		cursor: pointer;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.miniPage .album:hover
+	{
+		background-color: #222;
+	}
+
+	.miniPage .album img
+	{
+		width:200px;
+		height:200px;
+		margin:0 auto;
+		display:block;
+		border:0;
+	}
+
+	.miniPage .album h1
+	{
+		font-family: 'verb_regularbold';
+		font-size: 18px;
+		margin:0 auto;
+		display:block;
+		padding:0px;
+		margin:0;
+		margin-top:10px;
+		color:#fff;
+	}
+
+	.miniPage .album h2
+	{
+		font-family: 'verb_lightregular';
+		color:#aaa;
+		font-size: 14px;
+		margin:0 auto;
+		display:block;
+		padding:0px;
+		margin:0;
+		margin-top:5px;
+	}
+
+
+
+
 
 		/* Defines whole top nav, including sign in/out, and the player it self */
 	.player_nav {
@@ -307,7 +508,6 @@
 		padding: 5px;
 
 	}
-
 
 
 </style>
@@ -681,29 +881,16 @@ function ted_log() {
 
 
 </div>
-
 <!--<div id="loading">-->
 <!--<p>Loading..</p>-->
 <!--</div>-->
 
-
 <!--<div class="facebook" style="overflow:visible; display:inline-block; margin: 10px;">-->
-
 
 <!--</div>-->
 
 <% if flash[:notice] %>
 	<div class="notice"><%= flash[:notice] %></div>
 <% end %>
-
-<div id="content">
-
-	<%= yield %>
-
-</div>
-
-
-
-
-</body>
+<div id="content"><%= yield %></div></body>
 </html>
