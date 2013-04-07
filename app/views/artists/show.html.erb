@@ -1,7 +1,1 @@
-<div class="floatingContent">
-		<div class="artistLogoArea">ARTIST LOGO</div>
-		<div class="navArea"><div class="nav">PROMO</div><div class="nav">SONGS</div><div class="nav selected">ALBUMS</div><div class="nav">INFO</div></div>
-		<div class="miniPage"><% @artist.albums.uniq.each do |album| %><% unless album.album_url_slug.blank? %><a href="<%= artist_show_album_path(@artist.url_slug, album.album_url_slug) %>" border="0" class="content-link" style="padding:0;margin:0;"><div class="album"><img src="<%= album.art %>" /><h1><%= album.al_name %></h1><h2><%= album.description %></h2></div></a><% end %>
-			<% end %>
-		</div>
-</div>
+<div style="text-align:center;"><img src="/ronster.jpg" /></div>
