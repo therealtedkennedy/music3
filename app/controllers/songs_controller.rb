@@ -142,6 +142,7 @@ class SongsController < ApplicationController
 		@meta_update_url = update_s3_meta_url(@artist.url_slug, @object_id)
 
 
+
 		respond_to do |format|
 			format.html #create.html.erb
 			format.xml { render :xml => @song }
@@ -163,12 +164,12 @@ class SongsController < ApplicationController
 		#@amazon_id = @song.id.to_s + ".mp3"
 
 
-		if params[:song].has_key?("s3_name")
-			#save_amazon_file(@song.s3_id, params[:song][:s3_name], params[:song][:song_name], @artist)
-
-
-
-		end
+		#if params[:song].has_key?("s3_name")
+		#	#save_amazon_file(@song.s3_id, params[:song][:s3_name], params[:song][:song_name], @artist)
+		#
+		#
+		#
+		#end
 
 
 
@@ -180,14 +181,21 @@ class SongsController < ApplicationController
 
 		params[:song].delete :s3_name
 
-        logger.info "song nae is="+@song.song_name
+
 
 		@song.update_attributes(params[:song])
+
+		logger.info "song nae is="
+		logger.info @song.song_name
+		logger.info "meta name is"
+		logger.info @song.meta_tag
+
+		#not going to work there buddy.
 
 		if @song.song_name = @song.s3_meta_tag
 
 		else
-			(AWS::S3::S3Object::copy(@song.s3_id, @song.s3_id, BUCKET, 'x-amz-meta-my-file-name' => @song.song_name, 'Content-Disposition' => 'attachment;filename='+@song.song_name+'.mp3'))
+			(AWS::S3::S3Object::copy(@song.s3_id, @song.s3_id, BUCKET, 'x-amz-meta-my-file-name' => @song.song_name, 'Content-Disposition' => 'attachment;filename='+@song.song_name.to_s+".mp3"))
 		end
 
 		respond_to do |format|
@@ -298,8 +306,7 @@ class SongsController < ApplicationController
 
 	def update_s3_meta
 		@song = Song.find(params[:song_id])
-		@song.s3_meta_tag = params[:s3_meta_name]
-		@song.save
+		@song.update_column(:s3_meta_tag, params[:s3_meta_name])
 
 		respond_to do |f|
 				f.json {
