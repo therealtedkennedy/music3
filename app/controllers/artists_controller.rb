@@ -32,6 +32,18 @@ class ArtistsController < ApplicationController
     @artist = Artist.find_by_url_slug(searchString)
 
 
+
+
+	if cookies[:promo_page].to_s.blank? || params[:promo] == "true"
+		if params.has_key?(:promo)
+		else
+			# sets cookies on first load
+			cookies[:promo_page]= { :value => "promo", :expires => 24.hour.from_now }
+		end
+
+		@show_promo = "true"
+	end
+
     @playlist = @artist.songs
 
     artist_social(@artist)

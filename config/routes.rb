@@ -1,7 +1,7 @@
 Music3::Application.routes.draw do
 
 	resources :signed_urls, only: :index
-	resources :artists, :albums,:orders,:artist_home, :songs, :profile_layouts
+	resources :artists, :albums,:orders,:artist_home, :songs, :profile_layouts, :my_records
 
     devise_for :users
 

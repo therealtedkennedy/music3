@@ -1,7 +1,11 @@
 require File.expand_path('../boot', __FILE__)
 
+
 require 'csv'
 require 'rails/all'
+
+
+
 
 
 # If you have a Gemfile, require the gems listed there, including any gems
@@ -48,11 +52,10 @@ module Music3
 
 	config.filter_parameters += [:password]
 
-        AWS::S3::Base.establish_connection!(
-        :access_key_id => 'AKIAJBCDYICH6VCMN6ZA',
-        :secret_access_key => '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'
-    )
-
+    #   AWS::S3::Base.establish_connection!(
+    #   :access_key_id => 'AKIAJBCDYICH6VCMN6ZA',
+    #   :secret_access_key => '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'
+    #)
 
 
     BUCKET ='ted_kennedy'

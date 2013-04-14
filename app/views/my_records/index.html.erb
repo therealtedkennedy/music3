@@ -1,0 +1,23 @@
+<h1>Listing my_records</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @my_records.each do |my_record| %>
+  <tr>
+    <td><%= my_record.name %></td>
+    <td><%= link_to 'Show', my_record %></td>
+    <td><%= link_to 'Edit', edit_my_record_path(my_record) %></td>
+    <td><%= link_to 'Destroy', my_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New My record', new_my_record_path %>

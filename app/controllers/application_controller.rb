@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+
+
   protect_from_forgery
   include SessionsHelper
   #Amazon buckets
@@ -7,6 +9,7 @@ class ApplicationController < ActionController::Base
   S3_KEY="z+DmlVpM1omU5AaTlyRxsqhHiq/57M9CGEQbc+gd"
   #Number of download codes avaible to artist
   CODE_LIMIT = 250
+
 
   #
   #POLICY_DOCUMENT = ActiveSupport::JSON.encode(:expiration => "2012-10-01T00:00:00Z",
