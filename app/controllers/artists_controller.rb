@@ -40,7 +40,6 @@ class ArtistsController < ApplicationController
 			# sets cookies on first load
 			cookies[:promo_page]= { :value => "promo", :expires => 24.hour.from_now }
 		end
-
 		@show_promo = "true"
 	end
 

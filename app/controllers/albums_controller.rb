@@ -111,7 +111,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.save
-        if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
+        if S3_object_exists(ALBUM_BUCKET,@album.id.to_s)
         else
           zip_album(@artist,@album)
         end
@@ -145,7 +145,7 @@ class AlbumsController < ApplicationController
         #zips and creates and album in S3
 
         #checks to see the albums songs have changed.
-        #if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
+
 		if  params[:album_songs].to_s == @album.album_songs.to_s
 		   logger.info "album_songs true"
 		else
@@ -263,7 +263,7 @@ class AlbumsController < ApplicationController
     #Saves to S3
 
 	#checks if it already exsists and deletes it if i does.  For when album is updated with songs
-	if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
+	if S3_object_exists(ALBUM_BUCKET,@album.id.to_s)
 		logger.info "in delete...would be amazing if this happend"
 	   AWS::S3::S3Object.delete @album.id.to_s, ALBUM_BUCKET
 	end
@@ -295,16 +295,16 @@ class AlbumsController < ApplicationController
 
     end
     #checks to see if album object exsists in S3.
-    if AWS::S3::S3Object.exists? @album.id.to_s, ALBUM_BUCKET
+    if S3_object_exists(ALBUM_BUCKET,@album.id.to_s)
       #downloads the album
-      album_s3_url = AWS::S3::S3Object.url_for(@album.id.to_s, ALBUM_BUCKET, :authenticated => false)
+      album_s3_url = s3_url_for(ALBUM_BUCKET,@album.id.to_s)
       redirect_to album_s3_url
 
 	else
 	 #zips the file and uploads to S3
      zip_album(@artist,@album)
 	 #downloads the album
-     album_s3_url = AWS::S3::S3Object.url_for(@album.id.to_s, ALBUM_BUCKET, :authenticated => false)
+     album_s3_url = s3_url_for(ALBUM_BUCKET,@album.id.to_s)
      redirect_to album_s3_url
 
     end
@@ -416,7 +416,7 @@ class AlbumsController < ApplicationController
 		@album.songs.uniq.each do |songs|
 			unless songs.song_url_slug.blank?
 				@song_name = songs.song_name
-				@download = AWS::S3::S3Object.url_for(songs.s3_id, BUCKET, :authenticated => false)
+				@download = s3_url_for(BUCKET,songs.s3_id)
                 #Preps playlist for Json
 				@songs_for_playlist << {:title => @song_name, :mp3 => @download, :artist => @artist.name, :songID => songs.id}
 

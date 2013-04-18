@@ -214,6 +214,19 @@ class ApplicationController < ActionController::Base
  end
 
 
+	# S3 Methods
+	def S3_object_exists(bucket, s3_id)
+		@s3 = AWS::S3.new
+		@s3.buckets[bucket].objects[s3_id].exists?
+
+	end
+
+	def s3_url_for(bucket, s3_id)
+		@s3 = AWS::S3.new
+		@s3_url = @s3.buckets[bucket].objects[s3_id].public_url
+		@s3_url.to_s
+	end
+
 
   def order_create (object,token)
 
