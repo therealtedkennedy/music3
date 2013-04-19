@@ -100,8 +100,7 @@ class SongsController < ApplicationController
 
 	def save_amazon_file(amazon_id, mp3file, name, artist)
 		authorize! :update, artist
-		#patched aw3 object.rb with - http://rubyforge.org/pipermail/amazon-s3-dev/2006-December/000007.html
-		if (AWS::S3::S3Object::store(amazon_id, mp3file.read, BUCKET, :access => :public_read, 'x-amz-meta-my-file-name' => name, 'Content-Disposition' => 'attachment;filename='+name+'.mp3'))
+		if	s3_save(amazon_id,mp3file,name,BUCKET,":mpeg",".mp3")
 			return true;
 		else
 			return false;
@@ -215,24 +214,24 @@ class SongsController < ApplicationController
 
 	#uploads songs from S3 Server. Not sure if this is used any more.
 
-	def upload
-		#@id = params[:song_id]
-		#@s3_key = @id+".mp3"
-
-		begin
-			AWS::S3::S3Object.store(sanitize_filename(params[:mp3file].original_filename), params[:mp3file].read, BUCKET, :access => :public_read)
-
-		end
-
-	rescue
-		render :text => "Couldn't complete the upload"
-
-
-		respond_to do |format|
-			format.js { render }
-
-		end
-	end
+	#def upload
+	#	#@id = params[:song_id]
+	#	#@s3_key = @id+".mp3"
+	#
+	#	begin
+	#		AWS::S3::S3Object.store(sanitize_filename(params[:mp3file].original_filename), params[:mp3file].read, BUCKET, :access => :public_read)
+	#
+	#	end
+	#
+	#rescue
+	#	render :text => "Couldn't complete the upload"
+	#
+	#
+	#	respond_to do |format|
+	#		format.js { render }
+	#
+	#	end
+	#end
 
 
 	# def download
@@ -267,7 +266,7 @@ class SongsController < ApplicationController
 
 
 		(@song.s3_id)
-		AWS::S3::S3Object.find(@song.s3_id, BUCKET).delete
+		s3_delete(BUCKET, @song.s3_id)
 
 		respond_to do |format|
 			format.html { redirect_to(artist_admin_path(@artist.url_slug)) }
@@ -337,12 +336,8 @@ class SongsController < ApplicationController
 		if @song.song_name == @song.s3_meta_tag
 
 		else
-			#logger.info "actual S3 send"
-			#@s3_id = song_id.mp3
-			#@s3 = AWS::S3.new
-			##using AWS SDK - http://docs.aws.amazon.com/AWSRubySDK/latest/AWS/S3/S3Object.html#copy_from-instance_method
-			##example here - http://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjectUsingRuby.html
-			#@s3.buckets[BUCKET].objects[song_id].copy_from(,{:metadata => {"x-amz-meta-my-file-name"=>"anything"}})
+
+			s3_copy(@song.s3_id,@song.song_name,BUCKET,":mpeg",".mp3")
 
 		end
 

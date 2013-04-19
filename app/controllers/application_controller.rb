@@ -215,17 +215,39 @@ class ApplicationController < ActionController::Base
 
 
 	# S3 Methods
-	def S3_object_exists(bucket, s3_id)
+	#initilaizes s3 object
+	def s3_start
 		@s3 = AWS::S3.new
+	end
+
+	#checks if objects exists
+	def S3_object_exists(bucket, s3_id)
+		s3_start
 		@s3.buckets[bucket].objects[s3_id].exists?
 
 	end
 
 	def s3_url_for(bucket, s3_id)
-		@s3 = AWS::S3.new
+		s3_start
 		@s3_url = @s3.buckets[bucket].objects[s3_id].public_url
 		@s3_url.to_s
 	end
+
+
+	def s3_delete (bucket, s3_id)
+		s3_start
+		@s3.buckets[bucket].objects[s3_id].delete
+	end
+
+   def s3_save(amazon_id,file,name,s3_bucket,content_type,file_type)
+	   s3_start
+	   @s3.buckets[s3_bucket].objects[amazon_id].write(file.read,{:acl => :public_read, :content_type => content_type, :metadata => {"x-amz-meta-my-file-name"=>name, "Content-Disposition" => 'attachment;filename='+name+file_type}})
+   end
+
+   def s3_copy(amazon_id,name,s3_bucket,content_type,file_type)
+       @s3 = AWS::S3.new
+	   @s3.buckets[s3_bucket].objects[amzon_id].copy_from(amazon_id,{:acl => :public_read, :content_type => content_type, :metadata => {"x-amz-meta-myfile-name"=>name, "Content-Disposition" => 'attachment;filename='+name+file_type}})
+   end
 
 
   def order_create (object,token)

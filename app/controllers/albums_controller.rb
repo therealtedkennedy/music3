@@ -265,7 +265,7 @@ class AlbumsController < ApplicationController
 	#checks if it already exsists and deletes it if i does.  For when album is updated with songs
 	if S3_object_exists(ALBUM_BUCKET,@album.id.to_s)
 		logger.info "in delete...would be amazing if this happend"
-	   AWS::S3::S3Object.delete @album.id.to_s, ALBUM_BUCKET
+	   s3_delete(ALBUM_BUCKET,@album.id.to_s)
 	end
 
 	s3_file = File.open(zipfile_location)
@@ -391,8 +391,8 @@ class AlbumsController < ApplicationController
   #Saves S3 Album..should be universal in the applications controller.
   def save_amazon_file(amazon_id, zipfile,name,artist,s3_bucket)
     authorize! :update, artist
-    #patched aw3 object.rb with - http://rubyforge.org/pipermail/amazon-s3-dev/2006-December/000007.html
-    if(AWS::S3::S3Object::store(amazon_id, zipfile.read, s3_bucket, :access => :public_read,'x-amz-meta-my-file-name'=> name, 'Content-Disposition' => 'attachment;filename='+name+'.zip'))
+
+	 if s3_save(amazon_id,zipfile,name,s3_bucket,":zip",".zip")
       return true;
     else
       return false;

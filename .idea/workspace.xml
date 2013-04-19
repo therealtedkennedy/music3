@@ -7,13 +7,11 @@
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Sites\music3\public\javascripts\jquery.1.6.2.js" afterPath="" />
       <change type="DELETED" beforePath="C:\Sites\music3\public\uploads\artist\image\12\HARDSummer2011TN001.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aws-sdk-for-ruby" afterPath="$PROJECT_DIR$/aws-sdk-for-ruby" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/albums_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/artists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/artists_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/songs_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/songs_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
     </list>
     <ignored path="music3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,7 +40,7 @@
       <file leaf-file-name="albums_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="310" column="0" selection-start="7696" selection-end="7696" vertical-scroll-proportion="0.0">
+            <state line="394" column="8" selection-start="10073" selection-end="10073" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -51,7 +49,7 @@
       <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="104" selection-start="3201" selection-end="3215" vertical-scroll-proportion="-6.7">
+            <state line="86" column="104" selection-start="3201" selection-end="3215" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -60,7 +58,7 @@
       <file leaf-file-name="application_helper.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
+            <state line="4" column="32" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -78,7 +76,7 @@
       <file leaf-file-name="artists_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/artists_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="41" selection-start="2779" selection-end="2779" vertical-scroll-proportion="719.5">
+            <state line="125" column="41" selection-start="2779" selection-end="2779" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -87,7 +85,7 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/artists/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="22" selection-start="903" selection-end="914" vertical-scroll-proportion="23.48276">
+            <state line="30" column="22" selection-start="903" selection-end="914" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -96,22 +94,31 @@
       <file leaf-file-name="songs_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/songs_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="222" column="31" selection-start="4988" selection-end="5007" vertical-scroll-proportion="0.0">
+            <state line="102" column="13" selection-start="2240" selection-end="2240" vertical-scroll-proportion="-10.5">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/songs/show.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="120" column="0" selection-start="2959" selection-end="2959" vertical-scroll-proportion="-99.31035">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="229" column="0" selection-start="5947" selection-end="5947" vertical-scroll-proportion="0.9622047">
+            <state line="254" column="0" selection-start="6796" selection-end="6796" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aws_cf_signer.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="aws_cf_signer.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/aws_cf_signer-0.1.1/lib/aws_cf_signer.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -136,7 +143,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Rails console: music3" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Rails console: music3" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
@@ -150,12 +156,12 @@
         <option value="$PROJECT_DIR$/config/initializers/aws,rb" />
         <option value="$PROJECT_DIR$/config/initializers/aws.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/songs_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/artists/show.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/artists_controller.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
         <option value="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/songs_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
       </list>
     </option>
@@ -221,6 +227,16 @@
             <PATH_ELEMENT USER_OBJECT="Root">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="music3" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -767,16 +783,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music3" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Favorites" />
     </panes>
   </component>
@@ -784,14 +790,14 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="191" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="203" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="200" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="205" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1003" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="205" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1000" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1003" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="202" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="200" />
     <property name="GoToClass.includeJavaFiles" value="false" />
@@ -1022,15 +1028,6 @@
         <option name="RakeTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
-      <method>
-        <option name="RakeTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -1058,6 +1055,15 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method>
+        <option name="RakeTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
       <method>
         <option name="RakeTask" enabled="false" />
       </method>
@@ -1242,11 +1248,11 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32913843" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.45788965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15614973" sideWeight="0.81493866" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22566845" sideWeight="0.6698935" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21818182" sideWeight="0.71151984" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37472036" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4036786" sideWeight="0.059358288" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3301065" sideWeight="0.9914439" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28848016" sideWeight="0.9914439" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3232662" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1330,18 +1336,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/aws_cf_signer-0.1.1/lib/aws_cf_signer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/songs/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="0" selection-start="2959" selection-end="2959" vertical-scroll-proportion="1.464668">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/songs/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -1349,23 +1343,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/song.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artists/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="22" selection-start="903" selection-end="914" vertical-scroll-proportion="23.48276">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/songs_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="222" column="31" selection-start="4988" selection-end="5007" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="model://music3">
@@ -1377,44 +1355,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="104" selection-start="3201" selection-end="3215" vertical-scroll-proportion="-6.7">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/artists_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="41" selection-start="2779" selection-end="2779" vertical-scroll-proportion="719.5">
+        <state line="86" column="104" selection-start="3201" selection-end="3215" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/application.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="25" selection-start="2005" selection-end="2005" vertical-scroll-proportion="0.0">
+        <state line="55" column="25" selection-start="2005" selection-end="2005" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/artists_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="125" column="41" selection-start="2779" selection-end="2779" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/artists/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="22" selection-start="903" selection-end="914" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="32" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/songs/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="0" selection-start="2959" selection-end="2959" vertical-scroll-proportion="-99.31035">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="310" column="0" selection-start="7696" selection-end="7696" vertical-scroll-proportion="0.0">
+        <state line="394" column="8" selection-start="10073" selection-end="10073" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/songs_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="13" selection-start="2240" selection-end="2240" vertical-scroll-proportion="-10.5">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="229" column="0" selection-start="5947" selection-end="5947" vertical-scroll-proportion="0.9622047">
+        <state line="254" column="0" selection-start="6796" selection-end="6796" vertical-scroll-proportion="0.0">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/aws_cf_signer-0.1.1/lib/aws_cf_signer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
   </component>
