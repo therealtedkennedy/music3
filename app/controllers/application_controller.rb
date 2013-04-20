@@ -278,6 +278,7 @@ class ApplicationController < ActionController::Base
 
   #assigns an object to a user (album, artist, song, ticket, anything you want)
   def assign_to_user (object,object_url_slug)
+	  logger.info "in assign_to_user"
     if object == "album"
       @user = User.find(current_user.id)
       @album = Album.find_by_album_url_slug(object_url_slug)

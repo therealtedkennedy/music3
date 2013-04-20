@@ -9,6 +9,7 @@ class Album < ActiveRecord::Base
 
 
 
+
 #before_create :generate_slug
 before_update :generate_slug
 

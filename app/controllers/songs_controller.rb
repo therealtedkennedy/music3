@@ -1,13 +1,13 @@
 #Explanation here - http://net.tutsplus.com/tutorials/create-a-simple-music-streaming-app-with-ruby-on-rails/
 
-require "uri"
-require "net/http"
+#require "uri"
+#require "net/http"
 
 class SongsController < ApplicationController
 	#lists songs called from S3 Server
 
 
-	before_filter :authenticate_user!, :except => [:show, :index, :song_play_counter]
+	before_filter :authenticate_user!, :except => [:show, :index, :song_play_counter,:artist_show_song,:song_play_counter]
 
 
 	#changes from default layout to custom layout

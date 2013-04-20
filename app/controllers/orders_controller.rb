@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.xml
-   # before_filter :user_auth_redirect_path
-	#before_filter :authenticate_user!
+   # before_filter :
+	#before_filter :authenticate_user!, :except => [:payment_method,:chained_payment]
 
   def index
     @orders = Order.all
 
-    respond_to do |format|
+    respond_to do |format|user_auth_redirect_path
       format.html # index.html.erb
       format.xml  { render :xml => @orders }
     end
@@ -164,6 +164,7 @@ class OrdersController < ApplicationController
 			 logger.info @amount
 
 		 else
+
 			@amount = 100
 			# @amount = amount.to_i
 		 end

@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-
+   before_filter :authenticate_user!, :except => [:show, :download_album,:index, :zip_album, :zip,:album_code_find,:album_play_list_create]
   # GET /albums
   # GET /albums.xml
 
@@ -282,30 +282,30 @@ class AlbumsController < ApplicationController
 
     if(params.has_key?(:album_url_slug))
 
-      @artist = Artist.find_by_url_slug(params[:url_slug])
-      find_album(@artist,params[:album_url_slug])
+		  @artist = Artist.find_by_url_slug(params[:url_slug])
+		  find_album(@artist,params[:album_url_slug])
 
 
 
       #authorize! :create, @artist
     else
-      @album = album
-      @artist = artist
-      # authorize! :create, @artist
+		  @album = album
+		  @artist = artist
+		  # authorize! :create, @artist
 
     end
     #checks to see if album object exsists in S3.
     if S3_object_exists(ALBUM_BUCKET,@album.id.to_s)
-      #downloads the album
-      album_s3_url = s3_url_for(ALBUM_BUCKET,@album.id.to_s)
-      redirect_to album_s3_url
+		  #downloads the album
+		  album_s3_url = s3_url_for(ALBUM_BUCKET,@album.id.to_s)
+		  redirect_to album_s3_url
 
 	else
-	 #zips the file and uploads to S3
-     zip_album(@artist,@album)
-	 #downloads the album
-     album_s3_url = s3_url_for(ALBUM_BUCKET,@album.id.to_s)
-     redirect_to album_s3_url
+		 #zips the file and uploads to S3
+		 zip_album(@artist,@album)
+		 #downloads the album
+		 album_s3_url = s3_url_for(ALBUM_BUCKET,@album.id.to_s)
+		 redirect_to album_s3_url
 
     end
 
@@ -322,11 +322,14 @@ class AlbumsController < ApplicationController
 
         order_create(@album, cookies[:paykey] )
       end
-
+      logger.info "before user signed in "
       #checks if user is signed in. If signed in assigns user found in application controller
-      if user_signed_in?
-        assign_to_user("album",@album.album_url_slug)
-      end
+
+	end
+
+	unless current_user.blank?
+		logger.info "user is signed in"
+		assign_to_user("album",@album.album_url_slug)
 	end
 
 	# deletes the download cookie so that muliple downloads won't happen

@@ -1,49 +1,45 @@
 <script type="text/javascript">
-    window.onload = showCookies
-    var refurl = <%= request.referer %>
+
+	window.onload = showCookies
 
 	function showCookies() {
-        var outMsg = "";
+		var outMsg = "";
 
-		/*makes sure it came through payment process */
-        if ("<%=params[:fully]%>" == "completely" ){
+		//         checks if download cookie exists, if it does grabs link to download album
+		var thisCookie = document.cookie.split("; ");
+		var referrer = document.referrer
+		for (var i=0;i<thisCookie.length;i++){
 
-//         checks if download cookie exists, if it does grabs link to download album
-			 var thisCookie = document.cookie.split("; ");
+			var cookie_name = thisCookie[i].split("=")[0]
+			var value = thisCookie[i].split("=")[1]
 
-			 for (var i=0;i<thisCookie.length;i++){
+			if (value =="" && cookie_name =="next_step") {
+				outMsg = "There are no cookies here.";
+			}
 
-				 var cookie_name = thisCookie[i].split("=")[0]
-				 var value = thisCookie[i].split("=")[1]
-
-				 if (value =="" && cookie_name =="next_step") {
-					outMsg = "There are no cookies here.";
-				     }
-
-				 else if (cookie_name =="next_step" ){
-					outMsg += "Cookie name is '" + cookie_name;
-					outMsg += "', and the value is " +
-					value + "<br />";
-					var raw_link = thisCookie[i].split("=")[1];
-					var link = raw_link.replace(/%3A/g,":" );
-					var link = link.replace(/%2F/g, "/");
-					var link = link + "?token=" + "<%= params[:token] %>" + "&PayerID=" + "<%= params[:PayerID]%>"
+			else if (cookie_name =="next_step"){
+				outMsg += "Cookie name is '" + cookie_name;
+				outMsg += "', and the value is " +
+						value + "<br />";
+				var raw_link = thisCookie[i].split("=")[1];
+				var link = raw_link.replace(/%3A/g,":" );
+				var link = link.replace(/%2F/g, "/");
+				var link = link + "?token=" + "<%= params[:token] %>" + "&PayerID=" + "<%= params[:PayerID]%>"
 
 
-					outMsg += "clean link is " + link + "referal site " + document.referrer
+				outMsg += "clean link is " + link + " referal site" + referrer
 
 
-					window.location = link
-					}
-				 }
-
-
-            document.getElementById("cookieData").innerHTML = outMsg;
-
+				window.location = link
+			}
 		}
 
 
-    }
+		document.getElementById("cookieData").innerHTML = outMsg;
+
+
+
+	}
 
 
 
