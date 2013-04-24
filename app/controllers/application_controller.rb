@@ -241,12 +241,14 @@ class ApplicationController < ActionController::Base
 
    def s3_save(amazon_id,file,name,s3_bucket,content_type,file_type)
 	   s3_start
-	   @s3.buckets[s3_bucket].objects[amazon_id].write(file.read,{:acl => :public_read, :content_type => content_type, :metadata => {"x-amz-meta-my-file-name"=>name, "Content-Disposition" => 'attachment;filename='+name+file_type}})
+	   @s3.buckets[s3_bucket].objects[amazon_id].write(file.read,{:acl => :public_read, :content_disposition =>'attachment;filename='+name+file_type, :content_type => content_type, :metadata => {"x-amz-meta-my-file-name"=>name}})
    end
 
    def s3_copy(amazon_id,name,s3_bucket,content_type,file_type)
+	   logger.info "amazon_id"
+	   logger.info amazon_id
        @s3 = AWS::S3.new
-	   @s3.buckets[s3_bucket].objects[amzon_id].copy_from(amazon_id,{:acl => :public_read, :content_type => content_type, :metadata => {"x-amz-meta-myfile-name"=>name, "Content-Disposition" => 'attachment;filename='+name+file_type}})
+	   @s3.buckets[s3_bucket].objects[amazon_id].copy_from(amazon_id,{:acl => :public_read, :content_type => content_type, :content_disposition =>'attachment;filename='+name+file_type ,:metadata => {"x-amz-meta-myfile-name"=>name}})
    end
 
 

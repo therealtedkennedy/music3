@@ -5,6 +5,7 @@
 <head>
 <!--Google Meta-->
 <title><%= @social_title %></title>
+<%= csrf_meta_tag %>
 <meta name="description" content="<%= @social_descrip %>"/>
 
 <!--Facebook Meta Infomation-->
@@ -319,6 +320,7 @@
 <!--/defaults-->
 
 <%= javascript_include_tag 'jquery-1.8.3', 'rails.validations', 'jquery.backstretch.min', 'showHide' %>
+
 <%#= javascript_include_tag 'jquery-1.6.3','rails.validations', 'jquery.backstretch.min'%>
 
 <script type="text/javascript" src="/javascripts/jPlayer/jquery.jplayer.min.js"></script>
@@ -722,7 +724,7 @@ function ted_log() {
 				<% unless songs.s3_id.nil? %>
 					<li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %>
 						<%= link_to 'Edit', edit_song_path(songs.id) %>
-						<%= link_to 'Destroy', songs, :confirm => 'Are you sure?', :method => :delete %>
+						<%= link_to 'Destroy', song_destroy_path(@artist.url_slug,songs.id), :confirm => 'Are you sure?' %>
 					</li>
 				<% end %>
 			<% end %>

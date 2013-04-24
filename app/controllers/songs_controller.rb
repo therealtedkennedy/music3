@@ -256,8 +256,9 @@ class SongsController < ApplicationController
 	#deletes song info from Model
 	def destroy
 
+        logger.info "in destroy"
 
-		@song = Song.find(params[:id])
+		@song = Song.find(params[:song_id])
 		@artist = Artist.find(@song.s_a_id)
 		authorize! :update, @artist
 
@@ -268,12 +269,8 @@ class SongsController < ApplicationController
 		(@song.s3_id)
 		s3_delete(BUCKET, @song.s3_id)
 
-		respond_to do |format|
-			format.html { redirect_to(artist_admin_path(@artist.url_slug)) }
-			format.json { render :json => {}, :status => :ok }
-			format.js
-			#format.xml  { head :ok }
-		end
+		redirect_to(artist_admin_path(@artist.url_slug))
+
 	end
 
 
@@ -333,11 +330,11 @@ class SongsController < ApplicationController
 
 	   logger.info "in send_s3_meta"
 
-		if @song.song_name == @song.s3_meta_tag
+		if @song.song_name == @song.s3_meta_tag || @song.song_name.nil?
 
 		else
 
-			s3_copy(@song.s3_id,@song.song_name,BUCKET,":mpeg",".mp3")
+			s3_copy(@song.s3_id,@song.song_name,BUCKET,"binary/octet-stream",".mp3")
 
 		end
 
