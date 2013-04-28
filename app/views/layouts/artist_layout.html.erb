@@ -453,6 +453,7 @@ $(document).ready(function () {
 	$(".trackInfo").live('mouseenter', function () {
 		$(this).find(".progressBarContainer").show();
 	});
+
 	$(".trackInfo").live('mouseleave', function () {
 		$(this).find(".progressBarContainer").hide();
 	});
@@ -463,6 +464,7 @@ $(document).ready(function () {
 		console.log("hover enter");
 		$(".jp-playlist").show();
 	});
+
 	$(".playlist").live('mouseleave', function () {
 		console.log("hover leave");
 		$(".jp-playlist").hide();
@@ -471,7 +473,6 @@ $(document).ready(function () {
 
 	// adds playlist
 	$(".payment").live("click", function (event) {
-
 
 			}
 	)
@@ -486,6 +487,9 @@ $(document).ready(function () {
 
 			}
 	)
+
+
+
 });
 
 //	Loads Facebook like button script after ajax call

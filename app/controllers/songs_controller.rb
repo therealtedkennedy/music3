@@ -1,8 +1,4 @@
 #Explanation here - http://net.tutsplus.com/tutorials/create-a-simple-music-streaming-app-with-ruby-on-rails/
-
-#require "uri"
-#require "net/http"
-
 class SongsController < ApplicationController
 	#lists songs called from S3 Server
 
@@ -143,12 +139,31 @@ class SongsController < ApplicationController
 
 		@meta_update_url = update_s3_meta_url(@artist.url_slug, @object_id)
 
+		@form = render_to_string('songs/_form_upload_song',:layout => false)
+
+
+        logger.info "form"
+		logger.info @form
+
+
 
 
 		respond_to do |format|
-			format.html #create.html.erb
+			format.html {render :locals => {:partial => "form_upload_song"},:layout => 'artist_admin'}
 			format.xml { render :xml => @song }
 			format.js
+			format.json {
+				render :json => {
+						:success => true,
+						:"#content" => render_to_string(
+								:action => 'new.html.erb',
+								:layout => false,
+
+						),
+						:"id" => @song.s3_id
+
+				}
+			}
 		end
 	end
 
@@ -287,8 +302,6 @@ class SongsController < ApplicationController
 			format.xml { render :xml => @artist }
 		end
 	end
-
-
 
 	def song_play_counter
 		@song = Song.find_by_id(params[:song_id])

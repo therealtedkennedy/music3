@@ -1,10 +1,14 @@
-<h1>Update Song Info</h1>
+
+<div class="div1a">
+
+<h1>Update Song Info this is the form</h1>
 <p> Song ID: <%= @song.id %>   </br>
-  S3_name: <%= @song.s3_id %> </p>
+  S3_id: <%= @song.s3_id %> </p>
 
 
 <h3>Song upload </h3>
 <form action="https://<%=@bucket%>.s3.amazonaws.com" method="post" enctype="multipart/form-data" class='direct-upload'>
+
 	<input type="hidden" name= "key" />
 	<input type="hidden" name= "AWSAccessKeyId" value="AKIAJBCDYICH6VCMN6ZA" />
 	<input type="hidden" name="acl" value="public-read" />
@@ -24,7 +28,11 @@
 
 <h3>Info </h3>
 
-<%= render 'form_upload_song' %>
+
+	<%= @form.html_safe %>
+
 </br>
 
 <%= link_to 'Back', artists_path %>
+
+</div>

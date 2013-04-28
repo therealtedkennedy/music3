@@ -326,8 +326,14 @@
 <script type="text/javascript" src="/javascripts/jPlayer/jquery.jplayer.min.js"></script>
 <script type="text/javascript" src="/javascripts/jPlayer/add-on/jplayer.playlist.min.js"></script>
 <script type="text/javascript" src="/javascripts/jPlayer/add-on/jquery.jplayer.inspector.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.fileupload.js"></script>
+
+
+
 <link type="text/css" href="/skin/black_and_yellow/jplayer-black-and-yellow.css" rel="stylesheet"/>
 <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
+
 <!-- Twitter follow -->
 <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
 
@@ -384,6 +390,12 @@ function songCountIncrementer(event) {
 
 	});
 }
+
+// Sets csrf-token for all ajax request
+$(document).ajaxSend(function(e, xhr, options) {
+	var token = $("meta[name='csrf-token']").attr("content");
+	xhr.setRequestHeader("X-CSRF-Token", token);
+});
 
 var DEBUGGING = true;
 $(document).ready(function () {
@@ -465,6 +477,7 @@ $(document).ready(function () {
 		console.log("hover enter");
 		$(".jp-playlist").show();
 	});
+
 	$(".playlist").live('mouseleave', function () {
 		console.log("hover leave");
 		$(".jp-playlist").hide();
@@ -473,7 +486,6 @@ $(document).ready(function () {
 
 	// adds playlist
 	$(".payment").live("click", function (event) {
-
 
 			}
 	)
@@ -488,7 +500,38 @@ $(document).ready(function () {
 
 			}
 	)
+
+	//grabs s3 info
+	<% if defined?(@song.s3_id) %>
+	var s3_id = "<%=@song.s3_id %>"
+	<% end %>
+
+	//to rails form submit
+	form_upload_rails()
+
+
+	//direct to s3 upload
+   s3_direct_upload(s3_id)
 });
+
+
+
+
+function save_s3_meta_name (file_name_ext_remv) {
+	$.ajax({
+		url:"<%=@meta_update_url%>",
+		type: "post",
+		data: {
+			s3_meta_name: file_name_ext_remv
+		},
+		success:
+				function(){console.log("saved")},
+
+		fail:
+				function(){ted_log("S3_meta_failed")}
+
+	})
+};
 
 //	Loads Facebook like button script after ajax call
 $(document).ajaxComplete(function () {
@@ -532,8 +575,8 @@ function popstate() {
 
 function loadContent(href) {
 	ted_log(href);
-	$.ajax({
 
+	$.ajax({
 		url:href,
 		success:function (json) {
 			ted_log(json);
@@ -546,11 +589,122 @@ function loadContent(href) {
 			$.each(json, function (key, value) {
 				$(key).html(value);
 			});
-
+			ted_log("id is= "+json.id);
+ 			s3_direct_upload(json.id)
 		},
+
 		dataType:"json"
 	});
+
 }
+
+function s3_direct_upload(s3_id){
+	$('.direct-upload').each(function() {
+
+		var form = $(this)
+
+		$(this).fileupload({
+			url: form.attr('action'),
+			type: 'POST',
+			autoUpload: true,
+			dataType: 'xml', // This is really important as s3 gives us back the url of the file in a XML document
+			add: function (event, data) {
+				$.ajax({
+					url: "/signed_urls",
+					type: 'GET',
+					dataType: 'json',
+//								data: {doc: {title: data.files[0].name}}, // send the file name to the server so it can generate the key param
+
+					data: {doc: {title: s3_id}}, // send the file name to the server so it can generate the key param
+					async: false,
+					success: function(ajaxData) {
+						// Now that we have our data, we update the form so it contains all
+						// the needed data to sign the request
+						form.find('input[name=key]').val(ajaxData.key)
+						form.find('input[name=policy]').val(ajaxData.policy)
+						form.find('input[name=signature]').val(ajaxData.signature)
+						//updates S3 Meta Information
+						form.find('input[name=x-amz-meta-my-file-name]').val(data.files[0].name)
+						form.find('input[name=Content-Disposition]').val("attachment;filename="+data.files[0].name)
+						//updates name in form feild
+						var file_name_ext_remv = (data.files[0].name)
+						file_name_ext_remv = file_name_ext_remv.substring(0, file_name_ext_remv.indexOf('.'));
+
+						save_s3_meta_name (file_name_ext_remv)
+						$('input[name="song[song_name]"]').val(file_name_ext_remv)
+
+
+
+						ted_log ('data from server')
+						ted_log (s3_id)
+						ted_log (ajaxData.key)
+						ted_log (ajaxData.policy)
+						ted_log (ajaxData.signature)
+						ted_log (ajaxData)
+					}
+				})
+
+
+
+				data.submit();
+			},
+//						send: function(e, data) {
+//							$('.progress').fadeIn();
+//						},
+//						progress: function(e, data){
+//							// This is what makes everything really cool, thanks to that callback
+//							// you can now update the progress bar based on the upload progress
+//							var percent = Math.round((e.loaded / e.total) * 100)
+//							$('.bar').css('width', percent + '%')
+//						},
+			fail: function(e, data) {
+				console.log('fail')
+			},
+			success: function(data) {
+				// Here we get the file url on s3 in an xml doc
+				var url = $(data).find('Location').text()
+				console.log (url)
+
+//						$( &#039;#real_file_url&#039; ).val(url) // Update the real input in the other form
+			},
+			done: function (event, data) {
+				$('.progress').fadeOut(300, function() {
+					$('.bar').css('width', 0)
+				})
+			}
+		})
+	})
+
+
+
+
+
+}
+
+function form_upload_rails(){
+	ted_log("In form upload")
+
+		$('.song_upload').submit(function(){
+
+					var valuesToSubmit = $(this).serialize();
+
+					$.ajax({
+						url: $(this).attr('action'), //sumbits it to the given url of the form
+						data: valuesToSubmit,
+						type: 'POST',
+						dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+					}).success(function(json){
+								//act on result.
+							});
+					return false; // prevents normal behaviour
+
+				}
+		)
+
+
+}
+
+
 
 //was for changing meta information on content load
 //	function change_meta() {
@@ -716,13 +870,13 @@ function ted_log() {
 	</ul>
 
 	<p>
-	<h2>Songs: <%= link_to 'Add Song', add_song_path(@artist.url_slug) %></h2>
+	<h2>Songs: <%= link_to 'Add Song', add_song_path(@artist.url_slug),:class => "content-link"%></h2>
 
 	<ul>
 		<% @artist.songs.uniq.each do |songs| %>
 			<% unless songs.song_url_slug.blank?%>
 				<% unless songs.s3_id.nil? %>
-					<li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %>
+					<li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug), :class => "content-link" %>
 						<%= link_to 'Edit', edit_song_path(songs.id) %>
 						<%= link_to 'Destroy', song_destroy_path(@artist.url_slug,songs.id), :confirm => 'Are you sure?' %>
 					</li>
