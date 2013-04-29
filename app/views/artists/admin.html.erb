@@ -1,13 +1,11 @@
 
 
-
-
-
-
+<div class="div1a">
 	<h1>Editing artist</h1>
 
 
-	<%= render 'form' %>
+	<%= @form.html_safe %>
 
 	<%= link_to 'Show', artist_link_path(@artist.url_slug) %>
 	<%= link_to 'Back', artists_path %>
+</div>

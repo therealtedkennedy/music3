@@ -503,7 +503,10 @@ $(document).ready(function () {
 
 	//grabs s3 info
 	<% if defined?(@song.s3_id) %>
-	var s3_id = "<%=@song.s3_id %>"
+		var s3_id = "<%=@song.s3_id %>"
+	<% else %>
+	    // work around if s3_id not found
+	    var s3_id = "1"
 	<% end %>
 
 	//to rails form submit
@@ -590,7 +593,12 @@ function loadContent(href) {
 				$(key).html(value);
 			});
 			ted_log("id is= "+json.id);
+
+			//for the s3 ajax upload
  			s3_direct_upload(json.id)
+
+			//catches form to do json/ajax upload
+			form_upload_rails()
 		},
 
 		dataType:"json"
@@ -684,7 +692,7 @@ function s3_direct_upload(s3_id){
 function form_upload_rails(){
 	ted_log("In form upload")
 
-		$('.song_upload').submit(function(){
+		$('.ajax_update').submit(function(){
 
 					var valuesToSubmit = $(this).serialize();
 
@@ -694,7 +702,7 @@ function form_upload_rails(){
 						type: 'POST',
 						dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
 					}).success(function(json){
-								//act on result.
+								loadContent(json.url)
 							});
 					return false; // prevents normal behaviour
 
@@ -852,17 +860,17 @@ function ted_log() {
 
 	<%= link_to 'Destroy', @artist, :method => :delete, :confirm => 'Are you sure?' %>
 
-	<h2><%= link_to 'Admin', artist_admin_path(@artist.url_slug)%></h2>
+	<h2><%= link_to 'Admin', artist_admin_path(@artist.url_slug), :class => "content-link" %></h2>
 
 	<h2><%= link_to 'Layout Editor', profile_edit_path(@artist.url_slug) %></h2>
 
-	<h2>Albums: <%= link_to 'New Album',add_album_path(@artist.url_slug)%></h2>
+	<h2>Albums: <%= link_to 'New Album',add_album_path(@artist.url_slug),:class => "content-link"%></h2>
 
 	<ul>
 		<% @artist.albums.uniq.each do |albums| %>
 			<% unless albums.album_url_slug.blank?%>
-				<li><%= link_to albums.al_name, artist_show_album_path(@artist.url_slug,albums.album_url_slug) %>
-					<%= link_to 'Edit', edit_album_path(albums.id) %>
+				<li><%= link_to albums.al_name, artist_show_album_path(@artist.url_slug,albums.album_url_slug),:class => "content-link" %>
+					<%= link_to 'Edit', edit_album_path(albums.id),:class => "content-link" %>
 					<%= link_to 'Album Codes', album_create_code_path(@artist.url_slug,albums.id) %>
 				</li>
 			<% end %>
@@ -877,7 +885,7 @@ function ted_log() {
 			<% unless songs.song_url_slug.blank?%>
 				<% unless songs.s3_id.nil? %>
 					<li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug), :class => "content-link" %>
-						<%= link_to 'Edit', edit_song_path(songs.id) %>
+						<%= link_to 'Edit', edit_song_path(songs.id),:class => "content-link" %>
 						<%= link_to 'Destroy', song_destroy_path(@artist.url_slug,songs.id), :confirm => 'Are you sure?' %>
 					</li>
 				<% end %>
@@ -900,9 +908,9 @@ function ted_log() {
 <div id="content">
 	<p id="notice"><%= notice %></p>
 
-	<div class="div1a">
+
 		<%= yield %>
-    </div>
+
 
 </div>
 

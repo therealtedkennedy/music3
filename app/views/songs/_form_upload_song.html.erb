@@ -1,6 +1,6 @@
 <h2>Upload a new MP3 song</h2>
 
-<%=form_for @song,:url => "/songs/create", :html => {:multipart => true}, :validate => true do |f| %>
+<%=form_for @song,:url => "/songs/create", :html => {:multipart => true},:html => {:class => 'ajax_update'}, :validate => true do |f| %>
 
     <h2>Ready!!!  <%= @id %></h2>
 

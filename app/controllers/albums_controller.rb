@@ -77,10 +77,22 @@ class AlbumsController < ApplicationController
     @song_ids = []
 	@meta_update_url = "nohting"
 
+	@form = render_to_string('albums/_form',:layout => false)
 
      respond_to do |format|
-      format.html # new.html.erb
+      format.html {render :layout => 'artist_admin'}
       format.xml  { render :xml => @album }
+	  format.json {
+		  render :json => {
+				  :success => true,
+				  :"#content" => render_to_string(
+						  :action => 'new.html.erb',
+						  :layout => false,
+
+				  ),
+
+		  }
+	  }
     end
   end
 
@@ -96,7 +108,23 @@ class AlbumsController < ApplicationController
       @song_ids << s.id
     end
 
-	render :layout => 'artist_admin'
+	#renders form in instance varible so that it will show when ajax queries are made
+	@form = render_to_string('albums/_form',:layout => false)
+
+	respond_to do |format|
+		format.html {render :layout => 'artist_admin'}
+		format.json {
+			render :json => {
+					:success => true,
+					:"#content" => render_to_string(
+							:action => 'edit.html.erb',
+							:layout => false,
+
+					),
+
+			}
+		}
+	end
 
   end
 
@@ -156,6 +184,12 @@ class AlbumsController < ApplicationController
 
         format.html { redirect_to(artist_show_album_path(@artist.url_slug, @album.album_url_slug), :notice => 'Album was successfully updated.') }
         format.xml  { head :ok }
+		format.json {
+			render :json => {
+					:success => true,
+					:"url" => artist_show_album_url(@artist.url_slug, @album.album_url_slug)
+			}
+		}
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @album.errors, :status => :unprocessable_entity }

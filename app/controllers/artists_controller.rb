@@ -129,6 +129,12 @@ class ArtistsController < ApplicationController
           #                          :public_id => 'pretty-lights')
         format.html { redirect_to(artist_admin_path(@artist.url_slug), :notice => 'Artist was successfully updated.') }
         format.xml { head :ok }
+		format.json {
+			render :json => {
+					:success => true,
+					:"url" => artist_link_url(@artist.url_slug)
+			}
+		}
       else
         format.html { render :action => "edit" }
         format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
@@ -181,7 +187,23 @@ class ArtistsController < ApplicationController
 
     @artist = Artist.find_by_url_slug(params[:url_slug])
     authorize! :admin, @artist
-	render :layout => 'artist_admin'
+
+	@form = render_to_string('artists/_form',:layout => false)
+
+	respond_to do |format|
+		format.html {render :layout => 'artist_admin'}
+		format.json {
+			render :json => {
+					:success => true,
+					:"#content" => render_to_string(
+							:action => 'admin.html.erb',
+							:layout => false,
+					),
+
+			}
+		}
+	end
+
   end
 
 
@@ -200,6 +222,7 @@ class ArtistsController < ApplicationController
 	end
 
   end
+
 
 
   #intersitial page, for social promotion.

@@ -1,14 +1,17 @@
+<div class="div1a">
 
-<h2>Update Song Info</h2>
-<p> Song ID: <%= @song.id %>   </br>
-  S3_name: <%= @song.s3_id %> </p>
+	<h2>Update Song Info</h2>
+	<p> Song ID: <%= @song.id %>   </br>
+	  S3_name: <%= @song.s3_id %> </p>
 
-<h3>Upload Song </h3>
-<h4><%= link_to 'Re-Up Song', new_song_path(@song.id)%> </h4>
+	<h3>Upload Song </h3>
+	<h4><%= link_to 'Re-Up Song', new_song_path(@song.id)%> </h4>
 
 
-<%= render 'form' %>
-</br>
-<%= link_to 'Show', song_path %>
-<%= link_to 'Artist', song_path %>
-<%= link_to 're-up song', new_song_path(@song.id)%>
+	<%= @form.html_safe %>
+	</br>
+	<%= link_to 'Show', song_path %>
+	<%= link_to 'Artist', song_path %>
+	<%= link_to 're-up song', new_song_path(@song.id)%>
+
+</div>

@@ -77,6 +77,11 @@ Music3::Application.routes.draw do
 	match "/:url_slug/update_profile_layout" => "profile_layouts#update"
 
 
+  #artist admin urls
+	match "/:url_slug/admin" => "artists#admin", :as => :artist_admin
+	#need to know figure out how the preview will work. Maybe always load artist pages in this layout...and just hide it! bam.  Good idea.
+	#match "/:url_slug/admin/:song_url_slug" => "artists#show_song", :as => :admin_show_song
+	#match "/:url_slug/admin/:album_url_slug" => "albums#show_show_album", :as => :admin_show_album
 
 
 
@@ -89,7 +94,6 @@ Music3::Application.routes.draw do
 	#Artist Home
 
 	#albums code routing
-
 	match "/:url_slug/album/create-code/:id" => "album_code#show", :as => :album_create_code
 	match "/album_codes/create" => "album_code#create"
 	match "/:url_slug/download-code" => "albums#album_code_download", :as => :code_download
@@ -98,7 +102,7 @@ Music3::Application.routes.draw do
 
 
 
-	match "/:url_slug/admin" => "artists#admin", :as => :artist_admin
+
 
 	# songs routing
 

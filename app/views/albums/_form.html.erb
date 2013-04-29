@@ -1,5 +1,5 @@
 
-<%= form_for @album, :html => {:multipart => true}, :validate => true do |f| %>
+<%= form_for @album, :html => {:multipart => true}, :html => {:class => 'ajax_update'}, :validate => true do |f| %>
 
   <% if @album.errors.any? %>
     <div id="error_explanation">

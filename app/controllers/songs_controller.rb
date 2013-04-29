@@ -34,6 +34,8 @@ class SongsController < ApplicationController
 
 
 	def show
+
+
 		if params[:song_url_slug]
 			#@artist = Artist.find(params[:id])
 			#@artist = Artist.find_by_url_slug(params[:url_slug])
@@ -42,8 +44,6 @@ class SongsController < ApplicationController
 			find_song(@artist, params[:song_url_slug])
 
 			song_social(@artist,@song)
-
-
 
 			# @song.artists.uniq.each do |artist|
 			#   @artist_slug = artist.url_slug
@@ -86,11 +86,24 @@ class SongsController < ApplicationController
 		#searchString  = params[:url_slug]
 		#@artist = Artist.find_by_url_slug(searchString)
 
+		@form = render_to_string('songs/_form',:layout => false)
+
 
 		respond_to do |format|
 			format.html {render :layout => 'artist_admin'}
 			format.xml { render :xml => @song }
 			format.js
+			format.json {
+				render :json => {
+						:success => true,
+						:"#content" => render_to_string(
+								:action => 'edit.html.erb',
+								:layout => false,
+
+						),
+						:"id" => @song.s3_id,
+				}
+			}
 		end
 	end
 
@@ -220,6 +233,12 @@ class SongsController < ApplicationController
 			if @song.update_column(:s3_id, @song.s3_id)
 				format.html { redirect_to (artist_show_song_path(@artist.url_slug, @song.song_url_slug)), :notice => 'Song was successfully created.' }
 				format.xml { head :ok }
+				format.json {
+					render :json => {
+							:success => true,
+							:"url" => artist_show_song_url(@artist.url_slug, @song.song_url_slug)
+					}
+				}
 			else
 				format.html { render :action => "edit" }
 				format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
