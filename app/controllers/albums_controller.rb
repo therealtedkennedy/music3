@@ -5,7 +5,7 @@ class AlbumsController < ApplicationController
 
 
   #changes from default layout to custom layout
-  layout "artist_layout", only: [:show]
+  layout "artist_admin", only: [:show]
 
 
 
