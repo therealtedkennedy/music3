@@ -25,6 +25,7 @@ gem 'aws_cf_signer'
 gem 'twitter'
 gem 'omniauth-twitter'
 gem 'devise', '2.1.2'
+gem 'aws-sdk'
 
 
 

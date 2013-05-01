@@ -1,7 +1,7 @@
 Music3::Application.routes.draw do
 
 	resources :signed_urls, only: :index
-	resources :artists, :albums,:orders,:artist_home, :songs, :profile_layouts
+	resources :artists, :albums,:orders,:artist_home, :songs, :profile_layouts, :my_records
 
     devise_for :users
 
@@ -57,6 +57,7 @@ Music3::Application.routes.draw do
 	# Url Slug Routing
 
 	match "/:url_slug" => "artists#show", :as => :artist_link
+	match "/:url_slug/css" => "artists#css", :as => :artist_css
 	match "/:url_slug/edit" => "artists#edit", :as => :edit_artist
 
 	match "/:url_slug/new_album" => "albums#new", :as => :add_album

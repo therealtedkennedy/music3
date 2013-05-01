@@ -5,9 +5,8 @@ class AlbumsController < ApplicationController
 
 
   #changes from default layout to custom layout
+
   layout "artist_layout"
-
-
 
   def index
     @artist = Artist.find_by_url_slug(params[:url_slug])
@@ -107,7 +106,7 @@ class AlbumsController < ApplicationController
       @song_ids << s.id
     end
 
-
+	render :layout => 'artist_admin'
 
   end
 
@@ -227,7 +226,9 @@ class AlbumsController < ApplicationController
 
         logger.info "before file Open"
         File.open(path,'wb') do |file|
-          AWS::S3::S3Object.stream(songs.s3_id, BUCKET) do |chunk|
+        s3 = AWS::S3.new
+		s3.buckets[BUCKET].objects[songs.s3_id].read do |chunk|
+          #AWS::S3::S3Object.stream(songs.s3_id, BUCKET) do |chunk| (changed)
             file.write chunk
             #logger.info "after write"
           end

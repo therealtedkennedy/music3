@@ -1,0 +1,484 @@
+@font-face {
+    font-family: 'verb_regularbold';
+    src: url('/fonts/verb_bold/VerbBold-webfont.eot');
+    src: url('/fonts/verb_bold/VerbBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/verb_bold/VerbBold-webfont.woff') format('woff'),
+         url('/fonts/verb_bold/VerbBold-webfont.ttf') format('truetype'),
+         url('/fonts/verb_bold/VerbBold-webfont.svg#verb_regularbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'verb_regularregular';
+    src: url('/fonts/verb_regular/VerbRegular-webfont.eot');
+    src: url('/fonts/verb_regular/VerbRegular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/verb_regular/VerbRegular-webfont.woff') format('woff'),
+         url('/fonts/verb_regular/VerbRegular-webfont.ttf') format('truetype'),
+         url('/fonts/verb_regular/VerbRegular-webfont.svg#verb_regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'verb_lightregular';
+    src: url('/fonts/verb_light/VerbLight-webfont.eot');
+    src: url('/fonts/verb_light/VerbLight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/verb_light/VerbLight-webfont.woff') format('woff'),
+         url('/fonts/verb_light/VerbLight-webfont.ttf') format('truetype'),
+         url('/fonts/verb_light/VerbLight-webfont.svg#verb_lightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+    /*User can edit*/
+    <% if @artist.profile_layout.use_css == true %>
+
+    <%= @artist.profile_layout.profile_css %>
+
+    <% else %>
+    #content p {
+        font-family: <%= @artist.profile_layout.p_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+        color: <%= @artist.profile_layout.p_colour %>;
+
+    }
+
+    h1 {
+        font-family: <%= @artist.profile_layout.h1_font %>;
+        font-size: <%= @artist.profile_layout.h1_size %>pt;
+        color: <%= @artist.profile_layout.h1_colour %>;
+        text-align: center;
+    }
+
+    h2 {
+        font-family: <%= @artist.profile_layout.h2_font %>;
+        font-size: <%= @artist.profile_layout.h2_size %>pt;
+        color: <%= @artist.profile_layout.h2_colour %>;
+        text-align: center;
+    }
+
+    h3 {
+        font-family: <%= @artist.profile_layout.h3_font %>;
+        font-size: <%= @artist.profile_layout.h3_size %>pt;
+        color: <%= @artist.profile_layout.h3_colour %>;
+        text-align: center;
+    }
+
+    ol {
+        font-family: <%= @artist.profile_layout.p_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+    }
+
+    ul {
+        font-family: <%= @artist.profile_layout.p_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+    }
+
+    .notice {
+        font-family: <%= @artist.profile_layout.p_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>;
+        color: <%= @artist.profile_layout.p_colour %>;
+    }
+
+    table {
+        font-face: <%= @artist.profile_layout.p_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+        color: <%= @artist.profile_layout.p_colour %>
+    }
+
+    a {
+
+        font-family: <%= @artist.profile_layout.h2_font %>;
+        font-size: <%= @artist.profile_layout.h2_size %>pt;
+        color: <%= @artist.profile_layout.h2_colour %>;
+
+    }
+
+    a:hover {
+
+        font-family: <%= @artist.profile_layout.h2_font %>;
+        font-size: <%= @artist.profile_layout.h2_size %>pt;
+        color: <%= @artist.profile_layout.h2_colour %>;
+
+    }
+
+    .div1 {
+        max-width: 400px;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        overflow: hidden;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .div1a {
+        display: block;
+        float: left;
+        overflow: hidden;
+        margin-left: 10%;
+        margin-top: 5%;
+        max-width: 400px;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .div1ra {
+        margin-top: 5%;
+        margin-left: 10%;
+        display: block;
+        float: left;
+        overflow: hidden;
+        max-width: 800px;
+        min-width: 300px;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .button {
+        margin: 2%;
+        background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+        overflow: hidden;
+        padding: 30px;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 3px 3px 7px #777;
+        border-radius: 2px;
+    }
+
+    .button:hover {
+        background-color: blue;
+    }
+
+    .div2 {
+        margin: 2%;
+        background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+        overflow: hidden;
+        padding: 30px;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 3px 3px 7px #777;
+        border-radius: 2px;
+    }
+
+    .div3 {
+        width: 400px;
+        height: 80px;
+        margin: 30px;
+        background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+        overflow: hidden;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 3px 3px 7px #777;
+        border-radius: 2px;
+    }
+
+    .image {
+        float: left;
+        width: 70px;
+        height: 70px;
+        margin: 1%;
+        overflow: hidden;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 1px 1px 2px #777;
+        border-radius: 2px;
+    }
+
+    .div1r {
+        max-width: 1000px;
+        min-width: 800px;
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        overflow: hidden;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .toggleDiv {
+        display: none
+    }
+
+    #loading {
+        display: none;
+    }
+
+    <% end %>
+
+
+
+
+* {margin:0;padding:0}
+
+    html,body
+    {
+        margin:0;
+        padding:0;
+        overflow:hidden;
+    }
+
+    body
+    {
+        height:100%;
+    }
+
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/assets/fonts/iconmoon.eot");
+    }
+
+
+
+
+
+
+
+    .container {
+        position:absolute;
+        left:0;
+        right:0;
+        top:0;
+        height:50px;
+        overflow:hidden;
+    }
+
+    .bodyArea
+    {
+        overflow:auto;
+        position:absolute;
+        left:0;
+        right:0;
+        top:50px;
+        bottom:0;
+        padding:70px;
+
+        /*background-color:#f4e2d2;*/
+    }
+
+    .bodyArea .floatingContent
+    {
+        width:960px;
+        height:100%;
+        display:block;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .bodyArea .floatingContent a
+    {
+        text-decoration: none;
+    }
+
+
+
+    .bodyArea .artistLogoArea
+    {
+        position:absolute;
+        left:0;
+        right:0;
+        top:0;
+        height:150px;
+        text-align: center;
+        display:block;
+    }
+
+    .bodyArea .navArea
+    {
+        position:absolute;
+        left:0;
+        right:0;
+        top:150px;
+        height:50px;
+        text-align: center;
+        display:block;
+    }
+
+        .bodyArea .nav
+        {
+            width:25%;
+            text-align: center;
+            cursor: pointer;
+            height:50px;
+            display:inline-block;
+            font-family: 'verb_regularbold', sans-serif;
+            font-size:20px;
+            color:#96938f;
+            /*text-shadow: 0px 0px 1px rgba(0,0,0,0.4); */
+        }
+
+        .bodyArea .nav:hover
+        {
+            color:#5b5956;
+        }
+
+        .bodyArea .nav.selected
+        {
+            font-family: 'verb_regularbold', sans-serif;
+            color:#000;
+            background-image: url("/images/indicator.png");
+            background-position: bottom center;
+            background-repeat: no-repeat;
+        }
+
+    .bodyArea .miniPage
+    {
+        min-height:300px;
+        /*max-height:600px;*/
+
+        
+        background-image: url('/images/70black.png');
+
+        overflow:auto;
+        position:absolute;
+        left:0;
+        right:0;
+        top:200px;
+        bottom:0;
+        padding:20px;
+
+        font-family: 'verb_regularregular';
+        color:#fff;
+    }
+
+    .miniPage .album
+    {
+        width:290px;
+        height:300px;
+        text-align: center;
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .miniPage .album:hover
+    {
+        background-image: url('/images/10black.png');
+    }
+
+    .miniPage .album img
+    {
+        width:200px;
+        height:200px;
+        margin:0 auto;
+        display:block;
+        border:0;
+    }
+
+    .miniPage .album h1
+    {
+        font-family: 'verb_regularbold';
+        font-size: 18px;
+        margin:0 auto;
+        display:block;
+        padding:0px;
+        margin:0;
+        margin-top:10px;
+        color:#fff;
+    }
+
+    .miniPage .album h2
+    {
+        font-family: 'verb_lightregular';
+        color:#aaa;
+        font-size: 14px;
+        margin:0 auto;
+        display:block;
+        padding:0px;
+        margin:0;
+        margin-top:5px;
+    }
+
+
+
+
+
+        /* Defines whole top nav, including sign in/out, and the player it self */
+    .player_nav {
+        width: 100%;
+
+        height: 50px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #2E2E2E;
+
+    }
+
+        /* Sign in/sign out */
+    .user_nav {
+        position: fixed;
+        height: 50px;
+        line-height: 50px;
+        padding-right: 15px;
+        color: #C4C4C4;
+        right: 0;
+        top: 0;
+    }
+
+    .user_nav_info {
+        display: inline-block;
+
+    }
+
+    .admin {
+        display: inline-block;
+        border-left: 1px solid #ffffff;
+        line-height: 30px;
+        padding: 5px;
+
+    }
+
+    .adminLink {
+        color: #ffffff;
+    }
+
+    .audio {
+        position: fixed;
+        top: 0;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        width: 9999px;
+        height: 50px
+    }
+
+    a.nav, .adminLink {
+        color: #FFFFFF;
+        text-decoration: none;
+
+    }
+
+    a.nav:hover, .adminLink:hover {
+        color: #FFFFFF;
+
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+
+    #text_area {
+        width: 350px;
+        max-height: 200px;
+        overflow: auto;
+        margin-bottom: 15px;
+    }
+
+
+    .edit-controls {
+        float: right;
+        display: inline-block;
+        width: 320px;
+        background: #2E2E2E;
+        padding: 5px;
+
+    }

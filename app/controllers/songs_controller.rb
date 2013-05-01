@@ -1,4 +1,8 @@
+
 #Explanation here - http://net.tutsplus.com/tutorials/create-a-simple-music-streaming-app-with-ruby-on-rails/
+
+require "uri"
+require "net/http"
 
 class SongsController < ApplicationController
 	#lists songs called from S3 Server
@@ -8,7 +12,7 @@ class SongsController < ApplicationController
 
 
 	#changes from default layout to custom layout
-	layout "artist_layout"
+	layout "artist_layout", only: [:show, :index]
 
 
 	def index
@@ -154,6 +158,7 @@ class SongsController < ApplicationController
 		@meta_update_url = update_s3_meta_url(@artist.url_slug, @object_id)
 
 
+
 		respond_to do |format|
 			format.html #create.html.erb
 			format.xml { render :xml => @song }
@@ -175,12 +180,12 @@ class SongsController < ApplicationController
 		#@amazon_id = @song.id.to_s + ".mp3"
 
 
-		if params[:song].has_key?("s3_name")
-			#save_amazon_file(@song.s3_id, params[:song][:s3_name], params[:song][:song_name], @artist)
-
-
-
-		end
+		#if params[:song].has_key?("s3_name")
+		#	#save_amazon_file(@song.s3_id, params[:song][:s3_name], params[:song][:song_name], @artist)
+		#
+		#
+		#
+		#end
 
 
 
@@ -192,15 +197,23 @@ class SongsController < ApplicationController
 
 		params[:song].delete :s3_name
 
-        logger.info "song nae is="+@song.song_name
+
 
 		@song.update_attributes(params[:song])
 
-		if @song.song_name = @song.s3_meta_tag
+		logger.info "song nae is="
+		logger.info @song.song_name
+		logger.info "meta name is"
+
+
+		#not going to work there buddy.
+
+		if @song.s3_meta_tag.nil?
 
 		else
-			(AWS::S3::S3Object::copy(@song.s3_id, @song.s3_id, BUCKET, 'x-amz-meta-my-file-name' => @song.song_name, 'Content-Disposition' => 'attachment;filename='+@song.song_name+'.mp3'))
+			send_s3_meta_s3(@song.id)
 		end
+
 
 		respond_to do |format|
 			if @song.update_column(:s3_id, @song.s3_id)
@@ -309,9 +322,11 @@ class SongsController < ApplicationController
 	end
 
 	def update_s3_meta
+		logger.info "in update_s3_meta"
 		@song = Song.find(params[:song_id])
-		@song.s3_meta_tag = params[:s3_meta_name]
-		@song.save
+		@song.update_column(:s3_meta_tag, params[:s3_meta_name])
+
+		send_s3_meta_s3(params[:song_id])
 
 		respond_to do |f|
 				f.json {
@@ -323,6 +338,27 @@ class SongsController < ApplicationController
 
 		logger.info "s3_meta_tag"
 		logger.info @song.s3_meta_tag
+	end
+
+
+	def send_s3_meta_s3 (song_id)
+
+		@song = Song.find(song_id)
+
+	   logger.info "in send_s3_meta"
+
+		if @song.song_name == @song.s3_meta_tag
+
+		else
+			#logger.info "actual S3 send"
+			#@s3_id = song_id.mp3
+			#@s3 = AWS::S3.new
+			##using AWS SDK - http://docs.aws.amazon.com/AWSRubySDK/latest/AWS/S3/S3Object.html#copy_from-instance_method
+			##example here - http://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjectUsingRuby.html
+			#@s3.buckets[BUCKET].objects[song_id].copy_from(,{:metadata => {"x-amz-meta-my-file-name"=>"anything"}})
+
+		end
+
 	end
 
 
