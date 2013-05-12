@@ -314,7 +314,11 @@
 
 </style>
 
+
+
 <%= stylesheet_link_tag :all %>
+
+<link type="text/css" rel="stylesheet" href="/<%= @artist.url_slug %>/css" media="screen">
 
 <!--defaults-->
 <%#= javascript_include_tag :'defaults'%>
@@ -599,11 +603,25 @@ function loadContent(href) {
 			});
 			ted_log("id is= "+json.id);
 
+
+			/*shows and hides eliments depending on where they are*/
+            if(json.hasOwnProperty('edit')){
+				ted_log("In Hide Floating Content")
+				$(".floatingContent").hide();
+				$(".editScreen").show();
+			}
+			else if(json.hasOwnProperty('show')){
+				$(".floatingContent").show();
+				$(".editScreen").hide();
+			};
 			//for the s3 ajax upload
- 			s3_direct_upload(json.id)
+ 			s3_direct_upload(json.id);
 
 			//catches form to do json/ajax upload
-			form_upload_rails()
+			form_upload_rails();
+
+			//makes sure navigation works on ajax request
+			nav_selector();
 		},
 
 		dataType:"json"
@@ -717,6 +735,17 @@ function form_upload_rails(){
 
 }
 
+function nav_selector(){
+	$(".navLink").click(function (event) {
+		ted_log("in nav slector click function");
+
+		var nav_id = "#"+event.target.id
+		ted_log("nav id "+nav_id);
+		$( ".navArea div" ).parent().find('div').removeClass("selected");
+		$(nav_id).addClass("selected")
+	});
+
+}
 
 
 //was for changing meta information on content load
@@ -914,13 +943,14 @@ function ted_log() {
 	<div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<div id="content">
-	<p id="notice"><%= notice %></p>
-
-
-		<%= yield %>
-
-
+<div class="bodyArea">
+	<div class="editScreen"></div>
+	<div class="floatingContent">
+		<div class="artistLogoArea"><a href="/<%= @artist.url_slug %>/?promo=true"><img src="<%= @artist.logo %>" /></a></div>
+		<div class="navArea"><a href="/<%= @artist.url_slug %>" class="content-link navLink"><div class="nav <%= (controller.controller_name=='artists'?'selected':'') %>" id="info">INFO</div></a><a href="<%= artist_show_songs_path %>" class="content-link navLink"><div class="nav <%= (controller.controller_name=='songs'?'selected':'') %>" id="songs">SONGS</div></a><a href="<%= artist_show_albums_path %>" class="content-link navLink"><div class="nav <%= (controller.controller_name=='albums'?'selected':'') %>" id="albums">ALBUMS</div></a>
+		</div>
+		<div class="miniPage" id="content"><%= yield %></div>
+	</div>
 </div>
 
 

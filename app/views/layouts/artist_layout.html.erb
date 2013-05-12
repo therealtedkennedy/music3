@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html>
-
-
+<html lang="en" xml:lang="en" class="" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <!--Google Meta-->
 <title><%= @social_title %></title>
@@ -28,289 +26,8 @@
 
 <meta class="area">
 
+<link type="text/css" rel="stylesheet" href="/<%= @artist.url_slug %>/css" media="screen">
 
-<style>
-
-
-		/*User can edit*/
-	<% if @artist.profile_layout.use_css == true %>
-
-	<%= @artist.profile_layout.profile_css %>
-
-	<% else %>
-	p {
-		font-family: <%= @artist.profile_layout.p_font %>;
-		font-size: <%= @artist.profile_layout.p_size %>pt;
-		color: <%= @artist.profile_layout.p_colour %>;
-
-	}
-
-	h1 {
-		font-family: <%= @artist.profile_layout.h1_font %>;
-		font-size: <%= @artist.profile_layout.h1_size %>pt;
-		color: <%= @artist.profile_layout.h1_colour %>;
-		text-align: center;
-	}
-
-	h2 {
-		font-family: <%= @artist.profile_layout.h2_font %>;
-		font-size: <%= @artist.profile_layout.h2_size %>pt;
-		color: <%= @artist.profile_layout.h2_colour %>;
-		text-align: center;
-	}
-
-	h3 {
-		font-family: <%= @artist.profile_layout.h3_font %>;
-		font-size: <%= @artist.profile_layout.h3_size %>pt;
-		color: <%= @artist.profile_layout.h3_colour %>;
-		text-align: center;
-	}
-
-	ol {
-		font-family: <%= @artist.profile_layout.p_font %>;
-		font-size: <%= @artist.profile_layout.p_size %>pt;
-	}
-
-	ul {
-		font-family: <%= @artist.profile_layout.p_font %>;
-		font-size: <%= @artist.profile_layout.p_size %>pt;
-	}
-
-	.notice {
-		font-family: <%= @artist.profile_layout.p_font %>;
-		font-size: <%= @artist.profile_layout.p_size %>;
-		color: <%= @artist.profile_layout.p_colour %>;
-	}
-
-	table {
-		font-face: <%= @artist.profile_layout.p_font %>;
-		font-size: <%= @artist.profile_layout.p_size %>pt;
-		color: <%= @artist.profile_layout.p_colour %>
-	}
-
-	a {
-
-		font-family: <%= @artist.profile_layout.h2_font %>;
-		font-size: <%= @artist.profile_layout.h2_size %>pt;
-		color: <%= @artist.profile_layout.h2_colour %>;
-
-	}
-
-	a:hover {
-
-		font-family: <%= @artist.profile_layout.h2_font %>;
-		font-size: <%= @artist.profile_layout.h2_size %>pt;
-		color: <%= @artist.profile_layout.h2_colour %>;
-
-	}
-
-	.div1 {
-		max-width: 400px;
-		position: absolute;
-		top: 5%;
-		left: 5%;
-		background-color: <%= @artist.profile_layout.div_1_background_colour %>;
-		overflow: hidden;
-		padding: 10px;
-		border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
-		border-radius: 5px;
-	}
-
-	.div1a {
-		display: block;
-		float: left;
-		overflow: hidden;
-		margin-left: 10%;
-		margin-top: 5%;
-		max-width: 400px;
-		background-color: <%= @artist.profile_layout.div_1_background_colour %>;
-		padding: 10px;
-		border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
-		border-radius: 5px;
-	}
-
-	.div1ra {
-		margin-top: 5%;
-		margin-left: 10%;
-		display: block;
-		float: left;
-		overflow: hidden;
-		max-width: 800px;
-		min-width: 300px;
-		background-color: <%= @artist.profile_layout.div_1_background_colour %>;
-		padding: 10px;
-		border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
-		border-radius: 5px;
-	}
-
-	.button {
-		margin: 2%;
-		background-color: <%= @artist.profile_layout.div_2_background_colour %>;
-		overflow: hidden;
-		padding: 30px;
-		border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
-		box-shadow: 3px 3px 7px #777;
-		border-radius: 2px;
-	}
-
-	.button:hover {
-		background-color: blue;
-	}
-
-	.div2 {
-		margin: 2%;
-		background-color: <%= @artist.profile_layout.div_2_background_colour %>;
-		overflow: hidden;
-		padding: 30px;
-		border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
-		box-shadow: 3px 3px 7px #777;
-		border-radius: 2px;
-	}
-
-	.div3 {
-		width: 400px;
-		height: 80px;
-		margin: 30px;
-		background-color: <%= @artist.profile_layout.div_2_background_colour %>;
-		overflow: hidden;
-		padding: 10px;
-		border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
-		box-shadow: 3px 3px 7px #777;
-		border-radius: 2px;
-	}
-
-	.image {
-		float: left;
-		width: 70px;
-		height: 70px;
-		margin: 1%;
-		overflow: hidden;
-		border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
-		box-shadow: 1px 1px 2px #777;
-		border-radius: 2px;
-	}
-
-	.div1r {
-		max-width: 1000px;
-		min-width: 800px;
-		position: absolute;
-		top: 5%;
-		right: 5%;
-		background-color: <%= @artist.profile_layout.div_1_background_colour %>;
-		overflow: hidden;
-		padding: 10px;
-		border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
-		border-radius: 5px;
-	}
-
-	.toggleDiv {
-		display: none
-	}
-
-	#loading {
-		display: none;
-	}
-
-	<% end %>
-
-	html, body {
-		overflow-x: hidden;
-		margin: 0 auto;
-
-	}
-
-	@font-face {
-		font-family: 'icomoon';
-		src: url("/assets/fonts/iconmoon.eot");
-	}
-
-	.container {
-		margin-top: 50px;
-	}
-
-		/* Defines whole top nav, including sign in/out, and the player it self */
-	.player_nav {
-		width: 100%;
-
-		height: 50px;
-		position: fixed;
-		top: 0;
-		left: 0;
-		background: #2E2E2E;
-
-	}
-
-		/* Sign in/sign out */
-	.user_nav {
-		position: fixed;
-		height: 50px;
-		line-height: 50px;
-		padding-right: 15px;
-		color: #C4C4C4;
-		right: 0;
-		top: 0;
-	}
-
-	.user_nav_info {
-		display: inline-block;
-
-	}
-
-	.admin {
-		display: inline-block;
-		border-left: 1px solid #ffffff;
-		line-height: 30px;
-		padding: 5px;
-
-	}
-
-	.adminLink {
-		color: #ffffff;
-	}
-
-	.audio {
-		position: fixed;
-		top: 0;
-		margin: 0 auto;
-		background-color: #FFFFFF;
-		width: 9999px;
-		height: 50px
-	}
-
-	a.nav, .adminLink {
-		color: #FFFFFF;
-		text-decoration: none;
-
-	}
-
-	a.nav:hover, .adminLink:hover {
-		color: #FFFFFF;
-
-		font-weight: bold;
-		text-decoration: none;
-	}
-
-
-	#text_area {
-		width: 350px;
-		max-height: 200px;
-		overflow: auto;
-		margin-bottom: 15px;
-	}
-
-
-	.edit-controls {
-		float: right;
-		display: inline-block;
-		width: 320px;
-		background: #2E2E2E;
-		padding: 5px;
-
-	}
-
-
-
-</style>
 
 <%= stylesheet_link_tag :all %>
 
@@ -432,8 +149,17 @@ $(document).ready(function () {
 		window.addEventListener('popstate', popstate(), false);
 	}, 1000);
 
+   //Adds the class selected to link selected...adds arrow below
+	$(".content-link .nav").live("click", function (event) {
+		$(".content-link .nav").removeClass("selected");
+		$(this).addClass("selected");
+		event.preventDefault();
+	});
 
 	$(".content-link").live("click", function (event) {
+
+
+
 		<% if browser.ie? %>
 		alert("Music will stop playing, do you wish to continue? To stop this from appearing download chrome.")
 		<% else %>
@@ -446,6 +172,9 @@ $(document).ready(function () {
 
 		// HISTORY.PUSHSTATE
 		history.pushState('', 'New URL: ' + url, url);
+
+		
+
 		<% end %>
 	});
 
@@ -685,29 +414,24 @@ function ted_log() {
 
 
 </div>
-
 <!--<div id="loading">-->
 <!--<p>Loading..</p>-->
 <!--</div>-->
 
-
 <!--<div class="facebook" style="overflow:visible; display:inline-block; margin: 10px;">-->
-
 
 <!--</div>-->
 
 <% if flash[:notice] %>
 	<div class="notice"><%= flash[:notice] %></div>
 <% end %>
-
-<div id="content">
-
-	<%= yield %>
-
+<div class="bodyArea">
+<div class="floatingContent">
+	<div class="artistLogoArea"><a href="/<%= @artist.url_slug %>/?promo=true"><img src="<%= @artist.logo %>" /></a></div>
+	<div class="navArea"><a href="/<%= @artist.url_slug %>" class="content-link"><div class="nav <%= (controller.controller_name=='artists'?'selected':'') %>">INFO</div></a><a href="<%= artist_show_songs_path %>" class="content-link"><div class="nav <%= (controller.controller_name=='songs'?'selected':'') %>">SONGS</div></a><a href="<%= artist_show_albums_path %>" class="content-link"><div class="nav <%= (controller.controller_name=='albums'?'selected':'') %>">ALBUMS</div></a>
+	</div>
+	<div class="miniPage" id="content"><%= yield %></div>
 </div>
-
-
-
-
+</div>
 </body>
 </html>

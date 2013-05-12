@@ -57,6 +57,7 @@ Music3::Application.routes.draw do
 	# Url Slug Routing
 
 	match "/:url_slug" => "artists#show", :as => :artist_link
+	match "/:url_slug/css" => "artists#css", :as => :artist_css
 	match "/:url_slug/edit" => "artists#edit", :as => :edit_artist
 
 	match "/:url_slug/new_album" => "albums#new", :as => :add_album
@@ -88,6 +89,7 @@ Music3::Application.routes.draw do
 
 
 	#Albums Slug Routing
+	match "/:url_slug/albums" => "albums#index", :as => :artist_show_albums
 	match "/:url_slug/album/:album_url_slug" => "albums#show", :as => :artist_show_album
 	match "/:url_slug/album/download/:album_url_slug" => "albums#download_album", :as => :album_download
 	match ":url_slug/album/:album_url_slug/playlist-create" => "albums#album_play_list_create", :as => :album_playlist_create
@@ -113,12 +115,13 @@ Music3::Application.routes.draw do
 	match "songs/create" => "songs#create", :as => "new_song_post"
 	match "/:url_slug/add_song" => "songs#new", :as => :add_song
 	match "/:url_slug/add_song/update-s3-meta/:song_id" => "songs#update_s3_meta", :as => "update_s3_meta"
+	match "/:url_slug/songs" => "songs#index", :as => :artist_show_songs
 	match "/:url_slug/song/:song_url_slug" => "songs#show", :as => :artist_show_song
 	match "/api/incrementPlayCount/:song_id" => "songs#song_play_counter", :as => :song_play_counter
 	# match "/:url_slug/song/:song_url_slug/edit => "
 	match "/:url_slug/song/:song_id/delete" => "songs#destroy", :as => "song_destroy"
 
-	get "songs/index"
+	#get "songs/index"
 	get "songs/upload"
 	#get "songs/delete"
 

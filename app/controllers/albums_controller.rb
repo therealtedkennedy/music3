@@ -5,17 +5,28 @@ class AlbumsController < ApplicationController
 
 
   #changes from default layout to custom layout
-  layout "artist_admin", only: [:show]
 
+  #layout "artist_admin", only: [:show]
 
-
+  layout "artist_admin"
 
   def index
+    @artist = Artist.find_by_url_slug(params[:url_slug])
     @albums = Album.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @albums }
+      format.json {
+        render :json => {
+           :success => true,
+           :"#content" => render_to_string(
+           :action => 'index.html.erb',
+           :layout => false
+           )
+
+        }
+      }
     end
   end
 
@@ -30,13 +41,14 @@ class AlbumsController < ApplicationController
 
 	#Finds Album.  In application Controller
 
-    find_album(@artist,params[:album_url_slug])
+  @album = Album.find_by_album_url_slug(params[:album_url_slug])
+
 	logger.info "album"
 	logger.info @album
 
-    @download_url = album_download_url(@album.album_url_slug, @album.id)
+    #@download_url = album_download_url(@album.album_url_slug, @album.id)
 
-     album_social(@artist,@album)
+     #album_social(@artist,@album)
 
 
 
@@ -52,7 +64,8 @@ class AlbumsController < ApplicationController
            :"#content" => render_to_string(
            :action => 'show.html.erb',
            :layout => false
-           )
+           ),
+		  :"show" => 'yes',
 
         }
       }
@@ -85,12 +98,12 @@ class AlbumsController < ApplicationController
 	  format.json {
 		  render :json => {
 				  :success => true,
-				  :"#content" => render_to_string(
+				  :"#editScreen" => render_to_string(
 						  :action => 'new.html.erb',
 						  :layout => false,
 
 				  ),
-
+           		:"edit" => "true",
 		  }
 	  }
     end
@@ -116,12 +129,12 @@ class AlbumsController < ApplicationController
 		format.json {
 			render :json => {
 					:success => true,
-					:"#content" => render_to_string(
+					:".editScreen" => render_to_string(
 							:action => 'edit.html.erb',
 							:layout => false,
 
 					),
-
+                    :"edit" => "none"
 			}
 		}
 	end

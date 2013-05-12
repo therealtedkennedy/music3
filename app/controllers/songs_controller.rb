@@ -7,18 +7,30 @@ class SongsController < ApplicationController
 
 
 	#changes from default layout to custom layout
-	layout "artist_admin", only: [:show]
+	layout "artist_admin", only: [:show,:index]
 
-
+  #shows all artists songs (built by ronnie)
 	def index
 		#not #nessisary
-		@s3_songs = AWS::S3::Bucket.find(BUCKET).objects
+		#@s3_songs = AWS::S3::Bucket.find(BUCKET).objects
 
-		@songs = Song.all
+		#@songs = Song.all
+		@artist = Artist.find_by_url_slug(params[:url_slug])
+		@songs = @artist.songs
 
 		respond_to do |format|
 			format.html # index.html.erb
-			format.xml { render :xml => @artists }
+			format.xml { render :xml => @song }
+			format.json {
+				render :json => {
+						:success => true,
+						:"#content" => render_to_string(
+								:action => 'index.html.erb',
+								:layout => false
+						)
+
+				}
+			}
 		end
 	end
 
@@ -57,7 +69,9 @@ class SongsController < ApplicationController
 							:"#content" => render_to_string(
 									:action => 'show.html.erb',
 									:layout => false
-							)
+							),
+					    	:"show" => "true",
+
 
 					}
 				}
@@ -96,12 +110,13 @@ class SongsController < ApplicationController
 			format.json {
 				render :json => {
 						:success => true,
-						:"#content" => render_to_string(
+						:".editScreen" => render_to_string(
 								:action => 'edit.html.erb',
 								:layout => false,
 
 						),
 						:"id" => @song.s3_id,
+						:"edit" => "true",
 				}
 			}
 		end
@@ -168,12 +183,13 @@ class SongsController < ApplicationController
 			format.json {
 				render :json => {
 						:success => true,
-						:"#content" => render_to_string(
+						:".editScreen" => render_to_string(
 								:action => 'new.html.erb',
 								:layout => false,
 
 						),
-						:"id" => @song.s3_id
+						:"id" => @song.s3_id,
+						:"edit" => "true",
 
 				}
 			}

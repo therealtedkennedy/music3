@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   load_and_authorize_resource
-  #skip_load_and_authorize_resource :only => :edit
+  skip_load_and_authorize_resource :only => :css
   # GET /artists
   # GET /artists.xml
 
@@ -24,6 +24,12 @@ class ArtistsController < ApplicationController
     end
   end
 
+  def css
+    searchString = params[:url_slug]
+    @artist = Artist.find_by_url_slug(searchString)
+    render 'default.css.erb'
+  end
+
   # GET /artists/1
   # GET /artists/1.xml
   def show
@@ -31,17 +37,16 @@ class ArtistsController < ApplicationController
     searchString = params[:url_slug]
     @artist = Artist.find_by_url_slug(searchString)
 
+  	if cookies[:promo_page].to_s.blank? || params[:promo] == "true"
+  		if params.has_key?(:promo)
+  		else
+  			# sets cookies on first load
+  			cookies[:promo_page]= { :value => "promo", :expires => 24.hour.from_now }
+  		end
 
+  		@show_promo = "true"
+  	end
 
-
-	if cookies[:promo_page].to_s.blank? || params[:promo] == "true"
-		if params.has_key?(:promo)
-		else
-			# sets cookies on first load
-			cookies[:promo_page]= { :value => "promo", :expires => 24.hour.from_now }
-		end
-		@show_promo = "true"
-	end
 
     @playlist = @artist.songs
 
@@ -57,6 +62,7 @@ class ArtistsController < ApplicationController
                 :action => 'show.html.erb',
                 :layout => false
             ),
+			:"show" => "true",
         }
       }
 	end
@@ -195,10 +201,11 @@ class ArtistsController < ApplicationController
 		format.json {
 			render :json => {
 					:success => true,
-					:"#content" => render_to_string(
+					:".editScreen" => render_to_string(
 							:action => 'admin.html.erb',
 							:layout => false,
 					),
+					:"edit" => "true",
 
 			}
 		}
