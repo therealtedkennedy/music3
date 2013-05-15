@@ -5,7 +5,7 @@ class ArtistsController < ApplicationController
   # GET /artists
   # GET /artists.xml
 
-  before_filter :authenticate_user!, :except => [:show, :index,:social_promo]
+  before_filter :authenticate_user!, :except => [:show, :index,:social_promo, :css]
 
   #changes from default layout to custom layout
 

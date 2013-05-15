@@ -947,7 +947,7 @@ function ted_log() {
 <div class="bodyArea">
 	<div class="editScreen"></div>
 	<div class="floatingContent">
-		<div class="artistLogoArea"><a href="/<%= @artist.url_slug %>/?promo=true"><img src="<%= @artist.logo %>" /></a></div>
+		<div class="artistLogoArea"><a href="/<%= @artist.url_slug %>/?promo=true" class="content-link"><img src="<%= @artist.logo %>" /></a></div>
 		<div class="navArea"><a href="/<%= @artist.url_slug %>" class="content-link navLink"><div class="nav <%=@tag_info %>" id="info">INFO</div></a><a href="<%= artist_show_songs_path %>" class="content-link navLink"><div class="nav" id="songs">SONGS</div></a><a href="<%= artist_show_albums_path %>" class="content-link navLink"><div class="nav" id="albums">ALBUMS</div></a>
 		</div>
 		<div class="miniPage" id="content"><%= yield %></div>
