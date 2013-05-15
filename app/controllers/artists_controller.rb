@@ -1,6 +1,7 @@
 class ArtistsController < ApplicationController
   load_and_authorize_resource
   skip_load_and_authorize_resource :only => :css
+  require 'uri'
   # GET /artists
   # GET /artists.xml
 
@@ -37,15 +38,27 @@ class ArtistsController < ApplicationController
     searchString = params[:url_slug]
     @artist = Artist.find_by_url_slug(searchString)
 
-  	if cookies[:promo_page].to_s.blank? || params[:promo] == "true"
-  		if params.has_key?(:promo)
-  		else
-  			# sets cookies on first load
-  			cookies[:promo_page]= { :value => "promo", :expires => 24.hour.from_now }
-  		end
 
-  		@show_promo = "true"
-  	end
+	#for promo screen.  Shows promo if coming from a Non artist URL, or if some one has clicked on the logo which is tagged with promo = ture param
+
+    #checks to see if the referer exsists, and if it does assigned it to host for logic below
+    unless request.referer.nil?
+		@host = URI(request.referer).path
+		logger.info("path="+@host)
+    end
+
+	#checks to see if refering url has the artist path and doen't have promo.  If true doesn't show promo
+
+	if @host.try(:starts_with?,"/"+@artist.url_slug) && !params.has_key?(:promo)
+        logger.info("path working")
+		#used to ensures the Info menu item is tagged with the selector by adding selector to the div.
+		@tag_info = "selected"
+
+	else
+		logger.info("show promo")
+		@show_promo = "true"
+	end
+
 
 
     @playlist = @artist.songs
