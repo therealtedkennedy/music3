@@ -89,6 +89,8 @@ class ArtistsController < ApplicationController
   def new
     @artist = Artist.new
 
+	@form = render_to_string('artists/_form',:layout => false)
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml { render :xml => @artist }

@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130403002756) do
+ActiveRecord::Schema.define(:version => 20130516010904) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
     t.integer  "code_album_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "albums", :force => true do |t|
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(:version => 20130403002756) do
     t.integer  "downloads"
     t.integer  "plays"
     t.integer  "shares"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "al_a_id"
     t.integer  "al_s_id"
     t.string   "album_url_slug"
@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(:version => 20130403002756) do
     t.text     "contact_info"
     t.date     "date_founded"
     t.date     "created_date"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "url_slug"
     t.string   "pay_pal"
     t.string   "image"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20130403002756) do
     t.string   "fb_page_url"
     t.string   "logo"
     t.integer  "number_of_codes", :default => 0
+    t.boolean  "logo_toggle"
   end
 
   create_table "artists_songs", :id => false, :force => true do |t|
@@ -95,8 +96,8 @@ ActiveRecord::Schema.define(:version => 20130403002756) do
   end
 
   create_table "layouts", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "orders", :force => true do |t|
@@ -108,8 +109,8 @@ ActiveRecord::Schema.define(:version => 20130403002756) do
     t.string   "email"
     t.string   "card_type"
     t.date     "card_expires_on"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "express_token"
     t.string   "express_payer_id"
     t.integer  "album_id"
@@ -125,8 +126,8 @@ ActiveRecord::Schema.define(:version => 20130403002756) do
     t.string   "h3_size"
     t.string   "h3_font"
     t.string   "h3_colour"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "artist_id"
     t.string   "p_size"
     t.string   "p_font"
@@ -155,8 +156,8 @@ ActiveRecord::Schema.define(:version => 20130403002756) do
     t.date     "song_licence_date"
     t.integer  "song_plays"
     t.text     "lyrics"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "s3_name"
     t.string   "download_link"
     t.string   "torrent_link"
@@ -173,24 +174,24 @@ ActiveRecord::Schema.define(:version => 20130403002756) do
     t.boolean  "success"
     t.string   "authorization"
     t.text     "params",        :limit => 255
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "message"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                         :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "pay_pal_email"

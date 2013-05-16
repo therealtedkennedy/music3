@@ -22,6 +22,13 @@
     <%=f.file_field :image %>
     <%=f.hidden_field :image_cache %>
   </div>
+
+
+	<div class="field">
+		<%= f.label "Use Image for logo?" %><br />
+		<%= f.check_box :logo_toggle %>
+	</div>
+
   <H3>Your Artist Profile Pick. Use when your content is shared</H3>
   <p>Minimum of 200px by 200px please.</p>
 	<div class="field">

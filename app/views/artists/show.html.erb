@@ -3,4 +3,64 @@
 <div id="promo" style="text-align:center;"><img src="/ronster.jpg" /></div>
 <% end %>
 
-<h1><%= @host %></h1>
+<div class="social">
+	<% if @artist.twitter_name.blank? %>
+
+	<% else %>
+		<a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow
+			<%= @artist.twitter_name %></a>
+	<% end %>
+	<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
+
+</div>
+
+
+<b>Date founded:</b>
+<%= @artist.date_founded %>
+</br>
+</br>
+
+<b>City:</b>
+
+<span class="editable" id="single_line" field_name="city" object="artist" >
+					<%= @artist.city.html_safe %>
+				</span>
+
+</br>
+</br>
+
+<b>Province:</b>
+<span class="editable" id="single_line" field_name="province" object="artist" >
+					<%= @artist.province.html_safe %>
+				</span>
+</br>
+</br>
+
+<b>Country:</b>
+<span class="editable" id="single_line" field_name="country" object="artist" >
+					<%= @artist.country.html_safe %>
+				</span>
+</br>
+</br>
+
+
+<b>Influence:</b>
+
+<div class="editable" id="text_area" field_name="influence" object="artist" >
+	<%= @artist.influence.html_safe %>
+</div>
+
+<b>Bio:</b>
+<div class="editable" id="text_area" field_name="bio" object="artist" >
+	<%= @artist.bio.html_safe %>
+</div>
+
+
+<b>Contact info:</b>
+<span class="editable" id="single_line" field_name="contact_info" object="artist" >
+					<%= @artist.contact_info.html_safe %>
+				</span>
+
+</br>
+</br>
+
