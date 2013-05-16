@@ -98,7 +98,7 @@ class AlbumsController < ApplicationController
 	  format.json {
 		  render :json => {
 				  :success => true,
-				  :"#editScreen" => render_to_string(
+				  :".editScreen" => render_to_string(
 						  :action => 'new.html.erb',
 						  :layout => false,
 
