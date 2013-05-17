@@ -93,6 +93,7 @@ Music3::Application.routes.draw do
 	match "/:url_slug/album/:album_url_slug" => "albums#show", :as => :artist_show_album
 	match "/:url_slug/album/download/:album_url_slug" => "albums#download_album", :as => :album_download
 	match ":url_slug/album/:album_url_slug/playlist-create" => "albums#album_play_list_create", :as => :album_playlist_create
+    match ":url_slug/album/:album_url_slug/:id" => "albums#edit", :as => :album_edit
 	#Artist Home
 
 	#albums code routing
@@ -120,6 +121,7 @@ Music3::Application.routes.draw do
 	match "/api/incrementPlayCount/:song_id" => "songs#song_play_counter", :as => :song_play_counter
 	# match "/:url_slug/song/:song_url_slug/edit => "
 	match "/:url_slug/song/:song_id/delete" => "songs#destroy", :as => "song_destroy"
+	match "/:url_slug/song/:song_url_slug/edit/:id" => "songs#edit", :as => :song_edit
 
 	#get "songs/index"
 	get "songs/upload"

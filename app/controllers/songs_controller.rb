@@ -94,6 +94,7 @@ class SongsController < ApplicationController
 
 		@song = Song.find(params[:id])
 		@id = @song.id
+		@edit = "true"
 		#finds the assoicated artist
 		@artist = Artist.find(@song.s_a_id)
 		authorize! :update, @artist
@@ -169,6 +170,7 @@ class SongsController < ApplicationController
 
 		@form = render_to_string('songs/_form_upload_song',:layout => false)
 
+		@edit = "true"  #makes sure that when url is called (non ajax) the page loads the correct variable.  See admin layout
 
         logger.info "form"
 		logger.info @form

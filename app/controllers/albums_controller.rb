@@ -90,6 +90,8 @@ class AlbumsController < ApplicationController
     @song_ids = []
 	@meta_update_url = "nohting"
 
+	@edit = "true"  #allows new view to load oorrectly when refreshed.  See artist admin layout
+
 	@form = render_to_string('albums/_form',:layout => false)
 
      respond_to do |format|
@@ -114,6 +116,7 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     @artist = Artist.find(@album.al_a_id)
     authorize! :update, @artist
+	@edit = "true" #allows edit page to load correctly when page is refreshed
 
    #For Check Box - Creates an Array of song Id's for a particular artist to select songs that already exsist
     @song_ids = Array.new

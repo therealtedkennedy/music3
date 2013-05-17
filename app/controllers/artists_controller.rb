@@ -140,6 +140,8 @@ class ArtistsController < ApplicationController
   def update
     @artist = Artist.find(params[:id])
 
+
+
    # @file_name = params[:artist][:image].filename
    # @image_location = "/Sites/music3/public/uploads/artist/image/"+@artist.id+"/"+@file_name
 
@@ -210,6 +212,8 @@ class ArtistsController < ApplicationController
     authorize! :admin, @artist
 
 	@form = render_to_string('artists/_form',:layout => false)
+
+	@edit = "true" #see new
 
 	respond_to do |format|
 		format.html {render :layout => 'artist_admin'}
