@@ -55,3 +55,34 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+.left-panel {
+  float:left; 
+  margin:15px 30px 15px 30px;
+}
+
+.info-image {
+  margin-bottom:10px;
+}
+
+.info-container {
+  font-size:14px;
+}
+
+.info-container tr {
+  border-top: 1px solid #666;
+}
+
+.info-item {
+  padding-left:30px; 
+  width:50%;
+}
+
+.item-description {
+  padding-left:30px; 
+  color:#999;
+}
+
+.bio {
+  color:#999;
+}
