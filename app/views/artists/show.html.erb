@@ -14,7 +14,7 @@
 					<%= @artist.twitter_name %></a>
 			</div>
 		<% end %>
-		<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="250" data-show-faces="true"></div>
+		<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="225" data-show-faces="true"></div>
 	</div>
 </div>
 <div class="info-container">
@@ -51,9 +51,9 @@
 		<tr>
 			<td class="info-item">Influence:</td>
 			<td class="item-description">
-				<div class="editable" id="text_area" field_name="influence" object="artist" >
+				<span class="editable" id="text_area" field_name="influence" object="artist" >
 					<%= @artist.influence.html_safe %>
-				</div>
+				</span>
 			</td>
 		</tr>
 		<tr>
