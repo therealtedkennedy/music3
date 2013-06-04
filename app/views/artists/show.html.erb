@@ -1,9 +1,10 @@
 <!-- <% if @show_promo %>
 <div id="promo" style="text-align:center;"><img src="/ronster.jpg" /></div>
 <% end %> -->
-<div class="left-panel">
+<table><tbody><tr>
+<td class="left-panel">
 	<div>
-		<img class="info-image" src="<%= @artist.logo %>" alt="logo"/>
+		<img class="info-image" src="<%= @artist.image %>" alt="profile"/>
 	</div>
 	<div class="social">
 		<% if @artist.twitter_name.blank? %>
@@ -16,8 +17,8 @@
 		<% end %>
 		<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="225" data-show-faces="true"></div>
 	</div>
-</div>
-<div class="info-container">
+</td>
+<td class="row-border">
 	<p class="bio"><%= @artist.bio %></p>
 	<table cellpadding="10"><tbody>
 		<tr>
@@ -65,5 +66,6 @@
 			</td>
 		</tr>
 	</tbody></table>
-</div>
+</td>
+</tr></tbody></table>
 

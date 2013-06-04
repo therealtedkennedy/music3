@@ -1,23 +1,34 @@
-<h2>Here are my songs</h2>
+<div id="song-content">
+<table cellpadding="10" class="song-table">
+	<thead>
+		<tr>
+			<td></td>
+			<td>SONG TITLE</td>
+			<td>ALBUM TITLE</td>
+			<td>TIME</td>
+			<td></td>
+		</tr>
+	</thead>
+	<tbody class="row-border">
+	<% @artist.songs.uniq.each_with_index do |song, index| %>
 
-<% @artist.songs.uniq.each_with_index do |song, index| %>
+		<% unless song.song_url_slug.blank? %>
+			<% unless song.s3_id.nil? %>
 
-	<% unless song.song_url_slug.blank? %>
-		<% unless song.s3_id.nil? %>
-
-			<div class="div3">
-
-				<div class="image">
-					<h3>
-						<a href="<%= download_url_for(song.s3_id) %>"
-						   data-song-name="<%= song.song_name %>"
-						   data-artist-name="<%= @artist.name %>"
-						   data-song-id="<%= song.id %>"
-						   class="music-button">Play </a>
-					</h3></div>
-				<h3><%= link_to song.song_name, artist_show_song_path(@artist.url_slug, song.song_url_slug), :class => "content-link" %>   </h3>
-
-			</div>
+				<tr>
+					<td><a href="<%= download_url_for(song.s3_id) %>"
+							   data-song-name="<%= song.song_name %>"
+							   data-artist-name="<%= @artist.name %>"
+							   data-song-id="<%= song.id %>"
+							   class="music-button">IMAGE</a></td>
+					<td><%= link_to song.song_name, artist_show_song_path(@artist.url_slug, song.song_url_slug), :class => "content-link" %> </td>
+					<td>ALBUM NAME</td>
+					<td>SONG LENGTH</td>
+					<td><img src="../../../images/btn-buy.png"/></td>
+				</tr>
+			<% end %>
 		<% end %>
 	<% end %>
-<% end %>
+</tbody></table>
+</div>
+<div class="song-footer"><span><%= @artist.songs.count %> Total Song<%= @artist.songs.count == 1 ? "" : "s" %>, <%= @artist.albums.count %> Album<%= @artist.albums.count ==1 ? "" : "s" %></span></div>
