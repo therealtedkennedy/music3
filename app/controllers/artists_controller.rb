@@ -272,7 +272,7 @@ class ArtistsController < ApplicationController
 		  song_social(@artist,@song)
 	  end
 
-	  #overides the album and or song default facebook url.  For the socail promo page, you have to like the artist. this is b/c following an artist is like subscribing to thier content
+	  #overides the album and or song default facebook url.  For the social promo page, you have to like the artist. this is b/c following an artist is like subscribing to their content
 	  facebook_url(@artist)
 
 
