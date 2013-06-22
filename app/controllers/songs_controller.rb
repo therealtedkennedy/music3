@@ -105,13 +105,15 @@ class SongsController < ApplicationController
 		@id = @song.id
         @object_type = "song"
 		@bucket = BUCKET
-		@object_id = @song.id
+		@object_id = @song.s3_id
 
 
 		#renders from because at the time of this writing form partials won't load in ajax
 		@form = render_to_string('songs/_form',:layout => false)
 		@s3_upload = render_to_string('shared/_s3_upload_form', :layout => false)
-		@meta_update_url = update_s3_meta_url(@artist.url_slug, @object_id,@object_type)
+
+		#updates s3 meta data. takes artist slug, object id (for song, album ect.  if one doesn't exist =1), and object type (song,album,image ect)
+		@meta_update_url = update_s3_meta_url(@artist.url_slug,@song.id,@object_type)
 
 
 
@@ -178,14 +180,16 @@ class SongsController < ApplicationController
 		@s3_key = S3_KEY
 		@bucket = BUCKET
 		@object_type = "song"
-		@object_id = @song.id
+		@object_id = @song.s3_id
+
+		logger.info "object id ="+object_id
 
 
 		@form = render_to_string('songs/_form_upload_song',:layout => false)
 		@s3_upload = render_to_string('shared/_s3_upload_form', :layout => false)
 
-		#defines the url to update the s3 meta data (becasue it can't be set on upload #lame')
-		@meta_update_url = update_s3_meta_url(@artist.url_slug, @object_id,@object_type)
+#u      Updates s3 meta data. takes artist slug, object id (for song, album ect.  if one doesn't exist =1), and object type (song,album,image ect)
+		@meta_update_url = update_s3_meta_url(@artist.url_slug,@song.id,@object_type)
 
 		@edit = "true"  #makes sure that when url is called (non ajax) the page loads the correct variable.  See admin layout
 
@@ -374,48 +378,9 @@ class SongsController < ApplicationController
 		end
 	end
 
-	#comes from view.  Updates the s3 meta column so that the send_s3_meta_s3 logics works.  That being if song name is different then meta name update the meta name on s3
-	def update_s3_meta
-		logger.info "in update_s3_meta"
-		@song = Song.find(params[:song_id])
-		@song.update_column(:s3_meta_tag, params[:s3_meta_name])
-
-		#send data to s3 needs two params song ID and song
-		send_s3_meta_s3(params[:song_id],'song')
-
-		respond_to do |f|
-				f.json {
-					render :json => {
-							:success => true}
-				}
-		end
 
 
-		logger.info "s3_meta_tag"
-		logger.info @song.s3_meta_tag
-	end
 
-   #updates the meta data on s3. Checks to see if song name matches meta name, if not it copies the object in s3 giving it the new name (copy in s3 doesnt allow you to change meta data)
-	def send_s3_meta_s3 (song_id,object)
-
-
-		if object || params[:object_type] == "song"
-			@song = Song.find(song_id)
-
-		   logger.info "in send_s3_meta"
-
-			if @song.song_name == @song.s3_meta_tag || @song.song_name.nil?
-
-			else
-				find_bucket('song')
-				s3_copy(@song.s3_id,@song.song_name,@bucket,"binary/octet-stream",".mp3")
-
-			end
-
-		else
-			logger.info "something wrong the the send_s3_meta_s3"
-		end
-	end
 
 
 	private

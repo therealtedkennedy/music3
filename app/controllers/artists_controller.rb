@@ -211,7 +211,13 @@ class ArtistsController < ApplicationController
     @artist = Artist.find_by_url_slug(params[:url_slug])
     authorize! :admin, @artist
 
+	bk_image_name = "Three_Repeater-"+@artist.url_slug+"-"
+
 	@form = render_to_string('artists/_form',:layout => false)
+    @bk_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name}, :layout => false)
+
+	logger.info "bk form"
+	logger.info @bk_image_upload
 
 	@edit = "true" #see new
 

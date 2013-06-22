@@ -614,20 +614,31 @@ function s3_direct_upload(){
 		var form = $(this);
 		var s3ObjectType = $("#s3_upload").data("object_type");
 		var s3Id = $("#s3_upload").data("object_id");
-		var s3Name = s3Id+".mp3"
+
 
         ted_log("s3ObjectType= "+s3ObjectType);
 		ted_log("s3id= "+ s3Id);
-		ted_log("s3 name "+s3Name)
+
 
 		$(this).fileupload({
 			url: form.attr('action'),
 			type: 'POST',
 			autoUpload: true,
 
-
 			dataType: 'xml', // This is really important as s3 gives us back the url of the file in a XML document
 			add: function (event, data) {
+
+				// sets the s3 file name for image b/c need file name and ext
+				if(s3ObjectType == "image"){
+					var s3Name = s3Id+data.files[0].name
+				}
+				else{
+					var s3Name = s3Id
+
+
+				};
+				ted_log("Image s3id= "+s3Id);
+
 				$.ajax({
 					url: "/signed_urls"+"?object="+s3ObjectType,
 					type: 'GET',

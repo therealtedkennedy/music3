@@ -332,6 +332,33 @@ class ApplicationController < ActionController::Base
 		end
 
 	end
+
+
+	#updates the meta data on s3. Checks to see if song name matches meta name, if not it copies the object in s3 giving it the new name (copy in s3 doesnt allow you to change meta data)
+	def send_s3_meta_s3 (song_id,object)
+
+
+		if object || params[:object_type] == "song"
+			@song = Song.find(song_id)
+
+			logger.info "in send_s3_meta"
+
+			if @song.song_name == @song.s3_meta_tag || @song.song_name.nil?
+
+			else
+				find_bucket('song')
+				s3_copy(@song.s3_id,@song.song_name,@bucket,"binary/octet-stream",".mp3")
+
+			end
+
+		else
+			logger.info "something wrong the the send_s3_meta_s3"
+		end
+	end
+
+
+
+
 end
 
 
