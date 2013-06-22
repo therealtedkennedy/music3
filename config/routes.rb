@@ -115,7 +115,7 @@ Music3::Application.routes.draw do
 	#match "song/new/:id" => "songs#new", :as => "new_song_id"
 	match "songs/create" => "songs#create", :as => "new_song_post"
 	match "/:url_slug/add_song" => "songs#new", :as => :add_song
-	match "/:url_slug/add_song/update-s3-meta/:song_id" => "songs#update_s3_meta", :as => "update_s3_meta"
+	match "/:url_slug/add_song/update-s3-meta/:song_id/:object_type" => "songs#update_s3_meta", :as => "update_s3_meta"
 	match "/:url_slug/songs" => "songs#index", :as => :artist_show_songs
 	match "/:url_slug/song/:song_url_slug" => "songs#show", :as => :artist_show_song
 	match "/api/incrementPlayCount/:song_id" => "songs#song_play_counter", :as => :song_play_counter

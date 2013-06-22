@@ -334,7 +334,9 @@
 <script type="text/javascript" src="/javascripts/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.fileupload.js"></script>
 <script type="text/javascript" src="/javascripts/simple-expand.js"></script>
-
+<script type="text/javascript" src="/javascripts/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.cloudinary.js"></script>
+<%= cloudinary_js_config %>
 
 
 
@@ -403,6 +405,7 @@ $(document).ajaxSend(function(e, xhr, options) {
 	var token = $("meta[name='csrf-token']").attr("content");
 	xhr.setRequestHeader("X-CSRF-Token", token);
 });
+
 
 var DEBUGGING = true;
 $(document).ready(function () {
@@ -508,43 +511,18 @@ $(document).ready(function () {
 			}
 	)
 
-	//grabs s3 info
-	<% if defined?(@song.s3_id) %>
-		var s3_id = "<%=@song.s3_id %>"
-	<% else %>
-	    // work around if s3_id not found
-	    var s3_id = "1"
-	<% end %>
-
 	//to rails form submit
 	form_upload_rails();
 
 
 	//direct to s3 upload
-   s3_direct_upload(s3_id);
+   s3_direct_upload();
 	nav_selector();
 
 	$('.adminLink').simpleexpand({'defaultTarget': '.edit-controls'});
 });
 
 
-
-
-function save_s3_meta_name (file_name_ext_remv) {
-	$.ajax({
-		url:"<%=@meta_update_url%>",
-		type: "post",
-		data: {
-			s3_meta_name: file_name_ext_remv
-		},
-		success:
-				function(){console.log("saved")},
-
-		fail:
-				function(){ted_log("S3_meta_failed")}
-
-	})
-};
 
 //	Loads Facebook like button script after ajax call
 $(document).ajaxComplete(function () {
@@ -616,7 +594,7 @@ function loadContent(href) {
 				$(".editScreen").hide();
 			};
 			//for the s3 ajax upload
- 			s3_direct_upload(json.id);
+ 			s3_direct_upload();
 
 			//catches form to do json/ajax upload
 			form_upload_rails();
@@ -630,24 +608,33 @@ function loadContent(href) {
 
 }
 
-function s3_direct_upload(s3_id){
+function s3_direct_upload(){
 	$('.direct-upload').each(function() {
 
-		var form = $(this)
+		var form = $(this);
+		var s3ObjectType = $("#s3_upload").data("object_type");
+		var s3Id = $("#s3_upload").data("object_id");
+		var s3Name = s3Id+".mp3"
+
+        ted_log("s3ObjectType= "+s3ObjectType);
+		ted_log("s3id= "+ s3Id);
+		ted_log("s3 name "+s3Name)
 
 		$(this).fileupload({
 			url: form.attr('action'),
 			type: 'POST',
 			autoUpload: true,
+
+
 			dataType: 'xml', // This is really important as s3 gives us back the url of the file in a XML document
 			add: function (event, data) {
 				$.ajax({
-					url: "/signed_urls",
+					url: "/signed_urls"+"?object="+s3ObjectType,
 					type: 'GET',
 					dataType: 'json',
 //								data: {doc: {title: data.files[0].name}}, // send the file name to the server so it can generate the key param
 
-					data: {doc: {title: s3_id}}, // send the file name to the server so it can generate the key param
+					data: {doc: {title: s3Name}}, // send the file name to the server so it can generate the key param
 					async: false,
 					success: function(ajaxData) {
 						// Now that we have our data, we update the form so it contains all
@@ -668,7 +655,7 @@ function s3_direct_upload(s3_id){
 
 
 						ted_log ('data from server')
-						ted_log (s3_id)
+						ted_log (s3Id)
 						ted_log (ajaxData.key)
 						ted_log (ajaxData.policy)
 						ted_log (ajaxData.signature)
@@ -706,12 +693,26 @@ function s3_direct_upload(s3_id){
 			}
 		})
 	})
-
-
-
-
-
 }
+
+function save_s3_meta_name (file_name_ext_remv) {
+	$.ajax({
+		url:"<%=@meta_update_url%>",
+		type: "post",
+		data: {
+			s3_meta_name: file_name_ext_remv
+		},
+		success:
+				function(){console.log("saved")},
+
+		fail:
+				function(){ted_log("S3_meta_failed")}
+
+	})
+};
+
+
+
 
 function form_upload_rails(){
 	ted_log("In form upload")

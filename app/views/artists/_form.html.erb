@@ -1,3 +1,34 @@
+
+<h3>Artist upload </h3>
+<form action="https://<%=@bucket%>.s3.amazonaws.com" method="post" enctype="multipart/form-data" class='direct-upload'>
+
+	<input type="hidden" name= "key" />
+	<input type="hidden" name= "AWSAccessKeyId" value="AKIAJBCDYICH6VCMN6ZA" />
+	<input type="hidden" name="acl" value="public-read" />
+	<input type="hidden" name="x-amz-meta-my-file-name" value="" />
+	<input type="hidden" name="Content-Disposition" value="" />
+	<input type="hidden" name="policy"/>
+	<input type="hidden" name="signature"/>
+	<input type="hidden" name="success_action_status" value="201" />
+
+	<input type="file" name="file"/>
+
+	<!--- # You can recognize some bootstrap markup here :)-->
+	<!--.progress.progress-striped.active-->
+	<!--.bar-->
+
+</form>
+
+
+
+
+<%= cloudinary_js_config %>
+
+<%= form_for @artist, :html => {:multipart => true}, :validate => true do |f| %>
+
+
+<% end %>
+
 <%= form_for @artist, :html => {:multipart => true}, :html => {:class => 'ajax_update'}, :validate => true do |f| %>
   <% if @artist.errors.any? %>
     <div id="error_explanation">
@@ -19,8 +50,9 @@
   <h2>Upload some images</h2>
   <h3>Your background Image</h3>
   <div class="field">
-    <%=f.file_field :image %>
-    <%=f.hidden_field :image_cache %>
+	  <p>this is working? </p>
+	  <%= cl_image_upload_tag(:image,
+							  :html => {:class => "image_upload"}) %>
   </div>
 
 

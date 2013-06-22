@@ -90,18 +90,29 @@ class SongsController < ApplicationController
 		end
 	end
 
+
+	#renders edit page.  Required for form upload @object_type (song, image, album, whatever) and @id a unique id for  s3 and bucket defines which bucket it should be uploaded too
 	def edit
 
 		@song = Song.find(params[:id])
-		@id = @song.id
+		#makes sure that when url is called (non ajax) the page loads the correct variable.  See admin layout
 		@edit = "true"
 		#finds the assoicated artist
 		@artist = Artist.find(@song.s_a_id)
 		authorize! :update, @artist
 		#searchString  = params[:url_slug]
 		#@artist = Artist.find_by_url_slug(searchString)
+		@id = @song.id
+        @object_type = "song"
+		@bucket = BUCKET
+		@object_id = @song.id
 
+
+		#renders from because at the time of this writing form partials won't load in ajax
 		@form = render_to_string('songs/_form',:layout => false)
+		@s3_upload = render_to_string('shared/_s3_upload_form', :layout => false)
+		@meta_update_url = update_s3_meta_url(@artist.url_slug, @object_id,@object_type)
+
 
 
 		respond_to do |format|
@@ -116,7 +127,7 @@ class SongsController < ApplicationController
 								:layout => false,
 
 						),
-						:"id" => @song.s3_id,
+						 :"id" => @song.s3_id,
 						:"edit" => "true",
 				}
 			}
@@ -149,10 +160,9 @@ class SongsController < ApplicationController
 		end
 	end
 
-	def new
 
-		@s3_key = S3_KEY
-		@bucket = BUCKET
+	#renders edit page.  Required for form upload @object_type (song, image, album, whatever) and @id a unique id for  s3
+	def new
 
 
 		@artist = Artist.find_by_url_slug(params[:url_slug])
@@ -164,16 +174,26 @@ class SongsController < ApplicationController
 		@song.s3_id= @song.id.to_s + ".mp3"
 		@song.save
 
+
+		@s3_key = S3_KEY
+		@bucket = BUCKET
+		@object_type = "song"
 		@object_id = @song.id
 
-		@meta_update_url = update_s3_meta_url(@artist.url_slug, @object_id)
 
 		@form = render_to_string('songs/_form_upload_song',:layout => false)
+		@s3_upload = render_to_string('shared/_s3_upload_form', :layout => false)
+
+		#defines the url to update the s3 meta data (becasue it can't be set on upload #lame')
+		@meta_update_url = update_s3_meta_url(@artist.url_slug, @object_id,@object_type)
 
 		@edit = "true"  #makes sure that when url is called (non ajax) the page loads the correct variable.  See admin layout
 
         logger.info "form"
 		logger.info @form
+
+		logger.info "s3_upload form"
+		logger.info @s3_upload
 
 
 
@@ -243,7 +263,7 @@ class SongsController < ApplicationController
 		if @song.s3_meta_tag.nil?
 
 		else
-			send_s3_meta_s3(@song.id)
+			send_s3_meta_s3(@song.id,'song')
 		end
 
 
@@ -354,12 +374,14 @@ class SongsController < ApplicationController
 		end
 	end
 
+	#comes from view.  Updates the s3 meta column so that the send_s3_meta_s3 logics works.  That being if song name is different then meta name update the meta name on s3
 	def update_s3_meta
 		logger.info "in update_s3_meta"
 		@song = Song.find(params[:song_id])
 		@song.update_column(:s3_meta_tag, params[:s3_meta_name])
 
-		send_s3_meta_s3(params[:song_id])
+		#send data to s3 needs two params song ID and song
+		send_s3_meta_s3(params[:song_id],'song')
 
 		respond_to do |f|
 				f.json {
@@ -373,21 +395,26 @@ class SongsController < ApplicationController
 		logger.info @song.s3_meta_tag
 	end
 
+   #updates the meta data on s3. Checks to see if song name matches meta name, if not it copies the object in s3 giving it the new name (copy in s3 doesnt allow you to change meta data)
+	def send_s3_meta_s3 (song_id,object)
 
-	def send_s3_meta_s3 (song_id)
 
-		@song = Song.find(song_id)
+		if object || params[:object_type] == "song"
+			@song = Song.find(song_id)
 
-	   logger.info "in send_s3_meta"
+		   logger.info "in send_s3_meta"
 
-		if @song.song_name == @song.s3_meta_tag || @song.song_name.nil?
+			if @song.song_name == @song.s3_meta_tag || @song.song_name.nil?
+
+			else
+				find_bucket('song')
+				s3_copy(@song.s3_id,@song.song_name,@bucket,"binary/octet-stream",".mp3")
+
+			end
 
 		else
-
-			s3_copy(@song.s3_id,@song.song_name,BUCKET,"binary/octet-stream",".mp3")
-
+			logger.info "something wrong the the send_s3_meta_s3"
 		end
-
 	end
 
 

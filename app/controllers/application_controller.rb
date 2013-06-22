@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   #Amazon buckets
   BUCKET ='ted_kennedy'
   ALBUM_BUCKET = 'ted_kennedy_album'
+  IMAGE_BUCKET = 'ted_kennedy_image'
+
   S3_KEY="z+DmlVpM1omU5AaTlyRxsqhHiq/57M9CGEQbc+gd"
   #Number of download codes avaible to artist
   CODE_LIMIT = 250
@@ -316,11 +318,20 @@ class ApplicationController < ActionController::Base
 
 		logger.info @album
 	end
-	#For resizing profile picks
-	#def limit_image_url (file_name)
-	#	@name = file_name.split("/")[1]
-	#	@image_url = "http://res.cloudinary.com/hyy026ob8/image/upload/w_50,h_50,c_limit/"+@name
-	#end
+
+
+	#finds bucket based on object paramiter.  Used for S3 upload.
+	def find_bucket(object)
+
+		if object == "song"
+			@bucket = BUCKET
+		elsif object == "album"
+			@bucket = ALBUM_BUCKET
+		elsif object == "image"
+			@bucket = IMAGE_BUCKET
+		end
+
+	end
 end
 
 
