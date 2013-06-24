@@ -612,23 +612,23 @@ function s3_direct_upload(){
 	$('.direct-upload').each(function() {
 
 		var form = $(this);
+
 		var s3ObjectType = $("#s3_upload").data("object_type");
 		var s3Id = $("#s3_upload").data("object_id");
+		var image_type = $("#s3_upload").data("image_type");
 
-
-        ted_log("s3ObjectType= "+s3ObjectType);
+		ted_log("s3ObjectType= "+s3ObjectType);
 		ted_log("s3id= "+ s3Id);
-
+		ted_log("image type="+ image_type)
 
 		$(this).fileupload({
 			url: form.attr('action'),
 			type: 'POST',
 			autoUpload: true,
-
 			dataType: 'xml', // This is really important as s3 gives us back the url of the file in a XML document
 			add: function (event, data) {
 
-				// sets the s3 file name for image b/c need file name and ext
+							// sets the s3 file name for image b/c need file name and ext
 				if(s3ObjectType == "image"){
 					var s3Name = s3Id+data.files[0].name
 				}
@@ -637,7 +637,7 @@ function s3_direct_upload(){
 
 
 				};
-				ted_log("Image s3id= "+s3Id);
+				ted_log("s3id= "+s3Id);
 
 				$.ajax({
 					url: "/signed_urls"+"?object="+s3ObjectType,
@@ -646,6 +646,7 @@ function s3_direct_upload(){
 //								data: {doc: {title: data.files[0].name}}, // send the file name to the server so it can generate the key param
 
 					data: {doc: {title: s3Name}}, // send the file name to the server so it can generate the key param
+
 					async: false,
 					success: function(ajaxData) {
 						// Now that we have our data, we update the form so it contains all
@@ -655,15 +656,18 @@ function s3_direct_upload(){
 						form.find('input[name=signature]').val(ajaxData.signature)
 						//updates S3 Meta Information
 						form.find('input[name=x-amz-meta-my-file-name]').val(data.files[0].name)
-						form.find('input[name=Content-Disposition]').val("attachment;filename="+data.files[0].name)
-						//updates name in form feild
-						var file_name_ext_remv = (data.files[0].name)
-						file_name_ext_remv = file_name_ext_remv.substring(0, file_name_ext_remv.indexOf('.'));
 
-						save_s3_meta_name (file_name_ext_remv)
-						$('input[name="song[song_name]"]').val(file_name_ext_remv)
+						// for attachemts
+						if(s3ObjectType !="image"){
+							ted_log("in update meta for songs and other")
+							form.find('input[name=Content-Disposition]').val("attachment;filename="+data.files[0].name)
+							//updates name in form feild
+							var file_name_ext_remv = (data.files[0].name)
+							file_name_ext_remv = file_name_ext_remv.substring(0, file_name_ext_remv.indexOf('.'));
 
-
+							save_s3_meta_name (file_name_ext_remv)
+							$('input[name="song[song_name]"]').val(file_name_ext_remv)
+						};
 
 						ted_log ('data from server')
 						ted_log (s3Id)
@@ -674,9 +678,10 @@ function s3_direct_upload(){
 					}
 				})
 
+               ted_log("data= "+ data)
+			   ted_log(data.submit());
 
-
-				data.submit();
+//				data.submit();
 			},
 //						send: function(e, data) {
 //							$('.progress').fadeIn();
@@ -694,6 +699,12 @@ function s3_direct_upload(){
 				// Here we get the file url on s3 in an xml doc
 				var url = $(data).find('Location').text()
 				console.log (url)
+
+				if(s3ObjectType !="image"){
+
+
+
+				}
 
 //						$( &#039;#real_file_url&#039; ).val(url) // Update the real input in the other form
 			},

@@ -23,27 +23,12 @@
     <%= f.text_field :name %>
   </div>
 
-  <!--<h2>Upload some images</h2>-->
-  <!--<h3>Your background Image</h3>-->
-  <!--<div class="field">-->
-	  <!--<p>this is working? </p>-->
-	  <%= cl_image_upload_tag(:image,
-							  :html => {:class => "image_upload"}) %>
-  <!--</div>-->
-
 
 	<div class="field">
-		<%= f.label "Use Image for logo?" %><br />
+		<%= f.label "Use Background Image for logo?" %><br />
 		<%= f.check_box :logo_toggle %>
 	</div>
 
-  <H3>Your Artist Profile Pick. Use when your content is shared</H3>
-  <p>Minimum of 200px by 200px please.</p>
-	<div class="field">
-		<%=f.file_field :logo %>
-		<%=f.hidden_field :logo_cache %>
-	</div>
-	</br>
   <h2> For testing</h2>
   <div class="field">
     <%=f.label :url_slug %><br />

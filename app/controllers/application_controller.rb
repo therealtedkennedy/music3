@@ -13,29 +13,7 @@ class ApplicationController < ActionController::Base
   CODE_LIMIT = 250
 
 
-  #
-  #POLICY_DOCUMENT = ActiveSupport::JSON.encode(:expiration => "2012-10-01T00:00:00Z",
-	#				:conditions => [:bucket => BUCKET,
-	#								:'starts-with'=> ["$key", ""],
-	#								#:acl=> "private",
-	#								#:success_action_redirect=> "http://localhost:3000/",
-	#								#:'starts-with'=>["$Content-Type", ""],
-	#								#:'content-length-range' => [0, 1048576]
-	#				]
-  #)
-  POLICY_DOCUMENT = '{"expiration": "2013-01-01T00:00:00Z",
-  "conditions": [
-    [ "eq", "$bucket","'+BUCKET+'"],
-    ["starts-with", "$key", ""],
-    {"acl": "public-read"},
-    {"success_action_redirect": "http://localhost:3000/"},
-    ["starts-with", "$Content-Type", ""],
-    ["content-length-range", 0, 524288000],
-    [ "starts-with", "$x-amz-meta-my-file-name", "" ],
-    [ "starts-with", "$Content-Disposition", "" ],
 
-  ]
-}'
   # Fixes SSL Error - http://www.techques.com/question/1-5360622/Problems-with-SSL-dependent-gems-OAuth2---ActiveMerchant
   #this might be a security problem.
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE

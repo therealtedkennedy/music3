@@ -21,23 +21,39 @@ class SignedUrlsController < ApplicationController
 	# generate the policy document that amazon is expecting.  The policy document defines what fields are required in the post, and values.
 	def s3_upload_policy_document(s3_bucket)
 
+        if s3_bucket == "ted_kennedy_image"  #for forms uploading images
+			Base64.encode64(
+						   {
+							expiration: 30.minutes.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z'),
+							conditions: [
+									{ bucket: s3_bucket },
+									{ acl: 'public-read' },
+									["starts-with", "$key", ""],
+									["starts-with", "$Content-Type", "image"],
+									["content-length-range", 0, 524288000],
+									["starts-with", "$x-amz-meta-my-file-name", ""],
+									{ success_action_status: '201' }
+							]
+					}.to_json
+			).gsub(/\n|\r/, '')
 
-		Base64.encode64(
-				       {
-						expiration: 30.minutes.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z'),
-						conditions: [
-								{ bucket: s3_bucket },
-								{ acl: 'public-read' },
-								["starts-with", "$key", ""],
+		else  #for forms loading attachments
+			Base64.encode64(
+					{
+							expiration: 30.minutes.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z'),
+							conditions: [
+									{ bucket: s3_bucket },
+									{ acl: 'public-read' },
+									["starts-with", "$key", ""],
+									["starts-with", "$Content-Disposition", ""],
+									["content-length-range", 0, 524288000],
+									["starts-with", "$x-amz-meta-my-file-name", ""],
+									{ success_action_status: '201' }
+							]
+					}.to_json
+			).gsub(/\n|\r/, '')
 
-								["starts-with", "$Content-Disposition", ""],
-								#["starts-with", "$Content-Type", ""],
-								["content-length-range", 0, 524288000],
-								["starts-with", "$x-amz-meta-my-file-name", ""],
-								{ success_action_status: '201' }
-						]
- 				}.to_json
-		).gsub(/\n|\r/, '')
+	    end
 
 	end
 

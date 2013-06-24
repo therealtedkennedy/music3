@@ -182,7 +182,7 @@ class SongsController < ApplicationController
 		@object_type = "song"
 		@object_id = @song.s3_id
 
-		logger.info "object id ="+object_id
+
 
 
 		@form = render_to_string('songs/_form_upload_song',:layout => false)
@@ -391,24 +391,5 @@ class SongsController < ApplicationController
 	end
 
 
-	def cors
-		require 'base64'
-		require 'openssl'
-		require 'digest/sha1'
-
-		@policy_test = POLICY_DOCUMENT
-		@song1="testing1"
-		@song2="tesging2"
-
-
-		@policy = Base64.encode64(POLICY_DOCUMENT).gsub("\n", "")
-
-		@signature = Base64.encode64(
-				OpenSSL::HMAC.digest(
-						OpenSSL::Digest::Digest.new('sha1'),
-						'z+DmlVpM1omU5AaTlyRxsqhHiq/57M9CGEQbc+gd', @policy)
-		).gsub("\n", "")
-
-	end
 
 end

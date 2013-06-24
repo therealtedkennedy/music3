@@ -4,12 +4,12 @@
 	<input type="hidden" name= "AWSAccessKeyId" value="AKIAJBCDYICH6VCMN6ZA" />
 	<input type="hidden" name="acl" value="public-read" />
 	<input type="hidden" name="x-amz-meta-my-file-name" value="" />
-	<input type="hidden" name="Content-Disposition" value="" />
+	<input type="hidden" name="Content-Type" value="image" />
 	<input type="hidden" name="policy"/>
 	<input type="hidden" name="signature"/>
 	<input type="hidden" name="success_action_status" value="201" />
 
-	<input type="file" name="file" id="s3_upload" data-object_id="<%= image_name %>" data-object_type="image"/>
+	<input type="file" name="file" id="s3_upload" data-object_id="<%= image_name %>" data-object_type="image" data-image_type="<%=image_type %>" />
 
 	<!--- # You can recognize some bootstrap markup here :)-->
 	<!--.progress.progress-striped.active-->

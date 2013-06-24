@@ -212,9 +212,15 @@ class ArtistsController < ApplicationController
     authorize! :admin, @artist
 
 	bk_image_name = "Three_Repeater-"+@artist.url_slug+"-"
+	@bucket = IMAGE_BUCKET
 
 	@form = render_to_string('artists/_form',:layout => false)
-    @bk_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name}, :layout => false)
+
+	#bk_image_uplosd
+	@bk_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name, :image_type => "bk_image"}, :layout => false)
+
+	#logo Upload
+	@logo_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name, :image_type => "logo"}, :layout => false)
 
 	logger.info "bk form"
 	logger.info @bk_image_upload

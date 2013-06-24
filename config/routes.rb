@@ -24,7 +24,7 @@ Music3::Application.routes.draw do
 
    match "/go_suck_a_fucking_dick/rails_forms_are/dumb_cunts" => "profile_layouts#update_profile_layout"
 
-	match "testing/cors" => "songs#cors", :as => :cors
+
 	#user routing
 
 	devise_scope :user do
