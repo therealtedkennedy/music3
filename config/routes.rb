@@ -59,6 +59,7 @@ Music3::Application.routes.draw do
 	match "/:url_slug" => "artists#show", :as => :artist_link
 	match "/:url_slug/css" => "artists#css", :as => :artist_css
 	match "/:url_slug/edit" => "artists#edit", :as => :edit_artist
+	match "/:url_slug/update-image" => "artists#artist_save_image", :as => :artist_save_image
 
 	match "/:url_slug/new_album" => "albums#new", :as => :add_album
 

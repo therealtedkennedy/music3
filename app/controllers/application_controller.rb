@@ -93,7 +93,7 @@ class ApplicationController < ActionController::Base
 	  @social_twitter_name = artist.twitter_name
 
 	  #Image for twitter and FB
-	  @social_image = artist.logo_url.to_s
+	  @social_image = artist.logo.to_s
 
 	  #------------------------------------------------
 
@@ -119,9 +119,9 @@ class ApplicationController < ActionController::Base
 
 	  #Image for twitter and FB
 	  if album.art.blank?
-		  @social_image = artist.logo_url.to_s
+		  @social_image = artist.logo.to_s
 	  else
-		  @social_image = album.art_url.to_s
+		  @social_image = album.art.to_s
 	  end
 
   end

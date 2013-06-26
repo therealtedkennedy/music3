@@ -287,10 +287,6 @@ class ArtistsController < ApplicationController
 	  #overides the album and or song default facebook url.  For the social promo page, you have to like the artist. this is b/c following an artist is like subscribing to their content
 	  facebook_url(@artist)
 
-
-
-
-
 	  respond_to do |format|
 		  format.html
 		  format.xml
@@ -308,6 +304,38 @@ class ArtistsController < ApplicationController
 
 	  end
   end
+
+
+
+	def artist_save_image
+
+    	@artist = Artist.find_by_url_slug(params[:url_slug])
+
+
+		#build url
+        if params[:type] == "bk_image"
+			@artist.image = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
+            logger.info("in bk image")
+		elsif params[:type] == "logo"
+			@artist.logo = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
+			logger.info("in logo")
+		else
+			logger.info("In artist_save_image. Something is up with the image type paramiter coming from the app admin layout")
+		end
+
+		@artist.save
+
+		logger.info("artist image= "+@artist.image.to_s)
+		logger.info("artist logo= "+@artist.logo.to_s)
+
+		respond_to do |f|
+			f.json {
+				render :json => {
+						:success => true}
+			}
+		end
+
+	end
 end
 
 

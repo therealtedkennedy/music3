@@ -9,7 +9,7 @@
 	<input type="hidden" name="signature"/>
 	<input type="hidden" name="success_action_status" value="201" />
 
-	<input type="file" name="file" id="s3_upload" data-object_id="<%= image_name %>" data-object_type="image" data-image_type="<%=image_type %>" />
+	<input type="file" name="file" class="s3_upload" id="<%=image_type %>" data-object_id="<%= image_name %>" data-object_type="image" />
 
 	<!--- # You can recognize some bootstrap markup here :)-->
 	<!--.progress.progress-striped.active-->

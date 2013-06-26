@@ -2,8 +2,6 @@ class Artist < ActiveRecord::Base
   has_and_belongs_to_many :songs
   has_and_belongs_to_many :albums
   has_and_belongs_to_many :users
-  mount_uploader :image, BkImageUploader
-  mount_uploader :logo, BkImageUploader
   has_one :profile_layout
 
   # Creates Url Slug
