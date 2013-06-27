@@ -90,7 +90,11 @@ class AlbumsController < ApplicationController
     @song_ids = []
 	@meta_update_url = "nohting"
 
+
 	@edit = "true"  #allows new view to load oorrectly when refreshed.  See artist admin layout
+
+	#loads image forms
+	image_upload_prep(@artist,@album)
 
 	@form = render_to_string('albums/_form',:layout => false)
 
@@ -117,6 +121,9 @@ class AlbumsController < ApplicationController
     @artist = Artist.find(@album.al_a_id)
     authorize! :update, @artist
 	@edit = "true" #allows edit page to load correctly when page is refreshed
+
+	#loads image forms
+	image_upload_prep(@artist,@album)
 
    #For Check Box - Creates an Array of song Id's for a particular artist to select songs that already exsist
     @song_ids = Array.new
@@ -489,6 +496,46 @@ class AlbumsController < ApplicationController
 		end
 
 	end
+
+
+ #sets up image upload forms for s3
+   def image_upload_prep(artist,album)
+
+	   album_art_image_name = "Three_Repeater-"+artist.url_slug+"-"+album.album_url_slug+"-"
+	   @bucket = IMAGE_BUCKET
+
+	   @image_save_location = album_save_image_url(artist.url_slug,album.album_url_slug)
+
+	   #bk_image_uplosd
+	   @album_art_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => album_art_image_name, :image_type => "ablum_image", :image_save_url => @image_save_location}, :layout => false)
+
+	   logger.info "bk form"
+	   logger.info @bk_image_upload
+
+   end
+
+  #saves image location from s3.
+   def album_save_image
+
+	   @album = Album.find_by_album_url_slug(params[:album_url_slug])
+	   @artist = Artist.find_by_url_slug(params[:url_slug])
+
+       @album.art = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+@album.album_url_slug+"-"+params[:file_name]
+
+	   @album.save
+
+	   logger.info("artist image= "+@album.art.to_s)
+
+	   respond_to do |f|
+
+			   f.json {
+				   render :json => {
+						   :success => true}
+			   }
+
+	   end
+
+   end
 
 
 end

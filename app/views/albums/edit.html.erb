@@ -1,6 +1,12 @@
 <div class="editPage">
 	<h1>Editing album</h1>
 
+	<h2>Album Art Upload</h2>
+	<p>Minimum of 200px by 200px please.</p>
+	<%= @album_art_upload.html_safe  %>
+
+	<h2>Rest of info</h2>
+
 	<%= @form.html_safe %>
 
 	<%= link_to 'Show', @album %>  |

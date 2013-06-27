@@ -614,6 +614,7 @@ function s3_direct_upload(){
 		var form = $(this);
 		var s3ObjectType = $(".s3_upload").data("object_type");
 		var s3Id = $(".s3_upload").data("object_id");
+		var image_save_location = $(".s3_upload").data("object_image_save_url");
 
 		var imageType
 		var s3_file_name
@@ -710,8 +711,10 @@ function s3_direct_upload(){
 				ted_log(data)
 
 			    if (s3ObjectType == "image"){
+
+					ted_log("in save image file")
 					$.ajax({
-						url:"<%= artist_save_image_url(@artist.url_slug)%>",
+						url:image_save_location,
 						type: "post",
 						data: {
 							type: imageType,

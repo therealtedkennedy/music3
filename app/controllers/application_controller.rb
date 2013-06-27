@@ -143,7 +143,7 @@ class ApplicationController < ActionController::Base
 	  @social_twitter_name = artist.twitter_name
 
 	  #Image for twitter and FB
-	  @social_image = artist.logo_url.to_s
+	  @social_image = artist.logo.to_s
 
 	  #------------------------------------------------
 

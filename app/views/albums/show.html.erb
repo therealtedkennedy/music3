@@ -47,7 +47,7 @@
 <div id="fb-root"></div>
 <div class="backPane"></div>
 <div class="leftPane">
-	<div><img src="<%= @album.art %>" /><br>
+	<div><img src="<%= @album.art.to_s %>" /><br>
 		<p><%=link_to "Play", album_playlist_create_path(@artist.url_slug, @album.album_url_slug), :class =>"load-playlist" %></p>
 	</div>
 </div>

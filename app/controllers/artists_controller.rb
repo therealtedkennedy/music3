@@ -89,6 +89,9 @@ class ArtistsController < ApplicationController
   def new
     @artist = Artist.new
 
+	image_upload_prep(@artist)
+
+
 	@form = render_to_string('artists/_form',:layout => false)
 
     respond_to do |format|
@@ -211,19 +214,9 @@ class ArtistsController < ApplicationController
     @artist = Artist.find_by_url_slug(params[:url_slug])
     authorize! :admin, @artist
 
-	bk_image_name = "Three_Repeater-"+@artist.url_slug+"-"
-	@bucket = IMAGE_BUCKET
+	image_upload_prep(@artist)
 
 	@form = render_to_string('artists/_form',:layout => false)
-
-	#bk_image_uplosd
-	@bk_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name, :image_type => "bk_image"}, :layout => false)
-
-	#logo Upload
-	@logo_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name, :image_type => "logo"}, :layout => false)
-
-	logger.info "bk form"
-	logger.info @bk_image_upload
 
 	@edit = "true" #see new
 
@@ -241,6 +234,28 @@ class ArtistsController < ApplicationController
 			}
 		}
 	end
+
+  end
+
+  #sets variables and loads forms for image uploads
+  def image_upload_prep(artist)
+
+	  bk_image_name = "Three_Repeater-"+artist.url_slug+"-"
+	  @bucket = IMAGE_BUCKET
+
+	  @image_save_location = artist_save_image_url(@artist.url_slug)
+
+	  logger.info("save image location")
+	  logger.info(@image_save_location)
+
+	  #bk_image_uplosd
+	  @bk_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name, :image_type => "bk_image", :image_save_url =>@image_save_location}, :layout => false)
+
+	  #logo Upload
+	  @logo_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name, :image_type => "logo", :image_save_url => @image_save_location}, :layout => false)
+
+	  logger.info "bk form"
+	  logger.info @bk_image_upload
 
   end
 
@@ -312,6 +327,7 @@ class ArtistsController < ApplicationController
     	@artist = Artist.find_by_url_slug(params[:url_slug])
 
 
+
 		#build url
         if params[:type] == "bk_image"
 			@artist.image = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
@@ -323,16 +339,23 @@ class ArtistsController < ApplicationController
 			logger.info("In artist_save_image. Something is up with the image type paramiter coming from the app admin layout")
 		end
 
-		@artist.save
+
 
 		logger.info("artist image= "+@artist.image.to_s)
 		logger.info("artist logo= "+@artist.logo.to_s)
 
 		respond_to do |f|
-			f.json {
-				render :json => {
-						:success => true}
-			}
+			if @artist.save
+				f.json {
+					render :json => {
+							:success => true}
+				}
+			else
+				f.json {
+					render :json => {
+							:success => false}
+				}
+			end
 		end
 
 	end

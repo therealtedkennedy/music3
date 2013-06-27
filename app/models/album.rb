@@ -2,11 +2,8 @@ class Album < ActiveRecord::Base
   has_and_belongs_to_many :songs
   has_and_belongs_to_many :artists
   has_and_belongs_to_many :users
-  mount_uploader :art, BkImageUploader
   has_many :album_codes, :foreign_key => "code_album_id"
   has_many :orders
-
-
 
 
 
