@@ -614,7 +614,8 @@ function s3_direct_upload(){
 		var form = $(this);
 		var s3ObjectType = $(".s3_upload").data("object_type");
 		var s3Id = $(".s3_upload").data("object_id");
-		var s3_file_name = $(".s3_upload").attr('id');
+		var imageType
+		var s3_file_name
 
 		$(this).fileupload({
 
