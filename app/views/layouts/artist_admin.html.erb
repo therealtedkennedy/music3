@@ -619,6 +619,7 @@ function s3_direct_upload(){
 		var imageType
 		var s3_file_name
 
+
 		$(this).fileupload({
 
 			url: form.attr('action'),
@@ -666,6 +667,8 @@ function s3_direct_upload(){
 							//updates S3 Meta Information
 							form.find('input[name=x-amz-meta-my-file-name]').val(data.files[0].name)
 
+
+
 							// for attachemts
 							if(s3ObjectType !="image"){
 								ted_log("in update meta for songs and other")
@@ -687,10 +690,15 @@ function s3_direct_upload(){
 						}
 					})
 
-				   ted_log("data= "+ data)
-				   ted_log(data.submit());
 
-	//				data.submit();
+
+				   var file_status = file_size_check(s3ObjectType,data.files[0].size);
+				   ted_log("File status= "+file_status);
+
+				   if(file_status == "true"){
+					   ted_log("data= "+ data)
+						data.submit();
+				   };
 				},
 	//						send: function(e, data) {
 	//							$('.progress').fadeIn();
@@ -756,6 +764,33 @@ function save_s3_meta_name (file_name_ext_remv) {
 	})
 };
 
+// client side validation of file size
+function file_size_check(type,size){
+
+	if(type == "image"){
+		if (size > 1048576){
+			alert("Image File exceeds 1 MB, please reduce the size and re upload")
+			ted_log("File size is too large.  File is= "+size)
+
+			return false
+		} else {
+			return true
+		}
+	} else {
+
+		if (size > 104857600){
+			alert("Song file exceeds 100MB, please reduce the size and re upload")
+			ted_log("File size is too large.  File is= "+size)
+
+			return false
+		} else {
+			return true
+		}
+
+	};
+
+
+}
 
 
 

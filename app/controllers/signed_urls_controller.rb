@@ -30,7 +30,7 @@ class SignedUrlsController < ApplicationController
 									{ acl: 'public-read' },
 									["starts-with", "$key", ""],
 									["starts-with", "$Content-Type", "image"],
-									["content-length-range", 0, 524288000],
+									["content-length-range", 0, 1048576],
 									["starts-with", "$x-amz-meta-my-file-name", ""],
 									{ success_action_status: '201' }
 							]
@@ -46,7 +46,7 @@ class SignedUrlsController < ApplicationController
 									{ acl: 'public-read' },
 									["starts-with", "$key", ""],
 									["starts-with", "$Content-Disposition", ""],
-									["content-length-range", 0, 524288000],
+									["content-length-range", 0, 104857600],
 									["starts-with", "$x-amz-meta-my-file-name", ""],
 									{ success_action_status: '201' }
 							]
