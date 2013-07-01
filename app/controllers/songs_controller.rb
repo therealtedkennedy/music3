@@ -115,7 +115,8 @@ class SongsController < ApplicationController
 		#updates s3 meta data. takes artist slug, object id (for song, album ect.  if one doesn't exist =1), and object type (song,album,image ect)
 		@meta_update_url = update_s3_meta_url(@artist.url_slug,@song.id,@object_type)
 
-
+		#preps image form
+		image_upload_prep(@artist,@song)
 
 		respond_to do |format|
 			format.html {render :layout => 'artist_admin'}
@@ -199,8 +200,8 @@ class SongsController < ApplicationController
 		logger.info "s3_upload form"
 		logger.info @s3_upload
 
-
-
+        #preps form for image upload
+		image_upload_prep(@artist,@song)
 
 		respond_to do |format|
 			format.html {render :locals => {:partial => "form_upload_song"},:layout => 'artist_admin'}
@@ -378,6 +379,46 @@ class SongsController < ApplicationController
 		end
 	end
 
+
+	#sets up image upload forms for s3
+	def image_upload_prep(artist,song)
+
+		logger.info("in image prep")
+		logger.info artist
+		logger.info song
+
+		song_image_name = "Three_Repeater-"+artist.url_slug+"-"+song.id.to_s+"-"
+		@bucket = IMAGE_BUCKET
+
+		@image_save_location = song_save_image_url(artist.url_slug,song.id.to_s)
+
+		#song_image_uplosd
+		@song_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => song_image_name, :image_type => "song_image", :image_save_url => @image_save_location}, :layout => false)
+
+	end
+
+	#saves image location from s3.
+	def song_save_image
+
+		@song = Song.find(params[:song_id])
+		@artist = Artist.find_by_url_slug(params[:url_slug])
+
+		@song.image = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+@song.id.to_s+"-"+params[:file_name]
+
+		@song.update_column(:image,@song.image)
+
+		logger.info("song image= "+@song.image.to_s)
+
+		respond_to do |f|
+
+			f.json {
+				render :json => {
+						:success => true}
+			}
+
+		end
+
+	end
 
 
 

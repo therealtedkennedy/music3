@@ -89,8 +89,6 @@ class ArtistsController < ApplicationController
   def new
     @artist = Artist.new
 
-	image_upload_prep(@artist)
-
 
 	@form = render_to_string('artists/_form',:layout => false)
 

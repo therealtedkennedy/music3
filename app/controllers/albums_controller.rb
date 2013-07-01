@@ -501,10 +501,10 @@ class AlbumsController < ApplicationController
  #sets up image upload forms for s3
    def image_upload_prep(artist,album)
 
-	   album_art_image_name = "Three_Repeater-"+artist.url_slug+"-"+album.album_url_slug+"-"
+	   album_art_image_name = "Three_Repeater-"+artist.url_slug+"-"+album.id.to_s+"-"
 	   @bucket = IMAGE_BUCKET
 
-	   @image_save_location = album_save_image_url(artist.url_slug,album.album_url_slug)
+	   @image_save_location = album_save_image_url(artist.url_slug,album.id.to_s)
 
 	   #bk_image_uplosd
 	   @album_art_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => album_art_image_name, :image_type => "ablum_image", :image_save_url => @image_save_location}, :layout => false)
@@ -517,12 +517,12 @@ class AlbumsController < ApplicationController
   #saves image location from s3.
    def album_save_image
 
-	   @album = Album.find_by_album_url_slug(params[:album_url_slug])
+	   @album = Album.find(params[:album_id])
 	   @artist = Artist.find_by_url_slug(params[:url_slug])
 
-       @album.art = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+@album.album_url_slug+"-"+params[:file_name]
+       @album.art = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+@album.id.to_s+"-"+params[:file_name]
 
-	   @album.save
+	   @album.update_column(:art,@album.art)
 
 	   logger.info("artist image= "+@album.art.to_s)
 
@@ -532,7 +532,6 @@ class AlbumsController < ApplicationController
 				   render :json => {
 						   :success => true}
 			   }
-
 	   end
 
    end

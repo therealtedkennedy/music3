@@ -60,7 +60,6 @@ Music3::Application.routes.draw do
 	match "/:url_slug/css" => "artists#css", :as => :artist_css
 	match "/:url_slug/edit" => "artists#edit", :as => :edit_artist
 	match "/:url_slug/update-image" => "artists#artist_save_image", :as => :artist_save_image
-
 	match "/:url_slug/new_album" => "albums#new", :as => :add_album
 
     #s3 update
@@ -95,7 +94,7 @@ Music3::Application.routes.draw do
 	match "/:url_slug/album/download/:album_url_slug" => "albums#download_album", :as => :album_download
 	match ":url_slug/album/:album_url_slug/playlist-create" => "albums#album_play_list_create", :as => :album_playlist_create
     match ":url_slug/album/:album_url_slug/:id" => "albums#edit", :as => :album_edit
-	match "/:url_slug/update-image/:album_url_slug" => "albums#album_save_image", :as => :album_save_image
+	match "/:url_slug/update-image/:album_id" => "albums#album_save_image", :as => :album_save_image
 
 	#albums code routing
 	match "/:url_slug/album/create-code/:id" => "album_code#show", :as => :album_create_code
@@ -120,8 +119,9 @@ Music3::Application.routes.draw do
 	match "/:url_slug/song/:song_url_slug" => "songs#show", :as => :artist_show_song
 	match "/api/incrementPlayCount/:song_id" => "songs#song_play_counter", :as => :song_play_counter
 	# match "/:url_slug/song/:song_url_slug/edit => "
-	match "/:url_slug/song/:song_id/delete" => "songs#destroy", :as => "song_destroy"
+	match "/:url_slug/song-delete/:song_id" => "songs#destroy", :as => "song_destroy"
 	match "/:url_slug/song/:song_url_slug/edit/:id" => "songs#edit", :as => :song_edit
+	match "/:url_slug/song-image-save/:song_id" => "songs#song_save_image", :as => :song_save_image
 
 	#get "songs/index"
 	get "songs/upload"
