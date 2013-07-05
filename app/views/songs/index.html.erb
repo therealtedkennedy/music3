@@ -16,13 +16,15 @@
 			<% unless song.s3_id.nil? %>
 
 				<tr>
-					<td><a href="<%= download_url_for(song.s3_id) %>"
+					<td style="max-width:60px;"><a href="<%= download_url_for(song.s3_id) %>"
 							   data-song-name="<%= song.song_name %>"
 							   data-artist-name="<%= @artist.name %>"
 							   data-song-id="<%= song.id %>"
-							   class="music-button">IMAGE</a></td>
+							   class="music-button"><% if song.image.nil? %>PLAY 
+								<% else %>
+								<img src="<%=song.image %>" style="max-width:100px;"/><% end %></a></td>
 					<td><%= link_to song.song_name, artist_show_song_path(@artist.url_slug, song.song_url_slug), :class => "content-link" %> </td>
-					<td>ALBUM NAME</td>
+					<td><%= @artist.albums[@artist.albums.find_index {|item| item.id == song.s_a_id}].al_name %></td>
 					<td>SONG LENGTH</td>
 					<td><img src="../../../images/btn-buy.png"/></td>
 				</tr>
