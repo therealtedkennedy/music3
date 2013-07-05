@@ -12,13 +12,12 @@ Music3::Application.routes.draw do
 
 	root :to => "homepage#index"
 	#orders
-	match "orders/paypal/express/:object/:url_slug/:song_album_or_event_slug" => "orders#express", :as => :express_new_order, :via => :get
-	match "orders/paypal/to_express/new/:url_slug/:album_id" => "orders#new", :as => :new_order_w_album_id
-	match "orders/paypal/to_chained/:object/:url_slug/:song_album_or_event_slug" => "orders#chained_payment", :as => :chained_payment
-	match "orders/paypal/to_free_download/:object/:url_slug/:song_album_or_event_slug" => "orders#free_download", :as => :download_free
+
+	match "orders/paypal/to_chained/:object/:url_slug/:song_album_or_event_id" => "orders#chained_payment", :as => :chained_payment
+	match "orders/paypal/to_free_download/:object/:url_slug/:song_album_or_event_id" => "orders#free_download", :as => :download_free
 	match "orders/pwyc" => "orders#pwyc", :as => :pwyc_form #route  pwyc form
-	match "orders/payment_method/:object/:url_slug/:song_album_or_event_slug" => "orders#payment_method", :as => :payment_method
-	match "orders/paypal/login_prompt" => "orders#login_prompt", :as => :login_prompt
+	match "orders/payment_method/:object/:url_slug/:song_album_or_event_id" => "orders#payment_method", :as => :payment_method
+	match "orders/paypal/login_prompt" => "orders#login_prompt", :as => :login_prompt #not sure if this is used anymore
 
 
 

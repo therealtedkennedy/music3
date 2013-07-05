@@ -159,23 +159,23 @@ class ApplicationController < ActionController::Base
 
   #not sure if  this is used anymore
 
- def user_auth_redirect_path
-	 cookies[:object] = {
-			 :value => params[:object],
-			 :expires => 30.minutes.from_now
-	 }
-
-	 cookies[:artist] = {
-			 :value => params[:url_slug],
-			 :expires => 30.minutes.from_now
-	 }
-
-	 cookies[:song_album_or_event_slug] = {
-			 :value => params[:song_album_or_event_slug],
-			 :expires => 30.minutes.from_now
-	 }
-
- end
+ #def user_auth_redirect_path
+	# cookies[:object] = {
+	#		 :value => params[:object],
+	#		 :expires => 30.minutes.from_now
+	# }
+ #
+	# cookies[:artist] = {
+	#		 :value => params[:url_slug],
+	#		 :expires => 30.minutes.from_now
+	# }
+ #
+	# cookies[:song_album_or_event_slug] = {
+	#		 :value => params[:song_album_or_event_slug],
+	#		 :expires => 30.minutes.from_now
+	# }
+ #
+ #end
 
 
   before_filter :instantiate_controller_and_action_names
@@ -259,11 +259,11 @@ class ApplicationController < ActionController::Base
   end
 
   #assigns an object to a user (album, artist, song, ticket, anything you want)
-  def assign_to_user (object,object_url_slug)
+  def assign_to_user (object,object_id)
 	  logger.info "in assign_to_user"
     if object == "album"
       @user = User.find(current_user.id)
-      @album = Album.find_by_album_url_slug(object_url_slug)
+      @album = Album.find(object_id)
       @album.users << @user
       @album.save
       cookies[:object] = {:expires => 1.year.ago}

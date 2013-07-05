@@ -1,11 +1,3 @@
 <h1>Time to pay up</h1>
 
-
-<%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_new_order_path(params[:object], params[:url_slug], params[:song_album_or_event_slug]) %>
-
-<h3>Or </h3>
-
-
-<h3><%= link_to "Pay With Credit Card", new_order_w_album_id_path(params[:url_slug],params[:song_album_or_event_slug])%> </h3>
-
 <h3><%= link_to "Chained Payment", chained_payment_path(params[:object], params[:url_slug], params[:song_album_or_event_slug],:amount => params[:amount]) %> </h3>

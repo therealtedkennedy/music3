@@ -64,6 +64,7 @@ class UsersController < Devise::SessionsController
   end
 
    def assign_object_user
+
 	   assign_to_user (cookies[:object]),(cookies[:song_album_or_event_slug])
    end
 

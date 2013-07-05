@@ -47,7 +47,7 @@
 <div id="fb-root"></div>
 <div class="backPane"></div>
 <div class="leftPane">
-	<div><img src="<%= @album.art.to_s %>" /><br>
+	<div><img src="<%= @album.art%>" /><br>
 		<p><%=link_to "Play", album_playlist_create_path(@artist.url_slug, @album.album_url_slug), :class =>"load-playlist" %></p>
 	</div>
 </div>
@@ -58,7 +58,7 @@
 
 		<% if @album.pay_type == "pay" %>
 
-			<%= link_to "Buy Now: Only $"+@album.al_amount.to_s+"!", payment_method_path("album",@artist.url_slug,@album.album_url_slug ) %>
+			<%= link_to "Buy Now: Only $"+@album.al_amount.to_s+"!", payment_method_path("album",@artist.url_slug,@album.id ) %>
 
 		<% elsif @album.pay_type == "pwyc" %>
 
@@ -71,7 +71,7 @@
 				});
 			</script>
 
-			<form accept-charset="UTF-8" action="<%=payment_method_path("album",@artist.url_slug,@album.album_url_slug )%>" class="pwyc_form" enctype="multipart/form-data" data-validate="true"  method="post" novalidate="novalidate"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" />
+			<form accept-charset="UTF-8" action="<%=payment_method_path("album",@artist.url_slug,@album.id )%>" class="pwyc_form" enctype="multipart/form-data" data-validate="true"  method="post" novalidate="novalidate"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" />
 
 
 				<input name="authenticity_token" id="token" type="hidden" value=""/></div>
@@ -86,7 +86,7 @@
 				<!--defines the type of object it is-->
 				<input id="object" name="object" type="hidden" value="album" />
 				<input id="url_slug" name="url_slug" type="hidden" value="<%= @artist.url_slug %>" />
-				<input id="song_album_or_event_slug" name="song_album_or_event_slug" type="hidden" value="<%=@album.album_url_slug%>" />
+				<input id="song_album_or_event_id" name="song_album_or_event_slug" type="hidden" value="<%=@album.id%>" />
 
 
 
@@ -94,7 +94,7 @@
 
 		<% else %>
 
-			<h3><%= link_to "Download Free",download_free_path("album",@artist.url_slug,@album.album_url_slug) %></h3>
+			<h3><%= link_to "Download Free",download_free_path("album",@artist.url_slug,@album.id) %></h3>
 
 		<% end %>
 

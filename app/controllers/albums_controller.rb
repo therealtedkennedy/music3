@@ -41,7 +41,7 @@ class AlbumsController < ApplicationController
 
 	#Finds Album.  In application Controller
 
-  @album = Album.find_by_album_url_slug(params[:album_url_slug])
+  @album = @artist.albums.find_by_album_url_slug(params[:album_url_slug])
 
 	logger.info "album"
 	logger.info @album
@@ -386,7 +386,7 @@ class AlbumsController < ApplicationController
 
 	unless current_user.blank?
 		logger.info "user is signed in"
-		assign_to_user("album",@album.album_url_slug)
+		assign_to_user("album",@album.id)
 	end
 
 	# deletes the download cookie so that muliple downloads won't happen
@@ -462,7 +462,7 @@ class AlbumsController < ApplicationController
 	#creates album playlist
 	def album_play_list_create
         @artist = Artist.find_by_url_slug(params[:url_slug])
-		@album = Album.find_by_album_url_slug(params[:album_url_slug])
+		@album = @artist.albums.find_by_album_url_slug(params[:album_url_slug])
 
 		@songs_for_playlist = Array.new
 		#@songs_for_playlist << "{
