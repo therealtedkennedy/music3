@@ -835,10 +835,10 @@ function nav_selector(){
 		$(nav_id).addClass("selected")
 	});
 
-
-
-
 }
+
+
+
 
 
 //was for changing meta information on content load
@@ -986,7 +986,7 @@ function ted_log() {
 		<h1><%= link_to @artist.name, artist_link_path(@artist.url_slug) %></h1>
 
 
-		<%= link_to 'Destroy', @artist, :method => :delete, :confirm => 'Are you sure?' %>
+		<%= link_to "Delete Artist", pre_delete_path(@artist.url_slug)%>
 
 		<h2><%= link_to 'Admin', artist_admin_path(@artist.url_slug), :class => "content-link" %></h2>
 

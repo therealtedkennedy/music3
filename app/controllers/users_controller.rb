@@ -57,7 +57,7 @@ class UsersController < Devise::SessionsController
 		redirect_to(show_user_path(current_user.id))
 	else
     #this is the part is currently not being used
-		redirect_to(payment_method_path(cookies[:object],cookies[:artist],cookies[:song_album_or_event_slug]))
+		redirect_to(payment_method_path(cookies[:object],cookies[:artist],cookies[:song_album_or_event_id]))
 		# deletes the download cookie so that muliple downloads won't happen
 		cookies[:artist] = {:expires => 1.year.ago}
     end
@@ -65,7 +65,7 @@ class UsersController < Devise::SessionsController
 
    def assign_object_user
 
-	   assign_to_user (cookies[:object]),(cookies[:song_album_or_event_slug])
+	   assign_to_user (cookies[:object]),(cookies[:song_album_or_event_id])
    end
 
    def boo

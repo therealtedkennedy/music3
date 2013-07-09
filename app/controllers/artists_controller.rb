@@ -9,7 +9,7 @@ class ArtistsController < ApplicationController
 
   #changes from default layout to custom layout
 
-  layout "artist_admin", only: [:show, :admin, :update, :social_promo]
+  layout "artist_admin", only: [:show, :admin, :update, :social_promo, :pre_delete]
 
 
 
@@ -212,10 +212,13 @@ class ArtistsController < ApplicationController
     @artist = Artist.find_by_url_slug(params[:url_slug])
     authorize! :admin, @artist
 
+	@artist_test="blah"
+
 	image_upload_prep(@artist)
 
 	@form = render_to_string('artists/_form',:layout => false)
 
+	#varable to remove defualt artist loading.  Loads the edit layout insted
 	@edit = "true" #see new
 
 	respond_to do |format|
@@ -318,7 +321,22 @@ class ArtistsController < ApplicationController
 	  end
   end
 
+    def pre_delete
 
+		@artist = Artist.find_by_url_slug(params[:url_slug])
+
+		 authorize! :destroy, @artist
+
+		#varable to remove defualt artist loading.  Loads the edit layout insted
+		@edit = "true" #see new
+
+		respond_to do |format|
+			format.html {render :layout => 'artist_admin'}
+			format.xml { render :xml => @artists }
+
+		end
+
+	end
 
 	def artist_save_image
 

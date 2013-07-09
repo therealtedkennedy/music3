@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
 
 
 	#checks if user has downloaded already
-    downloaded_already(params[:song_album_or_event_slug])
+    downloaded_already(params[:song_album_or_event_id])
 
 
   end
@@ -66,7 +66,7 @@ class OrdersController < ApplicationController
 
   def express
 
-  payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_slug], params[:amount])
+  payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_id], params[:amount])
   #your at minute 8:28...have to figure out how this works and what this does
   response = EXPRESS_GATEWAY.setup_purchase(@amount*100,
     :ip => request.remote_ip,
@@ -82,9 +82,9 @@ class OrdersController < ApplicationController
   #sets up cookies for payment process
   def free_download
 	#checks if user has downloaded already
-	downloaded_already(params[:song_album_or_event_slug])
+	downloaded_already(params[:song_album_or_event_id])
 
-	payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_slug], params[:amount])
+	payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_id], params[:amount])
 	redirect_to (login_prompt_url)
   end
 
@@ -92,7 +92,7 @@ class OrdersController < ApplicationController
 	def pwyc
 
 		#space param is a work around ?redir="true" is being added to the last paramter in this path..i have no idea why
-		redirect_to payment_method_path(params[:object], params[:url_slug], params[:song_album_or_event_slug],:amount => params[:amount],:space => "blah")
+		redirect_to payment_method_path(params[:object], params[:url_slug], params[:song_album_or_event_id],:amount => params[:amount],:space => "blah")
 	end
 
 
@@ -100,7 +100,7 @@ class OrdersController < ApplicationController
   #uses https://github.com/jpablobr/active_paypal_adaptive_payment
   # SSL error - http://stackoverflow.com/questions/4528101/ssl-connect-returned-1-errno-0-state-sslv3-read-server-certificate-b-certificat
 
-  payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_slug], params[:amount])
+  payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_id], params[:amount])
   logger.info "amount in chained payment"
   logger.info @amount
   logger.info "Artist?"
@@ -135,7 +135,7 @@ class OrdersController < ApplicationController
   end
 
   #creates download link, payment amount, and object vars, and sets a cookie
- def payment_prep(object,artist_url_slug,song_album_or_event_slug,amount)
+ def payment_prep(object,artist_url_slug,song_album_or_event_id,amount)
 	   @object = object
 
        logger.info "params amount"
@@ -146,9 +146,9 @@ class OrdersController < ApplicationController
 	   #prep for album
 
 	   if @object == "album"
-		 @album = Album.find_by_album_url_slug(song_album_or_event_slug)
-		 @download_url = album_download_url(artist_url_slug,song_album_or_event_slug)
-		 @cnx_url = artist_show_album_url(artist_url_slug,song_album_or_event_slug)
+		 @album = Album.find(song_album_or_event_id)
+		 @download_url = album_download_url(artist_url_slug,@album.album_url_slug)
+		 @cnx_url = artist_show_album_url(artist_url_slug,@album.album_url_slug)
 
 		 if @album.pay_type == "pay"
 			 @amount = @album.al_amount
@@ -171,8 +171,8 @@ class OrdersController < ApplicationController
 		 logger.info @amount
 	   else
 
-	   #don't know why this didn't work. Just did the calculation in the chained payment model
-	   #@amount_to_artist = "%.2f" % (@amount*0.85)
+	#how much the artist makes is calculated in the chained payment model
+
 
 	  end
 
@@ -191,8 +191,8 @@ class OrdersController < ApplicationController
 
 			 }
 
-		 cookies[:song_album_or_event_slug] = {
-			:value => [song_album_or_event_slug],
+		 cookies[:song_album_or_event_id] = {
+			:value => [song_album_or_event_id],
 			:expires => 30.minutes.from_now
 
 		   }

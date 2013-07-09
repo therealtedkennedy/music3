@@ -60,6 +60,7 @@ Music3::Application.routes.draw do
 	match "/:url_slug/edit" => "artists#edit", :as => :edit_artist
 	match "/:url_slug/update-image" => "artists#artist_save_image", :as => :artist_save_image
 	match "/:url_slug/new_album" => "albums#new", :as => :add_album
+	match "/:url_slug/delete" => "artists#pre_delete", :as => :pre_delete
 
     #s3 update
 	match "/:url_slug/add_song/update-s3-meta/:object_id/:object_type" => "s3_upload#update_s3_meta", :as => "update_s3_meta"

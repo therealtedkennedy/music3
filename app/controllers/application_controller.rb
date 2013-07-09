@@ -267,7 +267,7 @@ class ApplicationController < ActionController::Base
       @album.users << @user
       @album.save
       cookies[:object] = {:expires => 1.year.ago}
-      cookies[:song_album_or_event_slug] = {:expires => 1.year.ago}
+      cookies[:song_album_or_event_id] = {:expires => 1.year.ago}
     end
   end
 
