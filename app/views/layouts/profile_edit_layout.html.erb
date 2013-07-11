@@ -303,6 +303,9 @@
 </style>
 
 <%= stylesheet_link_tag :all %>
+
+<link type="text/css" rel="stylesheet" href="/<%= @artist.url_slug %>/css" media="screen">
+
 <%= javascript_include_tag 'jquery-1.8.3', 'rails.validations', 'jquery.backstretch.min', 'showHide' %>
 <%#= javascript_include_tag 'jquery-1.6.3','rails.validations', 'jquery.backstretch.min'%>
 
@@ -505,6 +508,8 @@
 
 				}
 		)
+	//shows the edit controls. Hidden by defualt
+	$('.edit-controls').show();
 	});
 
 
@@ -768,7 +773,7 @@
 
 </div>
 
-<div class="edit-controls">
+<div class="edit-controls" >
 	<h1>From Edit Layout</h1>
 	<h3><%= link_to 'Back to Admin', artist_admin_path(@artist.url_slug)%></h3>
 
@@ -791,12 +796,22 @@
 	<div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
+<div class="bodyArea">
+	<div class="editScreen"></div>
+	<div class="floatingContent">
+		<div class="artistLogoArea"><a href="/<%= @artist.url_slug %>/?promo=true" class="content-link">
+			<% if @artist.logo_toggle == true %>
+				<img src="<%= @artist.logo %>" /></a>
+			<% else %>
+				<h1><%= @artist.name %></h1>
+			<%end%>
+			</a>
 
-
-<div id="content">
-
-	<%= yield %>
-
+			</div>
+		<div class="navArea"><a href="/<%= @artist.url_slug %>" class="content-link navLink"><div class="nav <%=@tag_info %>" id="info">INFO</div></a><a href="<%= artist_show_songs_path %>" class="content-link navLink"><div class="nav" id="songs">SONGS</div></a><a href="<%= artist_show_albums_path %>" class="content-link navLink"><div class="nav" id="albums">ALBUMS</div></a>
+		</div>
+		<div class="miniPage" id="content"><%= yield %></div>
+	</div>
 </div>
 
 </div>
