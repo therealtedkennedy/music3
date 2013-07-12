@@ -11,6 +11,7 @@ class Album < ActiveRecord::Base
 before_update :generate_slug
 
 #validates_presence_of :al_name
+validates_presence_of :al_name, :on => :update
 validates_uniqueness_of :al_name, :scope => :al_a_id, :case_sensitive => false, :allow_nil => :true
 
 

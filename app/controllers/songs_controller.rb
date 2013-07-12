@@ -172,10 +172,11 @@ class SongsController < ApplicationController
 		@song = Song.new
 		@artist_id = @artist.id
 		@song.s_a_id = @artist.id
-		@song.save
-
 		@song.s3_id= @song.id.to_s + ".mp3"
 		@song.save
+
+		#@song.s3_id= @song.id.to_s + ".mp3"
+		#@song.save
 
 
 		@s3_key = S3_KEY

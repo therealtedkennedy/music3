@@ -588,6 +588,7 @@ function loadContent(href) {
 				ted_log("In Hide Floating Content")
 				$(".floatingContent").hide();
 				$(".editScreen").show();
+				$('form[data-validate]').validate();
 			}
 			else if(json.hasOwnProperty('show')){
 				$(".floatingContent").show();
