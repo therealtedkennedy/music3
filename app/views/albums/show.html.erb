@@ -62,7 +62,7 @@
 	text-decoration: none !important;
 	font-size: 16px !important;
 }
-.songList{
+.song-list{
 	width:50%;
 	margin: 0 auto;
 }
@@ -132,7 +132,7 @@
 		<% end %>
 
 		<h2> Songs </h2>
-		<ol class="songList">
+		<ol class="song-list">
 			<% @album.songs.uniq.each do |songs| %>
 				<% unless songs.song_url_slug.blank?%>
 					<li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug), :class => "content-link" %> <a href="<%= download_url_for(songs.s3_id) %>" data-song-name="<%=songs.song_name%>" data-artist-name="<%=@artist.name%>" class="music-button"><span class="p5l">Play</span></a>
