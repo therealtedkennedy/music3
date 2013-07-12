@@ -1,7 +1,6 @@
 <style type="text/css">
 .backPane
 {
-
 	z-index:100;
 	width: 25px;
 	top:0;
@@ -11,20 +10,14 @@
 }
 .leftPane
 {
-
-	width:280px;
-	top:20px;
-	left:20px;
-	text-align: center;
+	float:left;
 }
 .rightPane
 {
-
-	left:320px;
-	top:20px;
-	right:20px;
+	float:right;
 	font-family: arial;
 	font-size:14px;
+	width:55%;
 }
 
 .rightPane h1
@@ -33,13 +26,45 @@
 	font-family: 'verb_regularregular';
 	font-size:20px;
 }
-.rightPane h2
+.rightPane .albumDesc
 {
 	text-align: left;
 	font-family: 'verb_lightregular';
 	font-size:16px;
 	color:#aaa;
 	font-weight: 100;
+}
+
+.rightPane .details {
+	text-align: left;
+	font-family: 'verb_lightregular';
+	font-size:14px;
+	color:#aaa;
+}
+
+.p10t{
+	padding-top:10px;
+}
+
+.p5t{
+	padding-top:5px;
+}
+
+.p5l{
+	padding-left:5px;
+}
+
+.m30l{
+	margin-left:30px;
+}
+
+.albumLink{
+	text-decoration: none !important;
+	font-size: 16px !important;
+}
+.songList{
+	width:50%;
+	margin: 0 auto;
 }
 </style>
 
@@ -48,18 +73,77 @@
 <div class="backPane"></div>
 <div class="leftPane">
 	<div><img src="<%= @album.art%>" /><br>
-		<p><%=link_to "Play", album_playlist_create_path(@artist.url_slug, @album.album_url_slug), :class =>"load-playlist" %></p>
+		<p class="m30l"><%=link_to "Play", album_playlist_create_path(@artist.url_slug, @album.album_url_slug), :class =>"load-playlist  albumLink" %></p>
+	</div>
+
+	<div class="social m30l">
+		<div><a href="https://twitter.com/share" class="twitter-share-button"  data-text="Check out <%=@album.al_name %> by <%=@artist.twitter_name%>"  data-url="<%=artist_show_album_url(@artist.url_slug,@album.album_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a></div>
+		<div class="fb-like p5t" data-href="<%=@social_fb_url%>" data-send="false" data-width="350" data-show-faces="true"></div>
 	</div>
 </div>
-<div class="rightPane"><h1><%= @album.al_name %></h1><br /><h2><%= @album.description %></h2>
 
+<div class="rightPane"><h1><%= @album.al_name %></h1>
+	<% unless @album.description.nil? || @album.description.size == 0 %>
+		<span class="editable albumDesc p5t" id="text_area" field_name="description" object="album" >
+			<%= @album.description.html_safe%>
+		</span>
+	<% end %>
+
+	<div class="details p10t">
+		<% unless @album.contrib_artist.nil? || @album.contrib_artist.size == 0 %>
+			<div>Contributing Artist:
+			 <span class="editable" id="single_line" field_name="contrib_artist" object="album" >
+			 <%= @album.contrib_artist.html_safe%>
+			 </span></div>
+		<% end %>
+
+		<% unless @album.al_copy_write.nil? || @album.al_copy_write.size == 0 %>		 
+			<div class="p10t">(not big)Copywrite Type:
+			<%= @album.al_copy_write%></div>
+		<% end %>
+
+		<% unless @album.al_rel_date.nil? %>
+			<div class="p10t">Release Date:
+			<%= @album.al_rel_date%></div>
+		<% end %>
+
+		<% unless @album.producer.nil? || @album.producer.size == 0 %>
+			<div class="p10t">Producer:
+			 <span class="editable" id="single_line" field_name="producer" object="album" >
+				<%= @album.producer.html_safe%>
+			 </span>
+			</div>
+		<% end %>
+
+		<% unless @album.al_label.nil? || @album.al_label.size == 0%>
+			<div class="p10t">Label:
+				<span class="editable" id="single_line" field_name="al_label" object="album" >
+					<%= @album.al_label.html_safe%>
+				</span>
+			</div>
+		<% end %>
+
+		<% unless @album.liner_notes.nil? || @album.liner_notes.size == 0 %>
+			<div class="p10t">Liner Notes:
+			 <span class="editable p5t" id="text_area" field_name="liner_notes" object="album" >
+				 <%= @album.liner_notes.html_safe%>
+			 </span>
+			</div>
+		<% end %>
+
+		<h2> Songs </h2>
+		<ol class="songList">
+			<% @album.songs.uniq.each do |songs| %>
+				<% unless songs.song_url_slug.blank?%>
+					<li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug), :class => "content-link" %> <a href="<%= download_url_for(songs.s3_id) %>" data-song-name="<%=songs.song_name%>" data-artist-name="<%=@artist.name%>" class="music-button"><span class="p5l">Play</span></a>
+					</li>
+				<% end %>
+			<% end %>
+		</ol>
 
 		<h2>Want it? Get it!</h2>
-
 		<% if @album.pay_type == "pay" %>
-
 			<%= link_to "Buy Now: Only $"+@album.al_amount.to_s+"!", payment_method_path("album",@artist.url_slug,@album.id ) %>
-
 		<% elsif @album.pay_type == "pwyc" %>
 
 			<!--gets csrf token and passes into hidden field.  Keeps user logged in after form post-->
@@ -87,111 +171,16 @@
 				<input id="object" name="object" type="hidden" value="album" />
 				<input id="url_slug" name="url_slug" type="hidden" value="<%= @artist.url_slug %>" />
 				<input id="song_album_or_event_id" name="song_album_or_event_slug" type="hidden" value="<%=@album.id%>" />
-
-
-
 			</form>
-
 		<% else %>
-
-			<h3><%= link_to "Download Free",download_free_path("album",@artist.url_slug,@album.id) %></h3>
-
+			<h3><%= link_to "Download Free",download_free_path("album",@artist.url_slug,@album.id), :class=>"albumLink" %></h3>
+		<% end %>
+	</div>
+		<% @album.artists.uniq.each do |artist_name| %>
+			<td><%= link_to 'To '+artist_name.name, artist_link_path(artist_name.url_slug) %></td>
 		<% end %>
 
-
-
-		<div class="social">
-			<a href="https://twitter.com/share" class="twitter-share-button"  data-text="Check out <%=@album.al_name %> by <%=@artist.twitter_name%>"  data-url="<%=artist_show_album_url(@artist.url_slug,@album.album_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a>
-			<br/>
-			<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
-		</div>
-
-
-			</br>
-			</br>
-
-			<% unless @album.description.nil? %>
-				<b>Album Description</b>
-				</br>
-		<span class="editable" id="text_area" field_name="description" object="album" >
-			<%= @album.description.html_safe%>
-		</span>
-			<% end %>
-			</br>
-			</br>
-			<b>Contributing Artist:</b>
-	 <span class="editable" id="single_line" field_name="contrib_artist" object="album" >
-	 <%= @album.contrib_artist.html_safe%>
-	 </span>
-			</br>
-			</br>
-
-			<b>(not big)Copywrite Type:</b>
-			<%= @album.al_copy_write%>
-
-			</br>
-			</br>
-
-			<b>Release Date:</b>
-			<%= @album.al_rel_date%>
-			</br>
-			</br>
-
-			<% unless @album.producer.nil? %>
-
-				<b>Producer:</b>
-
-		 <span class="editable" id="single_line" field_name="producer" object="album" >
-			<%= @album.producer.html_safe%>
-		 </span>
-
-			<% end %>
-
-			</br>
-			</br>
-
-			<% unless @album.al_label.nil? %>
-
-				<b>Label:</b>
-		<span class="editable" id="single_line" field_name="al_label" object="album" >
-			<%= @album.al_label.html_safe%>
-		</span>
-
-				</br>
-				</br>
-
-			<% end %>
-
-
-
-			<b>Liner Notes:</b>
-			</br>
-	 <span class="editable" id="text_area" field_name="liner_notes" object="album" >
-		 <%= @album.liner_notes.html_safe%>
-	 </span>
-
-
-
-			<h2> Songs </h2>
-			<ul>
-				<% @album.songs.uniq.each do |songs| %>
-					<% unless songs.song_url_slug.blank?%>
-
-						<li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug), :class => "content-link" %> <a href="<%= download_url_for(songs.s3_id) %>" data-song-name="<%=songs.song_name%>" data-artist-name="<%=@artist.name%>" class="music-button"> Play </a>
-						</li>
-
-
-					<% end %>
-				<% end %>
-			</ul>
-
-
-			<% @album.artists.uniq.each do |artist_name| %>
-				<td><%= link_to 'To '+artist_name.name, artist_link_path(artist_name.url_slug) %></td>
-			<% end %>
-
-
-			<h2>not to be included in actual layout</h2>
+<!-- 			<h2>not to be included in actual layout</h2>
 
 			<p><b>Should be in layout - Album Type:</b>
 				<%= @album.al_type%>
@@ -231,7 +220,7 @@
 
 			<p>
 				<b>Not working yet - Number of Plays:</b>
-				<%= @album.plays%></p>
+				<%= @album.plays%></p> -->
 
 
 </div>
