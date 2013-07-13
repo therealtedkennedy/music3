@@ -4,8 +4,6 @@
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Sites\music3\public\javascripts\jquery.1.6.2.js" afterPath="" />
       <change type="DELETED" beforePath="C:\Sites\music3\public\uploads\artist\image\12\HARDSummer2011TN001.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/album.rb" afterPath="$PROJECT_DIR$/app/models/album.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/song.rb" afterPath="$PROJECT_DIR$/app/models/song.rb" />
     </list>
     <ignored path="music3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -106,8 +104,11 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/albums/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="62" selection-start="2326" selection-end="2344" vertical-scroll-proportion="43.86207">
-              <folding />
+            <state line="178" column="55" selection-start="5293" selection-end="5293" vertical-scroll-proportion="43.86207">
+              <folding>
+                <marker date="1373597006940" expanded="true" signature="6194:6203" placeholder="..." />
+                <marker date="1373597006940" expanded="true" signature="4065:4164" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1022,7 +1023,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="637" y="0" width="1283" height="1163" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40106952" sideWeight="0.77911645" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21392533" sideWeight="0.0" order="11" side_tool="false" content_ui="tabs" />
@@ -1033,7 +1034,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37472036" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34821966" sideWeight="0.3386296" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40317777" sideWeight="0.059358288" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35620585" sideWeight="0.9914439" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35620585" sideWeight="0.9914439" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3232662" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1171,8 +1172,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/albums/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="62" selection-start="2326" selection-end="2344" vertical-scroll-proportion="43.86207">
-          <folding />
+        <state line="178" column="55" selection-start="5293" selection-end="5293" vertical-scroll-proportion="43.86207">
+          <folding>
+            <marker date="1373597006940" expanded="true" signature="6194:6203" placeholder="..." />
+            <marker date="1373597006940" expanded="true" signature="4065:4164" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
