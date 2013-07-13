@@ -88,13 +88,15 @@ Music3::Application.routes.draw do
 
 
 
-	#Albums Slug Routing
+	#Albums Slug Routing - rule /slug/static/album_slug/static
 	match "/:url_slug/albums" => "albums#index", :as => :artist_show_albums
 	match "/:url_slug/album/:album_url_slug" => "albums#show", :as => :artist_show_album
-	match "/:url_slug/album/download/:album_url_slug" => "albums#download_album", :as => :album_download
+	match "/:url_slug/album/:album_url_slug/download" => "albums#download_album", :as => :album_download
 	match ":url_slug/album/:album_url_slug/playlist-create" => "albums#album_play_list_create", :as => :album_playlist_create
-    match ":url_slug/album/:album_url_slug/:id" => "albums#edit", :as => :album_edit
+    match ":url_slug/album/:album_url_slug/edit/:id" => "albums#edit", :as => :album_edit
 	match "/:url_slug/update-image/:album_id" => "albums#album_save_image", :as => :album_save_image
+	match "/:url_slug/album/:album_url_slug/pre_delete" => "albums#pre_delete", :as => :album_pre_delete
+	match "/:url_slug/album/:album_url_slug/delete/:album_id" => "albums#destroy", :as => :album_delete
 
 	#albums code routing
 	match "/:url_slug/album/create-code/:id" => "album_code#show", :as => :album_create_code

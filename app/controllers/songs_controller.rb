@@ -170,10 +170,12 @@ class SongsController < ApplicationController
 
 		@artist = Artist.find_by_url_slug(params[:url_slug])
 		@song = Song.new
+
+
 		@artist_id = @artist.id
 		@song.s_a_id = @artist.id
 		@song.s3_id= @song.id.to_s + ".mp3"
-		@song.save
+		#@song.save
 
 		#@song.s3_id= @song.id.to_s + ".mp3"
 		#@song.save
@@ -235,27 +237,8 @@ class SongsController < ApplicationController
 
 		#song s3 key, download link and torrent link
 		@song.s3_id= @song.id.to_s + ".mp3"
-		#@amazon_id = @song.id.to_s + ".mp3"
-
-
-		#if params[:song].has_key?("s3_name")
-		#	#save_amazon_file(@song.s3_id, params[:song][:s3_name], params[:song][:song_name], @artist)
-		#
-		#
-		#
-		#end
-
-
-
-		#if @song.s3_id.blank?
-		#@song.s3_id= params[:id].to_s + ".mp3"
-		# @song.download_link = download_url_for(@song.s3_id)
-		#@song.torrent_link= link_to(torrent_url_for(@song.s3_name))
-		#end
 
 		params[:song].delete :s3_name
-
-
 
 		@song.update_attributes(params[:song])
 
@@ -347,7 +330,7 @@ class SongsController < ApplicationController
 		(@song.s3_id)
 		s3_delete(BUCKET, @song.s3_id)
 
-		redirect_to(artist_admin_path(@artist.url_slug))
+		redirect_to(artist_show_songs_path(@artist.url_slug))
 
 	end
 

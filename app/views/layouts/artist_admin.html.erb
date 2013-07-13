@@ -1000,6 +1000,7 @@ function ted_log() {
 				<% unless albums.album_url_slug.blank?%>
 					<li><%= link_to albums.al_name, artist_show_album_path(@artist.url_slug,albums.album_url_slug),:class => "content-link" %>
 						<%= link_to 'Edit', album_edit_path(@artist.url_slug, albums.album_url_slug,albums.id),:class => "content-link" %>
+						<%= link_to 'Destroy', album_pre_delete_path(@artist.url_slug,albums.album_url_slug), :confirm => 'Are you sure?' %>
 						<%= link_to 'Album Codes', album_create_code_path(@artist.url_slug,albums.id) %>
 					</li>
 				<% end %>

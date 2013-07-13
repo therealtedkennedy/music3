@@ -83,9 +83,7 @@ class AlbumsController < ApplicationController
     @album = Album.new
     @artist = Artist.find_by_url_slug(params[:url_slug])
     authorize! :update, @artist
-    @album.al_a_id = @artist.id
-    @album.artists << Artist.find(@artist.id)
-    @album.save
+
     #creates blank song ids?
     @song_ids = []
 	@meta_update_url = "nohting"
@@ -156,35 +154,60 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.xml
   def create
+
     @album = Album.new(params[:album])
+	logger.info("album")
+	logger.info(@album)
+
     @artist = Artist.find_by_url_slug(params[:url_slug])
+
+	authorize! :update, @artist
+
+	#saves primary artist id.  Used for more simple calling of primary artist.
+	@album.al_a_id = @artist.id
+	#assoiated album and artist objects
+	@album.artists << Artist.find(@artist.id)
+
+
+	#creates the albums songs object	(dup with new..could create one method...but i don't want to deal with it....)
+	if params.has_key?(:album_songs)
+		@album.songs = Song.find(params[:album_songs][:songs_id])
+	else
+		@album.songs = []
+	end
+
+	if @album.save
+		zip_album(@artist,@album)
+	else
+		logger.info("album not saved")
+	end
+
 
 
     respond_to do |format|
-      if @album.save
-        if S3_object_exists(ALBUM_BUCKET,@album.id.to_s)
-        else
-          zip_album(@artist,@album)
-        end
-        format.html { artist_show_album_path(@album , :notice => 'Album was successfully created.') }
-        format.xml  { render :xml => @album, :status => :created, :location => @album }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @album.errors, :status => :unprocessable_entity }
-      end
+
+  		format.html { redirect_to(artist_show_album_path(@artist.url_slug, @album.album_url_slug), :notice => 'Album was successfully updated.') }
+		format.xml  { head :ok }
+		format.json {
+			render :json => {
+					:success => true,
+					:"url" => artist_show_album_url(@artist.url_slug, @album.album_url_slug)
+			}
+		}
+
     end
   end
 
   # PUT /albums/1
   # PUT /albums/1.xml
   def update
+	  logger.info("in update")
    #  params[:album_songs][:songs_id] ||= []
     @album = Album.find(params[:id])
     @artist = Artist.find_by_url_slug(params[:url_slug])
     authorize! :update, @artist
 
-	#used check to see if albums songs have changed
-
+	#creates the albums songs object
     if params.has_key?(:album_songs)
       @album.songs = Song.find(params[:album_songs][:songs_id])
     else
@@ -193,7 +216,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
-        #zips and creates and album in S3
+
 
         #checks to see the albums songs have changed.
 
@@ -201,6 +224,7 @@ class AlbumsController < ApplicationController
 		   logger.info "album_songs true"
 		else
 		   logger.info "in zip album"
+		   #zips and creates and album in S3
            zip_album(@artist,@album)
 		   @album.update_attribute(:album_songs, params[:album_songs].to_s)
         end
@@ -220,14 +244,34 @@ class AlbumsController < ApplicationController
     end
   end
 
+
+
+   def pre_delete
+
+	   @artist = Artist.find_by_url_slug(params[:url_slug])
+	   @album = Album.find_by_album_url_slug(params[:album_url_slug])
+
+	   authorize! :destroy, @artist
+
+	   #varable to remove defualt artist loading.  Loads the edit layout insted
+	   @edit = "true" #see new
+
+	   respond_to do |format|
+		   format.html {render :layout => 'artist_admin'}
+		   format.xml { render :xml => @artists }
+
+	   end
+
+   end
+
   # DELETE /albums/1
   # DELETE /albums/1.xml
   def destroy
-    @album = Album.find(params[:id])
+    @album = Album.find(params[:album_id])
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to(albums_url) }
+      format.html { redirect_to( artist_show_albums_path(params[:url_slug]))}
       format.xml  { head :ok }
     end
   end
@@ -244,6 +288,12 @@ class AlbumsController < ApplicationController
 
   #creates a zip file for the album.  Stores it in S3
   def zip_album (artist, album)
+	 logger.info("in zip album artist object")
+	 logger.info(artist)
+     logger.info("in zip album album object")
+	 logger.info(album)
+
+
     #sets the directory path the album is going to be stored in
     #directory_path = "C:/Sites/Zipped"  (for testing)
     directory_path = "#{Rails.root}/tmp/#{Process.pid}_mp3"

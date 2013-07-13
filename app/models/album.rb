@@ -7,7 +7,7 @@ class Album < ActiveRecord::Base
 
 
 
-#before_create :generate_slug
+before_save :generate_slug
 before_update :generate_slug
 
 #validates_presence_of :al_name
