@@ -629,11 +629,15 @@ function s3_direct_upload(){
 			dataType: 'xml', // This is really important as s3 gives us back the url of the file in a XML document
 			add: function (event, data) {
 
+				//Image upload only - sets image type (logo, bk ground, song, album art ect)
 				imageType = $(event.target).find('.s3_upload').attr('id');
+				// sets object type for upload (image and song ect)
 				s3ObjectType = $(event.target).find('.s3_upload').data("object_type");
+				//Image only - url for saving the image on s3
 				image_save_location = $(event.target).find('.s3_upload').data("object_image_save_url");
+				//object name for s3
 				s3Id = $(event.target).find('.s3_upload').data("object_id");
-				s3ObjectType = $(event.target).find('.s3_upload').data("object_type");
+
 
 				ted_log("s3ObjectType= "+s3ObjectType);
 				ted_log("s3id= "+ s3Id);
@@ -683,7 +687,7 @@ function s3_direct_upload(){
 								ted_log("s3_file_name inside not image if statement= "+s3_file_name)
 								var file_name_ext_remv = s3_file_name.substring(0, s3_file_name.indexOf('.'));
 
-								save_s3_meta_name (file_name_ext_remv)
+								save_s3_meta_name(file_name_ext_remv)
 								$('input[name="song[song_name]"]').val(file_name_ext_remv)
 							};
 
@@ -706,15 +710,7 @@ function s3_direct_upload(){
 						data.submit();
 				   };
 				},
-	//						send: function(e, data) {
-	//							$('.progress').fadeIn();
-	//						},
-	//						progress: function(e, data){
-	//							// This is what makes everything really cool, thanks to that callback
-	//							// you can now update the progress bar based on the upload progress
-	//							var percent = Math.round((e.loaded / e.total) * 100)
-	//							$('.bar').css('width', percent + '%')
-	//						},
+
 			fail: function(e, data) {
 				console.log('fail')
 			},
@@ -756,6 +752,7 @@ function s3_direct_upload(){
 }
 
 function save_s3_meta_name (file_name_ext_remv) {
+	ted_log("in save s3 meta name, meta update url= "+ "<%= @meta_update_url %>");
 	$.ajax({
 		url:"<%=@meta_update_url%>",
 		type: "post",

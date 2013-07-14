@@ -1,5 +1,5 @@
 class Song< ActiveRecord::Base
- has_and_belongs_to_many:artists
+ has_and_belongs_to_many :artists
  has_and_belongs_to_many :albums
  has_many :orders
 
@@ -11,7 +11,7 @@ class Song< ActiveRecord::Base
  validates_presence_of :song_name, :on => :update
  validates_uniqueness_of :song_name, :scope => :s_a_id, :case_sensitive => false, :allow_nil => :true
 
- before_validation :strip_whitespace
+ #before_validation :strip_whitespace
 
  def get_download_link
 	 self.download_url_for(self.s3_id)

@@ -319,14 +319,18 @@ class ApplicationController < ActionController::Base
 		if object || params[:object_type] == "song"
 			@song = Song.find(song_id)
 
-			logger.info "in send_s3_meta"
+			logger.info("in send_s3_meta")
+			logger.info("song name= "+@song.song_name.to_s)
+			logger.info("song s3 meta tag= "+@song.s3_meta_tag.to_s)
 
 			if @song.song_name == @song.s3_meta_tag || @song.song_name.nil?
 
 			else
+
+
 				find_bucket('song')
 				s3_copy(@song.s3_id,@song.song_name,@bucket,"binary/octet-stream",".mp3")
-
+				logger.info("after s3_copy")
 			end
 
 		else

@@ -174,11 +174,10 @@ class SongsController < ApplicationController
 
 		@artist_id = @artist.id
 		@song.s_a_id = @artist.id
-		@song.s3_id= @song.id.to_s + ".mp3"
-		#@song.save
+		@song.save
 
-		#@song.s3_id= @song.id.to_s + ".mp3"
-		#@song.save
+		@song.s3_id= @song.id.to_s + ".mp3"
+		@song.save
 
 
 		@s3_key = S3_KEY
@@ -242,12 +241,11 @@ class SongsController < ApplicationController
 
 		@song.update_attributes(params[:song])
 
-		logger.info "song nae is="
-		logger.info @song.song_name
-		logger.info "meta name is"
+		logger.info "in update"
+		logger.info "song name is=" + @song.song_name.to_s
+		logger.info "meta name is= " + @song.s3_meta_tag.to_s
 
 
-		#not going to work there buddy.
 
 		if @song.s3_meta_tag.nil?
 
@@ -295,23 +293,23 @@ class SongsController < ApplicationController
 	#end
 
 
-	# def download
+	 def download
 
 
-	#  @song = Song.find_by_song_url_slug(params[:song_url_slug])
-	#  @artist =  Artist
+	  @song = Song.find_by_song_url_slug(params[:song_url_slug])
+	  @artist =  Artist
 
 
-	#  @song_file = AWS::S3::S3Object.value(@song.s3_id, BUCKET)
-	#  send_file(@song_file,
-	#        :filename  =>  @song.song_name+".mp3")
+	  @song_file = AWS::S3::S3Object.value(@song.s3_id, BUCKET)
+	  send_file(@song_file,
+	        :filename  =>  @song.song_name+".mp3")
 
-	#    respond_to do |format|
-	#       format.html  redirect_to(song_path(@song.id), :notice => 'Song was downloaded.')
-	#       format.xml
-	#      format.js
-	#   end
-	#  end
+	    respond_to do |format|
+	       format.html  redirect_to(song_path(@song.id), :notice => 'Song was downloaded.')
+	#     format.xml
+	      format.js
+	   end
+	  end
 
 
 	#deletes song info from Model
