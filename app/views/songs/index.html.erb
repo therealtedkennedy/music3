@@ -24,7 +24,8 @@
 								<% else %>
 								<img src="<%=song.image %>" style="max-width:100px;"/><% end %></a></td>
 					<td><%= link_to song.song_name, artist_show_song_path(@artist.url_slug, song.song_url_slug), :class => "content-link" %> </td>
-					<td><%= @artist.albums[@artist.albums.find_index {|item| item.id == song.s_a_id}].al_name %></td>
+					<td>Album Name</td>
+
 					<td>SONG LENGTH</td>
 					<td><img src="../../../images/btn-buy.png"/></td>
 				</tr>
