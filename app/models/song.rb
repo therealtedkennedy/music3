@@ -11,7 +11,7 @@ class Song< ActiveRecord::Base
  validates_presence_of :song_name, :on => :update
  validates_uniqueness_of :song_name, :scope => :s_a_id, :case_sensitive => false, :allow_nil => :true
 
- #before_validation :strip_whitespace
+ before_validation :strip_whitespace
 
  def get_download_link
 	 self.download_url_for(self.s3_id)
@@ -26,11 +26,13 @@ class Song< ActiveRecord::Base
 
 
  def strip_whitespace
-	 self.song_name = self.song_name.strip
-	 self.song_artist = self.song_artist.strip
-	 self.song_contribute_artist = self.song_contribute_artist.strip
-	 self.song_written = self.song_written.strip
-	 self.lyrics = self.lyrics.strip
+	 unless self.song_name.nil?
+		 self.song_name = self.song_name.strip
+		 self.song_artist = self.song_artist.strip
+		 self.song_contribute_artist = self.song_contribute_artist.strip
+		 self.song_written = self.song_written.strip
+		 self.lyrics = self.lyrics.strip
+	end
  end
 
 
