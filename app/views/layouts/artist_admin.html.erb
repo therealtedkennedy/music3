@@ -475,7 +475,8 @@ $(document).ready(function () {
 
 //	 	Displays track Info
 	$(".trackInfo").live('mouseenter', function () {
-		$(this).find(".progressBarContainer").show();
+		if($.trim($(this).find('.track_name').text()).length)
+			$(this).find(".progressBarContainer").show();
 	});
 	$(".trackInfo").live('mouseleave', function () {
 		$(this).find(".progressBarContainer").hide();
@@ -485,7 +486,8 @@ $(document).ready(function () {
 
 	$(".playlist").live('mouseenter', function () {
 		console.log("hover enter");
-		$(".jp-playlist").show();
+		if($(this).find('.songList').children().length)
+			$(".jp-playlist").show();
 	});
 
 	$(".playlist").live('mouseleave', function () {
