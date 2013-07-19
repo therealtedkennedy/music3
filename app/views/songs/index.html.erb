@@ -24,8 +24,11 @@
 								<% else %>
 								<img src="<%=song.image %>" style="max-width:100px;"/><% end %></a></td>
 					<td><%= link_to song.song_name, artist_show_song_path(@artist.url_slug, song.song_url_slug), :class => "content-link" %> </td>
-					<td>Album Name</td>
-
+					<% if song.albums.first.blank? %>
+						<td></td>
+					<% else %>
+						<td><%= song.albums.first.al_name %></td>
+					<% end %>
 					<td>SONG LENGTH</td>
 					<td><img src="../../../images/btn-buy.png"/></td>
 				</tr>
