@@ -614,15 +614,13 @@ function loadContent(href) {
 function s3_direct_upload(){
 	$('.direct-upload').each(function() {
 
-		var form = $(this);
-
-		var s3ObjectType
-		var s3Id
-		var image_save_location
-		var imageType
-		var s3_file_name
-		var meta_url
-
+		var form = $(this),
+			s3ObjectType,
+			s3Id,
+			image_save_location,
+			imageType,
+			s3_file_name,
+			meta_url;
 
 		$(this).fileupload({
 
@@ -647,18 +645,14 @@ function s3_direct_upload(){
 				ted_log("s3ObjectType= "+s3ObjectType);
 				ted_log("s3id= "+ s3Id);
 				ted_log("image type="+ imageType);
-				ted_log("meta_url= "+ meta_url)
+				ted_log("meta_url= "+ meta_url);
 
 
 				// sets the s3 file name for image b/c need file name and ext
-				if(s3ObjectType == "image"){
-					var s3Name = s3Id+data.files[0].name
-				}
-				else{
-					var s3Name = s3Id
-
-
-					};
+				if(s3ObjectType == "image")
+					var s3Name = s3Id+data.files[0].name;
+				else
+					var s3Name = s3Id;
 				ted_log("s3id= "+s3Id);
 
 					$.ajax({
@@ -683,8 +677,6 @@ function s3_direct_upload(){
 							//updates S3 Meta Information
 							form.find('input[name=x-amz-meta-my-file-name]').val(data.files[0].name)
 
-
-
 							// for attachemts
 							if(s3ObjectType !="image"){
 								ted_log("in update meta for songs and other")
@@ -706,9 +698,9 @@ function s3_direct_upload(){
 						}
 					})
 
-
-
+					
 				   var file_status = file_size_check(s3ObjectType,data.files[0].size);
+				   // $('.progress').text(Math.ceil(data.progress().loaded/data.files[0].size * 100) + "%");
 				   ted_log("File status= "+file_status);
 
 				   if(file_status == true){
@@ -717,6 +709,17 @@ function s3_direct_upload(){
 				   };
 				},
 
+	        send: function(e, data) {
+	          $(this).find('.progressContainer').fadeIn();
+	          $(this).find('.percent').text('0%');
+	        },
+	        progress: function(e, data){
+	          // This is what makes everything really cool, thanks to that callback
+	          // you can now update the progress bar based on the upload progress
+	          var percent = Math.round((e.loaded / e.total) * 100)
+	          $(this).find('.bar').css('width', percent + '%')
+	          $(this).find('.percent').text(percent + '%');
+	        },
 			fail: function(e, data) {
 				console.log('fail')
 			},
@@ -727,7 +730,6 @@ function s3_direct_upload(){
 				ted_log(data)
 
 			    if (s3ObjectType == "image"){
-
 					ted_log("in save image file")
 					ted_log("image save location= "+image_save_location)
 					$.ajax({
@@ -745,13 +747,13 @@ function s3_direct_upload(){
 
 					})
 				};
-
 //						$( &#039;#real_file_url&#039; ).val(url) // Update the real input in the other form
 			},
 			done: function (event, data) {
-				$('.progress').fadeOut(300, function() {
-					$('.bar').css('width', 0)
-				})
+		        $(this).find('.progressContainer').fadeOut(300, function() {
+		          $(this).find('.bar').css('width', 0)
+		        });
+	          	$(this).find('.s3_upload').fadeOut();
 			}
 		})
 	})

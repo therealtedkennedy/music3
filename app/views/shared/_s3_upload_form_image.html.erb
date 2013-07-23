@@ -12,7 +12,10 @@
 	<input type="file" name="file" class="s3_upload" id="<%=image_type %>" data-object_id="<%= image_name %>" data-object_type="image" data-object_image_save_url="<%= image_save_url%>" />
 
 	<!--- # You can recognize some bootstrap markup here :)-->
-	<!--.progress.progress-striped.active-->
-	<!--.bar-->
-
+	<div class="progressContainer" style="display:none;">
+		<div class="progress progress-striped active">
+			<div class="bar"></div>
+		</div>
+		<div class="percent"></div>
+	</div>
 </form>
