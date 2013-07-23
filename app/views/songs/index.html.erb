@@ -1,14 +1,5 @@
 <div id="song-content">
 <table cellpadding="10" class="song-table">
-	<thead>
-		<tr>
-			<td></td>
-			<td>SONG TITLE</td>
-			<td>ALBUM TITLE</td>
-			<td>TIME</td>
-			<td></td>
-		</tr>
-	</thead>
 	<tbody class="row-border">
 	<% @artist.songs.uniq.each_with_index do |song, index| %>
 
@@ -37,4 +28,4 @@
 	<% end %>
 </tbody></table>
 </div>
-<div class="song-footer"><span><%= @artist.songs.count %> Total Song<%= @artist.songs.count == 1 ? "" : "s" %>, <%= @artist.albums.count %> </span></div>
+<div class="song-footer"><span><%= @artist.songs.count %> Total Song<%= @artist.songs.count == 1 ? "" : "s" %></span></div>
