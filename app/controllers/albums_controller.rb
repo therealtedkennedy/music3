@@ -96,21 +96,20 @@ class AlbumsController < ApplicationController
 
 	@form = render_to_string('albums/_form',:layout => false)
 
-     respond_to do |format|
-      format.html {render :layout => 'artist_admin'}
-      format.xml  { render :xml => @album }
-	  format.json {
-		  render :json => {
-				  :success => true,
-				  :".editScreen" => render_to_string(
-						  :action => 'new.html.erb',
-						  :layout => false,
-
-				  ),
-           		:"edit" => "true",
-		  }
-	  }
-    end
+	respond_to do |format|
+		format.html {render :layout => 'artist_admin'}
+		format.xml { render :xml => @song }
+		format.json {
+			render :json => {
+					:success => true,
+					:".miniPage" => render_to_string(
+							:action => 'new.html.erb',
+							:layout => false,
+					),
+					:"edit" => "true",
+			}
+		}
+	end
   end
 
   # GET /albums/1/edit
@@ -134,15 +133,15 @@ class AlbumsController < ApplicationController
 
 	respond_to do |format|
 		format.html {render :layout => 'artist_admin'}
+		format.xml { render :xml => @song }
 		format.json {
 			render :json => {
 					:success => true,
-					:".editScreen" => render_to_string(
+					:".miniPage" => render_to_string(
 							:action => 'edit.html.erb',
 							:layout => false,
-
 					),
-                    :"edit" => "none"
+					:"edit" => "true",
 			}
 		}
 	end

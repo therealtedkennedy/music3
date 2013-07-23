@@ -487,7 +487,13 @@
 
 
 	.edit-controls {
+
+		/*displays edit controls where value edit is passed from the controller.  Used for new, and edit views*/
+		<% if @edit == "true" %>
+	 	   display:block;
+		<% else %>
 		display:none;
+		<%end%>
 		float: right;
 		/*display: inline-block;*/
 		width: 320px;

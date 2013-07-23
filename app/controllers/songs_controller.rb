@@ -96,12 +96,14 @@ class SongsController < ApplicationController
 
 		@song = Song.find(params[:id])
 		#makes sure that when url is called (non ajax) the page loads the correct variable.  See admin layout
-		@edit = "true"
+
 		#finds the assoicated artist
 		@artist = Artist.find(@song.s_a_id)
 		authorize! :update, @artist
 		#searchString  = params[:url_slug]
 		#@artist = Artist.find_by_url_slug(searchString)
+		@edit = "true"
+
 		@id = @song.id
         @object_type = "song"
 		@bucket = BUCKET
@@ -121,14 +123,12 @@ class SongsController < ApplicationController
 		respond_to do |format|
 			format.html {render :layout => 'artist_admin'}
 			format.xml { render :xml => @song }
-			format.js
 			format.json {
 				render :json => {
 						:success => true,
-						:".editScreen" => render_to_string(
+						:".miniPage" => render_to_string(
 								:action => 'edit.html.erb',
 								:layout => false,
-
 						),
 						 :"id" => @song.s3_id,
 						:"edit" => "true",
@@ -205,21 +205,20 @@ class SongsController < ApplicationController
         #preps form for image upload
 		image_upload_prep(@artist,@song)
 
+
+
 		respond_to do |format|
-			format.html {render :locals => {:partial => "form_upload_song"},:layout => 'artist_admin'}
+			format.html {render :layout => 'artist_admin'}
 			format.xml { render :xml => @song }
-			format.js
 			format.json {
 				render :json => {
 						:success => true,
-						:".editScreen" => render_to_string(
+						:".miniPage" => render_to_string(
 								:action => 'new.html.erb',
 								:layout => false,
-
 						),
 						:"id" => @song.s3_id,
 						:"edit" => "true",
-
 				}
 			}
 		end
@@ -232,6 +231,10 @@ class SongsController < ApplicationController
 		@song = Song.find(params[:form_song_id])
 		@song.artists << @artist
 		@s3_test = params[:s3_name]
+
+
+		#turns of edit screen when content is loaded after
+		@edit = "false"
 
 
 		#song s3 key, download link and torrent link
@@ -256,7 +259,7 @@ class SongsController < ApplicationController
 
 		respond_to do |format|
 			if @song.update_column(:s3_id, @song.s3_id)
-				format.html { redirect_to (artist_show_song_path(@artist.url_slug, @song.song_url_slug)), :notice => 'Song was successfully created.' }
+				format.html { redirect_to (artist_show_song_path(@artist.url_slug, @song.song_url_slug))}
 				format.xml { head :ok }
 				format.json {
 					render :json => {
