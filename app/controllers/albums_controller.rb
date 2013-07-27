@@ -164,6 +164,8 @@ class AlbumsController < ApplicationController
 
 	#saves primary artist id.  Used for more simple calling of primary artist.
 	@album.al_a_id = @artist.id
+	#used in model to scope validation because the value hasn't been saved yet
+	@album.album_artist_id = @artist.id
 	#assoiated album and artist objects
 	@album.artists << Artist.find(@artist.id)
 
@@ -211,7 +213,9 @@ class AlbumsController < ApplicationController
       @album.songs = Song.find(params[:album_songs][:songs_id])
     else
       @album.songs = []
-    end
+	end
+
+	  @album.update_attributes(params[:album])
 
     respond_to do |format|
       if @album.update_attributes(params[:album])

@@ -37,7 +37,7 @@
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.1.4, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="cancan (v1.6.8, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="carrierwave (v0.7.1, ruby-1.9.3-p125 (1)) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="client_side_validations (v3.1.4, ruby-1.9.3-p125 (1)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="client_side_validations (v3.2.5, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="cloudinary (v1.0.43, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="devise (v2.1.2, ruby-1.9.3-p125 (1)) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, ruby-1.9.3-p125 (1)) [gem]" level="application" />

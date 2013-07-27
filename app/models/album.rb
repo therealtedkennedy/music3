@@ -5,15 +5,29 @@ class Album < ActiveRecord::Base
   has_many :album_codes, :foreign_key => "code_album_id"
   has_many :orders
 
-
-
 before_save :generate_slug
 before_update :generate_slug
-
-#validates_presence_of :al_name
-validates_presence_of :al_name, :on => :update
-validates_uniqueness_of :al_name, :scope => :al_a_id, :case_sensitive => false, :allow_nil => :true
 before_validation :strip_whitespace
+
+
+
+validates :al_name, :presence => {:message => 'Name cannot be blank'}
+
+
+#validates for new.  No al_a_id (album artist id for primary artist) has been assoated yet
+validates :al_name, uniqueness: {scope: :artists, case_sensitive: false,  message: "Name has already been taken please choose another." }, allow_nil: true, if: :al_a_id.nil? || :al_a_id.blank?
+
+#validates for update.  For some reason above validiation doens't work.  So using al_a_id
+validates :al_name, uniqueness: {scope: :al_a_id, case_sensitive: false,  message: "Name has already been taken please choose another." }, allow_nil: true, unless: :al_a_id.nil? || :al_a_id.blank?
+
+
+
+
+
+
+
+
+
 
 
   def generate_slug
@@ -29,6 +43,16 @@ before_validation :strip_whitespace
 		self.description = self.description.strip
 	end
 
+	#def set_album_id
+	#	logger.info("in set album id")
+	#	logger.info(self.al_a_id)
+	#	logger.info(self.album_artist_id)
+	#
+	#	if self.al_a_id.blank? || self.al_a_id.nil?
+	#		logger.inf
+	#		self.al_a_id = self.album_artist_id
+	#	end
+	#end
 
 
 

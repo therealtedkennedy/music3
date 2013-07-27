@@ -174,16 +174,16 @@ class SongsController < ApplicationController
 
 		@artist_id = @artist.id
 		@song.s_a_id = @artist.id
-		@song.save
+		@song.save(validate: false)
 
-		@song.s3_id= @song.id.to_s + ".mp3"
-		@song.save
+		#@song.s3_id= @song.id.to_s + ".mp3"
+		#@song.save
 
 
 		@s3_key = S3_KEY
 		@bucket = BUCKET
 		@object_type = "song"
-		@object_id = @song.s3_id
+		@object_id = @song.id.to_s + ".mp3"
 
 
 		# Updates s3 meta data. takes artist slug, object id (for song, album ect.  if one doesn't exist =1), and object type (song,album,image ect)
@@ -239,6 +239,8 @@ class SongsController < ApplicationController
 
 		#song s3 key, download link and torrent link
 		@song.s3_id= @song.id.to_s + ".mp3"
+
+
 
 		params[:song].delete :s3_name
 

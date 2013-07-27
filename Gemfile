@@ -8,7 +8,7 @@ gem 'rails', '3.2.11'
 
 
 gem 'jquery-rails'
-gem 'client_side_validations', '3.1.4'
+gem 'client_side_validations', '3.2.5'
 gem 'aws-s3',:require => 'aws/s3'
 gem 'rubyzip'
 gem 'activemerchant'

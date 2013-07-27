@@ -1,5 +1,7 @@
 
-<%= form_for @album, :html => {:multipart => true}, :html => {:class => 'ajax_update'}, :validate => true do |f| %>
+<%=form_for @album, :html => {:multipart => true}, :html => {:class => "ajax_update"}, :validate => true do |f| %>
+
+
 
   <% if @album.errors.any? %>
     <div id="error_explanation">
@@ -12,9 +14,11 @@
       </ul>
     </div>
   <% end %>
+
+
 <div class="field">
     <%= f.label :al_name %><br />
-    <%= f.text_field :al_name %>
+    <%= f.text_field :al_name, :validate => :true %>
   </div>
 
 	<div class="field">

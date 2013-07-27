@@ -8,10 +8,14 @@ class Song< ActiveRecord::Base
 
  before_update :generate_slug
 
- validates_presence_of :song_name, :on => :update
- validates_uniqueness_of :song_name, :scope => :s_a_id, :case_sensitive => false, :allow_nil => :true
+
+
+ validates :song_name, :presence => {:message => 'Name cannot be blank'}
+ validates :song_name, uniqueness: {scope: :s_a_id, case_sensitive: false,  message: "Name has already been taken please choose another." }, allow_nil: true
 
  before_validation :strip_whitespace
+
+
 
  def get_download_link
 	 self.download_url_for(self.s3_id)
