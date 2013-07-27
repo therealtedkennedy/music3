@@ -84,7 +84,7 @@
       <file leaf-file-name="song.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/song.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="72" selection-start="273" selection-end="273" vertical-scroll-proportion="0.5841785">
+            <state line="6" column="30" selection-start="97" selection-end="166" vertical-scroll-proportion="0.29208925">
               <folding />
             </state>
           </provider>
@@ -1238,7 +1238,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/song.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="72" selection-start="273" selection-end="273" vertical-scroll-proportion="0.5841785">
+        <state line="6" column="30" selection-start="97" selection-end="166" vertical-scroll-proportion="0.29208925">
           <folding />
         </state>
       </provider>
