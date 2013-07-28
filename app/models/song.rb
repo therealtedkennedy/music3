@@ -8,8 +8,6 @@ class Song< ActiveRecord::Base
 
  before_update :generate_slug
 
-
-
  validates :song_name, :presence => {:message => 'Name cannot be blank'}
  validates :song_name, uniqueness: {scope: :s_a_id, case_sensitive: false,  message: "Name has already been taken please choose another." }, allow_nil: true
 

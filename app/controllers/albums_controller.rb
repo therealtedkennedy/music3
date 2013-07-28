@@ -84,10 +84,14 @@ class AlbumsController < ApplicationController
     @artist = Artist.find_by_url_slug(params[:url_slug])
     authorize! :update, @artist
 
+	@album.al_a_id = @artist.id
+
+
     #creates blank song ids?
     @song_ids = []
 	@meta_update_url = "nohting"
 
+	@create_or_edit = 'create'
 
 	@edit = "true"  #allows new view to load oorrectly when refreshed.  See artist admin layout
 
@@ -160,12 +164,11 @@ class AlbumsController < ApplicationController
 
     @artist = Artist.find_by_url_slug(params[:url_slug])
 
+
 	authorize! :update, @artist
 
 	#saves primary artist id.  Used for more simple calling of primary artist.
 	@album.al_a_id = @artist.id
-	#used in model to scope validation because the value hasn't been saved yet
-	@album.album_artist_id = @artist.id
 	#assoiated album and artist objects
 	@album.artists << Artist.find(@artist.id)
 
@@ -176,6 +179,7 @@ class AlbumsController < ApplicationController
 	else
 		@album.songs = []
 	end
+
 
 	if @album.save
 		zip_album(@artist,@album)

@@ -18,7 +18,7 @@
 
 <div class="field">
     <%= f.label :al_name %><br />
-    <%= f.text_field :al_name, :validate => :true %>
+    <%= f.text_field :al_name, :validate => { :valid => true } %>
   </div>
 
 	<div class="field">
@@ -113,6 +113,7 @@
 </ul>
  <%= hidden_field_tag(:url_slug, @artist.url_slug  ) %>
 </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
