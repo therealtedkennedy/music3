@@ -226,7 +226,7 @@ class ArtistsController < ApplicationController
 		format.json {
 			render :json => {
 					:success => true,
-					:".editScreen" => render_to_string(
+					:".miniPage" => render_to_string(
 							:action => 'admin.html.erb',
 							:layout => false,
 					),
