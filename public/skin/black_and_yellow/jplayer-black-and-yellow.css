@@ -40,7 +40,7 @@
 /* Playlist Styling */
 .jp-playlist {
 	display: none;
-	line-height: 50px;
+	line-height: 22px;
 	position: absolute;
 	top: 100%;
 	font-style:italic;
@@ -51,7 +51,7 @@
 }
 
 .playlist {
-	line-height: 50px;
+	line-height: 22px;
 
 	display: inline-block;
 	font-style:italic;
