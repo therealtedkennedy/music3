@@ -18,7 +18,7 @@
 	float:right;
 	font-family: arial;
 	font-size:14px;
-	width:55%;
+	width:75%;
 }
 
 .rightPane h1
@@ -67,13 +67,32 @@
 	width:50%;
 	margin: 0 auto;
 }
+
+.rightPane table
+{
+	width:100%;
+	text-align: left;
+	font-family: 'verb_lightregular';
+	font-size:16px;
+	color:#aaa;
+	font-weight: 100;
+	margin-right:15px;
+}
+
+.rightPane td {
+	padding: 10px;
+}
+
+.bold {
+	font-weight: bold;
+}
 </style>
 
 
 <div id="fb-root"></div>
 <div class="backPane"></div>
 <div class="leftPane">
-	<div><img src="<%= @album.art%>" /><br>
+	<div><img src="<%= @album.art%>" style="max-width:200px;" /><br>
 		<p class="m30l"><%=link_to "Play", album_playlist_create_path(@artist.url_slug, @album.album_url_slug), :class =>"load-playlist  albumLink" %></p>
 	</div>
 
@@ -90,62 +109,28 @@
 		</span>
 	<% end %>
 
-	<div class="details p10t">
-		<% unless @album.contrib_artist.nil? || @album.contrib_artist.size == 0 %>
-			<div>Contributing Artist:
-			 <span class="editable" id="single_line" field_name="contrib_artist" object="album" >
-			 <%= @album.contrib_artist.html_safe%>
-			 </span></div>
-		<% end %>
-
-		<% unless @album.al_copy_write.nil? || @album.al_copy_write.size == 0 %>		 
-			<div class="p10t">(not big)Copywrite Type:
-			<%= @album.al_copy_write%></div>
-		<% end %>
-
-		<% unless @album.al_rel_date.nil? %>
-			<div class="p10t">Release Date:
-			<%= @album.al_rel_date%></div>
-		<% end %>
-
-		<% unless @album.producer.nil? || @album.producer.size == 0 %>
-			<div class="p10t">Producer:
-			 <span class="editable" id="single_line" field_name="producer" object="album" >
-				<%= @album.producer.html_safe%>
-			 </span>
-			</div>
-		<% end %>
-
-		<% unless @album.al_label.nil? || @album.al_label.size == 0%>
-			<div class="p10t">Label:
-				<span class="editable" id="single_line" field_name="al_label" object="album" >
-					<%= @album.al_label.html_safe%>
-				</span>
-			</div>
-		<% end %>
-
-		<% unless @album.liner_notes.nil? || @album.liner_notes.size == 0 %>
-			<div class="p10t">Liner Notes:
-			 <span class="editable p5t" id="text_area" field_name="liner_notes" object="album" >
-				 <%= @album.liner_notes.html_safe%>
-			 </span>
-			</div>
-		<% end %>
-
-		<h2> Songs </h2>
-		<ol class="song-list">
+	<table style="margin-top:15px;">
+		<tbody class="row-border">
 			<% @album.songs.uniq.each do |songs| %>
 				<% unless songs.song_url_slug.blank?%>
-					<li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug), :class => "content-link" %> <a href="<%= download_url_for(songs.s3_id) %>" data-song-name="<%=songs.song_name%>" data-artist-name="<%=@artist.name%>" class="music-button"><span class="p5l">Play</span></a>
-					</li>
+				<tr>
+					<td><a href="<%= download_url_for(songs.s3_id) %>" data-song-name="<%=songs.song_name%>" data-artist-name="<%=@artist.name%>" class="music-button">
+						<span class="p5l">Play</span></a>
+					</td>
+					<td class="bold"><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug), :class => "content-link" %> 
+					</td>
+					<td>song length</td>
+					<td><a href="#" class="music-button">BUY</a></td>
+				</tr>
 				<% end %>
 			<% end %>
-		</ol>
+		</tbody>
+	</table>
 
-		<h2>Want it? Get it!</h2>
+<!-- 		<h2>Want it? Get it!</h2>
 		<% if @album.pay_type == "pay" %>
 			<%= link_to "Buy Now: Only $"+@album.al_amount.to_s+"!", payment_method_path("album",@artist.url_slug,@album.id ) %>
-		<% elsif @album.pay_type == "pwyc" %>
+		<% elsif @album.pay_type == "pwyc" %> -->
 
 			<!--gets csrf token and passes into hidden field.  Keeps user logged in after form post-->
 
@@ -176,11 +161,6 @@
 		<% else %>
 			<h3><%= link_to "Download Free",download_free_path("album",@artist.url_slug,@album.id), :class=>"albumLink" %></h3>
 		<% end %>
-	</div>
-		<% @album.artists.uniq.each do |artist_name| %>
-			<td><%= link_to 'To '+artist_name.name, artist_link_path(artist_name.url_slug) %></td>
-		<% end %>
-
 <!-- 			<h2>not to be included in actual layout</h2>
 
 			<p><b>Should be in layout - Album Type:</b>
