@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   load_and_authorize_resource
-  skip_load_and_authorize_resource :only => :css
+  skip_load_and_authorize_resource :only => [:css, :social_promo]
   require 'uri'
   # GET /artists
   # GET /artists.xml
@@ -238,6 +238,48 @@ class ArtistsController < ApplicationController
 
   end
 
+  #intersitial page, for social promotion.
+  def social_promo
+
+	  @artist = Artist.find_by_url_slug(params[:url_slug])
+
+	  #params set with Query strings
+
+	  if params[:object] == "album"
+		  @album = Album.find(params[:id])
+
+		  #in application controller
+		  album_social(@artist,@album)
+
+	  elsif params[:object] == "song"
+
+		  #in application controller
+		  @song = Song.find(params[:id])
+
+		  song_social(@artist,@song)
+	  end
+
+	  #overides the album and or song default facebook url.  For the social promo page, you have to like the artist. this is b/c following an artist is like subscribing to their content
+	  facebook_url(@artist)
+
+	  respond_to do |format|
+		  format.html
+		  format.xml
+		  format.json {
+			  render :json => {
+					  :success => true,
+					  :"#content" => render_to_string(
+							  :action => 'social_promo.html.erb',
+							  :layout => false
+					  ),
+			  }
+		  }
+
+	  end
+  end
+
+
+
   #sets variables and loads forms for image uploads
   def image_upload_prep(artist)
 
@@ -279,47 +321,7 @@ class ArtistsController < ApplicationController
 
 
 
-  #intersitial page, for social promotion.
-  def social_promo
 
-	  @artist = Artist.find_by_url_slug(params[:url_slug])
-
-	  #params set with Query strings
-
-	  if params[:object] == "album"
-		  @album = Album.find(params[:id])
-
-		  #in application controller
-		  album_social(@artist,@album)
-
-	  elsif params[:object] == "song"
-
-          #in application controller
-		  @song = Song.find(params[:id])
-
-		  song_social(@artist,@song)
-	  end
-
-	  #overides the album and or song default facebook url.  For the social promo page, you have to like the artist. this is b/c following an artist is like subscribing to their content
-	  facebook_url(@artist)
-
-	  respond_to do |format|
-		  format.html
-		  format.xml
-		  format.json {
-			  render :json => {
-					  :success => true,
-					  :"#content" => render_to_string(
-							  :action => 'show.html.erb',
-							  :layout => false
-					  ),
-
-
-			  }
-		  }
-
-	  end
-  end
 
     def pre_delete
 

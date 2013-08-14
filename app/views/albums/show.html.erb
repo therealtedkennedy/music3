@@ -97,7 +97,7 @@
 	</div>
 
 	<div class="social m30l">
-		<div><a href="https://twitter.com/share" class="twitter-share-button"  data-text="Check out <%=@album.al_name %> by <%=@artist.twitter_name%>"  data-url="<%=artist_show_album_url(@artist.url_slug,@album.album_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a></div>
+		<div><a href="https://twitter.com/share" class="twitter-share-button"  data-text="Check out <%=@album.al_name %> by <%=@artist.twitter_name%>"  data-url="<%=artist_show_album_url(@artist.url_slug,@album.album_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en" data-related="3rptr">Tweet</a></div>
 		<div class="fb-like p5t" data-href="<%=@social_fb_url%>" data-send="false" data-width="350" data-show-faces="true"></div>
 	</div>
 </div>
@@ -127,11 +127,10 @@
 		</tbody>
 	</table>
 
-<!-- 		<h2>Want it? Get it!</h2>
+ 		<h2>Want it? Get it!</h2>
 		<% if @album.pay_type == "pay" %>
 			<%= link_to "Buy Now: Only $"+@album.al_amount.to_s+"!", payment_method_path("album",@artist.url_slug,@album.id ) %>
-		<% elsif @album.pay_type == "pwyc" %> -->
-
+		<% elsif @album.pay_type == "pwyc" %>
 			<!--gets csrf token and passes into hidden field.  Keeps user logged in after form post-->
 
 			<script type="text/javascript">

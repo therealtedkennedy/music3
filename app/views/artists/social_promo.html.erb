@@ -1,9 +1,28 @@
-<P>Hellow</P>
+<style type="text/css">
+
+
+</style>
+
+
+<P>Let this world know about this artist</P>
+
+<div class="soc_download_link" style="display :none">
+	<h1><a href="/orders/paypal/to_free_download/album/pearljam/256" class="albumLink">Download!</a></h1>
+</div>
+
 <div>
+	<h2>Share</h2>
+	<a href="https://twitter.com/share" class="twitter-share-button"  data-text="Just downloaded <%=@album.al_name %> by <%=@artist.twitter_name%>. Check it out here"  data-url="<%=artist_show_album_url(@artist.url_slug,@album.album_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a>
+</div>
+
+<div>
+	<h2>Follow</h2>
 	<div class="social">
-		<a href="https://twitter.com/share" class="twitter-share-button"  data-text="Just downloaded <%=@album.al_name %> by <%=@artist.twitter_name%>. Check it out here"  data-url="<%=artist_show_album_url(@artist.url_slug,@album.album_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a>
+		<a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow
+			<%= @artist.twitter_name %></a>
 		<br/>
-		<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
+		<fb:like-box href="<%=@artist.fb_page_url%>" width="292" show_faces="false" header="false" stream="false" show_border="false"></fb:like-box>
+
 	</div>
 
 </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
 
 
 <head>
@@ -520,7 +520,8 @@ $(document).ready(function () {
 
 	//direct to s3 upload
    s3_direct_upload();
-	nav_selector();
+   nav_selector();
+   twitter_follow();
 
 
 
@@ -600,6 +601,7 @@ function loadContent(href) {
 			//loads twitter script so follow button and the like will load when back button is hit.
 
 			$.getScript("https://platform.twitter.com/widgets.js")
+			twitter_follow();
 
 			$.each(json, function (key, value) {
 				$(key).html(value);
@@ -856,6 +858,15 @@ function form_upload_rails(){
 
 
 
+//function fb_like_detect(){
+//	FB.Event.subscribe('edge.create',
+//			function(response) {
+//				ted_log("facebook like is working")
+//				alert('You liked the URL: ' + response);
+//			}
+//	);
+//
+//}
 function nav_selector(){
 	$(".navLink").click(function (event) {
 		ted_log("in nav slector click function");
@@ -865,10 +876,6 @@ function nav_selector(){
 		$( ".navArea div" ).parent().find('div').removeClass("selected");
 		$(nav_id).addClass("selected")
 	});
-
-
-
-
 
 }
 
@@ -883,6 +890,24 @@ function nav_selector(){
 //
 //	}
 
+//dectects twitter follows then allows for an action.
+function twitter_follow(){
+	twttr.ready(function (twttr) {
+		twttr.events.bind('follow',redirect_after_twitter);
+	});
+
+}
+
+
+function redirect_after_twitter (intentEvent) {
+	if (!intentEvent) return;
+	$('.soc_download_link').show();
+}
+
+//what happens after socail action has been taken.
+function after_soc_action(redirect_path){
+	window.location.href = redirect_path;
+}
 
 function ted_log() {
 	if (typeof console !== undefined && DEBUGGING) {
@@ -914,7 +939,19 @@ function ted_log() {
 	js.id = id;
 	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
 	fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+
+// dectects facebook like. Window waits for facebook script to load
+ window.fbAsyncInit = function() {
+
+	FB.Event.subscribe('edge.create', function(response) {
+		after_soc_action("/orders/paypal/to_free_download/album/pearljam/256")
+		ted_log("facebook worked")
+	});
+};
+
+
+</script>
 
 <div class="container">
 	<div class="player_nav">

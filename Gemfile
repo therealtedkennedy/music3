@@ -10,7 +10,7 @@ gem 'rails', '3.2.11'
 gem 'jquery-rails'
 gem 'client_side_validations', '3.2.5'
 gem 'aws-s3',:require => 'aws/s3'
-gem 'rubyzip'
+gem 'rubyzip', '0.9.9'
 gem 'activemerchant'
 gem "cancan"
 gem "active_paypal_adaptive_payment"
