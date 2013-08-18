@@ -263,7 +263,7 @@ div.jp-video a.jp-mute,
 div.jp-video a.jp-unmute {
 	left: 50px;
 }
-
+
 div.jp-video a.jp-volume-max {
 	left: 134px;
 }
@@ -281,7 +281,7 @@ a.jp-unmute {
 a.jp-unmute:hover {
 	background: url("jplayer.blue.monday.jpg") -79px -170px no-repeat;
 }
-a.jp-volume-max {
+a.jp-volume-max {
 	background: url("jplayer.blue.monday.jpg") 0 -186px no-repeat;
 }
 a.jp-volume-max:hover {
@@ -346,7 +346,7 @@ div.jp-duration {
 div.jp-video div.jp-current-time {
 	margin-left:20px;
 }
-div.jp-video div.jp-duration {
+.jp-duration {
 	margin-right:20px;
 }
 

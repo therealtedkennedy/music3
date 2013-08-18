@@ -226,7 +226,7 @@
 	}
 
 	.container {
-		margin-top: 50px;
+		/*margin-top: 50px;*/
 	}
 
 		/* Defines whole top nav, including sign in/out, and the player it self */
@@ -370,7 +370,6 @@ var artistSongs = {};
 
 //<!-- Initializes the play list -->
 function initializePlayList(newPlaylist) {
-
 	return new jPlayerPlaylist({
 				jPlayer:"#jquery_jplayer_1",
 				cssSelectorAncestor:"#jp_container_1"
@@ -407,11 +406,16 @@ $(document).ajaxSend(function(e, xhr, options) {
 	xhr.setRequestHeader("X-CSRF-Token", token);
 });
 
+window.onresize = function(event) {
+    $('.player_nav').css({top: window.innerHeight - $('.player_nav').height()});
+}
+
 
 var DEBUGGING = true;
 $(document).ready(function () {
 
 	myPlaylist = initializePlayList(playlistSongs);
+	$('.player_nav').css({top: window.innerHeight - $('.player_nav').height()});
 
 	/*song play counts*/
 	$("#jquery_jplayer_1").on($.jPlayer.event.ended, songCountIncrementer);
@@ -424,7 +428,8 @@ $(document).ready(function () {
 		//<!-- Assigns varibles from click-->
 		var songName = $(this).attr('data-song-name'),
 			artistName = $(this).attr('data-artist-name'),
-			songID = $(this).attr('data-song-id');
+			songID = $(this).attr('data-song-id'),
+			img = $(this).find('img').attr('src');
 
 		//<!-- checks to see if artist already exisits in the playlist -->
 		if (artistSongs[artistName] == undefined)
@@ -438,6 +443,7 @@ $(document).ready(function () {
 			myPlaylist.add({
 				title:songName,
 				artist:artistName,
+				src: img,
 				songID: songID,
 				mp3:$(this).attr('href')
 			});
@@ -475,23 +481,25 @@ $(document).ready(function () {
 	});
 
 //	 	Displays track Info
-	$(".trackInfo").live('mouseenter', function () {
-		if($.trim($(this).find('.track_name').text()).length)
-			$(this).find(".progressBarContainer").show();
-	});
-	$(".trackInfo").live('mouseleave', function () {
-		$(this).find(".progressBarContainer").hide();
-	});
+	// $(".trackInfo").live('mouseenter', function () {
+	// 	if($.trim($(this).find('.track_name').text()).length)
+	// 		$(this).find(".progressBarContainer").show();
+	// });
+	// $(".trackInfo").live('mouseleave', function () {
+	// 	$(this).find(".progressBarContainer").hide();
+	// });
 
 //		Displays playlist
 
-	$(".playlist").live('mouseenter', function () {
+	$(".trackInfo").live('mouseenter', function () {
 		console.log("hover enter");
-		if($(this).find('.songList').children().length)
-			$(".jp-playlist").show();
+		if($('.songList').children().length){
+			var playlist = $('.jp-playlist');
+			playlist.css({top: (playlist.height() + 3) * -1}).show();
+		}
 	});
 
-	$(".playlist").live('mouseleave', function () {
+	$(".jp-playlist").live('mouseleave', function () {
 		console.log("hover leave");
 		$(".jp-playlist").hide();
 	});
@@ -961,6 +969,11 @@ function ted_log() {
 
 
 		<div id="jp_container_1">
+			<div class="jp-progress-container">
+				<div class="jp-seek-bar">
+					<div class="jp-play-bar"></div>
+				</div>
+			</div>	
 			<div class="jp-type-playlist">
 				<div class="jp-audio-container">
 					<div class="branding">
@@ -971,32 +984,15 @@ function ted_log() {
 						<div class="jp-type-single">
 							<div id="jp_interface_1" class="jp-interface">
 
-								<ul class="jp-controls">
-
-									<li><a href="#" class="jp-play" tabindex="1" data-icon="&#x27;"></a></li>
-									<li><a href="#" class="jp-pause" tabindex="1" data-icon="&#x22;"></a></li>
-
-									<li><a href="#" class="jp-mute" tabindex="1" data-icon="&#x24;"></a></li>
-									<li><a href="#" class="jp-unmute" tabindex="1" data-icon="&#x25;"></a></li>
-								</ul>
-
 								<div class="trackInfo">
 									<div class="track_name" id="track_name">&nbsp;</div>
-
-									<div class="progressBarContainer">
-										<div class="jp-current-time"></div>
-										
-										<div class="jp-progress-container">
-											<div class="jp-seek-bar">
-												<div class="jp-play-bar"></div>
-											</div>
-										</div>	
-											<div class="jp-duration endTime"></div>
-									</div>
 								</div>
-
+								<!-- <div id="progress"> -->
+									<div class="jp-current-time" style="padding-left:20px;"></div>
+									<div class="divider" style="padding:0px 5px;">/</div>
+									<div class="jp-duration endTime"></div>
+								<!-- </div> -->
 								<div class="playlist">
-									Playlist
 									<div class="jp-playlist">
 										<ul class="songList">
 											<li class="playlistSong"></li>
@@ -1004,11 +1000,17 @@ function ted_log() {
 									</div>
 								</div>
 
-
 							</div>
 						</div>
 					</div>
+						<ul class="jp-controls" style="display:inline; list-style-type:none;">
 
+							<li><a href="#" class="jp-play" tabindex="1" data-icon="&#x27;"></a></li>
+							<li><a href="#" class="jp-pause" tabindex="1" data-icon="&#x22;"></a></li>
+
+							<li><a href="#" class="jp-mute" tabindex="1" data-icon="&#x24;"></a></li>
+							<li><a href="#" class="jp-unmute" tabindex="1" data-icon="&#x25;"></a></li>
+						</ul>
 				</div>
 
 				<div class="jp-no-solution">
