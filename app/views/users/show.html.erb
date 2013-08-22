@@ -45,72 +45,74 @@
 
 
 </script>
+<script type="text/javascript" src="/javascripts/hide-logo-and-nav.js"></script>
 
+<div class="editPage">
 
-<div id = "cookieData"></div>
+	<div id = "cookieData"></div>
 
-<div class= "userInfo">
-	<br />
-	<h2>
-	<%= link_to 'New Artist', new_artist_path %>
-	<%= link_to "Artists List", artists_path %>
-	</h2>
-
-	<p>
-		Created At:
-		<%= @user.created_at %>
+	<div class= "userInfo">
 		<br />
-    </p>
+		<h2>
+		<%= link_to 'New Artist', new_artist_path %>
+		<%= link_to "Artists List", artists_path %>
+		</h2>
 
-		<h1> <%= @user.email%> </h1>
-		<%= link_to "Edit", edit_user_path(@user.id) %>
-		<%#= link_to "Edit", edit_users_setting_path(@user.id) %>
+		<p>
+			Created At:
+			<%= @user.created_at %>
+			<br />
+		</p>
 
-	<p>
-		Last Login:
-		<%= @user.last_sign_in_at %>
-		<br />
+			<h1> <%= @user.email%> </h1>
+			<%= link_to "Edit", edit_user_path(@user.id) %>
+			<%#= link_to "Edit", edit_users_setting_path(@user.id) %>
 
-		Number of Sign Ins:
-		<%= @user.sign_in_count %>
-		<br />
+		<p>
+			Last Login:
+			<%= @user.last_sign_in_at %>
+			<br />
 
-	    First Name:
-		<%= @user.first_name %>
-		<br />
+			Number of Sign Ins:
+			<%= @user.sign_in_count %>
+			<br />
 
-		Last Name:
-		<%= @user.last_name %>
-		<br />
+			First Name:
+			<%= @user.first_name %>
+			<br />
 
-		Email Associated with Pay Pal Account:
-		<%= @user.pay_pal_email %>
-		<br />
-	</p>
+			Last Name:
+			<%= @user.last_name %>
+			<br />
 
-	<h2><% if @user.artists.length > 1 %>Artists<% else %>Artist<%end%> You Admin For </h2>
-	<h3>
-	  <% @user.artists.uniq.each do |artist_name| %>
-		  <%= link_to artist_name.name, artist_link_path(artist_name.url_slug) %>     <%= link_to 'Admin', artist_admin_path(artist_name.url_slug)%>
-		  </br>
+			Email Associated with Pay Pal Account:
+			<%= @user.pay_pal_email %>
+			<br />
+		</p>
 
-	  <% end %>
-	</h3>
-
-	<% if @user.albums.length > 0 %>
- 		<h2> Albums You have Downloaded already </h2>
+		<h2><% if @user.artists.length > 1 %>Artists<% else %>Artist<%end%> You Admin For </h2>
 		<h3>
-		  <% @user.albums.uniq.each do |album| %>
-			  <% @artist = Artist.find_by_name(album.pri_artist) %>
-			  <%= link_to album.al_name, artist_show_album_path(@artist.url_slug,album.album_url_slug) %>     <%= link_to 'Download Again', album_download_path(@artist.url_slug,album.album_url_slug, :redown => "true")%>
+		  <% @user.artists.uniq.each do |artist_name| %>
+			  <%= link_to artist_name.name, artist_link_path(artist_name.url_slug) %>     <%= link_to 'Admin', artist_admin_path(artist_name.url_slug) %>
 			  </br>
 
 		  <% end %>
 		</h3>
-	<% end %>
+
+		<% if @user.albums.length > 0 %>
+			<h2> Albums You have Downloaded already </h2>
+			<h3>
+			  <% @user.albums.uniq.each do |album| %>
+				  <% @artist = Artist.find_by_name(album.pri_artist) %>
+				  <%= link_to album.al_name, artist_show_album_path(@artist.url_slug,album.album_url_slug)  %>     <%= link_to 'Download Again', album_download_path(@artist.url_slug,album.album_url_slug, :redown => "true")%>
+				  </br>
+
+			  <% end %>
+			</h3>
+		<% end %>
 
 
+	</div>
 </div>
-
 
 

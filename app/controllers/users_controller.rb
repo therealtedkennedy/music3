@@ -125,9 +125,22 @@ class UsersController < Devise::SessionsController
 	  logger.info @user
       #work around to get background to load. Eventually users should have there own layouts
 	  @artist = Artist.find_by_url_slug("grimes")
+	  @edit = "true"
+
 	  respond_to do |format|
-		  format.html # show.html.erb
-		  format.xml  { render :xml => @user }
+		  format.html
+
+
+		  format.json {
+			  render :json => {
+					  :success => true,
+					  :".miniPage" => render_to_string(
+							  :action => 'show.html.erb',
+							  :layout => false
+					  ),
+					  :"edit" => "true"
+			  }
+		  }
 	  end
 
   end

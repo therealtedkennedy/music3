@@ -101,9 +101,9 @@ Music3::Application.routes.draw do
 	#albums code routing
 	match "/:url_slug/album/create-code/:id" => "album_code#show", :as => :album_create_code
 	match "/album_codes/create" => "album_code#create"
-	match "/:url_slug/download-code" => "albums#album_code_download", :as => :code_download
+	match "/:url_slug/code" => "albums#album_code_download", :as => :code_download
 	match "/:url_slug/download-code/:code" => "albums#album_code_find", :as => :code_download_code
-	match "/album/album_code_find" => "albums#album_code_find"
+	match "/:url_slug/album_code_find" => "albums#album_code_find", :as => :find_album_code
 
 
 

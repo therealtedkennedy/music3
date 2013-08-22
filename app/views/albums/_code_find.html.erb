@@ -1,9 +1,26 @@
-<%= form_tag("/album/album_code_find") do %>
+<!--had to hard code form for some reason.  The form tag was causing a validation error.-->
 
 
-  <%= label_tag(:enter_code, "Enter Code") %>
-  <%= text_field_tag(:code) %>
-  <%= hidden_field_tag 'url_slug', params[:url_slug] %>
-  <%= submit_tag("Create") %>
+<script type="text/javascript">
+	$(function(){
+		var token = $('meta[name="csrf-token"]').attr('content');
+		$("#token").val(token);
+	});
+</script>
 
-<% end %>
+
+<form accept-charset="UTF-8" action="<%=find_album_code_path(@artist.url_slug)%>" class= "ajax_update" enctype="multipart/form-data" data-validate="true"  method="post" novalidate="novalidate"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" />
+
+
+	<input name="authenticity_token" id="token" type="hidden" value=""/></div>
+
+
+	<label for="code">Download Code</label>
+	<input id="code" name="code" type="text" size="15" />
+	<input name="commit" type="submit" value="Download" />
+
+
+</form>
+
+
+

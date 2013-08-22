@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
-   before_filter :authenticate_user!, :except => [:show, :download_album,:index, :zip_album, :zip,:album_code_find,:album_play_list_create]
+   before_filter :authenticate_user!, :except => [:show, :download_album,:album_code_find,:index, :zip_album, :zip,:album_play_list_create]
+
   # GET /albums
   # GET /albums.xml
 
@@ -284,13 +285,7 @@ class AlbumsController < ApplicationController
   end
 
 
-  def album_code_download
 
-    @artist = Artist.find_by_url_slug(params[:url_slug])
-    @url_slug = params[:url_slug]
-    authorize! :create, @artist
-
-  end
 
 
   #creates a zip file for the album.  Stores it in S3
@@ -488,12 +483,23 @@ class AlbumsController < ApplicationController
   end
 
 
+   def album_code_download
+
+	   @artist = Artist.find_by_url_slug(params[:url_slug])
+	   @url_slug = params[:url_slug]
+	   authorize! :create, @artist
+
+   end
+
   def album_code_find
     @artist = Artist.find_by_url_slug(params[:url_slug])
+	@code = params[:code]
 
     if @code =  AlbumCode.find_by_album_code(params[:code])
 
-      redirect_to(album_download_path(@artist.url_slug,@code.code_album_id))
+	  #redirect_to(album_download_path(@artist.url_slug,@code.code_album_id))
+	  #redirect_to edit_multiple_items_path(:page =>2)
+	  redirect_to download_free_url("album",@artist.url_slug,@code.code_album_id)
 
     else
         respond_to do |format|

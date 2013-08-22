@@ -1,5 +1,7 @@
 class AlbumCodeController < ApplicationController
 
+	layout "artist_admin", only: [:show]
+
  def new
    @album_code = AlbumCode.new
    @album_code.save
@@ -42,30 +44,62 @@ class AlbumCodeController < ApplicationController
 		@notice = "You are over you limit please upgrade"
     end
 
-	respond_to do |format|
+	#respond_to do |format|
+	#
+	#	format.html { flash[:notice] = @notice
+	#	redirect_to(album_create_code_path(@artist.url_slug,@album.id))}
+	#	#format.xml  { head :ok }
+	#end
 
+	respond_to do |format|
 		format.html { flash[:notice] = @notice
-		redirect_to(album_create_code_path(@artist.url_slug,@album.id))}
-		#format.xml  { head :ok }
+			redirect_to(album_create_code_path(@artist.url_slug,@album.id))}
+		format.xml { render :xml => @artist }
+		format.csv { send_data @album.album_codes.to_csv_3, :filename => @album.al_name+"-Download Codes.csv"}
+		format.json {
+			render :json => {
+					:success => true,
+					:"url" => album_create_code_url(@artist.url_slug,@album.id),
+			        :edit => "true",
+			}
+		}
 	end
 
  end
 
  def show
 
-  @album = Album.find(params[:id])
-  @artist = Artist.find_by_url_slug(params[:url_slug])
-  @codes_left = CODE_LIMIT - @artist.number_of_codes
+	  @album = Album.find(params[:id])
+	  @artist = Artist.find_by_url_slug(params[:url_slug])
+	  @codes_left = CODE_LIMIT - @artist.number_of_codes
+	  @edit = "true"
 
 
+	   @times = 0
 
-   @times = 0
-  #  if @album.album_codes.exists?
+	  @form = render_to_string('album_code/_form',:layout => false)
+	  #  if @album.album_codes.exists?
 
-	respond_to do |format|
-		format.html
-		format.csv { send_data @album.album_codes.to_csv_3, :filename => @album.al_name+"-Download Codes.csv"}
-	end
+		#respond_to do |format|
+		#	format.html
+		#	format.csv { send_data @album.album_codes.to_csv_3, :filename => @album.al_name+"-Download Codes.csv"}
+		#end
+
+	  respond_to do |format|
+		  format.html {render :layout => 'artist_admin'}
+		  format.xml { render :xml => @artist }
+		  format.csv { send_data @album.album_codes.to_csv_3, :filename => @album.al_name+"-Download Codes.csv"}
+		  format.json {
+			  render :json => {
+					  :success => true,
+					  :".miniPage" => render_to_string(
+							  :action => 'show.html.erb',
+							  :layout => false
+					  ),
+					  :"edit" => "true"
+			  }
+		  }
+	  end
 
   end
 
