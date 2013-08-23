@@ -431,6 +431,9 @@ $(document).ready(function () {
 			songID = $(this).attr('data-song-id'),
 			img = $(this).find('img').attr('src');
 
+		if(!img)
+			img = $('#albumImage').attr('src');
+
 		//<!-- checks to see if artist already exisits in the playlist -->
 		if (artistSongs[artistName] == undefined)
 			artistSongs[artistName] = {};
@@ -443,7 +446,7 @@ $(document).ready(function () {
 			myPlaylist.add({
 				title:songName,
 				artist:artistName,
-				src: img,
+				albumArt: img,
 				songID: songID,
 				mp3:$(this).attr('href')
 			});
