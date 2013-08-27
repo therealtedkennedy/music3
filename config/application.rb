@@ -12,6 +12,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+
+
 module Music3
   class Application < Rails::Application
 
@@ -57,6 +59,11 @@ module Music3
     #    :secret_access_key => 'z+DmlVpM1omU5AaTlyRxsqhHiq/57M9CGEQbc+gd'
     # )
 
+
+  #set artist admin as defualt layout for users
+	#config.to_prepare do
+	#	Devise::SessionsController.layout "artist_admin"
+	#end
 
     BUCKET ='ted_kennedy'
   end

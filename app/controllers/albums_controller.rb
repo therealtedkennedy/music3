@@ -36,9 +36,7 @@ class AlbumsController < ApplicationController
   def show
     params[:album_url_slug]
 
-
     @artist = Artist.find_by_url_slug(params[:url_slug])
-
 
 	#Finds Album.  In application Controller
 
@@ -49,9 +47,8 @@ class AlbumsController < ApplicationController
 
     #@download_url = album_download_url(@album.album_url_slug, @album.id)
 
-     #album_social(@artist,@album)
-
-
+     #gets the social info for the album
+     album_social(@artist,@album)
 
 	#------------------------------------------------
 

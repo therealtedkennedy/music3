@@ -30,6 +30,9 @@ class UsersController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
+	  #work around to get background and layout  to load. Eventually users should have there own layouts
+	  user_initialize
+
 	logger.info "new controller"
     resource = build_resource
 
@@ -72,6 +75,9 @@ class UsersController < Devise::SessionsController
 
   #updates user.  For some strang reason only works when controller is called boo
     @user = User.find(current_user.id)
+
+	#work around to get background and layout  to load. Eventually users should have there own layouts
+	user_initialize
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -121,22 +127,23 @@ class UsersController < Devise::SessionsController
   def show
 	  logger.info "show controller"
 	  @user = User.find(params[:id])
+
 	  logger.info "User Found?"
 	  logger.info @user
-      #work around to get background to load. Eventually users should have there own layouts
-	  @artist = Artist.find_by_url_slug("grimes")
+      #work around to get background and layout  to load. Eventually users should have there own layouts
+	  user_initialize
+
+
 	  @edit = "true"
 
 	  respond_to do |format|
 		  format.html
-
-
 		  format.json {
 			  render :json => {
 					  :success => true,
 					  :".miniPage" => render_to_string(
-							  :action => 'show.html.erb',
-							  :layout => false
+							  :action => 'users/show.html.erb',
+							  :layout => false,
 					  ),
 					  :"edit" => "true"
 			  }
@@ -159,6 +166,7 @@ class UsersController < Devise::SessionsController
   def edit
 
 	  @user = User.find(params[:id])
+
       logger.info "In edit"
 	  logger.info @user
 	  #searchString  = params[:url_slug]
@@ -184,7 +192,9 @@ class UsersController < Devise::SessionsController
     { :methods => methods, :only => [:password] }
   end
 
-
+  def user_initialize
+	  @artist = Artist.find(16)
+  end
 
 
 end

@@ -3,6 +3,7 @@
 
 
 <head>
+<meta name="robots" content="noindex">
 <!--Google Meta-->
 <title><%= @social_title %></title>
 <%= csrf_meta_tag %>
@@ -1057,7 +1058,7 @@ function ted_log() {
 		<h1>Menu</h1>
 
 
-		<h1><%= link_to @artist.name, artist_link_path(@artist.url_slug) %></h1>
+		<h1><%= link_to @artist.name, artist_link_path(@artist.url_slug), :class => "content-link" %></h1>
 
 
 		<%= link_to "Delete Artist", pre_delete_path(@artist.url_slug)%>
@@ -1123,8 +1124,11 @@ function ted_log() {
 			</a>
 
 			</div>
+
+
 			<div class="navArea"><a href="/<%= @artist.url_slug %>" class="content-link navLink"><div class="nav <%=@tag_info %>" id="info">INFO</div></a><a href="<%= artist_show_songs_path %>" class="content-link navLink"><div class="nav" id="songs">SONGS</div></a><a href="<%= artist_show_albums_path %>" class="content-link navLink"><div class="nav" id="albums">ALBUMS</div></a>
 			</div>
+
 			<div class="miniPage" id="content"><%= yield %></div>
 		</div>
 
