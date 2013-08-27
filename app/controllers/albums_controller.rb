@@ -538,7 +538,7 @@ class AlbumsController < ApplicationController
 				@song_name = songs.song_name
 				@download = s3_url_for(BUCKET,songs.s3_id)
                 #Preps playlist for Json
-				@songs_for_playlist << {:title => @song_name, :mp3 => @download, :artist => @artist.name, :songID => songs.id}
+				@songs_for_playlist << {:title => @song_name, :mp3 => @download, :artist => @artist.name, :songID => songs.id, :albumArt => @album.art}
 
 			end
 		end
@@ -548,7 +548,7 @@ class AlbumsController < ApplicationController
 					format.json {
 						render :json => {
 								:success => true,
-								:playlist => @songs_for_playlist,
+								:playlist => @songs_for_playlist
 						}
 
 
