@@ -12,7 +12,15 @@ class ApplicationController < ActionController::Base
   #Number of download codes avaible to artist
   CODE_LIMIT = 250
 
+  before_filter :authenticate
 
+  def authenticate
+	  if Rails.env.production?
+		  authenticate_or_request_with_http_basic do |username, password|
+			  username == "trentr" && password == "Notnin1794$$"
+		  end
+	  end
+  end
 
   # Fixes SSL Error - http://www.techques.com/question/1-5360622/Problems-with-SSL-dependent-gems-OAuth2---ActiveMerchant
   #this might be a security problem.
