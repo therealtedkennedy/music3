@@ -41,11 +41,12 @@
     <%= @artist.profile_layout.profile_css %>
 
     <% else %>
+        <% @artist.profile_layout.h2_colour = @artist.profile_layout.h2_colour.blank? ? "#999" : @artist.profile_layout.h2_colour %>
+
     #content p {
         font-family: <%= @artist.profile_layout.p_font %>;
         font-size: <%= @artist.profile_layout.p_size %>pt;
         color: <%= @artist.profile_layout.p_colour %>;
-
     }
 
     h1 {
@@ -92,11 +93,9 @@
     }
 
     a {
-
         font-family: <%= @artist.profile_layout.h2_font %>;
         font-size: <%= @artist.profile_layout.h2_size %>pt;
         color: <%= @artist.profile_layout.h2_colour %>;
-
     }
 
     a:hover {
@@ -271,13 +270,9 @@
         text-decoration: none;
     }
 
-
-
     .bodyArea .artistLogoArea
     {
         margin: 0 auto;
-        width: 200px;
-        height:150px;
         text-align: center;
         display:block;
     }
@@ -306,7 +301,7 @@
             display:inline-block;
             font-family: 'verb_regularbold', sans-serif;
             font-size:20px;
-            color:#96938f;
+            /*color:#96938f;*/
             /*text-shadow: 0px 0px 1px rgba(0,0,0,0.4); */
         }
 
@@ -471,9 +466,7 @@
     }
 
     a.nav:hover, .adminLink:hover {
-        color: #FFFFFF;
-
-        font-weight: bold;
+        color: #666;
         text-decoration: none;
     }
 
@@ -560,23 +553,24 @@
     }
 
     table.song-table tbody {
-        color:#999; 
+        color: <%= @artist.profile_layout.h2_colour %>; 
         font-size:90%;
     }
 
     a.content-link {
-        color: #999;
         text-decoration: none;
+        color: <%= @artist.profile_layout.h2_colour %>;
     }
 
     a.music-button {
         text-decoration: none;
+        color: <%= @artist.profile_layout.h2_colour %>;
     }
 
     div.song-footer {
         text-align: center; 
         font-size: 90%; 
-        color: #999;
+        color: <%= @artist.profile_layout.h2_colour %>;
     }
 
     /*chrome custom scrollbar*/
