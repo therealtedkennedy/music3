@@ -40,6 +40,8 @@
 	<%= @artist.profile_layout.profile_css %>
 
 	<% else %>
+		<% @artist.profile_layout.h2_colour = @artist.profile_layout.h2_colour.blank? ? "#999" : @artist.profile_layout.h2_colour %>
+
 	p {
 		font-family: <%= @artist.profile_layout.p_font %>;
 		font-size: <%= @artist.profile_layout.p_size %>pt;
@@ -287,9 +289,7 @@
 
 
 	a.nav:hover, .adminLink:hover {
-		color: #FFFFFF;
-
-		font-weight: bold;
+		color: #666;
 		text-decoration: none;
 	}
 

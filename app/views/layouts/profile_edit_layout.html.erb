@@ -22,7 +22,12 @@
 	}
 
 	.container {
-		margin-top: 50px;
+        position:absolute;
+        left:0;
+        right:0;
+        top:0;
+        height:50px;
+        overflow:hidden;
 	}
 
 	.edit-controls {
@@ -98,9 +103,7 @@
 
 	<% else %>
 	a.nav:hover, .adminLink:hover {
-		color: #FFFFFF;
-
-		font-weight: bold;
+		color: #666;
 		text-decoration: none;
 	}
 
@@ -293,10 +296,9 @@
 	}
 
 	.editable:hover {
-		border-style:solid;
-		border-color:#ff0000
-
+		border: 1px solid #fff;
 	}
+
 
  <% end %>
 
@@ -373,10 +375,14 @@
 		xhr.setRequestHeader("X-CSRF-Token", token);
 	});
 
+	window.onresize = function(event) {
+	    $('.player_nav').css({top: window.innerHeight - $('.player_nav').height()});
+	}
 
 	$(document).ready(function () {
 
 		myPlaylist = initializePlayList(playlistSongs);
+		$('.player_nav').css({top: window.innerHeight - $('.player_nav').height()});
 
 		//<!-- Click Handler to add song to playlist.Songs are stored in Artists, Index's are assocated with songs -->
 
@@ -384,8 +390,13 @@
 			event.preventDefault();
 
 			//<!-- Assigns varibles from click-->
-			var songName = $(this).attr('data-song-name');
-			var artistName = $(this).attr('data-artist-name');
+			var songName = $(this).attr('data-song-name'),
+				artistName = $(this).attr('data-artist-name'),
+				songID = $(this).attr('data-song-id'),
+				img = $(this).find('img').attr('src');
+
+			if(!img)
+				img = $('#albumImage').attr('src');
 
 			//<!-- checks to see if artist already exisits in the playlist -->
 			if (artistSongs[artistName] == undefined)
@@ -398,6 +409,9 @@
 				//<!-- Creates play list object and ads it to play list.If you need to add more song attributes, or file types this is where you do it -->
 				myPlaylist.add({
 					title:songName,
+					artist:artistName,
+					albumArt: img,
+					songID: songID,
 					mp3:$(this).attr('href')
 				});
 
@@ -481,15 +495,18 @@
 
 		//		Displays playlist
 
-		$(".playlist").live('mouseenter', function () {
+		$(".trackInfo").live('mouseenter', function () {
 			console.log("hover enter");
-			$(".jp-playlist").show();
+			if($('.songList').children().length){
+				var playlist = $('.jp-playlist');
+				playlist.css({top: (playlist.height() + 3) * -1}).show();
+			}
 		});
-		$(".playlist").live('mouseleave', function () {
+
+		$(".jp-playlist").live('mouseleave', function () {
 			console.log("hover leave");
 			$(".jp-playlist").hide();
 		});
-
 
 		// adds playlist
 		$(".payment").live("click", function (event) {
@@ -689,6 +706,11 @@
 
 
 		<div id="jp_container_1">
+			<div class="jp-progress-container">
+				<div class="jp-seek-bar">
+					<div class="jp-play-bar"></div>
+				</div>
+			</div>	
 			<div class="jp-type-playlist">
 				<div class="jp-audio-container">
 					<div class="branding">
@@ -699,32 +721,15 @@
 						<div class="jp-type-single">
 							<div id="jp_interface_1" class="jp-interface">
 
-								<ul class="jp-controls">
-
-									<li><a href="#" class="jp-play" tabindex="1" data-icon="&#x27;"></a></li>
-									<li><a href="#" class="jp-pause" tabindex="1" data-icon="&#x22;"></a></li>
-
-									<li><a href="#" class="jp-mute" tabindex="1" data-icon="&#x24;"></a></li>
-									<li><a href="#" class="jp-unmute" tabindex="1" data-icon="&#x25;"></a></li>
-								</ul>
-
 								<div class="trackInfo">
 									<div class="track_name" id="track_name">&nbsp;</div>
-
-									<div class="progressBarContainer">
-										<div class="endTime">0:00</div>
-										<div class="jp-progress-container">
-											<div class="jp-seek-bar">
-												<div class="jp-play-bar"></div>
-											</div>
-										</div>
-
-										<div class="jp-current-time"></div>
-									</div>
 								</div>
-
+								<!-- <div id="progress"> -->
+									<div class="jp-current-time" style="padding-left:20px;"></div>
+									<div class="divider" style="padding:0px 5px;">/</div>
+									<div class="jp-duration endTime"></div>
+								<!-- </div> -->
 								<div class="playlist">
-									Playlist
 									<div class="jp-playlist">
 										<ul class="songList">
 											<li class="playlistSong"></li>
@@ -732,11 +737,17 @@
 									</div>
 								</div>
 
-
 							</div>
 						</div>
 					</div>
+						<ul class="jp-controls" style="display:inline; list-style-type:none;">
 
+							<li><a href="#" class="jp-play" tabindex="1" data-icon="&#x27;"></a></li>
+							<li><a href="#" class="jp-pause" tabindex="1" data-icon="&#x22;"></a></li>
+
+							<li><a href="#" class="jp-mute" tabindex="1" data-icon="&#x24;"></a></li>
+							<li><a href="#" class="jp-unmute" tabindex="1" data-icon="&#x25;"></a></li>
+						</ul>
 				</div>
 
 				<div class="jp-no-solution">
