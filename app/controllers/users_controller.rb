@@ -5,7 +5,7 @@ class UsersController < Devise::SessionsController
 
 
   #include Devise::Controllers::InternalHelpers
-  #layout "artist_admin", only: [:show, :edit]
+  layout "artist_admin", only: [:show, :edit]
 
   def api_login
 	  #raise env["omniauth.auth"].to_yaml
@@ -131,7 +131,7 @@ class UsersController < Devise::SessionsController
 	  logger.info "User Found?"
 	  logger.info @user
       #work around to get background and layout  to load. Eventually users should have there own layouts
-	  #user_initialize
+	  user_initialize
 
 
 	  @edit = "true"

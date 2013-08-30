@@ -621,8 +621,12 @@ function loadContent(href) {
 			ted_log("id is= "+json.id);
 
 
-			/*shows and hides eliments depending on where they are*/
-            if(json.hasOwnProperty('edit')){
+
+
+
+			//for the s3 ajax upload
+ 			s3_direct_upload();		/*shows and hides eliments depending on where they are*/
+			if(json.hasOwnProperty('edit')){
 				ted_log("In Hide Floating Content")
 				$(".artistLogoArea").hide();
 				$(".navArea").hide();
@@ -633,10 +637,6 @@ function loadContent(href) {
 				$(".artistLogoArea").show();
 				$(".navArea").show();
 			};
-
-
-			//for the s3 ajax upload
- 			s3_direct_upload();
 
 			//catches form to do json/ajax upload
 			form_upload_rails();
@@ -1126,10 +1126,10 @@ function ted_log() {
 				<%end%>
 			</a>
 
-			</div>
+		    </div>
 
 
-			<div class="navArea"><a href="/<%= @artist.url_slug %>" class="content-link navLink"><div class="nav <%=@tag_info %>" id="info">INFO</div></a><a href="<%= artist_show_songs_path %>" class="content-link navLink"><div class="nav" id="songs">SONGS</div></a><a href="<%= artist_show_albums_path %>" class="content-link navLink"><div class="nav" id="albums">ALBUMS</div></a>
+			<div class="navArea"><a href="/<%= @artist.url_slug %>" class="content-link navLink"><div class="nav <%=@tag_info %>" id="info">INFO</div></a><a href="<%= artist_show_songs_path(@artist.url_slug) %>" class="content-link navLink"><div class="nav" id="songs">SONGS</div></a><a href="<%= artist_show_albums_path(@artist.url_slug) %>" class="content-link navLink"><div class="nav" id="albums">ALBUMS</div></a>
 			</div>
 
 			<div class="miniPage" id="content"><%= yield %></div>
