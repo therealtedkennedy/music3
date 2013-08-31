@@ -76,8 +76,7 @@ class UsersController < Devise::SessionsController
   #updates user.  For some strang reason only works when controller is called boo
     @user = User.find(current_user.id)
 
-	#work around to get background and layout  to load. Eventually users should have there own layouts
-	user_initialize
+
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -128,13 +127,16 @@ class UsersController < Devise::SessionsController
 	  logger.info "show controller"
 	  @user = User.find(params[:id])
 
+	  #defines the type of object it is for the artist_admin layout.  Layout will render for user
+	  @object_type = "user"
+
 	  logger.info "User Found?"
 	  logger.info @user
       #work around to get background and layout  to load. Eventually users should have there own layouts
 	  user_initialize
 
-
-	  @edit = "true"
+    # edit = "true" shows edit screen, false hides it
+	  #@edit = "true"
 
 	  respond_to do |format|
 		  format.html
@@ -145,7 +147,8 @@ class UsersController < Devise::SessionsController
 							  :action => 'users/show.html.erb',
 							  :layout => false,
 					  ),
-					  :"edit" => "true"
+					  #show/hides edit screen
+					  #:"edit" => "true"
 			  }
 		  }
 	  end
@@ -167,12 +170,15 @@ class UsersController < Devise::SessionsController
 
 	  @user = User.find(params[:id])
 
+	  #defines the type of object it is for the artist_admin layout.  Layout will render for user
+      @object_type = "user"
       logger.info "In edit"
 	  logger.info @user
 	  #searchString  = params[:url_slug]
 	  #@artist = Artist.find_by_url_slug(searchString)
-      #work around...to make sure that the user profile loads using the artist layout template. Really the user should have there own.
-	  @artist = Artist.find_by_url_slug("grimes")
+
+	  #work around to get background and layout  to load. Eventually users should have there own layouts
+	  user_initialize
 	  respond_to do |format|
 		  format.html  #show.html.erb
 		  format.xml  { render :xml => @song }

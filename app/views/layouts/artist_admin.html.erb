@@ -3,33 +3,9 @@
 
 
 <head>
-<meta name="robots" content="noindex">
-<!--Google Meta-->
-<title><%= @social_title %></title>
-<%= csrf_meta_tag %>
-<meta name="description" content="<%= @social_descrip %>"/>
 
-<!--Facebook Meta Infomation-->
 
-<meta property="og:title" content="<%= @social_title %>"/>
-<meta property="og:type" content="band"/>
-<meta property="og:url" content="<%= @social_fb_url %>"/>
-<meta property="og:image" content="<%= @social_image %>"/>
-<meta property="og:site_name" content="Three Repeater"/>
-<meta property="fb:admins" content="513047468"/>
-<meta property="og:description" content="<%= @social_descrip %>"/>
-
-<!--Twitter Metta Info-->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@3rptr">
-<meta name="twitter:creator" content="<%= @social_twitter_name %>">
-<meta name="twitter:url" content="<%= url_for(:only_path => false) %>">
-<meta name="twitter:title" content="<%= @social_title %>">
-<meta name="twitter:description" content="<%= @social_descrip %>">
-<meta name="twitter:image" content="<%= @social_image %>">
-
-<meta class="area">
-
+<%= render partial: "layouts/artist_head" %>
 
 <style>
 
@@ -1117,25 +1093,16 @@ function ted_log() {
 
 <div class="bodyArea">
 
-		<div class="floatingContent">
-			<div class="artistLogoArea"><a href="/<%= @artist.url_slug %>/?promo=true" class="content-link">
-				<% if @artist.logo_toggle == true %>
-					<img src="<%= @artist.logo %>" /></a>
-				<% else %>
-					<h1><%= @artist.name %></h1>
-				<%end%>
-			</a>
+	  <!--Two if conditions because rails is lame. One for edit, one for show.  No idea why one doest work for both situations, but they dont. Also object type is not nil because if you define object_type="true" it fails when artist pages load becuase they don't have an artist type defined.   Change if you want to waste an hour of your life-->
+	<% if params[:urlpath].try(:starts_with?, "/users") ||  !@object_type.nil? %>
 
-		    </div>
+		<%= yield %>
 
+	<% else %>
 
-			<div class="navArea"><a href="/<%= @artist.url_slug %>" class="content-link navLink"><div class="nav <%=@tag_info %>" id="info">INFO</div></a><a href="<%= artist_show_songs_path(@artist.url_slug) %>" class="content-link navLink"><div class="nav" id="songs">SONGS</div></a><a href="<%= artist_show_albums_path(@artist.url_slug) %>" class="content-link navLink"><div class="nav" id="albums">ALBUMS</div></a>
-			</div>
+	<%= render partial: "layouts/artist_floating_content" %>
 
-			<div class="miniPage" id="content"><%= yield %></div>
-		</div>
-
-
+    <% end %>
 </div>
 
 

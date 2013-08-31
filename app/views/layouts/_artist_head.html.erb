@@ -1,0 +1,28 @@
+
+
+<meta name="robots" content="noindex">
+<!--Google Meta-->
+<title><%= @social_title %></title>
+<%= csrf_meta_tag %>
+<meta name="description" content="<%= @social_descrip %>"/>
+
+<!--Facebook Meta Infomation-->
+
+<meta property="og:title" content="<%= @social_title %>"/>
+<meta property="og:type" content="band"/>
+<meta property="og:url" content="<%= @social_fb_url %>"/>
+<meta property="og:image" content="<%= @social_image %>"/>
+<meta property="og:site_name" content="Three Repeater"/>
+<meta property="fb:admins" content="513047468"/>
+<meta property="og:description" content="<%= @social_descrip %>"/>
+
+<!--Twitter Metta Info-->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@3rptr">
+<meta name="twitter:creator" content="<%= @social_twitter_name %>">
+<meta name="twitter:url" content="<%= url_for(:only_path => false) %>">
+<meta name="twitter:title" content="<%= @social_title %>">
+<meta name="twitter:description" content="<%= @social_descrip %>">
+<meta name="twitter:image" content="<%= @social_image %>">
+
+<meta class="area">
