@@ -143,12 +143,14 @@ class UsersController < Devise::SessionsController
 		  format.json {
 			  render :json => {
 					  :success => true,
-					  :".miniPage" => render_to_string(
-							  :action => 'users/show.html.erb',
+					  :".bodyArea" => render_to_string(
+							  :action => 'show.html.erb',
 							  :layout => false,
 					  ),
 					  #show/hides edit screen
 					  #:"edit" => "true"
+					  #sets object type to user.  Loads Correct
+					  :"object_type" => "user"
 			  }
 		  }
 	  end
@@ -177,12 +179,27 @@ class UsersController < Devise::SessionsController
 	  #searchString  = params[:url_slug]
 	  #@artist = Artist.find_by_url_slug(searchString)
 
+	  #loads form
+	  @form = render_to_string('users/_form',:layout => false)
+
 	  #work around to get background and layout  to load. Eventually users should have there own layouts
 	  user_initialize
+
 	  respond_to do |format|
-		  format.html  #show.html.erb
-		  format.xml  { render :xml => @song }
-		  format.js
+		  format.html
+		  format.json {
+			  render :json => {
+					  :success => true,
+					  :".bodyArea" => render_to_string(
+							  :action => 'edit.html.erb',
+							  :layout => false,
+					  ),
+					  #show/hides edit screen
+					  #:"edit" => "true"
+					  #sets object type to user.  Loads Correct
+					  :"object_type" => "user"
+			  }
+		  }
 	  end
   end
 

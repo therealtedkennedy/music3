@@ -65,15 +65,17 @@ class ArtistsController < ApplicationController
 
     artist_social(@artist)
 
+	#sets the layout that will be loaded and the content div that it will be loaded into
+	layout(params[:layout])
     respond_to do |format|
       format.html # show.html.erb
       format.xml { render :xml => @artist }
       format.json {
         render :json => {
             :success => true,
-            :"#content" => render_to_string(
+			:"#{@hook}" => render_to_string(
                 :action => 'show.html.erb',
-                :layout => false
+                :layout => @layout
             ),
 			:"show" => "true",
         }
@@ -221,14 +223,15 @@ class ArtistsController < ApplicationController
 	#varable to remove defualt artist loading.  Loads the edit layout insted
 	@edit = "true" #see new
 
+	layout(params[:layout])
 	respond_to do |format|
 		format.html {render :layout => 'artist_admin'}
 		format.json {
 			render :json => {
 					:success => true,
-					:".miniPage" => render_to_string(
+					:"#{@hook}" => render_to_string(
 							:action => 'admin.html.erb',
-							:layout => false,
+							:layout => @layout,
 					),
 					:"edit" => "true",
 

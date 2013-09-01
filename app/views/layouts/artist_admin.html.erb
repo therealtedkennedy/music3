@@ -580,6 +580,29 @@ function popstate() {
 function loadContent(href) {
 	ted_log(href);
 
+    var clean_url = url_clean(href)
+//	triggers loading of artist layout (maybe others in the future)
+	if($(".pageType").attr('id') != clean_url){
+//      checks to make sure its not loading a user page b/c user pages don't need a load a new layout much like internal artist pages
+		if(clean_url != "users") {
+			alert($(".pageType").attr('id'));
+
+			//adds the layout type paramiter to the url so they the controller will respond with correct layouts
+			var hrefArray
+
+			hrefArray  = href.split("?")
+
+			if(hrefArray.length > 1){
+				ted_log("layout &")
+				href = href+"&layout=artist"
+			}
+			else {
+				ted_log("layout ?")
+				href = href+"?layout=artist"
+			}
+		}
+	};
+
 	$.ajax({
 		url:href,
 		success:function (json) {
@@ -601,7 +624,7 @@ function loadContent(href) {
 
 
 			//for the s3 ajax upload
- 			s3_direct_upload();		/*shows and hides eliments depending on where they are*/
+			s3_direct_upload();		/*shows and hides eliments depending on where they are*/
 			if(json.hasOwnProperty('edit')){
 				ted_log("In Hide Floating Content")
 				$(".artistLogoArea").hide();
@@ -624,6 +647,26 @@ function loadContent(href) {
 		dataType:"json"
 	});
 
+
+}
+
+//compares the first part of a url with the first part of the refferal url
+function url_clean (currentUrl){
+
+
+	//cleans the current url removes http
+	currentUrl = currentUrl.replace("http://localhost:3000","");
+	currentUrl = currentUrl.replace("http://www.threerepeater.com","");
+	currentUrl = currentUrl.replace("http://threerepeater.com","");
+	currentUrl = currentUrl.replace("https://localhost:3000","");
+	currentUrl = currentUrl.replace("https://www.threerepeater.com","");
+	currentUrl = currentUrl.replace("https://threerepeater.com","");
+
+	currentUrl = currentUrl.split("/")
+	ted_log("currentUrl split= "+currentUrl);
+	currentUrl = currentUrl[1]
+
+	return currentUrl
 }
 
 function s3_direct_upload(){
@@ -1005,7 +1048,7 @@ function ted_log() {
 		<div id="user_nav" class="user_nav">
 			<div class="user_nav_info">
 				<% if user_signed_in? %>
-					Signed in as <%= link_to current_user.email, show_user_path(current_user.id), :class => :nav %>. Not
+					Signed in as <%= link_to current_user.email, show_user_path(current_user.id), :class => "nav content-link" %>. Not
 					you?
 					<%= link_to "Sign out", destroy_user_session_path, :class => :nav, :method => :delete %>
 
@@ -1094,13 +1137,13 @@ function ted_log() {
 <div class="bodyArea">
 
 	  <!--Two if conditions because rails is lame. One for edit, one for show.  No idea why one doest work for both situations, but they dont. Also object type is not nil because if you define object_type="true" it fails when artist pages load becuase they don't have an artist type defined.   Change if you want to waste an hour of your life-->
-	<% if params[:urlpath].try(:starts_with?, "/users") ||  !@object_type.nil? %>
+	<% if  !@object_type.nil? %>
 
 		<%= yield %>
 
 	<% else %>
 
-	<%= render partial: "layouts/artist_floating_content" %>
+	<%= render template: "layouts/artist_floating_content" %>
 
     <% end %>
 </div>

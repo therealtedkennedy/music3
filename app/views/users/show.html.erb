@@ -1,3 +1,5 @@
+<!--used for page ajax page routing-->
+<div class="pageType" id="user"></div>
 <script type="text/javascript">
 
 	window.onload = showCookies
@@ -65,7 +67,7 @@
 		</p>
 
 			<h1> <%= @user.email%> </h1>
-			<%= link_to "Edit", edit_user_path(@user.id) %>
+			<%= link_to "Edit", edit_user_path(@user.id), :class => "content-link" %>
 			<%#= link_to "Edit", edit_users_setting_path(@user.id) %>
 
 		<p>
@@ -93,7 +95,7 @@
 		<h2><% if @user.artists.length > 1 %>Artists<% else %>Artist<%end%> You Admin For </h2>
 		<h3>
 		  <% @user.artists.uniq.each do |artist_name| %>
-			  <%= link_to artist_name.name, artist_link_path(artist_name.url_slug) %>     <%= link_to 'Admin', artist_admin_path(artist_name.url_slug) %>
+			  <%= link_to artist_name.name, artist_link_path(artist_name.url_slug),:class => "content-link" %>     <%= link_to 'Admin', artist_admin_path(artist_name.url_slug),:class => "content-link" %>
 			  </br>
 
 		  <% end %>

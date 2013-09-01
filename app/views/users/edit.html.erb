@@ -1,9 +1,10 @@
+<div class="pageType" id="user"></div>
 <div class="editPage">
 
 	<h1>Editing User</h1>
 
 
-	<%= render 'form' %>
+	<%= @form.html_safe %>
 
 	<%= link_to 'Show', show_user_path(@user.id) %>
 

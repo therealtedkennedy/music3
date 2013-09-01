@@ -306,6 +306,8 @@ class ApplicationController < ActionController::Base
 	end
 
 
+
+
 	#finds bucket based on object paramiter.  Used for S3 upload.
 	def find_bucket(object)
 
@@ -343,6 +345,19 @@ class ApplicationController < ActionController::Base
 
 		else
 			logger.info "something wrong the the send_s3_meta_s3"
+		end
+	end
+
+    #sets the layout based on the type of content that is being loaded
+	def layout(layout_type)
+		#most content.  that is loaded into the artist content area (just content)
+		if layout_type.nil? || layout_type.blank?
+			@layout = false
+			@hook = "#content"
+		#when artist page has to be loaded (logo, nave and content)
+		elsif layout_type == "artist"
+			@layout = "layouts/artist_floating_content.html.erb"
+			@hook = ".bodyArea"
 		end
 	end
 
