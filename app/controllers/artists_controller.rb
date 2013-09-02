@@ -234,6 +234,7 @@ class ArtistsController < ApplicationController
 							:layout => @layout,
 					),
 					:"edit" => "true",
+					:"admin-show" => "true",
 
 			}
 		}

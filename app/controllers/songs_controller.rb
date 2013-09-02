@@ -60,15 +60,16 @@ class SongsController < ApplicationController
 			# @song.artists.uniq.each do |artist|
 			#   @artist_slug = artist.url_slug
 			# end
+			layout(params[:layout])
 			respond_to do |format|
 				format.html # show.html.erb
 				format.xml { render :xml => @song }
 				format.json {
 					render :json => {
 							:success => true,
-							:"#content" => render_to_string(
+							:"#{@hook}" => render_to_string(
 									:action => 'show.html.erb',
-									:layout => false
+									:layout => @layout,
 							),
 					    	:"show" => "true",
 

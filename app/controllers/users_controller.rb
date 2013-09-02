@@ -145,7 +145,7 @@ class UsersController < Devise::SessionsController
 					  :success => true,
 					  :".bodyArea" => render_to_string(
 							  :action => 'show.html.erb',
-							  :layout => false,
+							  :layout => "layouts/user.html.erb",
 					  ),
 					  #show/hides edit screen
 					  #:"edit" => "true"
@@ -192,7 +192,7 @@ class UsersController < Devise::SessionsController
 					  :success => true,
 					  :".bodyArea" => render_to_string(
 							  :action => 'edit.html.erb',
-							  :layout => false,
+							  :layout => "layouts/user.erb",
 					  ),
 					  #show/hides edit screen
 					  #:"edit" => "true"

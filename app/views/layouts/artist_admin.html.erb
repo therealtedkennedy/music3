@@ -327,7 +327,7 @@
 <!-- Master template -->
 <script>//<![CDATA[
 $(function () {
-	$.backstretch("<%=@artist.image.to_s%>");
+
 
 	$('.show_hide').showHide({
 		speed:300, // speed you want the toggle to happen
@@ -438,10 +438,11 @@ $(document).ready(function () {
 
 	});
 
+	//chrome work around  prevents popstate, and then ajax load of content on first page load (there is probably better but this was easy).  Holds of one the popstate listener for a certian amount of time. Then loads it (i think anyway)
 	setTimeout(function () {
 		ted_log("about to hit window event listersetTimeout")
 		window.addEventListener('popstate', popstate(), false);
-	}, 1000);
+	}, 3000);
 
 
 	$(".content-link").live("click", function (event) {
@@ -585,7 +586,7 @@ function loadContent(href) {
 	if($(".pageType").attr('id') != clean_url){
 //      checks to make sure its not loading a user page b/c user pages don't need a load a new layout much like internal artist pages
 		if(clean_url != "users") {
-			alert($(".pageType").attr('id'));
+			
 
 			//adds the layout type paramiter to the url so they the controller will respond with correct layouts
 			var hrefArray
@@ -624,7 +625,9 @@ function loadContent(href) {
 
 
 			//for the s3 ajax upload
-			s3_direct_upload();		/*shows and hides eliments depending on where they are*/
+			s3_direct_upload();
+
+			/*shows and hides eliments depending on if they are editing or not.  When artist admin is access from inside artist */
 			if(json.hasOwnProperty('edit')){
 				ted_log("In Hide Floating Content")
 				$(".artistLogoArea").hide();
@@ -637,6 +640,12 @@ function loadContent(href) {
 				$(".navArea").show();
 			};
 
+
+			//shows admin controls if admin show varible is present.  Used when admin is request from json from an object outside of the current artist
+			if (json.hasOwnProperty('admin-show')){
+				$(".edit-controls").show();
+			}
+
 			//catches form to do json/ajax upload
 			form_upload_rails();
 
@@ -648,9 +657,11 @@ function loadContent(href) {
 	});
 
 
+
+
 }
 
-//compares the first part of a url with the first part of the refferal url
+//removes http:// from url
 function url_clean (currentUrl){
 
 
@@ -1139,7 +1150,7 @@ function ted_log() {
 	  <!--Two if conditions because rails is lame. One for edit, one for show.  No idea why one doest work for both situations, but they dont. Also object type is not nil because if you define object_type="true" it fails when artist pages load becuase they don't have an artist type defined.   Change if you want to waste an hour of your life-->
 	<% if  !@object_type.nil? %>
 
-		<%= yield %>
+		<%= render template: "layouts/user" %>
 
 	<% else %>
 
