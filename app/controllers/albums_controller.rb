@@ -437,6 +437,7 @@ class AlbumsController < ApplicationController
 	unless current_user.blank?
 		logger.info "user is signed in"
 		assign_to_user("album",@album.id)
+		FirstMailer.thank_you_download(@user).deliver
 	end
 
 	# deletes the download cookie so that muliple downloads won't happen
