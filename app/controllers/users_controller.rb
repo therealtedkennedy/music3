@@ -132,8 +132,6 @@ class UsersController < Devise::SessionsController
 
 	  logger.info "User Found?"
 	  logger.info @user
-      #work around to get background and layout  to load. Eventually users should have there own layouts
-	  user_initialize
 
     # edit = "true" shows edit screen, false hides it
 	  #@edit = "true"
@@ -182,8 +180,7 @@ class UsersController < Devise::SessionsController
 	  #loads form
 	  @form = render_to_string('users/_form',:layout => false)
 
-	  #work around to get background and layout  to load. Eventually users should have there own layouts
-	  user_initialize
+
 
 	  respond_to do |format|
 		  format.html
@@ -213,10 +210,6 @@ class UsersController < Devise::SessionsController
     methods = methods.keys if methods.is_a?(Hash)
     methods << :password if resource.respond_to?(:password)
     { :methods => methods, :only => [:password] }
-  end
-
-  def user_initialize
-	  @artist = Artist.find(16)
   end
 
 
