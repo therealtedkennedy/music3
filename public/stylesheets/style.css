@@ -38,3 +38,91 @@
 .icon-volume-2:before {
 	content: "\24";
 }
+
+.backPane
+{
+	z-index:100;
+	width: 25px;
+	top:0;
+	left: -30px;
+	display:block;
+	background-color: #F00;
+}
+.leftPane
+{
+	float:left;
+	vertical-align: top;
+}
+.rightPane
+{
+	float:right;
+	font-family: arial;
+	font-size:14px;
+	width:75%;
+}
+
+.rightPane h1
+{
+	text-align: left;
+	font-family: 'verb_regularregular';
+	font-size:20px;
+}
+.rightPane .albumDesc
+{
+	text-align: left;
+	font-family: 'verb_lightregular';
+	font-size:16px;
+	color:#aaa;
+	font-weight: 100;
+}
+
+.rightPane .details {
+	text-align: left;
+	font-family: 'verb_lightregular';
+	font-size:14px;
+	color:#aaa;
+}
+
+.p10t{
+	padding-top:10px;
+}
+
+.p5t{
+	padding-top:5px;
+}
+
+.p5l{
+	padding-left:5px;
+}
+
+.m30l{
+	margin-left:30px;
+}
+
+.albumLink{
+	text-decoration: none !important;
+	font-size: 16px !important;
+}
+.song-list{
+	width:50%;
+	margin: 0 auto;
+}
+
+.rightPane table
+{
+	width:100%;
+	text-align: left;
+	font-family: 'verb_lightregular';
+	font-size:16px;
+	color:#aaa;
+	font-weight: 100;
+	margin-right:15px;
+}
+
+.rightPane td {
+	padding: 10px;
+}
+
+.bold {
+	font-weight: bold;
+}

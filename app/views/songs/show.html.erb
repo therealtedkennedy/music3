@@ -1,62 +1,79 @@
+<table><tbody><tr>
+<td class="left-panel">
+	<div>
+		<img style="max-width:300px;" src="<%=@song.image.to_s %>"/>
+	</div>
+	<div class="social">
+		<% if @artist.twitter_name.blank? %>
+
+		<% else %>
+			<div>
+				<a href="https://twitter.com/share" class="twitter-share-button"  data-text="Check out <%=@song.song_name %> by <%=@artist.twitter_name%>"  data-url="<%=artist_show_song_url(@artist.url_slug, @song.song_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en" data-related="3rptr">Tweet</a>
+			</div>
+		<% end %>
+	<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
+	</div>
+</td>
+<td class="row-border vat">
+	<p><% @song.artists.uniq.each do |artist_name| %>
+        <%= link_to artist_name.name, artist_link_path(artist_name.url_slug), class:"content-link" %>
+    	<% end %> - 
+    	<a href="<%= download_url_for(@song.s3_id) %>" data-song-name="<%=@song.song_name%>" data-artist-name="<%=@song.song_artist%>" class="music-button"> <%= @song.song_name %> </a></br>
+	</p>
+	<table cellpadding="10" class="w100"><tbody>
+		<tr>
+			<td class="info-item">Written By:</td>
+			<td class="item-description"><span class="editable" id="single_line" field_name="song_written" object="song" >
+ 	     <%= @song.song_written.html_safe %>
+   </span></td>
+		</tr>
+		<tr>
+			<td class="info-item">Song Plays:</td>
+			<td class="item-description">
+				<%= @song.song_plays%>
+			</td>
+		</tr>
+		<tr>
+			<td class="info-item">Created Date:</td>
+			<td class="item-description">
+				<%= @song.created_at.strftime("%d %b %Y") %>	
+			</td>
+		</tr>
+		<tr>
+			<td class="info-item">Lyrics:</td>
+			<td class="item-description">
+			  <div class="editable" id="text_area" field_name="lyrics" object="song" >
+			    	<%= @song.lyrics.html_safe %>
+			  </div>
+			</td>
+		</tr>
+	</tbody></table>
+</td></tr>
+<tr><td></td><td>
+	<%  if can? :create, @artist%>
+    	<%=link_to "Download", download_url_for(@song.s3_id) %> </br>
+	<% else %>
+  		<span class="info-item">  <%= link_to "Sign In", user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %>  to Download </span>
+
+		<%end %>
+	</td>
+</tr></tbody></table>
+
 <p id="notice"><%= notice %></p>
 <div class="song">
- <% if can? :update, @artist %>
+<% if can? :update, @artist %>
     <table>
-
-        <td><%= link_to 'Edit', edit_song_path(@song.id)%></td>
-        <td><%= link_to 'Destroy', @song, :method => :delete, :confirm => 'Are you sure?' %></td>
-
+    	<tr>
+	        <td><%= link_to 'Edit', edit_song_path(@song.id)%></td>
+	        <td><%= link_to 'Destroy', @song, :method => :delete, :confirm => 'Are you sure?' %></td>
+		</tr>
     </table>
-
-  <% end %>
-
-	<img src="<%=@song.image.to_s %>"/>
-
-<h2>
-    <% @song.artists.uniq.each do |artist_name| %>
-
-          <td><%= link_to artist_name.name, artist_link_path(artist_name.url_slug), class:"content-link" %></td>
-    <% end %></h2>
-
-<h1>
-
-   <a href="<%= download_url_for(@song.s3_id) %>" data-song-name="<%=@song.song_name%>" data-artist-name="<%=@song.song_artist%>" class="music-button"> <%= @song.song_name %> </a></br>
-
-</h1>
-
-
-
-<div class="social">
-<a href="https://twitter.com/share" class="twitter-share-button"  data-text="Check out <%=@song.song_name %> by <%=@artist.twitter_name%>"  data-url="<%=artist_show_song_url(@artist.url_slug, @song.song_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en" data-related="3rptr">Tweet</a>
- </br>
-	<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
+ <% end %> 
 </div>
 
-   <br />
-   <br />
-
-   <b>Written By</b>
-   <span class="editable" id="single_line" field_name="song_written" object="song" >
- 	     <%= @song.song_written.html_safe %>
-   </span>
 
 
-<p>
-  <b>Song Plays</b>
-  <%= @song.song_plays%>
-</p>
-
-   <b>Lyrics</b>
-  <div class="editable" id="text_area" field_name="lyrics" object="song" >
-    	<%= @song.lyrics.html_safe %>
-  </div>
-
-
-	<p>
-		<b>Created Date</b>
-		<%= @song.created_at.strftime("%d %b %Y") %>
-	</p>
-
+<!--    
 	<p>
 		<b>(not predominate)Licence Type:</b>
 		<%= @song.song_licence_type %>
@@ -65,12 +82,7 @@
 
 
 
-	<%  if can? :create, @artist%>
-    <%=link_to "Download", download_url_for(@song.s3_id) %> </br>
-<% else %>
-  <h2>  <%= link_to "Sign In", user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %>  to Download </h2>
 
-<%end %>
 
     <p>
  <b>(maybe) Where it was releasesd</b>
@@ -127,4 +139,4 @@
 		<%= @song.song_url_slug %>
 	</p>
 
-</div>
+</div> -->
