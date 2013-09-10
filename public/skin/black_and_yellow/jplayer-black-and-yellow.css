@@ -33,8 +33,8 @@
 /* Branding the first part of the player */
 .branding {
 	display: inline-block;
-	width: 110px;
-	height: 50px;
+	width: auto;
+	height: auto;
 	top: 0;
 	float:left;
 

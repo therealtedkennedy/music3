@@ -39,6 +39,14 @@
 	content: "\24";
 }
 
+.logo-black-large 	{background: url('/images/logo/logo-black-large.png');}
+.logo-black-medium 	{background: url('/images/logo/logo-black-medium.png');}
+.logo-black-small 	{background: url('/images/logo/logo-black-small.png'); height:53px; width:138px;}
+.logo-white-large 	{background: url('/images/logo/logo-white-large.png');}
+.logo-white-medium 	{background: url('/images/logo/logo-white-medium.png');}
+.logo-white-small	{background: url('/images/logo/logo-white-small.png'); height:53px; width:138px;}
+.logo-transparent-white-small {background: url('/images/logo/logo-transparent-small.png'); height:53px; width:138px;}
+
 .backPane
 {
 	z-index:100;
