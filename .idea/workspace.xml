@@ -35,7 +35,7 @@
     <file path="/application.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1377909996330" ignored="false" />
     <file path="/artist_floating_content.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378143208608" ignored="false" />
     <file path="/admin.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378145935068" ignored="false" />
-    <file path="/production.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379472460741" ignored="false" />
+    <file path="/production.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379472643460" ignored="false" />
     <file path="/first_mailer.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378773640091" ignored="false" />
     <file path="/thank_you_download.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378778084380" ignored="false" />
     <file path="/thank_you_download.text.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378778492432" ignored="false" />
@@ -86,7 +86,7 @@
       <file leaf-file-name="production.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="2" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.20379147">
+            <state line="35" column="36" selection-start="1288" selection-end="1288" vertical-scroll-proportion="0.14691943">
               <folding />
             </state>
           </provider>
@@ -1289,7 +1289,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="2" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.20379147">
+        <state line="35" column="36" selection-start="1288" selection-end="1288" vertical-scroll-proportion="0.14691943">
           <folding />
         </state>
       </provider>
