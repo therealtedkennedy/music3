@@ -33,8 +33,8 @@ Music3::Application.configure do
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_assets = true
-  config.static_cache_control = "public, max-age=86400"
+  config.serve_static_assets = flase
+  
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
