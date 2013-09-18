@@ -30,19 +30,17 @@ Music3::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-		  address: "smtp.gmail.com",
-		  port: 587,
-		  domain: "gmail.com",
-		  authentication: "plain",
-		  enable_starttls_auto: true,
-		  user_name: 'threerepeater@gmail.com',
-		  password:"three1234!!"
-  }
+			address: "smtp.mandrillapp.com",
+			port: 587,
+			domain: "heroku.com",
+			authentication: "plain",
+			user_name: ENV['MANDRILL_USERNAME'],
+			password:ENV['MANDRILL_APIKEY'],
+	}
 
 
   ENV["TWITTER_KEY"] = "PkEuRrYyt4wWlQIX9BCXA"
   ENV["TWITTER_SECRET"] = "m0nZf7OO7TSDymqdmlJeaIIhsO8hulOGSufFgm40"
-
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000'}
 
