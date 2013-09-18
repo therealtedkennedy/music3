@@ -10,7 +10,7 @@
     <file path="/songs_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374874489655" ignored="false" />
     <file path="/song.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374959192971" ignored="false" />
     <file path="/application_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378010545364" ignored="false" />
-    <file path="/a.dummy" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379473676530" ignored="false" />
+    <file path="/a.dummy" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379474393813" ignored="false" />
     <file path="/Dummy.txt" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379466087240" ignored="false" />
     <file path="/_s3_upload_form.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374021503347" ignored="false" />
     <file path="/index.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374192372839" ignored="false" />
@@ -35,7 +35,7 @@
     <file path="/application.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1377909996330" ignored="false" />
     <file path="/artist_floating_content.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378143208608" ignored="false" />
     <file path="/admin.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378145935068" ignored="false" />
-    <file path="/production.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379474177023" ignored="false" />
+    <file path="/production.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379474653763" ignored="false" />
     <file path="/first_mailer.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378773640091" ignored="false" />
     <file path="/thank_you_download.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378778084380" ignored="false" />
     <file path="/thank_you_download.text.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378778492432" ignored="false" />
@@ -65,15 +65,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="artist_admin.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="776" column="43" selection-start="20808" selection-end="20904" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="environment.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/environment.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -86,7 +77,25 @@
       <file leaf-file-name="production.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.77251184">
+            <state line="37" column="0" selection-start="1289" selection-end="1289" vertical-scroll-proportion="0.7276786">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="log.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="93" selection-start="6920" selection-end="6920" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.css.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/artists/default.css.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="58" selection-start="703" selection-end="747" vertical-scroll-proportion="-8.275862">
               <folding />
             </state>
           </provider>
@@ -146,15 +155,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="thank_you_download.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="12" selection-start="402" selection-end="429" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -178,7 +178,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/layouts/user.html.erb" />
         <option value="$PROJECT_DIR$/app/views/artists/admin.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/artists_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/songs_controller.rb" />
@@ -193,6 +192,7 @@
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
+        <option value="$PROJECT_DIR$/app/views/artists/default.css.erb" />
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
       </list>
     </option>
@@ -1062,11 +1062,11 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.45779544" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.5163853" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15614973" sideWeight="0.81493866" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2776327" sideWeight="0.580574" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2776327" sideWeight="0.58278143" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37472036" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28775835" sideWeight="0.225" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41942605" sideWeight="0.13228895" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41942605" sideWeight="0.86771107" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41721854" sideWeight="0.13228895" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41721854" sideWeight="0.86771107" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33295456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40106952" sideWeight="0.77911645" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1144,16 +1144,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="211" column="32" selection-start="6005" selection-end="6005" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/user.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="12" selection-start="139" selection-end="139" vertical-scroll-proportion="-3.310345" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="108" column="149" selection-start="2709" selection-end="2818" vertical-scroll-proportion="-6.551724" />
@@ -1248,9 +1238,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/log.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="93" selection-start="6920" selection-end="6920" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/artists/default.css.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="58" selection-start="703" selection-end="747" vertical-scroll-proportion="-8.275862">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.77251184">
+        <state line="37" column="0" selection-start="1289" selection-end="1289" vertical-scroll-proportion="0.7276786">
           <folding />
         </state>
       </provider>
