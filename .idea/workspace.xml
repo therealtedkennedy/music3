@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environment.rb" afterPath="$PROJECT_DIR$/config/environment.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="music3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -10,8 +11,8 @@
     <file path="/songs_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374874489655" ignored="false" />
     <file path="/song.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374959192971" ignored="false" />
     <file path="/application_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378010545364" ignored="false" />
-    <file path="/a.dummy" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378430887978" ignored="false" />
-    <file path="/Dummy.txt" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378770076982" ignored="false" />
+    <file path="/a.dummy" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378780690107" ignored="false" />
+    <file path="/Dummy.txt" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379466087240" ignored="false" />
     <file path="/_s3_upload_form.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374021503347" ignored="false" />
     <file path="/index.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374192372839" ignored="false" />
     <file path="/Ruby Console" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378777949589" ignored="false" />
@@ -39,6 +40,8 @@
     <file path="/first_mailer.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378773640091" ignored="false" />
     <file path="/thank_you_download.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378778084380" ignored="false" />
     <file path="/thank_you_download.text.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378778492432" ignored="false" />
+    <file path="/environment.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379466449638" ignored="false" />
+    <file path="/*.regexp" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379466765149" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,25 +68,25 @@
       <file leaf-file-name="artist_admin.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="776" column="43" selection-start="20794" selection-end="20890" vertical-scroll-proportion="66.206894">
+            <state line="776" column="43" selection-start="20794" selection-end="20890" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="environment.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="environment.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/environment.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="9" column="0" selection-start="239" selection-end="239" vertical-scroll-proportion="0.4417178">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="production.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="production.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="41" selection-start="2883" selection-end="2883" vertical-scroll-proportion="0.7741935">
+            <state line="71" column="0" selection-start="2759" selection-end="2759" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -110,7 +113,7 @@
       <file leaf-file-name="thank_you_download.text.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="683" selection-end="683" vertical-scroll-proportion="-13.24138">
+            <state line="16" column="0" selection-start="683" selection-end="683" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -119,7 +122,7 @@
       <file leaf-file-name="thank_you_download.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="12" selection-start="402" selection-end="429" vertical-scroll-proportion="-9.103448">
+            <state line="11" column="12" selection-start="402" selection-end="429" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -128,7 +131,7 @@
       <file leaf-file-name="show.html.bak.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/albums/show.html.bak.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -137,7 +140,7 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/artists/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="17" selection-start="495" selection-end="495" vertical-scroll-proportion="-8.275862">
+            <state line="16" column="17" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -146,7 +149,7 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/albums/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="70.75862">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding>
                 <marker date="1378778862048" expanded="true" signature="886:1103" placeholder="unless ... end" />
                 <marker date="1378778862048" expanded="true" signature="1200:1737" placeholder="do ... end" />
@@ -180,7 +183,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/users/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/artist_floating_content.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/user.html.erb" />
@@ -196,6 +198,7 @@
         <option value="$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb" />
         <option value="$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb" />
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
+        <option value="$PROJECT_DIR$/config/environment.rb" />
       </list>
     </option>
   </component>
@@ -210,7 +213,7 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1176" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -749,14 +752,14 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="75" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="79" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="78" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="80" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="351" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="80" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="350" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="351" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="79" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="78" />
     <property name="GoToClass.includeJavaFiles" value="false" />
@@ -785,7 +788,7 @@
       <recent name="C:\Sites\music3\public\stylesheets" />
     </key>
   </component>
-  <component name="RunManager" selected="IRB console.Rails console: music3">
+  <component name="RunManager" selected="Rails.Development: music3">
     <configuration default="false" name="routes" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
       <module name="music3" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -1014,13 +1017,6 @@
       <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="false" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
-      <method />
-    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -1050,6 +1046,13 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
@@ -1241,24 +1244,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21392533" sideWeight="0.0" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286991" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.45779544" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.5163853" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15614973" sideWeight="0.81493866" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20245726" sideWeight="0.5863724" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17040598" sideWeight="0.5878525" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37472036" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28775835" sideWeight="0.225" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41362762" sideWeight="0.120726496" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41362762" sideWeight="0.8787393" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4121475" sideWeight="0.12126068" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4121475" sideWeight="0.8787393" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33295456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40106952" sideWeight="0.77911645" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.45779544" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2311412" sideWeight="0.47058824" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1333,46 +1336,32 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/views/songs/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/songs/upload.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="211" column="32" selection-start="6005" selection-end="6005" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="211" column="32" selection-start="6005" selection-end="6005" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/user.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="12" selection-start="139" selection-end="139" vertical-scroll-proportion="-3.310345">
-          <folding>
-            <marker date="1378144315065" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="4" column="12" selection-start="139" selection-end="139" vertical-scroll-proportion="-3.310345" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="149" selection-start="2709" selection-end="2818" vertical-scroll-proportion="-6.551724">
-          <folding />
-        </state>
+        <state line="108" column="149" selection-start="2709" selection-end="2818" vertical-scroll-proportion="-6.551724" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="440" column="7" selection-start="10994" selection-end="10994" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="440" column="7" selection-start="10994" selection-end="10994" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/albums/show.html.bak.erb">
@@ -1384,7 +1373,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/albums/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="70.75862">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
             <marker date="1378778862048" expanded="true" signature="886:1103" placeholder="unless ... end" />
             <marker date="1378778862048" expanded="true" signature="1200:1737" placeholder="do ... end" />
@@ -1396,7 +1385,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/artists/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="17" selection-start="495" selection-end="495" vertical-scroll-proportion="-8.275862">
+        <state line="16" column="17" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1410,28 +1399,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="776" column="43" selection-start="20794" selection-end="20890" vertical-scroll-proportion="66.206894">
+        <state line="776" column="43" selection-start="20794" selection-end="20890" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="12" selection-start="402" selection-end="429" vertical-scroll-proportion="-9.103448">
+        <state line="11" column="12" selection-start="402" selection-end="429" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="683" selection-end="683" vertical-scroll-proportion="-13.24138">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environment.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="16" column="0" selection-start="683" selection-end="683" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1445,7 +1427,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="41" selection-start="2883" selection-end="2883" vertical-scroll-proportion="0.7741935">
+        <state line="71" column="0" selection-start="2759" selection-end="2759" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environment.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="239" selection-end="239" vertical-scroll-proportion="0.4417178">
           <folding />
         </state>
       </provider>
