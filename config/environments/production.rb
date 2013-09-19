@@ -83,8 +83,8 @@ Music3::Application.configure do
 			port: 587,
 			domain: "heroku.com",
 			authentication: "plain",
-			user_name: ENV['app6560736@heroku.com'],
-			password:ENV['dhKLT_fwJLUbb0q9pb6O-A'],
+			user_name: "app6560736@heroku.com",
+			password:"dhKLT_fwJLUbb0q9pb6O-A",
 	}
   end
 

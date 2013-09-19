@@ -34,8 +34,8 @@ Music3::Application.configure do
 			port: 587,
 			domain: "heroku.com",
 			authentication: "plain",
-			user_name: ENV['MANDRILL_USERNAME'],
-			password:ENV['MANDRILL_APIKEY'],
+			user_name: "app6560736@heroku.com",
+			password:"dhKLT_fwJLUbb0q9pb6O-A",
 	}
 
 
