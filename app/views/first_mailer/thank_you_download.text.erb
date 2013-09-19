@@ -3,9 +3,9 @@ Thank you for downloading <%= @album.al_name %>!
 
 Want more? Follow us <a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en"><%= @artist.twitter_name %></a>
 
-Download here => <%= link_to album_download_url(@artist.url_slug,@album.album_url_slug, :redown => "true")%>
+Download here =>
 
-You can download this again, any time by logging into your your page =>  <%= link_to show_user_url(@user.id) %>.
+You can download this again, any time by logging into your your page => 
 
 Enjoy the music!
 <%= @artist.name %>

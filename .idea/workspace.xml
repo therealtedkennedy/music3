@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/mailers/first_mailer.rb" afterPath="$PROJECT_DIR$/app/mailers/first_mailer.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb" afterPath="$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb" afterPath="$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb" />
     </list>
     <ignored path="music3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,7 +78,7 @@
       <file leaf-file-name="production.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="8" selection-start="3116" selection-end="3190" vertical-scroll-proportion="-12.333333">
+            <state line="87" column="5" selection-start="3193" selection-end="3193" vertical-scroll-proportion="-14.111111">
               <folding />
             </state>
           </provider>
@@ -91,15 +88,6 @@
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
             <state line="3" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="default.css.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/artists/default.css.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="58" selection-start="703" selection-end="747" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -141,10 +129,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="thank_you_download.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="thank_you_download.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="113" selection-start="565" selection-end="565" vertical-scroll-proportion="0.70731705">
+            <state line="23" column="28" selection-start="590" selection-end="590" vertical-scroll-proportion="-10.827586">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="thank_you_download.text.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="72" selection-start="369" selection-end="369" vertical-scroll-proportion="0.43523315">
               <folding />
             </state>
           </provider>
@@ -188,7 +185,6 @@
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/_artist_head.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb" />
         <option value="$PROJECT_DIR$/config/environment.rb" />
         <option value="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
@@ -198,6 +194,7 @@
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/app/mailers/first_mailer.rb" />
         <option value="$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb" />
       </list>
     </option>
   </component>
@@ -1072,11 +1069,6 @@
         <state line="776" column="43" selection-start="20808" selection-end="20904" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="683" selection-end="683" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="4" selection-start="1045" selection-end="1045" vertical-scroll-proportion="0.0">
@@ -1135,7 +1127,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="8" selection-start="3116" selection-end="3190" vertical-scroll-proportion="-12.333333">
+        <state line="87" column="5" selection-start="3193" selection-end="3193" vertical-scroll-proportion="-14.111111">
           <folding />
         </state>
       </provider>
@@ -1156,7 +1148,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="113" selection-start="565" selection-end="565" vertical-scroll-proportion="0.70731705">
+        <state line="23" column="28" selection-start="590" selection-end="590" vertical-scroll-proportion="-10.827586">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="72" selection-start="369" selection-end="369" vertical-scroll-proportion="0.43523315">
           <folding />
         </state>
       </provider>
