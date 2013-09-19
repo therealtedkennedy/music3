@@ -72,7 +72,7 @@ Music3::Application.configure do
     )
 
 
-	config.default_url_options = { :host => 'threerepeater.herokuapp.com'}
+	config.default_url_options = { :host => 'threerepeater.com'}
 
 	# Don't care if the mailer can't send
 	config.action_mailer.raise_delivery_errors = true
