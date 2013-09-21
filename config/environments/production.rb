@@ -87,7 +87,7 @@ Music3::Application.configure do
 	#		password:"CMGqTla1DR71Z-DawNGRQ",
 	#}
   #end
-
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
 		  :address   => "smtp.mandrillapp.com",
 		  :port      => 25, # ports 587 and 2525 are also supported with STARTTLS
