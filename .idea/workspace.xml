@@ -37,7 +37,7 @@
     <file path="/artist_floating_content.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378143208608" ignored="false" />
     <file path="/admin.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378145935068" ignored="false" />
     <file path="/production.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379797471024" ignored="false" />
-    <file path="/first_mailer.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379798006331" ignored="false" />
+    <file path="/first_mailer.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379798498535" ignored="false" />
     <file path="/thank_you_download.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379560512475" ignored="false" />
     <file path="/thank_you_download.text.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378778492432" ignored="false" />
     <file path="/environment.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379466449638" ignored="false" />
@@ -93,10 +93,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="albums_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="albums_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="238" column="32" selection-start="5639" selection-end="5639" vertical-scroll-proportion="0.0">
+            <state line="439" column="13" selection-start="10933" selection-end="10933" vertical-scroll-proportion="0.21634616">
               <folding />
             </state>
           </provider>
@@ -141,16 +141,16 @@
       <file leaf-file-name="thank_you_download.text.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="71" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0">
+            <state line="8" column="0" selection-start="369" selection-end="369" vertical-scroll-proportion="-6.62069">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="first_mailer.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="first_mailer.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/mailers/first_mailer.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="3" selection-start="42" selection-end="42" vertical-scroll-proportion="0.057692308">
+            <state line="3" column="0" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -206,8 +206,8 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="360" />
-    <option name="y" value="241" />
+    <option name="x" value="2" />
+    <option name="y" value="290" />
     <option name="width" value="1213" />
     <option name="height" value="1040" />
   </component>
@@ -964,7 +964,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="360" y="241" width="1213" height="1040" extended-state="0" />
+    <frame x="2" y="290" width="1213" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21392533" sideWeight="0.0" order="11" side_tool="false" content_ui="tabs" />
@@ -1112,23 +1112,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="71" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="28" selection-start="590" selection-end="590" vertical-scroll-proportion="-19.034483">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="238" column="32" selection-start="5639" selection-end="5639" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1147,9 +1133,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="369" selection-end="369" vertical-scroll-proportion="-6.62069">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/mailers/first_mailer.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="3" selection-start="42" selection-end="42" vertical-scroll-proportion="0.057692308">
+        <state line="3" column="0" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="439" column="13" selection-start="10933" selection-end="10933" vertical-scroll-proportion="0.21634616">
           <folding />
         </state>
       </provider>
