@@ -73,7 +73,7 @@ Music3::Application.configure do
 
 
 	config.default_url_options = { :host => 'threerepeater.com'}
-
+	ActionMailer::Base.delivery_method = :smtp
 	# Don't care if the mailer can't send
 	config.action_mailer.raise_delivery_errors = true
 
@@ -87,8 +87,9 @@ Music3::Application.configure do
 	#		password:"CMGqTla1DR71Z-DawNGRQ",
 	#}
   #end
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
+	ActionMailer::Base.delivery_method = :smtp
+  #config.action_mailer.delivery_method = :smtp
+	ActionMailer::Base.smtp_settings.smtp_settings = {
 		  :address   => "smtp.mandrillapp.com",
 		  :port      => 25, # ports 587 and 2525 are also supported with STARTTLS
 		  :enable_starttls_auto => true, # detects and uses STARTTLS
