@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/albums_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="music3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -10,8 +13,8 @@
     <file path="/songs_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374874489655" ignored="false" />
     <file path="/song.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374959192971" ignored="false" />
     <file path="/application_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378010545364" ignored="false" />
-    <file path="/a.dummy" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379557882261" ignored="false" />
-    <file path="/Dummy.txt" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379552921048" ignored="false" />
+    <file path="/a.dummy" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379786235861" ignored="false" />
+    <file path="/Dummy.txt" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379785887356" ignored="false" />
     <file path="/_s3_upload_form.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374021503347" ignored="false" />
     <file path="/index.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374192372839" ignored="false" />
     <file path="/Ruby Console" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378777949589" ignored="false" />
@@ -22,7 +25,7 @@
     <file path="/new.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374547339825" ignored="false" />
     <file path="/album.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374984349918" ignored="false" />
     <file path="/routes.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1377138527290" ignored="false" />
-    <file path="/albums_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378773679743" ignored="false" />
+    <file path="/albums_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379788585460" ignored="false" />
     <file path="/Gemfile" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1376356465481" ignored="false" />
     <file path="/artists_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378146287915" ignored="false" />
     <file path="/social_promo.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1376448420582" ignored="false" />
@@ -74,10 +77,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="production.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="production.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="44" selection-start="3036" selection-end="3036" vertical-scroll-proportion="0.22194514">
+            <state line="82" column="22" selection-start="3050" selection-end="3050" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -92,10 +95,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="albums_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="albums_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="439" column="0" selection-start="10926" selection-end="10926" vertical-scroll-proportion="0.0">
+            <state line="439" column="9" selection-start="10929" selection-end="10929" vertical-scroll-proportion="0.5769231">
               <folding />
             </state>
           </provider>
@@ -131,7 +134,7 @@
       <file leaf-file-name="thank_you_download.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="28" selection-start="590" selection-end="590" vertical-scroll-proportion="-10.827586">
+            <state line="23" column="28" selection-start="590" selection-end="590" vertical-scroll-proportion="-19.034483">
               <folding />
             </state>
           </provider>
@@ -140,7 +143,7 @@
       <file leaf-file-name="thank_you_download.text.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="71" selection-start="368" selection-end="368" vertical-scroll-proportion="-5.793103">
+            <state line="7" column="71" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -185,7 +188,6 @@
         <option value="$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/_artist_head.html.erb" />
         <option value="$PROJECT_DIR$/config/environment.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/app/views/artists/default.css.erb" />
         <option value="$PROJECT_DIR$/Gemfile" />
@@ -194,6 +196,7 @@
         <option value="$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb" />
         <option value="$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb" />
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
       </list>
     </option>
   </component>
@@ -252,16 +255,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="RailsProjectView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music3" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -454,6 +447,16 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="music3" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -471,14 +474,14 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="75" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="79" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="78" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="80" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="351" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="80" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="350" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="351" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="79" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="78" />
     <property name="GoToClass.includeJavaFiles" value="false" />
@@ -736,13 +739,6 @@
       <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="false" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
-      <method />
-    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -772,6 +768,13 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
@@ -874,15 +877,15 @@
       <method />
     </configuration>
     <list size="9">
-      <item index="0" class="java.lang.String" itemvalue="Rails.Development: music3" />
-      <item index="1" class="java.lang.String" itemvalue="Rails.Production: music3" />
-      <item index="2" class="java.lang.String" itemvalue="Rake.spec" />
-      <item index="3" class="java.lang.String" itemvalue="Rake.test" />
-      <item index="4" class="java.lang.String" itemvalue="Rake.routes" />
-      <item index="5" class="java.lang.String" itemvalue="Rake.db:rollback" />
-      <item index="6" class="java.lang.String" itemvalue="Rake.db:migrate:status" />
-      <item index="7" class="java.lang.String" itemvalue="Ruby.application" />
-      <item index="8" class="java.lang.String" itemvalue="IRB console.Rails console: music3" />
+      <item index="0" class="java.lang.String" itemvalue="Rake.routes" />
+      <item index="1" class="java.lang.String" itemvalue="Rake.db:rollback" />
+      <item index="2" class="java.lang.String" itemvalue="Rake.db:migrate:status" />
+      <item index="3" class="java.lang.String" itemvalue="Ruby.application" />
+      <item index="4" class="java.lang.String" itemvalue="IRB console.Rails console: music3" />
+      <item index="5" class="java.lang.String" itemvalue="Rails.Development: music3" />
+      <item index="6" class="java.lang.String" itemvalue="Rails.Production: music3" />
+      <item index="7" class="java.lang.String" itemvalue="Rake.spec" />
+      <item index="8" class="java.lang.String" itemvalue="Rake.test" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -971,11 +974,11 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.45779544" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.5163853" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15614973" sideWeight="0.81493866" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28285465" sideWeight="0.5838852" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3115753" sideWeight="0.58434397" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37472036" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28775835" sideWeight="0.225" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41611478" sideWeight="0.13228895" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41611478" sideWeight="0.86771107" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.415656" sideWeight="0.13228895" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.415656" sideWeight="0.86771107" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33295456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40106952" sideWeight="0.77911645" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1070,23 +1073,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/test.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="4" selection-start="1045" selection-end="1045" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="24" column="4" selection-start="1045" selection-end="1045" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/log.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="93" selection-start="6920" selection-end="6920" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="54" column="93" selection-start="6920" selection-end="6920" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/artists/default.css.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="58" selection-start="703" selection-end="747" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="16" column="58" selection-start="703" selection-end="747" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
@@ -1117,30 +1114,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="439" column="0" selection-start="10926" selection-end="10926" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/mailers/first_mailer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="28" selection-start="590" selection-end="590" vertical-scroll-proportion="-10.827586">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="71" selection-start="368" selection-end="368" vertical-scroll-proportion="-5.793103">
+        <state line="7" column="71" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1152,9 +1128,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="28" selection-start="590" selection-end="590" vertical-scroll-proportion="-19.034483">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/mailers/first_mailer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="44" selection-start="3036" selection-end="3036" vertical-scroll-proportion="0.22194514">
+        <state line="82" column="22" selection-start="3050" selection-end="3050" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="439" column="9" selection-start="10929" selection-end="10929" vertical-scroll-proportion="0.5769231">
           <folding />
         </state>
       </provider>
