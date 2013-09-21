@@ -84,7 +84,7 @@ Music3::Application.configure do
 			domain: "heroku.com",
 			authentication: "plain",
 			user_name: "app6560736@heroku.com",
-			password:"dhKLT_fwJLUbb0q9pb6O-A",
+			password:"CMGqTla1DR71Z-DawNGRQ",
 	}
   end
 
