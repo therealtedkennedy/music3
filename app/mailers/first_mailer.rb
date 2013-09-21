@@ -1,5 +1,5 @@
 class FirstMailer < ActionMailer::Base
-  include Rails.application.routes.url_helpers
+  #include Rails.application.routes.url_helpers
   default from: "no-replay@threerepeater.com"
 
 

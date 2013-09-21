@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/mailers/first_mailer.rb" afterPath="$PROJECT_DIR$/app/mailers/first_mailer.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="music3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,7 +37,7 @@
     <file path="/artist_floating_content.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378143208608" ignored="false" />
     <file path="/admin.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378145935068" ignored="false" />
     <file path="/production.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379797471024" ignored="false" />
-    <file path="/first_mailer.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379560218780" ignored="false" />
+    <file path="/first_mailer.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379798006331" ignored="false" />
     <file path="/thank_you_download.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379560512475" ignored="false" />
     <file path="/thank_you_download.text.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1378778492432" ignored="false" />
     <file path="/environment.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379466449638" ignored="false" />
@@ -74,10 +75,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="production.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="production.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="2" selection-start="3205" selection-end="3205" vertical-scroll-proportion="0.20204604">
+            <state line="93" column="41" selection-start="3444" selection-end="3444" vertical-scroll-proportion="-7.0">
               <folding />
             </state>
           </provider>
@@ -146,10 +147,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="first_mailer.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="first_mailer.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/mailers/first_mailer.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0">
+            <state line="1" column="3" selection-start="42" selection-end="42" vertical-scroll-proportion="0.057692308">
               <folding />
             </state>
           </provider>
@@ -189,11 +190,11 @@
         <option value="$PROJECT_DIR$/app/views/artists/default.css.erb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
-        <option value="$PROJECT_DIR$/app/mailers/first_mailer.rb" />
         <option value="$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb" />
         <option value="$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb" />
         <option value="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
+        <option value="$PROJECT_DIR$/app/mailers/first_mailer.rb" />
       </list>
     </option>
   </component>
@@ -964,7 +965,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="360" y="241" width="1213" height="1040" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21392533" sideWeight="0.0" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286991" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -975,7 +976,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37472036" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28775835" sideWeight="0.225" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.415656" sideWeight="0.13228895" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.415656" sideWeight="0.86771107" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.415656" sideWeight="0.86771107" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33295456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40106952" sideWeight="0.77911645" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1125,13 +1126,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/mailers/first_mailer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="238" column="32" selection-start="5639" selection-end="5639" vertical-scroll-proportion="0.0">
@@ -1148,7 +1142,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="2" selection-start="3205" selection-end="3205" vertical-scroll-proportion="0.20204604">
+        <state line="93" column="41" selection-start="3444" selection-end="3444" vertical-scroll-proportion="-7.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/mailers/first_mailer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="3" selection-start="42" selection-end="42" vertical-scroll-proportion="0.057692308">
           <folding />
         </state>
       </provider>
