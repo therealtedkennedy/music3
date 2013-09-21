@@ -94,7 +94,7 @@ Music3::Application.configure do
 		  :enable_starttls_auto => true, # detects and uses STARTTLS
 		  :user_name => "app6560736@heroku.com",
 		  :password  => "CMGqTla1DR71Z-DawNGRQ", # SMTP password is any valid API key
-		  :authentication => 'login', # Mandrill supports 'plain' or 'login'
+		  :authentication => 'plain', # Mandrill supports 'plain' or 'login'
 		  :domain => 'threerepeater.com', # your domain to identify your server when connecting
   }
   end
