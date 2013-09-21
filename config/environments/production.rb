@@ -95,7 +95,7 @@ Music3::Application.configure do
 		  :user_name => "app6560736@heroku.com",
 		  :password  => "CMGqTla1DR71Z-DawNGRQ", # SMTP password is any valid API key
 		  :authentication => 'plain', # Mandrill supports 'plain' or 'login'
-		  :domain => 'threerepeater.com', # your domain to identify your server when connecting
+		  :domain => 'heroku.com', # your domain to identify your server when connecting
   }
   end
 
