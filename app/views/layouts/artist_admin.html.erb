@@ -774,15 +774,13 @@ function ted_log() {
 		<div id="user_nav" class="user_nav">
 			<div class="user_nav_info">
 				<% if user_signed_in? %>
-					Signed in as <%= link_to current_user.email, show_user_path(current_user.id), :class => "nav content-link" %>. Not
-					you?
+					Signed in as <%= link_to current_user.email, show_user_path(current_user.id), :class => "nav content-link" %>
 					<%= link_to "Sign out", destroy_user_session_path, :class => :nav, :method => :delete %>
 
 				<% else %>
 					<%#= render :partial => 'login_form' %>
-					<%= link_to "sign in", new_user_session_path %>
 					<%= link_to "register", new_user_registration_path %>
-
+					<%= link_to "sign in", new_user_session_path %>
 				<% end %>
 			</div>
 			<div class="admin">
