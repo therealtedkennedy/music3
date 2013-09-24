@@ -8,8 +8,8 @@ class FirstMailer < ActionMailer::Base
 	  @user = user
 	  @album = album
 	  @artist = artist
-	  @url  = 'http://www.threerepeater.com/login'
-	  @download_url = "/"+@artist.url_slug+"/album/"+@album.album_url_slug+"/download?redown=true"
+	  @user_url  = "http://www.threerepeater.com/users/show/"+user.id.to_s
+	  @download_url = "http://www.threerepeater.com/"+@artist.url_slug+"/album/"+@album.album_url_slug+"/download?redown=true"
 
 
 	  mail :subject => "Gotta see it to belive it",

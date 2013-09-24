@@ -71,22 +71,11 @@ Music3::Application.configure do
         :appid => "APP-80W284485P519543T"
     )
 
-
+#mailer configuration
 	config.default_url_options = { :host => 'threerepeater.com'}
-	ActionMailer::Base.delivery_method = :smtp
 	# Don't care if the mailer can't send
 	config.action_mailer.raise_delivery_errors = true
 
-	#config.action_mailer.delivery_method = :smtp
-	#config.action_mailer.sendmail_settings = {
-	#		address: "smtp.mandrillapp.com",
-	#		port: 587,
-	#		domain: "heroku.com",
-	#		authentication: "plain",
-	#		user_name: "app6560736@heroku.com",
-	#		password:"CMGqTla1DR71Z-DawNGRQ",
-	#}
-  #end
 	ActionMailer::Base.delivery_method = :smtp
   #config.action_mailer.delivery_method = :smtp
 	ActionMailer::Base.smtp_settings = {
