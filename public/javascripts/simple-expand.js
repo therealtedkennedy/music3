@@ -33,7 +33,6 @@
 
     // SimpleExpand
     function SimpleExpand() {
-
         var that = this;
 
         that.defaults = {
@@ -203,7 +202,7 @@
         // Toggles the targets and sets the 'collapsed' or 'expanded'
         // class on the expander
         that.toggle = function (expander, targets) {
-
+            $('.adminLink').attr('data-icon', '#');
             var isExpanded = that.toggleCss(expander);
 
             if (that.settings.hideMode === "fadeToggle") {
