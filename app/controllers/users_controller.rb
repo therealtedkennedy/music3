@@ -127,6 +127,9 @@ class UsersController < Devise::SessionsController
 	  logger.info "show controller"
 	  @user = User.find(params[:id])
 
+	  #artist 1 is the set up artist.  Houses all the defaults for users who don't have an artist asoiated with them.  Its not the best work around but its effective.
+	  @artist = Artist.find(1)
+
 	  #defines the type of object it is for the artist_admin layout.  Layout will render for user
 	  @object_type = "user"
 

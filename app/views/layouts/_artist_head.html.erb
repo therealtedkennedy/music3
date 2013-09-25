@@ -34,7 +34,7 @@
 		/*User can edit*/
 	<% if @artist.profile_layout.use_css == true %>
 
-	<%= @artist.profile_layout.profile_css %>
+		<%= @artist.profile_layout.profile_css %>
 
 	<% else %>
 	<% @artist.profile_layout.h2_colour = @artist.profile_layout.h2_colour.blank? ? "#999" : @artist.profile_layout.h2_colour %>
