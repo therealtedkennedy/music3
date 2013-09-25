@@ -402,6 +402,7 @@ div.jp-type-playlist div.jp-playlist li.jp-playlist-current {
 	list-style-position:inside;
 	padding-left:7px;
 }
+
 div.jp-type-playlist div.jp-playlist a {
 	/*color: #333;*/
 	text-decoration: none;
@@ -411,6 +412,12 @@ div.jp-type-playlist div.jp-playlist a:hover {
 }
 div.jp-type-playlist div.jp-playlist a.jp-playlist-current {
 	color:#0d88c1;
+}
+
+div.jp-playlist li:not(.jp-playlist-current) {
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
+    background-color: #000;
 }
 
 div.jp-type-playlist div.jp-playlist a.jp-playlist-item-remove {
