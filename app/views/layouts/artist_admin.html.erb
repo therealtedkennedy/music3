@@ -605,14 +605,38 @@ function form_upload_rails(){
 						type: 'POST',
 						dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
 					}).success(function(json){
-								loadContent(json.url)
-								showNotification();
+								 loadContent(json.url)
+								 showNotification();
+								//uploads the file.  Checks to see if album needs to be zipped.
+								 album_upload_s3(json)
+
 							});
 					return false; // prevents normal behaviour
 
 				}
 		)
 
+
+    //checks to see if the album needs to be uploaded to s3.  If needs to be uploaded calls call_album_zip controller which returns true/false one album has been uploaded
+	function album_upload_s3(json_val){
+		ted_log(json_val.zip)
+		//if the album doesn't need to be uploaded to s3
+		if(json_val.zip == false || !json_val.zip){
+			ted_log("in album upload false. Doesn't need to be uploaded");
+			}
+		// if the album needs to be uploaded to s3
+		else {
+			ted_log("in album upload false. Needs to be uploaded");
+			$.ajax({
+				url: json_val.zip_url, //sumbits it to the given url of the form
+				type: 'POST',
+				dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+			}).success(function(json){
+						ted_log("album_uploaded")
+
+			});
+		}
+	}
 
 }
 

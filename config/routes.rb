@@ -97,6 +97,7 @@ Music3::Application.routes.draw do
 	match "/:url_slug/update-image/:album_id" => "albums#album_save_image", :as => :album_save_image
 	match "/:url_slug/album/:album_url_slug/pre_delete" => "albums#pre_delete", :as => :album_pre_delete
 	match "/:url_slug/album/:album_url_slug/delete/:album_id" => "albums#destroy", :as => :album_delete
+	match "/:url_slug/album/:album_url_slug/zip/:album_id" => "albums#call_zip_album", :as => :call_album_zip
 
 	#albums code routing
 	match "/:url_slug/album/create-code/:id" => "album_code#show", :as => :album_create_code
