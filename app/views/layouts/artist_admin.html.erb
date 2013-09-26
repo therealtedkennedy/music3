@@ -588,7 +588,9 @@ function file_size_check(type,size){
 
 }
 
-
+function showNotification(){
+	$('.adminLink').attr('data-icon', '*');
+}
 
 function form_upload_rails(){
 	ted_log("In form upload")
@@ -604,6 +606,7 @@ function form_upload_rails(){
 						dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
 					}).success(function(json){
 								loadContent(json.url)
+								showNotification();
 							});
 					return false; // prevents normal behaviour
 
