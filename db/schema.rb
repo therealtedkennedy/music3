@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701181620) do
+ActiveRecord::Schema.define(:version => 20130928192551) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20130701181620) do
     t.string   "album_url_slug"
     t.string   "art"
     t.string   "description"
-    t.string   "album_songs"
+    t.text     "album_songs",    :limit => 255
     t.boolean  "social_on"
   end
 

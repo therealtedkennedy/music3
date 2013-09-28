@@ -165,7 +165,7 @@ class AlbumsController < ApplicationController
 
 
 	authorize! :update, @artist
-
+	@album.save
 	#saves primary artist id.  Used for more simple calling of primary artist.
 	@album.al_a_id = @artist.id
 	#assoiated album and artist objects
@@ -180,79 +180,85 @@ class AlbumsController < ApplicationController
 	end
 
 
-	if @album.save
-		zip_album(@artist,@album)
-	else
-		logger.info("album not saved")
-	end
+	#add album_songs to the album param so it gets updated with the album
+	params[:album][:album_songs] = params[:album_songs].to_s
+	logger.info ("params= "+params[:album_songs].to_s+" album songs= "+@album.album_songs.to_s)
 
+	#need to upload album sets zip to true, and the zip album url (calls method that updates the album)
+	@zip = true
+	@zip_url = call_album_zip_url(@artist.url_slug, @album.album_url_slug,@album.id)
 
-
-    respond_to do |format|
-
-  		format.html { redirect_to(artist_show_album_path(@artist.url_slug, @album.album_url_slug), :notice => 'Album was successfully updated.') }
-		format.xml  { head :ok }
-		format.json {
-			render :json => {
-					:success => true,
-					:"url" => artist_show_album_url(@artist.url_slug, @album.album_url_slug)
+	respond_to do |format|
+		if @album.update_attributes(params[:album])
+			logger.info "album_songs true"
+			format.html {redirect_to(artist_show_album_path(@artist.url_slug, @album.album_url_slug), :notice => 'Album was successfully updated.') }
+			format.json {
+				render :json => {
+						:success => true,
+						:"zip" => @zip,
+						#url to zip album
+						:"zip_url" => @zip_url,
+						#url to redirect to
+						:"url" => artist_show_album_url(@artist.url_slug, @album.album_url_slug)
+				}
 			}
-		}
-
-    end
+		else
+			#if updated failed
+			format.html { render :action => "edit", :notice => 'Album could not be uploaded' }
+			format.xml  { render :xml => @album.errors, :status => :unprocessable_entity }
+		end
+	end
   end
 
   # PUT /albums/1
   # PUT /albums/1.xml
   def update
 	  logger.info("in update")
-   #  params[:album_songs][:songs_id] ||= []
+
     @album = Album.find(params[:id])
     @artist = Artist.find_by_url_slug(params[:url_slug])
     authorize! :update, @artist
 
-	#creates the albums songs object
-    if params.has_key?(:album_songs)
-      @album.songs = Song.find(params[:album_songs][:songs_id])
-    else
-      @album.songs = []
+
+
+	#creates the albums songs object	(dup with new..could create one method...but i don't want to deal with it....)
+	if params.has_key?(:album_songs)
+		@album.songs = Song.find(params[:album_songs][:songs_id])
+	else
+		@album.songs = []
 	end
 
-	 @album.update_attributes(params[:album])
+	#add album_songs to the album param so it gets updated with the album
+	params[:album][:album_songs] = params[:album_songs].to_s
+	logger.info ("params= "+params[:album_songs].to_s+" album songs= "+@album.album_songs.to_s)
 
-	 logger.info ("params= "+params[:album_songs].to_s+" album songs= "+@album.album_songs.to_s)
+	if  params[:album_songs].to_s == @album.album_songs
+		#don't need to update album
+		@zip = false
+	else
+
+		#need to upload album sets zip to true, and the zip album url (calls method that updates the album)
+	    @zip = true
+		@zip_url = call_album_zip_url(@artist.url_slug, "Not_needed_just_a_place_holder",@album.id)
+	end
+
+
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
-        #checks to see the albums songs have changed.
-
-		if  params[:album_songs].to_s == @album.album_songs.to_s
-			#if album doesn't need to be zipped.  Just redirect's it on
-		   logger.info "album_songs false"
-		   format.html {redirect_to(artist_show_album_path(@artist.url_slug, @album.album_url_slug), :notice => 'Album was successfully updated.') }
-		   format.json {
-			   render :json => {
-					   :success => true,
-					   :"zip" => false,
-					   :"url" => artist_show_album_url(@artist.url_slug, @album.album_url_slug)
-
-			   }
-		   }
-		else
-			#if album needs to be zipped
-			logger.info "album_songs true"
+    		logger.info "album_songs true"
 			format.html {redirect_to(artist_show_album_path(@artist.url_slug, @album.album_url_slug), :notice => 'Album was successfully updated.') }
 			format.json {
 				render :json => {
 						:success => true,
-						:"zip" => true,
+						:"zip" => @zip,
 						#url to zip album
-						:"zip_url" => call_album_zip_url(@artist.url_slug, @album.album_url_slug,@album.id),
+						:"zip_url" => @zip_url,
 				        #url to redirect to
 				        :"url" => artist_show_album_url(@artist.url_slug, @album.album_url_slug)
 				}
 			}
-        end
+       # end
 
 	  else
 		#if updated failed
@@ -271,7 +277,7 @@ class AlbumsController < ApplicationController
 
 	   #zips and creates and album in S3
 	   zip_album(@artist,@album)
-	   @album.update_attribute(:album_songs, params[:album_songs].to_s)
+	   #@album.update_attribute(:album_songs, params[:album_songs].to_s)
 
 	   respond_to do |format|
 		   format.json {
