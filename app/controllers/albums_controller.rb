@@ -186,7 +186,7 @@ class AlbumsController < ApplicationController
 
 	#need to upload album sets zip to true, and the zip album url (calls method that updates the album)
 	@zip = true
-	@zip_url = call_album_zip_url(@artist.url_slug, @album.album_url_slug,@album.id)
+	@zip_url = call_album_zip_url(@artist.url_slug, "Not_needed_just_a_place_holder",@album.id)
 
 	respond_to do |format|
 		if @album.update_attributes(params[:album])
@@ -239,7 +239,7 @@ class AlbumsController < ApplicationController
 
 		#need to upload album sets zip to true, and the zip album url (calls method that updates the album)
 	    @zip = true
-		@zip_url = call_album_zip_url(@artist.url_slug, "Not_needed_just_a_place_holder",@album.id)
+		@zip_url = call_album_zip_url(@artist.url_slug, @album.album_url_slug,@album.id)
 	end
 
 

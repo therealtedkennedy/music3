@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   CODE_LIMIT = 250
 
   before_filter :authenticate
+  after_filter :ajax_back_stop
 
   def authenticate
 	  if Rails.env.production?
@@ -22,6 +23,13 @@ class ApplicationController < ActionController::Base
 	  end
   end
 
+  def ajax_back_stop
+	  if request.xhr?
+		  response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+		  response.headers["Pragma"] = "no-cache"
+		  response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+	  end
+  end
   # Fixes SSL Error - http://www.techques.com/question/1-5360622/Problems-with-SSL-dependent-gems-OAuth2---ActiveMerchant
   #this might be a security problem.
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
