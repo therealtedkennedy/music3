@@ -105,6 +105,9 @@ window.onresize = function(event) {
 
 var DEBUGGING = true;
 $(document).ready(function () {
+	if ($.browser.msie && parseInt($.browser.version) < 10)
+		alert("IE9 and older are not supported.");
+		
 
 	myPlaylist = initializePlayList(playlistSongs);
 	$('.player_nav').css({top: window.innerHeight - $('.player_nav').height()});
@@ -147,6 +150,7 @@ $(document).ready(function () {
 			songIndex = artistSongs[artistName][songName] = myPlaylist.playlist.length - 1;
 		}
 		artistSong = artistName + "&mdash;" + songName
+		
 		myPlaylist.play(songIndex);
 		$("#track_name").html(artistSong);
 
@@ -161,19 +165,11 @@ $(document).ready(function () {
 
 
 	$(".content-link").live("click", function (event) {
-		<% if browser.ie? %>
-		alert("Music will stop playing, do you wish to continue? To stop this from appearing download chrome.")
-		<% else %>
 		event.preventDefault();
 		url = $(this).attr('href');
 		console.log("pathname: " + url);
 		ted_log("about to load content in content link")
 		loadContent(url);
-
-
-		// HISTORY.PUSHSTATE
-		history.pushState('', 'New URL: ' + url, url);
-		<% end %>
 	});
 
 //	 	Displays track Info
@@ -370,10 +366,10 @@ function loadContent(href) {
 
 		dataType:"json"
 	});
-
-
-
-
+	/* to update the url when page is redirected.
+       May need logic at a later point if loading content without changing the url */
+	// HISTORY.PUSHSTATE
+	history.pushState('', 'New URL: ' + href, href);
 }
 
 //removes http:// from url
