@@ -1,10 +1,5 @@
 <h3>Artist upload </h3>
 
-<%= form_for @artist, :html => {:multipart => true}, :validate => true do |f| %>
-
-
-<% end %>
-
 <%= form_for @artist, :html => {:multipart => true}, :html => {:class => 'ajax_update'}, :validate => true do |f| %>
   <% if @artist.errors.any? %>
     <div id="error_explanation">

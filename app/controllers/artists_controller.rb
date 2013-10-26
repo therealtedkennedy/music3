@@ -9,7 +9,7 @@ class ArtistsController < ApplicationController
 
   #changes from default layout to custom layout
 
-  layout "artist_admin", only: [:show, :admin, :update, :social_promo, :pre_delete]
+  layout "artist_admin", only: [:show, :admin, :update, :social_promo, :pre_delete, :new]
 
 
 
@@ -92,11 +92,24 @@ class ArtistsController < ApplicationController
     @artist = Artist.new
 
 
-	@form = render_to_string('artists/_form',:layout => false)
+	@form = render_to_string('artists/_form_new_artist.html.erb',:layout => false)
 
+	layout(params[:layout])
     respond_to do |format|
       format.html # new.html.erb
-      format.xml { render :xml => @artist }
+	  format.json {
+		  render :json => {
+				  :success => true,
+				  :".bodyArea" => render_to_string(
+						  :action => 'new.html.erb',
+						  :layout => "layouts/user.html.erb",
+				  ),
+				  #show/hides edit screen
+				  #:"edit" => "true"
+				  #sets object type to user.  Loads Correct
+				  :"object_type" => "user"
+		  }
+	  }
     end
   end
 
@@ -119,12 +132,11 @@ class ArtistsController < ApplicationController
     #creates and assigns layout
     @artist.profile_layout = ProfileLayout.new
 
-
     respond_to do |format|
       if @artist.save
-
-        format.html { redirect_to(artist_link_path(@artist.url_slug), :notice => 'Artist was successfully created.') }
+        format.html { redirect_to(artist_admin_path(@artist.url_slug)) }
         format.xml { render :xml => @artist, :status => :created, :location => @artist }
+
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
@@ -148,17 +160,18 @@ class ArtistsController < ApplicationController
    # @file_name = params[:artist][:image].filename
    # @image_location = "/Sites/music3/public/uploads/artist/image/"+@artist.id+"/"+@file_name
 
+	layout("artist")
+
     respond_to do |format|
       if @artist.update_attributes(params[:artist])
 
-     #   Cloudinary::Uploader.upload(File.open(@image_location),
-          #                          :public_id => 'pretty-lights')
         format.html { redirect_to(artist_admin_path(@artist.url_slug), :notice => 'Artist was successfully updated.') }
         format.xml { head :ok }
 		format.json {
 			render :json => {
 					:success => true,
-					:"url" => artist_link_url(@artist.url_slug)
+					:"url" => artist_link_url(@artist.url_slug),
+					:admin => true,
 			}
 		}
       else
@@ -168,46 +181,7 @@ class ArtistsController < ApplicationController
     end
   end
 
-  # First step in adding song, creates and saves blank song before being passed to the song model
-  #def add_song
-  #  #@artist = Artist.find(params[:id])
-  # @artist = Artist.find_by_url_slug(params[:url_slug])
-  # @song = Song.new
-  # #assocaites artist and song
-  # @song.artists << Artist.find(@artist.id)
-  # @song.save
 
-  # redirect_to(new_song_id_path(@song.id))
-  #  respond_to do |format|
-  #   format.html # show.html.erb
-  #   format.xml  { render :xml => @artist }
-  #   end
-
-  # DELETE /artists/1
-  # DELETE /artists/1.xml
-  # end
-  # end
-
-  # on to something...but too tired to think about it.
-
-  # def upload_song
-  #    @song = Song.new(params[:song])
-  #  if params[:artist_id]
-  #   @song.artists << Artist.find(params[:artist_id])
-  # end
-
-  # respond_to do |format|
-  # if @song.save
-  #   format.html {
-  #   redirect_to(add_song_path(artist.url_slug), :notice => 'Song was successfully created.')
-  # }
-  # format.xml  { render :xml => @artist, :status => :created, :location => @artist }
-  # else
-  # format.html { render :action => "new" }
-  # format.xml  { render :xml => @artist.errors, :status => :unprocessable_entity }
-  #end
-  # end
-  # end
 
   def admin
 
@@ -303,6 +277,10 @@ class ArtistsController < ApplicationController
 
 	  logger.info "bk form"
 	  logger.info @bk_image_upload
+
+	  logger.info "image upload form"
+	  logger.info @logo_image_upload
+
 
   end
 

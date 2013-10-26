@@ -25,11 +25,26 @@ class Artist < ActiveRecord::Base
 
    def strip_whitespace
       self.name = self.name.strip
-      self.pay_pal = self.pay_pal.strip
-      self.url_slug = self.url_slug.strip
-      self.city = self.city.strip
-      self.province = self.province.strip
-      self.country = self.country.strip
+
+	  unless self.pay_pal.nil? || self.pay_pal.blank?
+      	self.pay_pal = self.pay_pal.strip
+	  end
+
+	  unless self.url_slug.nil? || self.url_slug.blank?
+      	self.url_slug = self.url_slug.strip
+	  end
+
+	  unless self.city.nil? || self.city.blank?
+     	 self.city = self.city.strip
+	  end
+
+	  unless self.province.nil? || self.province.blank?
+      	self.province = self.province.strip
+	  end
+
+	  unless self.country.nil? || self.country.blank?
+      	self.country = self.country.strip
+	  end
   end
 
 

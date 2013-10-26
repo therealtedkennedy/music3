@@ -163,7 +163,7 @@ $(document).ready(function () {
 	$(".content-link").live("click", function (event) {
 		<% if browser.ie? %>
 		alert("Music will stop playing, do you wish to continue? To stop this from appearing download chrome.")
-		<% else %>
+		<% end %>
 		event.preventDefault();
 		url = $(this).attr('href');
 		console.log("pathname: " + url);
@@ -171,9 +171,8 @@ $(document).ready(function () {
 		loadContent(url);
 
 
-		// HISTORY.PUSHSTATE
-		history.pushState('', 'New URL: ' + url, url);
-		<% end %>
+
+
 	});
 
 //	 	Displays track Info
@@ -293,12 +292,19 @@ function popstate() {
 }
 
 
-function loadContent(href) {
+function loadContent(href,admin) {
 	ted_log(href);
 
     var clean_url = url_clean(href)
+
+	ted_log("before artist params,  page type = "+$(".pageType").attr('id')+" clean url = "+clean_url)
+	ted_log("admin= "+admin)
 //	triggers loading of artist layout (maybe others in the future)
-	if($(".pageType").attr('id') != clean_url){
+	if($(".pageType").attr('id') != clean_url || admin == true){
+		ted_log("inside set artist layout param")
+
+
+
 //      checks to make sure its not loading a user page b/c user pages don't need a load a new layout much like internal artist pages
 		if(clean_url != "users") {
 
@@ -366,6 +372,10 @@ function loadContent(href) {
 
 			//makes sure navigation works on ajax request
 			nav_selector();
+
+			ted_log("before history push state url= "+href)
+			// HISTORY.PUSHSTATE
+			history.pushState('', 'New URL: ' + href, href);
 		},
 
 		dataType:"json"
@@ -605,7 +615,7 @@ function form_upload_rails(){
 						type: 'POST',
 						dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
 					}).success(function(json){
-								 loadContent(json.url)
+								 loadContent(json.url,json.admin)
 								 showNotification();
 								//uploads the file.  Checks to see if album needs to be zipped.
 								 album_upload_s3(json)
