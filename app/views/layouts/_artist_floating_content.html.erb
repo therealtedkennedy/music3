@@ -1,7 +1,7 @@
 <div class="floatingContent">
 	<div class="artistLogoArea"><a href="/<%= @artist.url_slug %>/?promo=true" class="content-link">
 		<% if @artist.logo_toggle == true %>
-			<img src="<%= @artist.logo %>" /></a>
+			<img src="<%= @artist.logo %>" />
 		<% else %>
 			<h1><%= @artist.name %></h1>
 		<%end%>

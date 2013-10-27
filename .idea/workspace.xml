@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/artists/_form_new_artist.html.erb" />
       <change type="DELETED" beforePath="C:\Sites\music3\public\javascripts\Breaking.Bad.S05E13.HDTV.x264-EVOLVE.torrent" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/artists/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/artists/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/artists/admin.html.erb" afterPath="$PROJECT_DIR$/app/views/artists/admin.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/artist.rb" afterPath="$PROJECT_DIR$/app/models/artist.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_artist_floating_content.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/_artist_floating_content.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_artist_head.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/_artist_head.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/artists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/artists_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/artists/new.html.erb" afterPath="$PROJECT_DIR$/app/views/artists/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/show.html.erb" afterPath="$PROJECT_DIR$/app/views/users/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/artist_floating_content.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/artist_floating_content.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/artist_layout.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/artists/default.css.erb" afterPath="$PROJECT_DIR$/app/views/artists/default.css.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/skin/black_and_yellow/jplayer-black-and-yellow.css" afterPath="$PROJECT_DIR$/public/skin/black_and_yellow/jplayer-black-and-yellow.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="music3.iws" />
@@ -108,7 +108,7 @@
       <file leaf-file-name="artist_admin.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="299" column="79" selection-start="8167" selection-end="8167" vertical-scroll-proportion="0.2630058">
+            <state line="173" column="0" selection-start="5625" selection-end="5625" vertical-scroll-proportion="12.0">
               <folding />
             </state>
           </provider>
@@ -1287,7 +1287,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="299" column="79" selection-start="8167" selection-end="8167" vertical-scroll-proportion="0.2630058">
+        <state line="173" column="0" selection-start="5625" selection-end="5625" vertical-scroll-proportion="12.0">
           <folding />
         </state>
       </provider>
