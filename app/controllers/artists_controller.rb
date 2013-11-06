@@ -9,7 +9,7 @@ class ArtistsController < ApplicationController
 
   #changes from default layout to custom layout
 
-  layout "artist_admin", only: [:show, :admin, :update, :social_promo, :pre_delete, :new]
+  layout "artist_admin", only: [:show, :admin, :update, :social_promo, :pre_delete, :new, :edit]
 
 
 
@@ -89,6 +89,9 @@ class ArtistsController < ApplicationController
   # GET /artists/new
   # GET /artists/new.xml
   def new
+
+	  #new loads the new page, which the user gives the artist name, then it goes to create which creates the artist object.
+	  #then it goes to edit which allow the user to fill in the artist information. Then goes to update where artist info is updated
     @artist = Artist.new
 
 
@@ -115,9 +118,12 @@ class ArtistsController < ApplicationController
 
   # GET /artists/1/edit
   def edit
-    #@artist = Artist.find(params[:id])
-    @artist = Artist.find_by_url_slug(params[:url_slug])
-    authorize! :update, @artist
+
+	  #edit only loaded after a new artist is created from the artist new page
+	  #called by the the create controller
+	  #different from admin bc it is only on create.
+	  #it exists to that the text in the view can be changed to guide the user through the create process
+	   admin
   end
 
   # POST /artists
@@ -134,7 +140,7 @@ class ArtistsController < ApplicationController
 
     respond_to do |format|
       if @artist.save
-        format.html { redirect_to(artist_admin_path(@artist.url_slug)) }
+        format.html { redirect_to(edit_artist_path(@artist.url_slug)) }
         format.xml { render :xml => @artist, :status => :created, :location => @artist }
 
       else

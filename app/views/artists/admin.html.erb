@@ -5,16 +5,16 @@
 
 	<h1>Editing artist</h1>
 
-	<h2>Upload your background image</h2>
+	<h2>Change your background Image</h2>
 
 	<%= @bk_image_upload.html_safe %>
 
 
-	<h2>Upload your Logo</h2>
+	<h2>Change or upload your logo</h2>
 
 	<%= @logo_image_upload.html_safe %>
 
-
+    <h2>Update Info</h2>
 	<%= @form.html_safe %>
 
 	<%= link_to 'Show', artist_link_path(@artist.url_slug) %>

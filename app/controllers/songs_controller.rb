@@ -225,6 +225,10 @@ class SongsController < ApplicationController
 		end
 	end
 
+	def create
+		@artist = Artist.find_by_url_slug(params[:url_slug])
+		@song = Song.new
+	end
 
 	def update
 		@artist = Artist.find(params[:artist_id])

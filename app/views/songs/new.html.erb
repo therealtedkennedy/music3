@@ -3,10 +3,7 @@
 
 <div class="editPage">
 
-<h1>Update Song Info this is the form</h1>
-<p> Song ID: <%= @song.id %>   </br>
-  S3_id: <%= @song.s3_id %> </p>
-
+<h1>Create a new song</h1>
 
 <h2>Upload Song</h2>
 
@@ -15,13 +12,11 @@
 <h2>Upload Image</h2>
 	<%= @song_image_upload.html_safe %>
 
-<h2>Info </h2>
+<h2>Song Info </h2>
 
 
 	<%= @form.html_safe %>
 
 </br>
-
-<%= link_to 'Back', artists_path %>
 
 </div>

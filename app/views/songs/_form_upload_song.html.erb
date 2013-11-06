@@ -1,7 +1,4 @@
 
-
-<h2>Info</h2>
-
 <%=form_for @song,:url => "/songs/create", :html => {:multipart => true},:html => {:class => "ajax_update"}, :validate => true do |f| %>
 
 
@@ -17,7 +14,6 @@
 		</div>
 	<% end %>
 
-    <h2>Ready!!!  <%= @id %></h2>
 
    <!--<%= f.file_field :s3_name%>-->
 
