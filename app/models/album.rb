@@ -22,14 +22,30 @@ validates :al_name, uniqueness: {scope: :al_a_id, case_sensitive: false,  messag
   end
 
 	def strip_whitespace
-		unless self.al_name.nil?
+		unless self.al_name.nil? || self.al_name.blank?
 			self.al_name = self.al_name.strip
+		end
+
+		unless self.pri_artist.nil? || self.pri_artist.blank?
 			self.pri_artist = self.pri_artist.strip
+		end
+
+		unless self.contrib_artist.nil? || self.contrib_artist.blank?
 			self.contrib_artist = self.contrib_artist.strip
+		end
+
+		unless self.producer.nil? || self.producer.blank?
 			self.producer = self.producer.strip
+		end
+
+		unless self.liner_notes.nil? || self.liner_notes.blank?
 			self.liner_notes = self.liner_notes.strip
+		end
+
+		unless self.description.nil? || self.description.blank?
 			self.description = self.description.strip
 		end
+
 	end
 
 	#def set_album_id

@@ -79,6 +79,8 @@ class AlbumsController < ApplicationController
   # GET /albums/new
   # GET /albums/new.xml
   def new
+
+	  logger.info "in new"
     @album = Album.new
     @artist = Artist.find_by_url_slug(params[:url_slug])
     authorize! :update, @artist
@@ -97,7 +99,7 @@ class AlbumsController < ApplicationController
 	#loads image forms
 	image_upload_prep(@artist,@album)
 
-	@form = render_to_string('albums/_form',:layout => false)
+	@form = render_to_string('albums/_form_new_album_name',:layout => false)
 
 	respond_to do |format|
 		format.html {render :layout => 'artist_admin'}
@@ -156,7 +158,7 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.xml
   def create
-
+	  logger.info "In Create"
     @album = Album.new(params[:album])
 	logger.info("album")
 	logger.info(@album)
@@ -172,22 +174,6 @@ class AlbumsController < ApplicationController
 	@album.artists << Artist.find(@artist.id)
 
 
-	#creates the albums songs object	(dup with new..could create one method...but i don't want to deal with it....)
-	if params.has_key?(:album_songs)
-		@album.songs = Song.find(params[:album_songs][:songs_id])
-	else
-		@album.songs = []
-	end
-
-
-	#add album_songs to the album param so it gets updated with the album
-	params[:album][:album_songs] = params[:album_songs].to_s
-	logger.info ("params= "+params[:album_songs].to_s+" album songs= "+@album.album_songs.to_s)
-
-	#need to upload album sets zip to true, and the zip album url (calls method that updates the album)
-	@zip = true
-	@zip_url = call_album_zip_url(@artist.url_slug, "Not_needed_just_a_place_holder",@album.id)
-
 	respond_to do |format|
 		if @album.update_attributes(params[:album])
 			logger.info "album_songs true"
@@ -195,11 +181,8 @@ class AlbumsController < ApplicationController
 			format.json {
 				render :json => {
 						:success => true,
-						:"zip" => @zip,
-						#url to zip album
-						:"zip_url" => @zip_url,
 						#url to redirect to
-						:"url" => artist_show_album_url(@artist.url_slug, @album.album_url_slug)
+						:"url" => new_album_info_path(@artist.url_slug, @album.album_url_slug, @album.id)
 				}
 			}
 		else
@@ -209,6 +192,48 @@ class AlbumsController < ApplicationController
 		end
 	end
   end
+
+
+   def new_album_info
+
+	   logger.info "new_album_info"
+
+	   @album = Album.find(params[:id])
+	   @artist = Artist.find(@album.al_a_id)
+
+	   authorize! :update, @artist
+	   @edit = "true" #allows edit page to load correctly when page is refreshed
+
+	   #loads image forms
+	   image_upload_prep(@artist,@album)
+
+	   #For Check Box - Creates an Array of song Id's for a particular artist to select songs that already exsist
+	   @song_ids = Array.new
+	   @album.songs.uniq.each do |s|
+		   @song_ids << s.id
+	   end
+
+	   #renders form in instance varible so that it will show when ajax queries are made
+	   @form = render_to_string('albums/_form',:layout => false)
+
+	   respond_to do |format|
+		   format.html {render :layout => 'artist_admin'}
+		   format.xml { render :xml => @song }
+		   format.json {
+			   render :json => {
+					   :success => true,
+					   :".miniPage" => render_to_string(
+							   :action => 'new_album_info.html.erb',
+							   :layout => false,
+					   ),
+					   :"edit" => "true",
+			   }
+		   }
+	   end
+
+   end
+
+
 
   # PUT /albums/1
   # PUT /albums/1.xml

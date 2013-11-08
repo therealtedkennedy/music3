@@ -605,6 +605,7 @@ function form_upload_rails(){
 		$('.ajax_update').submit(function(){
 
 					var valuesToSubmit = $(this).serialize();
+                    ted_log("in form upload just before ajax post url is= "+$(this).attr('action'))
 
 					$.ajax({
 						url: $(this).attr('action'), //sumbits it to the given url of the form
