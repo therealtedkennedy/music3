@@ -364,8 +364,8 @@ class ApplicationController < ActionController::Base
 			@hook = "#content"
 		#when artist page has to be loaded (logo, nave and content)
 		elsif layout_type == "artist"
-			@layout = "layouts/artist_floating_content.html.erb"
-			@hook = ".bodyArea"
+			@layout = "layouts/artist_admin_and_artist_floating_content.html.erb"
+			@hook = ".dynamicContent"
 		end
 	end
 

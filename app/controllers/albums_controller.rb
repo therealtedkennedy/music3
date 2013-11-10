@@ -182,7 +182,9 @@ class AlbumsController < ApplicationController
 				render :json => {
 						:success => true,
 						#url to redirect to
-						:"url" => new_album_info_path(@artist.url_slug, @album.album_url_slug, @album.id)
+						:"url" => new_album_info_path(@artist.url_slug, @album.album_url_slug, @album.id),
+				        #Loads all new content into "dynamicContent" div
+			        	:admin => true,
 				}
 			}
 		else
@@ -280,7 +282,9 @@ class AlbumsController < ApplicationController
 						#url to zip album
 						:"zip_url" => @zip_url,
 				        #url to redirect to
-				        :"url" => artist_show_album_url(@artist.url_slug, @album.album_url_slug)
+				        :"url" => artist_show_album_url(@artist.url_slug, @album.album_url_slug),
+				         #Loads all new content into "dynamicContent" div
+				         :admin => true,
 				}
 			}
        # end

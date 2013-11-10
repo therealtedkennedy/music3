@@ -148,8 +148,6 @@ class UsersController < Devise::SessionsController
 							  :action => 'show.html.erb',
 							  :layout => "layouts/user.html.erb",
 					  ),
-					  #show/hides edit screen
-					  #:"edit" => "true"
 					  #sets object type to user.  Loads Correct
 					  :"object_type" => "user"
 			  }

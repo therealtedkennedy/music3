@@ -271,7 +271,10 @@ class SongsController < ApplicationController
 				format.json {
 					render :json => {
 							:success => true,
-							:"url" => artist_show_song_url(@artist.url_slug, @song.song_url_slug)
+							:"url" => artist_show_song_url(@artist.url_slug, @song.song_url_slug),
+					        #Loads all new content into "dynamicContent" div
+							:admin => true,
+
 					}
 				}
 			else

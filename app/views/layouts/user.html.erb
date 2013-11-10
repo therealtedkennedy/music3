@@ -1,5 +1,13 @@
-<script type="text/javascript">
-	$.backstretch("https://ted_kennedy_image.s3.amazonaws.com/user-background-2.jpg");
-</script>
 
-<%= yield %>
+	<script type="text/javascript">
+
+		//Loads background image for all users.
+		$.backstretch("https://ted_kennedy_image.s3.amazonaws.com/user-background-2.jpg");
+
+		//Removes Edit Controls b/c they stick around after ajax load
+		$( ".edit-controls" ).remove();
+
+	</script>
+
+	<%= yield %>
+
