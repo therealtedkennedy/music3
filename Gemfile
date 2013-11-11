@@ -27,7 +27,7 @@ gem 'twitter'
 gem 'omniauth-twitter'
 gem 'devise', '2.1.2'
 gem 'aws-sdk'
-
+gem 'twitter-bootstrap-rails'
 
 
 group :development do

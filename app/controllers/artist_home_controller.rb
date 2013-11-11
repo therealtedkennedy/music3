@@ -1,7 +1,11 @@
 class ArtistHomeController < ApplicationController
+
+	layout 'homepage'
+
   def index
-    render :template =>'shared/artist_home'
-	@bucket = BUCKET
-	@s3_key = S3_KEY
+
+	respond_to do |format|
+		format.html
+	end
   end
 end
