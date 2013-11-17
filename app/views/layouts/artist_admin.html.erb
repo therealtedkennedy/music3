@@ -605,8 +605,10 @@ function form_upload_rails(){
 	ted_log("In form upload")
 
 		$('.ajax_update').submit(function(){
-
+//                    serialize doesnt work on radion buttons
 					var valuesToSubmit = $(this).serialize();
+
+
                     ted_log("in form upload just before ajax post url is= "+$(this).attr('action'))
 
 					$.ajax({
