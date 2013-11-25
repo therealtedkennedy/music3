@@ -301,6 +301,61 @@
 		border: 1px solid #fff;
 	}
 
+	.form-control{
+		display: block;
+		width: 80%;
+		height: 16px;
+		padding: 6px 12px;
+		font-size: 14px;
+		color: #555;
+		vertical-align: middle;
+		background-color: #fff !important;
+		background-image: none;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+		box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+		-webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+		transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	}
+
+	.caret {
+		display: inline-block;
+		width: 0;
+		height: 0;
+		margin-left: 2px;
+		vertical-align: middle;
+		border-top: 4px solid #000;
+		border-right: 4px solid transparent;
+		border-bottom: 0 dotted;
+		border-left: 4px solid transparent;
+	}
+
+	.input-group-addon {
+		float: right;
+		padding-top: 5px;
+		padding-right: 10px;
+	}
+
+	.bfh-colorpicker { width: 95%;}
+	.bfh-colorpicker-popover { left: -130px !important;}
+	.bfh-slider { width: 90%; color:#000;}
+	.glyphicon {
+		position: relative;
+		top: 1px;
+		display: inline-block;
+		font-family: 'Glyphicons Halflings';
+		-webkit-font-smoothing: antialiased;
+		font-style: normal;
+		font-weight: normal;
+		line-height: 1;
+	}
+	.group-input {
+		position: relative;
+		display: table;
+		border-collapse: separate;
+	}
+	input[type=number] {width:76%;}
 
  <% end %>
 
@@ -309,6 +364,7 @@
 <%= stylesheet_link_tag :all %>
 
 <link type="text/css" rel="stylesheet" href="/<%= @artist.url_slug %>/css" media="screen">
+<link type="text/css" rel="stylesheet" href="/assets/js/bootstrapFormHelpers/dist/css/bootstrap-formhelpers.min.css">
 
 <%= javascript_include_tag 'jquery-1.8.3', 'rails.validations', 'jquery.backstretch.min', 'showHide' %>
 <%#= javascript_include_tag 'jquery-1.6.3','rails.validations', 'jquery.backstretch.min'%>
@@ -316,6 +372,7 @@
 <script type="text/javascript" src="/javascripts/jPlayer/jquery.jplayer.min.js"></script>
 <script type="text/javascript" src="/javascripts/jPlayer/add-on/jplayer.playlist.min.js"></script>
 <script type="text/javascript" src="/javascripts/jPlayer/add-on/jquery.jplayer.inspector.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrapFormHelpers/dist/js/bootstrap-formhelpers.min.js"></script>
 <link type="text/css" href="/skin/black_and_yellow/jplayer-black-and-yellow.css" rel="stylesheet"/>
 <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
 
@@ -423,8 +480,6 @@
 			artistSong = artistName + "&mdash;" + songName
 			myPlaylist.play(songIndex);
 			document.getElementById("track_name").innerHTML = artistSong
-
-
 		});
 
 		// BACK/FORWARD BUTTONS WORK AS WELL
@@ -527,8 +582,33 @@
 
 				}
 		)
-	//shows the edit controls. Hidden by defualt
-	$('.edit-controls').show();
+		//shows the edit controls. Hidden by defualt
+		$('.edit-controls').show();
+		$('.colorpicker-component').bind('click', function(ev){
+			$(ev.currentTarget).colorpicker();
+		});
+
+		$("#edit_profile_layout_1").submit(function(e) {
+			e.preventDefault();
+			// get all the inputs into an array.
+			var profile_layout = $('#edit_profile_layout_1').serialize();
+
+			$.ajax({
+				url : '/profile_layouts/edit',
+				type:"POST",
+				data:profile_layout,
+				dataType : "json",
+				success:function (result) {
+					location.reload();
+				}
+			});
+			$(".trackInfo").live('mouseenter', function () {
+				$(this).find(".progressBarContainer").show();
+			});
+			$(".trackInfo").live('mouseleave', function () {
+				$(this).find(".progressBarContainer").hide();
+			});
+		});
 	});
 
 
@@ -547,35 +627,6 @@
 			dataType:"json"
 		});
 	}
-
-
-
-	$("#edit_profile_layout_1").submit(function (e) {
-			e.preventDefault();
-			// get all the inputs into an array.
-			var profile_layout = $('#edit_profile_layout_1').serialize();
-
-			$.ajax({
-				url : '/profile_layouts/edit',
-				type:"POST",
-				data:profile_layout,
-				dataType : "json",
-				success:function (result) {
-					location.reload();
-				}
-			});
-
-
-
-		$(".trackInfo").live('mouseenter', function () {
-			$(this).find(".progressBarContainer").show();
-		});
-		$(".trackInfo").live('mouseleave', function () {
-			$(this).find(".progressBarContainer").hide();
-		});
-
-
-	});
 
 	function add_content_editable(){
 		// Adds content editable to editable class
@@ -678,7 +729,25 @@
 			dataType:"json"
 		});
 
+		setupInputs('bfh-selectbox');
+		setupInputs('bfh-colorpicker');
+		setupInputs('bfh-slider');
 
+	}
+
+	function setupInputs(className){
+		$.each($('.' + className), function(){
+			var input = $(this).find('input'),
+				id 	  = $(this).parent().find('label').attr('for');
+			input.attr('id', id);
+
+			var x = id.split("_"),
+			 	z = "";
+			for(var y = 3; y < x.length; y++)
+				z += "_" + x[y];
+			name = x[0] + "_" + x[1] + "[" + x[2] + z + ']';
+			input.attr('name', name);
+		});
 	}
 
 
