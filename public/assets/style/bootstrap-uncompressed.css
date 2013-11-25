@@ -247,7 +247,7 @@
 *   PAGE | FEATURES
 */#page-features {
   position: relative;
-  background: url(../images/pages/features/q_bck.jpg) 50% 0 no-repeat fixed;
+  background: url(../images/pages/welcome/blurred.jpg) 50% 0 no-repeat fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -1546,6 +1546,12 @@ a:hover {
   width: 100%;
   *zoom: 1;
 }
+
+.row-fluid-top {
+	margin-bottom: 40px;
+
+}
+
 .row-fluid:before,
 .row-fluid:after {
   display: table;

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/style/bootstrap-uncompressed.css" afterPath="$PROJECT_DIR$/public/assets/style/bootstrap-uncompressed.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/homepage.erb" afterPath="$PROJECT_DIR$/app/views/shared/homepage.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -14,7 +13,7 @@
     <file path="/song.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374959192971" ignored="false" />
     <file path="/application_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1380594838139" ignored="false" />
     <file path="/a.dummy" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384128186407" ignored="false" />
-    <file path="/Dummy.txt" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384712734373" ignored="false" />
+    <file path="/Dummy.txt" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1385327068538" ignored="false" />
     <file path="/_s3_upload_form.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374021503347" ignored="false" />
     <file path="/index.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374192372839" ignored="false" />
     <file path="/Ruby Console" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1383704154192" ignored="false" />
@@ -43,7 +42,7 @@
     <file path="/thank_you_download.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379986437776" ignored="false" />
     <file path="/thank_you_download.text.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379987156450" ignored="false" />
     <file path="/environment.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379466449638" ignored="false" />
-    <file path="/*.regexp" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379466765149" ignored="false" />
+    <file path="/*.regexp" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1385250182937" ignored="false" />
     <file path="/development.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379986768042" ignored="false" />
     <file path="/20120129205242_add_album_id_to_order.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1380396422954" ignored="false" />
     <file path="/20130928192551_update_album_songs_to_text.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1380396610593" ignored="false" />
@@ -57,8 +56,8 @@
     <file path="/artist_home_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384112412437" ignored="false" />
     <file path="/profile_edit_layout.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384112048925" ignored="false" />
     <file path="/_artist_head.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384112219742" ignored="false" />
-    <file path="/homepage.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384717954380" ignored="false" />
-    <file path="/bootstrap-uncompressed.css" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384722611880" ignored="false" />
+    <file path="/homepage.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1385339082540" ignored="false" />
+    <file path="/bootstrap-uncompressed.css" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1385338065603" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +102,7 @@
       <file leaf-file-name="homepage.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/homepage.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0">
+            <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -132,12 +131,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="homepage.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="homepage.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/shared/homepage.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="0" selection-start="3010" selection-end="3166" vertical-scroll-proportion="0.82758623">
+            <state line="195" column="24" selection-start="6857" selection-end="6857" vertical-scroll-proportion="0.85861564">
               <folding>
-                <marker date="1384717955856" expanded="false" signature="3336:3686" placeholder="..." />
+                <marker date="1385339101761" expanded="false" signature="3336:3686" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -161,10 +160,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bootstrap-uncompressed.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="bootstrap-uncompressed.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/assets/style/bootstrap-uncompressed.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="56" selection-start="337" selection-end="337" vertical-scroll-proportion="0.64179105">
+            <state line="252" column="28" selection-start="5664" selection-end="5664" vertical-scroll-proportion="-39.51852">
               <folding />
             </state>
           </provider>
@@ -173,7 +172,7 @@
       <file leaf-file-name="artist_floating_content.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_floating_content.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="43" selection-start="923" selection-end="935" vertical-scroll-proportion="0.0">
+            <state line="22" column="43" selection-start="923" selection-end="935" vertical-scroll-proportion="-17.103449">
               <folding />
             </state>
           </provider>
@@ -216,8 +215,8 @@
         <option value="$PROJECT_DIR$/app/controllers/artist_home_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/artist_admin_and_artist_floating_content.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/shared/homepage.erb" />
         <option value="$PROJECT_DIR$/public/assets/style/bootstrap-uncompressed.css" />
+        <option value="$PROJECT_DIR$/app/views/shared/homepage.erb" />
       </list>
     </option>
   </component>
@@ -229,10 +228,8 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="304" />
-    <option name="y" value="38" />
-    <option name="width" value="1506" />
-    <option name="height" value="913" />
+    <option name="width" value="1926" />
+    <option name="height" value="1100" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -586,22 +583,22 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="RailsProjectView">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="music3" />
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1018,15 +1015,15 @@
       <method />
     </configuration>
     <list size="9">
-      <item index="0" class="java.lang.String" itemvalue="Rails.Development: music3" />
-      <item index="1" class="java.lang.String" itemvalue="Rails.Production: music3" />
-      <item index="2" class="java.lang.String" itemvalue="Rake.spec" />
-      <item index="3" class="java.lang.String" itemvalue="Rake.test" />
-      <item index="4" class="java.lang.String" itemvalue="Rake.db:rollback" />
-      <item index="5" class="java.lang.String" itemvalue="Rake.db:migrate:status" />
-      <item index="6" class="java.lang.String" itemvalue="Ruby.application" />
-      <item index="7" class="java.lang.String" itemvalue="Rake.db:migrate" />
-      <item index="8" class="java.lang.String" itemvalue="IRB console.Rails console: music3" />
+      <item index="0" class="java.lang.String" itemvalue="Rake.db:rollback" />
+      <item index="1" class="java.lang.String" itemvalue="Rake.db:migrate:status" />
+      <item index="2" class="java.lang.String" itemvalue="Ruby.application" />
+      <item index="3" class="java.lang.String" itemvalue="Rake.db:migrate" />
+      <item index="4" class="java.lang.String" itemvalue="IRB console.Rails console: music3" />
+      <item index="5" class="java.lang.String" itemvalue="Rails.Development: music3" />
+      <item index="6" class="java.lang.String" itemvalue="Rails.Production: music3" />
+      <item index="7" class="java.lang.String" itemvalue="Rake.spec" />
+      <item index="8" class="java.lang.String" itemvalue="Rake.test" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -1107,18 +1104,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="304" y="38" width="1506" height="913" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="0" width="1926" height="1100" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21392533" sideWeight="0.0" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286991" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.5163853" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15614973" sideWeight="0.81493866" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31900138" sideWeight="0.71666664" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25725028" sideWeight="0.80041367" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37472036" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28775835" sideWeight="0.225" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28333333" sideWeight="0.17128988" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28333333" sideWeight="0.82871014" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19958635" sideWeight="0.17185822" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19958635" sideWeight="0.8276047" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33295456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40106952" sideWeight="0.77911645" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1227,13 +1224,6 @@
         <state line="6" column="22" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/homepage.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/artist_home_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0">
@@ -1244,13 +1234,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/artists/default.css.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="427" column="24" selection-start="10735" selection-end="11063" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_floating_content.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="43" selection-start="923" selection-end="935" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1288,19 +1271,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/homepage.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_floating_content.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="0" selection-start="3010" selection-end="3166" vertical-scroll-proportion="0.82758623">
-          <folding>
-            <marker date="1384717955856" expanded="false" signature="3336:3686" placeholder="..." />
-          </folding>
+        <state line="22" column="43" selection-start="923" selection-end="935" vertical-scroll-proportion="-17.103449">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/homepage.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="-0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/style/bootstrap-uncompressed.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="56" selection-start="337" selection-end="337" vertical-scroll-proportion="0.64179105">
+        <state line="252" column="28" selection-start="5664" selection-end="5664" vertical-scroll-proportion="-39.51852">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/homepage.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="195" column="24" selection-start="6857" selection-end="6857" vertical-scroll-proportion="0.85861564">
+          <folding>
+            <marker date="1385339101761" expanded="false" signature="3336:3686" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
