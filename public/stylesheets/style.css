@@ -60,6 +60,14 @@
 {
 	float:left;
 	vertical-align: top;
+	width:25%;
+}
+.leftPane div {
+	padding-right:15px;
+}
+.leftPane img {
+	width:100%;
+	max-width: 200px;
 }
 .rightPane
 {

@@ -1,7 +1,7 @@
 <div id="fb-root"></div>
 <div class="backPane"></div>
 <div class="leftPane">
-	<div><img src="<%= @album.art%>" style="max-width:200px;" id="albumImage" /><br>
+	<div><img src="<%= @album.art%>" id="albumImage" /><br>
 		<p class="m30l"><%=link_to "Play", album_playlist_create_path(@artist.url_slug, @album.album_url_slug), :class =>"load-playlist  albumLink" %></p>
 	</div>
 
@@ -23,13 +23,16 @@
 			<% @album.songs.uniq.each do |songs| %>
 				<% unless songs.song_url_slug.blank?%>
 				<tr>
-					<td><a href="<%= download_url_for(songs.s3_id) %>" data-song-name="<%=songs.song_name%>" data-artist-name="<%=@artist.name%>" class="music-button">
-						<span class="p5l">Play</span></a>
-					</td>
+					<td style="width:60px"><a href="<%= download_url_for(songs.s3_id) %>"
+							   data-song-name="<%= songs.song_name %>"
+							   data-artist-name="<%= @artist.name %>"
+							   data-song-id="<%= songs.id %>"
+							   class="music-button"><% if songs.image.nil? %>PLAY 
+								<% else %>
+								<img src="<%=songs.image %>" style="max-width:60px;"/><% end %></a></td>
 					<td class="bold"><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug), :class => "content-link" %> 
 					</td>
-					<td>song length</td>
-					<td><a href="#" class="music-button">BUY</a></td>
+					<td><a href="#" class="music-button">Download</a></td>
 				</tr>
 				<% end %>
 			<% end %>
