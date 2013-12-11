@@ -52,15 +52,15 @@
 				});
 			</script>
 
-			<form accept-charset="UTF-8" action="<%=payment_method_path("album",@artist.url_slug,@album.id )%>" class="pwyc_form" enctype="multipart/form-data" data-validate="true"  method="post" novalidate="novalidate"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" />
+			<form accept-charset="UTF-8" action="<%=payment_method_path("album",@artist.url_slug,@album.id )%>" class="pwyc_form" enctype="multipart/form-data" data-validate="true"  method="post" novalidate="novalidate"><div><input name="utf8" type="hidden" value="&#x2713;" />
 
 
 				<input name="authenticity_token" id="token" type="hidden" value=""/></div>
 
 
-				<label for="amount">download</label>
-				<input id="amount" name="amount" type="text" size="3" />
-				<input name="commit" type="submit" value="Donate" />
+				<label for="amount">Amount $</label>
+				<input id="amount" name="amount" type="text" size="3" value="" />
+				<button name="commit" type="submit" class="fancyButton">Download</button>
 
 				<!--For order processing-->
 

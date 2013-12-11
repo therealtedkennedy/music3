@@ -142,3 +142,9 @@
 .bold {
 	font-weight: bold;
 }
+
+.pwyc_form {
+	width:100%;
+	display: inline-block;
+	text-align:center;
+}

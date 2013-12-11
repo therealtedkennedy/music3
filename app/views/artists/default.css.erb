@@ -159,6 +159,19 @@
         background-color: blue;
     }
 
+    button.fancyButton {
+        font-family: Helvetica, sans-serif;
+        font-size: 14px;
+        color: #fff;
+        padding: 5px 20px;
+        background: <%= @artist.profile_layout.h1_colour %>;
+        letter-spacing: 1.5px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        border: 3px solid <%= @artist.profile_layout.h1_colour %>;
+    }
+
     .div2 {
         margin: 2%;
         background-color: <%= @artist.profile_layout.div_2_background_colour %>;
