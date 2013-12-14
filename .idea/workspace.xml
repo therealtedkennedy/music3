@@ -2,160 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/README.md" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/vendor/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/vendor/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/.gitignore" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/.jshintrc" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/.jshintrc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/.travis.yml" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/.travis.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/Gruntfile.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-colorpicker.jquery.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-colorpicker.jquery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-country.jquery.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-country.jquery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-currency.jquery.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-currency.jquery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-datepicker.jquery.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-datepicker.jquery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-font.jquery.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-font.jquery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-fontsize.jquery.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-fontsize.jquery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-googlefont.jquery.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-googlefont.jquery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-language.jquery.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-language.jquery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-phone.jquery.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-phone.jquery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-select.jquery.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-select.jquery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-slider.jquery.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-slider.jquery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-state.jquery.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-state.jquery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-timepicker.jquery.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-timepicker.jquery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-timezone.jquery.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bfh-timezone.jquery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/vendor/css/bootstrap-3.0.0.min.css" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/vendor/css/bootstrap-3.0.0.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/vendor/js/bootstrap-3.0.0.min.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/vendor/js/bootstrap-3.0.0.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-colorpicker.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-colorpicker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-colorpicker.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-colorpicker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-colorpicker.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-colorpicker.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/ar/bootstrap-formhelpers-countries.ar.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/ar/bootstrap-formhelpers-countries.ar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/de_DE/bootstrap-formhelpers-countries.de_DE.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/de_DE/bootstrap-formhelpers-countries.de_DE.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-countries.en_US.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-countries.en_US.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/es_ES/bootstrap-formhelpers-countries.es_ES.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/es_ES/bootstrap-formhelpers-countries.es_ES.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/dist/img/bootstrap-formhelpers-countries.flags-LICENSE.txt" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/dist/img/bootstrap-formhelpers-countries.flags-LICENSE.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/img/bootstrap-formhelpers-countries.flags-LICENSE.txt" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/img/bootstrap-formhelpers-countries.flags-LICENSE.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/it_IT/bootstrap-formhelpers-countries.it_IT.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/it_IT/bootstrap-formhelpers-countries.it_IT.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-countries.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-countries.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-countries.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-countries.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/pt_BR/bootstrap-formhelpers-countries.pt_BR.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/pt_BR/bootstrap-formhelpers-countries.pt_BR.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/zh_CN/bootstrap-formhelpers-countries.zh_CN.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/zh_CN/bootstrap-formhelpers-countries.zh_CN.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/zh_TW/bootstrap-formhelpers-countries.zh_TW.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/zh_TW/bootstrap-formhelpers-countries.zh_TW.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-currencies.en_US.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-currencies.en_US.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-currencies.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-currencies.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-currencies.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-currencies.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-datepicker.en_US.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-datepicker.en_US.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/es_ES/bootstrap-formhelpers-datepicker.es_ES.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/es_ES/bootstrap-formhelpers-datepicker.es_ES.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/es_US/bootstrap-formhelpers-datepicker.es_US.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/es_US/bootstrap-formhelpers-datepicker.es_US.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-datepicker.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-datepicker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-datepicker.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-datepicker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-datepicker.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-datepicker.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-flags.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-flags.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-fonts.en_US.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-fonts.en_US.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-fonts.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-fonts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-fonts.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-fonts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-fontsizes.en_US.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-fontsizes.en_US.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-fontsizes.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-fontsizes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-fontsizes.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-fontsizes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-googlefonts.en_US.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-googlefonts.en_US.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-googlefonts.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-googlefonts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-googlefonts.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-googlefonts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-googlefonts.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-googlefonts.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-languages.en_US.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-languages.en_US.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-languages.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-languages.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-languages.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-languages.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-mixins.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-mixins.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-number.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-number.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-number.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-number.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-number.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-number.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-phone.en_US.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-phone.en_US.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-phone.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-phone.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-phone.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-phone.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-selectbox.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-selectbox.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-selectbox.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-selectbox.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-selectbox.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-selectbox.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-slider.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-slider.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-slider.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-slider.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-slider.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-slider.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-states.en_US.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-states.en_US.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-states.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-states.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-states.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-states.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-timepicker.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-timepicker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-timepicker.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-timepicker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-timepicker.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-timepicker.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-timezones.en_US.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/en_US/bootstrap-formhelpers-timezones.en_US.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-timezones.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/bootstrap-formhelpers-timezones.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-timezones.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/unit/bootstrap-formhelpers-timezones.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/zh_CN/bootstrap-formhelpers-timezones.zh_CN.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/lang/zh_CN/bootstrap-formhelpers-timezones.zh_CN.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-variables.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers-variables.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/dist/css/bootstrap-formhelpers.css" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/dist/css/bootstrap-formhelpers.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/dist/js/bootstrap-formhelpers.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/dist/js/bootstrap-formhelpers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/less/bootstrap-formhelpers.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/dist/css/bootstrap-formhelpers.min.css" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/dist/css/bootstrap-formhelpers.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/dist/js/bootstrap-formhelpers.min.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/dist/js/bootstrap-formhelpers.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bower.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/composer.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/fixture.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/fixture.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/index.html" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/vendor/js/jquery-1.10.2.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/vendor/js/jquery-1.10.2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/karma.conf.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/karma.conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/package.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/profile_edit_layout.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/profile_edit_layout.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/vendor/css/qunit-1.12.0.css" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/vendor/css/qunit-1.12.0.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/vendor/js/qunit-1.12.0.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrapFormHelpers/js/tests/vendor/js/qunit-1.12.0.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/shared/thank_you_sign_up.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.generators" afterPath="$PROJECT_DIR$/.idea/.generators" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/homepage.erb" afterPath="$PROJECT_DIR$/app/views/shared/homepage.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/homepage.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/homepage.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/homepage_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/homepage_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/music3.iml" afterPath="$PROJECT_DIR$/.idea/music3.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="music3.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/artist_admin.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384481282539" ignored="false" />
-    <file path="/songs_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384038798133" ignored="false" />
-    <file path="/song.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374959192971" ignored="false" />
-    <file path="/application_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1380594838139" ignored="false" />
-    <file path="/a.dummy" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384128186407" ignored="false" />
-    <file path="/Dummy.txt" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1386449532729" ignored="false" />
-    <file path="/_s3_upload_form.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374021503347" ignored="false" />
-    <file path="/index.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374192372839" ignored="false" />
-    <file path="/Ruby Console" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1383704154192" ignored="false" />
-    <file path="/_form.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1383881196825" ignored="false" />
-    <file path="/_form_upload_song.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374880120274" ignored="false" />
-    <file path="/edit.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1383881106392" ignored="false" />
-    <file path="/default.css.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1374348349549" ignored="false" />
-    <file path="/new.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1383875697050" ignored="false" />
-    <file path="/album.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1383877673829" ignored="false" />
-    <file path="/routes.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1383877833280" ignored="false" />
-    <file path="/albums_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1383878180315" ignored="false" />
-    <file path="/Gemfile" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384053881773" ignored="false" />
-    <file path="/artists_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1383707395013" ignored="false" />
-    <file path="/social_promo.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1376448420582" ignored="false" />
-    <file path="/show.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384042188174" ignored="false" />
-    <file path="/album_code_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1377048710738" ignored="false" />
-    <file path="/_code_redeem.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1377050341014" ignored="false" />
-    <file path="/_code_find.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1377138915730" ignored="false" />
-    <file path="/users_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1380074664756" ignored="false" />
-    <file path="/application.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1377566955435" ignored="false" />
-    <file path="/application.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384112156959" ignored="false" />
-    <file path="/artist_floating_content.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384112078815" ignored="false" />
-    <file path="/admin.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1383707520900" ignored="false" />
-    <file path="/production.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379800000844" ignored="false" />
-    <file path="/first_mailer.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379986519376" ignored="false" />
-    <file path="/thank_you_download.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379986437776" ignored="false" />
-    <file path="/thank_you_download.text.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379987156450" ignored="false" />
-    <file path="/environment.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379466449638" ignored="false" />
-    <file path="/*.regexp" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1385250182937" ignored="false" />
-    <file path="/development.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1379986768042" ignored="false" />
-    <file path="/20120129205242_add_album_id_to_order.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1380396422954" ignored="false" />
-    <file path="/20130928192551_update_album_songs_to_text.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1380396610593" ignored="false" />
-    <file path="/_form_new_artist.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1383701589515" ignored="false" />
-    <file path="/artist.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1380678895618" ignored="false" />
-    <file path="/_form_new_album_name.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1383875533946" ignored="false" />
-    <file path="/new_album_info.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1383881083185" ignored="false" />
-    <file path="/user.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384112032736" ignored="false" />
-    <file path="/admin_controls.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384112305155" ignored="false" />
-    <file path="/artist_admin_and_artist_floating_content.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384112130591" ignored="false" />
-    <file path="/artist_home_controller.rb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384112412437" ignored="false" />
-    <file path="/profile_edit_layout.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384112048925" ignored="false" />
-    <file path="/_artist_head.html.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1384112219742" ignored="false" />
-    <file path="/homepage.erb" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1385339082540" ignored="false" />
-    <file path="/bootstrap-uncompressed.css" changelist="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" time="1385338065603" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,6 +21,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/music3@Development__music3.coverage" NAME="Development: music3 Coverage Results" MODIFIED="1387054783249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="music3" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -182,7 +43,7 @@
       <file leaf-file-name="artist_admin.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="606" column="32" selection-start="16924" selection-end="16924" vertical-scroll-proportion="0.0">
+            <state line="606" column="32" selection-start="16924" selection-end="16924" vertical-scroll-proportion="-0.0" vertical-offset="9090" max-vertical-offset="13095">
               <folding />
             </state>
           </provider>
@@ -191,7 +52,7 @@
       <file leaf-file-name="profile_layouts_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/profile_layouts_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2490">
               <folding />
             </state>
           </provider>
@@ -200,7 +61,7 @@
       <file leaf-file-name="homepage.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/homepage.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0">
+            <state line="4" column="16" selection-start="35" selection-end="35" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="1245">
               <folding />
             </state>
           </provider>
@@ -209,7 +70,7 @@
       <file leaf-file-name="artist_home_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/artist_home_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0">
+            <state line="5" column="0" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="255">
               <folding />
             </state>
           </provider>
@@ -218,50 +79,47 @@
       <file leaf-file-name="admin_controls.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/admin_controls.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="28" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1384112360430" expanded="true" signature="541:1162" placeholder="..." />
-                <marker date="1384112360430" expanded="true" signature="642:1127" placeholder="..." />
-                <marker date="1384112360430" expanded="true" signature="1278:1816" placeholder="..." />
-                <marker date="1384112360430" expanded="true" signature="1411:1766" placeholder="..." />
-              </folding>
+            <state line="0" column="28" selection-start="28" selection-end="28" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="900">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="homepage.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="homepage.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/shared/homepage.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="222" column="98" selection-start="7989" selection-end="7989" vertical-scroll-proportion="0.17673048">
+            <state line="375" column="89" selection-start="13420" selection-end="13420" vertical-scroll-proportion="-6.9166665" vertical-offset="5459" max-vertical-offset="11190">
               <folding>
-                <marker date="1385339101761" expanded="false" signature="3336:3686" placeholder="..." />
+                <element signature="n#style#0;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#3;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="artist_admin_and_artist_floating_content.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin_and_artist_floating_content.html.erb">
+      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="17" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
+            <state line="18" column="14" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3165">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="default.css.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/artists/default.css.erb">
+      <file leaf-file-name="homepage_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/homepage_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="427" column="24" selection-start="10735" selection-end="11063" vertical-scroll-proportion="0.0">
+            <state line="14" column="76" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bootstrap-uncompressed.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/style/bootstrap-uncompressed.css">
+      <file leaf-file-name="thank_you_sign_up.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/shared/thank_you_sign_up.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="252" column="28" selection-start="5664" selection-end="5664" vertical-scroll-proportion="0.0">
+            <state line="44" column="4" selection-start="1118" selection-end="1567" vertical-scroll-proportion="0.66132265" vertical-offset="330" max-vertical-offset="1035">
               <folding />
             </state>
           </provider>
@@ -270,7 +128,7 @@
       <file leaf-file-name="artist_floating_content.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_floating_content.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="43" selection-start="923" selection-end="935" vertical-scroll-proportion="0.0">
+            <state line="22" column="43" selection-start="923" selection-end="935" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="435">
               <folding />
             </state>
           </provider>
@@ -309,12 +167,15 @@
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/_artist_head.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/admin_controls.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/homepage.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/artist_home_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/artist_admin_and_artist_floating_content.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb" />
         <option value="$PROJECT_DIR$/public/assets/style/bootstrap-uncompressed.css" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/homepage_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/shared/homepage.erb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/homepage.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/shared/thank_you_sign_up.html.erb" />
       </list>
     </option>
   </component>
@@ -326,8 +187,10 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1926" />
-    <option name="height" value="1100" />
+    <option name="x" value="411" />
+    <option name="y" value="22" />
+    <option name="width" value="1029" />
+    <option name="height" value="833" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -371,16 +234,32 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="music3" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="music3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -681,26 +560,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music3" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Favorites" />
     </panes>
   </component>
@@ -729,7 +588,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="options.lastSelected" value="preferences.lookFeel" />
+    <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable" />
     <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
@@ -748,7 +607,7 @@
     <configuration default="false" name="db:rollback" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
       <module name="music3" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -756,8 +615,12 @@
         <env name="RAILS_ENV" value="development" />
       </envs>
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="db:rollback" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
@@ -772,14 +635,18 @@
     <configuration default="false" name="db:migrate:status" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
       <module name="music3" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <envs />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="db:migrate:status" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
@@ -794,16 +661,20 @@
     <configuration default="false" name="application" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
       <module name="music3" />
       <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$PROJECT_DIR$/config" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/config" />
       <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
       <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
       <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
       <envs />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$PROJECT_DIR$/config/application.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/config/application.rb" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
       <RunnerSettings RunnerId="RubyDebugRunner" />
       <ConfigurationWrapper RunnerId="RubyDebugRunner" />
@@ -812,7 +683,7 @@
     <configuration default="false" name="db:migrate" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
       <module name="music3" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -820,8 +691,12 @@
         <env name="RAILS_ENV" value="development" />
       </envs>
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="db:migrate" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
@@ -836,16 +711,20 @@
     <configuration default="false" name="Rails console: music3" type="IrbRunConfigurationType" factoryName="IRB console" temporary="true">
       <module name="music3" />
       <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
+      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$" />
       <IRB_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
       <IRB_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
       <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
       <envs />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$PROJECT_DIR$/script/rails" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/script/rails" />
       <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="console" />
       <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="true" />
       <RunnerSettings RunnerId="RubyRunner" />
@@ -861,8 +740,12 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <envs />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
@@ -876,14 +759,18 @@
       <predefined_log_file id="RUBY_RAILS_SERVER" enabled="true" />
       <module name="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <envs />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
@@ -904,8 +791,12 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <envs />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
@@ -917,6 +808,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method />
     </configuration>
@@ -929,11 +821,18 @@
       <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
       <envs />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest">
@@ -946,8 +845,12 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <envs />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
@@ -955,6 +858,7 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method />
     </configuration>
@@ -967,8 +871,12 @@
       <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
       <envs />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
       <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="" />
       <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
@@ -987,8 +895,12 @@
         <env name="ANSICON" value="" />
       </envs>
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*.feature" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
@@ -1001,115 +913,10 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="VERBOSE_OPTION" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
-      <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSDebuggerConfigurationSettings>
-      <method />
-    </configuration>
-    <configuration default="false" name="Development: music3" type="RailsRunConfigurationType" factoryName="Rails">
-      <predefined_log_file id="RUBY_RAILS_SERVER" enabled="true" />
-      <module name="music3" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
-      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="127.0.0.1" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="Default" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="development" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
-      <RunnerSettings RunnerId="RubyDebugRunner" />
-      <RunnerSettings RunnerId="RubyRunner" />
-      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
-      <ConfigurationWrapper RunnerId="RubyRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Production: music3" type="RailsRunConfigurationType" factoryName="Rails">
-      <predefined_log_file id="RUBY_RAILS_SERVER" enabled="true" />
-      <module name="music3" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
-      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="127.0.0.1" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="Default" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="production" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="spec" type="RakeRunConfigurationType" factoryName="Rake">
-      <module name="music3" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
-      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="spec" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE=":rspec " />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TRACE" VALUE="false" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_DRYRUN" VALUE="false" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
-      <RunnerSettings RunnerId="RubyRunner" />
-      <ConfigurationWrapper RunnerId="RubyRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="test" type="RakeRunConfigurationType" factoryName="Rake">
-      <module name="music3" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs>
-        <env name="RAILS_ENV" value="test" />
-      </envs>
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" track_test_folders="true" runner="rcov" />
-      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="test" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE=":test_unit " />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TRACE" VALUE="false" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_DRYRUN" VALUE="false" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
       <method />
     </configuration>
     <list size="9">
@@ -1126,10 +933,10 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="IRB console.Rails console: music3" />
-        <item index="1" class="java.lang.String" itemvalue="IRB console.Rails console: music3" />
-        <item index="2" class="java.lang.String" itemvalue="Rake.db:migrate" />
-        <item index="3" class="java.lang.String" itemvalue="IRB console.Rails console: music3" />
-        <item index="4" class="java.lang.String" itemvalue="IRB console.Rails console: music3" />
+        <item index="1" class="java.lang.String" itemvalue="Rake.db:migrate" />
+        <item index="2" class="java.lang.String" itemvalue="Ruby.application" />
+        <item index="3" class="java.lang.String" itemvalue="Rake.db:migrate:status" />
+        <item index="4" class="java.lang.String" itemvalue="Rake.db:rollback" />
       </list>
     </recent_temporary>
     <configuration default="true" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda">
@@ -1202,18 +1009,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1926" height="1100" extended-state="1" />
+    <frame x="411" y="22" width="1029" height="833" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21392533" sideWeight="0.0" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286991" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.5163853" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15614973" sideWeight="0.81493866" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26369494" sideWeight="0.80041367" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29348883" sideWeight="0.80041367" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37472036" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28775835" sideWeight="0.225" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19958635" sideWeight="0.17239527" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19958635" sideWeight="0.8276047" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19842313" sideWeight="0.17298348" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19842313" sideWeight="0.82701653" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33295456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40106952" sideWeight="0.77911645" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1227,64 +1035,24 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USERS">
+      <collection />
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="CHECK_NEW_TODO" value="true" />
     <option name="myTodoPanelSettings">
-      <value>
-        <are-packages-shown value="false" />
-        <are-modules-shown value="false" />
-        <flatten-packages value="false" />
-        <is-autoscroll-to-source value="false" />
-      </value>
+      <TodoPanelSettings />
     </option>
-    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
-    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
-    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
-    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
-    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
-    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
-    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
-    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
-    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
-    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
-    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
-    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
-    <option name="LIMIT_HISTORY" value="true" />
-    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
-    <option name="UPDATE_FILTER_SCOPE_NAME" />
-    <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
-    <option name="COMMIT_MESSAGE_MARGIN_SIZE" value="72" />
-    <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
-    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added music download and streaming." />
-    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
-    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
-    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
-    <option name="ACTIVE_VCS_NAME" />
-    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
-    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
-    <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
-    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
-    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="First Commit.  I will admit that I have no idea what I'm doing" />
     <MESSAGE value="Added music download and streaming." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added music download and streaming." />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1292,110 +1060,364 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="65" selection-start="4782" selection-end="4805" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/user.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="4" selection-end="18" vertical-scroll-proportion="-0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/profile_edit_layout.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="4" selection-end="20" vertical-scroll-proportion="-0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_artist_head.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="38" selection-start="68" selection-end="68" vertical-scroll-proportion="-1.6551725" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="4" selection-end="31" vertical-scroll-proportion="-0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/style/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="22" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/artist_home_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artists/default.css.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="427" column="24" selection-start="10735" selection-end="11063" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/admin_controls.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="28" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1384112360430" expanded="true" signature="541:1162" placeholder="..." />
-            <marker date="1384112360430" expanded="true" signature="642:1127" placeholder="..." />
-            <marker date="1384112360430" expanded="true" signature="1278:1816" placeholder="..." />
-            <marker date="1384112360430" expanded="true" signature="1411:1766" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin_and_artist_floating_content.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="606" column="32" selection-start="16924" selection-end="16924" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/profile_layouts_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/homepage.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/style/bootstrap-uncompressed.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="252" column="28" selection-start="5664" selection-end="5664" vertical-scroll-proportion="0.0">
+        <state line="285" column="98" selection-start="6323" selection-end="6323" vertical-scroll-proportion="0.0" vertical-offset="4155" max-vertical-offset="116325">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_floating_content.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="43" selection-start="923" selection-end="935" vertical-scroll-proportion="0.0">
+        <state line="22" column="43" selection-start="923" selection-end="935" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="606" column="32" selection-start="16924" selection-end="16924" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13095">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/profile_layouts_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2490">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/homepage.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/artist_home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/admin_controls.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="28" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/shared/homepage.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="222" column="98" selection-start="7989" selection-end="7989" vertical-scroll-proportion="0.17673048">
+        <state line="413" column="37" selection-start="15162" selection-end="15162" vertical-scroll-proportion="0.0" vertical-offset="5857" max-vertical-offset="11520">
           <folding>
-            <marker date="1385339101761" expanded="false" signature="3336:3686" placeholder="..." />
+            <element signature="n#style#0;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin_and_artist_floating_content.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="17" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="360">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/artists/default.css.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="439" column="33" selection-start="11008" selection-end="11008" vertical-scroll-proportion="0.0" vertical-offset="6585" max-vertical-offset="9645">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/style/bootstrap-uncompressed.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="285" column="98" selection-start="6323" selection-end="6323" vertical-scroll-proportion="0.0" vertical-offset="4155" max-vertical-offset="116325">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_floating_content.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="43" selection-start="923" selection-end="935" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="606" column="32" selection-start="16924" selection-end="16924" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13095">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/profile_layouts_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2490">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/homepage.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/artist_home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/admin_controls.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="28" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/homepage.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="420" column="38" selection-start="15484" selection-end="15484" vertical-scroll-proportion="0.0" vertical-offset="6023" max-vertical-offset="11895">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin_and_artist_floating_content.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="17" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="360">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/artists/default.css.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="439" column="33" selection-start="11008" selection-end="11008" vertical-scroll-proportion="0.0" vertical-offset="6585" max-vertical-offset="9645">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/style/bootstrap-uncompressed.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="285" column="98" selection-start="6323" selection-end="6323" vertical-scroll-proportion="0.0" vertical-offset="4155" max-vertical-offset="116325">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_floating_content.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="43" selection-start="923" selection-end="935" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="606" column="32" selection-start="16924" selection-end="16924" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13095">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/profile_layouts_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2490">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/homepage.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/artist_home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/admin_controls.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="28" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/homepage.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="222" column="98" selection-start="7989" selection-end="7989" vertical-scroll-proportion="0.0" vertical-offset="3330" max-vertical-offset="12930">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin_and_artist_floating_content.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="17" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="360">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/artists/default.css.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="427" column="24" selection-start="10735" selection-end="11063" vertical-scroll-proportion="0.0" vertical-offset="6405" max-vertical-offset="9645">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/style/bootstrap-uncompressed.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="252" column="28" selection-start="5664" selection-end="5664" vertical-scroll-proportion="0.0" vertical-offset="3780" max-vertical-offset="116325">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_floating_content.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="43" selection-start="923" selection-end="935" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="148" column="65" selection-start="4782" selection-end="4805" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/user.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="4" selection-end="18" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/profile_edit_layout.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="4" selection-end="20" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_artist_head.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="38" selection-start="68" selection-end="68" vertical-scroll-proportion="-1.6551725" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="4" selection-end="31" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/style/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="22" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/artist_home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/admin_controls.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="28" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin_and_artist_floating_content.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="17" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="606" column="32" selection-start="16924" selection-end="16924" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/profile_layouts_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_floating_content.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="43" selection-start="923" selection-end="935" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/style/bootstrap-uncompressed.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="285" column="98" selection-start="6323" selection-end="6323" vertical-scroll-proportion="0.0" vertical-offset="4155" max-vertical-offset="116325">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/artists/default.css.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="439" column="33" selection-start="11008" selection-end="11008" vertical-scroll-proportion="0.0" vertical-offset="6585" max-vertical-offset="9645">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="14" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/homepage_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="76" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/homepage.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="16" selection-start="35" selection-end="35" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="1245">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/homepage.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="375" column="89" selection-start="13420" selection-end="13420" vertical-scroll-proportion="-6.9166665" vertical-offset="5459" max-vertical-offset="11190">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#0;n#article#0;n#div#0;n#div#6;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/thank_you_sign_up.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="4" selection-start="1118" selection-end="1567" vertical-scroll-proportion="0.66132265" vertical-offset="330" max-vertical-offset="1035">
+          <folding />
         </state>
       </provider>
     </entry>

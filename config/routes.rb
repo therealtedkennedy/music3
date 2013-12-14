@@ -9,8 +9,13 @@ Music3::Application.routes.draw do
     #socail promo
 	match "/:url_slug/social_promo" => "artists#social_promo", :as => :social_promo
 
-
+  #home page routing
 	root :to => "homepage#index"
+  match "thank_you_sign_up" => "homepage#thank_you"
+
+
+
+
 	#orders
 
 	match "orders/paypal/to_chained/:object/:url_slug/:song_album_or_event_id" => "orders#chained_payment", :as => :chained_payment
