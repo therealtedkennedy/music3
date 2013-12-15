@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/shared/thank_you_sign_up.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.generators" afterPath="$PROJECT_DIR$/.idea/.generators" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/homepage.erb" afterPath="$PROJECT_DIR$/app/views/shared/homepage.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/homepage.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/homepage.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/homepage_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/homepage_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/music3.iml" afterPath="$PROJECT_DIR$/.idea/music3.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/thank_you_sign_up.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/thank_you_sign_up.html.erb" />
     </list>
     <ignored path="music3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -119,7 +111,7 @@
       <file leaf-file-name="thank_you_sign_up.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/shared/thank_you_sign_up.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="4" selection-start="1118" selection-end="1567" vertical-scroll-proportion="0.66132265" vertical-offset="330" max-vertical-offset="1035">
+            <state line="29" column="1" selection-start="708" selection-end="708" vertical-scroll-proportion="0.4288577" vertical-offset="221" max-vertical-offset="720">
               <folding />
             </state>
           </provider>
@@ -1416,7 +1408,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/shared/thank_you_sign_up.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="4" selection-start="1118" selection-end="1567" vertical-scroll-proportion="0.66132265" vertical-offset="330" max-vertical-offset="1035">
+        <state line="29" column="1" selection-start="708" selection-end="708" vertical-scroll-proportion="0.4288577" vertical-offset="221" max-vertical-offset="720">
           <folding />
         </state>
       </provider>
