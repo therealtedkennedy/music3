@@ -17,6 +17,12 @@ class HomepageController < ApplicationController
     render :template => 'shared/thank_you_sign_up.html.erb'
   end
 
+  def sign_up
+
+    render :template => 'shared/sign_up.html.erb'
+
+  end
+
 
 
 end

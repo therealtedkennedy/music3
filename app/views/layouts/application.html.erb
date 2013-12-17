@@ -1,4 +1,4 @@
-<!--default for everything else-->
+<!--Main Layout-->
 <!DOCTYPE html>
 <html>
 <style>
@@ -9,8 +9,11 @@
 
 
 	html, body {
+        display: inline;
+        background-color: #292929;
 		overflow-x: hidden;
 		margin: 0 auto;
+
 
 	}
 
@@ -83,6 +86,11 @@
 
 
 <head>
+
+
+
+
+
     <meta name="robots" content="noindex">
 
 	<%= csrf_meta_tag %>
@@ -108,10 +116,9 @@
 	<!-- Master template -->
 	<script>
 		$(function () {
-			$.backstretch("/skrillex.jpeg");
+			$.backstretch("/assets/images/pages/welcome/records_shelves_trans_40.png") ;
+
 		});
-
-
 	</script>
 
 
@@ -483,5 +490,9 @@
 	<%= yield %>
 
 </div>
+
+
+
+
 </body>
 </html>

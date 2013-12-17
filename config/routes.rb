@@ -12,6 +12,7 @@ Music3::Application.routes.draw do
   #home page routing
 	root :to => "homepage#index"
   match "thank_you_sign_up" => "homepage#thank_you"
+  match "sign_up" => "homepage#sign_up"
 
 
 
@@ -37,6 +38,7 @@ Music3::Application.routes.draw do
 		match "users/edit/:id" => "users#edit", :as => "edit_user"
 		match "users/index" => "users#index"
 		match "users/sign_out" => "users#destroy"
+
 		match "users/update" => "users#boo"
 		match "devise_work_around" => "users#sign_in_routing", :as => "sign_in_routing"
 		match 'auth/:provider/callback', to: 'users#api_login'

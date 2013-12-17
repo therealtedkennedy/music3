@@ -30,20 +30,20 @@ class UsersController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-	  #work around to get background and layout  to load. Eventually users should have there own layouts
-	  user_initialize
+      #work around to get background and layout  to load. Eventually users should have there own layouts
+      user_initialize
 
-	logger.info "new controller"
-    resource = build_resource
+    logger.info "new controller"
+      resource = build_resource
 
-    clean_up_passwords(resource)
-    respond_with_navigational(resource, stub_options(resource)){ render_with_scope :new }
+      clean_up_passwords(resource)
+      respond_with_navigational(resource, stub_options(resource)){ render_with_scope :new }
 
-    #work around.  doesn't actually redirect properly after sign in.  should go to sign_in_routing, but doesnt.
-	#checks if cookies exisit (from paying for an album) and assigns them to the user
-	unless cookies[:object].blank?
-		assign_object_user
-	end
+      #work around.  doesn't actually redirect properly after sign in.  should go to sign_in_routing, but doesnt.
+    #checks if cookies exisit (from paying for an album) and assigns them to the user
+    unless cookies[:object].blank?
+      assign_object_user
+    end
 
   end
 
