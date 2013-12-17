@@ -1,21 +1,115 @@
 
+<header>
 
-<h2>Sign up</h2>
+  <h1>Beta Sign Up</h1>
+  <div class="row">
+    <div class="span8 offset2">
+      <p>
+        Our beta is currently full!  But fear not, sign up today to get priority access as soon as beta seats are available.
+      </p>
+    </div>
+  </div>
+</header>
+<!-- End Header -->
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<!-- Start Article -->
+<article>
+  <div class="row-fluid">
+    <!-- Contact form -->
+    <div class="span8 offset2">
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+      <!-- Begin MailChimp Signup Form -->
+      <link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+      <style type="text/css">
+          #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+          /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+             We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+      </style>
+      <!--<div id="mc_embed_signup">-->
+      <form action="http://threerepeater.us3.list-manage.com/subscribe/post?u=edcc328af15905441c7ff13e9&amp;id=f0eec3b26f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+        <div class="mc-field-group">
+          <label for="mce-EMAIL">
+          </label>
+          <input type="email" value="" name="EMAIL"  id="mce-EMAIL" class="span12" placeholder="Email" required="required">
+        </div>
+        <div class="mc-field-group">
+          <label for="mce-FNAME"></label>
+          <input type="text" value="" name="FNAME" id="mce-FNAME" class="span12" placeholder="First Name" required="required">
+        </div>
+        <div class="mc-field-group">
+          <label for="mce-LNAME"></label>
+          <input type="text" value="" name="LNAME" id="mce-LNAME" class="span12" placeholder="Last Name" required="required">
+        </div>
+        <div id="mce-responses" class="clear">
+          <div class="response" id="mce-error-response" style="display:none"></div>
+          <div class="response" id="mce-success-response" style="display:none"></div>
+        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <div style="position: absolute; left: -5000px;"><input type="text" name="b_edcc328af15905441c7ff13e9_f0eec3b26f" value=""></div>
+        <div class="clear">
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+          <input type="submit" value="Sign Up" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary" style="margin-left:0px"></div>
+      </form>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+      <%= render :partial => "devise/shared/links" %>
+      <!--</div>-->
+
+      <!--End mc_embed_signup-->
 
 
-<%= render :partial => "devise/shared/links" %>
+
+
+
+
+
+
+      <!--<form>-->
+      <!--<input type="text" class="span12" placeholder="Title" required="required">-->
+      <!--<input type="email" class="span12" placeholder="Email" required="required">-->
+      <!--<textarea rows="10" class="span12" required="required"></textarea>-->
+      <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+      <!--</form>-->
+    </div>
+    <!-- End Contact form -->
+
+    <!-- End Contact information -->
+  </div>
+</article>
+<!-- End Article -->
+
+</div>
+
+
+
+
+
+
+<!-- Actual Sign up form. Creates a user-->
+
+<!--<header>-->
+
+  <!--<h1>Sign up</h1>-->
+
+  <!--<div class="row">-->
+    <!--<div class="span8 offset2">-->
+      <!--<p>-->
+         <!--Start promoting your music.-->
+      <!--</p>-->
+    <!--</div>-->
+  <!--</div>-->
+
+<!--</header>-->
+
+<!--<h2></h2>-->
+
+<!--<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>-->
+  <!--<%= devise_error_messages! %>-->
+  <!--<%= f.email_field :email, :class =>'span12', :required=>"required", :placeholder=>"Email" %>-->
+
+  <!--<%= f.password_field :password, :class =>'span12', :required=>"required", :placeholder=>"Password" %>-->
+
+  <!--<%= f.password_field :password_confirmation, :class =>'span12', :required=>"required", :placeholder=>"Password Confirmation" %>-->
+  <!--<div><%= f.submit "Sign up", :class=>"btn btn-primary" %></div>-->
+<!--<% end %>-->
+
+

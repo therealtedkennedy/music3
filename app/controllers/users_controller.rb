@@ -7,6 +7,8 @@ class UsersController < Devise::SessionsController
   #include Devise::Controllers::InternalHelpers
   layout "artist_admin", only: [:show, :edit]
 
+
+
   def api_login
 	  #raise env["omniauth.auth"].to_yaml
 

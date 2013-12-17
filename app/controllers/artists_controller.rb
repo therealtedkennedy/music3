@@ -9,13 +9,13 @@ class ArtistsController < ApplicationController
 
   #changes from default layout to custom layout
 
-  layout "artist_admin", only: [:show, :admin, :update, :social_promo, :pre_delete, :new, :edit]
+  layout "artist_admin", only: [:show, :admin, :update, :social_promo, :pre_delete, :new, :edit,:index]
 
 
 
   def index
     @artists = Artist.all
-    @artist = Artist.new
+    @artist = Artist.find(1)
 
 
     respond_to do |format|
