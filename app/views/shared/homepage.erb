@@ -34,9 +34,20 @@
 				<div class="pull-right">
 
                  <ul id="main-menu" class="nav-collapse collapse">
-                    <li><a href="sign_up">Sign Up</a></li>
+                   <div id="user_nav" class="user_nav">
+                     <div class="user_nav_info">
+                       <% if user_signed_in? %>
+                           <li> <%= link_to "Sign In", show_user_path(current_user.id), :class => "nav content-link" %></li>
 
-                    <li><a href="/users/sign_in">Sign In </a></li>
+                           <li> <%= link_to "Sign out", destroy_user_session_path, :class => :nav, :method => :delete %></li>
+
+                     <% else %>
+                           <%#= render :partial => 'login_form' %>
+                           <%= link_to "Sign Up", new_user_registration_path %>
+                           <%= link_to "sign in", new_user_session_path %>
+                       <% end %>
+                     </div>
+                    </div>
                  </ul>
 
 				</div>
@@ -174,62 +185,16 @@
 						</div>
 					</a>
 				</li>
-				<li class="span4 mix photography illustration">
-					<a href="#pages/portfolio/project_3.html" data-destination="portfolio-items" data-insert="before">
-						<img src="/assets/images/pages/welcome/blurred.jpg" alt="Treble">
-						<div class="portfolio-overlay">
-							<h4>Artist 1</h4>
-						</div>
-					</a>
-				</li>
-				<li class="span4 mix photography">
-					<a href="#pages/portfolio/project_4.html" data-destination="portfolio-items" data-insert="before">
-						<img src="/assets/images/pages/welcome/jen_wall.png" alt="Treble">
-						<div class="portfolio-overlay">
-							<h4>Hipster</h4>
-						</div>
-					</a>
-				</li>
-				<li class="span4 mix photography typography branding">
-					<a href="#pages/portfolio/project_5.html" data-destination="portfolio-items" data-insert="before">
-						<img src="/assets/images/pages/welcome/records_shelves.jpg" alt="Treble">
-						<div class="portfolio-overlay">
-							<h4>Summer</h4>
-						</div>
-					</a>
-				</li>
-				<li class="span4 mix photography">
-					<a href="#pages/portfolio/project_6.html" data-destination="portfolio-items" data-insert="before">
-						<img src="/assets/images/pages/welcome/back_pack.jpg" alt="Treble">
-						<div class="portfolio-overlay">
-							<h4>The Big Time Somke</h4>
-						</div>
-					</a>
-				</li>
-				<!--<li class="span4 mix illustration branding typography">-->
-					<!--<a href="#pages/portfolio/project_7.html" data-destination="portfolio-items" data-insert="before">-->
-						<!--<img src="http://placehold.it/390x300" alt="Treble">-->
-						<!--<div class="portfolio-overlay">-->
-							<!--<h4>Tron 3</h4>-->
-						<!--</div>-->
-					<!--</a>-->
-				<!--</li>-->
-				<!--<li class="span4 mix photography illustration">-->
-					<!--<a href="#pages/portfolio/project_8.html" data-destination="portfolio-items" data-insert="before">-->
-						<!--<img src="http://placehold.it/390x300" alt="Treble">-->
-						<!--<div class="portfolio-overlay">-->
-							<!--<h4>Vimeo Staff Picke - Rio</h4>-->
-						<!--</div>-->
-					<!--</a>-->
-				<!--</li>-->
-				<!--<li class="span4 mix illustration branding">-->
-					<!--<a href="#pages/portfolio/project_9.html" data-destination="portfolio-items" data-insert="before">-->
-						<!--<img src="http://placehold.it/390x300" alt="Treble">-->
-						<!--<div class="portfolio-overlay">-->
-							<!--<h4>Adobe Family. 1882</h4>-->
-						<!--</div>-->
-					<!--</a>-->
-				<!--</li>-->
+              <li class="span4 mix photography">
+                <a href="#pages/portfolio/project_4.html" data-destination="portfolio-items" data-insert="before">
+                  <img src="/assets/images/pages/welcome/jen_wall.png" alt="Treble">
+                  <div class="portfolio-overlay">
+                    <h4>Hipster</h4>
+                  </div>
+                </a>
+              </li>
+
+
 			</ul>
 		</article>
 		<!-- End Article -->

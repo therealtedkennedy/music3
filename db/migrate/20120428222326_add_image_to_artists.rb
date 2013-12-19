@@ -1,5 +1,5 @@
 class AddImageToArtists < ActiveRecord::Migration
-def self.up
+   def self.up
     add_column :artists, :image, :string
 
    end

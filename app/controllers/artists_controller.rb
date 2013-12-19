@@ -16,6 +16,7 @@ class ArtistsController < ApplicationController
   def index
     @artists = Artist.all
     @artist = Artist.find(1)
+    @artist.image = "../assets/images/pages/welcome/records_shelves_trans_40.png"
 
 
     respond_to do |format|
@@ -281,6 +282,9 @@ class ArtistsController < ApplicationController
 	  #logo Upload
 	  @logo_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name, :image_type => "logo", :image_save_url => @image_save_location}, :layout => false)
 
+    #profile image upload
+    @profile_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name, :image_type => "profile", :image_save_url => @image_save_location}, :layout => false)
+
 	  logger.info "bk form"
 	  logger.info @bk_image_upload
 
@@ -341,6 +345,10 @@ class ArtistsController < ApplicationController
 		elsif params[:type] == "logo"
 			@artist.logo = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
 			logger.info("in logo")
+
+    elsif params[:type]=="profile"
+      @artist.profile_image = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
+
 		else
 			logger.info("In artist_save_image. Something is up with the image type paramiter coming from the app admin layout")
 		end

@@ -32,6 +32,7 @@
 <script type="text/javascript" src="/javascripts/jquery.iframe-transport.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.cloudinary.js"></script>
 <%= cloudinary_js_config %>
+<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 
 
@@ -817,10 +818,11 @@ function ted_log() {
 					Signed in as <%= link_to current_user.email, show_user_path(current_user.id), :class => "nav content-link" %>
 					<%= link_to "Sign out", destroy_user_session_path, :class => :nav, :method => :delete %>
 
+
 				<% else %>
 					<%#= render :partial => 'login_form' %>
-					<%= link_to "register", new_user_registration_path %>
-					<%= link_to "sign in", new_user_session_path %>
+					<%= link_to "Sign Up", new_user_registration_path %>
+					<%= link_to "Sign in", new_user_session_path %>
 				<% end %>
 			</div>
 			<div class="admin">

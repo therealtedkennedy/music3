@@ -1,10 +1,5 @@
 <head>
-	<meta property="og:title" content="Music3" />
-	<meta property="og:type" content="band" />
-	<meta property="og:url" content="http://mighty-refuge-6115.herokuapp.com/artists" />
-	<meta property="og:image" content="http://mighty-refuge-6115.herokuapp.com/logo.jpeg" />
-	<meta property="og:site_name" content="Hey this is my Site Name" />
-	<meta property="fb:admins" content="513047468" />
+  <link rel="stylesheet" href="/assets/style/bootstrap-uncompressed.css" type="text/css" />
 
 
 </head>
@@ -12,64 +7,89 @@
 <script type="text/javascript" src="/javascripts/hide-logo-and-nav.js"></script>
 
 
-<h1>Listing artists</h1>
+<article>
+  <!-- Portfolio items
+      Params:
+          plugin-filter-elements: Defines items for filtering, each item has class which defines filter value.
+          portfolio-items: Customise portfolio items for hover effect.
+  -->
+  <ul class="thumbnails">
 
-<table style="width:100%; text-align:center;">
-  <tr>
-    <th>Name</th>
-    <th>City</th>
-    <th>Province</th>
-    <th>Influence</th>
-    <th>Contact info</th>
-    <th>Date founded</th>
-    <th>Created date</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
- <% @artists.each do |artist| %>
-  <tr>
-     <td><%= artist.name %></td>
-    <td><%= artist.city %></td>
-    <td><%= artist.province %></td>
-    <td><%= artist.country %></td>       ``
-    <td><%= artist.influence %></td>
-    <td><%= artist.contact_info %></td>
-    <td><%= artist.date_founded %></td>
-    <td><%= artist.created_date %></td>
+    <% @artists.each do |artist| %>
 
-    <td><%= link_to 'Show', artist_link_path(artist.url_slug), :class => "content-link" %></td>
-    <% if can? :update, artist %>
-        <td><%= link_to 'Edit', edit_artist_path(artist.url_slug), :class => "content-link" %></td>
-        <td><%= link_to 'Admin', artist_admin_path(artist.url_slug), :class => "content-link"%></td>
-        <td><%= link_to 'Destroy', artist, :method => :delete, :confirm => 'Are you sure?' %></td>
-        <td><%= link_to 'Add Song', add_song_path(artist.url_slug), :class => "content-link" %></td>
+        <li class="span4 mix photography">
+          <a href="<%= artist_link_path(artist.url_slug) %>" data-destination="portfolio-items" data-insert="before" class="content-link">
+            <img src= "<%=artist.profile_image %>" alt="Treble">
+            <div class="portfolio-overlay">
+              <h4 class="offset1"><%= artist.name %></h4>
+            </div>
+          </a>
+        </li>
+
     <% end %>
- </tr>
-
-<% end %>
-</table>
 
 
-</br>
+  </ul>
+</article>
 
-<% if can? :create, @artist %>
+<!--<h1>Listing artists</h1>-->
 
-      <%= link_to 'New Artist', new_artist_path %>
-  <% else %>
+<!--<table style="width:100%; text-align:center;">-->
+  <!--<tr>-->
+    <!--<th>Name</th>-->
+    <!--<th>City</th>-->
+    <!--<th>Province</th>-->
+    <!--<th>Influence</th>-->
+    <!--<th>Contact info</th>-->
+    <!--<th>Date founded</th>-->
+    <!--<th>Created date</th>-->
+    <!--<th></th>-->
+    <!--<th></th>-->
+    <!--<th></th>-->
+    <!--<th></th>-->
+    <!--<th></th>-->
+  <!--</tr>-->
+ <!--<% @artists.each do |artist| %>-->
+  <!--<tr>-->
+     <!--<td><%= artist.name %></td>-->
+    <!--<td><%= artist.city %></td>-->
+    <!--<td><%= artist.province %></td>-->
+    <!--<td><%= artist.country %></td>       ``-->
+    <!--<td><%= artist.influence %></td>-->
+    <!--<td><%= artist.contact_info %></td>-->
+    <!--<td><%= artist.date_founded %></td>-->
+    <!--<td><%= artist.created_date %></td>-->
+
+    <!--<td><%= link_to 'Show', artist_link_path(artist.url_slug), :class => "content-link" %></td>-->
+    <!--<% if can? :update, artist %>-->
+        <!--<td><%= link_to 'Edit', edit_artist_path(artist.url_slug), :class => "content-link" %></td>-->
+        <!--<td><%= link_to 'Admin', artist_admin_path(artist.url_slug), :class => "content-link"%></td>-->
+        <!--<td><%= link_to 'Destroy', artist, :method => :delete, :confirm => 'Are you sure?' %></td>-->
+        <!--<td><%= link_to 'Add Song', add_song_path(artist.url_slug), :class => "content-link" %></td>-->
+    <!--<% end %>-->
+ <!--</tr>-->
+
+<!--<% end %>-->
+<!--</table>-->
+
+
+<!--</br>-->
+
+<!--<% if can? :create, @artist %>-->
+
+      <!--<%= link_to 'New Artist', new_artist_path %>-->
+  <!--<% else %>-->
 
     <%= link_to "sign in", new_user_session_path %> or <%= link_to "sign up", new_user_registration_path %> to Create and Artist </br>
 
-<% end %>
+<!--<% end %>-->
 
 
-<%= link_to 'Song List', songs_path %>
+<!--<%= link_to 'Song List', songs_path %>-->
 
-<br/>
-<br/>
-<br/>
+<!--<br/>-->
+<!--<br/>-->
+<!--<br/>-->
 
 
 
