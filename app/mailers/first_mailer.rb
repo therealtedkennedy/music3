@@ -12,7 +12,7 @@ class FirstMailer < ActionMailer::Base
 	  @download_url = "http://www.threerepeater.com/"+@artist.url_slug+"/album/"+@album.album_url_slug+"/download?redown=true"
 
 
-	  mail :subject => "Gotta see it to belive it",
+	  mail :subject => "Thank you for downloading!",
 		   :to      => user.email,
 		   :from    => "no-replay@threerepeater.com"
   end
