@@ -1,8 +1,4 @@
-<head>
-  <link rel="stylesheet" href="/assets/style/bootstrap-uncompressed.css" type="text/css" />
 
-
-</head>
 
 <script type="text/javascript" src="/javascripts/hide-logo-and-nav.js"></script>
 
@@ -13,6 +9,12 @@
           plugin-filter-elements: Defines items for filtering, each item has class which defines filter value.
           portfolio-items: Customise portfolio items for hover effect.
   -->
+  <h2 class="line-divider text-center">
+     Artists
+
+
+   </h2>
+
   <ul class="thumbnails">
 
     <% @artists.each do |artist| %>
@@ -21,7 +23,7 @@
           <a href="<%= artist_link_path(artist.url_slug) %>" data-destination="portfolio-items" data-insert="before" class="content-link">
             <img src= "<%=artist.profile_image %>" alt="Treble">
             <div class="portfolio-overlay">
-              <h4 class="offset1"><%= artist.name %></h4>
+              <h4 class="text-center"><%= artist.name %></h4>
             </div>
           </a>
         </li>
