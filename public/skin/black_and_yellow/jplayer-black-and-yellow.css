@@ -70,7 +70,8 @@ div.jp-playlist li:not(.jp-playlist-current) {
 
 .jp-controls {
 	float:right;
-	margin-right:10px;
+	margin-right:20px;
+	margin-top:10px;
 }
 
 .playlist {
@@ -165,8 +166,32 @@ a.jp-pause {
 }
 
 
-a.jp-play {
+span.jp-play {
+	background: url('../../images/sprites.png') -192px 0px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
+}
 
+span.jp-play:hover{
+	background: url('../../images/sprites.png') -224px 0px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
+}
+
+span.jp-mute {
+	background: url('../../images/sprites.png') -64px 0px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
+}
+
+span.jp-mute:hover{
+	background: url('../../images/sprites.png') -96px 0px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
 }
 
 a.jp-play:hover {
@@ -260,7 +285,6 @@ a.jp-pause:hover {
 
 .jp-controls li {
 	float:left;
-	padding-left:10px;
 }
 
 .jp-interface .jp-controls a {

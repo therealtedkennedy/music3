@@ -45,7 +45,15 @@
 .logo-white-large 	{background: url('/images/logo/logo-white-large.png');}
 .logo-white-medium 	{background: url('/images/logo/logo-white-medium.png');}
 .logo-white-small	{background: url('/images/logo/logo-white-small.png'); height:53px; width:138px;}
-.logo-transparent-white-small {background: url('/images/logo/logo-transparent-small.png'); height:53px; width:138px;}
+/*.logo-transparent-white-small {background: url('/images/logo/logo-transparent-small.png'); height:53px; width:138px;}*/
+
+.logo-transparent-white-small{
+	background: url('../../images/sprites.png') 0px -96px no-repeat;
+	height: 36px;
+	width: 114px;
+	margin-left: 10px;
+	margin-top: 8px;
+}
 
 .backPane
 {
