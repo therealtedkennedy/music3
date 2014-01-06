@@ -41,58 +41,58 @@
 	<% @artist.profile_layout.h2_colour = @artist.profile_layout.h2_colour.blank? ? "#999" : @artist.profile_layout.h2_colour %>
 
 	p {
-		font-family: <%= @artist.profile_layout.p_font %>;
+		font-family: <%= @artist.profile_layout.content_font %>;
 		font-size: <%= @artist.profile_layout.p_size %>pt;
 		color: <%= @artist.profile_layout.p_colour %>;
 
 	}
 
 	h1 {
-		font-family: <%= @artist.profile_layout.h1_font %>;
+		font-family: <%= @artist.profile_layout.content_font %>;
 		font-size: <%= @artist.profile_layout.h1_size %>pt;
 		color: <%= @artist.profile_layout.h1_colour %>;
 		text-align: center;
 	}
 
 	h2 {
-		font-family: <%= @artist.profile_layout.h2_font %>;
+		font-family: <%= @artist.profile_layout.content_font %>;
 		font-size: <%= @artist.profile_layout.h2_size %>pt;
 		color: <%= @artist.profile_layout.h2_colour %>;
 		text-align: center;
 	}
 
 	h3 {
-		font-family: <%= @artist.profile_layout.h3_font %>;
+		font-family: <%= @artist.profile_layout.content_font %>;
 		font-size: <%= @artist.profile_layout.h3_size %>pt;
 		color: <%= @artist.profile_layout.h3_colour %>;
 		text-align: center;
 	}
 
 	ol {
-		font-family: <%= @artist.profile_layout.p_font %>;
+		font-family: <%= @artist.profile_layout.content_font %>;
 		font-size: <%= @artist.profile_layout.p_size %>pt;
 	}
 
 	ul {
-		font-family: <%= @artist.profile_layout.p_font %>;
+		font-family: <%= @artist.profile_layout.content_font %>;
 		font-size: <%= @artist.profile_layout.p_size %>pt;
 	}
 
 	.notice {
-		font-family: <%= @artist.profile_layout.p_font %>;
+		font-family: <%= @artist.profile_layout.content_font %>;
 		font-size: <%= @artist.profile_layout.p_size %>;
 		color: <%= @artist.profile_layout.p_colour %>;
 	}
 
 	table {
-		font-face: <%= @artist.profile_layout.p_font %>;
+		font-face: <%= @artist.profile_layout.content_font %>;
 		font-size: <%= @artist.profile_layout.p_size %>pt;
 		color: <%= @artist.profile_layout.p_colour %>
 	}
 
 	a {
 
-		font-family: <%= @artist.profile_layout.h2_font %>;
+		font-family: <%= @artist.profile_layout.content_font %>;
 		font-size: <%= @artist.profile_layout.h2_size %>pt;
 		color: <%= @artist.profile_layout.h2_colour %>;
 
@@ -100,7 +100,7 @@
 
 	a:hover {
 
-		font-family: <%= @artist.profile_layout.h2_font %>;
+		font-family: <%= @artist.profile_layout.content_font %>;
 		font-size: <%= @artist.profile_layout.h2_size %>pt;
 		color: <%= @artist.profile_layout.h2_colour %>;
 

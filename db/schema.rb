@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131219034858) do
+ActiveRecord::Schema.define(:version => 20131221191111) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -119,10 +119,10 @@ ActiveRecord::Schema.define(:version => 20131219034858) do
 
   create_table "profile_layouts", :force => true do |t|
     t.string   "h1_size"
-    t.string   "h1_font"
+    t.string   "logo_font"
     t.string   "h1_colour"
     t.string   "h2_size"
-    t.string   "h2_font"
+    t.string   "content_font"
     t.string   "h2_colour"
     t.string   "h3_size"
     t.string   "h3_font"

@@ -2,24 +2,30 @@
 <!--hides logo and nav when clicking in from an artist page-->
 <script type="text/javascript" src="/javascripts/hide-logo-and-nav.js"></script>
 
+<article>
+  <div class="row-fluid">
+    <!-- Contact form -->
+    <div class="span10 offset1">
+      <div class="row-fluid">
+            <h1>Editing artist</h1>
 
-	<h1>Editing artist</h1>
+            <h3>Change Your Profile Image</h3>
 
-    <h2>Change Your Profile Image</h2>
+            <%= @profile_image_upload.html_safe %>
 
-    <%= @profile_image_upload.html_safe %>
+            <h3>Change your background Image</h3>
 
-	<h2>Change your background Image</h2>
-
-	<%= @bk_image_upload.html_safe %>
+            <%= @bk_image_upload.html_safe %>
 
 
-	<h2>Change or upload your logo</h2>
+            <h3>Change or upload your logo</h3>
 
-	<%= @logo_image_upload.html_safe %>
+            <%= @logo_image_upload.html_safe %>
 
-    <h2>Update Info</h2>
-	<%= @form.html_safe %>
+            <h3>Update Info</h3>
+            <%= @form.html_safe %>
 
-	<%= link_to 'Show', artist_link_path(@artist.url_slug) %>
-	<%= link_to 'Back', artists_path %>
+      </div>
+    </div>
+  </div>
+</article>

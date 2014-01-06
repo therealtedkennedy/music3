@@ -1,5 +1,17 @@
 <%= form_for @profile_layout, :url => {:action => "update"}, :html => { :class => "edit_profile_layout", :id => "edit_profile_layout_1" }  do |f| %>
 
+   <h1>Choose Font</h1>
+   <div class="field">
+     <%=f.label :logo_font %><br />
+     <div class="bfh-selectbox bfh-googlefonts" data-font="<%=@profile_layout.logo_font%>" data-blank="true"></div>
+  </div>
+
+  <div class="field">
+     <%=f.label :content_font %><br />
+     <div class="bfh-selectbox bfh-googlefonts" data-font="<%=@profile_layout.content_font%>" data-blank="true"></div>
+   </div>
+
+
   <h1> H1 </h1>
   <div class="field">
     <%= f.label :h1_size %><br />
@@ -7,10 +19,7 @@
     </div>
   </div>
 
-  <div class="field">
-    <%=f.label :h1_font %><br />
-    <div class="bfh-selectbox bfh-googlefonts" data-font="<%=@profile_layout.h1_font%>" data-blank="true"></div>
-  </div>
+
   <div class="field">
     <%=f.label :h1_colour %><br />
     <div class="bfh-colorpicker" data-name="h1_colour" data-color="<%=@profile_layout.h1_colour%>"></div>
@@ -22,10 +31,7 @@
     <%= f.label :h2_size %><br />
     <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h2_size%>" data-blank="true"></div>
   </div>
-  <div class="field">
-    <%= f.label :h2_font %><br />
-    <div class="bfh-selectbox bfh-googlefonts" data-font="<%=@profile_layout.h2_font%>" data-blank="true"></div>
-  </div>
+
   <div class="field">
     <%= f.label :h2_colour %><br />
     <div class="bfh-colorpicker" data-name="h2_colour" data-color="<%=@profile_layout.h2_colour%>"></div>
@@ -38,10 +44,6 @@
     <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h3_size%>" data-blank="true"></div>
   </div>
   <div class="field">
-    <%= f.label :h3_font %><br />
-    <div class="bfh-selectbox bfh-googlefonts" data-font="<%=@profile_layout.h3_font%>" data-blank="true"></div>
-  </div>
-  <div class="field">
     <%= f.label :h3_colour %><br />
     <div class="bfh-colorpicker" data-name="h3_colour" data-color="<%=@profile_layout.h3_colour%>"></div>
   </div>
@@ -50,10 +52,6 @@
    <div class="field">
     <%= f.label :p_size %><br />
     <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.p_size%>" data-blank="true"></div>
-  </div>
-  <div class="field">
-    <%= f.label :p_font %><br />
-    <div class="bfh-selectbox bfh-googlefonts" data-font="<%=@profile_layout.p_font%>" data-blank="true"></div>
   </div>
   <div class="field">
     <%= f.label :p_colour %><br />
