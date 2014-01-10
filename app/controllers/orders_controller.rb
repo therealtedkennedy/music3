@@ -26,11 +26,22 @@ class OrdersController < ApplicationController
 
   def payment_method
        #user selects payment type.  All relevant var's passed through params.  Amount is use for PWYC, all other times its just a place holder
-    @album = Album.find_by_album_url_slug(params[:album_url_slug])
+    @album = Album.find(params[:song_album_or_event_id])
+    logger.info "Album "+@ablum.to_s
+
+
+    if params[:amount].nil?
+      @amount = @album.al_amount
+    else
+      @amount = params[:amount]
+    end
+
 
 
 	#checks if user has downloaded already
     downloaded_already(params[:song_album_or_event_id])
+
+    redirect_to chained_payment_path(params[:object], params[:url_slug], @album.id,:amount => @amount)
 
 
   end
@@ -99,6 +110,7 @@ class OrdersController < ApplicationController
   def chained_payment
   #uses https://github.com/jpablobr/active_paypal_adaptive_payment
   # SSL error - http://stackoverflow.com/questions/4528101/ssl-connect-returned-1-errno-0-state-sslv3-read-server-certificate-b-certificat
+  logger.info "artist url slug "+ params[:url_slug].to_s
 
   payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_id], params[:amount])
   logger.info "amount in chained payment"
@@ -110,15 +122,19 @@ class OrdersController < ApplicationController
                  :amount => @amount,
                  :primary => true},
                 {:email => @artist.pay_pal,
-                 :amount => "%.2f" % (@amount*0.85),
+                 :amount => "%.2f" % (@amount*0.80),
                  :primary => false}
                  ]
   response = CHAINED_GATEWAY.setup_purchase(
-    :return_url => login_prompt_url,
+
+
+    :return_url => social_promo_url(@artist.url_slug,params[:object],params[:song_album_or_event_id]),
     :cancel_url => login_prompt_url,
     #:ipn_notification_url => ipn_save_url,
     :receiver_list => recipients
   )
+
+  logger.info "return_url "+ social_promo_url(@artist.url_slug,params[:object],params[:song_album_or_event_id])
 
   # for redirecting the customer to the actual paypal site to finish the payment.
   @paykey = (CHAINED_GATEWAY.redirect_url_for(response["payKey"])).split('&')

@@ -1,23 +1,31 @@
-<table>
 
-  <tr>
-    <th> ID </th>
-    <th> Email </th>
-    <th> Created </th>
-    <th> Last Login </th>
-    <th> Number of Login's </th>
+<% if user_signed_in? %>
 
-  </tr>
+   <% if current_user.id == 1 %>
+          <table>
 
-  <% @user.each do |user| %>
+              <tr>
+                <th> ID </th>
+                <th> Email </th>
+                <th> Created </th>
+                <th> Last Login </th>
+                <th> Number of Login's </th>
 
-  <tr>
-    <th> <%= user.id %> </th>
-    <th> <%= user.email %> </th>
-    <th> <%= user.created_at %> </th>
-    <th> <%= user.last_sign_in_at %> </th>
-    <th> <%= user.sign_in_count %> </th>
-  </tr>
+              </tr>
 
-  <% end %>
-</table>
+              <% @user.each do |user| %>
+
+              <tr>
+                <th> <%= user.id %> </th>
+                <th> <%= user.email %> </th>
+                <th> <%= user.created_at %> </th>
+                <th> <%= user.last_sign_in_at %> </th>
+                <th> <%= user.sign_in_count %> </th>
+              </tr>
+
+              <% end %>
+          </table>
+     <% end %>
+
+<% end %>
+

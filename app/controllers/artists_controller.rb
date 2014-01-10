@@ -224,6 +224,8 @@ class ArtistsController < ApplicationController
   end
 
   #intersitial page, for social promotion.
+
+
   def social_promo
 
 	  @artist = Artist.find_by_url_slug(params[:url_slug])
@@ -231,7 +233,7 @@ class ArtistsController < ApplicationController
 	  #params set with Query strings
 
 	  if params[:object] == "album"
-		  @album = Album.find(params[:id])
+		  @album = Album.find(params[:song_album_or_event_id])
 
 		  #in application controller
 		  album_social(@artist,@album)
@@ -239,7 +241,7 @@ class ArtistsController < ApplicationController
 	  elsif params[:object] == "song"
 
 		  #in application controller
-		  @song = Song.find(params[:id])
+		  @song = Song.find(params[:song_album_or_event_id])
 
 		  song_social(@artist,@song)
 	  end

@@ -7,7 +7,7 @@ Music3::Application.routes.draw do
 
 
     #socail promo
-	match "/:url_slug/social_promo" => "artists#social_promo", :as => :social_promo
+	match "/:url_slug/social_promo/:object/:song_album_or_event_id" => "artists#social_promo", :as => :social_promo
 
   #home page routing
 	root :to => "homepage#index"
@@ -23,7 +23,7 @@ Music3::Application.routes.draw do
 	match "orders/paypal/to_free_download/:object/:url_slug/:song_album_or_event_id" => "orders#free_download", :as => :download_free
 	match "orders/pwyc" => "orders#pwyc", :as => :pwyc_form #route  pwyc form
 	match "orders/payment_method/:object/:url_slug/:song_album_or_event_id" => "orders#payment_method", :as => :payment_method
-	match "orders/paypal/login_prompt" => "orders#login_prompt", :as => :login_prompt #not sure if this is used anymore
+	match "orders/paypal/login_prompt" => "orders#login_prompt", :as => :login_prompt
 
 
 

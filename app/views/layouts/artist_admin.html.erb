@@ -380,13 +380,15 @@ function loadContent(href,admin) {
 			//makes sure navigation works on ajax request
 			nav_selector();
 
-			ted_log("before history push state url= "+href)
+//			ted_log("before history push state url= "+href)
 			// HISTORY.PUSHSTATE
-			history.pushState('', 'New URL: ' + href, href);
+//			history.pushState('', 'New URL: ' + href, href);
 		},
 
 		dataType:"json"
 	});
+
+
 	/* to update the url when page is redirected.
        May need logic at a later point if loading content without changing the url */
 	// HISTORY.PUSHSTATE

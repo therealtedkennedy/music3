@@ -47,7 +47,12 @@
 </script>
 <div id = "cookieData"></div> </br>
 
-<h1>Keep it forever!</h1>
+<div class="row-fluid">
+  <div class="span12 text-center">
 
-  <h2>  <%= link_to "Sign In", user_session_path(:object => params[:object], :song_album_or_event_id => params[:song_album_or_event_id]) %> or <%= link_to "Sign Up", new_user_registration_path(:object => params[:object], :song_album_or_event_id => params[:song_album_or_event_id]) %>   </h2>
+      <h1>Keep it forever!</h1>
 
+      <h2>  <%= link_to "Sign In", user_session_path(:object => params[:object], :song_album_or_event_id => params[:song_album_or_event_id]) %> or <%= link_to "Sign Up", new_user_registration_path(:object => params[:object], :song_album_or_event_id => params[:song_album_or_event_id]) %>   </h2>
+
+  </div>
+</div>

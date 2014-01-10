@@ -42,6 +42,7 @@
  		<h2>Want it? Get it!</h2>
 		<% if @album.pay_type == "pay" %>
 			<%= link_to "Buy Now: Only $"+@album.al_amount.to_s+"!", payment_method_path("album",@artist.url_slug,@album.id ) %>
+
 		<% elsif @album.pay_type == "pwyc" %>
 			<!--gets csrf token and passes into hidden field.  Keeps user logged in after form post-->
 

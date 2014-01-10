@@ -3,26 +3,94 @@
 
 </style>
 
+<!--hides logo and nav when clicking in from an artist page-->
+<script type="text/javascript" src="/javascripts/hide-logo-and-nav.js"></script>
 
-<P>Let this world know about this artist</P>
+<script type="text/javascript">
 
-<div class="soc_download_link" style="display :none">
-	<h1><a href="/orders/paypal/to_free_download/album/pearljam/256" class="albumLink">Download!</a></h1>
-</div>
+    window.onload = showCookies
 
-<div>
-	<h2>Share</h2>
-	<a href="https://twitter.com/share" class="twitter-share-button"  data-text="Just downloaded <%=@album.al_name %> by <%=@artist.twitter_name%>. Check it out here"  data-url="<%=artist_show_album_url(@artist.url_slug,@album.album_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a>
-</div>
+    function showCookies() {
+        var outMsg = "";
 
-<div>
-	<h2>Follow</h2>
-	<div class="social">
-		<a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow
-			<%= @artist.twitter_name %></a>
-		<br/>
-		<fb:like-box href="<%=@artist.fb_page_url%>" width="292" show_faces="false" header="false" stream="false" show_border="false"></fb:like-box>
+        //         checks if download cookie exists, if it does grabs link to download album
+        var thisCookie = document.cookie.split("; ");
+        var referrer = document.referrer
+        for (var i=0;i<thisCookie.length;i++){
 
-	</div>
+            var cookie_name = thisCookie[i].split("=")[0]
+            var value = thisCookie[i].split("=")[1]
 
+            if (value =="" && cookie_name =="next_step") {
+                outMsg = "There are no cookies here.";
+            }
+
+            else if (cookie_name =="next_step"){
+                outMsg += "Cookie name is '" + cookie_name;
+                outMsg += "', and the value is " +
+                        value + "<br />";
+                var raw_link = thisCookie[i].split("=")[1];
+                var link = raw_link.replace(/%3A/g,":" );
+                var link = link.replace(/%2F/g, "/");
+                var link = link + "?token=" + "<%= params[:token] %>" + "&PayerID=" + "<%= params[:PayerID]%>"
+
+
+                outMsg += "clean link is " + link + " referal site" + referrer
+
+
+                window.location = link
+            }
+        }
+
+
+        document.getElementById("cookieData").innerHTML = outMsg;
+
+
+
+
+    }
+
+
+</script>
+<div class="row-fluid">
+    <div class="span12">
+
+    <h1>Help Us Out</h1>
+
+
+        <div class="row-fluid ">
+          <div class="span12 text-center">
+
+                <div class="span6 text-center">
+                  <h3>Share <%= @album.al_name %></h3>
+                  <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Just downloaded <%=@album.al_name %> by <%=@artist.twitter_name%>. Check it out here"  data-url="<%=artist_show_album_url(@artist.url_slug,@album.album_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a>
+                </div>
+
+
+                <div class="span6 text-center">
+                  <h3>Follow us! </h3>
+                  <div class="social">
+                    <a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow
+                      <%= @artist.twitter_name %></a>
+                    <br/>
+                    <fb:like-box href="<%=@artist.fb_page_url%>" width="292" show_faces="false" header="false" stream="false" show_border="false"></fb:like-box>
+
+                  </div>
+                </div>
+
+         </div>
+     </div>
+
+
+      <div class="span12 text-center">
+
+
+          <%= link_to "Next", login_prompt_url, :class => "btn btn-primary" %>
+
+
+
+      </div>
+
+    </div>
+ </div>
 </div>
