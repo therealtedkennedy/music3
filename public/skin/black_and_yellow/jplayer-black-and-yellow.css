@@ -194,17 +194,32 @@ span.jp-mute:hover{
 	float:left;
 }
 
-a.jp-play:hover {
-	/*background: url("jplayer-black-and-yellow.png") -33px 0 no-repeat;*/
+span.jp-unmute {
+	background: url('../../images/sprites.png') -320px -32px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
 }
 
-a.jp-pause {
-	/*background: url("jplayer-black-and-yellow.png") 0 -30px no-repeat;*/
-	display: none;
+span.jp-unmute:hover{
+	background: url('../../images/sprites.png') -352px -32px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
 }
 
-a.jp-pause:hover {
-	/*background: url("jplayer-black-and-yellow.png") -33px -30px no-repeat;*/
+span.jp-pause {
+	background: url('../../images/sprites.png') -256px -32px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
+}
+span.jp-pause:focus, span.jp-play:focus, span.jp-mute:focus, span.jp-unmute:focus {outline:none;}
+span.jp-pause:hover {
+	background: url('../../images/sprites.png') -288px -32px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
 }
 
 .trackInfo {
