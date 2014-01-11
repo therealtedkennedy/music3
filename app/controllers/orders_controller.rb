@@ -1,10 +1,13 @@
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.xml
+   # before_filter :
+	#before_filter :authenticate_user!, :except => [:payment_method,:chained_payment]
+
   def index
     @orders = Order.all
 
-    respond_to do |format|
+    respond_to do |format|user_auth_redirect_path
       format.html # index.html.erb
       format.xml  { render :xml => @orders }
     end
@@ -23,13 +26,47 @@ class OrdersController < ApplicationController
 
   def payment_method
        #user selects payment type.  All relevant var's passed through params.  Amount is use for PWYC, all other times its just a place holder
+    @album = Album.find_by_album_url_slug(params[:album_url_slug])
+
+
+	#checks if user has downloaded already
+    downloaded_already(params[:song_album_or_event_id])
 
 
   end
 
+
+  def downloaded_already (song_album_or_event_slug)
+	  #checks if user is logged in.
+
+  unless current_user.nil?
+
+		  @user = current_user
+		  logger.info "User ID"
+		  logger.info @user.id
+
+		  #checks to see if user allready downloaded album
+		  @user.albums.uniq.each do |album|
+			  logger.info "album Url Slug"
+			  logger.info album.album_url_slug
+			  logger.info "params album"
+			  logger.info params[song_album_or_event_slug]
+
+			  if album.album_url_slug == params[song_album_or_event_slug]
+
+				  flash[:notice] = "WHOA! YOU HAVE ALREADY DOWNLOADED THIS(SEE BELOW)"
+				  redirect_to show_user_path(@user.id)
+			  else
+
+			  end
+
+		  end
+	  end
+  end
+
   def express
 
-  payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_slug], params[:amount])
+  payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_id], params[:amount])
   #your at minute 8:28...have to figure out how this works and what this does
   response = EXPRESS_GATEWAY.setup_purchase(@amount*100,
     :ip => request.remote_ip,
@@ -42,10 +79,32 @@ class OrdersController < ApplicationController
   redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
 
+  #sets up cookies for payment process
+  def free_download
+	#checks if user has downloaded already
+	downloaded_already(params[:song_album_or_event_id])
+
+	payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_id], params[:amount])
+	redirect_to (login_prompt_url)
+  end
+
+    #pwyc payment process
+	def pwyc
+
+		#space param is a work around ?redir="true" is being added to the last paramter in this path..i have no idea why
+		redirect_to payment_method_path(params[:object], params[:url_slug], params[:song_album_or_event_id],:amount => params[:amount],:space => "blah")
+	end
+
+
   def chained_payment
   #uses https://github.com/jpablobr/active_paypal_adaptive_payment
+  # SSL error - http://stackoverflow.com/questions/4528101/ssl-connect-returned-1-errno-0-state-sslv3-read-server-certificate-b-certificat
 
-  payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_slug], params[:amount])
+  payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_id], params[:amount])
+  logger.info "amount in chained payment"
+  logger.info @amount
+  logger.info "Artist?"
+  logger.info @artist
 
   recipients = [{:email => 'therea_1326852847_biz@gmail.com',
                  :amount => @amount,
@@ -72,58 +131,73 @@ class OrdersController < ApplicationController
       :expires => 30.minutes.from_now
 
        }
-  redirect_to (CHAINED_GATEWAY.redirect_url_for(response["payKey"])) end
+  redirect_to (CHAINED_GATEWAY.redirect_url_for(response["payKey"]))
+  end
 
   #creates download link, payment amount, and object vars, and sets a cookie
- def payment_prep(object,artist_url_slug,song_album_or_event_slug,amount)
-   @object = object
+ def payment_prep(object,artist_url_slug,song_album_or_event_id,amount)
+	   @object = object
 
-   #finds Artist
-   @artist = Artist.find_by_url_slug(artist_url_slug)
-   #prep for album
+       logger.info "params amount"
+	   logger.info amount
 
-   if @object == "album"
-     @album = Album.find_by_album_url_slug(song_album_or_event_slug)
-     @download_url = album_download_url(artist_url_slug,song_album_or_event_slug)
-     @cnx_url = artist_show_album_url(artist_url_slug,song_album_or_event_slug)
+	   #finds Artist
+	   @artist = Artist.find_by_url_slug(artist_url_slug)
+	   #prep for album
 
-     if @album.pay_type = "pay"
-         @amount = @album.al_amount
+	   if @object == "album"
+		 @album = Album.find(song_album_or_event_id)
+		 @download_url = album_download_url(artist_url_slug,@album.album_url_slug)
+		 @cnx_url = artist_show_album_url(artist_url_slug,@album.album_url_slug)
 
-     else
-        @amount = 100
-        # @amount = amount.to_i
-     end
+		 if @album.pay_type == "pay"
+			 @amount = @album.al_amount
 
-   else
+		 elsif @album.pay_type == "pwyc"
+			 @amount = amount
 
-   #don't know why this didn't work. Just did the calculation in the chained payment model
-   #@amount_to_artist = "%.2f" % (@amount*0.85)
+			 logger.info "in pwyc in payment prep"
+			 logger.info "params amount"
+			 logger.info amount
+			 logger.info "@amount"
+			 @amount = @amount.to_i
+			 logger.info @amount
 
-  end
+		 else
 
-  #Passes Cookie Download
-  cookies[:next_step] = {
-      :value => [@download_url],
-      :expires => 30.minutes.from_now
+			@amount = 100
+			# @amount = amount.to_i
+		 end
+		 logger.info @amount
+	   else
 
-       }
+	#how much the artist makes is calculated in the chained payment model
 
-   #passes values to assign object to users who are not signed in.
-   if user_signed_in? != true
-     cookies[:object] = {
-        :value => [object],
-        :expires => 30.minutes.from_now
 
-         }
+	  end
 
-     cookies[:song_album_or_event_slug] = {
-        :value => [song_album_or_event_slug],
-        :expires => 30.minutes.from_now
+	  #Passes Cookie Download
+	  cookies[:next_step] = {
+		  :value => [@download_url],
+		  :expires => 30.minutes.from_now
 
-       }
-    end
-  end
+		   }
+
+	   #passes values to assign object to users who are not signed in.
+	   if user_signed_in? != true
+		 cookies[:object] = {
+			:value => [object],
+			:expires => 30.minutes.from_now
+
+			 }
+
+		 cookies[:song_album_or_event_id] = {
+			:value => [song_album_or_event_id],
+			:expires => 30.minutes.from_now
+
+		   }
+		end
+	end
      # GET /orders/new
   # GET /orders/new.xml
   def new
@@ -198,10 +272,16 @@ class OrdersController < ApplicationController
   end
 
   def login_prompt
+    logger.info "Login Prompt"
 
-    if can? :update, @artist
-        redirect_to(show_user_path(current_user.id, :token => params[:token], :PayerID =>params[:PayerID]))
+    if current_user.nil?
+
+	else
+
+       redirect_to(show_user_path(current_user.id, :token => params[:token], :PayerID =>params[:PayerID], :fully =>"completely"))
+
     end
+
 
   end
 end

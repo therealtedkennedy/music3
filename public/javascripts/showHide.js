@@ -11,7 +11,7 @@
 		//default vars for the plugin
         var defaults = {
             speed: 1000,
-			easing: '',
+			easing: 'hh',
 			changeText: 0,
 			showText: 'Show',
 			hideText: 'Hide'
@@ -19,7 +19,7 @@
         };
         var options = $.extend(defaults, options);
 
-        $(this).click(function () {	
+        $(this).live("click", function () {
              var toggleDiv = $(this).attr('rel');
              $('.toggleDiv').not(toggleDiv).slideUp(options.speed, options.easing);
 			 // this var stores which button you've clicked

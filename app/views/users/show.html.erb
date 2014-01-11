@@ -1,105 +1,118 @@
+<!--used for page ajax page routing-->
+<div class="pageType" id="user"></div>
 <script type="text/javascript">
-    window.onload = showCookies
 
-    function showCookies() {
-        var outMsg = "";
+	window.onload = showCookies
 
+	function showCookies() {
+		var outMsg = "";
 
-         var thisCookie = document.cookie.split("; ");
+		//         checks if download cookie exists, if it does grabs link to download album
+		var thisCookie = document.cookie.split("; ");
+		var referrer = document.referrer
+		for (var i=0;i<thisCookie.length;i++){
 
-         for (var i=0;i<thisCookie.length;i++){
+			var cookie_name = thisCookie[i].split("=")[0]
+			var value = thisCookie[i].split("=")[1]
 
-             var cookie_name = thisCookie[i].split("=")[0]
-             var value = thisCookie[i].split("=")[1]
+			if (value =="" && cookie_name =="next_step") {
+				outMsg = "There are no cookies here.";
+			}
 
-             if (value =="" && cookie_name =="next_step") {
-                outMsg = "There are no cookies here.";
-                }
-
-             else if (cookie_name =="next_step"){
-                outMsg += "Cookie name is '" + cookie_name;
-                outMsg += "', and the value is " +
-                value + "<br />";
-                var raw_link = thisCookie[i].split("=")[1];
-                var link = raw_link.replace(/%3A/g,":" );
-                var link = link.replace(/%2F/g, "/");
-                var link = link + "?token=" + "<%= params[:token] %>" + "&PayerID=" + "<%= params[:PayerID]%>"
-
-
-                outMsg += "clean link is " + link
+			else if (cookie_name =="next_step"){
+				outMsg += "Cookie name is '" + cookie_name;
+				outMsg += "', and the value is " +
+						value + "<br />";
+				var raw_link = thisCookie[i].split("=")[1];
+				var link = raw_link.replace(/%3A/g,":" );
+				var link = link.replace(/%2F/g, "/");
+				var link = link + "?token=" + "<%= params[:token] %>" + "&PayerID=" + "<%= params[:PayerID]%>"
 
 
-                window.location = link
-                }
-             }
+				outMsg += "clean link is " + link + " referal site" + referrer
 
 
-            document.getElementById("cookieData").innerHTML = outMsg;
+				window.location = link
+			}
+		}
 
 
-
-    }
+		document.getElementById("cookieData").innerHTML = outMsg;
 
 
 
+
+	}
 
 </script>
-<div id = "cookieData"></div>
 
 
+<div class="editPage">
+
+	<div id = "cookieData"></div>
+
+	<div class= "userInfo">
+		<br />
+		<h2>
+		<%= link_to 'New Artist', new_artist_path,:class => "content-link"  %>
+		<%= link_to "Artists List", artists_path %>
+		</h2>
+
+		<p>
+			Created At:
+			<%= @user.created_at %>
+			<br />
+		</p>
+
+			<h1> <%= @user.email%> </h1>
+			<%= link_to "Edit", edit_user_path(@user.id), :class => "content-link" %>
+			<%#= link_to "Edit", edit_users_setting_path(@user.id) %>
+
+		<p>
+			Last Login:
+			<%= @user.last_sign_in_at %>
+			<br />
+
+			Number of Sign Ins:
+			<%= @user.sign_in_count %>
+			<br />
+
+			First Name:
+			<%= @user.first_name %>
+			<br />
+
+			Last Name:
+			<%= @user.last_name %>
+			<br />
+
+			Email Associated with Pay Pal Account:
+			<%= @user.pay_pal_email %>
+			<br />
+		</p>
+
+		<h2><% if @user.artists.length > 1 %>Artists<% else %>Artist<%end%> You Admin For </h2>
+		<h3>
+		  <% @user.artists.uniq.each do |artist_name| %>
+			  <%= link_to artist_name.name, artist_link_path(artist_name.url_slug),:class => "content-link" %>     <%= link_to 'Admin', artist_admin_path(artist_name.url_slug),:class => "content-link" %>
+			  </br>
+
+		  <% end %>
+		</h3>
+
+		<% if @user.albums.length > 0 %>
+			<h2> Albums You have Downloaded already </h2>
+			<h3>
+			  <% @user.albums.uniq.each do |album| %>
+				  <% @artist = Artist.find_by_name(album.pri_artist) %>
+				  <%= link_to album.al_name, artist_show_album_path(@artist.url_slug,album.album_url_slug),:class => "content-link"  %>     <%= link_to 'Download Again', album_download_path(@artist.url_slug,album.album_url_slug, :redown => "true")%>
+				  </br>
+
+			  <% end %>
+			</h3>
+		<% end %>
 
 
+	</div>
+</div>
 
 
-
-<h1> <%= @user.email %> </h1>
-<%= link_to "Edit", edit_setting_path(@user.id) %>
-<br />
-<br />
-
-<b>Created At: </b>
-<%= @user.created_at %>
-</br>
-
-<b>Last Login: </b>
-<%= @user.last_sign_in_at %>
-</br>
-
-<b>Number of Sign In's: </b>
-<%= @user.sign_in_count %>
-</br>
-
-<b>First Name: </b>
-<%= @user.first_name %>
-</br>
-
-<b>Last Name: </b>
-<%= @user.last_name %>
-</br>
-
-<b>Email Associated with Pay Pal Account: </b>
-<%= @user.pay_pal_email %>
-</br>
-
- <h2> Artist You Admin For </h2>
- <h3>
-    <% @user.artists.uniq.each do |artist_name| %>
-          <%= link_to artist_name.name, artist_link_path(artist_name.url_slug) %>     <%= link_to 'Admin', artist_admin_path(artist_name.url_slug)%>
-          </br>
-
-  <% end %>
- </h3>
-
-<h2> Albums You have Downloaded already </h2>
-
- <h3>
-    <% @user.albums.uniq.each do |album| %>
-          <% @artist = Artist.find_by_name(album.pri_artist) %>
-          <%= link_to album.al_name, artist_show_album_path(@artist.url_slug,album.album_url_slug) %>     <%= link_to 'Download Again', album_download_path(@artist.url_slug,album.album_url_slug, :redown => "true")%>
-          </br>
-
-  <% end %>
- </h3>
-
-
-<%= link_to "Artists List", artists_path %>

@@ -1,6 +1,18 @@
+<!--hides logo and nav when clicking in from an artist page-->
+<script type="text/javascript" src="/javascripts/hide-logo-and-nav.js"></script>
 
-<h1>New artist</h1>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.new_artist').enableClientSideValidations();
+	});
+</script>
 
-<%= render 'form' %>
+<div class="editPage">
 
-<%= link_to 'Back', artists_path %>
+	<h1>New artist</h1>
+
+	<%= @form.html_safe %>
+
+	<%= link_to 'Back', artists_path %>
+
+</div>

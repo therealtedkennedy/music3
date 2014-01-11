@@ -1,108 +1,113 @@
-<%= form_for @profile_layout, :url => {:action => "update"} do |f| %>
+<%= form_for @profile_layout, :url => {:action => "update"}, :html => { :class => "edit_profile_layout", :id => "edit_profile_layout_1" }  do |f| %>
+
+   <h1>Choose Font</h1>
+   <div class="field">
+     <%=f.label :logo_font %><br />
+     <div class="bfh-selectbox bfh-googlefonts" data-font="<%=@profile_layout.logo_font%>" data-blank="true"></div>
+  </div>
+
+  <div class="field">
+     <%=f.label :content_font %><br />
+     <div class="bfh-selectbox bfh-googlefonts" data-font="<%=@profile_layout.content_font%>" data-blank="true"></div>
+   </div>
+
 
   <h1> H1 </h1>
   <div class="field">
     <%= f.label :h1_size %><br />
-    <%= f.text_field :h1_size %>
+    <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h1_size%>" data-input="form-control" data-blank="true">
+    </div>
   </div>
 
-  <div class="field">
-    <%=f.label :h1_font %><br />
-    <%=f.select :h1_font, [["Helvetica", "helvetica"], ["Courier", "courier"], ["Times", "times"],["Impact", "impact"] ] %>
-  </div>
+
   <div class="field">
     <%=f.label :h1_colour %><br />
-    <%=f.text_field :h1_colour %>
+    <div class="bfh-colorpicker" data-name="h1_colour" data-color="<%=@profile_layout.h1_colour%>"></div>
   </div>
 
-
+  <br/>
   <h1> H2 </h1>
     <div class="field">
     <%= f.label :h2_size %><br />
-    <%= f.text_field :h2_size %>
-  </div>
-  <div class="field">
-    <%= f.label :h2_font %><br />
-    <%=f.select :h2_font, [["Helvetica", "helvetica"], ["Courier", "courier"], ["Times", "times"],["Impact", "impact"] ] %>
-  </div>
-  <div class="field">
-    <%= f.label :h2_colour %><br />
-    <%= f.text_field :h2_colour %>
+    <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h2_size%>" data-blank="true"></div>
   </div>
 
+  <div class="field">
+    <%= f.label :h2_colour %><br />
+    <div class="bfh-colorpicker" data-name="h2_colour" data-color="<%=@profile_layout.h2_colour%>"></div>
+  </div>
+
+  <br/>
  <h1> H3 </h1>
   <div class="field">
     <%= f.label :h3_size %><br />
-    <%= f.text_field :h3_size %>
-  </div>
-  <div class="field">
-    <%= f.label :h3_font %><br />
-    <%=f.select :h3_font, [["Helvetica", "helvetica"], ["Courier", "courier"], ["Times", "times"],["Impact", "impact"] ] %>
+    <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h3_size%>" data-blank="true"></div>
   </div>
   <div class="field">
     <%= f.label :h3_colour %><br />
-    <%= f.text_field :h3_colour %>
+    <div class="bfh-colorpicker" data-name="h3_colour" data-color="<%=@profile_layout.h3_colour%>"></div>
   </div>
-
+  <br/>
   <h1> P </h1>
    <div class="field">
     <%= f.label :p_size %><br />
-    <%= f.text_field :p_size %>
-  </div>
-  <div class="field">
-    <%= f.label :p_font %><br />
-    <%=f.select :p_font, [["Helvetica", "helvetica"], ["Courier", "courier"], ["Times", "times"],["Impact", "impact"] ] %>
+    <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.p_size%>" data-blank="true"></div>
   </div>
   <div class="field">
     <%= f.label :p_colour %><br />
-    <%= f.text_field :p_colour %>
+    <div class="bfh-colorpicker" data-name="p_colour" data-color="<%=@profile_layout.p_colour%>"></div>
   </div>
 
 
-
+  <br/>
   <h1> Div 1 </h1>
    <div class="field">
     <%= f.label :div_1_colour %><br />
-    <%= f.text_field :div_1_colour %>
+    <div class="bfh-colorpicker" data-name="div_1_colour" data-color="<%=@profile_layout.div_1_colour%>"></div>
   </div>
   <div class="field">
     <%= f.label :div_1_transparency %><br />
-    <%= f.text_field :div_1_transparency %>
+    <div class="bfh-slider" data-name="div_1_transparency" data-value="<%=@profile_layout.div_1_transparency%>"></div>
   </div>
    <div class="field">
     <%= f.label :div_1_border_colour %><br />
-    <%= f.text_field :div_1_border_colour %>
+    <div class="bfh-colorpicker" data-name="div_1_border_colour" data-color="<%=@profile_layout.div_1_border_colour%>"></div>
   </div>
    <div class="field">
     <%= f.label :div_1_background_colour %><br />
-    <%= f.text_field :div_1_background_colour %>
+    <div class="bfh-colorpicker" data-name="div_1_background_colour" data-color="<%=@profile_layout.div_1_background_colour%>"></div>
   </div>
   <div class="field">
     <%= f.label :div_1_border_width %><br />
-    <%= f.text_field :div_1_border_width %>
+    <%= f.number_field :div_1_border_width, :class=>"form-control", :min=>"0", :max=>"5" %>
   </div>
 
   <h1> Div 2 </h1>
    <div class="field">
     <%= f.label :div_2_colour %><br />
-    <%= f.text_field :div_2_colour %>
+    <div class="bfh-colorpicker" data-name="div_2_colour" data-color="<%=@profile_layout.div_2_colour%>"></div>
   </div>
   <div class="field">
     <%= f.label :div_2_transparency %><br />
-    <%= f.text_field :div_2_transparency %>
+    <div class="bfh-slider" data-name="div_2_transparency" data-value="<%=@profile_layout.div_2_transparency%>"></div>
   </div>
    <div class="field">
     <%= f.label :div_2_border_colour %><br />
-    <%= f.text_field :div_2_border_colour %>
+    <div class="bfh-colorpicker" data-name="colorpicker2" data-color="<%=@profile_layout.div_2_border_colour%>"></div>
   </div>
    <div class="field">
     <%= f.label :div_2_background_colour %><br />
-    <%= f.text_field :div_2_background_colour %>
+    <div class="bfh-colorpicker" data-name="colorpicker2" data-color="<%=@profile_layout.div_2_background_colour%>"></div>
   </div>
   <div class="field">
     <%= f.label :div_2_border_width %><br />
-    <%= f.text_field :div_2_border_width %>
+    <%= f.number_field :div_2_border_width, :class=>"form-control", :min=>"0", :max=>"5" %>
   </div>
+  <h1>Custom CSS</h1>
+  <div class="field">
+	  <p>Use custom css? <%= f.check_box :use_css %></p>
+  </div>
+
 
 
   <div class="actions">

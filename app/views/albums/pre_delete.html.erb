@@ -1,0 +1,8 @@
+<div class="editPage">
+
+<h1>THIS CANNONT BE UNDONE. ARE YOU SURE YOU WANT TO DELETE <%= @album.al_name %> ?</h1>
+
+<%= button_to "yes", album_delete_path(@artist.url_slug,@album.album_url_slug, @album.id,) %>
+<%= link_to 'No Take Me Back', artist_link_path(@artist.url_slug) %>
+
+</div>

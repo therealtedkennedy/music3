@@ -1,7 +1,25 @@
-<h1>Editing artist</h1>
+<!--hides logo and nav when clicking in from an artist page-->
+<script type="text/javascript" src="/javascripts/hide-logo-and-nav.js"></script>
 
 
-<%= render 'form' %>
+<h1>Create Artist</h1>
+
+<h2>Upload Your Profile Image</h2>
+
+<%= @profile_image_upload.html_safe %>
+
+<h2>Upload your background image</h2>
+
+<%= @bk_image_upload.html_safe %>
+
+
+<h2>Have a logo? Want to use it?  Upload it here:</h2>
+
+<%= @logo_image_upload.html_safe %>
+
+<h2>Info</h2>
+<%= @form.html_safe %>
 
 <%= link_to 'Show', artist_link_path(@artist.url_slug) %>
 <%= link_to 'Back', artists_path %>
+

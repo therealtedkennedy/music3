@@ -1,8 +1,18 @@
-<%= form_tag("/order/payment_method") do %>
+<!--depricated. Hard coded into album show page-->
+
+<%= form_tag({:controller => "orders", :action => "pwyc"}, :method => "post", :class => "pwyc_form") do %>
 
 
-  <%= label_tag(:amount, "How much you got?") %>
-  <%= hidden_field_tag 'id', @album.id %>
-  <%= submit_tag("Create") %>
+	<%= label_tag(:amount, "download") %>
+	<%= text_field_tag(:amount) %>
+	<%= submit_tag("Donate") %>
+
+    <!--For order processing-->
+
+	<!--defines the type of object it is-- this is the right spot>
+	<%= hidden_field_tag 'object', "album" %>
+	<%= hidden_field_tag 'url_slug', "HERE HERE HERE" %>
+	<%= hidden_field_tag 'song_album_or_event_slug', @album.album_url_slug %>
+
 
 <% end %>

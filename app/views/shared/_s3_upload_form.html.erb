@@ -1,0 +1,21 @@
+<form action="https://<%=@bucket%>.s3.amazonaws.com" method="post" enctype="multipart/form-data" class='direct-upload'>
+
+	<input type="hidden" name= "key" />
+	<input type="hidden" name= "AWSAccessKeyId" value="AKIAJBCDYICH6VCMN6ZA" />
+	<input type="hidden" name="acl" value="public-read" />
+	<input type="hidden" name="x-amz-meta-my-file-name" value="" />
+	<input type="hidden" name="Content-Disposition" value="" />
+	<input type="hidden" name="policy"/>
+	<input type="hidden" name="signature"/>
+	<input type="hidden" name="success_action_status" value="201" />
+
+	<input type="file" name="file" class="s3_upload" data-object_id="<%=@object_id %>" data-object_type="<%=@object_type %>" data-meta_url="<%= @meta_update_url%>"/>
+
+	<!--- # You can recognize some bootstrap markup here :)-->
+	<div class="progressContainer" style="display:none;">
+		<div class="progress progress-striped active">
+			<div class="bar"></div>
+		</div>
+		<div class="percent"></div>
+	</div>
+</form>

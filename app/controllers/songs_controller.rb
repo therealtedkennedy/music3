@@ -1,279 +1,431 @@
 #Explanation here - http://net.tutsplus.com/tutorials/create-a-simple-music-streaming-app-with-ruby-on-rails/
-
 class SongsController < ApplicationController
-  #lists songs called from S3 Server
+	#lists songs called from S3 Server
 
 
- before_filter :authenticate_user!,  :except => [:show, :index]
+	before_filter :authenticate_user!, :except => [:show, :index, :song_play_counter,:artist_show_song,:song_play_counter]
 
 
+	#changes from default layout to custom layout
+	layout "artist_admin", only: [:show,:index]
 
-  def index
-   #not #nessisary
-   @s3_songs = AWS::S3::Bucket.find(BUCKET).objects
+  #shows all artists songs (built by ronnie)
+	def index
+		#not #nessisary
+		#@s3_songs = AWS::S3::Bucket.find(BUCKET).objects
 
-    @songs = Song.all
+		#@songs = Song.all
+		@artist = Artist.find_by_url_slug(params[:url_slug])
+		@songs = @artist.songs
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @artists }
-    end
-  end
+		respond_to do |format|
+			format.html # index.html.erb
+			format.xml { render :xml => @song }
+			format.json {
+				render :json => {
+						:success => true,
+						:"#content" => render_to_string(
+								:action => 'index.html.erb',
+								:layout => false
+						)
 
-  #not used should delete in production.  Deletes S3 songs from Index
-  #def delete (song)
-   # if (params[:song])
-    #  AWS::S3::S3Object.find(params[:song], BUCKET).delete
-     # redirect_to songs_path
- #  else
-     #  render :text => "No song was found to delete!"
-  #  end
- # end
+				}
+			}
+		end
+	end
 
-  #finds song objects, when album and URL slug are given
-  def find_song(artist,url_slug)
-
-     artist.songs.uniq.each do |song|
-        if song.song_url_slug == url_slug
-          @song = song
-
-        else
-
-        end
-      end
-   end
-
-
-
-  def show
-    if params[:song_url_slug]
-    #@artist = Artist.find(params[:id])
-    #@artist = Artist.find_by_url_slug(params[:url_slug])
-     @artist = Artist.find_by_url_slug(params[:url_slug])
-     find_song(@artist,params[:song_url_slug])
+	#not used should delete in production.  Deletes S3 songs from Index
+	#def delete (song)
+	# if (params[:song])
+	#  AWS::S3::S3Object.find(params[:song], BUCKET).delete
+	# redirect_to songs_path
+	#  else
+	#  render :text => "No song was found to delete!"
+	#  end
+	# end
 
 
-
-    # @song.artists.uniq.each do |artist|
-     #   @artist_slug = artist.url_slug
-    # end
-        respond_to do |format|
-          format.html # show.html.erb
-          format.xml  { render :xml => @song }
-        end
+	def show
 
 
-    else
+		if params[:song_url_slug]
+			#@artist = Artist.find(params[:id])
+			#@artist = Artist.find_by_url_slug(params[:url_slug])
+			@artist = Artist.find_by_url_slug(params[:url_slug])
+			#in the appication controller.  Used by profile edit.
+			find_song(@artist, params[:song_url_slug])
 
-      @song = Song.find(params[:id])
+			song_social(@artist,@song)
+
+			# @song.artists.uniq.each do |artist|
+			#   @artist_slug = artist.url_slug
+			# end
+			layout(params[:layout])
+			respond_to do |format|
+				format.html # show.html.erb
+				format.xml { render :xml => @song }
+				format.json {
+					render :json => {
+							:success => true,
+							:"#{@hook}" => render_to_string(
+									:action => 'show.html.erb',
+									:layout => @layout,
+							),
+					    	:"show" => "true",
 
 
-         respond_to do |format|
-           format.html  #show.html.erb
-           format.xml  { render :xml => @song }
-          end
-    end
-  end
-
-  def edit
-
-    @song = Song.find(params[:id])
-    @id = @song.id
-    #finds the assoicated artist
-    @artist = Artist.find(@song.s_a_id)
-    authorize! :update, @artist
-    #searchString  = params[:url_slug]
-    #@artist = Artist.find_by_url_slug(searchString)
+					}
+				}
+			end
 
 
-     respond_to do |format|
-           format.html  #show.html.erb
-           format.xml  { render :xml => @song }
-           format.js
-     end
-  end
+		else
 
-  def save_amazon_file(amazon_id, mp3file,name,artist)
-    authorize! :update, artist
-   #patched aw3 object.rb with - http://rubyforge.org/pipermail/amazon-s3-dev/2006-December/000007.html
-    if(AWS::S3::S3Object::store(amazon_id, mp3file.read, BUCKET, :access => :public_read,'x-amz-meta-my-file-name'=> name, 'Content-Disposition' => 'attachment;filename='+name+'.mp3'))
-      return true;
-    else
-      return false;
-    end
-  end
+			@song = Song.find(params[:id])
+
+
+			respond_to do |format|
+				format.html #show.html.erb
+				format.xml { render :xml => @song }
+			end
+		end
+	end
+
+
+	#renders edit page.  Required for form upload @object_type (song, image, album, whatever) and @id a unique id for  s3 and bucket defines which bucket it should be uploaded too
+	def edit
+
+		@song = Song.find(params[:id])
+		#makes sure that when url is called (non ajax) the page loads the correct variable.  See admin layout
+
+		#finds the assoicated artist
+		@artist = Artist.find(@song.s_a_id)
+		authorize! :update, @artist
+		#searchString  = params[:url_slug]
+		#@artist = Artist.find_by_url_slug(searchString)
+		@edit = "true"
+
+		@id = @song.id
+        @object_type = "song"
+		@bucket = BUCKET
+		@object_id = @song.s3_id
+
+
+		#renders from because at the time of this writing form partials won't load in ajax
+		@form = render_to_string('songs/_form',:layout => false)
+		@s3_upload = render_to_string('shared/_s3_upload_form', :layout => false)
+
+		#updates s3 meta data. takes artist slug, object id (for song, album ect.  if one doesn't exist =1), and object type (song,album,image ect)
+		@meta_update_url = update_s3_meta_url(@artist.url_slug,@song.id,@object_type)
+
+		#preps image form
+		image_upload_prep(@artist,@song)
+
+		respond_to do |format|
+			format.html {render :layout => 'artist_admin'}
+			format.xml { render :xml => @song }
+			format.json {
+				render :json => {
+						:success => true,
+						:".miniPage" => render_to_string(
+								:action => 'edit.html.erb',
+								:layout => false,
+						),
+						 :"id" => @song.s3_id,
+						:"edit" => "true",
+				}
+			}
+		end
+	end
+
+	def save_amazon_file(amazon_id, mp3file, name, artist)
+		authorize! :update, artist
+		if	s3_save(amazon_id,mp3file,name,BUCKET,":mpeg",".mp3")
+			return true;
+		else
+			return false;
+		end
+	end
 
 
 # Updates Artist Info ...not sure if this is used anymore
-  def used_to_be_upadate
-       @song = Song.find(params[:id])
+	def used_to_be_upadate
+		@song = Song.find(params[:id])
 
 
-    respond_to do |format|
-      if @song.update_attributes(params[:song])
-        format.html { redirect_to(song_path(@song.id), :notice => 'Artist was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @artist.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  def new
-    @artist = Artist.find_by_url_slug(params[:url_slug])
-    @song = Song.new
-    @artist_id = @artist.id
-    @song.s_a_id = @artist.id
-    @song.save
+		respond_to do |format|
+			if @song.update_attributes(params[:song])
+				format.html { redirect_to(song_path(@song.id), :notice => 'Artist was successfully updated.') }
+				format.xml { head :ok }
+			else
+				format.html { render :action => "edit" }
+				format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
+			end
+		end
+	end
 
 
-    #@song = Song.find(params[:id])
-    #@id = @song.id
-    #searchString  = params[:url_slug]
-    #@artist = Artist.find_by_url_slug(searchString)
+	#renders edit page.  Required for form upload @object_type (song, image, album, whatever) and @id a unique id for  s3
+	def new
 
 
-     respond_to do |format|
-           format.html  #create.html.erb
-           format.xml  { render :xml => @song }
-           format.js
-     end
-   end
+		@artist = Artist.find_by_url_slug(params[:url_slug])
+		@song = Song.new
 
 
+		@artist_id = @artist.id
+		@song.s_a_id = @artist.id
+		@song.save(validate: false)
+
+		#@song.s3_id= @song.id.to_s + ".mp3"
+		#@song.save
 
 
-   def update
-    @artist = Artist.find(params[:artist_id])
-    authorize! :update, @artist
-    @song = Song.find(params[:form_song_id])
-    @song.artists <<  @artist
-    @s3_test = params[:s3_name]
-
-    @song.update_attributes(params[:song])
+		@s3_key = S3_KEY
+		@bucket = BUCKET
+		@object_type = "song"
+		@object_id = @song.id.to_s + ".mp3"
 
 
+		# Updates s3 meta data. takes artist slug, object id (for song, album ect.  if one doesn't exist =1), and object type (song,album,image ect)
+		@meta_update_url = update_s3_meta_url(@artist.url_slug,@song.id,@object_type)
 
 
-   #song s3 key, download link and torrent link
-    @song.s3_id= @song.id.to_s + ".mp3"
-    #@amazon_id = @song.id.to_s + ".mp3"
+		@form = render_to_string('songs/_form_upload_song', :layout => false)
+		@s3_upload = render_to_string('shared/_s3_upload_form', :layout => false)
 
 
-    if params[:song].has_key?("s3_name")
-      save_amazon_file(@song.s3_id, params[:song][:s3_name],@song.song_name, @artist )
+		@edit = "true"  #makes sure that when url is called (non ajax) the page loads the correct variable.  See admin layout
 
+        logger.info "form"
+		logger.info @form
 
-    end
+		logger.info "s3_upload form"
+		logger.info @s3_upload
 
-       #if @song.s3_id.blank?
-          #@song.s3_id= params[:id].to_s + ".mp3"
-         # @song.download_link = download_url_for(@song.s3_id)
-          #@song.torrent_link= link_to(torrent_url_for(@song.s3_name))
-       #end
-
-      respond_to do |format|
-        if @song.update_attributes(@song.s3_id)
-          format.html { redirect_to (artist_show_song_path(@artist.url_slug, @song.song_url_slug), :notice => 'Song was successfully created.') }
-          format.xml { head :ok }
-        else
-          format.html { render :action => "edit" }
-          format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
-        end
-      end
-    end
-
-  #uploads songs from S3 Server. Not sure if this is used any more.
-
-  def upload
-     #@id = params[:song_id]
-     #@s3_key = @id+".mp3"
-
-    begin
-      AWS::S3::S3Object.store(sanitize_filename(params[:mp3file].original_filename), params[:mp3file].read, BUCKET, :access => :public_read)
-
-    end
-
-    rescue
-        render :text => "Couldn't complete the upload"
-
-
-      respond_to do |format|
-         format.js  {render}
-
-      end
-  end
-
-
- # def download
-
-
-    #  @song = Song.find_by_song_url_slug(params[:song_url_slug])
-    #  @artist =  Artist
-
-
-    #  @song_file = AWS::S3::S3Object.value(@song.s3_id, BUCKET)
-    #  send_file(@song_file,
-    #        :filename  =>  @song.song_name+".mp3")
-
-   #    respond_to do |format|
-    #       format.html  redirect_to(song_path(@song.id), :notice => 'Song was downloaded.')
-    #       format.xml
-     #      format.js
-    #   end
-#  end
-
-
-    #deletes song info from Model
-  def destroy
+        #preps form for image upload
+		image_upload_prep(@artist,@song)
 
 
 
-    @song = Song.find(params[:id])
-    @artist = Artist.find(@song.s_a_id)
-    authorize! :update, @artist
+		respond_to do |format|
+			format.html {render :layout => 'artist_admin'}
+			format.xml { render :xml => @song }
+			format.json {
+				render :json => {
+						:success => true,
+						:".miniPage" => render_to_string(
+								:action => 'new.html.erb',
+								:layout => false,
+						),
+						:"id" => @song.s3_id,
+						:"edit" => "true",
+				}
+			}
+		end
+	end
+
+	def create
+		@artist = Artist.find_by_url_slug(params[:url_slug])
+		@song = Song.new
+	end
+
+	def update
+		@artist = Artist.find(params[:artist_id])
+		authorize! :update, @artist
+		@song = Song.find(params[:form_song_id])
+		@song.artists << @artist
+		@s3_test = params[:s3_name]
 
 
-    @song.destroy
+		#turns of edit screen when content is loaded after
+		@edit = "false"
+
+
+		#song s3 key, download link and torrent link
+		@song.s3_id= @song.id.to_s + ".mp3"
 
 
 
-    (@song.s3_id)
-    AWS::S3::S3Object.find(@song.s3_id, BUCKET).delete
+		params[:song].delete :s3_name
 
-    respond_to do |format|
-      format.html {redirect_to(artist_admin_path(@artist.url_slug))}
-      format.json {render :json => {}, :status => :ok}
-      format.js
-      #format.xml  { head :ok }
-    end
-  end
+		@song.update_attributes(params[:song])
 
-
-    # Shows a specific artists song
-  def artist_show_song
-
-      #@artist = Artist.find(params[:id])
-      searchString  = params[:url_slug]
-      @artist = Artist.find_by_url_slug(searchString)
-      @song = @artist.song.find.by_url_slug(params[:song_name])
-
-     respond_to do |format|
-        format.html # show.html.erb
-        format.xml  { render :xml => @artist }
-      end
-    end
+		logger.info "in update"
+		logger.info "song name is=" + @song.song_name.to_s
+		logger.info "meta name is= " + @song.s3_meta_tag.to_s
 
 
 
+		if @song.s3_meta_tag.nil?
+
+		else
+			send_s3_meta_s3(@song.id,'song')
+		end
 
 
-  private
-  # Internet Explorer work around see - http://net.tutsplus.com/tutorials/create-a-simple-music-streaming-app-with-ruby-on-rails/
-  def sanitize_filename(file_name)
-    just_filename = File.basename(file_name)
-    just_filename.sub(/[^\w\.\-]/,'_')
-  end
+		respond_to do |format|
+			if @song.update_column(:s3_id, @song.s3_id)
+				format.html { redirect_to (artist_show_song_path(@artist.url_slug, @song.song_url_slug))}
+				format.xml { head :ok }
+				format.json {
+					render :json => {
+							:success => true,
+							:"url" => artist_show_song_url(@artist.url_slug, @song.song_url_slug),
+					        #Loads all new content into "dynamicContent" div
+							:admin => true,
+
+					}
+				}
+			else
+				format.html { render :action => "edit" }
+				format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
+			end
+		end
+	end
+
+	#uploads songs from S3 Server. Not sure if this is used any more.
+
+	#def upload
+	#	#@id = params[:song_id]
+	#	#@s3_key = @id+".mp3"
+	#
+	#	begin
+	#		AWS::S3::S3Object.store(sanitize_filename(params[:mp3file].original_filename), params[:mp3file].read, BUCKET, :access => :public_read)
+	#
+	#	end
+	#
+	#rescue
+	#	render :text => "Couldn't complete the upload"
+	#
+	#
+	#	respond_to do |format|
+	#		format.js { render }
+	#
+	#	end
+	#end
+
+
+	 def download
+
+
+	  @song = Song.find_by_song_url_slug(params[:song_url_slug])
+	  @artist =  Artist
+
+
+	  @song_file = AWS::S3::S3Object.value(@song.s3_id, BUCKET)
+	  send_file(@song_file,
+	        :filename  =>  @song.song_name+".mp3")
+
+	    respond_to do |format|
+	       format.html  redirect_to(song_path(@song.id), :notice => 'Song was downloaded.')
+	#     format.xml
+	      format.js
+	   end
+	  end
+
+
+	#deletes song info from Model
+	def destroy
+
+        logger.info "in destroy"
+
+		@song = Song.find(params[:song_id])
+		@artist = Artist.find(@song.s_a_id)
+		authorize! :update, @artist
+
+
+		@song.destroy
+
+
+		(@song.s3_id)
+		s3_delete(BUCKET, @song.s3_id)
+
+		redirect_to(artist_show_songs_path(@artist.url_slug))
+
+	end
+
+
+	# Shows a specific artists song
+	def artist_show_song
+
+		#@artist = Artist.find(params[:id])
+		searchString = params[:url_slug]
+		@artist = Artist.find_by_url_slug(searchString)
+		@song = @artist.song.find.by_url_slug(params[:song_name])
+
+		respond_to do |format|
+			format.html # show.html.erb
+			format.xml { render :xml => @artist }
+		end
+	end
+
+	def song_play_counter
+		@song = Song.find_by_id(params[:song_id])
+		@song.song_plays = @song.song_plays || 0
+		@song.song_plays = @song.song_plays + 1
+		#@song.update_column(:song_play, @song.song_plays)
+		@song.save
+
+		respond_to do |format|
+			format.json {
+				render :json => @song.to_json
+			}
+		end
+	end
+
+
+	#sets up image upload forms for s3
+	def image_upload_prep(artist,song)
+
+		logger.info("in image prep")
+		logger.info artist
+		logger.info song
+
+		song_image_name = "Three_Repeater-"+artist.url_slug+"-"+song.id.to_s+"-"
+		@bucket = IMAGE_BUCKET
+
+		@image_save_location = song_save_image_url(artist.url_slug,song.id.to_s)
+
+		#song_image_uplosd
+		@song_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => song_image_name, :image_type => "song_image", :image_save_url => @image_save_location}, :layout => false)
+
+	end
+
+	#saves image location from s3.
+	def song_save_image
+
+		@song = Song.find(params[:song_id])
+		@artist = Artist.find_by_url_slug(params[:url_slug])
+
+		@song.image = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+@song.id.to_s+"-"+params[:file_name]
+
+		@song.update_column(:image,@song.image)
+
+		logger.info("song image= "+@song.image.to_s)
+
+		respond_to do |f|
+
+			f.json {
+				render :json => {
+						:success => true}
+			}
+
+		end
+
+	end
+
+
+
+
+
+	private
+	# Internet Explorer work around see - http://net.tutsplus.com/tutorials/create-a-simple-music-streaming-app-with-ruby-on-rails/
+	def sanitize_filename(file_name)
+		just_filename = File.basename(file_name)
+		just_filename.sub(/[^\w\.\-]/, '_')
+	end
+
+
 
 end

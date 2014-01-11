@@ -1,0 +1,672 @@
+
+
+@font-face {
+    font-family: 'verb_regularbold';
+    src: url('/fonts/verb_bold/VerbBold-webfont.eot');
+    src: url('/fonts/verb_bold/VerbBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/verb_bold/VerbBold-webfont.woff') format('woff'),
+         url('/fonts/verb_bold/VerbBold-webfont.ttf') format('truetype'),
+         url('/fonts/verb_bold/VerbBold-webfont.svg#verb_regularbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'verb_regularregular';
+    src: url('/fonts/verb_regular/VerbRegular-webfont.eot');
+    src: url('/fonts/verb_regular/VerbRegular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/verb_regular/VerbRegular-webfont.woff') format('woff'),
+         url('/fonts/verb_regular/VerbRegular-webfont.ttf') format('truetype'),
+         url('/fonts/verb_regular/VerbRegular-webfont.svg#verb_regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'verb_lightregular';
+    src: url('/fonts/verb_light/VerbLight-webfont.eot');
+    src: url('/fonts/verb_light/VerbLight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/verb_light/VerbLight-webfont.woff') format('woff'),
+         url('/fonts/verb_light/VerbLight-webfont.ttf') format('truetype'),
+         url('/fonts/verb_light/VerbLight-webfont.svg#verb_lightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+    /*User can edit*/
+    <% if @artist.profile_layout.use_css == true %>
+
+    <%= @artist.profile_layout.profile_css %>
+
+    <% else %>
+        <% @artist.profile_layout.h2_colour = @artist.profile_layout.h2_colour.blank? ? "#999" : @artist.profile_layout.h2_colour %>
+
+    #content p {
+        font-family: <%= @artist.profile_layout.content_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+        color: <%= @artist.profile_layout.p_colour %>;
+    }
+
+    #logo h1 {
+        font-family: <%= @artist.profile_layout.logo_font %>;
+        font-size: <%= @artist.profile_layout.h1_size %>pt;
+        color: <%= @artist.profile_layout.h1_colour %>;
+        text-align: center;
+    }
+
+    h1 {
+        font-family: <%= @artist.profile_layout.content_font %>;
+        font-size: <%= @artist.profile_layout.h1_size %>pt;
+        color: <%= @artist.profile_layout.h1_colour %>;
+        text-align: center;
+    }
+
+    h2 {
+        font-family: <%= @artist.profile_layout.content_font %>;
+        font-size: <%= @artist.profile_layout.h2_size %>pt;
+        color: <%= @artist.profile_layout.h2_colour %>;
+        text-align: center;
+    }
+
+    h3 {
+        font-family: <%= @artist.profile_layout.content_font %>;
+        font-size: <%= @artist.profile_layout.h3_size %>pt;
+        color: <%= @artist.profile_layout.h3_colour %>;
+        text-align: center;
+    }
+
+    ol {
+        font-family: <%= @artist.profile_layout.content_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+    }
+
+    ul {
+        font-family: <%= @artist.profile_layout.content_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+    }
+
+    .notice {
+        font-family: <%= @artist.profile_layout.content_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>;
+        color: <%= @artist.profile_layout.p_colour %>;
+    }
+
+    table {
+        font-face: <%= @artist.profile_layout.content_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>pt;
+        color: <%= @artist.profile_layout.p_colour %>
+    }
+
+    a {
+        font-family: <%= @artist.profile_layout.content_font %>;
+        font-size: <%= @artist.profile_layout.h2_size %>pt;
+        color: <%= @artist.profile_layout.h2_colour %>;
+    }
+
+    a:hover {
+
+        font-family: <%= @artist.profile_layout.content_font %>;
+        font-size: <%= @artist.profile_layout.h2_size %>pt;
+        color: <%= @artist.profile_layout.h2_colour %>;
+
+    }
+
+    .div1 {
+        max-width: 400px;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        overflow: hidden;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .div1a {
+        display: block;
+        float: left;
+        overflow: hidden;
+        margin-left: 10%;
+        margin-top: 5%;
+        max-width: 400px;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .div1ra {
+        margin-top: 5%;
+        margin-left: 10%;
+        display: block;
+        float: left;
+        overflow: hidden;
+        max-width: 800px;
+        min-width: 300px;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .button {
+        margin: 2%;
+        background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+        overflow: hidden;
+        padding: 30px;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 3px 3px 7px #777;
+        border-radius: 2px;
+    }
+
+    .button:hover {
+        background-color: blue;
+    }
+
+    button.fancyButton {
+        font-family: Helvetica, sans-serif;
+        font-size: 14px;
+        color: #fff;
+        padding: 5px 20px;
+        background: <%= @artist.profile_layout.h1_colour %>;
+        letter-spacing: 1.5px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        border: 3px solid <%= @artist.profile_layout.h1_colour %>;
+    }
+
+    .div2 {
+        margin: 2%;
+        background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+        overflow: hidden;
+        padding: 30px;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 3px 3px 7px #777;
+        border-radius: 2px;
+    }
+
+    .div3 {
+        width: 400px;
+        height: 80px;
+        margin: 30px;
+        background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+        overflow: hidden;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 3px 3px 7px #777;
+        border-radius: 2px;
+    }
+
+    .image {
+        float: left;
+        width: 70px;
+        height: 70px;
+        margin: 1%;
+        overflow: hidden;
+        border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+        box-shadow: 1px 1px 2px #777;
+        border-radius: 2px;
+    }
+
+    .div1r {
+        max-width: 1000px;
+        min-width: 800px;
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+        overflow: hidden;
+        padding: 10px;
+        border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+        border-radius: 5px;
+    }
+
+    .toggleDiv {
+        display: none
+    }
+
+    #loading {
+        display: none;
+    }
+
+    <% end %>
+
+
+
+  /*took this out not sure why its here ted*/
+/** {margin:0;padding:0}*/
+
+    html,body
+    {
+        margin:0;
+        padding:0;
+        /*overflow:hidden;  removed by Ted.  Admin page needs scroll */
+    }
+
+    body
+    {
+        height:100%;
+    }
+
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/assets/fonts/iconmoon.eot");
+    }
+
+
+    .container {
+        position:absolute;
+        left:0;
+        right:0;
+        top:0;
+        height:50px;
+        overflow:hidden;
+    }
+
+    .bodyArea
+    {
+        overflow:auto;
+
+        margin-top 50px;
+        padding:70px;
+
+        /*background-color:#f4e2d2;*/
+    }
+
+    .bodyArea .floatingContent
+    {
+        height:100%;
+        display:block;
+        margin: 0 auto;
+        /*position: relative;  removed by ted. */
+    }
+
+    .bodyArea .floatingContent
+    {
+        text-decoration: none;
+    }
+
+    .bodyArea .artistLogoArea
+    {
+        margin: 0 auto;
+        text-align: center;
+        display:block;
+    }
+
+    .artistLogoArea img {
+        max-width: 200px;
+        max-height: 150px;
+    }
+
+    .bodyArea .navArea
+    {
+        margin-top: 50px;
+		margin-right: auto;
+		margin-left:auto;
+
+        text-align: center;
+        display:block;
+    }
+    .navArea .nav {
+        margin-bottom: 0px;
+    }
+        .bodyArea .nav
+        {
+            width:25%;
+            text-align: center;
+            cursor: pointer;
+            height:50px;
+            display:inline-block;
+            font-family: 'verb_regularbold', sans-serif;
+            font-size:20px;
+            /*color:#96938f;*/
+            /*text-shadow: 0px 0px 1px rgba(0,0,0,0.4); */
+        }
+
+        .bodyArea .nav:hover
+        {
+            color:#5b5956;
+        }
+
+        .bodyArea .nav.selected
+        {
+            font-family: 'verb_regularbold', sans-serif;
+            color:#000;
+            background-image: url("/images/indicator.png");
+            background-position: bottom center;
+            background-repeat: no-repeat;
+        }
+
+    .bodyArea .miniPage
+    {        
+        background-image: url('/images/70black.png');
+        overflow:auto;
+        margin:0 auto;
+        bottom:0;
+        padding:30px;
+        font-family: 'verb_regularregular';
+        color:#fff;
+    }
+
+	.bodyArea .editPage
+	{
+		min-height:300px;
+
+		/*max-height:600px;*/
+
+
+		background-image: url('/images/70black.png');
+		overflow:auto;
+		margin:0 auto;
+		bottom:0;
+		padding:20px;
+		font-family: 'verb_regularregular';
+		color:#fff;
+	}
+
+    .miniPage .album
+    {
+        width:228px;
+        height:300px;
+        text-align: center;
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .miniPage .album:hover
+    {
+        background-image: url('/images/10black.png');
+    }
+
+    .miniPage .album img
+    {
+        width:200px;
+        height:200px;
+        margin:0 auto;
+        display:block;
+        border:0;
+    }
+
+    .miniPage .album h1
+    {
+        font-family: 'verb_regularbold';
+        font-size: 18px;
+        margin:0 auto;
+        display:block;
+        padding:0px;
+        margin:0;
+        margin-top:10px;
+        color:#fff;
+    }
+
+    .miniPage .album h2
+    {
+        font-family: 'verb_lightregular';
+        color:#aaa;
+        font-size: 14px;
+        margin:0 auto;
+        display:block;
+        padding:0px;
+        margin:0;
+        margin-top:5px;
+    }
+
+    .vat {
+        vertical-align:top;
+    }
+
+    .w100 {
+        width: 100%;
+    }
+
+
+
+        /* Defines whole top nav, including sign in/out, and the player it self */
+    .player_nav {
+        width: 100%;
+
+        height: 50px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #000;
+        opacity: 0.95;
+        z-index: 2;
+
+    }
+
+        /* Sign in/sign out */
+    .user_nav {
+        position: fixed;
+        height: 50px;
+        line-height: 50px;
+        padding-right: 15px;
+        color: #C4C4C4;
+        right: 0;
+        top: 0;
+    }
+
+    .user_nav_info {
+        display: inline-block;
+    }
+
+    .user_nav_info a{
+        padding-right:5px;
+    }
+
+    .admin {
+        display: inline-block;
+        line-height: 45px;
+        padding: 5px;
+
+    }
+
+    .adminLink {
+        background: url(../../images/sprites.png) -320px 0px no-repeat;
+        width: 30px;
+        height: 30px;
+        float: right;
+    }
+
+    .adminLink:hover {
+        background: url(../../images/sprites.png) -352px 0px no-repeat;
+        width: 30px;
+        height: 30px;
+        float: right;
+    }
+
+    .audio {
+        position: fixed;
+        top: 0;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        width: 9999px;
+        height: 50px
+    }
+
+    a.nav, .adminLink {
+        color: #FFFFFF;
+        text-decoration: none;
+
+    }
+
+    a.nav:hover, .adminLink:hover {
+        color: #666;
+        text-decoration: none;
+    }
+
+
+    #text_area {
+        width: 350px;
+        max-height: 200px;
+        overflow: auto;
+        margin-bottom: 15px;
+    }
+
+
+	.edit-controls {
+
+		/*displays edit controls where value edit is passed from the controller.  Used for new, and edit views*/
+		<% if @edit == "true" %>
+	 	   display:block;
+		<% else %>
+		display:none;
+		<%end%>
+		float: right;
+		/*display: inline-block;*/
+		width: 320px;
+		background: #2E2E2E;
+		padding: 5px;
+        margin-top: 50px;
+        top:60px;
+        position:relative;
+	}
+
+    /*info*/
+    .left-panel {
+      padding:15px 30px 15px 30px;
+      vertical-align: top;
+    }
+
+    .left-panel img {
+        border: 1px solid #666;
+    }
+
+    .info-image {
+      margin-bottom:10px;
+      max-width: 400px;
+      max-height:400px;
+    }
+
+    .info-container {
+      font-size: 16px;
+      vertical-align: top;
+      padding: 0px 0px 0px 30px;
+    }
+
+    .info-container table {
+      width: 95%;
+    }
+
+    .row-border tr {
+      border-top: 1px solid #333;
+    }
+
+    .info-item {
+      padding-left:30px; 
+      width:35%;
+      vertical-align: top;
+    }
+
+    .item-description {
+      padding-left:30px; 
+      color:#999;
+    }
+
+    .bio {
+      color:#999;
+    }
+
+    /*songs*/
+    #song-content {
+        min-height: 300px;
+    }
+
+    table.song-table {
+        width:100%; 
+        height:100%;
+    }
+
+    table.song-table tbody {
+        color: <%= @artist.profile_layout.h2_colour %>; 
+        font-size:90%;
+    }
+
+    a.content-link {
+        text-decoration: none;
+        color: <%= @artist.profile_layout.h2_colour %>;
+    }
+
+    a.music-button {
+        text-decoration: none;
+        color: <%= @artist.profile_layout.h2_colour %>;
+    }
+
+    div.song-footer {
+        text-align: center; 
+        font-size: 90%; 
+        color: <%= @artist.profile_layout.h2_colour %>;
+    }
+
+    /*chrome custom scrollbar*/
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+     
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 20px rgba(200,200,200,0.3); 
+        border-radius: 10px;
+    }
+     
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 20px rgba(200,200,200,0.5); 
+    }
+
+    #promo {
+        text-align: center;
+        position:absolute;
+        z-index: 1;
+        width: 90%;
+        background-color: #2e2e2e;
+        margin-left: -35px;
+        margin-top: -35px;
+        border: 1px solid #000;
+    }
+
+    #promo img {
+        padding: 30px;
+    }
+
+    .progressContainer {
+        width:210px;
+    }
+
+    .progressContainer .progress {
+        width:160px;
+        height:20px;
+        border: 1px solid #fff;
+        margin-left: 5px;
+        margin-top: 5px;
+        float:left;
+    }
+
+    .progressContainer .bar{
+        background-color: #fff;
+        height:100%;
+        width:0%;
+    }
+
+    .progressContainer .percent{
+        float:right;
+        width:30px;
+        padding-top:5px;
+    }
+
+    .edit_profile_layout{
+        padding-left:10px;
+    }
+
+    .bfh-slider {
+        position:relative;
+    }
+
+
+
+

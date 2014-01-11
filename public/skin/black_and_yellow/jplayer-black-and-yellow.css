@@ -1,0 +1,418 @@
+/*
+ * Skin for jPlayer Plugin (jQuery JavaScript Library)
+ * http://www.happyworm.com/jquery/jplayer
+ *
+ * Skin Name: Blue Monday
+ *
+ * Copyright (c) 2010 Happyworm Ltd
+ * Dual licensed under the MIT and GPL licenses.
+ *  - http://www.opensource.org/licenses/mit-license.php
+ *  - http://www.gnu.org/copyleft/gpl.html
+ *  http://dl.dropbox.com/u/2557221/online/demos/jplayer-black-and-yellow/index.html
+ * Author: Luke McDonald (lukemcdonald.com)
+ * Skin Design: Orman Clark (premiumpixels.com)
+ * Skin Version: 3.0 (jPlayer 2.0.0)
+ * Date: 20th December 2010
+ */
+
+#jp_container_1{
+	display: inline-block;
+	width:100%;
+}
+
+.jp-type-playlist {
+	/*position:absolute;*/
+	/*float: right;*/
+	/*width:470px;*/
+	height: 50px;
+	display: inline-block;
+	width:100%;
+
+}
+
+/* Branding the first part of the player */
+.branding {
+	display: inline-block;
+	width: auto;
+	height: auto;
+	top: 0;
+	float:left;
+
+}
+
+/* Playlist Styling */
+.jp-playlist {
+	display: none;
+	line-height: 16px;
+	position: absolute;
+	top: 100%;
+	left:0;
+	width:100%;
+	font-style:italic;
+	background-color: #000;
+	opacity: 0.95;
+	color: #fff;
+}
+
+a.plText {
+	font-size: 12px !important;
+	font-style: normal !important;
+	font-family: helvetica !important;
+	color: #fff !important;
+	text-decoration: none !important;
+}
+
+div.jp-playlist li:not(.jp-playlist-current) {
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
+    background-color: #000;
+}
+
+.jp-controls {
+	float:right;
+	margin-right:20px;
+	margin-top:10px;
+}
+
+.playlist {
+	line-height: 22px;
+
+	display: inline-block;
+	font-style:italic;
+	color: #ffffff;
+	border-left: 1px solid #fff;
+}
+
+a.playlist {
+	color: #ffffff;
+
+
+}
+
+.songList {
+	padding: 0 2em;
+	display: inline-block;
+}
+.songList li {
+	list-style-type: none;
+}
+
+.testPlaylist {
+	display: none;
+	line-height: 50px;
+	position: absolute;
+	top: 100%;
+	font-style:italic;
+	background-color: #2e2e2e;
+	color: #fff;
+}
+
+/*.jp-no-solution {
+	float: left;
+} */
+
+p.branding {
+	color: #FFFFFF;
+	text-align: center;
+	margin-top: 0;
+	padding-top: 0;
+	line-height: 50px;
+
+}
+
+/*.jp-audio {
+	display: inline-block;
+	font-size: 1em;
+	font-family: Verdana, Arial, sans-serif;
+	color: #fff;
+	line-height: 1.6;
+	width: 360px;
+
+	height: 50px;
+
+
+}   */
+
+.jp-audio {
+	display: inline-block;
+	text-align: center;
+}
+
+/*.jp-interface {
+	position: relative;
+	width: 100%;
+
+}   */
+
+.jp-audio-container {
+   text-align: center;
+}    
+
+a.jp-play,
+a.jp-pause {
+	/*width: 33px;*/
+	/*height: 30px;*/
+	/*z-index: 1;
+	outline: none;    */
+	text-decoration:none;
+    color: #FFFFFF;
+}
+
+.jp-audio .jp-type-single a.jp-play,
+.jp-audio .jp-type-single a.jp-pause {
+	/*top: 0;
+	left: 0; */
+	/*border-right: 1px solid rgb(36, 37, 38);*/
+}
+
+
+span.jp-play {
+	background: url('../../images/sprites.png') -192px 0px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
+}
+
+span.jp-play:hover{
+	background: url('../../images/sprites.png') -224px 0px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
+}
+
+span.jp-mute {
+	background: url('../../images/sprites.png') -64px 0px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
+}
+
+span.jp-mute:hover{
+	background: url('../../images/sprites.png') -96px 0px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
+}
+
+span.jp-unmute {
+	background: url('../../images/sprites.png') -320px -32px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
+}
+
+span.jp-unmute:hover{
+	background: url('../../images/sprites.png') -352px -32px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
+}
+
+span.jp-pause {
+	background: url('../../images/sprites.png') -256px -32px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
+}
+span.jp-pause:focus, span.jp-play:focus, span.jp-mute:focus, span.jp-unmute:focus {outline:none;}
+span.jp-pause:hover {
+	background: url('../../images/sprites.png') -288px -32px no-repeat;
+	width:30px;
+	height:30px;
+	float:left;
+}
+
+.trackInfo {
+	display: inline-block;
+	position: relative;
+	color: #ffffff;
+}
+
+.trackInfo .track_name {
+	line-height: 50px;
+	display: inline-block;
+	font-style:italic;
+
+}
+
+
+
+.trackInfo .progressBarContainer {
+	display: none;
+	position: absolute;
+	top: 0;
+	width: 300px;
+	height: 50px;
+	text-align: center;
+	background-color: #2E2E2E;
+	border-top: 2px solid #fff;
+}
+/*.trackInfo:hover .progressBarContainer {*/
+	/*display: inline-block;*/
+/*}*/
+
+.jp-progress-container {
+	display: inline-block;
+	width: 100%;
+	height: 3px;
+	background-color: #000;
+	opacity: 0.95;
+	top: -3px;
+	position: absolute;
+}
+
+.jp-progress {
+	display: inline;
+	width: 223px;
+	height: 7px;
+	padding: 1px;
+	/*background: url("jplayer-black-and-yellow.png") 0 -192px repeat-x ;*/
+}
+
+.endTime,
+.jp-current-time, .divider {
+	display: inline-block;
+	font-size: 12px;
+	color: #FFF;
+	line-height: 50px;
+}
+
+/*.jp-audio .jp-type-single {
+	width: 223px;
+	height: 7px;
+	padding: 1px;
+	background: url("jplayer-black-and-yellow.png") 0 -192px repeat-x ;
+}  */
+
+.jp-interface .jp-controls {
+	display: inline-block;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	line-height: 50px;
+}
+
+.jp-interface .jp-controls li {
+	display: inline-block;
+	line-height: 30px;
+	border-left: 1px solid white;
+}
+
+.jp-controls li {
+	float:left;
+}
+
+.jp-interface .jp-controls a {
+	display: inline-block;
+	overflow: hidden;
+	/*text-indent: -9999px;*/
+}
+
+.jp-seek-bar {
+	width: 100%;
+	height: 3px;
+	cursor: pointer;
+	/*background: url("jplayer-black-and-yellow.png") 0 -163px repeat-x;*/
+	background-color: #7f7f7f;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
+}
+
+.jp-play-bar {
+	width: 0px;
+	height: 3px;
+	/*background: url("jplayer-black-and-yellow.png") 0 -133px repeat-x ;*/
+	background-color: #CF5300;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
+}
+
+/* The seeking class is added/removed inside jPlayer
+.jp-seeking-bg {
+	background: url("pbar-ani.gif");
+}
+*/
+
+.jp-volume-bar-container {
+	position: absolute;
+	top: 0;
+	left: 281px;
+	width: 40px;
+	height: 6px;
+	padding: 12px 10px;
+	border-left: 1px solid rgb(50, 51, 52);
+}
+
+.jp-volume-bar {
+	position: relative;
+	overflow: hidden;
+	background: url("jplayer-black-and-yellow.png") 0 -192px repeat-x;
+	width: 40px;
+	height: 9px;
+	cursor: pointer;
+}
+
+.jp-audio .jp-type-single .jp-volume-bar {
+	top: 0;
+	left: 20px;
+}
+
+.jp-volume-bar-value {
+	width: 0px;
+	height: 5px;
+	margin: 1px;
+	background: url("jplayer-black-and-yellow.png") 0 -133px repeat-x;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
+}
+
+a.jp-mute,
+a.jp-unmute {
+	/*width: 17px;*/
+	/*height: 13px;*/
+	z-index: 1;
+	outline: none;
+	color: #ffffff;
+	text-decoration:none;
+}
+
+.jp-audio .jp-type-single a.jp-mute,
+.jp-audio .jp-type-single a.jp-unmute {
+	top: 9px;
+	left: 290px;
+}
+
+.wrapper {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space:nowrap;
+}
+
+/*a.jp-mute {*/
+	/*background: url("jplayer-black-and-yellow.png") -10px -68px no-repeat;*/
+/*}*/
+
+/*a.jp-mute:hover {*/
+	/*background: url("jplayer-black-and-yellow.png") -43px -68px no-repeat;*/
+/*}*/
+
+/*a.jp-unmute {*/
+	/*background: url("jplayer-black-and-yellow.png") -10px -98px no-repeat;*/
+	/*display: none;*/
+/*}*/
+
+/*a.jp-unmute:hover {*/
+	/*background: url("jplayer-black-and-yellow.png") -43px -98px no-repeat;*/
+/*}*/
+
+/*.jp-jplayer {
+	width:0px;
+	height:0px;
+}
+
+.jp-jplayer {
+	background-color: #000000;
+}  */

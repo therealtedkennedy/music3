@@ -1,4 +1,4 @@
-<%= form_for @song , :validate => true do |f| %>
+<%= form_for @song ,:html => {:class => "ajax_update" }, :validate => true do |f| %>
   <% if @song .errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@song .errors.count, "error") %> prohibited this song  from being saved:</h2>
@@ -19,6 +19,11 @@
     <%= f.label :song_artist %><br />
     <%= f.text_field :song_artist, :value => @artist.name  %>
   </div>
+
+	<div class="field">
+		<%= f.label "Social Promotion (if you want a tweet, or fb like for sharing a song" %><br />
+		<%= f.check_box :social_on %>
+	</div>
 
 
   <div class="field">
@@ -48,7 +53,7 @@
   </div>
   <div class="field">
     <%= f.label :lyrics %><br />
-    <%= f.text_area :lyrics %>
+    <%= f.text_area :lyrics, :escape => false %>
   </div>
 
    <div class="actions">
@@ -59,3 +64,6 @@
     <input id="form_song_id" name="form_song_id" type="hidden" value="<%= params[:id] %>" />
 
 <% end %>
+
+
+

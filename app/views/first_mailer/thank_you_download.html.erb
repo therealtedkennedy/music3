@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h2>Thank you for downloading <%= @album.al_name %> </h2>
+
+<p>
+<% if !@artist.twitter_name.nil? || !@artist.twitter_name.blank? %>
+	Want more? Follow us <a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en">
+		<%= @artist.twitter_name %></a>
+<% end %>
+</p>
+
+<h3>
+	<a href = "<%= @download_url %>">Download Here</a>
+</h3>
+<p>
+	You can download this again, any time by logging into your <a href ="<%= @user_url %>">account</a>.
+	<br>
+	<br>
+	Enjoy the music! <br>
+	<%= @artist.name %> <br>
+
+	This email is powered by <a href="http://www.threerepeater.com" >Three Repeater</a>. <br>
+	The complete DIY Artist solution
+</p>
+
+</body>
+</html>

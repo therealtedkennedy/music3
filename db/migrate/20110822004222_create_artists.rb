@@ -10,7 +10,6 @@ class CreateArtists < ActiveRecord::Migration
       t.text :contact_info
       t.date :date_founded
       t.date :created_date
-
       t.timestamps
     end
   end

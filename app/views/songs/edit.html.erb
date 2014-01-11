@@ -1,14 +1,31 @@
-<h1><%= link_to @artist.name, artist_admin_path(@artist.url_slug) %> </h1>
-<h2>Update Song Info</h2>
-<p> Song ID: <%= @song.id %>   </br>
-  S3_name: <%= @song.s3_id %> </p>
+<script type="text/javascript" src="/javascripts/hide-logo-and-nav.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.ajax_update').enableClientSideValidations();
+	});
+</script>
 
-<h3>Upload Song </h3>
-<h4><%= link_to 'Re-Up Song', new_song_path(@song.id)%> </h4>
+
+<div class="editPage">
+
+	<h2>Update Song Info</h2>
+	<p> Song ID: <%= @song.id %>   </br>
+	  S3_name: <%= @song.s3_id %> </p>
+
+	<h2>Re Upload Song</h2>
+
+	<%= @s3_upload.html_safe %>
 
 
-<%= render 'form' %>
-</br>
-<%= link_to 'Show', song_path %>
-<%= link_to 'Artist', song_path %>
-<%= link_to 're-up song', new_song_path(@song.id)%>
+	<h2>Upload Image</h2>
+	<%= @song_image_upload.html_safe %>
+
+
+	<h2>Update Info</h2>
+
+	<%= @form.html_safe %>
+
+
+	</br>
+
+</div>

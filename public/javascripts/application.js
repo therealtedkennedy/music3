@@ -5,8 +5,11 @@
 //= require jquery_ui
 //= require jquery_ujs
 //= require tree .
+//= require rails.validations
 
 //music player
+
+
 
  $(document).ready(function() {
     var audioSection = $('section#audio');

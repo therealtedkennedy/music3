@@ -1,0 +1,321 @@
+<!--head for artist admin-->
+
+<meta name="robots" content="noindex">
+<!--Google Meta-->
+<title><%= @social_title %></title>
+<%= csrf_meta_tag %>
+<meta name="description" content="<%= @social_descrip %>"/>
+
+<!--Facebook Meta Infomation-->
+
+<meta property="og:title" content="<%= @social_title %>"/>
+<meta property="og:type" content="band"/>
+<meta property="og:url" content="<%= @social_fb_url %>"/>
+<meta property="og:image" content="<%= @social_image %>"/>
+<meta property="og:site_name" content="Three Repeater"/>
+<meta property="fb:admins" content="513047468"/>
+<meta property="og:description" content="<%= @social_descrip %>"/>
+
+<!--Twitter Metta Info-->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@3rptr">
+<meta name="twitter:creator" content="<%= @social_twitter_name %>">
+<meta name="twitter:url" content="<%= url_for(:only_path => false) %>">
+<meta name="twitter:title" content="<%= @social_title %>">
+<meta name="twitter:description" content="<%= @social_descrip %>">
+<meta name="twitter:image" content="<%= @social_image %>">
+
+<meta class="area">
+
+
+<style>
+
+
+		/*User can edit*/
+
+	<% if @artist.profile_layout.use_css == true %>
+
+		<%= @artist.profile_layout.profile_css %>
+
+	<% else %>
+	<% @artist.profile_layout.h2_colour = @artist.profile_layout.h2_colour.blank? ? "#999" : @artist.profile_layout.h2_colour %>
+
+	p {
+		font-family: <%= @artist.profile_layout.content_font %>;
+		font-size: <%= @artist.profile_layout.p_size %>pt;
+		color: <%= @artist.profile_layout.p_colour %>;
+
+	}
+
+	h1 {
+		font-family: <%= @artist.profile_layout.content_font %>;
+		font-size: <%= @artist.profile_layout.h1_size %>pt;
+		color: <%= @artist.profile_layout.h1_colour %>;
+		text-align: center;
+	}
+
+	h2 {
+		font-family: <%= @artist.profile_layout.content_font %>;
+		font-size: <%= @artist.profile_layout.h2_size %>pt;
+		color: <%= @artist.profile_layout.h2_colour %>;
+		text-align: center;
+	}
+
+	h3 {
+		font-family: <%= @artist.profile_layout.content_font %>;
+		font-size: <%= @artist.profile_layout.h3_size %>pt;
+		color: <%= @artist.profile_layout.h3_colour %>;
+		text-align: center;
+	}
+
+	ol {
+		font-family: <%= @artist.profile_layout.content_font %>;
+		font-size: <%= @artist.profile_layout.p_size %>pt;
+	}
+
+	ul {
+		font-family: <%= @artist.profile_layout.content_font %>;
+		font-size: <%= @artist.profile_layout.p_size %>pt;
+	}
+
+	.notice {
+		font-family: <%= @artist.profile_layout.content_font %>;
+		font-size: <%= @artist.profile_layout.p_size %>;
+		color: <%= @artist.profile_layout.p_colour %>;
+	}
+
+	table {
+		font-face: <%= @artist.profile_layout.content_font %>;
+		font-size: <%= @artist.profile_layout.p_size %>pt;
+		color: <%= @artist.profile_layout.p_colour %>
+	}
+
+	a {
+
+		font-family: <%= @artist.profile_layout.content_font %>;
+		font-size: <%= @artist.profile_layout.h2_size %>pt;
+		color: <%= @artist.profile_layout.h2_colour %>;
+
+	}
+
+	a:hover {
+
+		font-family: <%= @artist.profile_layout.content_font %>;
+		font-size: <%= @artist.profile_layout.h2_size %>pt;
+		color: <%= @artist.profile_layout.h2_colour %>;
+
+	}
+
+	.div1 {
+		max-width: 400px;
+		position: absolute;
+		top: 5%;
+		left: 5%;
+		background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+		overflow: hidden;
+		padding: 10px;
+		border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+		border-radius: 5px;
+	}
+
+	.div1a {
+		display: block;
+		margin-right: auto;
+		overflow: hidden;
+		margin-left: auto;
+		margin-top: 5%;
+		max-width: 400px;
+		background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+		padding: 10px;
+		border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+		border-radius: 5px;
+	}
+
+	.div1ra {
+		margin-top: 5%;
+		margin-left: auto;
+		display: block;
+		margin-right: auto;
+		overflow: hidden;
+		max-width: 800px;
+		min-width: 300px;
+		background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+		padding: 10px;
+		border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+		border-radius: 5px;
+	}
+
+	.button {
+		margin: 2%;
+		background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+		overflow: hidden;
+		padding: 30px;
+		border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+		box-shadow: 3px 3px 7px #777;
+		border-radius: 2px;
+	}
+
+	.button:hover {
+		background-color: blue;
+	}
+
+	.div2 {
+		margin: 2%;
+		background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+		overflow: hidden;
+		padding: 30px;
+		border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+		box-shadow: 3px 3px 7px #777;
+		border-radius: 2px;
+	}
+
+	.div3 {
+		width: 400px;
+		height: 80px;
+		margin: 30px;
+		background-color: <%= @artist.profile_layout.div_2_background_colour %>;
+		overflow: hidden;
+		padding: 10px;
+		border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+		box-shadow: 3px 3px 7px #777;
+		border-radius: 2px;
+	}
+
+	.image {
+		float: left;
+		width: 70px;
+		height: 70px;
+		margin: 1%;
+		overflow: hidden;
+		border: <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;
+		box-shadow: 1px 1px 2px #777;
+		border-radius: 2px;
+	}
+
+	.div1r {
+		max-width: 1000px;
+		min-width: 800px;
+		position: absolute;
+		top: 5%;
+		right: 5%;
+		background-color: <%= @artist.profile_layout.div_1_background_colour %>;
+		overflow: hidden;
+		padding: 10px;
+		border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;
+		border-radius: 5px;
+	}
+
+	.toggleDiv {
+		display: none
+	}
+
+	#loading {
+		display: none;
+	}
+
+	<% end %>
+
+	html, body {
+		overflow-x: hidden;
+		margin: 0 auto;
+
+	}
+
+	@font-face {
+		font-family: 'icomoon';
+		src: url("/assets/fonts/iconmoon.eot");
+	}
+
+	.container {
+		/*margin-top: 50px;*/
+	}
+
+		/* Defines whole top nav, including sign in/out, and the player it self */
+	.player_nav {
+		width: 100%;
+
+		height: 50px;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background: #000;
+		opacity: 0.95;
+		z-index: 2;
+	}
+
+		/* Sign in/sign out */
+	.user_nav {
+		position: fixed;
+		height: 50px;
+		line-height: 50px;
+		padding-right: 15px;
+		color: #C4C4C4;
+		right: 0;
+		top: 0;
+	}
+
+	.user_nav_info {
+		display: inline-block;
+	}
+
+	.user_nav_info a {
+		padding-right: 5px;
+	}
+
+	.admin {
+		display: inline-block;
+		line-height: 45px;
+		padding: 5px;
+
+	}
+
+	.adminLink {
+		color: #ffffff;
+		vertical-align: middle;
+	}
+
+	.audio {
+		position: fixed;
+		top: 0;
+		margin: 0 auto;
+		background-color: #FFFFFF;
+		width: 9999px;
+		height: 50px
+	}
+
+	a.nav, .adminLink {
+		color: #FFFFFF;
+		text-decoration: none;
+
+	}
+
+
+	a.nav:hover, .adminLink:hover {
+		color: #666;
+		text-decoration: none;
+	}
+
+
+	#text_area {
+		width: 350px;
+		max-height: 200px;
+		overflow: auto;
+		margin-bottom: 15px;
+	}
+
+
+		/*.edit-controls {*/
+		/*display:block;*/
+		/*float: right;*/
+		/*display: inline-block;*/
+		/*width: 320px;*/
+		/*background: #2E2E2E;*/
+		/*padding: 5px;*/
+
+		/*}*/
+
+
+
+</style>
+
+<%= stylesheet_link_tag :all %>

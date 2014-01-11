@@ -1,0 +1,24 @@
+<!--what goes into the floating content div-->
+
+<script type="text/javascript">
+  $.backstretch("<%=@artist.image.to_s%>");
+</script>
+
+<div class="pageType" id="<%= @artist.url_slug %>"></div>
+<div class="floatingContent">
+	<div class="artistLogoArea"><a href="/<%= @artist.url_slug %>/?promo=true" class="content-link">
+		<% if @artist.logo_toggle == true %>
+			<img src="<%= @artist.logo %>" />
+		<% else %>
+			<h1 id="logo"><%= @artist.name %></h1>
+		<%end%>
+		</a>
+
+		</div>
+
+
+	<div class="navArea"><a href="/<%= @artist.url_slug %>" class="content-link navLink"><div class="nav <%=@tag_info %>" id="info">INFO</div></a><a href="<%= artist_show_songs_path(@artist.url_slug) %>" class="content-link navLink"><div class="nav" id="songs">SONGS</div></a><a href="<%= artist_show_albums_path(@artist.url_slug) %>" class="content-link navLink"><div class="nav" id="albums">ALBUMS</div></a>
+	</div>
+
+	<div class="miniPage" id="content"><%= yield %></div>
+</div>

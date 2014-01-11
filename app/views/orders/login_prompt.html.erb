@@ -1,12 +1,13 @@
 <script type="text/javascript">
-    window.onload = showCookies
+
+	window.onload = showCookies
 
     function showCookies() {
         var outMsg = "";
 
-
+	//         checks if download cookie exists, if it does grabs link to download album
          var thisCookie = document.cookie.split("; ");
-
+         var referrer = document.referrer
          for (var i=0;i<thisCookie.length;i++){
 
              var cookie_name = thisCookie[i].split("=")[0]
@@ -26,7 +27,7 @@
                 var link = link + "?token=" + "<%= params[:token] %>" + "&PayerID=" + "<%= params[:PayerID]%>"
 
 
-                outMsg += "clean link is " + link
+                outMsg += "clean link is " + link + " referal site" + referrer
 
 
                 window.location = link
@@ -48,5 +49,5 @@
 
 <h1>Keep it forever!</h1>
 
-  <h2>  <%= link_to "Sign In", user_session_path(:object => params[:object], :song_album_or_event_slug => params[:song_album_or_event_slug]) %> or <%= link_to "Sign Up", new_user_registration_path(:object => params[:object], :song_album_or_event_slug => params[:song_album_or_event_slug]) %>   </h2>
+  <h2>  <%= link_to "Sign In", user_session_path(:object => params[:object], :song_album_or_event_id => params[:song_album_or_event_id]) %> or <%= link_to "Sign Up", new_user_registration_path(:object => params[:object], :song_album_or_event_id => params[:song_album_or_event_id]) %>   </h2>
 

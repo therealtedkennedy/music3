@@ -1,27 +1,46 @@
 source 'http://rubygems.org'
 
-gem 'rails'  , '3.0.7'
+
+gem 'rails', '3.2.11'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-gem 'devise'
+
+
 gem 'jquery-rails'
-gem 'client_side_validations'
+gem 'client_side_validations', '3.2.5'
 gem 'aws-s3',:require => 'aws/s3'
-gem 'rubyzip'
+gem 'rubyzip', '0.9.9'
 gem 'activemerchant'
 gem "cancan"
 gem "active_paypal_adaptive_payment"
 gem "carrierwave"
+gem 'rake', '0.9.2'
+gem 'activerecord', '3.2.11'
+gem 'activerecord-sqlserver-adapter', '3.2.10'
+gem 'orm_adapter','>= 0.1.0'
+gem 'browser'
+gem 'cloudinary'
+gem 'aws_cf_signer'
+gem 'twitter'
+gem 'omniauth-twitter'
+gem 'devise', '2.1.2'
+gem 'aws-sdk'
+gem 'twitter-bootstrap-rails'
 
 
+group :development do
+	gem "sqlite3"
+end
 
-
+group :production do
+	gem "pg"
+end
 
 # Use unicorn as the web server
-# gem 'unicorn'
+# gem 'unicorn'3.0.7
 
 # Deploy with Capistrano
 # gem 'capistrano'

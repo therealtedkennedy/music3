@@ -1,4 +1,8 @@
-<%= form_for @album, :validate => true do |f| %>
+
+<%=form_for @album, :html => {:multipart => true}, :html => {:class => "ajax_update"}, :validate => true do |f| %>
+
+
+
   <% if @album.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
@@ -10,17 +14,33 @@
       </ul>
     </div>
   <% end %>
+
+
 <div class="field">
-    <%= f.label "Name" %><br />
-    <%= f.text_field :al_name %>
+    <%= f.label :al_name %><br />
+    <%= f.text_field :al_name, :validate => { :valid => true } %>
   </div>
 
+	<div class="field">
+		<%= f.label "Album Description - Used when people share it"  %><br />
+		<%= f.text_field :description %>
+	</div>
 
+	<div class="field">
+		<%= f.label "Social Promotion " %><br />
+		<%= f.check_box :social_on %>
+	</div>
 
   <div class="field">
     <%=f.label "Type" %><br />
     <%=f.select :al_type, [["Album", "album"], ["Set", "set"], ["EP", "ep"],["Track List", "track_list"] ] %>
   </div>
+
+
+
+
+
+
 
   <div class="field">
     <%= f.label "Primary Artist" %><br />
@@ -59,7 +79,7 @@
   <% end %>
 
 
-  <h2>More Info </h2>
+  <h2>Album Details</h2>
   <div class="field">
     <%= f.label "Producer" %><br />
     <%= f.text_field :producer %>
@@ -74,13 +94,7 @@
     <%= f.text_area :liner_notes %>
   </div>
 
-<%=check_box_tag 'rock', 'rock music' %> rock </br>
-
-  <b>Songs</b>
-
-</br>
-  <section id="audio">
-</section>
+  <h2>Choose Songs for Album</h2>
 
 <div class="field">
 
@@ -88,16 +102,18 @@
 
 <% @artist.songs.uniq.each do |s| %>
     <% unless s.song_url_slug.blank?%>
-    <li><%= link_to s.song_name, artist_show_song_path(@artist.url_slug, s.song_url_slug) %>
-      <%= link_to "Play", download_url_for(s.s3_id), :class => "html5" %>
-      <%=check_box_tag "album_songs[songs_id][]", s.id, @song_ids.include?(s.id) %>
-       </li>
-
+        <% unless s.s3_id.nil? %>
+          <li><%= link_to s.song_name, artist_show_song_path(@artist.url_slug, s.song_url_slug) %>
+          <%= link_to "Play", download_url_for(s.s3_id), :class => "html5" %>
+          <%=check_box_tag "album_songs[songs_id][]", s.id, @song_ids.include?(s.id) %>
+          </li>
+        <% end %>
   <% end %>
 <% end %>
 </ul>
  <%= hidden_field_tag(:url_slug, @artist.url_slug  ) %>
 </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

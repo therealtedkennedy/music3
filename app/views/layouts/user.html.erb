@@ -1,0 +1,17 @@
+<!--For User Pages-->
+
+
+	<script type="text/javascript">
+
+		//Loads background image for all users.
+		$.backstretch("/assets/images/pages/welcome/records_shelves.jpg");
+
+		//Removes Edit Controls b/c they stick around after ajax load
+		$( ".edit-controls" ).remove();
+
+	</script>
+
+     <h1>User Layout</h1>
+
+	<%= yield %>
+

@@ -2,34 +2,83 @@ class UsersController < Devise::SessionsController
 
   prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, :only => :create
-  include Devise::Controllers::InternalHelpers
+
+
+  #include Devise::Controllers::InternalHelpers
+  layout "artist_admin", only: [:show, :edit]
+
+
+
+  def api_login
+	  #raise env["omniauth.auth"].to_yaml
+
+      #user = User.find_by_find_by_provider_and_uid(auth['provider'], auth['uid'])
+	  user = User.from_omniauth(request.env["omniauth.auth"])
+	  logger.info "out of model, checking what user is "
+	  logger.info user
+		  if user.persisted?
+			  flash.notice = "Signed in!"
+			  sign_in_and_redirect user
+		  else
+			  session["devise.user_attributes"] = user.attributes
+			  redirect_to new_user_registration_url
+		  end
+
+  end
+
+  alias_method :twitter, :api_login
+
+
 
   # GET /resource/sign_in
   def new
-    resource = build_resource
-    clean_up_passwords(resource)
-    respond_with_navigational(resource, stub_options(resource)){ render_with_scope :new }
+      #work around to get background and layout  to load. Eventually users should have there own layouts
+      user_initialize
+
+    logger.info "new controller"
+      resource = build_resource
+
+      clean_up_passwords(resource)
+      respond_with_navigational(resource, stub_options(resource)){ render_with_scope :new }
+
+      #work around.  doesn't actually redirect properly after sign in.  should go to sign_in_routing, but doesnt.
+    #checks if cookies exisit (from paying for an album) and assigns them to the user
+    unless cookies[:object].blank?
+      assign_object_user
+    end
+
   end
 
   #a devise work around to choose the page after sign in or sign up.  Comes from the Application controller
   def sign_in_routing
-
+    logger.info "Sing In Routing Controller"
     if cookies[:object].blank?
       redirect_to(show_user_path(current_user.id))
 
-
-    else
-      assign_to_user (cookies[:object],cookies[:song_album_or_event_slug])
-      redirect_to(show_user_path(current_user.id))
+	#artist is only assigned when its coming from payment routing.
+	elsif cookies[:artist].blank?
+		#assing_to_user is in the Application controller, assings song and albums to the user
+		assign_object_user
+		redirect_to(show_user_path(current_user.id))
+	else
+    #this is the part is currently not being used
+		redirect_to(payment_method_path(cookies[:object],cookies[:artist],cookies[:song_album_or_event_id]))
+		# deletes the download cookie so that muliple downloads won't happen
+		cookies[:artist] = {:expires => 1.year.ago}
     end
   end
 
+   def assign_object_user
 
+	   assign_to_user (cookies[:object]),(cookies[:song_album_or_event_id])
+   end
 
    def boo
 
   #updates user.  For some strang reason only works when controller is called boo
     @user = User.find(current_user.id)
+
+
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -46,6 +95,7 @@ class UsersController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
+	logger.info "create controller"
     resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#new")
     set_flash_message(:notice, :signed_in) if is_navigational_format?
     sign_in(resource_name, resource)
@@ -73,6 +123,89 @@ class UsersController < Devise::SessionsController
     end
   end
 
+
+
+  def show
+	  logger.info "show controller"
+	  @user = User.find(params[:id])
+
+	  #artist 1 is the set up artist.  Houses all the defaults for users who don't have an artist asoiated with them.  Its not the best work around but its effective.
+	  @artist = Artist.find(1)
+
+	  #defines the type of object it is for the artist_admin layout.  Layout will render for user
+	  @object_type = "user"
+
+	  logger.info "User Found?"
+	  logger.info @user
+
+    # edit = "true" shows edit screen, false hides it
+	  #@edit = "true"
+
+	  respond_to do |format|
+		  format.html
+		  format.json {
+			  render :json => {
+					  :success => true,
+					  :".bodyArea" => render_to_string(
+							  :action => 'show.html.erb',
+							  :layout => "layouts/user.html.erb",
+					  ),
+					  #sets object type to user.  Loads Correct
+					  :"object_type" => "user"
+			  }
+		  }
+	  end
+
+  end
+
+
+
+  def index
+	  @user = User.all
+
+	  respond_to do |format|
+		  format.html # show.html.erb
+		  format.xml  { render :xml => @user }
+	  end
+  end
+
+  def edit
+
+	  @user = User.find(params[:id])
+
+	  #defines the type of object it is for the artist_admin layout.  Layout will render for user
+      @object_type = "user"
+      logger.info "In edit"
+	  logger.info @user
+	  #searchString  = params[:url_slug]
+	  #@artist = Artist.find_by_url_slug(searchString)
+
+	  #loads form
+	  @form = render_to_string('users/_form',:layout => false)
+
+
+
+	  respond_to do |format|
+		  format.html
+		  format.json {
+			  render :json => {
+					  :success => true,
+					  :".bodyArea" => render_to_string(
+							  :action => 'edit.html.erb',
+							  :layout => "layouts/user.erb",
+					  ),
+					  #show/hides edit screen
+					  #:"edit" => "true"
+					  #sets object type to user.  Loads Correct
+					  :"object_type" => "user"
+			  }
+		  }
+	  end
+  end
+
+
+
+  #don't know what protected does......
   protected
 
   def stub_options(resource)
@@ -81,42 +214,6 @@ class UsersController < Devise::SessionsController
     methods << :password if resource.respond_to?(:password)
     { :methods => methods, :only => [:password] }
   end
-
- def show
-    @user = User.find(params[:id])
-
-   respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
-   end
-
-  end
-
- def index
-   @user = User.all
-
-     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
-   end
- end
-
-   def edit
-
-    @user = User.find(params[:id])
-
-    #searchString  = params[:url_slug]
-    #@artist = Artist.find_by_url_slug(searchString)
-
-
-     respond_to do |format|
-           format.html  #show.html.erb
-           format.xml  { render :xml => @song }
-           format.js
-     end
-  end
-
-
 
 
 end

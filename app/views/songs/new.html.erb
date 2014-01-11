@@ -1,10 +1,22 @@
-<h1>Update Song Info</h1>
-<p> Song ID: <%= @song.id %>   </br>
-  S3_name: <%= @song.s3_id %> </p>
 
-<h3>Upload Song </h3>
+<script type="text/javascript" src="/javascripts/hide-logo-and-nav.js"></script>
 
-<%= render 'form_upload_song' %>
+<div class="editPage">
+
+<h1>Create a new song</h1>
+
+<h2>Upload Song</h2>
+
+	<%= @s3_upload.html_safe %>
+
+<h2>Upload Image</h2>
+	<%= @song_image_upload.html_safe %>
+
+<h2>Song Info </h2>
+
+
+	<%= @form.html_safe %>
+
 </br>
 
-<%= link_to 'Back', artists_path %>
+</div>

@@ -1,123 +1,127 @@
-<p id="notice"><%= notice %></p>
+<div id="fb-root"></div>
+<div class="backPane"></div>
+<div class="leftPane">
+	<div><img src="<%= @album.art%>" id="albumImage" /><br>
+		<p class="m30l"><%=link_to "Play", album_playlist_create_path(@artist.url_slug, @album.album_url_slug), :class =>"load-playlist  albumLink" %></p>
+	</div>
 
-<h2>
-    <% @album.artists.uniq.each do |artist_name| %>
-          <td><%= link_to artist_name.name, artist_link_path(artist_name.url_slug) %></td>
-    <% end %>
-</h2>
+	<div class="social m30l">
+		<div><a href="https://twitter.com/share" class="twitter-share-button"  data-text="Check out <%=@album.al_name %> by <%=@artist.twitter_name%>"  data-url="<%=artist_show_album_url(@artist.url_slug,@album.album_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en" data-related="3rptr">Tweet</a></div>
+		<div class="fb-like p5t" data-href="<%=@social_fb_url%>" data-send="false" data-width="350" data-show-faces="true"></div>
+	</div>
+</div>
 
-<h1>
-  <%= @album.al_name %>
+<div class="rightPane"><h1><%= @album.al_name %></h1>
+	<% unless @album.description.nil? || @album.description.size == 0 %>
+		<span class="editable albumDesc p5t" id="text_area" field_name="description" object="album" >
+			<%= @album.description.html_safe%>
+		</span>
+	<% end %>
 
-</h1>
+	<table style="margin-top:15px;">
+		<tbody class="row-border">
+			<% @album.songs.uniq.each do |songs| %>
+				<% unless songs.song_url_slug.blank?%>
+				<tr>
+					<td style="width:60px"><a href="<%= download_url_for(songs.s3_id) %>"
+							   data-song-name="<%= songs.song_name %>"
+							   data-artist-name="<%= @artist.name %>"
+							   data-song-id="<%= songs.id %>"
+							   class="music-button"><% if songs.image.nil? %>PLAY 
+								<% else %>
+								<img src="<%=songs.image %>" style="max-width:60px;"/><% end %></a></td>
+					<td class="bold"><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug), :class => "content-link" %> 
+					</td>
+					<td><a href="#">Share</a></td>
+				</tr>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
 
+ 		<h2>Want it? Get it!</h2>
+		<% if @album.pay_type == "pay" %>
+			<%= link_to "Buy Now: Only $"+@album.al_amount.to_s+"!", payment_method_path("album",@artist.url_slug,@album.id ) %>
+		<% elsif @album.pay_type == "pwyc" %>
+			<!--gets csrf token and passes into hidden field.  Keeps user logged in after form post-->
 
-<section id="audio">
-</section>
+			<script type="text/javascript">
+				$(function(){
+					var token = $('meta[name="csrf-token"]').attr('content');
+					$("#token").val(token);
+				});
+			</script>
 
-
-<h3><%= link_to "Download",album_download_path(@artist.url_slug,@album.id) %></h3>
-
-
-
-<p>
-
-  <b> Artist ID </b>
-  <%= @album.al_a_id %>
- </p>
-
-<h2>Want it? Get it!</h2>
-
-    <% if @album.pay_type = "pay" %>
-        <%= link_to "Buy Now:", payment_method_path("album",params[:url_slug],params[:album_url_slug] ) %>
-
-
-    <% else %>
-
-        <h3><%= link_to "Download Free",album_download_path(@artist.url_slug,@album.id) %></h3>
-    <% end %>
-
-
-
-
-
-
-
-
-<p>
- <b>Album Name:</b>
- <%= @album.al_name%>
- </p>
-
-<p>
- <b>Album ID:</b>
- <%= @album.id%>
- </p>
-
-
- <p><b>Album Type:</b>
- <%= @album.al_type%>
- </p>
- <p>
- <b>Primary Artist:</b>
- <%= @album.pri_artist%>
- </p>
-
- <p>
- <b>Contributing Artist:</b>
- <%= @album.contrib_artist%>
- </p>
- <p>
- <b>Copywrite Type:</b>
- <%= @album.al_copy_write%>
- </p>
- <p>
- <b>Release Date:</b>
- <%= @album.al_rel_date%>
- </p>
- <p>
- <b>Payment Type:</b>
- <%= @album.pay_type%></p>
-
- <p>
- <b>Amount:</b>
- <%= @album.al_amount%></p>
-
- <p>
- <b>Producer:</b>
- <%= @album.producer%></p>
- <p>
- <b>Album Producer:</b>
- <%= @album.al_producer%></p>
-
- <p>
- <b>Label:</b>
- <%= @album.al_label%></p>
-
- <p>
- <b>Liner Notes:</b>
- <%= @album.liner_notes%></p>
-
- <p>
- <b>Number Of Downloads:</b>
- <%= @album.downloads%></p>
-
- <p>
- <b>Number of Plays:</b>
- <%= @album.plays%></p>
+			<form accept-charset="UTF-8" action="<%=payment_method_path("album",@artist.url_slug,@album.id )%>" class="pwyc_form" enctype="multipart/form-data" data-validate="true"  method="post" novalidate="novalidate"><div><input name="utf8" type="hidden" value="&#x2713;" />
 
 
-<h2> Songs </h2>
- <ul>
-    <% @album.songs.uniq.each do |songs| %>
-       <% unless songs.song_url_slug.blank?%>
-            <li><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %>
-            <%= link_to "Play", download_url_for(songs.s3_id), :class => "html5" %></li>
-      <% end %>
-    <% end %>
-    </ul>
+				<input name="authenticity_token" id="token" type="hidden" value=""/></div>
 
 
-  <% @album.artists.uniq.each do |artist_name| %>
-          <td><%= link_to 'To '+artist_name.name, artist_link_path(artist_name.url_slug) %></td>
-  <% end %>
+				<label for="amount">Amount $</label>
+				<input id="amount" name="amount" type="text" size="3" value="" />
+				<button name="commit" type="submit" class="fancyButton">Download</button>
+
+				<!--For order processing-->
+
+				<!--defines the type of object it is-->
+				<input id="object" name="object" type="hidden" value="album" />
+				<input id="url_slug" name="url_slug" type="hidden" value="<%= @artist.url_slug %>" />
+				<input id="song_album_or_event_id" name="song_album_or_event_slug" type="hidden" value="<%=@album.id%>" />
+			</form>
+		<% else %>
+			<h3><%= link_to "Download Free",download_free_path("album",@artist.url_slug,@album.id), :class=>"albumLink" %></h3>
+		<% end %>
+<!-- 			<h2>not to be included in actual layout</h2>
+
+			<p><b>Should be in layout - Album Type:</b>
+				<%= @album.al_type%>
+			</p>
+			<p>
+
+			<p>
+				<b>For testing Album ID:</b>
+				<%= @album.id%>
+			</p>
+
+			<p>
+				<b>For Testing - Payment Type:</b>
+				<%= @album.pay_type%></p>
+
+			<p>
+				<b>For test - Amount:</b>
+				<%= @album.al_amount%></p>
+
+			<p>
+				<b>For Testing - Album URL Slug</b>
+				<%= @album.album_url_slug %></p>
+
+			<b>Used for calling an album with just the - Primary Artist:</b>
+			<%= @album.pri_artist%>
+			</p>
+
+			<p>
+
+				<b> For testing - Artist ID </b>
+				<%= @album.al_a_id %>
+			</p>
+
+			<p>
+				<b>Not working yet - Number Of Downloads:</b>
+				<%= @album.downloads%></p>
+
+			<p>
+				<b>Not working yet - Number of Plays:</b>
+				<%= @album.plays%></p> -->
+
+
+</div>
+
+
+
+
+
+
+
+
+

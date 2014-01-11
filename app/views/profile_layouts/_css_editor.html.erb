@@ -1,0 +1,16 @@
+<h1> CSS Editor </h1>
+
+<%= form_for @profile_layout, :url => {:action => "css_editor_update"} do |f| %>
+    <div class="textarea">
+		<%= f.label :profile_css%><br />
+		<%= f.text_area :profile_css%>
+
+	</div>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+
+	<input id="url_slug" name="url_slug" type="hidden" value="<%=@artist.url_slug %>" />
+
+<% end %>

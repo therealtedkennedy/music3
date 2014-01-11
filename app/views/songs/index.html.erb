@@ -1,75 +1,30 @@
-<h1>Songs#index</h1>
+<div id="song-content">
+<table cellpadding="10" class="song-table">
+	<tbody class="row-border">
+	<% @artist.songs.uniq.each_with_index do |song, index| %>
 
-<h2>Listen to a MP3 with HTML5 Audio</h2>
-<section id="audio">
-</section>
-  <h2>Upload a new MP3:</h2>
-<%= form_tag upload_path, :method => "post", :multipart => true do %>
-    <%= file_field_tag "mp3file" %>
-    <%= submit_tag "Upload" %>
-<% end %>
+		<% unless song.song_url_slug.blank? %>
+			<% unless song.s3_id.nil? %>
 
-<h2>Download and Delete Existing MP3</h2>
-<table>
-  <% @s3_songs.each do |song| %>
-    <tr>
-    <td><%= song.key %> </td>
-    <td><%=link_to "Download", download_url_for(song.key) %></td>
-    <td><%=link_to "Torrent", torrent_url_for(song.key)%></td>
-    <td><%=link_to "HTML5 Audio", download_url_for(song.key), :class => "html5" %></td>
-    <td><%= link_to "Delete",  "song/delete/?song=" + song.key, :confirm => 'Are you sure you want to delete ' + song.key + '?' %></td>
-    </tr>
-   </tr>
-  <% end %>
-</table>
-
-
-<h1>Listing songs</h1>
-
-<table>
-  <tr>
-    <th>Song Name </th>
-    <th>Song Artist</th>
-    <th>Artist Name</th>
-    <th>Contributing Artists</th>
-    <th>Written By:</th>
-    <th>Licence Type</th>
-    <th>Licence Date</th>
-    <th>Licence Date</th>
-    <th>Number of Plays</th>
-    <th>Url Slug</th>
-    <th>Lyrics</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @songs.each do |song| %>
-
-    <tr>
-    <td><%= song.song_name %></td>
-    <td><%= song.song_artist%></td>
-    <% song.artists.uniq.each do |artist_name| %>
-          <td><%= artist_name.name %></td>
-    <% end %>
-    <td><%= song.song_contribute_artist %></td>
-    <td><%= song.song_written %></td>
-    <td><%= song.song_licence_type %></td>
-    <td><%= song.song_licence_date %></td>
-    <td><%= song.song_plays %></td>
-    <td><%= song.song_url_slug %></td>
-    <td><%= song.lyrics%></td>
-
-    <td><%= link_to 'Show', song %></td>
-    <td><%= link_to 'Edit', edit_song_path(song) %></td>
-    <td><%= link_to 'Destroy', song, :confirm => 'Are you sure?', :method => :delete %></td>
-
-
-  </tr>
-
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'Artist List', artists_path%>
+				<tr>
+					<td style="max-width:60px;"><a href="<%= download_url_for(song.s3_id) %>"
+							   data-song-name="<%= song.song_name %>"
+							   data-artist-name="<%= @artist.name %>"
+							   data-song-id="<%= song.id %>"
+							   class="music-button"><% if song.image.nil? %>PLAY 
+								<% else %>
+								<img src="<%=song.image %>" style="max-width:100px;"/><% end %></a></td>
+					<td><%= link_to song.song_name, artist_show_song_path(@artist.url_slug, song.song_url_slug), :class => "content-link" %> </td>
+					<% if song.albums.first.blank? %>
+						<td></td>
+					<% else %>
+						<td><%= song.albums.first.al_name %></td>
+					<% end %>
+					<td><img src="../../../images/btn-buy.png"/></td>
+				</tr>
+			<% end %>
+		<% end %>
+	<% end %>
+</tbody></table>
+</div>
+<div class="song-footer"><span><%= @artist.songs.count %> Total Song<%= @artist.songs.count == 1 ? "" : "s" %></span></div>

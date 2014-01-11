@@ -1,9 +1,21 @@
-<h2>Upload a new MP3 song</h2>
 
-<%=form_for @song,:url => "/songs/create", :html => {:multipart => true}, :validate => true do |f| %>
+<%=form_for @song,:url => "/songs/create", :html => {:multipart => true},:html => {:class => "ajax_update"}, :validate => true do |f| %>
 
-    <h2>Ready!!!  <%= @id %></h2>
-   <%= f.file_field :s3_name%>
+
+	<% if @song.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@song.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+			<ul>
+				<% @song.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+
+   <!--<%= f.file_field :s3_name%>-->
 
    <div class="field">
      <%= f.label :song_name %>

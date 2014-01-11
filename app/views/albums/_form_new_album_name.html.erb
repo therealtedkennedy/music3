@@ -1,0 +1,28 @@
+<%=form_for @album, :html => {:multipart => true}, :html => {:class => "ajax_update"}, :validate => true do |f| %>
+
+
+
+	<% if @album.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
+
+			<ul>
+				<% @album.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+
+	<div class="field">
+		<%= f.label "Album Name" %><br />
+		<%= f.text_field :al_name, :validate => { :valid => true } %>
+	</div>
+
+	<%= hidden_field_tag(:url_slug, @artist.url_slug  ) %>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

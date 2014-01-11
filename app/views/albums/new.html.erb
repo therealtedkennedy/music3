@@ -1,8 +1,17 @@
-<h1>New album</h1>
 
-<%= render 'form' %>
+<script type="text/javascript" src="/javascripts/hide-logo-and-nav.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.ajax_update').enableClientSideValidations();
+	});
+</script>
+
+<div class="editPage">
+
+	<h1>New album</h1>
+
+	<%= @form.html_safe %>
 
 
-
-
-<%= link_to 'Back', albums_path %>
+	<%= link_to 'Back', albums_path %>
+</div>

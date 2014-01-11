@@ -1,204 +1,71 @@
-<style>
-p {font-family: <%= @artist.profile_layout.p_font %>; font-size: <%= @artist.profile_layout.p_size %>pt; color: <%= @artist.profile_layout.p_colour %>;}
-h1 {font-family: <%= @artist.profile_layout.h1_font %>; font-size: <%= @artist.profile_layout.h1_size %>pt; color: <%= @artist.profile_layout.h1_colour %>;text-align: center; }
-h2 {font-family: <%= @artist.profile_layout.h2_font %>; font-size: <%= @artist.profile_layout.h2_size %>pt; color: <%= @artist.profile_layout.h2_colour %>;text-align: center; }
-h3 {font-family: <%= @artist.profile_layout.h3_font %>; font-size: <%= @artist.profile_layout.h3_size %>pt; color: <%= @artist.profile_layout.h3_colour %>;text-align: center; }
-ol {font-family: <%= @artist.profile_layout.p_font %>; font-size: <%= @artist.profile_layout.p_size %>pt;}
-ul {font-family: <%= @artist.profile_layout.p_font %>; font-size: <%= @artist.profile_layout.p_size %>pt;}
-table {font-face: <%= @artist.profile_layout.p_font %>; font-size: <%= @artist.profile_layout.p_size %>pt;color:<%= @artist.profile_layout.p_colour %>}
-body {margin: 20px 100px }
-.div1 {max-width: 400px; position:absolute;top:5%;left:5%;background-color: <%= @artist.profile_layout.div_1_background_colour %>;overflow: hidden;padding:10px;border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;border-radius: 5px;   }
-.div1a {display: block; float: left; overflow: hidden;margin-right: 10%;max-width: 400px; background-color: <%= @artist.profile_layout.div_1_background_colour %>;padding:10px;border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;border-radius: 5px; }
+<!--<% if @show_promo %>
+<div id="promo"><img src="/ronster.jpg" /></div>
+<% end %> -->
+<table><tbody><tr>
+<td class="left-panel">
+	<div>
+		<img class="info-image" src="<%= @artist.image %>" alt="profile"/>
+	</div>
+	<div class="social">
+		<% if @artist.twitter_name.blank? %>
+
+		<% else %>
+			<div>
+				<a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow
+					<%= @artist.twitter_name %></a>
+			</div>
+		<% end %>
+		<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="225" data-show-faces="true"></div>
+	</div>
+</td>
+<td class="row-border vat">
+	<p class="bio"><%= @artist.bio %></p>
+	<table cellpadding="10" class="w100"><tbody>
+		<tr>
+			<td class="info-item">Date founded:</td>
+			<td class="item-description"><%= @artist.date_founded %></td>
+		</tr>
+		<tr>
+			<td class="info-item">City:</td>
+			<td class="item-description">
+				<span class="editable" id="single_line" field_name="city" object="artist" >
+					<%= @artist.city.html_safe %>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="info-item">Province:</td>
+			<td class="item-description">
+				<span class="editable" id="single_line" field_name="province" object="artist" >
+					<%= @artist.province.html_safe %>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="info-item">Country:</td>
+			<td class="item-description">
+				<span class="editable" id="single_line" field_name="country" object="artist" >
+					<%= @artist.country.html_safe %>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="info-item">Influence:</td>
+			<td class="item-description">
+				<span class="editable" id="text_area" field_name="influence" object="artist" >
+					<%= @artist.influence.html_safe %>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="info-item">Contact info:</td>
+			<td class="item-description">
+				<span class="editable" id="single_line" field_name="contact_info" object="artist" >
+					<%= @artist.contact_info.html_safe %>
+				</span>
+			</td>
+		</tr>
+	</tbody></table>
+</td>
+</tr></tbody></table>
 
-
-.button {margin: 2%; background-color: <%= @artist.profile_layout.div_2_background_colour %>; overflow:  hidden;padding:30px;border:  <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;box-shadow: 3px 3px 7px #777;border-radius: 2px; }
-.div2 {margin: 2%; background-color: <%= @artist.profile_layout.div_2_background_colour %>; overflow:  hidden;padding:30px;border:  <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;box-shadow: 3px 3px 7px #777;border-radius: 2px; }
-.div3 {width:400px; height:80px;margin:30px;background-color: <%= @artist.profile_layout.div_2_background_colour %>; overflow:  hidden;padding:10px;border:  <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;box-shadow: 3px 3px 7px #777;border-radius: 2px; }
-.image {float: left;width:70px; height:70px;margin:1%;overflow:  hidden;border:  <%= @artist.profile_layout.div_2_border_width %>px solid <%= @artist.profile_layout.div_2_border_colour %>;box-shadow: 1px 1px 2px #777;border-radius: 2px; }
-.div1r {max-width: 1000px;min-width:800px; position:absolute;top:5%;right:5%;background-color: <%= @artist.profile_layout.div_1_background_colour %>;overflow: hidden;padding:10px;border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;border-radius: 5px; }
-.div1ra {display: block; float: left; overflow:hidden;max-width: 800px;min-width:300px;background-color: <%= @artist.profile_layout.div_1_background_colour %>;padding:10px;border: <%= @artist.profile_layout.div_1_border_width %>px solid <%= @artist.profile_layout.div_1_border_colour %>;border-radius: 5px;}
-.button:hover { background-color:blue; }
-.toggleDiv {display: none}
-</style>
-
-<body>
-
-<script >
-     $(function(){
-        $.backstretch("<%=@artist.image_url.to_s%>");
-    });
-</script>
-
-<script type="text/javascript">
-
-    $(document).ready(function(){
-
-
-       $('.show_hide').showHide({
-            speed: 300,  // speed you want the toggle to happen
-            easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
-            changeText: 0, // if you dont want the button text to change, set this to 0
-            showText: 'View',// the button text to show when a div is closed
-            hideText: 'Close' // the button text to show when a div is open
-
-        });
-
-
-    });
-</script>
-
-<p id="notice"><%= notice %></p>
-
-<div class= "div1a">
-
-<% if can? :update, @artist %>
-    <table>
-
-        <td><%= link_to 'Admin', artist_admin_path(@artist.url_slug)%></td>
-       <!-- <td><%= link_to 'Destroy', @artist, :method => :delete, :confirm => 'Are you sure?' %></td> -->
-
-    </table>
-
- <% end %>
-
-  <h1>
-
-  <%= @artist.name %>
-</h1>
-
-  <div class="show_hide" rel="#info" >
-  <div class="button"  >
-
-
-      <h2>
-      Info
-      </h2>
-  <!--  <button class="show_hide" href="#" rel="#sliding_div1">Show it</button> -->
-
-
-
-
-  </div>
- </div>
-
-   <div class="show_hide" rel="#songs" >
-    <div class="button">
-
-     <h2>Songs</h2>
-
-
-
-    </div>
- </div>
-
- <div class="show_hide" rel="#albums" >
- <div class="button" >
-
- <h2>Albums</h2>
-
-
-
- </div>
-</div>
-
-<%= link_to 'Have download code?', code_download_path(@artist.url_slug) %>  </br>
-<%= link_to 'More Artists', artists_path %>
-
-</div>
-
-
-
-<!-------------  Second Div ---------->
-
-
-<!------------  Info Section ----->
-
-<div class= "toggleDiv" id= "info"> <!--hides div -->
-    <div  class= "div1ra" >
-
-       <div  class="div2">
-
-        <p>
-          <b>Date founded:</b>
-          <%= @artist.date_founded %>
-        </br>
-        </br>
-
-          <b>City:</b>
-          <%= @artist.city %>
-        </br>
-        </br>
-
-         <b>Province:</b>
-          <%= @artist.province %>
-        </br>
-        </br>
-
-         <b>Country:</b>
-          <%= @artist.country %>
-        </br>
-        </br>
-          <b>Influence:</b>
-          <%= @artist.influence %>
-        </br>
-        </br>
-          <b>Bio:</b>
-          <%= @artist.bio %>
-        </br>
-        </br>
-
-          <b>Contact info:</b>
-          <%= @artist.contact_info %>
-        </br>
-        </br>
-
-        </p>
-      </div>
-    </div>
-</div>
-
- <!-- Songs Section -->
-
-<div class= "toggleDiv" id= "songs">     <!--hides div -->
-
-     <div  class= "div1ra" >
-     <!-- <div class="div2">  -->
-
-
-            <% @artist.songs.uniq.each do |songs| %>
-
-                <% unless songs.song_url_slug.blank?%>
-                  <div class= "div3">
-                    <div class= "image"><h3><%= link_to "Play", download_url_for(songs.s3_id), :class => "html5" %></h3></div>
-                          <h3><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug) %> </h3>
-
-
-                  </div>
-              <% end %>
-            <% end %>
-
-
-      <!-- </div> -->
-
-    </div>
-</div>
-
- <!-- Albums Section -->
-<div class= "toggleDiv" id= "albums">     <!--hides div -->
-    <div  class= "div1ra" >
-
-    <% @artist.albums.uniq.each do |albums| %>
-        <% unless albums.album_url_slug.blank?%>
-            <div class ="div3">
-              <div class= "image"></div>
-              <h3><%= link_to albums.al_name, artist_show_album_path(@artist.url_slug,albums.album_url_slug) %> </h3>
-            </div>
-        <% end %>
-    <% end %>
-
-    </div>
-</div>
- <section id="audio">
-                </section>
-
-</body>
