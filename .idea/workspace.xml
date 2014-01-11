@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca5751d9-b9bd-4fae-aeda-cef8e2f8e428" name="Default" comment="Merge branch 'master' of https://github.com/therealtedkennedy/music3&#10;&#10;Conflicts:&#10;&#9;.DS_Store&#10;">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/icons.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/sprites.png" afterPath="$PROJECT_DIR$/public/images/sprites.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/artists/default.css.erb" afterPath="$PROJECT_DIR$/app/views/artists/default.css.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/skin/black_and_yellow/jplayer-black-and-yellow.css" afterPath="$PROJECT_DIR$/public/skin/black_and_yellow/jplayer-black-and-yellow.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/profile_edit_layout.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/profile_edit_layout.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="music3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,10 +35,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="artist_admin.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="artist_admin.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="918" column="52" selection-start="25025" selection-end="25025" vertical-scroll-proportion="-12.04" vertical-offset="13168" max-vertical-offset="13860">
+            <state line="915" column="23" selection-start="0" selection-end="25025" vertical-scroll-proportion="0.8394004" vertical-offset="13333" max-vertical-offset="13860">
               <folding />
             </state>
           </provider>
@@ -59,10 +53,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile_edit_layout.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="profile_edit_layout.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/profile_edit_layout.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="186" column="50" selection-start="3361" selection-end="3361" vertical-scroll-proportion="0.095744684" vertical-offset="2745" max-vertical-offset="13620">
+            <state line="194" column="27" selection-start="3654" selection-end="3654" vertical-scroll-proportion="-6.875" vertical-offset="2745" max-vertical-offset="13620">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
               <folding />
             </state>
           </provider>
@@ -73,20 +76,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state line="28" column="83" selection-start="1019" selection-end="1019" vertical-scroll-proportion="141.25" vertical-offset="3810" max-vertical-offset="6615">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin_controls.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/admin_controls.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="900">
-              <folding>
-                <marker date="1386547519000" expanded="true" signature="541:1162" placeholder="..." />
-                <marker date="1386547519000" expanded="true" signature="642:1127" placeholder="..." />
-                <marker date="1386547519000" expanded="true" signature="1278:1816" placeholder="..." />
-                <marker date="1386547519000" expanded="true" signature="1411:1766" placeholder="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -313,78 +302,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="black_and_yellow" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -434,28 +351,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="layouts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="music3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="artists" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -986,11 +881,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.text.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="348" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/first_mailer/thank_you_download.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="91" selection-start="602" selection-end="602" vertical-scroll-proportion="-10.0" vertical-offset="45" max-vertical-offset="540" />
@@ -1244,10 +1134,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
           <folding>
-            <marker date="1386547519000" expanded="true" signature="541:1162" placeholder="..." />
-            <marker date="1386547519000" expanded="true" signature="642:1127" placeholder="..." />
-            <marker date="1386547519000" expanded="true" signature="1278:1816" placeholder="..." />
-            <marker date="1386547519000" expanded="true" signature="1411:1766" placeholder="..." />
+            <marker date="1386547519000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1386547519000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1386547519000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1386547519000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1287,13 +1177,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="918" column="52" selection-start="25025" selection-end="25025" vertical-scroll-proportion="-12.04" vertical-offset="13168" max-vertical-offset="13860">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/artists/default.css.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="583" column="10" selection-start="13834" selection-end="13834" vertical-scroll-proportion="-135.6" vertical-offset="1965" max-vertical-offset="10125">
@@ -1310,7 +1193,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/profile_edit_layout.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="186" column="50" selection-start="3361" selection-end="3361" vertical-scroll-proportion="0.095744684" vertical-offset="2745" max-vertical-offset="13620">
+        <state line="194" column="27" selection-start="3654" selection-end="3654" vertical-scroll-proportion="-6.875" vertical-offset="2745" max-vertical-offset="13620">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/artist_admin.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="915" column="23" selection-start="0" selection-end="25025" vertical-scroll-proportion="0.8394004" vertical-offset="13333" max-vertical-offset="13860">
           <folding />
         </state>
       </provider>
