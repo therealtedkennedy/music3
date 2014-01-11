@@ -110,6 +110,7 @@ $(document).ajaxSend(function(e, xhr, options) {
 
 window.onresize = function(event) {
     $('.player_nav').css({top: window.innerHeight - $('.player_nav').height()});
+    adjustContentHeight();
 }
 
 
@@ -117,7 +118,6 @@ var DEBUGGING = true;
 $(document).ready(function () {
 	if ($.browser.msie && parseInt($.browser.version) < 10)
 		alert("IE9 and older are not supported.");
-		
 
 	myPlaylist = initializePlayList(playlistSongs);
 	$('.player_nav').css({top: window.innerHeight - $('.player_nav').height()});
@@ -166,6 +166,11 @@ $(document).ready(function () {
 
 
 	});
+
+	//wait for elements to be on page and then set the content innerHeight
+	setTimeout(function() {
+		adjustContentHeight();
+	}, 25);
 
 	//chrome work around  prevents popstate, and then ajax load of content on first page load (there is probably better but this was easy).  Holds of one the popstate listener for a certian amount of time. Then loads it (i think anyway)
 	setTimeout(function () {
@@ -227,7 +232,6 @@ $(document).ready(function () {
 	//to rails form submit
 	form_upload_rails();
 
-
 	//direct to s3 upload
    s3_direct_upload();
    nav_selector();
@@ -246,11 +250,7 @@ $(document).ready(function () {
 	    ted_log("in show edit controls")
 
 	<% end %>
-
-
 });
-
-
 
 
 //	Loads Facebook like button script after ajax call
@@ -725,8 +725,10 @@ function nav_selector(){
 }
 
 
-
-
+function adjustContentHeight(){
+    var height = document.documentElement.clientHeight - $('.miniPage').offset().top - 135;
+    $('.miniPage').css("height", height > 0 ? height : 100 + "px");
+}
 
 //was for changing meta information on content load
 //	function change_meta() {
@@ -843,10 +845,10 @@ function ted_log() {
 						<ul class="jp-controls" style="display:inline; list-style-type:none;">
 
 							<li><span class="jp-play" tabindex="1"></span></li>
-							<li><a href="#" class="jp-pause" tabindex="1" data-icon="&#x22;"></a></li>
+							<li><span class="jp-pause" tabindex="1"></span></li>
 
 							<li><span class="jp-mute" tabindex="1"></span></li>
-							<li><a href="#" class="jp-unmute" tabindex="1" data-icon="&#x25;"></a></li>
+							<li><span class="jp-unmute" tabindex="1"></span></li>
 						</ul>
 				</div>
 
@@ -911,7 +913,6 @@ function ted_log() {
 
 
 </div>
-
 
 </body>
 </html>
