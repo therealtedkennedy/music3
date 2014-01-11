@@ -1,19 +1,30 @@
 <!--loads both edit controls, and floating content. Refeshes all content-->
 
-<div class="edit-controls">
-
-	<script type="text/javascript">
-		//http://redhotsly.github.io/simple-expand/
-		$('.adminLink').simpleexpand({'defaultTarget': '.edit-controls' });
-	</script>
+<div class="row-fluid">
 
 
-	<%= render template: "layouts/admin_controls.erb" %>
+
+
+  <div class="bodyArea span10 offset1">
+
+     <%= render template: "layouts/artist_floating_content.html.erb" %>
+
+  </div>
+
+  <div class="edit-controls span3 pull-right hide" >
+
+    <%= render template: "layouts/admin_controls.erb" %>
+
+  </div>
+
+
+
 
 </div>
 
-<div class="bodyArea">
 
-	<%= render template: "layouts/artist_floating_content.html.erb" %>
 
-</div>
+
+
+
+

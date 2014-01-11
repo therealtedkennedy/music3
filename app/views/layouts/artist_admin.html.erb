@@ -234,20 +234,15 @@ $(document).ready(function () {
    twitter_follow();
 
 
-
-
-
-
-
-
-
+   //admin click listener
+    adminMenuClick();
 
 
 
 
 	// displays edit window when edit screen is loaded from html (on refresh ect)
 	<% if @edit == "true" %>
-		$(".edit-controls").show();
+        adminMenuOpen()
 	    ted_log("in show edit controls")
 
 	<% end %>
@@ -371,7 +366,7 @@ function loadContent(href,admin) {
 			//shows admin controls if admin show varible is present.  Used when admin is request from json from an object outside of the current artist
 			if (json.hasOwnProperty('admin-show')|| admin == true){
 				ted_log("in admin show")
-				$(".edit-controls").show();
+				adminMenuOpen();
 			}
 
 			//catches form to do json/ajax upload
@@ -393,6 +388,50 @@ function loadContent(href,admin) {
        May need logic at a later point if loading content without changing the url */
 	// HISTORY.PUSHSTATE
 	history.pushState('', 'New URL: ' + href, href);
+}
+
+
+function adminMenuClick() {
+
+    $('.admin').click(function(event) {
+                ted_log("clicked")
+                event.preventDefault();
+                var adminButtonState = $(this).attr('state')
+
+                if (adminButtonState == "open") {
+                    adminMenuClose()
+                }
+
+                else if ((adminButtonState == "closed")) {
+                    adminMenuOpen()
+                }
+                ;
+
+                ted_log("adminButtonState: " + adminButtonState);
+
+
+            }
+    )
+
+}
+
+
+function adminMenuOpen(){
+
+    $(".edit-controls").show()
+    $(".admin").attr('state',"open");
+    $(".bodyArea").addClass("span8").removeClass("span10");
+
+}
+
+
+function adminMenuClose(){
+
+    $(".edit-controls").hide();
+    $(".admin").attr('state',"closed");
+    $(".bodyArea").removeClass("span8").addClass("span10");
+
+
 }
 
 //removes http:// from url
@@ -803,10 +842,10 @@ function ted_log() {
 					</div>
 						<ul class="jp-controls" style="display:inline; list-style-type:none;">
 
-							<li><a href="#" class="jp-play" tabindex="1" data-icon="&#x27;"></a></li>
+							<li><span class="jp-play" tabindex="1"></span></li>
 							<li><a href="#" class="jp-pause" tabindex="1" data-icon="&#x22;"></a></li>
 
-							<li><a href="#" class="jp-mute" tabindex="1" data-icon="&#x24;"></a></li>
+							<li><span class="jp-mute" tabindex="1"></span></li>
 							<li><a href="#" class="jp-unmute" tabindex="1" data-icon="&#x25;"></a></li>
 						</ul>
 				</div>
@@ -833,8 +872,8 @@ function ted_log() {
 					<%= link_to "Sign in", new_user_session_path %>
 				<% end %>
 			</div>
-			<div class="admin">
-				<a href=# class="adminLink" data-icon="&#x23;"></a>
+			<div class="admin" state="closed">
+				<span class="adminLink"></span>
 			</div>
 		</div>
 
@@ -858,7 +897,7 @@ function ted_log() {
 	  <!--Two if conditions because rails is lame. One for edit, one for show.  No idea why one doest work for both situations, but they dont. Also object type is not nil because if you define object_type="true" it fails when artist pages load becuase they don't have an artist type defined.   Change if you want to waste an hour of your life-->
 	<% if  !@object_type.nil? %>
 
-		<div class="bodyArea">
+
 
 			<%= render template: "layouts/user" %>
 

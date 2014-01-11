@@ -36,7 +36,6 @@
 
 }
 
-
     /*User can edit*/
     <% if @artist.profile_layout.use_css == true %>
 
@@ -269,12 +268,13 @@
         overflow:hidden;
     }
 
+
     .bodyArea
     {
-        overflow:auto;
+        /*overflow:auto;*/
 
-        margin-top 50px;
-        padding:70px;
+        margin-top: 50px;
+        /*padding:70px;*/
 
         /*background-color:#f4e2d2;*/
     }
@@ -313,7 +313,9 @@
         text-align: center;
         display:block;
     }
-
+    .navArea .nav {
+        margin-bottom: 0px;
+    }
         .bodyArea .nav
         {
             width:25%;
@@ -375,7 +377,7 @@
 
     .miniPage .album
     {
-        width:290px;
+        width:228px;
         height:300px;
         text-align: center;
         cursor: pointer;
@@ -472,8 +474,17 @@
     }
 
     .adminLink {
-        color: #ffffff;
-        vertical-align: middle;
+        background: url(../../images/sprites.png) -320px 0px no-repeat;
+        width: 30px;
+        height: 30px;
+        float: right;
+    }
+
+    .adminLink:hover {
+        background: url(../../images/sprites.png) -352px 0px no-repeat;
+        width: 30px;
+        height: 30px;
+        float: right;
     }
 
     .audio {
@@ -508,19 +519,15 @@
 	.edit-controls {
 
 		/*displays edit controls where value edit is passed from the controller.  Used for new, and edit views*/
-		<% if @edit == "true" %>
-	 	   display:block;
-		<% else %>
-		display:none;
-		<%end%>
-		float: right;
+
+		/*float: right;*/
 		/*display: inline-block;*/
-		width: 320px;
+		/*width: 320px;*/
 		background: #2E2E2E;
-		padding: 5px;
+		/*padding: 5px;*/
         margin-top: 50px;
-        top:60px;
-        position:relative;
+        /*top:60px;*/
+        /*position:relative;*/
 	}
 
     /*info*/
