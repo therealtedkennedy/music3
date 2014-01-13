@@ -355,11 +355,16 @@ function loadContent(href,admin) {
 				$(".artistLogoArea").hide();
 				$(".navArea").hide();
 				$('form[data-validate]').validate();
+
+                /*adjusts the height of the mini page div*/
+                adjustContentHeight()
 			}
 
 			else if(json.hasOwnProperty('show')){
 				$(".artistLogoArea").show();
 				$(".navArea").show();
+                /*adjusts the height of the mini page div*/
+                adjustContentHeight()
 			};
 
 
@@ -381,6 +386,7 @@ function loadContent(href,admin) {
 		},
 
 		dataType:"json"
+
 	});
 
 
@@ -388,6 +394,8 @@ function loadContent(href,admin) {
        May need logic at a later point if loading content without changing the url */
 	// HISTORY.PUSHSTATE
 	history.pushState('', 'New URL: ' + href, href);
+
+
 }
 
 
@@ -420,7 +428,7 @@ function adminMenuOpen(){
 
     $(".edit-controls").show()
     $(".admin").attr('state',"open");
-    $(".bodyArea").addClass("span8").removeClass("span10");
+    $(".artistArea").addClass("span8").removeClass("span10");
 
 }
 
@@ -429,7 +437,7 @@ function adminMenuClose(){
 
     $(".edit-controls").hide();
     $(".admin").attr('state',"closed");
-    $(".bodyArea").removeClass("span8").addClass("span10");
+    $(".artistArea").removeClass("span8").addClass("span10");
 
 
 }
@@ -728,6 +736,7 @@ function nav_selector(){
 function adjustContentHeight(){
     var height = document.documentElement.clientHeight - $('.miniPage').offset().top - 135;
     $('.miniPage').css("height", height > 0 ? height : 100 + "px");
+    ted_log("in adjust content height ="+height)
 }
 
 //was for changing meta information on content load

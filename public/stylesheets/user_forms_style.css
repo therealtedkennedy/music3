@@ -52,10 +52,8 @@ html, body {
 .userInfo {
     margin-right: auto;
     margin-left: auto;
-    background-color: #2E2E2E;
     display: block;
     margin-top: 20px;
-    width: 700px;
     text-align: center;
 }
 
@@ -69,4 +67,20 @@ a.nav {
 a.nav:hover {
     color: #666;
     text-decoration: none;
+}
+
+.userHome{
+    min-height:300px;
+
+    /*max-height:600px;*/
+
+    margin-top: 50px;
+    background-image: url('/images/70black.png');
+    overflow:auto;
+    margin:0 auto;
+    bottom:0;
+    padding:20px;
+    font-family: 'verb_regularregular';
+    color:#fff;
+
 }
