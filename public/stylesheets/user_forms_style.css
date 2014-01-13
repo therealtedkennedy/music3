@@ -75,9 +75,10 @@ a.nav:hover {
     /*max-height:600px;*/
 
     margin-top: 50px;
+    margin-bottom:100px;
     background-image: url('/images/70black.png');
     overflow:auto;
-    margin:0 auto;
+
     bottom:0;
     padding:20px;
     font-family: 'verb_regularregular';
