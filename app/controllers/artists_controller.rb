@@ -16,7 +16,7 @@ class ArtistsController < ApplicationController
   def index
     @artists = Artist.all
     @artist = Artist.find(1)
-    @artist.image = "../assets/images/pages/welcome/records_shelves_trans_40.png"
+    @artist.image = "../assets-public/images/pages/welcome/records_shelves_trans_40.png"
 
 
     respond_to do |format|

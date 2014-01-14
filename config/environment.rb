@@ -1,8 +1,8 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 
-#config.assets.enabled = true
-#config.assets.paths << "#{Rails.root}/app/assets/fonts"
+#config.assets-public.enabled = true
+#config.assets-public.paths << "#{Rails.root}/app/assets-public/fonts"
 
 
 # Initialize the rails application
