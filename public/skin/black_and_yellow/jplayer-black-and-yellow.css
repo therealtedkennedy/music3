@@ -74,6 +74,10 @@ div.jp-playlist li:not(.jp-playlist-current) {
 	margin-top:10px;
 }
 
+.jp-playlist div.wrapper {
+	line-height:18px;
+}
+
 .playlist {
 	line-height: 22px;
 
@@ -91,6 +95,8 @@ a.playlist {
 
 .songList {
 	padding: 0 2em;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	display: inline-block;
 }
 .songList li {
