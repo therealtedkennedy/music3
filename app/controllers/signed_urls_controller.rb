@@ -48,7 +48,7 @@ class SignedUrlsController < ApplicationController
 									["starts-with", "$Content-Disposition", ""],
 									["content-length-range", 0, 104857600],
 									["starts-with", "$x-amz-meta-my-file-name", ""],
-                  ["starts-with", "$Content-Type", "audio/mpeg"],
+                  ["starts-with", "$Content-Type", ""],
 									{ success_action_status: '201' }
 							]
 					}.to_json
