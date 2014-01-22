@@ -16,13 +16,13 @@
 
 
 	<div class="field">
-		<%= f.label "Album Name" %><br />
+		<%= f.label "Album Name" %>
 		<%= f.text_field :al_name, :validate => { :valid => true } %>
 	</div>
 
 	<%= hidden_field_tag(:url_slug, @artist.url_slug  ) %>
 
 	<div class="actions">
-		<%= f.submit %>
+		<%= f.submit :class=>"btn btn-default" %>
 	</div>
 <% end %>

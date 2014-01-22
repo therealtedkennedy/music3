@@ -122,7 +122,7 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     @artist = Artist.find(@album.al_a_id)
     authorize! :update, @artist
-	@edit = "true" #allows edit page to load correctly when page is refreshed
+	  @edit = "true" #allows edit page to load correctly when page is refreshed
 
 	#loads image forms
 	image_upload_prep(@artist,@album)

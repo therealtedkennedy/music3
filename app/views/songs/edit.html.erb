@@ -5,27 +5,34 @@
 	});
 </script>
 
-
-<div class="editPage">
-
-	<h2>Update Song Info</h2>
-	<p> Song ID: <%= @song.id %>   </br>
-	  S3_name: <%= @song.s3_id %> </p>
-
-	<h2>Re Upload Song</h2>
-
-	<%= @s3_upload.html_safe %>
+<div class="row-fluid">
+  <!-- Contact form -->
+  <div class="span10 offset1">
+    <div class="row-fluid">
 
 
-	<h2>Upload Image</h2>
-	<%= @song_image_upload.html_safe %>
+        <div class="editPage">
+
+            <h2>Editing Song</h2>
 
 
-	<h2>Update Info</h2>
+            <h3>Re Upload Song</h3>
 
-	<%= @form.html_safe %>
+            <%= @s3_upload.html_safe %>
 
 
-	</br>
+            <h3>Upload Image</h3>
+            <%= @song_image_upload.html_safe %>
 
-</div>
+
+            <h3>Update Info</h3>
+
+            <%= @form.html_safe %>
+
+
+            </br>
+
+        </div>
+     </div>
+   </div>
+  </div>

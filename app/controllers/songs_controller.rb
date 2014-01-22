@@ -106,7 +106,6 @@ class SongsController < ApplicationController
 		@edit = "true"
 
 		@id = @song.id
-        @object_type = "song"
 		@bucket = BUCKET
 		@object_id = @song.s3_id
 
@@ -116,7 +115,7 @@ class SongsController < ApplicationController
 		@s3_upload = render_to_string('shared/_s3_upload_form', :layout => false)
 
 		#updates s3 meta data. takes artist slug, object id (for song, album ect.  if one doesn't exist =1), and object type (song,album,image ect)
-		@meta_update_url = update_s3_meta_url(@artist.url_slug,@song.id,@object_type)
+		@meta_update_url = update_s3_meta_url(@artist.url_slug,@song.id,:"songs")
 
 		#preps image form
 		image_upload_prep(@artist,@song)
@@ -183,12 +182,12 @@ class SongsController < ApplicationController
 
 		@s3_key = S3_KEY
 		@bucket = BUCKET
-		@object_type = "song"
+		#@object_type = "song"
 		@object_id = @song.id.to_s + ".mp3"
 
 
 		# Updates s3 meta data. takes artist slug, object id (for song, album ect.  if one doesn't exist =1), and object type (song,album,image ect)
-		@meta_update_url = update_s3_meta_url(@artist.url_slug,@song.id,@object_type)
+		@meta_update_url = update_s3_meta_url(@artist.url_slug,@song.id,"song")
 
 
 		@form = render_to_string('songs/_form_upload_song', :layout => false)

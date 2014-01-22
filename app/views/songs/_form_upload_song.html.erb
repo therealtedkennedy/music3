@@ -19,22 +19,22 @@
 
    <div class="field">
      <%= f.label :song_name %>
-     <%= f.text_field :song_name %>
+     <%= f.text_field :song_name,:class=>"span12" %>
    </div>
 
   <div class="field">
     <%= f.label :song_artist %><br />
-    <%= f.text_field :song_artist, :value => @artist.name %>
+    <%= f.text_field :song_artist, :value => @artist.name,:class=>"span12" %>
   </div>
 
   <div class="field">
     <%=f.label :song_contribute_artist %><br />
-    <%=f.text_field :song_contribute_artist %>
+    <%=f.text_field :song_contribute_artist,:class=>"span12" %>
   </div>
 
   <div class="field">
     <%= f.label :song_written %><br />
-    <%= f.text_field :song_written %>
+    <%= f.text_field :song_written,:class=>"span12" %>
   </div>
   <div class="field">
     <%= f.label :song_licence_type %><br />
@@ -44,22 +44,18 @@
     <%= f.label :song_licence_date %><br />
     <%= f.date_select :song_licence_date, :start_year => 1900   %>
   </div>
-  <div class="field">
-    <%= f.label :song_plays %><br />
-    <%= f.text_field :song_plays %>
-  </div>
    <div class="field">
     <%= f.label :song_url_slug %><br />
-    <%= f.text_field :song_url_slug %>
+    <%= f.text_field :song_url_slug,:class=>"span12" %>
   </div>
   <div class="field">
     <%= f.label :lyrics %><br />
-    <%= f.text_area :lyrics %>
+    <%= f.text_area :lyrics,:class=>"span12",:rows => "5" %>
   </div>
 
   <div class="actions">
     </div>
-    <%= f.submit "Upload" %>
+    <%= f.submit "Upload", :class=>"btn btn-default" %>
     <input id="artist_id" name="artist_id" type="hidden" value="<%=@artist_id %>" />
     <input id="form_song_id" name="form_song_id" type="hidden" value="<%= @song.id %>" />
 

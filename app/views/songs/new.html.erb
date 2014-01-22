@@ -1,22 +1,30 @@
 
 <script type="text/javascript" src="/javascripts/hide-logo-and-nav.js"></script>
 
-<div class="editPage">
+<div class="row-fluid">
+  <!-- Contact form -->
+  <div class="span10 offset1">
+    <div class="row-fluid">
 
-<h1>Create a new song</h1>
+        <div class="editPage">
 
-<h2>Upload Song</h2>
+            <h2>New Song</h2>
 
-	<%= @s3_upload.html_safe %>
+            <h3>Upload Song</h3>
 
-<h2>Upload Image</h2>
-	<%= @song_image_upload.html_safe %>
+                <%= @s3_upload.html_safe %>
 
-<h2>Song Info </h2>
+            <h3>Upload Image</h3>
+                <%= @song_image_upload.html_safe %>
+
+            <h3>Song Info </h3>
 
 
-	<%= @form.html_safe %>
+                <%= @form.html_safe %>
 
-</br>
+            </br>
 
+        </div>
+    </div>
+  </div>
 </div>
