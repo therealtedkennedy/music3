@@ -13,6 +13,7 @@ class Artist < ActiveRecord::Base
  validates_presence_of :name
  validates_uniqueness_of :name, :case_sensitive => false
  validates_format_of :pay_pal, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :allow_blank => true
+ validates_presence_of :pay_pal
 
   before_validation :strip_whitespace
 

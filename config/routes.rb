@@ -19,10 +19,10 @@ Music3::Application.routes.draw do
 
 	#orders
 
-	match "orders/paypal/to_chained/:object/:url_slug/:song_album_or_event_id" => "orders#chained_payment", :as => :chained_payment
-	match "orders/paypal/to_free_download/:object/:url_slug/:song_album_or_event_id" => "orders#free_download", :as => :download_free
+	match "/:url_slug/orders/paypal/to_chained/:object/:song_album_or_event_id" => "orders#chained_payment", :as => :chained_payment
+	match "/:url_slug/orders/paypal/to_free_download/:object/:song_album_or_event_id" => "orders#free_download", :as => :download_free
 	match "orders/pwyc" => "orders#pwyc", :as => :pwyc_form #route  pwyc form
-	match "orders/payment_method/:object/:url_slug/:song_album_or_event_id" => "orders#payment_method", :as => :payment_method
+	match ":url_slug/orders/payment_method/:object/:song_album_or_event_id" => "orders#payment_method", :as => :payment_method
 	match "orders/paypal/login_prompt" => "orders#login_prompt", :as => :login_prompt
 
 

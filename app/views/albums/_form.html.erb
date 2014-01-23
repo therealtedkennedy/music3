@@ -15,106 +15,84 @@
     </div>
   <% end %>
 
+    <h3>Choose Songs for Album</h3>
+
+    <div class="field">
+      <% @artist.songs.uniq.each do |s| %>
+          <% unless s.song_url_slug.blank?%>
+              <% unless s.s3_id.nil? %>
+                  <label class="checkbox">
+                    <%=check_box_tag "album_songs[songs_id][]", s.id, @song_ids.include?(s.id) %>
+                    <%= s.song_name %>
+                    <%= link_to "- Play", download_url_for(s.s3_id), :class => "html5" %>
+                  </label>
+              <% end %>
+          <% end %>
+      <% end %>
+
+      <%= hidden_field_tag(:url_slug, @artist.url_slug  ) %>
+    </div>
+
+    <h3>Album Info</h3>
+
 
 <div class="field">
-    <%= f.label :al_name %><br />
-    <%= f.text_field :al_name, :validate => { :valid => true } %>
+    <%= f.label "Album Name" %>
+    <%= f.text_field :al_name, :validate => { :valid => true },:class=>"span12" %>
   </div>
 
 	<div class="field">
-		<%= f.label "Album Description - Used when people share it"  %><br />
-		<%= f.text_field :description %>
+		<%= f.label "Socail Description: Message when shared on twitter or facebook"  %>
+		<%= f.text_field :description,:class=>"span12" %>
 	</div>
 
-	<div class="field">
-		<%= f.label "Social Promotion " %><br />
-		<%= f.check_box :social_on %>
-	</div>
+  <!--<div class="field">-->
+    <!--<%=f.label "Type" %>-->
+    <!--<%=f.select :al_type, [["Album", "album"], ["Set", "set"], ["EP", "ep"],["Track List", "track_list"] ],:class=>"span12" %>-->
+  <!--</div>-->
+
 
   <div class="field">
-    <%=f.label "Type" %><br />
-    <%=f.select :al_type, [["Album", "album"], ["Set", "set"], ["EP", "ep"],["Track List", "track_list"] ] %>
+    <%= f.label "Artist" %>
+    <%= f.text_field :pri_artist,  :value => @artist.name,:class=>"span12"%>
   </div>
 
-
-
-
-
-
-
   <div class="field">
-    <%= f.label "Primary Artist" %><br />
-    <%= f.text_field :pri_artist,  :value => @artist.name%>
+    <%= f.label "Copywrite"  %>
+    <%= f.text_field :al_copy_write,:class=>"span12" %>
   </div>
   <div class="field">
-    <%= f.label "Contributing Artist" %><br />
-    <%= f.text_field :contrib_artist %>
-  </div>
-  <div class="field">
-    <%= f.label "Copywrite"  %><br />
-    <%= f.text_field :al_copy_write %>
-  </div>
-  <div class="field">
-    <%= f.label "Release Date" %><br />
+    <%= f.label "Release Date" %>
     <%= f.date_select :al_rel_date, :start_year => 1900 %>
   </div>
-  <h2>Payment Options</h2>
-
-  <% if @artist.pay_pal.blank? %>
+  <h3>Payment Options</h3>
 
     <div class="field">
-    <%= f.label "Payment Type" %>  No Paypal account on primary Artist. <br />
-    <%=f.select :pay_type, [["Free", "free"]] %>
-  </div>
-  <% else %>
-      <div class="field">
-        <%= f.label "Payment Type" %><br />
-        <%=f.select :pay_type, [["Free", "free"], ["PWYC", "pwyc"], ["Pay", "pay"] ] %>
-      </div>
-
-    <div class="field">
-        <%= f.label "Amount" %><br />
+        <%= f.label "Minimum Amount" %>
         <%= f.text_field :al_amount, :size => 2%>
-  </div>
-  <% end %>
+    </div>
 
 
-  <h2>Album Details</h2>
+  <h3>Album Details</h3>
   <div class="field">
-    <%= f.label "Producer" %><br />
-    <%= f.text_field :producer %>
+    <%= f.label "Producer" %>
+    <%= f.text_field :producer,:class=>"span12" %>
   </div>
   <div class="field">
-    <%= f.label "Engineer"  %><br />
-    <%= f.text_field :al_producer %>
+    <%= f.label "Engineer"  %>
+    <%= f.text_field :al_producer,:class=>"span12" %>
   </div>
 
   <div class="field">
-    <%= f.label "Liner Notes"  %><br />
-    <%= f.text_area :liner_notes %>
+    <%= f.label "Liner Notes"  %>
+    <%= f.text_area :liner_notes,:class=>"span12",:rows=>"5" %>
   </div>
 
-  <h2>Choose Songs for Album</h2>
 
-<div class="field">
 
-<ul>
 
-<% @artist.songs.uniq.each do |s| %>
-    <% unless s.song_url_slug.blank?%>
-        <% unless s.s3_id.nil? %>
-          <li><%= link_to s.song_name, artist_show_song_path(@artist.url_slug, s.song_url_slug) %>
-          <%= link_to "Play", download_url_for(s.s3_id), :class => "html5" %>
-          <%=check_box_tag "album_songs[songs_id][]", s.id, @song_ids.include?(s.id) %>
-          </li>
-        <% end %>
-  <% end %>
-<% end %>
-</ul>
- <%= hidden_field_tag(:url_slug, @artist.url_slug  ) %>
-</div>
-
+  <br/>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=>"btn btn-default" %>
   </div>
 <% end %>

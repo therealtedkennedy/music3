@@ -32,6 +32,7 @@ class OrdersController < ApplicationController
 
     if params[:amount].nil?
       @amount = @album.al_amount
+
     else
       @amount = params[:amount]
     end
@@ -41,8 +42,30 @@ class OrdersController < ApplicationController
 	#checks if user has downloaded already
     downloaded_already(params[:song_album_or_event_id])
 
-    redirect_to chained_payment_path(params[:object], params[:url_slug], @album.id,:amount => @amount)
+    logger.info "Object Param= "+params[:object].to_s
+    logger.info "Artist Slug Param= "+params[:url_slug].to_s
+    logger.info "Song_album_or_event_id= "+params[:song_album_or_event_id].to_s
 
+    if params[:amount] == "0"
+
+      redirect_to social_promo_url(params[:url_slug],params[:object],params[:song_album_or_event_id])
+
+    else
+
+      redirect_to chained_payment_path(params[:object], params[:url_slug], @album.id,:amount => @amount)
+
+    end
+
+
+
+
+
+  end
+
+  def download_without_paypal(url_slug,object,song_album_or_event_id)
+
+
+      return
 
   end
 
@@ -154,7 +177,7 @@ class OrdersController < ApplicationController
  def payment_prep(object,artist_url_slug,song_album_or_event_id,amount)
 	   @object = object
 
-       logger.info "params amount"
+     logger.info "params amount"
 	   logger.info amount
 
 	   #finds Artist
@@ -166,28 +189,36 @@ class OrdersController < ApplicationController
 		 @download_url = album_download_url(artist_url_slug,@album.album_url_slug)
 		 @cnx_url = artist_show_album_url(artist_url_slug,@album.album_url_slug)
 
-		 if @album.pay_type == "pay"
-			 @amount = @album.al_amount
 
-		 elsif @album.pay_type == "pwyc"
-			 @amount = amount
+       if @album.pay_type == "pay"
+         @amount = @album.al_amount
 
-			 logger.info "in pwyc in payment prep"
-			 logger.info "params amount"
-			 logger.info amount
-			 logger.info "@amount"
-			 @amount = @amount.to_i
-			 logger.info @amount
+       elsif @album.pay_type == "pwyc"
+         @amount = amount
 
-		 else
+         logger.info "in pwyc in payment prep"
+         logger.info "params amount"
+         logger.info amount
+         logger.info "@amount"
+         @amount = @amount.to_i
+         logger.info @amount
 
-			@amount = 100
-			# @amount = amount.to_i
-		 end
-		 logger.info @amount
-	   else
+       else
 
-	#how much the artist makes is calculated in the chained payment model
+         @amount = amount
+
+         logger.info "in payment prep"
+         logger.info "params amount"
+         logger.info amount
+         logger.info "@amount"
+         @amount = @amount.to_i
+         logger.info @amount
+
+       end
+        logger.info @amount
+       else
+
+    #how much the artist makes is calculated in the chained payment model
 
 
 	  end

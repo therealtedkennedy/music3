@@ -10,6 +10,7 @@ before_save :generate_slug
 before_validation :strip_whitespace
 
 validates :al_name, :presence => {:message => 'Name cannot be blank'}
+validates :al_amount, :numericality => {:only_integer => true}
 
 #validates for new.  No al_a_id (album artist id for primary artist) has been assoated yet
 #validates :al_name, uniqueness: {scope: , case_sensitive: false,  message: "Name has already been taken please choose another." }, allow_nil: true

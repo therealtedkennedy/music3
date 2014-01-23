@@ -40,10 +40,7 @@
 	</table>
 
  		<h2>Want it? Get it!</h2>
-		<% if @album.pay_type == "pay" %>
-			<%= link_to "Buy Now: Only $"+@album.al_amount.to_s+"!", payment_method_path("album",@artist.url_slug,@album.id ) %>
 
-		<% elsif @album.pay_type == "pwyc" %>
 			<!--gets csrf token and passes into hidden field.  Keeps user logged in after form post-->
 
 			<script type="text/javascript">
@@ -59,61 +56,19 @@
 				<input name="authenticity_token" id="token" type="hidden" value=""/></div>
 
 
-				<label for="amount">Amount $</label>
-				<input id="amount" name="amount" type="text" size="3" value="" />
+				<label for="amount">Amount yes</label>
+				<input id="amount" name="amount" type="text" size="3" value="<%=@album.al_amount%>" />
 				<button name="commit" type="submit" class="fancyButton">Download</button>
 
 				<!--For order processing-->
 
 				<!--defines the type of object it is-->
-				<input id="object" name="object" type="hidden" value="album" />
-				<input id="url_slug" name="url_slug" type="hidden" value="<%= @artist.url_slug %>" />
+                <input id="url_slug" name="url_slug" type="hidden" value="<%= @artist.url_slug %>" />
+                <input id="object" name="object" type="hidden" value="album" />
 				<input id="song_album_or_event_id" name="song_album_or_event_slug" type="hidden" value="<%=@album.id%>" />
 			</form>
-		<% else %>
-			<h3><%= link_to "Download Free",download_free_path("album",@artist.url_slug,@album.id), :class=>"albumLink" %></h3>
-		<% end %>
-<!-- 			<h2>not to be included in actual layout</h2>
 
-			<p><b>Should be in layout - Album Type:</b>
-				<%= @album.al_type%>
-			</p>
-			<p>
 
-			<p>
-				<b>For testing Album ID:</b>
-				<%= @album.id%>
-			</p>
-
-			<p>
-				<b>For Testing - Payment Type:</b>
-				<%= @album.pay_type%></p>
-
-			<p>
-				<b>For test - Amount:</b>
-				<%= @album.al_amount%></p>
-
-			<p>
-				<b>For Testing - Album URL Slug</b>
-				<%= @album.album_url_slug %></p>
-
-			<b>Used for calling an album with just the - Primary Artist:</b>
-			<%= @album.pri_artist%>
-			</p>
-
-			<p>
-
-				<b> For testing - Artist ID </b>
-				<%= @album.al_a_id %>
-			</p>
-
-			<p>
-				<b>Not working yet - Number Of Downloads:</b>
-				<%= @album.downloads%></p>
-
-			<p>
-				<b>Not working yet - Number of Plays:</b>
-				<%= @album.plays%></p> -->
 
 
 </div>

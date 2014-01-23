@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131221191111) do
+ActiveRecord::Schema.define(:version => 20140123071638) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20131221191111) do
     t.string   "al_copy_write"
     t.date     "al_rel_date"
     t.string   "pay_type"
-    t.integer  "al_amount"
+    t.integer  "al_amount",                     :default => 0
     t.string   "producer"
     t.string   "al_producer"
     t.string   "al_label"
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(:version => 20131221191111) do
     t.integer  "downloads"
     t.integer  "plays"
     t.integer  "shares"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.integer  "al_a_id"
     t.integer  "al_s_id"
     t.string   "album_url_slug"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20131221191111) do
     t.integer  "number_of_codes", :default => 0
     t.boolean  "logo_toggle"
     t.string   "profile_image"
+    t.boolean  "super_toggle"
   end
 
   create_table "artists_songs", :id => false, :force => true do |t|

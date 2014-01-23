@@ -6,18 +6,23 @@
 	});
 </script>
 
+<div class="row-fluid">
+  <!-- Contact form -->
+  <div class="span10 offset1">
+    <div class="row-fluid">
+        <div class="editPage">
+            <h2>Editing album</h2>
 
-<div class="editPage">
-	<h1>Editing album</h1>
+            <h3>Album Art Upload</h3>
+            <p>Minimum of 200px by 200px please.</p>
+            <%= @album_art_upload.html_safe  %>
 
-	<h2>Album Art Upload</h2>
-	<p>Minimum of 200px by 200px please.</p>
-	<%= @album_art_upload.html_safe  %>
 
-	<h2>Album Info</h2>
 
-	<%= @form.html_safe %>
+            <%= @form.html_safe %>
 
-	<%= link_to 'Show', @album %>  |
-	<%= link_to 'Back', albums_path %>
-</div>
+        </div>
+     </div>
+    </div>
+  </div>
+
