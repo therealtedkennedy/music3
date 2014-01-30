@@ -50,13 +50,37 @@
 	</tbody></table>
 </td></tr>
 <tr><td></td><td>
-	<%  if can? :create, @artist%>
-    	<%=link_to "Download", download_url_for(@song.s3_id) %> </br>
-	<% else %>
-  		<span class="info-item">  <%= link_to "Sign In", user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %>  to Download </span>
 
-		<%end %>
-	</td>
+  <h2>Want it? Get it!</h2>
+
+  <!--gets csrf token and passes into hidden field.  Keeps user logged in after form post-->
+
+  <script type="text/javascript">
+      $(function(){
+          var token = $('meta[name="csrf-token"]').attr('content');
+          $("#token").val(token);
+      });
+  </script>
+
+  <form accept-charset="UTF-8" action="<%=payment_method_path(@artist.url_slug,"song",@song.id )%>" class="pwyc_form" enctype="multipart/form-data" data-validate="true"  method="post" novalidate="novalidate"><div><input name="utf8" type="hidden" value="&#x2713;" />
+
+
+    <input name="authenticity_token" id="token" type="hidden" value=""/></div>
+
+
+    <label for="amount">Amount</label>
+    <input id="amount" name="amount" type="text" size="3" value="<%=@song.amount%>" />
+    <button name="commit" type="submit" class="fancyButton">Download</button>
+
+    <!--For order processing-->
+
+    <!--defines the type of object it is-->
+    <input id="url_slug" name="url_slug" type="hidden" value="<%= @artist.url_slug %>" />
+    <input id="object" name="object" type="hidden" value="song" />
+    <input id="song_album_or_event_id" name="song_album_or_event_slug" type="hidden" value="<%=@song.id%>" />
+  </form>
+
+</td>
 </tr></tbody></table>
 
 <p id="notice"><%= notice %></p>

@@ -235,6 +235,9 @@ class ArtistsController < ApplicationController
 	  if params[:object] == "album"
 		  @album = Album.find(params[:song_album_or_event_id])
 
+      @object_name = @album.al_name
+      @promo_url = artist_show_album_url(@artist.url_slug,@album.album_url_slug)
+
 		  #in application controller
 		  album_social(@artist,@album)
 
@@ -242,6 +245,9 @@ class ArtistsController < ApplicationController
 
 		  #in application controller
 		  @song = Song.find(params[:song_album_or_event_id])
+
+      @object_name = @song.song_name
+      @promo_url = artist_show_song_url(@artist.url_slug,@song.song_url_slug)
 
 		  song_social(@artist,@song)
 	  end

@@ -62,8 +62,8 @@
           <div class="span12 text-center">
 
                 <div class="span6 text-center">
-                  <h3>Share <%= @album.al_name %></h3>
-                  <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Just downloaded <%=@album.al_name %> by <%=@artist.twitter_name%>. Check it out here"  data-url="<%=artist_show_album_url(@artist.url_slug,@album.album_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a>
+                  <h3>Share <%= @object_name %></h3>
+                  <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Just downloaded <%=@object_name %> by <%=@artist.twitter_name%>. Check it out here"  data-url="<%= @promo_url %>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a>
                 </div>
 
 

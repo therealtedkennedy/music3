@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
 
-    respond_to do |format|user_auth_redirect_path
+    respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @orders }
     end
@@ -25,7 +25,9 @@ class OrdersController < ApplicationController
   end
 
   def payment_method
-       #user selects payment type.  All relevant var's passed through params.  Amount is use for PWYC, all other times its just a place holder
+
+  if params[:object] == "album"
+    #user selects payment type.  All relevant var's passed through params.  Amount is use for PWYC, all other times its just a place holder
     @album = Album.find(params[:song_album_or_event_id])
     logger.info "Album "+@ablum.to_s
 
@@ -37,6 +39,13 @@ class OrdersController < ApplicationController
       @amount = params[:amount]
     end
 
+  elsif params[:object] == "song"
+
+    @amount = params[:amount]
+
+    logger.info "in song. amount= "+ @amount
+
+  end
 
 
 	#checks if user has downloaded already
@@ -48,11 +57,12 @@ class OrdersController < ApplicationController
 
     if params[:amount] == "0"
 
-      redirect_to social_promo_url(params[:url_slug],params[:object],params[:song_album_or_event_id])
+      payment_prep(params[:url_slug],params[:object],params[:song_album_or_event_id],"0")
+      redirect_to social_promo_url(params[:object],params[:url_slug],params[:song_album_or_event_id])
 
     else
 
-      redirect_to chained_payment_path(params[:object], params[:url_slug], @album.id,:amount => @amount)
+      redirect_to chained_payment_path( params[:url_slug],params[:object],params[:song_album_or_event_id],:amount => @amount)
 
     end
 
@@ -135,8 +145,10 @@ class OrdersController < ApplicationController
   # SSL error - http://stackoverflow.com/questions/4528101/ssl-connect-returned-1-errno-0-state-sslv3-read-server-certificate-b-certificat
   logger.info "artist url slug "+ params[:url_slug].to_s
 
+  logger.info "amount in chained payment before payment prep"
+  logger.info @amount
   payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_id], params[:amount])
-  logger.info "amount in chained payment"
+  logger.info "amount in chained payment after payment prep"
   logger.info @amount
   logger.info "Artist?"
   logger.info @artist
@@ -185,9 +197,9 @@ class OrdersController < ApplicationController
 	   #prep for album
 
 	   if @object == "album"
-		 @album = Album.find(song_album_or_event_id)
-		 @download_url = album_download_url(artist_url_slug,@album.album_url_slug)
-		 @cnx_url = artist_show_album_url(artist_url_slug,@album.album_url_slug)
+       @album = Album.find(song_album_or_event_id)
+       @download_url = album_download_url(artist_url_slug,@album.album_url_slug)
+       @cnx_url = artist_show_album_url(artist_url_slug,@album.album_url_slug)
 
 
        if @album.pay_type == "pay"
@@ -216,7 +228,21 @@ class OrdersController < ApplicationController
 
        end
         logger.info @amount
-       else
+
+     elsif @object = "song"
+
+         @song = Song.find(song_album_or_event_id)
+
+         @download_url = "https://s3.amazonaws.com/ted_kennedy/"+@song.id.to_s+".mp3"
+
+
+         @cnx_url = artist_show_song_url(artist_url_slug,@song.song_url_slug)
+
+         @amount = amount
+         @amount = @amount.to_i
+
+
+      else
 
     #how much the artist makes is calculated in the chained payment model
 
@@ -229,6 +255,12 @@ class OrdersController < ApplicationController
 		  :expires => 30.minutes.from_now
 
 		   }
+
+     cookies[:amount] = {
+         :value => [amount],
+         :expires => 30.minutes.from_now
+
+     }
 
 	   #passes values to assign object to users who are not signed in.
 	   if user_signed_in? != true
@@ -243,6 +275,8 @@ class OrdersController < ApplicationController
 			:expires => 30.minutes.from_now
 
 		   }
+
+
 		end
 	end
      # GET /orders/new

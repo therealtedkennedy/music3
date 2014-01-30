@@ -481,10 +481,15 @@ class AlbumsController < ApplicationController
 		 album_s3_url = s3_url_for(ALBUM_BUCKET,@album.id.to_s)
 		 redirect_to album_s3_url
 
-    end
+  end
+
+    logger.info "amount cookie= " +  cookies[:amount].to_s
+
 
     #checks to see if album has been redownloaded already trough the redown param and by passes paykey, orders and assign ablum to user
-    if params[:redown]=="true" or @album.al_amount.nil? or @album.pay_type == "free"
+    if params[:redown]=="true" or @album.al_amount.nil? or @album.pay_type == "free" or cookies[:amount].to_s == "0"
+
+      logger.info "not going to create order"
 
     else
       #creates an oder.  Might be able to make it into its own app controller
