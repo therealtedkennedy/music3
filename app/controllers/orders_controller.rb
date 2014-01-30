@@ -58,7 +58,7 @@ class OrdersController < ApplicationController
     if params[:amount] == "0"
 
       payment_prep(params[:url_slug],params[:object],params[:song_album_or_event_id],"0")
-      redirect_to social_promo_url(params[:object],params[:url_slug],params[:song_album_or_event_id])
+      redirect_to social_promo_url(params[:url_slug],params[:object],params[:song_album_or_event_id])
 
     else
 
