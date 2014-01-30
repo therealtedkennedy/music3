@@ -186,7 +186,7 @@ class OrdersController < ApplicationController
   end
 
   #creates download link, payment amount, and object vars, and sets a cookie
- def payment_prep(object,artist_url_slug,song_album_or_event_id,amount)
+ def payment_prep(artist_url_slug,object,song_album_or_event_id,amount)
 	   @object = object
 
      logger.info "params amount"
