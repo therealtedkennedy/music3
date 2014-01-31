@@ -78,9 +78,11 @@ Music3::Application.routes.draw do
 
 	match "/:url_slug/create/new_layout"  => "profile_layouts#new"
 	match "/:url_slug/profile-edit/css-editor" => "profile_layouts#css_editor", :as => :css_editor
-	match "/:url_slug/profile-edit" => "profile_layouts#edit", :as => :profile_edit
+	match "/:url_slug/profile-edit/" => "profile_layouts#edit", :as => :profile_edit
 	match "/:url_slug/profile-edit/song/:song_url_slug" => "profile_layouts#edit_song", :as => :profile_edit_song
-	match "/:url_slug/profile-edit/album/:album_url_slug" => "profile_layouts#edit_album", :as => :profile_edit_album
+  match "/:url_slug/profile-edit/album/:album_url_slug" => "profile_layouts#edit_album", :as => :profile_edit_album
+  match "/:url_slug/profile-edit/songs" => "profile_layouts#profile_songs", :as => :profile_songs
+  match "/:url_slug/profile-edit/albums" => "profile_layouts#profile_albums", :as => :profile_songs
 	match "/:url_slug/profile-edit/css-editor/update" => "profile_layouts#css_editor_update", :as => :css_editor_update
 	match "/:url_slug/update_profile_layout" => "profile_layouts#update"
 

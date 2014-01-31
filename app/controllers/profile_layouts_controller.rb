@@ -1,6 +1,6 @@
 class ProfileLayoutsController < ApplicationController
 
-	layout "profile_edit_layout", only: [:edit,:css_editor,:edit_song,:edit_album]
+	layout "profile_edit_layout", only: [:edit,:css_editor,:edit_song,:edit_album,:profile_albums,:profile_songs]
 
 
 	def new
@@ -52,7 +52,29 @@ class ProfileLayoutsController < ApplicationController
 		# @artist.save
 
 
-	end
+  end
+
+  def profile_albums
+
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+    @albums = @artist.albums
+    @profile_layout = @artist.profile_layout
+
+    render 'albums/index'
+
+  end
+
+
+  def profile_songs
+
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+    @songs = @artist.songs
+    @profile_layout = @artist.profile_layout
+
+    render 'songs/index'
+
+  end
 
 
 
