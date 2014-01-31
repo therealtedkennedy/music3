@@ -62,7 +62,7 @@ class OrdersController < ApplicationController
 
     else
 
-      redirect_to chained_payment_path( params[:url_slug],params[:object],params[:song_album_or_event_id],:amount => @amount)
+      redirect_to chained_payment_path(params[:url_slug],params[:object],params[:song_album_or_event_id],:amount => @amount)
 
     end
 
@@ -145,9 +145,12 @@ class OrdersController < ApplicationController
   # SSL error - http://stackoverflow.com/questions/4528101/ssl-connect-returned-1-errno-0-state-sslv3-read-server-certificate-b-certificat
   logger.info "artist url slug "+ params[:url_slug].to_s
 
+  #@artist = Artist.find_by_url_slug(params[:url_slug])
+
+
   logger.info "amount in chained payment before payment prep"
   logger.info @amount
-  payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_id], params[:amount])
+  payment_prep(params[:url_slug],params[:object], params[:song_album_or_event_id], params[:amount])
   logger.info "amount in chained payment after payment prep"
   logger.info @amount
   logger.info "Artist?"
