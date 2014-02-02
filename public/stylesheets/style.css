@@ -119,9 +119,15 @@
 	padding-left:5px;
 }
 
+.p15l {
+	padding-left:15px;
+}
+
 .m30l{
 	margin-left:30px;
 }
+
+.uppercase {text-transform:uppercase;}
 
 .albumLink{
 	text-decoration: none !important;

@@ -644,26 +644,111 @@
         float:left;
     }
 
-    .progressContainer .bar{
-        background-color: #fff;
-        height:100%;
-        width:0%;
-    }
+.progressContainer .bar{
+    background-color: #fff;
+    height:100%;
+    width:0%;
+}
 
-    .progressContainer .percent{
-        float:right;
-        width:30px;
-        padding-top:5px;
-    }
+.progressContainer .percent{
+    float:right;
+    width:30px;
+    padding-top:5px;
+}
 
-    .edit_profile_layout{
-        padding-left:10px;
-    }
+.edit_profile_layout{
+    padding-left:10px;
+}
 
-    .bfh-slider {
-        position:relative;
-    }
+.bfh-slider {
+    position:relative;
+}
 
+.menu-ul {
+    margin: 15px 0px;
+    list-style: none;
+}
+
+.menu-ul li {
+    padding: 10px 30px;
+    cursor:default;
+}
+
+.menu-ul li:hover:not(.title){
+    background-color:#393939;
+}
+
+.menu-ul li:not(.title) {
+    cursor: pointer;
+}
+
+.menu-ul li p {
+    margin: 0;
+    line-height: 30px;
+    color:#fff !important;
+    font-size:14px;
+}
+
+.menu-ul li p a {
+    text-decoration: none;
+    font-size:inherit;
+    color:inherit;
+}
+
+.nav-right {
+    background: url(../../images/sprites.png) 0px -34px no-repeat;
+    width: 30px;
+    height: 30px;
+    float: right;
+}
+
+.menu-ul li:hover .nav-right {
+    background: url(../../images/sprites.png) -32px -34px no-repeat;
+    width: 30px;
+    height: 30px;
+    float: right; 
+}
+
+.menu-ul li.id_back .nav-left {
+    background: url(../../images/sprites.png) -75px -34px no-repeat;
+    width: 16px;
+    height: 30px;
+    float: left; 
+}
+
+.menu-ul li.id_back:hover .nav-left {
+    background: url(../../images/sprites.png) -108px -34px no-repeat;
+    width: 16px;
+    height: 30px;
+    float: left; 
+}
+
+li.sub-nested ul{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+li.sub-nested ul li{
+    padding: 10px 60px;
+}
+
+li.sub-nested{
+    margin:0;
+    padding:0;
+}
+
+li.sub-nested:hover{
+    background-color: inherit !important;
+}
+
+.borderb {
+    border-bottom: 1px solid #222;
+}
+
+.m10t {
+    margin-top: 15px;
+}
 
 
 
