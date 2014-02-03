@@ -1,4 +1,9 @@
 <% @artist.albums.uniq.each do |album| %>
 
-	<% unless album.album_url_slug.blank? %><a href="<%= artist_show_album_path(@artist.url_slug, album.album_url_slug) %>" border="0" class="content-link" style="padding:0;margin:0;"><div class="album"><img src="<%= album.art %>" /><h1><%= album.al_name %></h1><h2><%= album.description %></h2></div></a><% end %>
+	<% unless album.album_url_slug.blank? %>
+		<div class="album">
+			<a href="<%= artist_show_album_path(@artist.url_slug, album.album_url_slug) %>/playlist-create" class="load-playlist  albumLink"><img src="<%= album.art %>" /></a>
+			<h1><a href="<%= artist_show_album_path(@artist.url_slug, album.album_url_slug) %>"><%= album.al_name %></a></h1>
+		</div>
+	<% end %>
 <% end %>
