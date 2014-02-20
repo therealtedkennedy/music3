@@ -24,7 +24,7 @@
 		</li>
 		<li class="uppercase title m10t"><p>account</p></li>
 		<li>
-			<p><%= link_to 'Manage Account', show_user_path(current_user.id) %></p>
+			<p><%= link_to 'Manage Account', show_user_path(current_user.id), :class => "content-link" %></p>
 		</li>
 	</ul>
 
@@ -78,7 +78,7 @@
 							<%= link_to 'View Song', artist_show_song_path(@artist.url_slug, songs.song_url_slug)%>
 						</p></li>
 						<li><p>
-							<%= link_to 'Edit Song', song_edit_path(@artist.url_slug,songs.song_url_slug, songs.id)%>
+							<%= link_to 'Edit Song', song_edit_path(@artist.url_slug,songs.song_url_slug, songs.id), :class => "content-link"%>
 						</p></li>
 						<li><p>
 							<%= link_to 'Delete Song', song_destroy_path(@artist.url_slug,songs.id), :confirm => 'Are you sure?' %>

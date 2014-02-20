@@ -11,35 +11,35 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :song_name %><br />
+    <%= f.label :song_name %>
     <%= f.text_field :song_name, :class=>"span12" %>
   </div>
 
   <div class="field">
-    <%= f.label :song_artist %><br />
+    <%= f.label :song_artist %>
     <%= f.text_field :song_artist, :value => @artist.name,:class=>"span12"  %>
   </div>
 
   <div class="field">
-    <%=f.label :song_contribute_artist %><br />
+    <%=f.label :song_contribute_artist %>
     <%=f.text_field :song_contribute_artist,:class=>"span12" %>
   </div>
 
   <div class="field">
-    <%= f.label :song_written %><br />
+    <%= f.label :song_written %>
     <%= f.text_field :song_written,:class=>"span12" %>
   </div>
   <div class="field">
-    <%= f.label :song_licence_type %><br />
+    <%= f.label :song_licence_type %>
     <%= f.text_field :song_licence_type,:class=>"span12" %>
   </div>
   <div class="field">
-    <%= f.label :song_licence_date %><br />
+    <%= f.label :song_licence_date %>
     <%= f.date_select :song_licence_date, :start_year => 1900   %>
   </div>
 
   <div class="field">
-    <%= f.label :lyrics %><br />
+    <%= f.label :lyrics %>
     <%= f.text_area :lyrics, :escape => false,:class=>"span12",:rows => "5" %>
   </div>
 

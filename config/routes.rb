@@ -110,7 +110,8 @@ Music3::Application.routes.draw do
 	match "/:url_slug/album/:album_url_slug/new-album-info/:id" => "albums#new_album_info", :as => :new_album_info
 
 	#albums code routing
-	match "/:url_slug/album/create-code/:id" => "album_code#show", :as => :album_create_code
+	match "/:url_slug/create-code/:id" => "album_code#show", :as => :album_create_code
+  match "/:url_slug/download-csv/:id" => "album_code#album_codes_csv", :as => :album_codes_csv
 	match "/album_codes/create" => "album_code#create"
 	match "/:url_slug/code" => "albums#album_code_download", :as => :code_download
 	match "/:url_slug/download-code/:code" => "albums#album_code_find", :as => :code_download_code
