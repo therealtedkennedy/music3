@@ -355,6 +355,7 @@
 		display: table;
 		border-collapse: separate;
 	}
+	.edit-controls {top:50px;}
 	input[type=number] {width:76%;}
 
  <% end %>
@@ -380,6 +381,8 @@
 <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
 
 <script src="/assets-public/js/bootstrap.min.js" type="text/javascript"></script>
+<script src='/assets-public/js/spectrum/spectrum.js'></script>
+<link rel='stylesheet' href='/assets-public/js/spectrum/spectrum.css' />
 
 
 <!-- Master template -->
@@ -615,9 +618,14 @@
 			});
 		});
 
-
+		$('.id_list-item-link').bind('click', function(ev){
+			window.location = $(ev.target).find('a').attr('href');
+		});
 	});
 
+	function updateSlider(el, ev){
+		$(el).parent().find('.range-counter').text($(el).val());
+	}
 
 	function get_playlist(href) {
 //      To display current song info in the player the below code needs to be added jplayer.playlist.min.js in the "_highlight:" function
@@ -838,17 +846,6 @@
 		</div>
 
 		<div id="user_nav" class="user_nav">
-			<div class="user_nav_info">
-				<% if user_signed_in? %>
-					Signed in as <%= link_to current_user.email, show_user_path(current_user.id), :class => :nav %>
-					<%= link_to "Sign out", destroy_user_session_path, :class => :nav, :method => :delete %>
-
-				<% else %>
-					<%#= render :partial => 'login_form' %>
-					<%= link_to "register", new_user_registration_path %>
-					<%= link_to "sign in", new_user_session_path %>
-				<% end %>
-			</div>
 			<div class="admin">
 				<span class="adminLink"></span>
 			</div>
@@ -860,19 +857,14 @@
 
 </div>
 
-<div class="edit-controls span3 pull-right" >
-	<h1>From Edit Layout</h1>
-	<h3><%= link_to 'Back to Admin', artist_admin_path(@artist.url_slug)%></h3>
-
-
-
-
-	<%= render 'form' %>
-
-
-
-	<%= link_to 'Custom CSS', css_editor_path(@artist.url_slug) %>
-	<%= link_to 'Back to Admin', artist_admin_path(@artist.url_slug) %>
+<div class="edit-controls span4 pull-right" >
+	<ul class="menu-ul id_admin-return">
+		<li class="id_back id_list-item-link"><p><%= link_to '<span class="nav-left"></span>back'.html_safe, artist_admin_path(@artist.url_slug), :class=>"uppercase"%></p></li>
+	</ul>
+	<ul class="menu-ul id_profile-menu">
+		<%= render 'form' %>
+		<li class="id_list-item-link"><p><%= link_to 'Custom CSS', css_editor_path(@artist.url_slug) %></p></li>
+	</ul>
 </div>
 
 <!--<div id="loading">-->

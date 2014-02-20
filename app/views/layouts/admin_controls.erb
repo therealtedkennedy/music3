@@ -17,46 +17,46 @@
 				<span class="nav-right"></span>
 			</p>
 		</li>
-		<li class="borderb">
+		<li class="borderb id_list-item-link">
 			<p><%= link_to 'Appearance', profile_edit_path(@artist.url_slug) %>
 				<span class="nav-right"></span>
 			</p>
 		</li>
 		<li class="uppercase title m10t"><p>account</p></li>
-		<li>
+		<li class="id_list-item-link">
 			<p><%= link_to 'Manage Account', show_user_path(current_user.id) %></p>
 		</li>
 	</ul>
 
 	<ul id="artist-menu" class="menu-ul sub-menu" style="display:none">
 		<li class="uppercase id_back"><p><span class="nav-left"></span>back</p></li>
-		<li>
+		<li class="id_list-item-link">
 			<p><%= link_to 'Manage Artist', artist_admin_path(@artist.url_slug)%></p>
 		</li>
-		<li>
+		<li class="id_list-item-link">
 			<p><%= link_to "Delete Artist", pre_delete_path(@artist.url_slug)%></p>
 		</li>
 	</ul>
 
 	<ul id="album-menu" class="menu-ul sub-menu" style="display:none">
 		<li class="uppercase id_back"><p><span class="nav-left"></span>back</p></li>
-		<li>
+		<li class="id_list-item-link">
 			<p><%= link_to 'New Album',add_album_path(@artist.url_slug)%></p>
 		</li>
 		<% @artist.albums.uniq.each do |albums| %>
 			<% unless albums.album_url_slug.blank?%>
 				<li class="album-sub-trigger"><p><%= albums.al_name %></p></li>
 				<li class="sub-nested" style="display:none"><ul "menu-ul">
-					<li><p>
+					<li class="id_list-item-link"><p>
 						<%= link_to 'View Album', artist_show_album_path(@artist.url_slug,albums.album_url_slug)%>
 					</p></li>
-					<li><p>
+					<li class="id_list-item-link"><p>
 						<%= link_to 'Edit Album', album_edit_path(@artist.url_slug, albums.album_url_slug,albums.id)%>
 					</p></li>
-					<li><p>
+					<li class="id_list-item-link"><p>
 						<%= link_to 'Delete Album', album_pre_delete_path(@artist.url_slug,albums.album_url_slug), :confirm => 'Are you sure?' %>
 					</p></li>
-					<li><p>
+					<li class="id_list-item-link"><p>
 						<%= link_to 'Album Codes', album_create_code_path(@artist.url_slug,albums.id)%>
 					</p></li>
 				</ul></li>
@@ -66,7 +66,7 @@
 
 	<ul id="song-menu" class="menu-ul sub-menu" style="display:none">
 		<li class="uppercase id_back"><p><span class="nav-left"></span>back</p></li>
-		<li>
+		<li class="id_list-item-link">
 			<p><%= link_to 'Add Song', add_song_path(@artist.url_slug)%></p>
 		</li>
 		<% @artist.songs.uniq.each do |songs| %>
@@ -74,13 +74,13 @@
 				<% unless songs.s3_id.nil? %>
 					<li class="album-sub-trigger"><p><%= songs.song_name %></p></li>
 					<li class="sub-nested" style="display:none"><ul "menu-ul">
-						<li><p>
+						<li class="id_list-item-link"><p>
 							<%= link_to 'View Song', artist_show_song_path(@artist.url_slug, songs.song_url_slug)%>
 						</p></li>
-						<li><p>
+						<li class="id_list-item-link"><p>
 							<%= link_to 'Edit Song', song_edit_path(@artist.url_slug,songs.song_url_slug, songs.id)%>
 						</p></li>
-						<li><p>
+						<li class="id_list-item-link"><p>
 							<%= link_to 'Delete Song', song_destroy_path(@artist.url_slug,songs.id), :confirm => 'Are you sure?' %>
 						</p></li>
 					</ul></li>
@@ -91,43 +91,11 @@
 
 <%else%>
 	<ul class="menu-ul id_main-menu">
-		<li>
+		<li class="id_list-item-link">
 			<p><%= link_to "Sign In", new_user_session_path %></p>
 		</li>
-		<li>
+		<li class="id_list-item-link">
 			<p><%= link_to "Sign Up", new_user_registration_path %></p>
 		</li>
 	</ul>
 <% end %>
-
-<script type="text/javascript">
-	$('.id_artist-admin').click(function(){
-		$('.id_main-menu').hide();
-		$('#artist-menu').show();
-	});
-
-	$('.id_album-admin').click(function(){
-		$('.id_main-menu').hide();
-		$('#album-menu').show();
-	});
-
-	$('.id_song-admin').click(function(){
-		$('.id_main-menu').hide();
-		$('#song-menu').show();
-	});
-
-	$('.id_back').click(function(){
-		$('.sub-menu').hide();
-		$('.id_main-menu').show();
-	});
-
-	$('.album-sub-trigger').click(function(el, ev){
-		var submenu = $(el.currentTarget).next();
-		if(submenu.css('display') === "none")
-			submenu.show();
-		else
-			submenu.hide();
-	});
-</script>
-
-

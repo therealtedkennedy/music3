@@ -172,12 +172,12 @@
         font-size: 14px;
         color: #fff;
         padding: 5px 20px;
-        background: <%= @artist.profile_layout.h1_colour %>;
+        background: <%= @artist.profile_layout.div_2_colour %>;
         letter-spacing: 1.5px;
         -moz-border-radius: 3px;
         -webkit-border-radius: 3px;
         border-radius: 3px;
-        border: 3px solid <%= @artist.profile_layout.h1_colour %>;
+        border: 3px solid <%= @artist.profile_layout.div_2_colour %>;
     }
 
     .div2 {
@@ -464,7 +464,6 @@
         display: inline-block;
         line-height: 45px;
         padding: 5px;
-
     }
 
     .adminLink {
@@ -518,10 +517,10 @@
 		/*display: inline-block;*/
 		/*width: 320px;*/
 		background: #2E2E2E;
-		/*padding: 5px;*/
+		padding: 5px;
         margin-bottom: 50px;
         /*top:60px;*/
-        /*position:relative;*/
+        position:relative;
 	}
 
     /*info*/
@@ -602,7 +601,7 @@
 
     /*chrome custom scrollbar*/
     ::-webkit-scrollbar {
-        width: 12px;
+        width: 8px;
     }
      
     ::-webkit-scrollbar-track {
@@ -655,10 +654,6 @@
     padding-top:5px;
 }
 
-.edit_profile_layout{
-    padding-left:10px;
-}
-
 .bfh-slider {
     position:relative;
 }
@@ -673,15 +668,23 @@
     cursor:default;
 }
 
-.menu-ul li:hover:not(.title){
+.menu-ul li:hover:not(.title):not(.field):not(.actions){
     background-color:#393939;
 }
 
-.menu-ul li:not(.title) {
+.bfh-selectbox-options li {
+    padding: 5px 0px !important;
+}
+
+.bfh-selectbox-options li:hover, .bfh-selectbox-options a:hover {
+    background-color: #fff !important;
+}
+
+.menu-ul li:not(.title):not(.field):not(.actions):not(.bfh-selectbox-options) {
     cursor: pointer;
 }
 
-.menu-ul li p {
+.menu-ul li p, .menu-ul li label {
     margin: 0;
     line-height: 30px;
     color:#fff !important;
@@ -749,5 +752,45 @@ li.sub-nested:hover{
     margin-top: 15px;
 }
 
+.id_profile-menu {
+    margin-top: 0px;
+    margin-right:10px;
+    max-height:800px;
+    overflow-y:auto; 
+}
 
+.id_profile-menu label{
+    font-weight: 300;
+    cursor:default;
+}
 
+.id_profile-menu li {
+    padding-right: 0px;
+}
+
+.id_admin-return {
+    margin-bottom: 0px;
+}
+
+input[type=range] {padding: 0px !important; height:2px;}
+input[type=range]:focus {outline: none;}
+input[type=color] {width:89%; border-radius:3px;}
+
+.range-counter {padding-top: 10px; padding-right:50px;}
+
+#overlay {position:absolute;left:0px;top:0px;width:100%;height:100%;z-index:1000;background-color:transparent;}
+#dialogWindow {position:absolute;width:550px;height:275px;top:50px;left:25%;z-index:1001;}
+
+.close {
+    background: url(../../images/sprites.png) -384px 0px no-repeat;
+    width: 30px;
+    height: 30px;
+    float: right;
+}
+
+.close:hover {
+    background: url(../../images/sprites.png) -416px 0px no-repeat;
+    width: 30px;
+    height: 30px;
+    float: right;
+}

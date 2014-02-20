@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-   before_filter :authenticate_user!, :except => [:show, :download_album,:album_code_find,:index, :zip_album, :zip,:album_play_list_create]
+   before_filter :authenticate_user!, :except => [:show, :download_album,:album_code_find,:index, :zip_album, :zip,:album_play_list_create, :buy]
 
   # GET /albums
   # GET /albums.xml
@@ -47,7 +47,7 @@ class AlbumsController < ApplicationController
 	logger.info @album
 
     #@download_url = album_download_url(@album.album_url_slug, @album.id)
-
+	@buy = render_to_string('albums/_buy',:layout => false)
      #gets the social info for the album
      album_social(@artist,@album)
 
@@ -72,6 +72,16 @@ class AlbumsController < ApplicationController
 
 
    end
+  end
+
+  # GET /albums/1/buy
+  def buy
+    params[:album_url_slug]
+
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+  	@album = @artist.albums.find_by_album_url_slug(params[:album_url_slug])
+
+  	render :partial => 'buy'
   end
 
 
@@ -152,7 +162,6 @@ class AlbumsController < ApplicationController
 	end
 
   end
-
 
 
   # POST /albums

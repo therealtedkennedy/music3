@@ -1,0 +1,29 @@
+<span class="close" style="position:absolute; top:10px; right:10px;"></span>
+<div style="padding: 15px;text-transform: uppercase; font-weight:600">Download Album </div>
+<form accept-charset="UTF-8" action="<%=payment_method_path(@artist.url_slug,"album",@album.id )%>" class="pwyc_form" enctype="multipart/form-data" data-validate="true"  method="post" novalidate="novalidate"><div><input name="utf8" type="hidden" value="&#x2713;" />
+
+	<input name="authenticity_token" id="token" type="hidden" value=""/></div>
+	<table style="width:100%;margin:60px auto;">
+		<tr>
+			<td style="width:30%;text-align:right;"><label for="amount">Amount:</label></td>
+			<td style="width:70%;text-align:left;padding-left:30px"><input id="amount" name="amount" type="text" size="3" value="<%=@album.al_amount%>" /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td style="padding-top:60px;"><button name="commit" type="submit" class="fancyButton" style="float:right; margin-right:15px; margin-top:3px;">Download</button></td>
+		</tr>
+	</table>
+
+	<!--For order processing-->
+
+	<!--defines the type of object it is-->
+    <input id="url_slug" name="url_slug" type="hidden" value="<%= @artist.url_slug %>" />
+    <input id="object" name="object" type="hidden" value="album" />
+	<input id="song_album_or_event_id" name="song_album_or_event_slug" type="hidden" value="<%=@album.id%>" />
+</form>
+<script type="text/javascript">
+			$('.close').click(function(){
+				$('#dialogWindow').remove();
+				$('#overlay').remove();
+			});
+</script>

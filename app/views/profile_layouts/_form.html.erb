@@ -1,118 +1,117 @@
 <%= form_for @profile_layout, :url => {:action => "update"}, :html => { :class => "edit_profile_layout", :id => "edit_profile_layout_1" }  do |f| %>
 
-   <h1>Choose Font</h1>
-   <div class="field">
-     <%=f.label :logo_font %><br />
+   <li class="field">
+     <%=f.label :logo_font %>
      <div class="bfh-selectbox bfh-googlefonts" data-font="<%=@profile_layout.logo_font%>" data-blank="true"></div>
-  </div>
+  </li>
 
-  <div class="field">
-     <%=f.label :content_font %><br />
+  <li class="field">
+     <%=f.label :content_font %>
      <div class="bfh-selectbox bfh-googlefonts" data-font="<%=@profile_layout.content_font%>" data-blank="true"></div>
-   </div>
+   </li>
 
-
-  <h1> H1 </h1>
-  <div class="field">
-    <%= f.label :h1_size %><br />
+  <li class="field">
+    <%= f.label :h1_size %>
     <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h1_size%>" data-input="form-control" data-blank="true">
     </div>
-  </div>
+  </li>
 
+  <li class="field">
+    <%=f.label :h1_colour %>
+    <!-- <div class="bfh-colorpicker" data-name="h1_colour" data-color="<%=@profile_layout.h1_colour%>"></div> -->
+     <input type="color" name="profile_layout[h1_colour]" id="h1_colour" class="form-control" value="<%= @profile_layout.h1_colour %>"/>
+  </li>
 
-  <div class="field">
-    <%=f.label :h1_colour %><br />
-    <div class="bfh-colorpicker" data-name="h1_colour" data-color="<%=@profile_layout.h1_colour%>"></div>
-  </div>
-
-  <br/>
-  <h1> H2 </h1>
-    <div class="field">
-    <%= f.label :h2_size %><br />
+  <li class="field">
+    <%= f.label :h2_size %>
     <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h2_size%>" data-blank="true"></div>
-  </div>
+  </li>
 
-  <div class="field">
-    <%= f.label :h2_colour %><br />
-    <div class="bfh-colorpicker" data-name="h2_colour" data-color="<%=@profile_layout.h2_colour%>"></div>
-  </div>
+  <li class="field">
+    <%= f.label :h2_colour %>
+    <!-- <div class="bfh-colorpicker" data-name="h2_colour" data-color="<%=@profile_layout.h2_colour%>"></div> -->
+     <input type="color" name="profile_layout[h2_colour]" id="h2_colour" class="form-control" value="<%= @profile_layout.h2_colour %>"/>
+  </li>
 
-  <br/>
- <h1> H3 </h1>
-  <div class="field">
-    <%= f.label :h3_size %><br />
+  <li class="field">
+    <%= f.label :h3_size %>
     <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h3_size%>" data-blank="true"></div>
-  </div>
-  <div class="field">
-    <%= f.label :h3_colour %><br />
-    <div class="bfh-colorpicker" data-name="h3_colour" data-color="<%=@profile_layout.h3_colour%>"></div>
-  </div>
-  <br/>
-  <h1> P </h1>
-   <div class="field">
-    <%= f.label :p_size %><br />
+  </li>
+  <li class="field">
+    <%= f.label :h3_colour %>
+    <!-- <div class="bfh-colorpicker" data-name="h3_colour" data-color="<%=@profile_layout.h3_colour%>"></div> -->
+     <input type="color" name="profile_layout[h3_colour]" id="h3_colour" class="form-control" value="<%= @profile_layout.h3_colour %>"/>
+  </li>
+
+   <li class="field">
+    <%= f.label :p_size %>
     <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.p_size%>" data-blank="true"></div>
-  </div>
-  <div class="field">
-    <%= f.label :p_colour %><br />
-    <div class="bfh-colorpicker" data-name="p_colour" data-color="<%=@profile_layout.p_colour%>"></div>
-  </div>
+  </li>
+  <li class="field">
+    <%= f.label :p_colour %>
+    <!-- <div class="bfh-colorpicker" data-name="p_colour" data-color="<%=@profile_layout.p_colour%>"></div> -->
+      <input type="color" name="profile_layout[p_colour]" id="p_colour" class="form-control" value="<%= @profile_layout.p_colour %>"/>
+  </li>
 
-
-  <br/>
-  <h1> Div 1 </h1>
-   <div class="field">
-    <%= f.label :div_1_colour %><br />
-    <div class="bfh-colorpicker" data-name="div_1_colour" data-color="<%=@profile_layout.div_1_colour%>"></div>
-  </div>
-  <div class="field">
-    <%= f.label :div_1_transparency %><br />
-    <div class="bfh-slider" data-name="div_1_transparency" data-value="<%=@profile_layout.div_1_transparency%>"></div>
-  </div>
-   <div class="field">
-    <%= f.label :div_1_border_colour %><br />
-    <div class="bfh-colorpicker" data-name="div_1_border_colour" data-color="<%=@profile_layout.div_1_border_colour%>"></div>
-  </div>
-   <div class="field">
-    <%= f.label :div_1_background_colour %><br />
-    <div class="bfh-colorpicker" data-name="div_1_background_colour" data-color="<%=@profile_layout.div_1_background_colour%>"></div>
-  </div>
-  <div class="field">
-    <%= f.label :div_1_border_width %><br />
+   <li class="field">
+    <%= f.label :div_1_colour %>
+    <!-- <div class="bfh-colorpicker" data-name="div_1_colour" data-color="<%=@profile_layout.div_1_colour%>"></div> -->
+     <input type="color" name="profile_layout[div_1_colour]" id="div_1_colour" class="form-control" value="<%= @profile_layout.div_1_colour %>"/>
+  </li>
+  <li class="field">
+    <%= f.label :div_1_transparency %>
+    <%= f.range_field :div_1_transparency, :class=>"form-control", :onchange=>"updateSlider(this)", :onkeyup=>"updateSlider(this)", :min=>"0", :max=>"100" %>
+    <div class="range-counter center"><%=@profile_layout.div_1_transparency%></div>
+  </li>
+  <li class="field">
+    <%= f.label :div_1_border_colour %>
+<!--     <div class="bfh-colorpicker" data-name="div_1_border_colour" data-color="<%=@profile_layout.div_1_border_colour%>"></div> -->
+     <input type="color" name="profile_layout[div_1_border_colour]" id="div_1_border_colour" class="form-control" value="<%= @profile_layout.div_1_border_colour %>" />
+  </li>
+   <li class="field">
+    <%= f.label :div_1_background_colour %>
+ <!--    <div class="bfh-colorpicker" data-name="div_1_background_colour" data-color="<%=@profile_layout.div_1_background_colour%>"></div> -->
+     <input type="color" name="profile_layout[div_1_background_colour]" id="div_1_background_colour" class="form-control" value="<%= @profile_layout.div_1_background_colour %>" />
+  </li>
+  <li class="field">
+    <%= f.label :div_1_border_width %>
     <%= f.number_field :div_1_border_width, :class=>"form-control", :min=>"0", :max=>"5" %>
-  </div>
+  </li>
 
-  <h1> Div 2 </h1>
-   <div class="field">
-    <%= f.label :div_2_colour %><br />
-    <div class="bfh-colorpicker" data-name="div_2_colour" data-color="<%=@profile_layout.div_2_colour%>"></div>
-  </div>
-  <div class="field">
-    <%= f.label :div_2_transparency %><br />
-    <div class="bfh-slider" data-name="div_2_transparency" data-value="<%=@profile_layout.div_2_transparency%>"></div>
-  </div>
-   <div class="field">
-    <%= f.label :div_2_border_colour %><br />
-    <div class="bfh-colorpicker" data-name="colorpicker2" data-color="<%=@profile_layout.div_2_border_colour%>"></div>
-  </div>
-   <div class="field">
-    <%= f.label :div_2_background_colour %><br />
-    <div class="bfh-colorpicker" data-name="colorpicker2" data-color="<%=@profile_layout.div_2_background_colour%>"></div>
-  </div>
-  <div class="field">
-    <%= f.label :div_2_border_width %><br />
+   <li class="field">
+    <%= f.label :div_2_colour %>
+    <!-- <div class="bfh-colorpicker" data-name="div_2_colour" data-color="<%=@profile_layout.div_2_colour%>"></div> -->
+    <input type="color" name="profile_layout[div_2_colour]" id="div_2_colour" class="form-control" value="<%= @profile_layout.div_2_colour %>" />
+  </li>
+  <li class="field">
+    <%= f.label :div_2_transparency %>
+    <%= f.range_field :div_2_transparency, :class=>"form-control", :onchange=>"updateSlider(this)", :onkeyup=>"updateSlider(this)", :min=>"0", :max=>"100" %>
+    <div class="range-counter center"><%=@profile_layout.div_2_transparency%></div>
+  </li>
+   <li class="field">
+    <%= f.label :div_2_border_colour %>
+    <!-- <div class="bfh-colorpicker" data-name="colorpicker2" data-color="<%=@profile_layout.div_2_border_colour%>"></div> -->
+    <input type="color" name="profile_layout[div_2_border_colour]" id="div_2_border_colour" class="form-control" value="<%= @profile_layout.div_2_border_colour %>" />
+  </li>
+   <li class="field">
+    <%= f.label :div_2_background_colour %>
+<!--     <div class="bfh-colorpicker" data-name="colorpicker2" data-color="<%=@profile_layout.div_2_background_colour%>"></div> -->
+    <input type="color" name="profile_layout[div_2_background_colour]" id="div_2_background_colour" class="form-control" value="<%= @profile_layout.div_2_background_colour %>" />
+  </li>
+  <li class="field">
+    <%= f.label :div_2_border_width %>
     <%= f.number_field :div_2_border_width, :class=>"form-control", :min=>"0", :max=>"5" %>
-  </div>
-  <h1>Custom CSS</h1>
-  <div class="field">
+  </li>
+
+  <li class="field">
 	  <p>Use custom css? <%= f.check_box :use_css %></p>
-  </div>
+  </li>
 
 
 
-  <div class="actions">
+  <li class="actions">
     <%= f.submit %>
-  </div>
+  </li>
 
  <input id="url_slug" name="url_slug" type="hidden" value="<%=@artist.url_slug %>" />
 

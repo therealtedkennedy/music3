@@ -100,6 +100,7 @@ Music3::Application.routes.draw do
 	#Albums Slug Routing - rule /slug/static/album_slug/static
 	match "/:url_slug/albums" => "albums#index", :as => :artist_show_albums
 	match "/:url_slug/album/:album_url_slug" => "albums#show", :as => :artist_show_album
+	match "/:url_slug/album/:album_url_slug/buy" => "albums#buy", :as => :artist_buy_album
 	match "/:url_slug/album/:album_url_slug/download" => "albums#download_album", :as => :album_download
 	match ":url_slug/album/:album_url_slug/playlist-create" => "albums#album_play_list_create", :as => :album_playlist_create
     match ":url_slug/album/:album_url_slug/edit/:id" => "albums#edit", :as => :album_edit

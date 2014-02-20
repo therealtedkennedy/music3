@@ -38,39 +38,24 @@
 			<% end %>
 		</tbody>
 	</table>
+		<input type="button" class="id_make-purchase" path="<%= artist_buy_album_path(@artist.url_slug, @album.album_url_slug) %>" value="Download" style="float:right; margin-top:15px;"/>
 
- 		<h2>Want it? Get it!</h2>
 
 			<!--gets csrf token and passes into hidden field.  Keeps user logged in after form post-->
 
-			<script type="text/javascript">
-				$(function(){
-					var token = $('meta[name="csrf-token"]').attr('content');
-					$("#token").val(token);
-				});
-			</script>
+		<script type="text/javascript">
+			$(function(){
+				var token = $('meta[name="csrf-token"]').attr('content');
+				$("#token").val(token);
+			});
 
-			<form accept-charset="UTF-8" action="<%=payment_method_path(@artist.url_slug,"album",@album.id )%>" class="pwyc_form" enctype="multipart/form-data" data-validate="true"  method="post" novalidate="novalidate"><div><input name="utf8" type="hidden" value="&#x2713;" />
-
-
-				<input name="authenticity_token" id="token" type="hidden" value=""/></div>
-
-
-				<label for="amount">Amount</label>
-				<input id="amount" name="amount" type="text" size="3" value="<%=@album.al_amount%>" />
-				<button name="commit" type="submit" class="fancyButton">Download</button>
-
-				<!--For order processing-->
-
-				<!--defines the type of object it is-->
-                <input id="url_slug" name="url_slug" type="hidden" value="<%= @artist.url_slug %>" />
-                <input id="object" name="object" type="hidden" value="album" />
-				<input id="song_album_or_event_id" name="song_album_or_event_slug" type="hidden" value="<%=@album.id%>" />
-			</form>
-
-
-
-
+			$('.id_make-purchase').click(function(ev) {
+				if(!$('#overlay').length)
+					$('<div id="overlay"/>').appendTo('body');
+				$('<div id="dialogWindow" class="div2" />').appendTo('#overlay').load($(ev.target).attr('path'));
+				return false;
+			});
+		</script>
 </div>
 
 
