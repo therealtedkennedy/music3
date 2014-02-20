@@ -173,6 +173,7 @@ class UsersController < Devise::SessionsController
   def edit
 
 	  @user = User.find(params[:id])
+    @artist = Artist.find(1)
 
 	  #defines the type of object it is for the artist_admin layout.  Layout will render for user
       @object_type = "user"
@@ -193,7 +194,7 @@ class UsersController < Devise::SessionsController
 					  :success => true,
 					  :".bodyArea" => render_to_string(
 							  :action => 'edit.html.erb',
-							  :layout => "layouts/user.erb",
+							  :layout => "layouts/user.html.erb",
 					  ),
 					  #show/hides edit screen
 					  #:"edit" => "true"
@@ -201,7 +202,10 @@ class UsersController < Devise::SessionsController
 					  :"object_type" => "user"
 			  }
 		  }
-	  end
+
+
+
+	     end
   end
 
 

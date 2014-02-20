@@ -101,6 +101,19 @@ class AlbumCodeController < ApplicationController
 		  }
 	  end
 
+ end
+
+
+  def album_codes_csv
+
+    @album = Album.find(params[:id])
+
+    respond_to do |format|
+
+      format.csv { send_data @album.album_codes.to_csv_3, :filename => @album.al_name+"-Download Codes.csv"}
+
+    end
+
   end
 
 end

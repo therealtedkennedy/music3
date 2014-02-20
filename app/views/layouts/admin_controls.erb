@@ -23,9 +23,11 @@
 			</p>
 		</li>
 		<li class="uppercase title m10t"><p>account</p></li>
+
 		<li class="id_list-item-link">
 			<p><%= link_to 'Manage Account', show_user_path(current_user.id) %></p>
-		</li>
+
+		<li>
 	</ul>
 
 	<ul id="artist-menu" class="menu-ul sub-menu" style="display:none">
@@ -77,6 +79,7 @@
 						<li class="id_list-item-link"><p>
 							<%= link_to 'View Song', artist_show_song_path(@artist.url_slug, songs.song_url_slug)%>
 						</p></li>
+
 						<li class="id_list-item-link"><p>
 							<%= link_to 'Edit Song', song_edit_path(@artist.url_slug,songs.song_url_slug, songs.id)%>
 						</p></li>
