@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Font Selector</title>
+
+	<link rel="stylesheet" href="fontselector.css">
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../src/jquery.fontselector.js"></script>
+
+	<script type="text/javascript">
+
+	$(function() {
+		$('#fontSelect').fontSelector({
+			'hide_fallbacks' : true,
+			'initial' : 'Courier New,Courier New,Courier,monospace',
+			'selected' : function(style) { alert(style); },
+			'fonts' : [
+				'Arial,Arial,Helvetica,sans-serif',
+				'Arial Black,Arial Black,Gadget,sans-serif',
+				'Comic Sans MS,Comic Sans MS,cursive',
+				'Courier New,Courier New,Courier,monospace',
+				'Georgia,Georgia,serif',
+				'Impact,Charcoal,sans-serif',
+				'Lucida Console,Monaco,monospace',
+				'Lucida Sans Unicode,Lucida Grande,sans-serif',
+				'Palatino Linotype,Book Antiqua,Palatino,serif',
+				'Tahoma,Geneva,sans-serif',
+				'Times New Roman,Times,serif',
+				'Trebuchet MS,Helvetica,sans-serif',
+				'Verdana,Geneva,sans-serif',
+				'Gill Sans,Geneva,sans-serif'
+				]
+		});
+
+		$('#fontSelect2').fontSelector({
+			'hide_fallbacks' : true,
+			'initial' : 'Courier New,Courier New,Courier,monospace',
+			'selected' : function(style) { alert(style); },
+			'fonts' : [
+				'Arial,Arial,Helvetica,sans-serif',
+				'Arial Black,Arial Black,Gadget,sans-serif',
+				'Comic Sans MS,Comic Sans MS,cursive',
+				'Courier New,Courier New,Courier,monospace',
+				'Georgia,Georgia,serif'
+				]
+		});
+	});
+
+	</script>
+</head>
+<body>
+
+	<div style="width:300px;margin:100px auto;">
+
+		<div id="fontSelect" class="fontSelect">
+			<div class="arrow-down"></div>
+		</div>
+
+		<div id="fontSelect2" class="fontSelect">
+			<div class="arrow-down"></div>
+		</div>
+
+	</div>
+
+</body>
+</html>

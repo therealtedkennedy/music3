@@ -2,12 +2,20 @@
 
    <li class="field">
      <%=f.label :logo_font %>
-     <div class="bfh-selectbox bfh-googlefonts" data-font="<%=@profile_layout.logo_font%>" data-blank="true"></div>
+     <!-- <div class="bfh-selectbox bfh-googlefonts" data-font="<%=@profile_layout.logo_font%>" data-blank="true"></div> -->
+     <div id="<%= :logo_font%>" class="fontSelect" data-font="<%=@profile_layout.logo_font%>">
+      <input type="hidden" name="profile_layout[logo_font]" value="<%=@profile_layout.logo_font%>" id="profile_layout_logo_font">
+        <span class="caret"></span>
+    </div>
   </li>
 
   <li class="field">
      <%=f.label :content_font %>
-     <div class="bfh-selectbox bfh-googlefonts" data-font="<%=@profile_layout.content_font%>" data-blank="true"></div>
+     <!-- <div class="bfh-selectbox bfh-googlefonts" data-font="<%=@profile_layout.content_font%>" data-blank="true"></div> -->
+    <div id="<%= :content_font%>" class="fontSelect" data-font="<%=@profile_layout.content_font%>">
+      <input type="hidden" name="profile_layout[content_font]" value="<%=@profile_layout.content_font%>" id="profile_layout_content_font">
+        <span class="caret"></span>
+    </div>
    </li>
 
   <li class="field">

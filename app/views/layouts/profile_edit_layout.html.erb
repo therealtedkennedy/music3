@@ -377,6 +377,8 @@
 <script type="text/javascript" src="/javascripts/jPlayer/add-on/jplayer.playlist.min.js"></script>
 <script type="text/javascript" src="/javascripts/jPlayer/add-on/jquery.jplayer.inspector.js"></script>
 <script type="text/javascript" src="/assets-public/js/bootstrapFormHelpers/dist/js/bootstrap-formhelpers.min.js"></script>
+<script type="text/javascript" src="/assets-public/js/jQuery-Font-Chooser-master/src/jquery.fontselector.js"></script>
+<link type="text/css" rel="stylesheet" href="/assets-public/js/jQuery-Font-Chooser-master/examples/fontselector.css">
 <link type="text/css" href="/skin/black_and_yellow/jplayer-black-and-yellow.css" rel="stylesheet"/>
 <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
 
@@ -745,8 +747,9 @@
 		});
 
 		setupInputs('bfh-selectbox');
-		setupInputs('bfh-colorpicker');
-		setupInputs('bfh-slider');
+		// setupInputs('bfh-colorpicker');
+		// setupInputs('bfh-slider');
+		setupFontSelectors();
 
 	}
 
@@ -763,6 +766,43 @@
 			name = x[0] + "_" + x[1] + "[" + x[2] + z + ']';
 			input.attr('name', name);
 		});
+	}
+
+	function setupFontSelectors(){
+	    $('.fontSelect').each(function(){
+	      $(this).fontSelector({
+	        'hide_fallbacks' : true,
+	        'initial' : $(this).attr('data-font') || 'Open Sans, Open Sans, sans-serif',
+	        'selected' : function(style) { 
+	          $(this).attr('data-font', style); 
+	          $(this).find('input[type="hidden"]').val(style);
+	        },
+	        'fonts' : [
+	          'Lekton, Lekton, sans-serif',
+	          'Noto Sans, Noto Sans, sans-serif',
+	          'Lato, Lato, sans-serif',
+	          'Arvo, Arvo, serif',
+	          'Cabin, Cabin, sans-serif',
+	          'Playfair Display, Playfair Display, serif',
+	          'Lora, Lora, serif',
+	          'PT Sans, PT Sans, sans-serif',
+	          'Ubuntu, Ubuntu, sans-serif',
+	          'Lobster, Lobster, cursive',
+	          'Josefin Slab, Josefin Slab, serif',
+	          'Varela Round, Varela Round, sans-serif',
+	          'Open Sans, Open Sans, sans-serif',
+	          'Vollkorn, Vollkorn, serif',
+	          'Abril Fatface, Abril Fatface, cursive',
+	          'Old Standard TT, Old Standard TT, serif',
+	          'Bree Serif, Bree Serif, serif',
+	          'Cookie, Cookie, cursive',
+	          'Montserrat, Montserrat, sans-serif',
+	          'Roboto Slab, Roboto Slab, serif',
+	          'Ultra, Ultra, serif',
+	          'Archivo Black, Archivo Black, sans-serif'
+            ]
+	      });
+	    });
 	}
 
 
