@@ -33,7 +33,7 @@
 	<ul id="artist-menu" class="menu-ul sub-menu" style="display:none">
 		<li class="uppercase id_back"><p><span class="nav-left"></span>back</p></li>
 		<li class="id_list-item-link">
-			<p><%= link_to 'Manage Artist', artist_admin_path(@artist.url_slug)%></p>
+			<p><%= link_to 'Manage Artist', artist_admin_path(@artist.url_slug) %></p>
 		</li>
 		<li class="id_list-item-link">
 			<p><%= link_to "Delete Artist", pre_delete_path(@artist.url_slug)%></p>
