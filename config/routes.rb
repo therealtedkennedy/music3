@@ -137,6 +137,7 @@ Music3::Application.routes.draw do
 	match "/:url_slug/song-delete/:song_id" => "songs#destroy", :as => "song_destroy"
 	match "/:url_slug/song/:song_url_slug/edit/:id" => "songs#edit", :as => :song_edit
 	match "/:url_slug/song-image-save/:song_id" => "songs#song_save_image", :as => :song_save_image
+  match "/:url_slug/song/:song_url_slug/buy/:id" => "songs#buy", :as => :artist_buy_song
 
 	#get "songs/index"
 	get "songs/upload"

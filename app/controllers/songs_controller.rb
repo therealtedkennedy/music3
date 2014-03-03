@@ -3,7 +3,7 @@ class SongsController < ApplicationController
 	#lists songs called from S3 Server
 
 
-	before_filter :authenticate_user!, :except => [:show, :index, :song_play_counter,:artist_show_song,:song_play_counter]
+	before_filter :authenticate_user!, :except => [:show, :index, :song_play_counter,:artist_show_song,:song_play_counter, :buy]
 
 
 	#changes from default layout to custom layout
@@ -55,6 +55,8 @@ class SongsController < ApplicationController
 			#in the appication controller.  Used by profile edit.
 			find_song(@artist, params[:song_url_slug])
 
+      @song_buy = render_to_string('songs/_song_buy',:layout => false)
+
 			song_social(@artist,@song)
 
 			# @song.artists.uniq.each do |artist|
@@ -89,7 +91,17 @@ class SongsController < ApplicationController
 				format.xml { render :xml => @song }
 			end
 		end
-	end
+  end
+
+
+  def buy
+    params[:song_url_slug]
+
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+    @song = Song.find(params[:id])
+
+    render :partial => 'song_buy'
+  end
 
 
 	#renders edit page.  Required for form upload @object_type (song, image, album, whatever) and @id a unique id for  s3 and bucket defines which bucket it should be uploaded too

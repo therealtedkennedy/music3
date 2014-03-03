@@ -55,21 +55,18 @@
 		<input type="button" class="id_make-purchase" path="<%= artist_buy_album_path(@artist.url_slug, @album.album_url_slug) %>" value="Download" style="float:right; margin-top:15px;"/>
 
 
-			<!--gets csrf token and passes into hidden field.  Keeps user logged in after form post-->
+  <!--gets csrf token and passes into hidden field.  Keeps user logged in after form post-->
 
-		<script type="text/javascript">
-			$(function(){
-				var token = $('meta[name="csrf-token"]').attr('content');
-				$("#token").val(token);
-			});
+  <script type="text/javascript">
 
-			$('.id_make-purchase').click(function(ev) {
-				if(!$('#overlay').length)
-					$('<div id="overlay"/>').appendTo('body');
-				$('<div id="dialogWindow" class="div2" />').appendTo('#overlay').load($(ev.target).attr('path'));
-				return false;
-			});
-		</script>
+
+      $('.id_make-purchase').click(function(ev) {
+          if(!$('#overlay').length)
+              $('<div id="overlay"/>').appendTo('body');
+          $('<div id="dialogWindow" class="div2" />').appendTo('#overlay').load($(ev.target).attr('path'));
+          return false;
+      });
+  </script>
 </div>
 
 

@@ -22,8 +22,15 @@
 	<input id="song_album_or_event_id" name="song_album_or_event_slug" type="hidden" value="<%=@album.id%>" />
 </form>
 <script type="text/javascript">
-			$('.close').click(function(){
-				$('#dialogWindow').remove();
-				$('#overlay').remove();
-			});
+
+    $(function(){
+        var token = $('meta[name="csrf-token"]').attr('content');
+        $("#token").val(token);
+    });
+
+
+	$('.close').click(function(){
+		$('#dialogWindow').remove();
+		$('#overlay').remove();
+	});
 </script>
