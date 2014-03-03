@@ -73,10 +73,10 @@
 .leftPane div {
 	padding-right:15px;
 }
-.leftPane img {
-	width:100%;
-	max-width: 200px;
-}
+/*.leftPane img {*/
+	/*width:100%;*/
+	/*max-width: 200px;*/
+/*}*/
 .rightPane
 {
 	float:right;

@@ -15,11 +15,9 @@
 	</div>
 </td>
 <td class="row-border vat">
-	<p><% @song.artists.uniq.each do |artist_name| %>
-        <%= link_to artist_name.name, artist_link_path(artist_name.url_slug), class:"content-link" %>
-    	<% end %> - 
+	<h2>
     	<a href="<%= download_url_for(@song.s3_id) %>" data-song-name="<%=@song.song_name%>" data-artist-name="<%=@song.song_artist%>" class="music-button"> <%= @song.song_name %> </a></br>
-	</p>
+	</h2>
 	<table cellpadding="10" class="w100"><tbody>
 		<tr>
 			<td class="info-item">Written By:</td>
@@ -39,6 +37,34 @@
 				<%= @song.created_at.strftime("%d %b %Y") %>	
 			</td>
 		</tr>
+        <td class="info-item">Release Date:</td>
+        <td class="item-description">
+          <%= @song.release_date.strftime("%d %b %Y") %>
+        </td>
+        </tr>
+
+        <tr>
+          <td class="info-item">Producer:</td>
+          <td class="item-description"><span  id="single_line" field_name="song_written" object="song" >
+ 	     <%= @song.producer %>
+         </span></td>
+        </tr>
+
+        <tr>
+          <td class="info-item">Label:</td>
+          <td class="item-description"><span  id="single_line" field_name="song_written" object="song" >
+ 	     <%= @song.label %>
+         </span></td>
+        </tr>
+
+        <tr>
+          <td class="info-item">Licence Type:</td>
+          <td class="item-description"><span  id="single_line" field_name="song_written" object="song" >
+ 	     <%= @song.song_licence_type %>
+         </span></td>
+        </tr>
+
+
 		<tr>
 			<td class="info-item">Lyrics:</td>
 			<td class="item-description">
@@ -84,83 +110,5 @@
 </tr></tbody></table>
 
 <p id="notice"><%= notice %></p>
-<div class="song">
-<% if can? :update, @artist %>
-    <table>
-    	<tr>
-	        <td><%= link_to 'Edit', edit_song_path(@song.id)%></td>
-	        <td><%= link_to 'Destroy', @song, :method => :delete, :confirm => 'Are you sure?' %></td>
-		</tr>
-    </table>
- <% end %> 
-</div>
 
 
-
-<!--    
-	<p>
-		<b>(not predominate)Licence Type:</b>
-		<%= @song.song_licence_type %>
-	</p>
-
-
-
-
-
-
-    <p>
- <b>(maybe) Where it was releasesd</b>
-
-<ul>
-<% @song.albums.uniq.each do |albums| %>
-    <% unless albums.album_url_slug.blank?%>
-       <%  albums.artists.uniq.each do |artist|  %>
-        <li><%= link_to albums.al_name, artist_show_album_path(artist.url_slug,albums.album_url_slug), class:"content-link" %> by <%= link_to artist.name, artist_link_path(artist.url_slug), class:"content-link" %>
-      <% end %>
-    <% end %>
-<% end %>
-</ul>
-
-</p>
-
-	<p>
-		<b>(maybe_Song Artist</b>
-		<%= @song.song_artist %>
-	</p>
-
-	<p>
-		<b>(not shown?)Licence Date </b>
-		<%= @song.song_licence_date %>
-	</p>
-
-	<b>(maybe)Contributing Artist:</b>
-  <span class="editable" id="single_line" field_name="song_contribute_artist" object="song" >
-         <%= @song.song_contribute_artist.html_safe %>
-  </span>
-
-	<p>
-		<b>(For testing)S_A_ID</b>
-		<%= @song.s_a_id %>
-	</p>
-
-	<p>
-		<b>(for testing) Song Download Link</b>
-		<%= download_url_for(@song.s3_id) %>   </br>
-	</p>
-
-	<p>
-		<b>(For testing)ID</b>
-		<%= @song.id %>
-	</p>
-
-	<p>
-		<b>(for testing) S3 name:</b>
-		<%= @song.s3_id %>
-	</p>
-
-	<p>
-		<b>(for test) Url Slug:</b>
-		<%= @song.song_url_slug %>
-	</p>
-
-</div> -->

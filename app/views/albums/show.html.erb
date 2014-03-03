@@ -10,8 +10,8 @@
 		<div class="fb-like p5t" data-href="<%=@social_fb_url%>" data-send="false" data-width="350" data-show-faces="true"></div>
 	</div>
 </div>
-
-<div class="rightPane"><h1><%= @album.al_name %></h1>
+<h2><%= @album.al_name %></h2>
+<div class="rightPane">
 	<% unless @album.description.nil? || @album.description.size == 0 %>
 		<span class="editable albumDesc p5t" id="text_area" field_name="description" object="album" >
 			<%= @album.description.html_safe%>
@@ -38,6 +38,20 @@
 			<% end %>
 		</tbody>
 	</table>
+
+    <div class="songAlbumInfo" >
+      <h3>Album Info</h3>
+      <p>Release Date: <%= @album.al_rel_date %> </p>
+      <p>Producer: <%= @album.producer %> </p>
+      <p>Engineer:<%= @album.al_producer %> </p>
+      <p>Label: <%= @album.al_label %> </p>
+      <p>Licence:  <%= @album.al_label %> </p>
+      <p>Liner Notes/Thank You's:</br>
+        <%= @album.liner_notes %>
+      </p>
+
+    </div>
+
 		<input type="button" class="id_make-purchase" path="<%= artist_buy_album_path(@artist.url_slug, @album.album_url_slug) %>" value="Download" style="float:right; margin-top:15px;"/>
 
 

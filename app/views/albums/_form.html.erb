@@ -59,7 +59,7 @@
 
   <div class="field">
     <%= f.label "Copywrite"  %>
-    <%= f.text_field :al_copy_write,:class=>"span12" %>
+    <%= f.select :al_copy_write, options_for_select([['All Rights Reserved'], ['Attribution'], ['Non Commercial'], ['No Derivative Works'], ['Share A Like']], :selected => @album.al_copy_write) %>
   </div>
   <div class="field">
     <%= f.label "Release Date" %>
@@ -88,10 +88,16 @@
     <%= f.text_area :liner_notes,:class=>"span12",:rows=>"5" %>
   </div>
 
+    <div class="field">
+      <%= f.label "Label"  %>
+      <%= f.text_field :al_label,:class=>"span12",:rows=>"5" %>
+    </div>
 
 
 
-  <br/>
+
+
+    <br/>
   <div class="actions">
     <%= f.submit :class=>"btn btn-default" %>
   </div>
