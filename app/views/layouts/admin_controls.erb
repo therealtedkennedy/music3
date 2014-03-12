@@ -26,8 +26,9 @@
 
 		<li class="id_list-item-link">
 			<p><%= link_to 'Manage Account', show_user_path(current_user.id) %></p>
-            <p><%= link_to "Sign out", destroy_user_session_path,:method => :delete %></p>
-
+        </li>
+		<li class="id_list-item-link">
+			<p><%= link_to "Sign out", destroy_user_session_path,:method => :delete %></p>
 		<li>
 	</ul>
 

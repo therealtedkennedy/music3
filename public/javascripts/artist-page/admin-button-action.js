@@ -19,7 +19,9 @@ function adminMenuClick() {
 
         }
     );
+}
 
+function bindMenuItems(){
     $('.id_artist-admin').click(function(){
         $('.id_main-menu').hide();
         $('#artist-menu').show();

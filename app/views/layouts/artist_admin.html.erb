@@ -240,6 +240,7 @@ $(document).ready(function () {
 
    //admin click listener
     adminMenuClick();
+    bindMenuItems();
 
 
 
@@ -368,7 +369,8 @@ function loadContent(href,admin) {
                 /*adjusts the height of the mini page div*/
                 adjustContentHeight()
 			};
-
+			//admin click listener
+		    bindMenuItems();
 
 			//shows admin controls if admin show varible is present.  Used when admin is request from json from an object outside of the current artist
 			if (json.hasOwnProperty('admin-show')|| admin == true){
