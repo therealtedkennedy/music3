@@ -23,6 +23,12 @@ class HomepageController < ApplicationController
 
   end
 
+  def support_page
+
+    render :template => 'shared/support_form.html.erb'
+
+  end
+
 
 
 end

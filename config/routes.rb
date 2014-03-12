@@ -12,7 +12,8 @@ Music3::Application.routes.draw do
   #home page routing
 	root :to => "homepage#index"
   match "thank_you_sign_up" => "homepage#thank_you"
-  match "sign_up" => "homepage#sign_up"
+  match "sign_up" => "homepage#sign_up", :as => :beta_sign_up
+  match "help" => "homepage#support_page", :as => :support_page
 
 
 

@@ -5,7 +5,7 @@ class UsersController < Devise::SessionsController
 
 
   #include Devise::Controllers::InternalHelpers
-  layout "artist_admin", only: [:show, :edit]
+  layout "artist_admin", only: [:show, :edit, :new]
 
 
 
