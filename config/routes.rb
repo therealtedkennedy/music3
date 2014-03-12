@@ -38,13 +38,15 @@ Music3::Application.routes.draw do
 		match "users/edit/:id" => "users#edit", :as => "edit_user"
 		match "users/index" => "users#index"
 		match "users/sign_out" => "users#destroy"
-
+    match "users/update_password" => "users#update_password", :as => "update_password_custom"
 		match "users/update" => "users#boo"
 		match "devise_work_around" => "users#sign_in_routing", :as => "sign_in_routing"
 		match 'auth/:provider/callback', to: 'users#api_login'
 		match 'auth/failure', to: redirect('/')
 
-	end
+  end
+
+
 
 
 

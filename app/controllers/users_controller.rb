@@ -209,6 +209,21 @@ class UsersController < Devise::SessionsController
   end
 
 
+  def update_password
+    logger.info "in update password"
+    @user = User.find(current_user.id)
+    if @user.update_with_password(user_params)
+      logger.info "in user update"
+      # Sign in the user by passing validation in case his password changed
+      sign_in @user, :bypass => true
+      sign_in_routing
+    else
+      logger.info "user update else"
+      show
+    end
+  end
+
+
 
   #don't know what protected does......
   protected
@@ -219,6 +234,15 @@ class UsersController < Devise::SessionsController
     methods << :password if resource.respond_to?(:password)
     { :methods => methods, :only => [:password] }
   end
+
+
+  private
+
+  def user_params
+    # NOTE: Using `strong_parameters` gem
+    params.required(:user).permit(:password, :password_confirmation,:current_password)
+  end
+
 
 
 end

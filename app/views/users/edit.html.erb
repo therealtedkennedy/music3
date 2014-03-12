@@ -10,9 +10,15 @@
 
       <h2>Change your password</h2>
 
-      <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= form_for(@user, :url => { :action => "update_password" } ) do |f| %>
+
           <%= devise_error_messages! %>
           <%= f.hidden_field :reset_password_token %>
+
+          <div class="field">
+            <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+            <%= f.password_field :current_password %>
+          </div>
 
           <div><%= f.label :password, "New password" %>
             <%= f.password_field :password,:class=>"span12" %></div>
@@ -20,7 +26,7 @@
           <div><%= f.label :password_confirmation, "Confirm new password" %>
             <%= f.password_field :password_confirmation,:class=>"span12" %></div>
 
-          <div><%= f.submit "Change my password" %></div>
+          <div class="action_container"><%= f.submit "Change my password" %></div>
       <% end %>
 
 
