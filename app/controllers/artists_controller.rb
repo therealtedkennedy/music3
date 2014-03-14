@@ -15,13 +15,16 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
-    @artist = Artist.find(1)
-    if @artist.nil?
+
+    if Artist.exists?(1)
+      @artist = Artist.find(1)
+    elsif Artist.find_by_url_slug("tedkennedy").exists?
       @artist = Artist.find_by_url_slug("tedkennedy")
-      if @artist.nil?
-        @artist = Artist.find_by_url_slug("pearljam")
-      end
+    else
+      @artist = Artist.find_by_url_slug("pearljam")
     end
+
+
     @artist.image = "../assets-public/images/pages/welcome/records_shelves_trans_40.png"
 
 
