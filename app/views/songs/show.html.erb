@@ -3,6 +3,8 @@
 	<div>
 		<img style="max-width:300px;" src="<%=@song.image.to_s %>"/>
 	</div>
+
+  <a class="id_make-purchase" path="<%= artist_buy_song_path(@artist.url_slug, @song.song_url_slug, @song.id) %>" href="#">Buy Now</a>  name your price
 	<div class="social">
 		<% if @artist.twitter_name.blank? %>
 
@@ -79,7 +81,11 @@
 
 
 
-  <input type="button" class="id_make-purchase" path="<%= artist_buy_song_path(@artist.url_slug, @song.song_url_slug, @song.id) %>" value="Download" style="float:right; margin-top:15px;"/>
+
+
+
+
+
 
 
 

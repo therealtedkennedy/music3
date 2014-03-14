@@ -384,6 +384,7 @@ function loadContent(href,admin) {
 			//makes sure navigation works on ajax request
 			nav_selector();
 
+
 //			ted_log("before history push state url= "+href)
 			// HISTORY.PUSHSTATE
 //			history.pushState('', 'New URL: ' + href, href);
@@ -401,6 +402,7 @@ function loadContent(href,admin) {
 
 
 }
+
 
 
 
@@ -837,14 +839,15 @@ function ted_log() {
 		<div id="user_nav" class="user_nav">
 			<div class="user_nav_info">
 				<% if user_signed_in? %>
-					<div class="admin" state="closed">
+                    <div class="admin" state="closed">
 				    <span class="adminLink"></span>
 			</div>
 
               <% else %>
 					<%#= render :partial => 'login_form' %>
-                  <%= link_to "Sign Up", new_user_registration_path %>
-					<%= link_to "Sign in", new_user_session_path %>
+                   <%= link_to "Sign Up", new_user_registration_path %>
+				   <%= link_to "Sign in", new_user_session_path %>
+                   <%= link_to "Help", support_page_path %>
 				<% end %>
 			</div>
 

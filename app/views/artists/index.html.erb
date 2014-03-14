@@ -20,7 +20,7 @@
     <% @artists.each do |artist| %>
 
         <li class="span4 mix photography">
-          <a href="<%= artist_link_path(artist.url_slug) %>" data-destination="portfolio-items" data-insert="before" class="content-link">
+          <a href="<%= artist_link_path(artist.url_slug) %>" data-destination="portfolio-items" data-insert="before" >
             <img src= "<%=artist.profile_image %>" alt="Treble">
             <div class="portfolio-overlay">
               <h4 class="text-center"><%= artist.name %></h4>
