@@ -133,6 +133,9 @@ class UsersController < Devise::SessionsController
 	  @artist = Artist.find(1)
     if @artist.nil?
       @artist = Artist.find_by_url_slug("tedkennedy")
+      if @artist.nil?
+        @artist = Artist.find_by_url_slug("pearljam")
+      end
     end
 
 
@@ -180,7 +183,11 @@ class UsersController < Devise::SessionsController
     @artist = Artist.find(1)
     if @artist.nil?
       @artist = Artist.find_by_url_slug("tedkennedy")
+      if @artist.nil?
+        @artist = Artist.find_by_url_slug("pearljam")
+      end
     end
+
 
 	  #defines the type of object it is for the artist_admin layout.  Layout will render for user
       @object_type = "user"

@@ -18,6 +18,9 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(1)
     if @artist.nil?
       @artist = Artist.find_by_url_slug("tedkennedy")
+      if @artist.nil?
+        @artist = Artist.find_by_url_slug("pearljam")
+      end
     end
     @artist.image = "../assets-public/images/pages/welcome/records_shelves_trans_40.png"
 
