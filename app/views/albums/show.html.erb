@@ -4,7 +4,7 @@
 	<div>
       <a href="<%= artist_show_album_path(@artist.url_slug, @album.album_url_slug) %>/playlist-create" class="load-playlist  albumLink content-link"><img src="<%= @album.art%>" id="albumImage" /></a>
   
-      <a class="id_make-purchase" path="<%= artist_buy_album_path(@artist.url_slug, @album.album_url_slug) %>" href="#">Buy Now</a>  <%= @album.al_amount == 0 ? 'name your price' : @album.al_amount + ' or more' %> 
+      <a class="id_make-purchase" path="<%= artist_buy_album_path(@artist.url_slug, @album.album_url_slug) %>" href="#">Buy Now</a>  <%= @album.al_amount == 0 ? 'name your price' : @album.al_amount + ' or more' %>
   </div>
 
 	<div class="social m15t">
