@@ -52,28 +52,28 @@
 
     #logo h1 {
         font-family: <%= @artist.profile_layout.logo_font %>;
-        font-size: <%= @artist.profile_layout.h1_size %>pt;
+        font-size: <%= @artist.profile_layout.h1_size %>px;
         color: <%= @artist.profile_layout.h1_colour %>;
         text-align: center;
     }
 
     h1 {
         font-family: <%= @artist.profile_layout.content_font %>;
-        font-size: <%= @artist.profile_layout.h1_size %>pt;
+        font-size: <%= @artist.profile_layout.h1_size %>px;
         color: <%= @artist.profile_layout.h1_colour %>;
         text-align: center;
     }
 
     h2, .buy_header  {
         font-family: <%= @artist.profile_layout.content_font %>;
-        font-size: <%= @artist.profile_layout.h2_size %>pt;
+        font-size: <%= @artist.profile_layout.h2_size %>px;
         color: <%= @artist.profile_layout.h2_colour %>;
         text-align: center;
     }
 
     h3 {
         font-family: <%= @artist.profile_layout.content_font %>;
-        font-size: <%= @artist.profile_layout.h3_size %>pt;
+        font-size: <%= @artist.profile_layout.h3_size %>px;
         color: <%= @artist.profile_layout.h3_colour %>;
         text-align: center;
     }
@@ -234,6 +234,20 @@
         display: none;
     }
 
+    .buyLink, .buyLink:hover {
+        font-family: <%= @artist.profile_layout.content_font %>;
+        font-size: <%= @artist.profile_layout.h1_size %>px;
+        color: <%= @artist.profile_layout.h1_colour %>;
+    }
+
+    .minorDesc {
+        font-family: <%= @artist.profile_layout.content_font %>;
+        font-size: <%= @artist.profile_layout.p_size %>px;
+        color: <%= @artist.profile_layout.p_colour %>;
+        margin-left:5px;
+        font-weight:100;
+    }
+
     <% end %>
 
 
@@ -323,15 +337,15 @@
             cursor: pointer;
             height:50px;
             display:inline-block;
-            font-family: 'verb_regularbold', sans-serif;
-            font-size:20px;
+/*            font-family: 'verb_regularbold', sans-serif;
+            font-size:20px;*/
             /*color:#96938f;*/
             /*text-shadow: 0px 0px 1px rgba(0,0,0,0.4); */
         }
 
         .bodyArea .nav:hover
         {
-            color:#5b5956;
+            /*color:#5b5956;*/
         }
 
         .bodyArea .nav.selected
@@ -350,8 +364,8 @@
         margin:0 auto;
         bottom:0;
         padding:30px;
-        font-family: 'verb_regularregular';
-        color:#fff;
+/*        font-family: 'verb_regularregular';
+        color:#fff;*/
     }
 
 	.bodyArea .editPage
@@ -366,8 +380,8 @@
 		margin:0 auto;
 		bottom:0;
 		padding:20px;
-		font-family: 'verb_regularregular';
-		color:#fff;
+/*		font-family: 'verb_regularregular';
+		color:#fff;*/
 	}
 
     .miniPage .album
@@ -395,21 +409,21 @@
 
     .miniPage .album h1
     {
-        font-family: 'verb_regularbold';
-        font-size: 18px;
+/*        font-family: 'verb_regularbold';
+        font-size: 18px;*/
         margin:0 auto;
         display:block;
         padding:0px;
         margin:0;
         margin-top:10px;
-        color:#fff;
+        /*color:#fff;*/
     }
 
     .miniPage .album h2
     {
-        font-family: 'verb_lightregular';
+/*        font-family: 'verb_lightregular';
         color:#aaa;
-        font-size: 14px;
+        font-size: 14px;*/
         margin:0 auto;
         display:block;
         padding:0px;
@@ -489,18 +503,6 @@
         height: 50px
     }
 
-    a.nav, .adminLink {
-        color: #FFFFFF;
-        text-decoration: none;
-
-    }
-
-    a.nav:hover, .adminLink:hover {
-        color: #666;
-        text-decoration: none;
-    }
-
-
     #text_area {
         width: 350px;
         max-height: 200px;
@@ -540,7 +542,7 @@
     }
 
     .info-container {
-      font-size: 16px;
+      /*font-size: 16px;*/
       vertical-align: top;
       padding: 0px 0px 0px 30px;
     }
@@ -561,12 +563,12 @@
 
     .item-description {
       padding-left:30px; 
-      color:#999;
+      /*color:#999;*/
     }
 
-    .bio {
+/*    .bio {
       color:#999;
-    }
+    }*/
 
     /*songs*/
     #song-content {
@@ -580,7 +582,7 @@
 
     table.song-table tbody {
         color: <%= @artist.profile_layout.h2_colour %>; 
-        font-size:90%;
+        /*font-size:90%;*/
     }
 
     a.content-link {
@@ -595,7 +597,7 @@
 
     div.song-footer {
         text-align: center; 
-        font-size: 90%; 
+        /*font-size: 90%; */
         color: <%= @artist.profile_layout.h2_colour %>;
     }
 
