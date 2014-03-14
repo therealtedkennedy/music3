@@ -57,7 +57,7 @@
 			<h2> Albums You have Downloaded</h2>
 			<h4>
 			  <% @user.albums.uniq.each do |album| %>
-                  <% if album.pri_artist.blank? || album.pri_artist.nil? %>
+                  <% if @artist.url_slug.blank? || album.url_slug.nil? || a%>
 
                   <% else %>
 				     <% @artist = Artist.find_by_name(album.pri_artist) %>
