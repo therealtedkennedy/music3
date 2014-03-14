@@ -60,10 +60,8 @@
 
                   <% @artist = Artist.find_by_name(album.pri_artist) %>
                   <!--checks to make sure the artist exisits...if artist gets deleted it won't-->
-                  <% if @artist.url_slug.blank? || album.url_slug.nil? %>
-
-                  <% else %>
-                 	     <%= link_to album.al_name, artist_show_album_path(@artist.url_slug,album.album_url_slug),:class => "content-link"  %> :    <%= link_to 'Download Again', album_download_path(@artist.url_slug,album.album_url_slug, :redown => "true")%>
+                  <% unless @artist.url_slug.blank? || @artist.url_slug.nil? %>
+                   	     <%= link_to album.al_name, artist_show_album_path(@artist.url_slug,album.album_url_slug),:class => "content-link"  %> :    <%= link_to 'Download Again', album_download_path(@artist.url_slug,album.album_url_slug, :redown => "true")%>
 				      </br>
                   <% end %>
 
