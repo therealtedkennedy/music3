@@ -9,7 +9,7 @@ class ArtistsController < ApplicationController
 
   #changes from default layout to custom layout
 
-  layout "artist_admin", only: [:show, :admin, :update, :social_promo, :pre_delete, :new, :edit,:index]
+  layout "artist_admin", only: [:show, :admin, :update, :social_promo, :pre_delete,  :edit,:index]
 
 
 
@@ -102,6 +102,7 @@ class ArtistsController < ApplicationController
 
 
 	@form = render_to_string('artists/_form_new_artist.html.erb',:layout => false)
+  logger.info(@form)
 
 	layout(params[:layout])
     respond_to do |format|
@@ -140,6 +141,8 @@ class ArtistsController < ApplicationController
 
     @user = current_user
     @artist.users << @user
+
+    @form = render_to_string('artists/_form',:layout => false)
 
     #creates and assigns layout
     @artist.profile_layout = ProfileLayout.new
