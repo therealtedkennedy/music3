@@ -5,16 +5,13 @@
 	<input name="authenticity_token" id="token" type="hidden" value=""/></div>
 	<table style="width:100%;margin:60px auto;">
 		<tr>
-			<td style="width:30%;text-align:right;"><label for="amount">$</label></td>
-			<td style="width:70%;text-align:left;padding-left:30px"><input id="amount" name="amount" type="text" size="3" value="<%=@album.al_amount%>" /></td>
+			<td style="width:20%;text-align:right;"><label for="amount">$</label></td>
+			<td style="width:50%;text-align:left;padding-left:30px"><input id="amount" name="amount" type="text" size="3" value="<%=@album.al_amount%>" /></td>
 
-          <% if @album.al_amount == 0 %>
-              <td style="width:30%;text-align:left;"><label for="amount">avg. price $10</label></td>
-          <% else %>
-              <td style="width:30%;text-align:left;"><label for="amount">or more</label></td>
-          <% end %>
+            <td style="width:30%;text-align:left;"><label for="amount"><%= @album.al_amount == 0 ? 'avg. price $10' : 'or more' %></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td></td>
 			<td style="padding-top:60px;"><button name="commit" type="submit" class="id_make-purchase" style="float:right; margin-right:15px; margin-top:3px;">Buy Now</button></td>
 		</tr>
