@@ -21,7 +21,7 @@ production:
   pool: 5
   timeout: 5000
 
-dev-kennedy:
+dev_kennedy:
   adapter: sqlite3
   database: db/production.sqlite3
   pool: 5
