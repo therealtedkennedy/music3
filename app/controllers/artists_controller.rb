@@ -15,7 +15,10 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
-    @artist = Artist.find_by_url_slug("pearljam")
+    @artist = Artist.find(1)
+    if @artist.nil?
+      @artist = Artist.find_by_url_slug("tedkennedy")
+    end
     @artist.image = "../assets-public/images/pages/welcome/records_shelves_trans_40.png"
 
 
@@ -94,6 +97,8 @@ class ArtistsController < ApplicationController
 	  #new loads the new page, which the user gives the artist name, then it goes to create which creates the artist object.
 	  #then it goes to edit which allow the user to fill in the artist information. Then goes to update where artist info is updated
     @artist = Artist.new
+    @artist.profile_layout = ProfileLayout.new
+
 
 
 	@form = render_to_string('artists/_form_new_artist.html.erb',:layout => false)
