@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   after_filter :ajax_back_stop
 
   def authenticate
-	  if Rails.env.production?
+	  if Rails.env.dev-kennedy?
 		  authenticate_or_request_with_http_basic do |username, password|
 			  username == "trentr" && password == "Notnin1794$$"
 		  end
