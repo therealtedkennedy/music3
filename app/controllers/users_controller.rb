@@ -130,12 +130,12 @@ class UsersController < Devise::SessionsController
 	  @user = User.find(params[:id])
 
 	  #artist 1 is the set up artist.  Houses all the defaults for users who don't have an artist asoiated with them.  Its not the best work around but its effective.
-	  @artist = Artist.find(1)
-    if @artist.nil?
+    if Artist.exists?(1)
+      @artist = Artist.find(1)
+    elsif Artist.find_by_url_slug("tedkennedy").nil?
+      @artist = Artist.find_by_url_slug("pearljam")
+    else
       @artist = Artist.find_by_url_slug("tedkennedy")
-      if @artist.nil?
-        @artist = Artist.find_by_url_slug("pearljam")
-      end
     end
 
 
@@ -180,12 +180,13 @@ class UsersController < Devise::SessionsController
   def edit
 
 	  @user = User.find(params[:id])
-    @artist = Artist.find(1)
-    if @artist.nil?
+
+    if Artist.exists?(1)
+      @artist = Artist.find(1)
+    elsif Artist.find_by_url_slug("tedkennedy").nil?
+      @artist = Artist.find_by_url_slug("pearljam")
+    else
       @artist = Artist.find_by_url_slug("tedkennedy")
-      if @artist.nil?
-        @artist = Artist.find_by_url_slug("pearljam")
-      end
     end
 
 
