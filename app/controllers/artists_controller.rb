@@ -15,7 +15,7 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
-    @artist = Artist.find(1)
+    @artist = Artist.find_by_url_slug("pearljam")
     @artist.image = "../assets-public/images/pages/welcome/records_shelves_trans_40.png"
 
 
