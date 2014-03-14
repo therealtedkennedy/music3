@@ -57,7 +57,9 @@
 			<h2> Albums You have Downloaded</h2>
 			<h4>
 			  <% @user.albums.uniq.each do |album| %>
-                  <% unless album.pri_artist.blank? ||album.pri_artist.nil? %>
+                  <% if album.pri_artist.blank? || album.pri_artist.nil? %>
+
+                  <% else %>
 				     <% @artist = Artist.find_by_name(album.pri_artist) %>
 				     <%= link_to album.al_name, artist_show_album_path(@artist.url_slug,album.album_url_slug),:class => "content-link"  %> :    <%= link_to 'Download Again', album_download_path(@artist.url_slug,album.album_url_slug, :redown => "true")%>
 				      </br>
