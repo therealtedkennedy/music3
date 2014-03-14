@@ -19,9 +19,9 @@ class ArtistsController < ApplicationController
     if Artist.exists?(1)
       @artist = Artist.find(1)
     elsif Artist.find_by_url_slug("tedkennedy").nil?
-      @artist = Artist.find_by_url_slug("tedkennedy")
-    else
       @artist = Artist.find_by_url_slug("pearljam")
+    else
+      @artist = Artist.find_by_url_slug("tedkennedy")
     end
 
 
