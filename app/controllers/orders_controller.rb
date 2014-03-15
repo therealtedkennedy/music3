@@ -148,11 +148,9 @@ class OrdersController < ApplicationController
   #@artist = Artist.find_by_url_slug(params[:url_slug])
 
 
-  logger.info "amount in chained payment before payment prep"
-  logger.info @amount
+  logger.info "amount in chained payment before payment prep= "+@amount.to_s
   payment_prep(params[:url_slug],params[:object], params[:song_album_or_event_id], params[:amount])
-  logger.info "amount in chained payment after payment prep"
-  logger.info @amount
+  logger.info "amount in chained payment after payment prep= "+@amount.to_s
   logger.info "Artist?"
   logger.info @artist
 
