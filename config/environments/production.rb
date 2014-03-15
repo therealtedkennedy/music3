@@ -65,10 +65,10 @@ Music3::Application.configure do
     ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
     ::CHAINED_GATEWAY =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
-        :login => "therea_1326852847_biz_api1.gmail.com",
-        :password => "1326852885",
-        :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31ASJSfLthOmKchEACDPMUl0iUA9Kt",
-        :appid => "APP-80W284485P519543T"
+        :login => "edward_api1.threerepeater.com",
+        :password => "5YBTC3CZQL98LPZG",
+        :signature => "A6w6jWnkH74Y9di4mPMOP2PPzHR.A92o3GLeoI0LQ-cRkW.iDVcwaQGG'",
+        :appid => "APP-4H042466LH878382M"
     )
 
 #mailer configuration
