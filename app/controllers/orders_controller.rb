@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
   if params[:object] == "album"
     #user selects payment type.  All relevant var's passed through params.  Amount is use for PWYC, all other times its just a place holder
     @album = Album.find(params[:song_album_or_event_id])
-    logger.info "Album "+@ablum.to_s
+    logger.info "Album somthing"+@ablum.to_s
 
 
     if params[:amount].nil?
@@ -154,7 +154,7 @@ class OrdersController < ApplicationController
   logger.info "Artist?"
   logger.info @artist
 
-  recipients = [{:email => 'edward@threerepeater.com',
+  recipients = [{:email => 'itsbeenalovelyteaparty@hotmail.com',
                  :amount => @amount,
                  :primary => true},
                 {:email => @artist.pay_pal,
