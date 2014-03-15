@@ -55,7 +55,7 @@ Music3::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :test
+    ActiveMerchant::Billing::Base.mode = :production
     paypal_options = {
         :login => "therea_1326852847_biz_api1.gmail.com",
         :password => "1326852885",
@@ -68,7 +68,7 @@ Music3::Application.configure do
         :login => "edward_api1.threerepeater.com",
         :password => "5YBTC3CZQL98LPZG",
         :signature => "A6w6jWnkH74Y9di4mPMOP2PPzHR.A92o3GLeoI0LQ-cRkW.iDVcwaQGG",
-        :appid => "APP-4H042466LH878382M"
+        :appid => "APP-4H042466LH878382M",
     )
 
 #mailer configuration
