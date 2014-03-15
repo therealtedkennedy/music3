@@ -13,7 +13,9 @@ Music3::Application.routes.draw do
 	root :to => "homepage#index"
   match "thank_you_sign_up" => "homepage#thank_you"
   match "sign_up" => "homepage#sign_up", :as => :beta_sign_up
-  match "help" => "homepage#support_page", :as => :support_page
+  match "help_" => "homepage#support_page", :as => :support_page
+  match  "terms_and_conditions" => "homepage#terms_and_conditions", :as => :terms_and_conditions
+  match  "privacy_policy" => "homepage#privacy_policy", :as => :privacy_policy
 
 
 

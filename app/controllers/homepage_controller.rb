@@ -29,6 +29,18 @@ class HomepageController < ApplicationController
 
   end
 
+  def terms_and_conditions
+
+    render :template => 'shared/terms_and_conditions.html.erb'
+
+  end
+
+  def privacy_policy
+
+    render :template => 'shared/privacy_policy.html.erb'
+
+  end
+
 
 
 end

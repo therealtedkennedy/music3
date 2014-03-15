@@ -167,32 +167,32 @@
 			-->
 			<ul class="thumbnails plugin-filter-elements portfolio-items">
 				<li class="span4 mix illustration branding">
-					<a href="#pages/portfolio/project_1.html" data-destination="portfolio-items" data-insert="before">
-						<!-- Portfolio image -->
-						<img src="/assets-public/images/pages/welcome/band.jpg" alt="Treble">
+					<!--<a href="#pages/portfolio/project_1.html" data-destination="portfolio-items" data-insert="before">-->
+						<!--&lt;!&ndash; Portfolio image &ndash;&gt;-->
+						<!--<img src="/assets-public/images/pages/welcome/band.jpg" alt="Treble">-->
 
-						<!-- Portfolio name, activated on hover -->
-						<div class="portfolio-overlay">
-							<h4>punchalice</h4>
-						</div>
-					</a>
+						<!--&lt;!&ndash; Portfolio name, activated on hover &ndash;&gt;-->
+						<!--<div class="portfolio-overlay">-->
+							<!--<h4>punchalice</h4>-->
+						<!--</div>-->
+					<!--</a>-->
 				</li>
 				<li class="span4 mix branding typography illustration">
-					<a href="#pages/portfolio/project_2.html" data-destination="portfolio-items" data-insert="before">
+					<a href="/tedkennedy" data-destination="portfolio-items" data-insert="before">
 						<img src="/assets-public/images/pages/welcome/girl_walking.jpg" alt="Treble">
 						<div class="portfolio-overlay">
 							<h4>Ted Kennedy</h4>
 						</div>
 					</a>
 				</li>
-              <li class="span4 mix photography">
-                <a href="#pages/portfolio/project_4.html" data-destination="portfolio-items" data-insert="before">
-                  <img src="/assets-public/images/pages/welcome/jen_wall.png" alt="Treble">
-                  <div class="portfolio-overlay">
-                    <h4>Hipster</h4>
-                  </div>
-                </a>
-              </li>
+              <!--<li class="span4 mix photography">-->
+                <!--<a href="#pages/portfolio/project_4.html" data-destination="portfolio-items" data-insert="before">-->
+                  <!--<img src="/assets-public/images/pages/welcome/jen_wall.png" alt="Treble">-->
+                  <!--<div class="portfolio-overlay">-->
+                    <!--<h4>Hipster</h4>-->
+                  <!--</div>-->
+                <!--</a>-->
+              <!--</li>-->
 
 
 			</ul>
@@ -670,13 +670,17 @@
 							info@threerepeater.com
 						</div>
 					</div>
-					<h5>Get social</h5>
-					<div class="social-icons sicon-white bordered">
-						<a href="#" class="sicon-facebook"><i>Facebook</i></a>
-						<a href="#" class="sicon-twitter"><i>Twitter</i></a>
-						<a href="#" class="sicon-linkedin"><i>LinkedIn</i></a>
+					<h5>Privacy and Terms and Conditions</h5>
+                        <%= link_to "Terms And Conditions", terms_and_conditions_path() %><br />
+                        <%= link_to "Privacy Policy", privacy_policy_path() %><br />
 
-					</div>
+
+					<!--<div class="social-icons sicon-white bordered">-->
+						<!--<a href="#" class="sicon-facebook"><i>Facebook</i></a>-->
+						<!--<a href="#" class="sicon-twitter"><i>Twitter</i></a>-->
+						<!--<a href="#" class="sicon-linkedin"><i>LinkedIn</i></a>-->
+
+					<!--</div>-->
 				</div>
 				<!-- End Contact information -->
 			</div>
