@@ -54,7 +54,7 @@ Music3::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  config.after_initialize do
+
     ActiveMerchant::Billing::Base.mode = :production
     paypal_options = {
         :login => "edward_api1.threerepeater.com",
@@ -76,17 +76,18 @@ Music3::Application.configure do
 	# Don't care if the mailer can't send
 	config.action_mailer.raise_delivery_errors = true
 
-	ActionMailer::Base.delivery_method = :smtp
-  #config.action_mailer.delivery_method = :smtp
-	ActionMailer::Base.smtp_settings = {
-		  :address   => "smtp.mandrillapp.com",
-		  :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
-		  :enable_starttls_auto => true, # detects and uses STARTTLS
-		  :user_name => "app6560736@heroku.com",
-		  :password  => "rF_3BOJq9DcpPYrSVKAu-Q", # SMTP password is any valid API key
-		  :authentication => 'plain', # Mandrill supports 'plain' or 'login'
-		  :domain => 'heroku.com', # your domain to identify your server when connecting
-  }
+  config.after_initialize do
+    ActionMailer::Base.delivery_method = :smtp
+    #config.action_mailer.delivery_method = :smtp
+    ActionMailer::Base.smtp_settings = {
+        :address   => "smtp.mandrillapp.com",
+        :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
+        :enable_starttls_auto => true, # detects and uses STARTTLS
+        :user_name => "app6560736@heroku.com",
+        :password  => "rF_3BOJq9DcpPYrSVKAu-Q", # SMTP password is any valid API key
+        :authentication => 'plain', # Mandrill supports 'plain' or 'login'
+        :domain => 'heroku.com', # your domain to identify your server when connecting
+    }
   end
 
 end
