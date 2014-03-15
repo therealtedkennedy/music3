@@ -57,9 +57,9 @@ Music3::Application.configure do
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :production
     paypal_options = {
-        :login => "therea_1326852847_biz_api1.gmail.com",
-        :password => "1326852885",
-        :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31ASJSfLthOmKchEACDPMUl0iUA9Kt",
+        :login => "edward_api1.threerepeater.com",
+        :password => "5YBTC3CZQL98LPZG",
+        :signature => "A6w6jWnkH74Y9di4mPMOP2PPzHR.A92o3GLeoI0LQ-cRkW.iDVcwaQGG",
 
     }
     ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)

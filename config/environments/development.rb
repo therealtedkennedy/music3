@@ -56,7 +56,7 @@ Music3::Application.configure do
   config.after_initialize do
   ActiveMerchant::Billing::Base.mode = :test
   paypal_options = {
-    :login => "therea_1326852847_biz_api1.gmail.com",
+    :login => "edward_api1.threerepeater.com",
     :password => "1326852885",
     :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31ASJSfLthOmKchEACDPMUl0iUA9Kt",
 
