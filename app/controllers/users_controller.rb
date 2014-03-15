@@ -133,14 +133,14 @@ class UsersController < Devise::SessionsController
     if Artist.exists?(1)
       @artist = Artist.find(1)
       logger.info("@artist= "+ @artist)
-    elsif Artist.find_by_url_slug("pearljam").nil?
-      @artist = Artist.find_by_url_slug("tedkennedy")
-      logger.info("User show..using artist url slug tedkennedy")
+    elsif Artist.find_by_url_slug('pearljam').nil?
+      @artist = Artist.find_by_url_slug('tedkennedy')
+          logger.info("User show..using artist url slug tedkennedy")
       logger.info("@artist= "+ @artist)
 
     else
-      @artist = Artist.find_by_url_slug("pearljam")
-      logger.info("User show..using artist url slug pearljam")
+      @artist = Artist.find_by_url_slug('pearljam')
+      logger.info("User show..using Fartist url slug pearljam")
       logger.info("@artist= "+ @artist)
 
     end
