@@ -174,6 +174,7 @@ class OrdersController < ApplicationController
 
   # for redirecting the customer to the actual paypal site to finish the payment.
   @paykey = (CHAINED_GATEWAY.redirect_url_for(response["payKey"])).split('&')
+  logger.info "paykey= "+@paykey.to_s
   @paykey = @paykey.fetch(1)
 
 
