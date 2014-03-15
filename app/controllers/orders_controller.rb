@@ -156,7 +156,7 @@ class OrdersController < ApplicationController
   logger.info "Artist?"
   logger.info @artist
 
-  recipients = [{:email => 'edward@threerepeater.com',
+  recipients = [{:email => 'edward_api1.threerepeater.com',
                  :amount => @amount,
                  :primary => true},
                 {:email => @artist.pay_pal,
