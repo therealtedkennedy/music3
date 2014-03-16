@@ -2,7 +2,7 @@ class UsersController < Devise::SessionsController
 
 
   load_and_authorize_resource
-  skip_load_and_authorize_resource :only => [:new, :create, :destroy, :sign_in_routing]
+  skip_load_and_authorize_resource :only => [:new, :create, :destroy, :sign_in_routing,:edit,:boo]
   before_filter :authenticate_user!, :except => [:new, :create ]
   prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, :only => :create
@@ -135,7 +135,7 @@ class UsersController < Devise::SessionsController
 
     if user_signed_in?
 
-      User.find(current_user.id)
+     @user = User.find(current_user.id)
 
       @load_artist_style = "no"
 
@@ -201,48 +201,50 @@ class UsersController < Devise::SessionsController
 
   def edit
 
-	  @user = User.find(params[:id])
+    if user_signed_in?
 
-    if Artist.exists?(1)
-      @artist = Artist.find(1)
-    elsif Artist.find_by_url_slug("tedkennedy").nil?
-      @artist = Artist.find_by_url_slug("pearljam")
-    else
-      @artist = Artist.find_by_url_slug("tedkennedy")
+     @user = User.find(current_user.id)
+
+
+
+      if Artist.exists?(1)
+        @artist = Artist.find(1)
+      elsif Artist.find_by_url_slug("tedkennedy").nil?
+        @artist = Artist.find_by_url_slug("pearljam")
+      else
+        @artist = Artist.find_by_url_slug("tedkennedy")
+      end
+
+
+      #defines the type of object it is for the artist_admin layout.  Layout will render for user
+        @object_type = "user"
+        logger.info "In edit"
+      logger.info @user
+      #searchString  = params[:url_slug]
+      #@artist = Artist.find_by_url_slug(searchString)
+
+      #loads form
+      @form = render_to_string('users/_form',:layout => false)
+
+
+
+      respond_to do |format|
+        format.html
+        format.json {
+          render :json => {
+              :success => true,
+              :".bodyArea" => render_to_string(
+                  :action => 'edit.html.erb',
+                  :layout => "layouts/user.html.erb",
+              ),
+              #show/hides edit screen
+              #:"edit" => "true"
+              #sets object type to user.  Loads Correct
+              :"object_type" => "user"
+          }
+        }
+      end
     end
-
-
-	  #defines the type of object it is for the artist_admin layout.  Layout will render for user
-      @object_type = "user"
-      logger.info "In edit"
-	  logger.info @user
-	  #searchString  = params[:url_slug]
-	  #@artist = Artist.find_by_url_slug(searchString)
-
-	  #loads form
-	  @form = render_to_string('users/_form',:layout => false)
-
-
-
-	  respond_to do |format|
-		  format.html
-		  format.json {
-			  render :json => {
-					  :success => true,
-					  :".bodyArea" => render_to_string(
-							  :action => 'edit.html.erb',
-							  :layout => "layouts/user.html.erb",
-					  ),
-					  #show/hides edit screen
-					  #:"edit" => "true"
-					  #sets object type to user.  Loads Correct
-					  :"object_type" => "user"
-			  }
-		  }
-
-
-
-	     end
   end
 
 
