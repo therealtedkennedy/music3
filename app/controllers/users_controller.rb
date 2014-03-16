@@ -1,6 +1,8 @@
 class UsersController < Devise::SessionsController
 
 
+  load_and_authorize_resource
+  skip_load_and_authorize_resource :only => [:new, :create, :destroy, :sign_in_routing]
   before_filter :authenticate_user!, :except => [:new, :create ]
   prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, :only => :create
