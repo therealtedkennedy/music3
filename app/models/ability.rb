@@ -10,7 +10,7 @@ class Ability
     elsif user
 
       can [:update,:destroy,:admin,:create,:artist_save_image], Artist, :users => {:id => user.id}
-      can [:update,:destroy,:show,:edit], User, :users => {:id => user.id}
+      can [:update,:destroy,:show,:edit, :api_login,:sign_in_routing], User, :users => {:id => user.id}
       #can :delete, Artist, :users => {:id => user.id}
       can :admin, Artist, :users => {:id => user.id}
       can :create, Artist
