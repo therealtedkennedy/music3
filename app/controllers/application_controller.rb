@@ -3,10 +3,22 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   include SessionsHelper
-  #Amazon buckets
-  BUCKET ='ted_kennedy'
-  ALBUM_BUCKET = 'ted_kennedy_album'
-  IMAGE_BUCKET = 'ted_kennedy_image'
+
+  if Rails.env.production?
+
+    BUCKET ='production_songs'
+    ALBUM_BUCKET = 'production_albums'
+    IMAGE_BUCKET = 'production_image'
+
+  else
+    #Amazon buckets
+    BUCKET ='ted_kennedy'
+    ALBUM_BUCKET = 'ted_kennedy_album'
+    IMAGE_BUCKET = 'ted_kennedy_image'
+
+  end
+
+
 
   S3_KEY="z+DmlVpM1omU5AaTlyRxsqhHiq/57M9CGEQbc+gd"
   #Number of download codes avaible to artist
