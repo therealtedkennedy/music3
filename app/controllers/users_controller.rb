@@ -3,8 +3,6 @@ class UsersController < Devise::SessionsController
   prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, :only => :create
 
-  caches_action :show, :layout => false
-
 
   #include Devise::Controllers::InternalHelpers
   layout "artist_admin", only: [:show, :edit, :new]
