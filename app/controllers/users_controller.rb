@@ -1,8 +1,12 @@
 class UsersController < Devise::SessionsController
 
+
+  load_and_authorize_resource
+  skip_load_and_authorize_resource :only => [:new, :create, :destroy]
+  before_filter :authenticate_user!, :except => [:new, :create ]
   prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, :only => :create
-  before_filter :authenticate_user!, :except => [:new, :create ]
+
 
 
   #include Devise::Controllers::InternalHelpers
@@ -128,50 +132,58 @@ class UsersController < Devise::SessionsController
 
   def show
 	  logger.info "show controller"
-	  @user = User.find(params[:id])
 
-    @load_artist_style = "no"
+    if user_signed_in?
 
-	  #artist 1 is the set up artist.  Houses all the defaults for users who don't have an artist asoiated with them.  Its not the best work around but its effective.
-    if Artist.exists?(250)
-      @artist = Artist.find(250)
-      logger.info("@artist= "+ @artist.url_slug)
-    elsif Artist.find_by_url_slug("pearljam").nil?
-      @artist = Artist.find_by_url_slug("tedkennedy")
-      logger.info("User show..using artist url slug tedkennedy")
-      logger.info("@artist= "+ @artist.url_slug)
+      User.find(current_user.id)
+
+      @load_artist_style = "no"
+
+      #artist 1 is the set up artist.  Houses all the defaults for users who don't have an artist asoiated with them.  Its not the best work around but its effective.
+      if Artist.exists?(250)
+        @artist = Artist.find(250)
+        logger.info("@artist= "+ @artist.url_slug)
+      elsif Artist.find_by_url_slug("pearljam").nil?
+        @artist = Artist.find_by_url_slug("tedkennedy")
+        logger.info("User show..using artist url slug tedkennedy")
+        logger.info("@artist= "+ @artist.url_slug)
+
+      else
+        @artist = Artist.find_by_url_slug("pearljam")
+        logger.info("User show..using artist url slug pearljam")
+        logger.info("@artist= "+ @artist.url_slug)
+
+      end
+
+
+      #defines the type of object it is for the artist_admin layout.  Layout will render for user
+      @object_type = "user"
+
+      logger.info "User Found?"
+      logger.info @user
+
+      # edit = "true" shows edit screen, false hides it
+      #@edit = "true"
+
+      respond_to do |format|
+        format.html
+        format.json {
+          render :json => {
+              :success => true,
+              :".bodyArea" => render_to_string(
+                  :action => 'show.html.erb',
+                  :layout => "layouts/user.html.erb",
+              ),
+              #sets object type to user.  Loads Correct
+              :"object_type" => "user"
+          }
+        }
+      end
+
 
     else
-      @artist = Artist.find_by_url_slug("pearljam")
-      logger.info("User show..using artist url slug pearljam")
-      logger.info("@artist= "+ @artist.url_slug)
-
+      redirect_to root_path
     end
-
-
-	  #defines the type of object it is for the artist_admin layout.  Layout will render for user
-	  @object_type = "user"
-
-	  logger.info "User Found?"
-	  logger.info @user
-
-    # edit = "true" shows edit screen, false hides it
-	  #@edit = "true"
-
-	  respond_to do |format|
-		  format.html
-		  format.json {
-			  render :json => {
-					  :success => true,
-					  :".bodyArea" => render_to_string(
-							  :action => 'show.html.erb',
-							  :layout => "layouts/user.html.erb",
-					  ),
-					  #sets object type to user.  Loads Correct
-					  :"object_type" => "user"
-			  }
-		  }
-	  end
 
   end
 
