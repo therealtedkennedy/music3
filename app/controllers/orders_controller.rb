@@ -140,7 +140,20 @@ class OrdersController < ApplicationController
   logger.info "Artist?= "+@artist.name
 
 
-  recipients = [{:email => 'therea_1326852847_biz@gmail.com',
+  #sets test or main user for paypal chained payments
+
+  if Rails.env.development? || Rails.env.dev_kennedy?
+
+    @pay_pal_user = "therea_1326852847_biz@gmail.com"
+
+  else
+
+    @pay_pal_user = "edward@threerepeater.com"
+
+  end
+
+
+  recipients = [{:email => @pay_pal_user,
                  :amount => @amount,
                  :primary => true},
                 {:email => @artist.pay_pal,
