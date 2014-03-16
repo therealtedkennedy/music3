@@ -67,7 +67,8 @@ Music3::Application.configure do
       :login => "therea_1326852847_biz_api1.gmail.com",
       :password => "1326852885",
       :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31ASJSfLthOmKchEACDPMUl0iUA9Kt",
-      :appid => "APP-80W284485P519543T"
+      :appid => "APP-80W284485P519543T",
+
   )
 
 

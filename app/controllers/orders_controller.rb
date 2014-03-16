@@ -108,20 +108,6 @@ class OrdersController < ApplicationController
 	  end
   end
 
-  def express
-
-  payment_prep(params[:object], params[:url_slug], params[:song_album_or_event_id], params[:amount])
-  #your at minute 8:28...have to figure out how this works and what this does
-  response = EXPRESS_GATEWAY.setup_purchase(@amount*100,
-    :ip => request.remote_ip,
-    :return_url => login_prompt_url,
-
-    #:return_url =>  album_download_url(@artist.url_slug, @album.id),
-    :cancel_return_url => @cnx_url
-  )
-
-  redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
-  end
 
   #sets up cookies for payment process
   def free_download
@@ -185,6 +171,7 @@ class OrdersController < ApplicationController
 
        }
   redirect_to (CHAINED_GATEWAY.redirect_url_for(response["payKey"]))
+  puts CHAINED_GATEWAY.debug
   end
 
   #creates download link, payment amount, and object vars, and sets a cookie

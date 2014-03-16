@@ -55,8 +55,15 @@ Music3::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :production
+    paypal_options = {
+        :login => "edward_api1.threerepeater.com",
+        :password => "5YBTC3CZQL98LPZG",
+        :signature => "A6w6jWnkH74Y9di4mPMOP2PPzHR.A92o3GLeoI0LQ-cRkW.iDVcwaQGG",
 
-
+    }
+    ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
     ::CHAINED_GATEWAY =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
         :login => "edward_api1.threerepeater.com",
         :password => "5YBTC3CZQL98LPZG",
