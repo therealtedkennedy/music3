@@ -2,6 +2,7 @@ class UsersController < Devise::SessionsController
 
   prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, :only => :create
+  before_filter :authenticate_user!, :except => [:new, :create ]
 
 
   #include Devise::Controllers::InternalHelpers
@@ -128,6 +129,8 @@ class UsersController < Devise::SessionsController
   def show
 	  logger.info "show controller"
 	  @user = User.find(params[:id])
+
+    @load_artist_style = "no"
 
 	  #artist 1 is the set up artist.  Houses all the defaults for users who don't have an artist asoiated with them.  Its not the best work around but its effective.
     if Artist.exists?(250)

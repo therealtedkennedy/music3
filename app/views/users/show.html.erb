@@ -47,7 +47,7 @@
 		<h2><% if @user.artists.length > 1 %>Artists<% else %>Artist<%end%> You Admin For </h2>
 		<h4>
 		  <% @user.artists.uniq.each do |artist_name| %>
-			  <%= link_to artist_name.name, artist_link_path(artist_name.url_slug),:class => "content-link" %> : <%= link_to 'Admin', artist_admin_path(artist_name.url_slug),:class => "content-link" %>
+			  <%= link_to artist_name.name, artist_link_path(artist_name.url_slug),:class => "content_link1" %> : <%= link_to 'Admin', artist_admin_path(artist_name.url_slug),:class => "content_link1" %>
 			  </br>
 
 		  <% end %>
@@ -61,7 +61,7 @@
                   <% @artist = Artist.find_by_name(album.pri_artist) %>
                   <!--checks to make sure the artist exisits...if artist gets deleted it won't-->
                   <% unless @artist.blank? || @artist.nil? %>
-                   	     <%= link_to album.al_name, artist_show_album_path(@artist.url_slug,album.album_url_slug),:class => "content-link"  %> :    <%= link_to 'Download Again', album_download_path(@artist.url_slug,album.album_url_slug, :redown => "true")%>
+                   	     <%= link_to album.al_name, artist_show_album_path(@artist.url_slug,album.album_url_slug),:class => "content_link1"  %> :    <%= link_to 'Download Again', album_download_path(@artist.url_slug,album.album_url_slug, :redown => "true")%>
 				      </br>
                   <% end %>
 
