@@ -5,7 +5,7 @@ class SignedUrlsController < ApplicationController
 
 		#finds bucket based on the object type. Returns bucket name
 		find_bucket(params[:object])
-		logger.info "bucket is "+@bucket
+		logger.info "bucket is "+@bucket.to_s
 
 
 		logger.info render json: {
@@ -21,7 +21,10 @@ class SignedUrlsController < ApplicationController
 	# generate the policy document that amazon is expecting.  The policy document defines what fields are required in the post, and values.
 	def s3_upload_policy_document(s3_bucket)
 
-        if s3_bucket == "ted_kennedy_image"  #for forms uploading images
+        if s3_bucket == "ted_kennedy_image" || s3_bucket == "production_images_1" #for forms uploading images
+
+        logger.info "in image bucket, bucketis= "+s3_bucket.to_s
+
 			Base64.encode64(
 						   {
 							expiration: 30.minutes.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z'),

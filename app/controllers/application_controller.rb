@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
     BUCKET ='production_songs'
     ALBUM_BUCKET = 'production_albums'
-    IMAGE_BUCKET = 'production_image'
+    IMAGE_BUCKET = 'production_images_1'
 
   else
     #Amazon buckets
@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
     IMAGE_BUCKET = 'ted_kennedy_image'
 
   end
+
 
 
 
