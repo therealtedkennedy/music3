@@ -492,6 +492,10 @@
 			document.getElementById("track_name").innerHTML = artistSong
 		});
 
+		$('#logoHomeLink').live('click', function(){
+			window.location = window.location.origin;
+		});
+
 		// BACK/FORWARD BUTTONS WORK AS WELL
 		window.onpopstate = function (event) {
 			$("#loading").show();
@@ -838,10 +842,10 @@
 				</div>
 			</div>	
 			<div class="jp-type-playlist">
-				<div class="jp-audio-container">
-					<div class="branding">
+				<div class="jp-audio-container" href="#" id="logoHomeLink">
+					<a class="branding">
 						<div class="logo-transparent-white-small"></div>
-					</div>
+					</a>
 
 					<div class="jp-audio">
 						<div class="jp-type-single">

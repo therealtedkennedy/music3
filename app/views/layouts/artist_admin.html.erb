@@ -176,6 +176,10 @@ $(document).ready(function () {
 
 	});
 
+	$('#logoHomeLink').live('click', function(){
+		window.location = window.location.origin;
+	});
+
 	//wait for elements to be on page and then set the content innerHeight
 	setTimeout(function() {
 		adjustContentHeight();
@@ -802,9 +806,9 @@ function ted_log() {
 			</div>	
 			<div class="jp-type-playlist">
 				<div class="jp-audio-container">
-					<div class="branding">
+					<a class="branding" href="#" id="logoHomeLink">
 						<div class="logo-transparent-white-small"></div>
-					</div>
+					</a>
 
 					<div class="jp-audio">
 						<div class="jp-type-single">
@@ -852,8 +856,8 @@ function ted_log() {
 			<div class="user_nav_info">
 				<% if user_signed_in? %>
                     <div class="admin" state="closed">
-				    <span class="adminLink"></span>
-			</div>
+					    <span class="adminLink"></span>
+					</div>
 
               <% else %>
 					<%#= render :partial => 'login_form' %>

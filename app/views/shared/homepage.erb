@@ -34,20 +34,8 @@
 				<div class="pull-right">
 
                  <ul id="main-menu" class="nav-collapse collapse">
-                   <div id="user_nav" class="user_nav">
-                     <div class="user_nav_info">
-                       <% if user_signed_in? %>
-                           <li> <%= link_to "Sign In", show_user_path(current_user.id), :class => "nav content-link" %></li>
-
-                           <li> <%= link_to "Sign out", destroy_user_session_path, :class => :nav, :method => :delete %></li>
-
-                     <% else %>
-                           <%#= render :partial => 'login_form' %>
-                           <%= link_to "Sign Up", new_user_registration_path %>
-                           <%= link_to "sign in", new_user_session_path %>
-                       <% end %>
-                     </div>
-                    </div>
+					<li><%= link_to "Sign Up", new_user_registration_path%></li>
+					<li><%= link_to "sign in", user_signed_in? ? show_user_path(current_user.id) : new_user_session_path %></li>
                  </ul>
 
 				</div>
