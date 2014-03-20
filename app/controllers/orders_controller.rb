@@ -153,11 +153,11 @@ class OrdersController < ApplicationController
   end
 
 
-  recipients = [{:email => @pay_pal_user,
+  recipients = [{:email =>  @artist.pay_pal,
                  :amount => @amount,
                  :primary => true},
-                {:email => @artist.pay_pal,
-                 :amount => "%.2f" % (@amount*0.80),
+                {:email => @pay_pal_user,
+                 :amount => "%.2f" % (@amount*0.20),
                  :primary => false}
                  ]
   response = CHAINED_GATEWAY.setup_purchase(
@@ -235,7 +235,7 @@ class OrdersController < ApplicationController
 
          @song = Song.find(song_album_or_event_id)
 
-         @download_url = "https://s3.amazonaws.com/ted_kennedy/"+@song.id.to_s+".mp3"
+         @download_url = "https://s3.amazonaws.com/"+BUCKET++@song.id.to_s+".mp3"
 
 
          @cnx_url = artist_show_song_url(artist_url_slug,@song.song_url_slug)

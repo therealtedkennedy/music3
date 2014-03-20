@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
 
+  #Amazon buckets
+
   if Rails.env.production?
 
     BUCKET ='production_songs'
@@ -11,7 +13,7 @@ class ApplicationController < ActionController::Base
     IMAGE_BUCKET = 'production_images_1'
 
   else
-    #Amazon buckets
+
     BUCKET ='ted_kennedy'
     ALBUM_BUCKET = 'ted_kennedy_album'
     IMAGE_BUCKET = 'ted_kennedy_image'
