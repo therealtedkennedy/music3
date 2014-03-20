@@ -176,6 +176,10 @@ $(document).ready(function () {
 
 	});
 
+	$('#logoHomeLink').live('click', function(){
+		window.location = window.location.origin;
+	});
+
 	//wait for elements to be on page and then set the content innerHeight
 	setTimeout(function() {
 		adjustContentHeight();
@@ -799,7 +803,7 @@ function ted_log() {
 			</div>	
 			<div class="jp-type-playlist">
 				<div class="jp-audio-container">
-					<a class="branding" href="./">
+					<a class="branding" href="#" id="logoHomeLink">
 						<div class="logo-transparent-white-small"></div>
 					</a>
 
