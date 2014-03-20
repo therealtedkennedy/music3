@@ -194,7 +194,7 @@ class SongsController < ApplicationController
 
 		@s3_key = S3_KEY
 		@bucket = BUCKET
-		#@object_type = "song"
+		@object_type = "song"
 		@object_id = @song.id.to_s + ".mp3"
 
 

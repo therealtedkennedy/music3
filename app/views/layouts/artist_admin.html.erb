@@ -545,7 +545,10 @@ function s3_direct_upload(){
 	          $(this).find('.percent').text(percent + '%');
 	        },
 			fail: function(e, data) {
-				console.log('fail')
+				ted_log('fail upload')
+                ted_log(data)
+
+
 			},
 			success: function(data) {
 				// Here we get the file url on s3 in an xml doc

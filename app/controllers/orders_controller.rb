@@ -235,7 +235,7 @@ class OrdersController < ApplicationController
 
          @song = Song.find(song_album_or_event_id)
 
-         @download_url = "https://s3.amazonaws.com/"+BUCKET++@song.id.to_s+".mp3"
+         @download_url = "https://s3.amazonaws.com/"+BUCKET+"/"+@song.id.to_s+".mp3"
 
 
          @cnx_url = artist_show_song_url(artist_url_slug,@song.song_url_slug)
