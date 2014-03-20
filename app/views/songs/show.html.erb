@@ -1,14 +1,12 @@
 <table><tbody><tr>
-<td class="left-panel">
+<td class="left-panel" style="max-width:300px;">
 	<div>
-		<img style="max-width:300px;" src="<%=@song.image.to_s %>"/>
+		<img class="info-image" style="max-width:300px;" src="<%=@song.image.to_s %>"/>
 	</div>
 
   <a class="id_make-purchase buyLink" path="<%= artist_buy_song_path(@artist.url_slug, @song.song_url_slug, @song.id) %>" href="#">Buy Now</a><span class="minorDesc">name your price</span>
 	<div class="social m15t">
-		<% if @artist.twitter_name.blank? %>
-
-		<% else %>
+		<% if !@artist.twitter_name.blank? %>
 			<div>
 				<a href="https://twitter.com/share" class="twitter-share-button"  data-text="Check out <%=@song.song_name %> by <%=@artist.twitter_name%>"  data-url="<%=artist_show_song_url(@artist.url_slug, @song.song_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en" data-related="3rptr">Tweet</a>
 			</div>
@@ -16,7 +14,7 @@
 	<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
 	</div>
 </td>
-<td class="row-border vat">
+<td class="row-border vat w100">
 	<h2>
     	<a href="<%= download_url_for(@song.s3_id) %>" data-song-name="<%=@song.song_name%>" data-artist-name="<%=@song.song_artist%>" class="music-button"> <%= @song.song_name %> </a></br>
 	</h2>
