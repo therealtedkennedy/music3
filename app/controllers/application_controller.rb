@@ -1,9 +1,5 @@
 class ApplicationController < ActionController::Base
 
-
-  protect_from_forgery
-  include SessionsHelper
-
   #Amazon buckets
 
   if Rails.env.production?
@@ -19,6 +15,12 @@ class ApplicationController < ActionController::Base
     IMAGE_BUCKET = 'ted_kennedy_image'
 
   end
+
+
+  protect_from_forgery
+  include SessionsHelper
+
+
 
 
 
@@ -384,6 +386,9 @@ class ApplicationController < ActionController::Base
 			@hook = ".dynamicContent"
 		end
 	end
+
+
+
 
 
 

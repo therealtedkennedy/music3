@@ -438,5 +438,13 @@ class SongsController < ApplicationController
 	end
 
 
+  def download_url_for(song_key)
+    @song_url = "https://s3.amazonaws.com/"+BUCKET+"/"+song_key
+    logger.info "in download url= "
+  end
+
+  def torrent_url_for(song_key)
+    download_url_for(song_key) + "?torrent"
+  end
 
 end
