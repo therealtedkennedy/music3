@@ -20,7 +20,7 @@
 					<% else %>
 						<td><%= song.albums.first.al_name %></td>
 					<% end %>
-					<td><img src="../../../images/btn-buy.png"/></td>
+					<td> <a class="id_make-purchase buyLink" path="<%= artist_buy_song_path(@artist.url_slug, song.song_url_slug, song.id) %>" href="#">Buy Now</a></td>
 				</tr>
 			<% end %>
 		<% end %>
@@ -28,3 +28,15 @@
 </tbody></table>
 </div>
 <div class="song-footer"><span><%= @artist.songs.count %> Total Song<%= @artist.songs.count == 1 ? "" : "s" %></span></div>
+
+<script type="text/javascript">
+
+
+    //pop up
+    $('.id_make-purchase').click(function(ev) {
+        if(!$('#overlay').length)
+            $('<div id="overlay"/>').appendTo('body');
+        $('<div id="dialogWindow" class="div2" />').appendTo('#overlay').load($(ev.target).attr('path'));
+        return false;
+    });
+</script>
