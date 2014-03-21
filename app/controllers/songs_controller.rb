@@ -411,7 +411,7 @@ class SongsController < ApplicationController
 		@song = Song.find(params[:song_id])
 		@artist = Artist.find_by_url_slug(params[:url_slug])
 
-		@song.image = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+@song.id.to_s+"-"+params[:file_name]
+		@song.image = "https://"+IMAGE_BUCKET+".s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+@song.id.to_s+"-"+params[:file_name]
 
 		@song.update_column(:image,@song.image)
 
