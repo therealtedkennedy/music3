@@ -1,15 +1,15 @@
 class ApplicationController < ActionController::Base
 
   #Amazon buckets
-
+  #Change in Application Helper as well!!!  YES! YOUR AN IDIOT FOR NOT READING THIS THE FIRST TIME!
   if Rails.env.production?
-
+    #Change in Application Helper as well!!!  YES! YOUR AN IDIOT FOR NOT READING THIS THE FIRST TIME!
     BUCKET ='production_songs'
     ALBUM_BUCKET = 'production_albums'
     IMAGE_BUCKET = 'production_images_1'
 
   else
-
+    #Change in Application Helper as well!!!  YES! YOUR AN IDIOT FOR NOT READING THIS THE FIRST TIME!
     BUCKET ='ted_kennedy'
     ALBUM_BUCKET = 'ted_kennedy_album'
     IMAGE_BUCKET = 'ted_kennedy_image'

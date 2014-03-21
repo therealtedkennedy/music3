@@ -145,8 +145,11 @@ $(document).ready(function () {
 			songID = $(this).attr('data-song-id'),
 			img = $(this).find('img').attr('src');
 
+        //sets image to album when no eliment image can be found
 		if(!img)
 			img = $('#albumImage').attr('src');
+
+
 
 		//<!-- checks to see if artist already exisits in the playlist -->
 		if (artistSongs[artistName] == undefined)

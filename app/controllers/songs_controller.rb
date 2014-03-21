@@ -55,6 +55,8 @@ class SongsController < ApplicationController
 			#in the appication controller.  Used by profile edit.
 			find_song(@artist, params[:song_url_slug])
 
+      logger.info "In song show. After song find. @song= "+@song.id.to_s
+
       @song_buy = render_to_string('songs/_song_buy',:layout => false)
 
 			song_social(@artist,@song)
@@ -438,13 +440,6 @@ class SongsController < ApplicationController
 	end
 
 
-  def download_url_for(song_key)
-    @song_url = "https://s3.amazonaws.com/"+BUCKET+"/"+song_key
-    logger.info "in download url= "
-  end
 
-  def torrent_url_for(song_key)
-    download_url_for(song_key) + "?torrent"
-  end
 
 end
