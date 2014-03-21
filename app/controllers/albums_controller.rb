@@ -663,7 +663,7 @@ class AlbumsController < ApplicationController
 	   @album = Album.find(params[:album_id])
 	   @artist = Artist.find_by_url_slug(params[:url_slug])
 
-       @album.art = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+@album.id.to_s+"-"+params[:file_name]
+       @album.art = "https://"+IMAGE_BUCKET+".s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+@album.id.to_s+"-"+params[:file_name]
 
 	   @album.update_column(:art,@album.art)
 
