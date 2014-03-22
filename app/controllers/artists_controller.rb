@@ -362,14 +362,14 @@ class ArtistsController < ApplicationController
 
 		#build url
         if params[:type] == "bk_image"
-			@artist.image = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
+			@artist.image = "https://"+IMAGE_BUCKET+".s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
             logger.info("in bk image")
 		elsif params[:type] == "logo"
-			@artist.logo = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
+			@artist.logo = "https://"+IMAGE_BUCKET+".s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
 			logger.info("in logo")
 
     elsif params[:type]=="profile"
-      @artist.profile_image = "https://ted_kennedy_image.s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
+      @artist.profile_image = "https://"+IMAGE_BUCKET+".s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
 
 		else
 			logger.info("In artist_save_image. Something is up with the image type paramiter coming from the app admin layout")
