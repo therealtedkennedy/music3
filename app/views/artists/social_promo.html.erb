@@ -70,10 +70,15 @@
                 <div class="span6 text-center">
                   <h3>Follow us! </h3>
                   <div class="social">
-                    <a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow
-                      <%= @artist.twitter_name %></a>
-                    <fb:like-box href="<%=@artist.fb_page_url%>" width="292" show_faces="false" header="false" stream="false" show_border="false" class="m15t"></fb:like-box>
+                    <% if @artist.twitter_name.blank? %>
 
+                    <% else %>
+                        <div>
+                          <a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow
+                            <%= @artist.twitter_name %></a>
+                        </div>
+                    <% end %>
+                    <!--<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="225" data-show-faces="true"></div>-->
                   </div>
                 </div>
 
