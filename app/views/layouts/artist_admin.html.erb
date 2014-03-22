@@ -415,6 +415,7 @@ function loadContent(href,admin) {
        May need logic at a later point if loading content without changing the url */
 	// HISTORY.PUSHSTATE
 	history.pushState('', 'New URL: ' + href, href);
+    ga('send','pageview', href);
 
 
 }
