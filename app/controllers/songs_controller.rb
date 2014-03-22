@@ -122,6 +122,7 @@ class SongsController < ApplicationController
 		@id = @song.id
 		@bucket = BUCKET
 		@object_id = @song.s3_id
+    #@object_type = @song
 
 
 		#renders from because at the time of this writing form partials won't load in ajax
