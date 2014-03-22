@@ -358,7 +358,7 @@ class ArtistsController < ApplicationController
 
     	@artist = Artist.find_by_url_slug(params[:url_slug])
 
-
+        logger.info("In artist_save_image image bucket = "+IMAGE_BUCKET)
 
 		#build url
         if params[:type] == "bk_image"
