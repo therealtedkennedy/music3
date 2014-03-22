@@ -169,6 +169,8 @@ class OrdersController < ApplicationController
     :receiver_list => recipients
   )
 
+  logger.info "paypal response= "+response.to_s
+
   logger.info "return_url "+ social_promo_url(@artist.url_slug,params[:object],params[:song_album_or_event_id])
 
   # for redirecting the customer to the actual paypal site to finish the payment.
