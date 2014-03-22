@@ -18,7 +18,8 @@
 					<% if song.albums.first.blank? %>
 						<td></td>
 					<% else %>
-						<td><%= song.albums.first.al_name %></td>
+						<!--<td><%= song.albums.first.al_name %></td>-->
+                      <td><a href="<%= artist_show_album_path(@artist.url_slug, song.albums.first.album_url_slug) %>"><%= song.albums.first.al_name %></a></td>
 					<% end %>
 					<td> <a class="id_make-purchase buyLink" path="<%= artist_buy_song_path(@artist.url_slug, song.song_url_slug, song.id) %>" href="#">Buy Now</a></td>
 				</tr>

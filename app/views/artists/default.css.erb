@@ -2,11 +2,11 @@
 
 @font-face {
     font-family: 'verb_regularbold';
-    src: url('/fonts/verb_bold/VerbBold-webfont.eot');
-    src: url('/fonts/verb_bold/VerbBold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/verb_bold/VerbBold-webfont.woff') format('woff'),
-         url('/fonts/verb_bold/VerbBold-webfont.ttf') format('truetype'),
-         url('/fonts/verb_bold/VerbBold-webfont.svg#verb_regularbold') format('svg');
+    src: url('/Fonts/verb_bold/VerbBold-webfont.eot');
+    src: url('/Fonts/verb_bold/VerbBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/Fonts/verb_bold/VerbBold-webfont.woff') format('woff'),
+         url('/Fonts/verb_bold/VerbBold-webfont.ttf') format('truetype'),
+         url('/Fonts/verb_bold/VerbBold-webfont.svg#verb_regularbold') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -14,11 +14,11 @@
 
 @font-face {
     font-family: 'verb_regularregular';
-    src: url('/fonts/verb_regular/VerbRegular-webfont.eot');
-    src: url('/fonts/verb_regular/VerbRegular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/verb_regular/VerbRegular-webfont.woff') format('woff'),
-         url('/fonts/verb_regular/VerbRegular-webfont.ttf') format('truetype'),
-         url('/fonts/verb_regular/VerbRegular-webfont.svg#verb_regularregular') format('svg');
+    src: url('/Fonts/verb_regular/VerbRegular-webfont.eot');
+    src: url('/Fonts/verb_regular/VerbRegular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/Fonts/verb_regular/VerbRegular-webfont.woff') format('woff'),
+         url('/Fonts/verb_regular/VerbRegular-webfont.ttf') format('truetype'),
+         url('/Fonts/verb_regular/VerbRegular-webfont.svg#verb_regularregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -26,11 +26,11 @@
 
 @font-face {
     font-family: 'verb_lightregular';
-    src: url('/fonts/verb_light/VerbLight-webfont.eot');
-    src: url('/fonts/verb_light/VerbLight-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/verb_light/VerbLight-webfont.woff') format('woff'),
-         url('/fonts/verb_light/VerbLight-webfont.ttf') format('truetype'),
-         url('/fonts/verb_light/VerbLight-webfont.svg#verb_lightregular') format('svg');
+    src: url('/Fonts/verb_light/VerbLight-webfont.eot');
+    src: url('/Fonts/verb_light/VerbLight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/Fonts/verb_light/VerbLight-webfont.woff') format('woff'),
+         url('/Fonts/verb_light/VerbLight-webfont.ttf') format('truetype'),
+         url('/Fonts/verb_light/VerbLight-webfont.svg#verb_lightregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -351,8 +351,8 @@
 
         .bodyArea .nav.selected
         {
-            font-family: 'verb_regularbold', sans-serif;
-            color:#000;
+            /*font-family: 'verb_regularbold', sans-serif;*/
+            color:#666666;
             background-image: url("/images/indicator.png");
             background-position: bottom center;
             background-repeat: no-repeat;
@@ -589,7 +589,7 @@
 
     a.content-link {
         text-decoration: none;
-        color: <%= @artist.profile_layout.h2_colour %>;
+        color: <%= @artist.profile_layout.h3_colour %>;
     }
 
     a.music-button {

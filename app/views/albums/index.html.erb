@@ -3,7 +3,7 @@
 	<% unless album.album_url_slug.blank? %>
 		<div class="album">
 			<a href="<%= artist_show_album_path(@artist.url_slug, album.album_url_slug) %>/playlist-create" class="load-playlist  albumLink content-link"><img src="<%= album.art %>" /></a>
-			<a href="<%= artist_show_album_path(@artist.url_slug, album.album_url_slug) %>"><%= album.al_name %></a>
+			<a class="content-link" href="<%= artist_show_album_path(@artist.url_slug, album.album_url_slug) %>"><%= album.al_name %></a>
 		</div>
 	<% end %>
 <% end %>
