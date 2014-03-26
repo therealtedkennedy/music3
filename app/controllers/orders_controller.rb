@@ -166,7 +166,8 @@ class OrdersController < ApplicationController
     :return_url => social_promo_url(@artist.url_slug,params[:object],params[:song_album_or_event_id]),
     :cancel_url => login_prompt_url,
     #:ipn_notification_url => ipn_save_url,
-    :receiver_list => recipients
+    :receiver_list => recipients,
+    :currency_code =>'CAD',
   )
 
   logger.info "paypal response= "+response.to_s
