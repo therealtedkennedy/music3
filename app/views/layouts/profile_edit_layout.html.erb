@@ -465,7 +465,7 @@
 				img = $(this).find('img').attr('src');
 
 			if(!img)
-				img = $('#albumImage').attr('src');
+				img = $('#albumImage').attr('src') || '';
 
 			//<!-- checks to see if artist already exisits in the playlist -->
 			if (artistSongs[artistName] == undefined)
