@@ -13,7 +13,7 @@
 							   data-song-id="<%= song.id %>"
 							   class="music-button"><% if song.image.nil? %>PLAY 
 								<% else %>
-								<img src="<%=song.image %>" style="max-width:100px;"/><% end %></a></td>
+								<img src="<%=song.image %>" class="img100 playable"/><% end %></a></td>
 					<td><%= link_to song.song_name, artist_show_song_path(@artist.url_slug, song.song_url_slug), :class => "content-link" %> </td>
 					<% if song.albums.first.blank? %>
 						<td></td>

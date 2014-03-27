@@ -2,7 +2,7 @@
 <div class="backPane"></div>
 <div class="leftPane">
 	<div>
-      <a href="<%= artist_show_album_path(@artist.url_slug, @album.album_url_slug) %>/playlist-create" class="load-playlist  albumLink content-link"><img src="<%= @album.art%>" id="albumImage" /></a>
+      <a href="<%= artist_show_album_path(@artist.url_slug, @album.album_url_slug) %>/playlist-create" class="load-playlist  albumLink content-link"><img src="<%= @album.art%>" class="img250 playable" id="albumImage" /></a>
 
   </div>
   <a class="id_make-purchase buyLink" path="<%= artist_buy_album_path(@artist.url_slug, @album.album_url_slug) %>" href="#">Buy Now</a><span class="minorDesc"><%= @album.al_amount == 0 || @album.al_amount.to_s == '' ? 'name your price' : '$' + @album.al_amount.to_s + ' or more' %></span> 
@@ -78,7 +78,7 @@
                                           data-song-id="<%= songs.id %>"
                                           class="music-button"><% if songs.image.nil? %>PLAY
                   <% else %>
-                      <img src="<%=songs.image %>" style="max-width:60px;"/><% end %></a></td>
+                      <img src="<%=songs.image %>" class="img60 playable"/><% end %></a></td>
                 <td class="bold"><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug), :class => "content-link" %>
                 </td>
               </tr>

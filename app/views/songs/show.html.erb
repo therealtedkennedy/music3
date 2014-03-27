@@ -2,7 +2,7 @@
 <div class="backPane"></div>
 <div class="leftPane">
 	<div>
-      <a href="<%= download_url_for(@song.s3_id) %>" data-song-name="<%=@song.song_name%>" data-artist-name="<%=@song.song_artist%>" class="music-button"><img src="<%=@song.image.to_s %>" /></a>
+      <a href="<%= download_url_for(@song.s3_id) %>" data-song-name="<%=@song.song_name%>" data-artist-name="<%=@song.song_artist%>" class="music-button"><img src="<%=@song.image.to_s %>" class="img250 playable"/></a>
 
   	</div>
 	<a class="id_make-purchase buyLink" path="<%= artist_buy_song_path(@artist.url_slug, @song.song_url_slug, @song.id) %>" href="#">Buy Now</a><span class="minorDesc">name your price</span>
