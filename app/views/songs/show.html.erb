@@ -1,95 +1,86 @@
-<table><tbody><tr>
-<td class="left-panel" style="max-width:300px;">
+<div id="fb-root"></div>
+<div class="backPane"></div>
+<div class="leftPane">
 	<div>
-		<img class="info-image" style="max-width:300px;" src="<%=@song.image.to_s %>"/>
-	</div>
+      <a href="<%= download_url_for(@song.s3_id) %>" data-song-name="<%=@song.song_name%>" data-artist-name="<%=@song.song_artist%>" class="music-button"><img src="<%=@song.image.to_s %>" /></a>
 
-  <a class="id_make-purchase buyLink" path="<%= artist_buy_song_path(@artist.url_slug, @song.song_url_slug, @song.id) %>" href="#">Buy Now</a><span class="minorDesc">name your price</span>
+  	</div>
+	<a class="id_make-purchase buyLink" path="<%= artist_buy_song_path(@artist.url_slug, @song.song_url_slug, @song.id) %>" href="#">Buy Now</a><span class="minorDesc">name your price</span>
 	<div class="social m15t">
 		<% if !@artist.twitter_name.blank? %>
 			<div>
 				<a href="https://twitter.com/share" class="twitter-share-button"  data-text="Check out <%=@song.song_name %> by <%=@artist.twitter_name%>"  data-url="<%=artist_show_song_url(@artist.url_slug, @song.song_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en" data-related="3rptr">Tweet</a>
 			</div>
 		<% end %>
-	<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
+		<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="450" data-show-faces="true"></div>
 	</div>
-</td>
-<td class="row-border vat w100">
-	<h2>
-    	<a href="<%= download_url_for(@song.s3_id) %>" data-song-name="<%=@song.song_name%>" data-artist-name="<%=@song.song_artist%>" class="music-button"> <%= @song.song_name %> </a></br>
-	</h2>
+</div>
+<h2><%= @song.song_name %></h2>
+<div class="rightPane">
 	<table cellpadding="10" class="w100"><tbody>
-		<tr>
-			<td class="info-item">Written By:</td>
-			<td class="item-description"><span class="editable" id="single_line" field_name="song_written" object="song" >
- 	     <%= @song.song_written.html_safe %>
-   </span></td>
-		</tr>
-		<tr>
-			<td class="info-item">Song Plays:</td>
-			<td class="item-description">
-				<%= @song.song_plays%>
-			</td>
-		</tr>
-		<tr>
-			<td class="info-item">Created Date:</td>
-			<td class="item-description">
-				<%= @song.created_at.strftime("%d %b %Y") %>	
-			</td>
-		</tr>
-        <td class="info-item">Release Date:</td>
-        <td class="item-description">
-          <%= @song.release_date.strftime("%d %b %Y") %>
-        </td>
-        </tr>
-
-        <tr>
-          <td class="info-item">Producer:</td>
-          <td class="item-description"><span  id="single_line" field_name="song_written" object="song" >
- 	     <%= @song.producer %>
-         </span></td>
-        </tr>
-
-        <tr>
-          <td class="info-item">Label:</td>
-          <td class="item-description"><span  id="single_line" field_name="song_written" object="song" >
- 	     <%= @song.label %>
-         </span></td>
-        </tr>
-
-        <tr>
-          <td class="info-item">Licence Type:</td>
-          <td class="item-description"><span  id="single_line" field_name="song_written" object="song" >
- 	     <%= @song.song_licence_type %>
-         </span></td>
-        </tr>
-
-
-		<tr>
-			<td class="info-item">Lyrics:</td>
-			<td class="item-description">
-			  <div class="editable" id="text_area" field_name="lyrics" object="song" >
-			    	<%= @song.lyrics.html_safe %>
-			  </div>
-			</td>
-		</tr>
+		<td class="row-border vat">
+			<table cellpadding="10" class="w100"><tbody>
+				<tr>
+					<td class="info-item">Written By:</td>
+					<td class="item-description">
+						<span class="editable" id="single_line" field_name="song_written" object="song" >
+		 	     			<%= @song.song_written.html_safe %>
+				    	</span>
+				    </td>
+				</tr>
+				<tr>
+					<td class="info-item">Song Plays:</td>
+					<td class="item-description">
+						<%= @song.song_plays%>
+					</td>
+				</tr>
+				<tr>
+					<td class="info-item">Created Date:</td>
+					<td class="item-description">
+						<%= @song.created_at.strftime("%d %b %Y") %>	
+					</td>
+				</tr>
+			        <td class="info-item">Release Date:</td>
+			        <td class="item-description">
+			          <%= @song.release_date.strftime("%d %b %Y") %>
+			        </td>
+		        </tr>
+		        <tr>
+					<td class="info-item">Producer:</td>
+					<td class="item-description">
+						<span  id="single_line" field_name="song_written" object="song" >
+					 		<%= @song.producer %>
+						</span>
+					</td>
+		        </tr>
+		        <tr>
+					<td class="info-item">Label:</td>
+					<td class="item-description">
+						<span  id="single_line" field_name="song_written" object="song" >
+							<%= @song.label %>
+						</span>
+					</td>
+		        </tr>
+				<tr>
+					<td class="info-item">Licence Type:</td>
+					<td class="item-description">
+						<span  id="single_line" field_name="song_written" object="song" >
+							<%= @song.song_licence_type %>
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="info-item">Lyrics:</td>
+					<td class="item-description">
+						<div class="editable" id="text_area" field_name="lyrics" object="song" >
+							<%= @song.lyrics.html_safe %>
+						</div>
+					</td>
+				</tr>
+			</tbody></table>
+		</td>
 	</tbody></table>
-</td></tr>
-<tr><td></td><td>
-
-
-
-
-
-
-
-
-
-
-
-
-</td>
-</tr></tbody></table>
+</div>
 
 <p id="notice"><%= notice %></p>
 
