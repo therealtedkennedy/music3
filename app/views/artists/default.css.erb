@@ -385,9 +385,12 @@
 		color:#fff;*/
 	}
 
+    .miniPage .album:nth-child(3n + 1) {
+        margin-left: 0;
+    }
     .miniPage .album
     {
-        width:228px;
+        /*width:228px;*/
         height:300px;
         text-align: center;
         display: inline-block;
@@ -404,7 +407,6 @@
         margin:0 auto;
         display:block;
         border:0;
-        margin-bottom: 10px;
     }
 
     .miniPage .album h1
@@ -810,13 +812,49 @@ input[type=number] {
 
 .img60  {width:60px; height:60px;}
 .img100 {width:100px;height:100px;}
+
+/* Chris' image change */
+/*.img200 {*/
+    /*width: auto;*/
+    /*max-height: 250px;*/
+/*}*/
+
 .img200 {width:200px;height:200px;}
 .img250 {width:250px;height:250px;}
 
-.hoverPlay {padding:0px !important; position:absolute; background-color: rgba(2,2,2, 0.5);}
+.imageHover {
+    display: inline-block;
+    position: relative;
+}
+
 .hoverPlay span {
+    display: none;
+}
+
+.imageHover:hover .hoverPlay {
     position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0,0,0,.3);
+}
+
+.imageHover:hover .hoverPlay span {
+    display: block;
+    position: absolute;
+    top:50%;
+    left:50%;
+    text-align: center;
+    margin-top: -15px;
+    margin-left: -15px;
+
     background: url(../../images/sprites.png) -192px 0px no-repeat;
+
     width: 30px !important;
     height: 30px;
+}
+
+.jp-playlist .imageHover:hover .hoverPlay span {
+    margin-top: -32px;
 }

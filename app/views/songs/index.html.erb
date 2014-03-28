@@ -1,32 +1,45 @@
 <div id="song-content">
-<table cellpadding="10" class="song-table">
-	<tbody class="row-border">
-	<% @artist.songs.uniq.each_with_index do |song, index| %>
+  <table cellpadding="10" class="song-table">
+    <tbody class="row-border">
+    <% @artist.songs.uniq.each_with_index do |song, index| %>
 
-		<% unless song.song_url_slug.blank? %>
-			<% unless song.s3_id.nil? %>
+        <% unless song.song_url_slug.blank? %>
+            <% unless song.s3_id.nil? %>
 
-				<tr>
-					<td style="max-width:60px;"><a href="<%= download_url_for(song.s3_id) %>"
-							   data-song-name="<%= song.song_name %>"
-							   data-artist-name="<%= @artist.name %>"
-							   data-song-id="<%= song.id %>"
-							   class="music-button"><% if song.image.nil? %>PLAY 
-								<% else %>
-								<img src="<%=song.image %>" class="img100 playable"/><% end %></a></td>
-					<td><%= link_to song.song_name, artist_show_song_path(@artist.url_slug, song.song_url_slug), :class => "content-link" %> </td>
-					<% if song.albums.first.blank? %>
-						<td></td>
-					<% else %>
-						<!--<td><%= song.albums.first.al_name %></td>-->
-                      <td><a class="content-link" href="<%= artist_show_album_path(@artist.url_slug, song.albums.first.album_url_slug) %>"><%= song.albums.first.al_name %></a></td>
-					<% end %>
-					<td> <a class="id_make-purchase buyLink" path="<%= artist_buy_song_path(@artist.url_slug, song.song_url_slug, song.id) %>" href="#">Buy Now</a></td>
-				</tr>
-			<% end %>
-		<% end %>
-	<% end %>
-</tbody></table>
+                <tr>
+                  <td style="max-width:60px;">
+                    <a href="<%= download_url_for(song.s3_id) %>"
+                        data-song-name="<%= song.song_name %>"
+                        data-artist-name="<%= @artist.name %>"
+                        data-song-id="<%= song.id %>"
+                        class="music-button">
+                    <% if song.image.nil? %>
+                          PLAY
+                    <% else %>
+                        <div class="imageHover">
+                          <img src="<%= song.image %>" class="img100 playable"/>
+                          <a class="hoverPlay" href="#"><span></span></a>
+                        </div>
+                    <% end %>
+                  </a></td>
+                  <td><%= link_to song.song_name, artist_show_song_path(@artist.url_slug, song.song_url_slug), :class => "content-link" %> </td>
+                  <% if song.albums.first.blank? %>
+                      <td></td>
+                  <% else %>
+                      <!--<td><%= song.albums.first.al_name %></td>-->
+                      <td>
+                        <a class="content-link" href="<%= artist_show_album_path(@artist.url_slug, song.albums.first.album_url_slug) %>"><%= song.albums.first.al_name %></a>
+                      </td>
+                  <% end %>
+                  <td>
+                    <a class="id_make-purchase buyLink" path="<%= artist_buy_song_path(@artist.url_slug, song.song_url_slug, song.id) %>" href="#">Buy
+                      Now</a></td>
+                </tr>
+            <% end %>
+        <% end %>
+    <% end %>
+    </tbody>
+  </table>
 </div>
 
 
@@ -34,8 +47,8 @@
 
 
     //pop up
-    $('.id_make-purchase').click(function(ev) {
-        if(!$('#overlay').length)
+    $('.id_make-purchase').click(function (ev) {
+        if (!$('#overlay').length)
             $('<div id="overlay"/>').appendTo('body');
         $('<div id="dialogWindow" class="div2" />').appendTo('#overlay').load($(ev.target).attr('path'));
         return false;

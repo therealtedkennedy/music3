@@ -1,17 +1,23 @@
 <div id="fb-root"></div>
 <div class="backPane"></div>
 <div class="leftPane">
-	<div>
-      <a href="<%= artist_show_album_path(@artist.url_slug, @album.album_url_slug) %>/playlist-create" class="load-playlist  albumLink content-link"><img src="<%= @album.art%>" class="img250 playable" id="albumImage" /></a>
+  <div>
+    <span class="imageHover">
+      <a href="<%= artist_show_album_path(@artist.url_slug, @album.album_url_slug) %>/playlist-create" class="load-playlist  albumLink content-link"><img src="<%= @album.art %>" class="img250 playable" id="albumImage"/></a>
 
+      <div class="hoverPlay"><span></span></div>
+    </span>
   </div>
-  <a class="id_make-purchase buyLink" path="<%= artist_buy_album_path(@artist.url_slug, @album.album_url_slug) %>" href="#">Buy Now</a><span class="minorDesc"><%= @album.al_amount == 0 || @album.al_amount.to_s == '' ? 'name your price' : '$' + @album.al_amount.to_s + ' or more' %></span> 
-  
+  <a class="id_make-purchase buyLink" path="<%= artist_buy_album_path(@artist.url_slug, @album.album_url_slug) %>" href="#">Buy
+    Now</a><span class="minorDesc"><%= @album.al_amount == 0 || @album.al_amount.to_s == '' ? 'name your price' : '$' + @album.al_amount.to_s + ' or more' %></span>
 
-	<div class="social m15t">
-		<div><a href="https://twitter.com/share" class="twitter-share-button"  data-text="Check out <%=@album.al_name %> by <%=@artist.twitter_name%>"  data-url="<%=artist_show_album_url(@artist.url_slug,@album.album_url_slug)%>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en" data-related="3rptr">Tweet</a></div>
-		<div class="fb-like p5t" data-href="<%=@social_fb_url%>" data-send="false" data-width="350" data-show-faces="true"></div>
-	</div>
+
+  <div class="social m15t">
+    <div>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out <%= @album.al_name %> by <%= @artist.twitter_name %>" data-url="<%= artist_show_album_url(@artist.url_slug, @album.album_url_slug) %>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en" data-related="3rptr">Tweet</a>
+    </div>
+    <div class="fb-like p5t" data-href="<%= @social_fb_url %>" data-send="false" data-width="350" data-show-faces="true"></div>
+  </div>
 
 
 </div>
@@ -20,80 +26,88 @@
 <div class="rightPane">
 
 
+  <table cellpadding="10" class="w100">
+    <tbody>
+    <td class="row-border vat">
+
+      <table cellpadding="10" class="w100">
+        <tbody>
 
 
- <table cellpadding="10" class="w100"><tbody>
-  <td class="row-border vat">
+        <tr>
+          <td class="info-item">Release Date:</td>
+          <td class="item-description">
+            <%= @album.al_rel_date.strftime("%d %b %Y") %>
+          </td>
+        </tr>
 
-    <table cellpadding="10" class="w100"><tbody>
-
-
-    <tr>
-      <td class="info-item">Release Date:</td>
-      <td class="item-description">
-        <%= @album.al_rel_date.strftime("%d %b %Y") %>
-      </td>
-    </tr>
-
-    <tr>
-      <td class="info-item">Producer:</td>
-      <td class="item-description"><span  id="single_line" field_name="song_written" object="ablum" >
+        <tr>
+          <td class="info-item">Producer:</td>
+          <td class="item-description"><span id="single_line" field_name="song_written" object="ablum">
  	     <%= @album.producer %>
          </span></td>
-    </tr>
+        </tr>
 
-    <tr>
-      <td class="info-item">Label:</td>
-      <td class="item-description"><span  id="single_line" field_name="song_written" object="album" >
+        <tr>
+          <td class="info-item">Label:</td>
+          <td class="item-description"><span id="single_line" field_name="song_written" object="album">
  	     <%= @album.al_label %>
          </span></td>
-    </tr>
+        </tr>
 
-    <tr>
-      <td class="info-item">Licence Type:</td>
-      <td class="item-description"><span  id="single_line" field_name="song_written" object="album" >
+        <tr>
+          <td class="info-item">Licence Type:</td>
+          <td class="item-description"><span id="single_line" field_name="song_written" object="album">
  	     <%= @album.al_label %>
          </span></td>
+        </tr>
+
+
+        <tr>
+          <td class="info-item">Thank You's:</td>
+          <td class="item-description">
+            <div class="editable" field_name="liner notes" object="album">
+              <%= @album.liner_notes %>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <h3>Songs</h3>
+      <table style="margin-top:15px;">
+        <tbody class="row-border">
+        <% @album.songs.uniq.each do |songs| %>
+            <% unless songs.song_url_slug.blank? %>
+                <tr>
+                  <td style="width:60px">
+                    <div class="imageHover">
+                      <a href="<%= download_url_for(songs.s3_id) %>"
+                         data-song-name="<%= songs.song_name %>"
+                         data-artist-name="<%= @artist.name %>"
+                         data-song-id="<%= songs.id %>"
+                         class="music-button">
+                        <% if songs.image.nil? %>
+                            PLAY
+                        <% else %>
+                            <img src="<%= songs.image %>" class="img60 playable"/>
+                        <% end %>
+                      </a>
+
+                      <div class="hoverPlay"><span></span></div>
+                    </div>
+                  </td>
+                  <td class="bold"><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug), :class => "content-link" %>
+                  </td>
+                </tr>
+            <% end %>
+        <% end %>
+        </tbody>
+      </table>
+
+
+    </td>
     </tr>
-
-
-    <tr>
-      <td class="info-item">Thank You's:</td>
-      <td class="item-description">
-        <div class="editable"  field_name="liner notes" object="album" >
-          <%= @album.liner_notes  %>
-        </div>
-      </td>
-    </tr>
-    </tbody></table>
-    <h3>Songs</h3>
-    <table style="margin-top:15px;">
-      <tbody class="row-border">
-      <% @album.songs.uniq.each do |songs| %>
-          <% unless songs.song_url_slug.blank?%>
-              <tr>
-                <td style="width:60px"><a href="<%= download_url_for(songs.s3_id) %>"
-                                          data-song-name="<%= songs.song_name %>"
-                                          data-artist-name="<%= @artist.name %>"
-                                          data-song-id="<%= songs.id %>"
-                                          class="music-button"><% if songs.image.nil? %>PLAY
-                  <% else %>
-                      <img src="<%=songs.image %>" class="img60 playable"/><% end %></a></td>
-                <td class="bold"><%= link_to songs.song_name, artist_show_song_path(@artist.url_slug, songs.song_url_slug), :class => "content-link" %>
-                </td>
-              </tr>
-          <% end %>
-      <% end %>
-      </tbody>
-    </table>
-
-
-  </td></tr>
   </table>
-
-
-
-
 
 
   <!--gets csrf token and passes into hidden field.  Keeps user logged in after form post-->
@@ -101,8 +115,8 @@
   <script type="text/javascript">
 
 
-      $('.id_make-purchase').click(function(ev) {
-          if(!$('#overlay').length)
+      $('.id_make-purchase').click(function (ev) {
+          if (!$('#overlay').length)
               $('<div id="overlay"/>').appendTo('body');
           $('<div id="dialogWindow" class="div2" />').appendTo('#overlay').load($(ev.target).attr('path'));
           return false;
