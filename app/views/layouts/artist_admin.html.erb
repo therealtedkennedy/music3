@@ -145,7 +145,7 @@ $(document).ready(function () {
 			songID = $(this).attr('data-song-id'),
 			img = $(this).find('img').attr('src');
 
-        //sets image to album when no eliment image can be found
+        //sets image to album when no element image can be found
 		if(!img)
 			img = $('#albumImage').attr('src') || '';
 
@@ -244,6 +244,21 @@ $(document).ready(function () {
 
 			}
 	)
+
+	$('img.playable').live("hover", function (event){
+		var $el = $(event.target),
+			dim = $el.width(),
+			pos = $el.position(),
+			tMargin = parseInt($el.css('margin-top').replace("px", "")),
+			lMargin = parseInt($el.css('margin-left').replace("px", "")),
+			spanPos = Math.ceil(dim/2-15);
+		if($el.next().hasClass('hoverPlay'))
+			return;
+		$el.after('<div class="img' + dim + ' hoverPlay" style="left:' + Math.ceil(pos.left + lMargin) + 'px;top:'+ Math.floor(pos.top + tMargin) + 'px;"><span style="top:' + spanPos+ 'px;left:'+ spanPos +'px;"></span></div>');
+		$el.parent().find('.hoverPlay').bind('mouseout', function(){
+			$(this).remove();
+		});
+	});
 
 	//to rails form submit
 	form_upload_rails();
