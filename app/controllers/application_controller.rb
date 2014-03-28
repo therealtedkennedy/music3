@@ -262,7 +262,7 @@ class ApplicationController < ActionController::Base
 	   logger.info "amazon_id"
 	   logger.info amazon_id
        @s3 = AWS::S3.new
-	   @s3.buckets[s3_bucket].objects[amazon_id].copy_from(amazon_id,{:acl => :public_read, :content_type => content_type, :content_disposition =>'attachment;filename='+name+file_type ,:metadata => {"x-amz-meta-myfile-name"=>name}})
+	   @s3.buckets[s3_bucket].objects[amazon_id].copy_from(amazon_id,{:acl => :public_read, :content_type => content_type, :content_disposition =>'attachment;filename="'+name+file_type+"\"" ,:metadata => {"x-amz-meta-myfile-name"=>name}})
    end
 
 
@@ -365,7 +365,7 @@ class ApplicationController < ActionController::Base
 
 
 				find_bucket('song')
-				s3_copy(@song.s3_id,@song.song_name,@bucket,"binary/octet-stream",".mp3")
+				s3_copy(@song.s3_id,@song.song_name,@bucket,"audio/mpeg",".mp3")
 				logger.info("after s3_copy")
 			end
 

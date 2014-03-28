@@ -508,16 +508,16 @@ function s3_direct_upload(){
 							// Now that we have our data, we update the form so it contains all
 							// the needed data to sign the request
 
-							form.find('input[name=key]').val(ajaxData.key)
-							form.find('input[name=policy]').val(ajaxData.policy)
-							form.find('input[name=signature]').val(ajaxData.signature)
+							form.find('input[name=key]').val(ajaxData.key);
+							form.find('input[name=policy]').val(ajaxData.policy);
+							form.find('input[name=signature]').val(ajaxData.signature);
 							//updates S3 Meta Information
-							form.find('input[name=x-amz-meta-my-file-name]').val(data.files[0].name)
+							form.find('input[name=x-amz-meta-my-file-name]').val(s3_file_name)
 
 							// for attachemts
 							if(s3ObjectType !="image"){
 								ted_log("in update meta for songs and other")
-								form.find('input[name=Content-Disposition]').val("attachment;filename="+data.files[0].name)
+								form.find('input[name=Content-Disposition]').val("attachment;filename=\"" + s3_file_name + "\"")
 								//updates name in form feild
 								ted_log("s3_file_name inside not image if statement= "+s3_file_name)
 								var file_name_ext_remv = s3_file_name.substring(0, s3_file_name.indexOf('.'));
