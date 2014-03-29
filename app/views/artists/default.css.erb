@@ -822,16 +822,29 @@ input[type=number] {
 .img200 {width:200px;height:200px;}
 .img250 {width:250px;height:250px;}
 
-.imageHover {
-    display: block;
-    position: relative;
+
+@-moz-document url-prefix() {
+
+    .imageHover {
+        display: block;
+        position: relative;
+    }
+
+    /*firefox fix for album index*/
+    .album .imageHover, .song-table .imageHover {
+        display: inline-block;
+        position: relative;
+    }
+
 }
 
-/*firefox fix for album index*/
-.album .imageHover, .song-table .imageHover {
+
+.imageHover {
     display: inline-block;
     position: relative;
 }
+
+
 
 .hoverPlay span {
     display: none;
