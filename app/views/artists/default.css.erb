@@ -855,6 +855,28 @@ input[type=number] {
     height: 30px;
 }
 
+.jp-playlist .imageHover:hover .hoverPlay {
+    display: none;
+}
+
 .jp-playlist .imageHover:hover .hoverPlay span {
     margin-top: -32px;
+}
+
+.songList li {
+    position: relative;
+}
+
+.songList li:hover ::after .hoverPlay span{
+    background: url(../../images/sprites.png) -192px 0px no-repeat;
+    display: block;
+    position: absolute;
+    top:50%;
+    left:50%;
+    text-align: center;
+    margin-top: -32px;
+    margin-left: -15px;
+
+    width: 30px !important;
+    height: 30px;
 }
