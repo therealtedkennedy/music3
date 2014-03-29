@@ -8,7 +8,7 @@
 
 <p>
 <% if !@artist.twitter_name.nil? || !@artist.twitter_name.blank? %>
-	Want more? Follow us <a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en">
+	Want more? Follow <a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en">
 		<%= @artist.twitter_name %></a>
 <% end %>
 </p>
