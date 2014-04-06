@@ -10,7 +10,7 @@
     <tr>
       <td class="clearfix" style="width:100%;text-align:center;">
         <span>$</span>
-        <input style="margin-bottom: 0;" id="amount" name="amount" type="text" size="3" value="<%=@song.amount%>" />
+        <input style="margin-bottom: 0;" id="amount" name="amount" type="text" size="3" data-minValue="<%=@song.amount%>" value="<%=@song.amount%>" />
         <div style="font-size: 80%" >avg amount $2</div>
       </td>
     </tr>
@@ -37,6 +37,14 @@
         $("#token").val(token);
     });
 
+    $(function() {
+        $('input[type="text"]').keyup(function() {
+          if(!parseInt($(this).val()) || parseInt($(this).val()) < parseInt($(this).attr('data-minValue')))
+            $('button[type="submit"]').attr('disabled','disabled');
+          else
+            $('button[type="submit"]').removeAttr('disabled');
+        });
+    });
 
     $('.close').click(function(){
         $('#dialogWindow').remove();

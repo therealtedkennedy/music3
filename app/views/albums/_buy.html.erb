@@ -9,7 +9,7 @@
     <tr>
       <td class="clearfix" style="width:100%;text-align:center;">
         <span>$</span>
-        <input style="margin-bottom: 0;" id="amount" name="amount" type="text" size="3" value="<%=@album.al_amount%>" />
+        <input style="margin-bottom: 0;" id="amount" name="amount" type="text" size="3" data-minValue="<%=@album.al_amount%>" value="<%=@album.al_amount%>" />
         <div style="font-size: 80%" ><%= @album.al_amount == 0 ? 'avg. price $10' : 'or more' %></div>
 
       </td>
@@ -21,23 +21,6 @@
       </td>
     </tr>
   </table>
-
-
-
-
-  <!--<table style="width:100%;margin:60px auto;">-->
-		<!--<tr>-->
-			<!--<td style="width:20%;text-align:right;"><label for="amount">$</label></td>-->
-			<!--<td style="width:50%;text-align:left;padding-left:30px"><input id="amount" name="amount" type="text" size="3" value="<%=@album.al_amount%>" /></td>-->
-
-            <!--<td style="width:30%;text-align:left;"><label for="amount"><%= @album.al_amount == 0 ? 'avg. price $10' : 'or more' %></td>-->
-		<!--</tr>-->
-		<!--<tr>-->
-			<!--<td></td>-->
-			<!--<td></td>-->
-			<!--<td style="padding-top:60px;"><button name="commit" type="submit" class="id_make-purchase" style="float:right; margin-right:15px; margin-top:3px;">Buy Now</button></td>-->
-		<!--</tr>-->
-	<!--</table>-->
 
 	<!--For order processing-->
 
@@ -51,6 +34,15 @@
     $(function(){
         var token = $('meta[name="csrf-token"]').attr('content');
         $("#token").val(token);
+    });
+
+    $(function() {
+        $('input[type="text"]').keyup(function() {
+          if(!parseInt($(this).val()) || parseInt($(this).val()) < parseInt($(this).attr('data-minValue')))
+            $('button[type="submit"]').attr('disabled','disabled');
+          else
+            $('button[type="submit"]').removeAttr('disabled');
+        });
     });
 
 
