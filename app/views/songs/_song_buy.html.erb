@@ -15,6 +15,9 @@
       </td>
     </tr>
     <tr>
+      <td><span class="dn error-message">Minimum amount is $<%= @song.amount %></span></td>
+    </tr>
+    <tr>
 
        <td style="padding:40px 30px;text-align: right;">
             <button name="commit" type="submit" class="id_make-purchase">Buy Now</button>
@@ -39,10 +42,14 @@
 
     $(function() {
         $('input[type="text"]').keyup(function() {
-          if(!parseInt($(this).val()) || parseInt($(this).val()) < parseInt($(this).attr('data-minValue')))
+          if($.trim($(this).val()) === "" || parseInt($(this).val()) < parseInt($(this).attr('data-minValue'))){
             $('button[type="submit"]').attr('disabled','disabled');
-          else
+            $('.error-message').removeClass('dn');
+          }
+          else{
             $('button[type="submit"]').removeAttr('disabled');
+            $('.error-message').addClass('dn');
+          }
         });
     });
 

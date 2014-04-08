@@ -161,6 +161,8 @@
 	font-weight: bold;
 }
 
+.dn {display:none;}
+
 .pwyc_form {
 	width:100%;
 	display: inline-block;
