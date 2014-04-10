@@ -53,9 +53,18 @@
         });
     });
 
+    function closeDialog(){
+      $('#dialogWindow').remove();
+      $('#overlay').remove();
+    }
+
+    $('#overlay').click(function(ev){
+      if(!$(ev.target).closest('#dialogWindow').length)
+        closeDialog();
+    })
+
     $('.close').click(function(){
-        $('#dialogWindow').remove();
-        $('#overlay').remove();
+      closeDialog();
     });
 </script>
 

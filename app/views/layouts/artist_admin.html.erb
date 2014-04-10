@@ -113,6 +113,7 @@ function songCountIncrementer(event) {
 
 // Sets csrf-token for all ajax request
 $(document).ajaxSend(function(e, xhr, options) {
+	$('.close').click();
 	var token = $("meta[name='csrf-token']").attr("content");
 	xhr.setRequestHeader("X-CSRF-Token", token);
 });
@@ -131,6 +132,10 @@ $(document).ready(function () {
 	if (!navigator.userAgent.toLowerCase().match(/(iphone|ipod|ipad|android|blackberry|symbianos|^sonyericsson|^nokia|^samsung|^lg)/)) 
 		$('html').addClass('non-mobile');
 
+	$(document).keydown(function(e){
+		if(e.which === 8 && !$(e.target).is("input"))
+			return false;
+	});
 
 	myPlaylist = initializePlayList(playlistSongs);
 	$('.player_nav').css({top: window.innerHeight - $('.player_nav').height()});
