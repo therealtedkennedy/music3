@@ -573,13 +573,16 @@ class AlbumsController < ApplicationController
 
   def album_code_find
     @artist = Artist.find_by_url_slug(params[:url_slug])
-	@code = params[:code]
+	  @code = params[:download_code]
 
-    if @code =  AlbumCode.find_by_album_code(params[:code])
+    logger.info
+
+    if @code =  AlbumCode.find_by_album_code(params[:download_code])
 
 	  #redirect_to(album_download_path(@artist.url_slug,@code.code_album_id))
 	  #redirect_to edit_multiple_items_path(:page =>2)
-	  redirect_to download_free_url("album",@artist.url_slug,@code.code_album_id)
+	    #redirect_to download_free_url("album",@artist.url_slug,@code.code_album_id)
+      redirect_to payment_method_url(@artist.url_slug,"album",@code.code_album_id, :amount => 0)
 
     else
         respond_to do |format|
@@ -587,8 +590,31 @@ class AlbumsController < ApplicationController
            format.xml  { head :ok }
         end
     end
+  end
 
 
+  def download_code_redemption
+
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+    @album = Album.find_by_album_url_slug(params[:album_url_slug])
+
+    @form = render_to_string('albums/_download_code_redemption_form.html.erb',:layout => false)
+
+
+    respond_to do |format|
+      format.html {render :layout => 'artist_admin'}
+      format.xml { render :xml => @song }
+      format.json {
+        render :json => {
+            :success => true,
+            :".miniPage" => render_to_string(
+                :action => 'edit.html.erb',
+                :layout => false,
+            ),
+            :"edit" => "true",
+        }
+      }
+    end
   end
 
   #Saves S3 Album..should be universal in the applications controller.

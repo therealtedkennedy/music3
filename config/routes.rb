@@ -120,7 +120,7 @@ Music3::Application.routes.draw do
   match "/:url_slug/download-csv/:id" => "album_code#album_codes_csv", :as => :album_codes_csv
 	match "/album_codes/create" => "album_code#create"
 	match "/:url_slug/code" => "albums#album_code_download", :as => :code_download
-	match "/:url_slug/download-code/:code" => "albums#album_code_find", :as => :code_download_code
+	match "/:url_slug/download-code" => "albums#download_code_redemption", :as => :code_download_code
 	match "/:url_slug/album_code_find" => "albums#album_code_find", :as => :find_album_code
 
 

@@ -1,0 +1,23 @@
+<%= form_tag(find_album_code_path(@artist.url_slug)) do %>
+
+    <% if @artist.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@artist.errors.count, "error") %> prohibited this artist from being saved:</h2>
+
+          <ul>
+            <% @artist.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= label_tag(:code, "Enter Code Here",:class=>"center") %>
+      <%= text_field_tag(:download_code,"",:class=>"span12" )%>
+    </div>
+
+    <div class="actions offset6">
+      <%= submit_tag("Download", :class=>"btn btn-default") %>
+    </div>
+<% end %>
