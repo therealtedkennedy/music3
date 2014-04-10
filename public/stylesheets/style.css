@@ -168,3 +168,9 @@
 	display: inline-block;
 	text-align:center;
 }
+
+.artistImage {
+    height: 315px;
+    display:block;
+    margin:0 auto;
+}
