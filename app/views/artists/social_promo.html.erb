@@ -63,8 +63,9 @@
 
                 <div class="span6 text-center">
                   <h3>Share <%= @object_name %></h3>
-                  <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Just downloaded <%=@object_name %> by <%=@artist.twitter_name%>. Check it out here"  data-url="<%= @promo_url %>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a>
-                  <div class="fb-like" data-href="<%=@social_fb_url%>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                  <div>
+                  <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Just downloaded <%=@object_name %> by <%=@artist.twitter_name%>. Check it out here"  data-url="<%= @promo_url %>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a></div>
+                  <div class="fb-like" data-href="<%=@social_fb_url%>" data-layout="standard" data-action="like" data-show-faces="true" data-width="300" data-share="true" data-colorscheme="dark" style="height:80px;"></div>
                 </div>
 
 
