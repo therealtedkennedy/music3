@@ -42,8 +42,8 @@
             }
         }
 
-
-        document.getElementById("cookieData").innerHTML = outMsg;
+        if(document.getElementById("cookieData"))
+          document.getElementById("cookieData").innerHTML = outMsg;
 
 
 
@@ -64,6 +64,7 @@
                 <div class="span6 text-center">
                   <h3>Share <%= @object_name %></h3>
                   <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Just downloaded <%=@object_name %> by <%=@artist.twitter_name%>. Check it out here"  data-url="<%= @promo_url %>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a>
+                  <div class="fb-like" data-href="<%=@social_fb_url%>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
                 </div>
 
 
@@ -78,7 +79,6 @@
                             <%= @artist.twitter_name %></a>
                         </div>
                     <% end %>
-                    <!--<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="225" data-show-faces="true"></div>-->
                   </div>
                 </div>
 
