@@ -217,6 +217,11 @@ $(document).ready(function () {
 		loadContent(url);
 	});
 
+	$('.id_list-item-link').live('click', function(ev){
+		ev.stopPropagation();
+		loadContent($(ev.currentTarget).attr('data-link'));
+	});
+
 //	 	Displays track Info
 	// $(".trackInfo").live('mouseenter', function () {
 	// 	if($.trim($(this).find('.track_name').text()).length)
@@ -349,6 +354,7 @@ function loadContent(href,admin) {
 
 	ted_log("before artist params,  page type = "+$(".pageType").attr('id')+" clean url = "+clean_url)
 	ted_log("admin= "+admin)
+
 //	triggers loading of artist layout (maybe others in the future)
 	if($(".pageType").attr('id') != clean_url || admin == true){
 		ted_log("inside set artist layout param")
