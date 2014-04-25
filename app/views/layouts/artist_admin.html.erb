@@ -184,6 +184,8 @@ $(document).ready(function () {
 
 			//<!-- sets the song index. By take the length of the playist (with the song added see above) and subtracts 1 because index starts at 0, length starts at 1 -->
 			songIndex = artistSongs[artistName][songName] = myPlaylist.playlist.length - 1;
+			$('.jp-play').removeClass('play-disabled');
+			$('.jp-mute').removeClass('mute-disabled');
 		}
 		artistSong = artistName + "&mdash;" + songName
 		
@@ -891,10 +893,10 @@ function ted_log() {
 					</div>
 						<ul class="jp-controls" style="display:inline; list-style-type:none;">
 
-							<li><span class="jp-play" tabindex="1"></span></li>
+							<li><span class="jp-play play-disabled" tabindex="1"></span></li>
 							<li><span class="jp-pause" tabindex="1"></span></li>
 
-							<li><span class="jp-mute" tabindex="1"></span></li>
+							<li><span class="jp-mute mute-disabled" tabindex="1"></span></li>
 							<li><span class="jp-unmute" tabindex="1"></span></li>
 						</ul>
 				</div>
