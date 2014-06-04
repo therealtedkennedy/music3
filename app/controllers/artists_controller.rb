@@ -251,6 +251,7 @@ class ArtistsController < ApplicationController
 
       @object_name = @album.al_name
       @promo_url = artist_show_album_url(@artist.url_slug,@album.album_url_slug)
+      @object_image = @album.art
 
 		  #in application controller
 		  album_social(@artist,@album)
@@ -262,6 +263,7 @@ class ArtistsController < ApplicationController
 
       @object_name = @song.song_name
       @promo_url = artist_show_song_url(@artist.url_slug,@song.song_url_slug)
+      @object_image = @song.image
 
 		  song_social(@artist,@song)
 	  end
