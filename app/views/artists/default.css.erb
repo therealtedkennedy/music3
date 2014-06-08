@@ -506,9 +506,6 @@
     }
 
     #text_area {
-        width: 350px;
-        max-height: 200px;
-        overflow: auto;
         margin-bottom: 15px;
     }
 
@@ -903,4 +900,14 @@ input[type=number] {
 
     width: 30px !important;
     height: 30px;
+}
+
+.social-media-icons {
+    font-size: 32px;
+}
+
+.social-media-icons a:hover {
+    text-decoration:none;
+    cursor:pointer;
+    color: <%= @artist.profile_layout.h2_colour %>;
 }

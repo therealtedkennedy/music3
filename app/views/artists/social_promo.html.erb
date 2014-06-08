@@ -5,7 +5,6 @@
 
 <!--hides logo and nav when clicking in from an artist page-->
 <script type="text/javascript" src="/javascripts/hide-logo-and-nav.js"></script>
-
 <script type="text/javascript">
 
     window.onload = showCookies
@@ -42,51 +41,67 @@
             }
         }
 
-
-        document.getElementById("cookieData").innerHTML = outMsg;
-
-
+        if(document.getElementById("cookieData"))
+          document.getElementById("cookieData").innerHTML = outMsg;
 
 
     }
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId: '433835590009360', 
+        status: true, 
+        cookie: true,
+        xfbml: true
+      });
+    };
+    (function() {
+      var e = document.createElement('script'); e.async = true;
+      e.src = document.location.protocol +
+      '//connect.facebook.net/en_US/all.js';
+      document.getElementById('fb-root').appendChild(e);
+    }());
 
+    $(document).ready(function(){
+      $('#share_button').click(function(e){
+        e.preventDefault();
+        var $el = $('#share_button');
+        FB.ui({
+          method: 'share',
+          name: $el.attr('data-name'),
+          link: $el.attr('data-url'),
+          href: $el.attr('data-url'),
+          picture: $el.attr('data-img'),
+          caption: '',
+          description: '',
+          message: ''
+        });
+      });
+    });
 
 </script>
 <div class="row-fluid">
     <div class="span12">
 
-    <h2>Your download Should Begin Shorty</h2
+    <h3>Your download Should Begin Shortly</h3>
 
 
         <div class="row-fluid ">
           <div class="span12 text-center">
 
-                <div class="span6 text-center">
-                  <h3>Share <%= @object_name %></h3>
-                  <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Just downloaded <%=@object_name %> by <%=@artist.twitter_name%>. Check it out here"  data-url="<%= @promo_url %>" data-via="3rptr" data-lang="en" data-size="large" data-count="none" data-lang="en">Tweet</a>
+                <div class="span12 m10t text-center">
+                  <h4>Share <%= @object_name %></h4>
+                  <div id="fb-root"></div>
+                  <div class="social-media-icons">
+                    <a title="Share on Facebook" id="share_button" data-url="<%= @promo_url %>" data-via="Three Repeater" data-name="<%= @object_name %>" data-img="<%= @object_image %>">
+                    <span data-icon="F"></span>
+                  </a>              
+                  <a data-icon="T" target="_black" href='https://twitter.com/share?text=Just downloaded <%=@object_name %> by <%=@artist.twitter_name%>. Check it out here&via=3rptr&url=<%=@promo_url %>' onclick="return !window.open(this.href, 'Twitter', 'width=640,height=400')"></a>
                 </div>
-
-
-                <div class="span6 text-center">
-                  <h3>Follow us! </h3>
-                  <div class="social">
-                    <% if @artist.twitter_name.blank? %>
-
-                    <% else %>
-                        <div>
-                          <a href="https://twitter.com/<%= @artist.twitter_name %>" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow
-                            <%= @artist.twitter_name %></a>
-                        </div>
-                    <% end %>
-                    <!--<div class="fb-like" data-href="<%=@social_fb_url%>" data-send="false" data-width="225" data-show-faces="true"></div>-->
-                  </div>
-                </div>
-
          </div>
      </div>
 
 
-      <div class="span12 text-center">
+      <div class="span12 text-center" style="margin-left:0px; margin-top:60px;">
 
 
           <%= link_to "Next", login_prompt_url, :class => "btn btn-primary" %>

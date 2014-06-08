@@ -164,6 +164,14 @@ a.jp-pause {
     color: #FFFFFF;
 }
 
+.jp-play.play-disabled, .jp-play.play-disabled:hover{
+	background: url('../../images/sprites.png') 0px -64px no-repeat;
+}
+
+.jp-mute.mute-disabled, .jp-mute.mute-disabled:hover{
+	background: url('../../images/sprites.png') -32px -64px no-repeat;
+}
+
 .jp-audio .jp-type-single a.jp-play,
 .jp-audio .jp-type-single a.jp-pause {
 	/*top: 0;

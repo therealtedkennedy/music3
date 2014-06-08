@@ -43,7 +43,9 @@ function bindMenuItems(){
     });
 
     $('.id_list-item-link').click(function(ev){
-        window.location = $(ev.target).find('a').attr('href');
+        var path = $(ev.target).find('a').attr('href');
+        if(path)
+            window.location = path; 
     });
 
     $('.album-sub-trigger').click(function(el, ev){
