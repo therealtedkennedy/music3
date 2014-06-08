@@ -82,11 +82,12 @@ class UsersController < Devise::SessionsController
 
   #updates user.  For some strang reason only works when controller is called boo
     @user = User.find(current_user.id)
+    authorize! :update, @user
 
 
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update_attributes(user_params)
          sign_in @user, :bypass => true
          format.html { redirect_to(show_user_path(@user.id), :notice => 'Artist was successfully updated.') }
          format.xml  { head :ok }
@@ -133,9 +134,11 @@ class UsersController < Devise::SessionsController
   def show
 	  logger.info "show controller"
 
+
     if user_signed_in?
 
      @user = User.find(current_user.id)
+     authorize! :update, @user
 
       @load_artist_style = "no"
 
@@ -279,7 +282,8 @@ class UsersController < Devise::SessionsController
 
   def user_params
     # NOTE: Using `strong_parameters` gem
-    params.required(:user).permit(:password, :password_confirmation,:current_password)
+
+    params.required(:user).permit(:first_name,:last_name, :email, :pay_pal_email, :password, :password_confirmation,:current_password,:reset_password_token)
   end
 
 

@@ -168,7 +168,7 @@ class AlbumsController < ApplicationController
   # POST /albums.xml
   def create
 	  logger.info "In Create"
-    @album = Album.new(params[:album])
+    @album = Album.new(album_params)
 	logger.info("album")
 	logger.info(@album)
 
@@ -184,7 +184,7 @@ class AlbumsController < ApplicationController
 
 
 	respond_to do |format|
-		if @album.update_attributes(params[:album])
+		if @album.update_attributes(album_params)
 			logger.info "album_songs true"
 			format.html {redirect_to(artist_show_album_path(@artist.url_slug, @album.album_url_slug), :notice => 'Album was successfully updated.') }
 			format.json {
@@ -256,7 +256,6 @@ class AlbumsController < ApplicationController
     authorize! :update, @artist
 
 
-
 	#creates the albums songs object	(dup with new..could create one method...but i don't want to deal with it....)
 	if params.has_key?(:album_songs)
 		@album.songs = Song.find(params[:album_songs][:songs_id])
@@ -281,7 +280,7 @@ class AlbumsController < ApplicationController
 
 
     respond_to do |format|
-      if @album.update_attributes(params[:album])
+      if @album.update_attributes(album_params)
     		logger.info "album_songs true"
 			format.html {redirect_to(artist_show_album_path(@artist.url_slug, @album.album_url_slug), :notice => 'Album was successfully updated.') }
 			format.json {
@@ -708,5 +707,11 @@ class AlbumsController < ApplicationController
 
 end
 
+private
 
+def album_params
+  # NOTE: Using `strong_parameters` gem
+  @user = User.find(current_user.id)
 
+  params.required(:album).permit(:album_songs,:al_name,:description,:al_type,:pri_artist,:al_copy_write,:al_rel_date,:al_amount,:producer,:al_producer,:liner_notes,:al_label)
+end

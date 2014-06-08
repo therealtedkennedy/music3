@@ -263,7 +263,7 @@ class SongsController < ApplicationController
 
 		params[:song].delete :s3_name
 
-		@song.update_attributes(params[:song])
+		@song.update_attributes(songs_params)
 
 		logger.info "in update"
 		logger.info "song name is=" + @song.song_name.to_s
@@ -440,7 +440,12 @@ class SongsController < ApplicationController
 		just_filename.sub(/[^\w\.\-]/, '_')
 	end
 
+  def songs_params
+    # NOTE: Using `strong_parameters` gem
+    @user = User.find(current_user.id)
 
+    params.required(:song).permit(:song_name,:song_artist,:song_contribute_artist,:song_written,:song_licence_type,:release_date,:song_url_slug,:lyrics,:producer,:label)
+  end
 
 
 end
