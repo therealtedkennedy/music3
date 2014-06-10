@@ -86,7 +86,7 @@ class ProfileLayoutsController < ApplicationController
 
 
 		respond_to do |format|
-			if @artist.profile_layout.update_attributes(params[:profile_layout])
+			if @artist.profile_layout.update_attributes(profile_params)
 
 
 			  logger.info "in json"
@@ -177,6 +177,17 @@ class ProfileLayoutsController < ApplicationController
 		 end
 
 
-	 end
+  end
+
+  private
+
+
+  def profile_params
+    # NOTE: Using `strong_parameters` gem
+    @user = User.find(current_user.id)
+
+    params.required(:profile_layout).permit(:logo_font,:content_font,:h1_colour,:h2_colour,:h3_colour,:p_colour,:div_1_colour,:div_1_transparency,:div_1_border_colour,:div_1_background_colour,:div_1_border_width,:div_2_colour,:div_2_transparency,:div_2_border_colour,:div_2_background_colour,:div_2_border_width,:url_slug)
+
+  end
 
 end

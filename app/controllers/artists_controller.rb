@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   load_and_authorize_resource
-  skip_load_and_authorize_resource :only => [:css, :social_promo]
+  skip_load_and_authorize_resource :only => [:css, :social_promo, :create]
   require 'uri'
   # GET /artists
   # GET /artists.xml
@@ -142,8 +142,12 @@ class ArtistsController < ApplicationController
   # POST /artists
   # POST /artists.xml
   def create
-    @artist = Artist.new(params[:artist])
+    logger.info("in create")
+
+    @artist = Artist.new(artist_params)
     #assigns User
+
+    logger.info("Artist = "+@artist.to_s)
 
     @user = current_user
     @artist.users << @user
@@ -154,7 +158,7 @@ class ArtistsController < ApplicationController
     @artist.profile_layout = ProfileLayout.new
 
     respond_to do |format|
-      if @artist.save
+      if @artist.update_attributes(artist_params)
         format.html { redirect_to(edit_artist_path(@artist.url_slug)) }
         format.xml { render :xml => @artist, :status => :created, :location => @artist }
 
@@ -165,8 +169,9 @@ class ArtistsController < ApplicationController
     end
 
 
-  end
 
+
+  end
   # PUT /artists/1
   # PUT /artists/1.xml
 
@@ -184,7 +189,7 @@ class ArtistsController < ApplicationController
 	layout("artist")
 
     respond_to do |format|
-      if @artist.update_attributes(params[:artist])
+      if @artist.update_attributes(artist_params)
 
         format.html { redirect_to(artist_admin_path(@artist.url_slug), :notice => 'Artist was successfully updated.') }
         format.xml { head :ok }
@@ -252,6 +257,8 @@ class ArtistsController < ApplicationController
       @object_name = @album.al_name
       @promo_url = artist_show_album_url(@artist.url_slug,@album.album_url_slug)
       @object_image = @album.art
+
+      @album
 
 		  #in application controller
 		  album_social(@artist,@album)
@@ -399,4 +406,20 @@ class ArtistsController < ApplicationController
 	end
 end
 
+private
+
+def artist_params
+  # NOTE: Using `strong_parameters` gem
+  @user = User.find(current_user.id)
+
+  params.required(:artist).permit(:name,:logo_toggle,:pay_pal,:twitter_name,:social_title,:fb_page_url,:city,:province,:country,:influence,:bio,:contact_info,:contact_info,:date_founded)
+
+end
+
+def artist_create_params
+  # NOTE: Using `strong_parameters` gem
+
+    params.require(:artist).permit(:name)
+
+end
 

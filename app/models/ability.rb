@@ -9,11 +9,16 @@ class Ability
 
     elsif user
 
-      can [:update,:destroy,:admin,:create,:artist_save_image,:destroy,:pre_delete], Artist, :users => {:id => user.id}
-      can [:update,:destroy,:show,:edit, :api_login,:sign_in_routing,:boo], User, :users => {:id => user.id}
+      can [:update,:destroy,:admin,:create,:artist_save_image,:destroy,:pre_delete], Artist do |artist|
+          artist.try(:user) == user
+      end
+
+       can [:update,:destroy,:show,:edit, :api_login,:sign_in_routing,:boo], User do |user_check|
+         user_check.try(:user) == user
+       end
       #can :delete, Artist, :users => {:id => user.id}
-      can :admin, Artist, :users => {:id => user.id}
-      can :create, Artist
+      # can :admin, Artist, :users => {:id => user.id}
+      # can :create, Artist
       #can :manage, :all
       can :read, :all
 

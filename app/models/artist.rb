@@ -17,6 +17,8 @@ class Artist < ActiveRecord::Base
 
   before_validation :strip_whitespace
 
+  include ActiveModel::ForbiddenAttributesProtection
+
 
 
   protected
