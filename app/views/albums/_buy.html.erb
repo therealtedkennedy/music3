@@ -41,7 +41,7 @@
 
     $(function() {
         $('input[type="text"]').keyup(function() {
-          if(!parseInt($(this).val()) || parseInt($(this).val()) < parseInt($(this).attr('data-minValue'))){
+          if(isNaN(parseInt($(this).val())) || parseInt($(this).val()) < parseInt($(this).attr('data-minValue'))){
             $('button[type="submit"]').attr('disabled','disabled');
             $('.error-message').removeClass('dn');
           }
