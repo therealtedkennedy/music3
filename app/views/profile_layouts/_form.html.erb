@@ -1,20 +1,65 @@
 <%= form_for @profile_layout, :url => {:action => "update"}, :html => { :class => "edit_profile_layout", :id => "edit_profile_layout_1" }  do |f| %>
+   <h3>Logo</h3>
 
-   <li class="field">
-     <%=f.label :logo_font %>
-     <div id="<%= :logo_font%>" class="fontSelect" data-font="<%=@profile_layout.logo_font%>">
-      <input type="hidden" name="profile_layout[logo_font]" value="<%=@profile_layout.logo_font%>" id="profile_layout_logo_font">
-        <span class="caret"></span>
-    </div>
-  </li>
+    <p>Logo Image y/n</p>
+    <p>Logo upload</p>
 
-  <li class="field">
-     <%=f.label :content_font %>
-    <div id="<%= :content_font%>" class="fontSelect" data-font="<%=@profile_layout.content_font%>">
-      <input type="hidden" name="profile_layout[content_font]" value="<%=@profile_layout.content_font%>" id="profile_layout_content_font">
+    <li class="field">
+      <%=f.label :logo_font %>
+      <div id="<%= :logo_font%>" class="fontSelect" data-font="<%=@profile_layout.logo_font%>">
+        <input type="hidden" name="profile_layout[logo_font]" value="<%=@profile_layout.logo_font%>" id="profile_layout_logo_font">
         <span class="caret"></span>
-    </div>
-   </li>
+      </div>
+    </li>
+
+    <p>Size</p>
+
+    <p>Color</p>
+
+
+
+
+   <h3>Background</h3>
+
+    <p>Image Upload</p>
+    <p>Or Color</p>
+
+   <h3>Text</h3>
+
+    <li class="field">
+      <%= f.label :p_size %>
+      <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.p_size%>" data-blank="true"></div>
+    </li>
+    <li class="field">
+      <%= f.label :p_colour %>
+      <input type="color" name="profile_layout[p_colour]" id="p_colour" class="form-control" value="<%= @profile_layout.p_colour %>"/>
+    </li>
+
+    <li class="field">
+      <%=f.label :content_font %>
+      <div id="<%= :content_font%>" class="fontSelect" data-font="<%=@profile_layout.content_font%>">
+        <input type="hidden" name="profile_layout[content_font]" value="<%=@profile_layout.content_font%>" id="profile_layout_content_font">
+        <span class="caret"></span>
+      </div>
+    </li>
+
+   <h3>Menu</h3>
+
+    <li class="field">
+      <%= f.label :div_1_background_colour %>
+      <input type="color" name="profile_layout[div_1_background_colour]" id="div_1_background_colour" class="form-control" value="<%= @profile_layout.div_1_background_colour %>" />
+    </li>
+
+    <li class="field">
+      <%= f.label :div_1_transparency %>
+      <%= f.range_field :div_1_transparency, :class=>"form-control", :onchange=>"updateSlider(this)", :onkeyup=>"updateSlider(this)", :min=>"0", :max=>"100" %>
+      <div class="range-counter center"><%=@profile_layout.div_1_transparency%></div>
+    </li>
+
+
+
+
+
 
   <li class="field">
     <%= f.label :h1_size %>
@@ -46,31 +91,17 @@
     <input type="color" name="profile_layout[h3_colour]" id="h3_colour" class="form-control" value="<%= @profile_layout.h3_colour %>"/>
   </li>
 
-   <li class="field">
-    <%= f.label :p_size %>
-    <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.p_size%>" data-blank="true"></div>
-  </li>
-  <li class="field">
-    <%= f.label :p_colour %>
-    <input type="color" name="profile_layout[p_colour]" id="p_colour" class="form-control" value="<%= @profile_layout.p_colour %>"/>
-  </li>
+
 
    <li class="field">
     <%= f.label :div_1_colour %>
     <input type="color" name="profile_layout[div_1_colour]" id="div_1_colour" class="form-control" value="<%= @profile_layout.div_1_colour %>"/>
   </li>
-  <li class="field">
-    <%= f.label :div_1_transparency %>
-    <%= f.range_field :div_1_transparency, :class=>"form-control", :onchange=>"updateSlider(this)", :onkeyup=>"updateSlider(this)", :min=>"0", :max=>"100" %>
-    <div class="range-counter center"><%=@profile_layout.div_1_transparency%></div>
-  </li>
+
   <li class="field">
     <input type="color" name="profile_layout[div_1_border_colour]" id="div_1_border_colour" class="form-control" value="<%= @profile_layout.div_1_border_colour %>" />
   </li>
-   <li class="field">
-    <%= f.label :div_1_background_colour %>
-    <input type="color" name="profile_layout[div_1_background_colour]" id="div_1_background_colour" class="form-control" value="<%= @profile_layout.div_1_background_colour %>" />
-  </li>
+
   <li class="field">
     <%= f.label :div_1_border_width %>
     <%= f.number_field :div_1_border_width, :class=>"form-control", :min=>"0", :max=>"5" %>
