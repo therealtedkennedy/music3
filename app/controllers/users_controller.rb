@@ -9,6 +9,9 @@ class UsersController < Devise::SessionsController
 
 
 
+
+
+
   #include Devise::Controllers::InternalHelpers
   layout "artist_admin", only: [:show, :edit, :new]
 
@@ -285,6 +288,8 @@ class UsersController < Devise::SessionsController
 
     params.required(:user).permit(:first_name,:last_name, :email, :pay_pal_email, :password, :password_confirmation,:current_password,:reset_password_token)
   end
+
+
 
 
 
