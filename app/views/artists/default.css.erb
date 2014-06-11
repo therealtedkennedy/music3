@@ -786,17 +786,20 @@ input[type=color] {width:89%; border-radius:3px;}
 #dialogWindow {position:absolute;width:550px;height:275px;top:50px;left:25%;z-index:1001}
 
 .close {
-    background: url(../../images/sprites.png) -384px 0px no-repeat;
-    width: 30px;
-    height: 30px;
-    float: right;
+    position:absolute; 
+    top:10px; 
+    right:10px;
+    font-size: <%= @artist.profile_layout.h2_size %>px;
+    color: <%= @artist.profile_layout.p_colour %>;
+    font-weight: normal; 
+    text-shadow: none;
+    opacity: 0.8;
 }
 
 .close:hover {
-    background: url(../../images/sprites.png) -416px 0px no-repeat;
-    width: 30px;
-    height: 30px;
-    float: right;
+    color: <%= @artist.profile_layout.p_colour %>;
+    cursor:pointer;
+    opacity:1;
 }
 
 input[type=number] {
