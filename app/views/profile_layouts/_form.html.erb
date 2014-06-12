@@ -1,9 +1,16 @@
 <%= form_for @profile_layout, :url => {:action => "update"}, :html => { :class => "edit_profile_layout", :id => "edit_profile_layout_1" }  do |f| %>
-   <h3>Logo</h3>
+    
+    <p class="profileCategory">Logo</p>
 
-    <p>Logo Image y/n</p>
+    <li class="field">
+      <%=f.label 'Logo image', :class=>'fl' %>
+        <input type="checkbox" name="profile_layout[logo_toggle]" value="<%=@profile_layout.logo_toggle%>" id="profile_layout_logo_toggle" class="chkbx">
+    </li>
 
-    <p>Logo upload</p>
+    <li class="field">
+      <%=f.label 'Logo upload'%>
+      <%= @logo_image_upload.html_safe %>
+    </li>
 
     <li class="field">
       <%=f.label :logo_font %>
@@ -13,19 +20,35 @@
       </div>
     </li>
 
-    <p>Size</p>
+    <li class="field">
+      <%= f.label :logo_size %>
+      <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.logo_size%>" data-blank="true"></div>
+    </li>
 
-    <p>Color</p>
+    <li class="field">
+      <%= f.label 'Logo colour' %>
+      <input type="color" name="profile_layout[log_color]" id="log_color" class="form-control" value="<%= @profile_layout.log_color %>"/>
+    </li>
 
 
+   <p class="profileCategory">Background</p>
 
+    <li class="field">
+      <%=f.label 'Background image', :class=>'fl' %>
+        <input type="checkbox" name="profile_layout[background_toggle]" value="<%=@profile_layout.background_toggle%>" id="profile_layout_background_toggle" class="chkbx">
+    </li>
+   
+    <li class="field">
+      <%=f.label 'Background image upload'%>
+       <%= @bk_image_upload.html_safe %>
+    </li>
 
-   <h3>Background</h3>
-    <p>Image Upload</p>
-    <p>Or Color</p>
-    <p>Background color toggle</p>
+    <li class="field">
+      <%= f.label 'Background colour'%>
+      <input type="color" name="profile_layout[background_color]" id="background_color" class="form-control" value="<%= @profile_layout.background_color %>"/>
+    </li>
 
-   <h3>Text</h3>
+   <p class="profileCategory">Text</p>
 
     <li class="field">
       <%= f.label :p_size %>
@@ -44,7 +67,7 @@
       </div>
     </li>
 
-   <h3>Menu</h3>
+   <p class="profileCategory">Menu</p>
 
     <li class="field">
       <%= f.label :div_1_background_colour %>

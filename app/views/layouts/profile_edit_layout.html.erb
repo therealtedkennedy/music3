@@ -156,7 +156,6 @@
 	a {
 
 		font-family: <%= @artist.profile_layout.content_font %>;
-		font-size: <%= @artist.profile_layout.h2_size %>pt;
 		color: <%= @artist.profile_layout.h2_colour %>;
 
 	}
@@ -164,7 +163,6 @@
 	a:hover {
 
 		font-family: <%= @artist.profile_layout.content_font %>;
-		font-size: <%= @artist.profile_layout.h2_size %>pt;
 		color: <%= @artist.profile_layout.h2_colour %>;
 
 	}
@@ -337,6 +335,31 @@
 		padding-right: 10px;
 	}
 
+	.fl {float:left;}
+
+	.chkbx {
+		margin-left: 10px !important;
+		margin-top: 8px !important;
+	}
+
+	input[type=file]{
+		font-size:inherit !important;
+		font-weight: inherit !important;
+		line-height: 10px !important;
+		margin-top: 5px;
+		max-width: 200px !important;
+	}
+
+	.id_profile-menu form {
+		margin-bottom: 0px !important;
+	}
+
+	p.profileCategory {
+		text-transform: uppercase;
+		text-align: center;
+		margin-bottom:0px !important;
+	}
+
 	.bfh-colorpicker { width: 95%;}
 	.bfh-colorpicker-popover { left: -130px !important;}
 	.bfh-slider { width: 90%; color:#000;}
@@ -411,7 +434,10 @@
 
 		});
 
-
+		setupInputs('bfh-selectbox');
+		// setupInputs('bfh-colorpicker');
+		// setupInputs('bfh-slider');
+		setupFontSelectors();
 	});
 
 
@@ -749,11 +775,6 @@
 			},
 			dataType:"json"
 		});
-
-		setupInputs('bfh-selectbox');
-		// setupInputs('bfh-colorpicker');
-		// setupInputs('bfh-slider');
-		setupFontSelectors();
 
 	}
 
