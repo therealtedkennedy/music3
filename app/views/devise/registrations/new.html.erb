@@ -1,4 +1,6 @@
 
+
+
 <header>
 
   <h1>Beta Sign Up</h1>
@@ -83,33 +85,35 @@
 
 
 
+<%  if Rails.env.development? %>
+    <!-- Actual Sign up form. Creates a user-->
 
-<!-- Actual Sign up form. Creates a user-->
+    <header>
 
-<!--<header>-->
+      <h1>Sign up</h1>
 
-  <!--<h1>Sign up</h1>-->
+      <div class="row">
+        <div class="span8 offset2">
+          <p>
+             Start promoting your music.
+          </p>
+        </div>
+      </div>
 
-  <!--<div class="row">-->
-    <!--<div class="span8 offset2">-->
-      <!--<p>-->
-         <!--Start promoting your music.-->
-      <!--</p>-->
-    <!--</div>-->
-  <!--</div>-->
+    </header>
 
-<!--</header>-->
+    <h2></h2>
 
-<!--<h2></h2>-->
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <%= f.email_field :email, :class =>'span12', :required=>"required", :placeholder=>"Email" %>
 
-<!--<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>-->
-  <!--<%= devise_error_messages! %>-->
-  <!--<%= f.email_field :email, :class =>'span12', :required=>"required", :placeholder=>"Email" %>-->
+      <%= f.password_field :password, :class =>'span12', :required=>"required", :placeholder=>"Password" %>
 
-  <!--<%= f.password_field :password, :class =>'span12', :required=>"required", :placeholder=>"Password" %>-->
+      <%= f.password_field :password_confirmation, :class =>'span12', :required=>"required", :placeholder=>"Password Confirmation" %>
+      <div><%= f.submit "Sign up", :class=>"btn btn-primary" %></div>
+    <% end %>
 
-  <!--<%= f.password_field :password_confirmation, :class =>'span12', :required=>"required", :placeholder=>"Password Confirmation" %>-->
-  <!--<div><%= f.submit "Sign up", :class=>"btn btn-primary" %></div>-->
-<!--<% end %>-->
+<% end %>
 
 

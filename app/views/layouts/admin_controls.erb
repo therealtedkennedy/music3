@@ -97,7 +97,17 @@
 		<% end %>
 	</ul>
 
+
+<%elsif user_signed_in? %>
+
+    <ul class="menu-ul id_main-menu">
+        <li class="id_list-item-link">
+          <p><%= link_to 'Manage Account', show_user_path(current_user.id) %></p>
+        </li>
+    </ul>
+
 <%else%>
+
 	<ul class="menu-ul id_main-menu">
 		<li class="id_list-item-link">
 			<p><%= link_to "Sign In", new_user_session_path %></p>
@@ -106,4 +116,5 @@
 			<p><%= link_to "Sign Up", new_user_registration_path %></p>
 		</li>
 	</ul>
+
 <% end %>

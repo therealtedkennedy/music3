@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+
+
   #Amazon buckets
   #Change in Application Helper as well!!!  YES! YOUR AN IDIOT FOR NOT READING THIS THE FIRST TIME!
   if Rails.env.production?
@@ -386,9 +388,6 @@ class ApplicationController < ActionController::Base
 			@hook = ".dynamicContent"
 		end
 	end
-
-
-
 
 
 
