@@ -11,9 +11,13 @@ class ProfileLayoutsController < ApplicationController
 
 	def edit
 
+    logger.info("in edit")
+
 		@artist = Artist.find_by_url_slug(params[:url_slug])
 		@profile_layout = @artist.profile_layout
 		image_upload_prep(@artist)
+
+    @form = render_to_string('profile_layouts/_form',:layout => false)
 
 		render 'artists/show'
 		#@profile_layout = ProfileLayout.new
@@ -23,25 +27,12 @@ class ProfileLayoutsController < ApplicationController
 
 	end
 
-	  #sets variables and loads forms for image uploads
-  def image_upload_prep(artist)
 
-	  bk_image_name = "Three_Repeater-"+artist.url_slug+"-"
-	  @bucket = IMAGE_BUCKET
-
-	  @image_save_location = artist_save_image_url(@artist.url_slug)
-
-	  #bk_image_uplosd
-	  @bk_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name, :image_type => "bk_image", :image_save_url =>@image_save_location}, :layout => false)
-
-	  #logo Upload
-	  @logo_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name, :image_type => "logo", :image_save_url => @image_save_location}, :layout => false)
-
-
-  end
 
 	#edits songs atrributes
 	def edit_song
+
+
 
 		@artist = Artist.find_by_url_slug(params[:url_slug])
 		@profile_layout = @artist.profile_layout
@@ -161,6 +152,17 @@ class ProfileLayoutsController < ApplicationController
 			#@album[params[:field_name]] = params[:value]
 			object = @album
 
+    elsif params[:object] == "profile"
+      logger.info "profile"
+      @artist = Artist.find_by_url_slug(params[:url_slug])
+
+      # @artist.profile_layout[params[:field_name]] = params[:value]
+
+      object = @artist.profile_layout
+      strong_params =  profile_params
+
+      logger.info "object ="+object.to_s
+
 		end
 
 		respond_to do |format|
@@ -168,7 +170,7 @@ class ProfileLayoutsController < ApplicationController
 			logger.info "Object"
 			logger.info object
 
-			if object.save
+			if object.update_attribute(params[:profile_layout][:field_name],params[:profile_layout][:value])
 				format.json {
 					render :json => {
 							:success => true}
@@ -203,7 +205,7 @@ class ProfileLayoutsController < ApplicationController
     # NOTE: Using `strong_parameters` gem
     @user = User.find(current_user.id)
 
-    params.required(:profile_layout).permit(:logo_font,:content_font,:h1_colour,:h2_colour,:h3_colour,:p_colour,:div_1_colour,:div_1_transparency,:div_1_border_colour,:div_1_background_colour,:div_1_border_width,:div_2_colour,:div_2_transparency,:div_2_border_colour,:div_2_background_colour,:div_2_border_width,:url_slug)
+    params.required(:profile_layout).permit(:logo_font,:content_font,:h1_colour,:h2_colour,:h3_colour,:p_colour,:div_1_colour,:div_1_transparency,:div_1_border_colour,:div_1_background_colour,:div_1_border_width,:div_2_colour,:div_2_transparency,:div_2_border_colour,:div_2_background_colour,:div_2_border_width,:url_slug, :value, :field_name)
 
   end
 

@@ -407,7 +407,12 @@
 
 <script src="/assets-public/js/bootstrap.min.js" type="text/javascript"></script>
 <script src='/assets-public/js/spectrum/spectrum.js'></script>
+
+
 <link rel='stylesheet' href='/assets-public/js/spectrum/spectrum.css' />
+
+<script type="text/javascript" src="/javascripts/csrf-token.js"></script>
+<script type="text/javascript" src="/javascripts/direct-to-s3.js"></script>
 
 
 <!-- Master template -->
@@ -438,6 +443,19 @@
 		// setupInputs('bfh-colorpicker');
 		// setupInputs('bfh-slider');
 		setupFontSelectors();
+
+
+        //direct to s3 upload
+        s3_direct_upload();
+
+
+        add_content_editable()
+
+//         Makes the content editable.
+        slug = find_url_slug($(location).attr('href'));
+        var download_link = href_builder(slug);
+        click_to_edit(download_link);
+
 	});
 
 
@@ -582,12 +600,6 @@
 
 
 
-          add_content_editable()
-
-//         Makes the content editable.
-         var download_link = href_builder()
-         click_to_edit(download_link);
-
 
 
 		//		Displays playlist
@@ -653,6 +665,10 @@
 		$('.id_list-item-link').bind('click', function(ev){
 			window.location = $(ev.target).find('a').attr('href');
 		});
+
+
+
+
 	});
 
 	function updateSlider(el, ev){
@@ -712,7 +728,8 @@
          console.log ("in click to edit")
 		$(".editable").on("blur", function(){
 			ted_log ("in on blur")
-			content = $(this).html();
+//			content = $(this).html();
+            content = $(this).attr('value');
 
 			field_name = $(this).attr('field_name');
 			object = $(this).attr('object');
@@ -732,15 +749,29 @@
 			url:download_link,
 			type: "post",
 			data: {
-				value: content,
-				field_name: field_name,
-				object: object
+                profile_layout:{value: content,field_name: field_name},
+                object: object
+
 			},
 			success:
 					function(){console.log("saved")}
 
 		})
 	}
+
+    function find_url_slug(url){
+
+        ted_log("Url= "+url)
+
+        var index_of = url.lastIndexOf("/");
+        var	slug = url.substring(index_of+1);
+
+        ted_log("slug: "+ slug)
+
+        return slug
+
+
+    };
 
 
 
@@ -760,11 +791,7 @@
 
 				// http://www.w3schools.com/jsref/jsref_indexof.asp
 
-
-				var index_of = url.lastIndexOf("/");
-				var	slug = url.substring(index_of+1);
-
-				ted_log("slug: "+ slug)
+                find_url_slug(url)
 
 
 			add_content_editable()
@@ -782,6 +809,7 @@
 		$.each($('.' + className), function(){
 			var input = $(this).find('input'),
 				id 	  = $(this).parent().find('label').attr('for');
+            ted_log("id= "+id)
 			input.attr('id', id);
 
 			var x = id.split("_"),
@@ -789,6 +817,7 @@
 			for(var y = 3; y < x.length; y++)
 				z += "_" + x[y];
 			name = x[0] + "_" + x[1] + "[" + x[2] + z + ']';
+            ted_log("name= "+name)
 			input.attr('name', name);
 		});
 	}
@@ -938,7 +967,12 @@
 		<li class="id_back id_list-item-link"><p><%= link_to '<span class="nav-left"></span>back'.html_safe, artist_admin_path(@artist.url_slug), :class=>"uppercase"%></p></li>
 	</ul>
 	<ul class="menu-ul id_profile-menu">
-		<%= render 'form' %>
+
+
+      <h2>Upload your background image</h2>
+
+      <%= @bk_image_upload.html_safe %>
+		<%= @form.html_safe %>
 		<!-- <li class="id_list-item-link"><p><%= link_to 'Custom CSS', css_editor_path(@artist.url_slug) %></p></li> -->
 	</ul>
 </div>

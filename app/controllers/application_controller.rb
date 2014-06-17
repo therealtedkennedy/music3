@@ -390,6 +390,35 @@ class ApplicationController < ActionController::Base
 	end
 
 
+  #sets variables and loads forms for image uploads
+  def image_upload_prep(artist)
+
+    bk_image_name = "Three_Repeater-"+artist.url_slug+"-"
+    @bucket = IMAGE_BUCKET
+
+    @image_save_location = artist_save_image_url(@artist.url_slug)
+
+    logger.info("save image location")
+    logger.info(@image_save_location)
+
+    #bk_image_uplosd
+    @bk_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name, :image_type => "bk_image", :image_save_url =>@image_save_location}, :layout => false)
+
+    #logo Upload
+    @logo_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name, :image_type => "logo", :image_save_url => @image_save_location}, :layout => false)
+
+    #profile image upload
+    @profile_image_upload = render_to_string('shared/_s3_upload_form_image', :locals => {:image_name => bk_image_name, :image_type => "profile", :image_save_url => @image_save_location}, :layout => false)
+
+    logger.info "bk form"
+    logger.info @bk_image_upload
+
+    logger.info "image upload form"
+    logger.info @logo_image_upload
+
+
+  end
+
 
 
 end

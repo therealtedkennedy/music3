@@ -1,5 +1,42 @@
+
+<h1>Test Editable field</h1>
+<!--<p>Change p size</p>-->
+<!--<p class="editable" field_name="id" object="profile"><%= %></p>-->
+
+<!--<h2>Upload Your Profile Image</h2>-->
+
+<!--<%= @profile_image_upload.html_safe %>-->
+
+
+
+<!--<h2>Have a logo? Want to use it?  Upload it here:</h2>-->
+
+<!--<%= @logo_image_upload.html_safe %>-->
+
+
+
+
+
+<li class="field">
+  <%= "Background Color"%>
+  <input type="color" name="profile_layout[div_1_background_colour]" id="div_1_background_colour" class="form-control editable" field_name="div_1_background_colour" object="profile" value="<%= @profile_layout.div_1_background_colour %>" />
+</li>
+
+
+<li class="field">
+  <%="Logo Font" %>
+  <div id="logo_font" class="fontSelect editable" field_name="logo_font" object="profile" data-font="<%=@profile_layout.logo_font%>">
+    <input type="hidden" name="profile_layout[logo_font]" value="<%=@profile_layout.logo_font%>" id="profile_layout_logo_font">
+    <span class="caret"></span>
+  </div>
+</li>
+
+
+
+
+
 <%= form_for @profile_layout, :url => {:action => "update"}, :html => { :class => "edit_profile_layout", :id => "edit_profile_layout_1" }  do |f| %>
-    
+
     <p class="profileCategory">Logo</p>
 
     <li class="field">
@@ -37,11 +74,8 @@
       <%=f.label 'Background image', :class=>'fl' %>
         <input type="checkbox" name="profile_layout[background_toggle]" value="<%=@profile_layout.background_toggle%>" id="profile_layout_background_toggle" class="chkbx">
     </li>
-   
-    <li class="field">
-      <%=f.label 'Background image upload'%>
-       <%= @bk_image_upload.html_safe %>
-    </li>
+
+
 
     <li class="field">
       <%= f.label 'Background colour'%>
@@ -85,73 +119,73 @@
 
 
 
-  <li class="field">
-    <%= f.label :h1_size %>
-    <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h1_size%>" data-input="form-control" data-blank="true">
-    </div>
-  </li>
+  <!--<li class="field">-->
+    <!--<%= f.label :h1_size %>-->
+    <!--<div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h1_size%>" data-input="form-control" data-blank="true">-->
+    <!--</div>-->
+  <!--</li>-->
 
-  <li class="field">
-    <%=f.label :h1_colour %>
-    <input type="color" name="profile_layout[h1_colour]" id="h1_colour" class="form-control" value="<%= @profile_layout.h1_colour %>"/>
-  </li>
+  <!--<li class="field">-->
+    <!--<%=f.label :h1_colour %>-->
+    <!--<input type="color" name="profile_layout[h1_colour]" id="h1_colour" class="form-control" value="<%= @profile_layout.h1_colour %>"/>-->
+  <!--</li>-->
 
-  <li class="field">
-    <%= f.label :h2_size %>
-    <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h2_size%>" data-blank="true"></div>
-  </li>
+  <!--<li class="field">-->
+    <!--<%= f.label :h2_size %>-->
+    <!--<div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h2_size%>" data-blank="true"></div>-->
+  <!--</li>-->
 
-  <li class="field">
-    <%= f.label :h2_colour %>
-    <input type="color" name="profile_layout[h2_colour]" id="h2_colour" class="form-control" value="<%= @profile_layout.h2_colour %>"/>
-  </li>
+  <!--<li class="field">-->
+    <!--<%= f.label :h2_colour %>-->
+    <!--<input type="color" name="profile_layout[h2_colour]" id="h2_colour" class="form-control" value="<%= @profile_layout.h2_colour %>"/>-->
+  <!--</li>-->
 
-  <li class="field">
-    <%= f.label :h3_size %>
-    <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h3_size%>" data-blank="true"></div>
-  </li>
-  <li class="field">
-    <%= f.label :h3_colour %>
-    <input type="color" name="profile_layout[h3_colour]" id="h3_colour" class="form-control" value="<%= @profile_layout.h3_colour %>"/>
-  </li>
+  <!--<li class="field">-->
+    <!--<%= f.label :h3_size %>-->
+    <!--<div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h3_size%>" data-blank="true"></div>-->
+  <!--</li>-->
+  <!--<li class="field">-->
+    <!--<%= f.label :h3_colour %>-->
+    <!--<input type="color" name="profile_layout[h3_colour]" id="h3_colour" class="form-control" value="<%= @profile_layout.h3_colour %>"/>-->
+  <!--</li>-->
 
 
 
-   <li class="field">
-    <%= f.label :div_1_colour %>
-    <input type="color" name="profile_layout[div_1_colour]" id="div_1_colour" class="form-control" value="<%= @profile_layout.div_1_colour %>"/>
-  </li>
+   <!--<li class="field">-->
+    <!--<%= f.label :div_1_colour %>-->
+    <!--<input type="color" name="profile_layout[div_1_colour]" id="div_1_colour" class="form-control" value="<%= @profile_layout.div_1_colour %>"/>-->
+  <!--</li>-->
 
-  <li class="field">
-    <input type="color" name="profile_layout[div_1_border_colour]" id="div_1_border_colour" class="form-control" value="<%= @profile_layout.div_1_border_colour %>" />
-  </li>
+  <!--<li class="field">-->
+    <!--<input type="color" name="profile_layout[div_1_border_colour]" id="div_1_border_colour" class="form-control" value="<%= @profile_layout.div_1_border_colour %>" />-->
+  <!--</li>-->
 
-  <li class="field">
-    <%= f.label :div_1_border_width %>
-    <%= f.number_field :div_1_border_width, :class=>"form-control", :min=>"0", :max=>"5" %>
-  </li>
+  <!--<li class="field">-->
+    <!--<%= f.label :div_1_border_width %>-->
+    <!--<%= f.number_field :div_1_border_width, :class=>"form-control", :min=>"0", :max=>"5" %>-->
+  <!--</li>-->
 
-   <li class="field">
-    <%= f.label :div_2_colour %>
-    <input type="color" name="profile_layout[div_2_colour]" id="div_2_colour" class="form-control" value="<%= @profile_layout.div_2_colour %>" />
-  </li>
-  <li class="field">
-    <%= f.label :div_2_transparency %>
-    <%= f.range_field :div_2_transparency, :class=>"form-control", :onchange=>"updateSlider(this)", :onkeyup=>"updateSlider(this)", :min=>"0", :max=>"100" %>
-    <div class="range-counter center"><%=@profile_layout.div_2_transparency%></div>
-  </li>
-   <li class="field">
-    <%= f.label :div_2_border_colour %>
-    <input type="color" name="profile_layout[div_2_border_colour]" id="div_2_border_colour" class="form-control" value="<%= @profile_layout.div_2_border_colour %>" />
-  </li>
-   <li class="field">
-    <%= f.label :div_2_background_colour %>
-    <input type="color" name="profile_layout[div_2_background_colour]" id="div_2_background_colour" class="form-control" value="<%= @profile_layout.div_2_background_colour %>" />
-  </li>
-  <li class="field">
-    <%= f.label :div_2_border_width %>
-    <%= f.number_field :div_2_border_width, :class=>"form-control", :min=>"0", :max=>"5" %>
-  </li>
+   <!--<li class="field">-->
+    <!--<%= f.label :div_2_colour %>-->
+    <!--<input type="color" name="profile_layout[div_2_colour]" id="div_2_colour" class="form-control" value="<%= @profile_layout.div_2_colour %>" />-->
+  <!--</li>-->
+  <!--<li class="field">-->
+    <!--<%= f.label :div_2_transparency %>-->
+    <!--<%= f.range_field :div_2_transparency, :class=>"form-control", :onchange=>"updateSlider(this)", :onkeyup=>"updateSlider(this)", :min=>"0", :max=>"100" %>-->
+    <!--<div class="range-counter center"><%=@profile_layout.div_2_transparency%></div>-->
+  <!--</li>-->
+   <!--<li class="field">-->
+    <!--<%= f.label :div_2_border_colour %>-->
+    <!--<input type="color" name="profile_layout[div_2_border_colour]" id="div_2_border_colour" class="form-control" value="<%= @profile_layout.div_2_border_colour %>" />-->
+  <!--</li>-->
+   <!--<li class="field">-->
+    <!--<%= f.label :div_2_background_colour %>-->
+    <!--<input type="color" name="profile_layout[div_2_background_colour]" id="div_2_background_colour" class="form-control" value="<%= @profile_layout.div_2_background_colour %>" />-->
+  <!--</li>-->
+  <!--<li class="field">-->
+    <!--<%= f.label :div_2_border_width %>-->
+    <!--<%= f.number_field :div_2_border_width, :class=>"form-control", :min=>"0", :max=>"5" %>-->
+  <!--</li>-->
 
 <!--   <li class="field">
 	  <p>Use custom css? <%= f.check_box :use_css %></p>
