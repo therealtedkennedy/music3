@@ -295,8 +295,15 @@
 		margin-bottom: 15px;
 	}
 
-	.editable:hover {
+	.editable:not(.bfh-selectbox):hover {
 		border: 1px solid #fff;
+	}
+
+	.bfh-selectbox:focus{
+		outline: none;
+		outline-color: none;
+		outline-style: none;
+		outline-width: 0px;
 	}
 
 	.form-control{
