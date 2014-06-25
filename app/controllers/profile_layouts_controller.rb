@@ -93,9 +93,12 @@ class ProfileLayoutsController < ApplicationController
 		# @profile_layout = @artist.profile_layout
 
 
+
+
 		respond_to do |format|
 			if @artist.profile_layout.update_attributes(profile_params)
 
+        font_size_save(@artist, @artist.profile_layout.p_size )
 
 			  logger.info "in json"
 			  format.html { redirect_to(profile_edit_url(@artist.url_slug)) }
@@ -163,6 +166,21 @@ class ProfileLayoutsController < ApplicationController
 
       logger.info "object ="+object.to_s
 
+      #saves font size
+
+      logger.info "profile layout feild name ="+params[:profile_layout][:field_name].to_s
+
+      if params[:profile_layout][:field_name] == "p_size"
+
+
+         logger.info "p_size ="+params[:profile_layout][:value].to_s
+         font_size_save(@artist, params[:profile_layout][:value] )
+
+      end
+
+
+
+
 		end
 
 		respond_to do |format|
@@ -198,6 +216,22 @@ class ProfileLayoutsController < ApplicationController
 
   end
 
+  def font_size_save(artist, p_size)
+
+    logger.info "in font save. p_size ="+p_size.to_s
+
+    @artist = artist
+
+    @artist.profile_layout.h2_size = (p_size.to_i * 2.142857).round
+    @artist.profile_layout.h3_size = (p_size.to_i * 1.2857).round
+    @artist.profile_layout.p_size = p_size
+
+    @artist.profile_layout.save
+
+
+
+  end
+
   private
 
 
@@ -208,5 +242,7 @@ class ProfileLayoutsController < ApplicationController
     params.required(:profile_layout).permit(:logo_font,:content_font,:h1_colour,:h2_colour,:h3_colour,:p_colour,:div_1_colour,:div_1_transparency,:div_1_border_colour,:div_1_background_colour,:div_1_border_width,:div_2_colour,:div_2_transparency,:div_2_border_colour,:div_2_background_colour,:div_2_border_width,:url_slug, :value, :field_name)
 
   end
+
+
 
 end

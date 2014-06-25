@@ -57,12 +57,23 @@
         text-align: center;
     }
 
+
+
     h1 {
         font-family: <%= @artist.profile_layout.content_font %>;
         font-size: <%= @artist.profile_layout.h1_size %>px;
         color: <%= @artist.profile_layout.h1_colour %>;
         text-align: center;
     }
+
+
+    .logo {
+        font-family: <%= @artist.profile_layout.logo_font %>;
+        font-size: <%= @artist.profile_layout.logo_size %>px;
+        color: <%= @artist.profile_layout.log_color %>;
+        text-align: center;
+
+     }
 
     h2, .buy_header  {
         font-family: <%= @artist.profile_layout.content_font %>;
