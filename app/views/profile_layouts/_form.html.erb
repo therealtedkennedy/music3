@@ -1,204 +1,89 @@
-
-<h3>Test Editable field</h3>
-<!--<p>Change p size</p>-->
-<!--<p class="editable" field_name="id" object="profile"><%= %></p>-->
-
-<!--<h2>Upload Your Profile Image</h2>-->
-
-<!--<%= @profile_image_upload.html_safe %>-->
-
-
-
-<!--<h2>Have a logo? Want to use it?  Upload it here:</h2>-->
-
-<!--<%= @logo_image_upload.html_safe %>-->
+<p class="profileCategory">Logo</p>
 
 <li class="field">
-  <%= "Background Color"%>
-  <input type="color" name="profile_layout[div_1_background_colour]" id="div_1_background_colour" class="form-control editable" field_name="div_1_background_colour" object="profile" value="<%= @profile_layout.div_1_background_colour %>" />
+  <label class='fl'>Logo image</label>
+    <input type="checkbox" name="profile_layout[logo_toggle]" field_name="logo_toggle" object="profile" value="<%=@profile_layout.logo_toggle%>" id="profile_layout_logo_toggle" class="chkbx editable">
 </li>
 
+<li class="field">
+  <label>Logo upload</label>
+  <%= @logo_image_upload.html_safe %>
+</li>
 
 <li class="field">
-  <%="Logo Font" %>
-  <div id="logo_font" class="fontSelect editable" field_name="logo_font" object="profile" data-font="<%=@profile_layout.logo_font%>">
-    <input type="hidden" name="profile_layout[logo_font]" value="<%=@profile_layout.logo_font%>" id="profile_layout_logo_font">
+  <label>Logo font</label>
+  <div id="<%= :logo_font%>" class="fontSelect" data-font="<%=@profile_layout.logo_font%>">
+    <input type="hidden" class="editable" object="profile" name="profile_layout[logo_font]" field_name="logo_font" value="<%=@profile_layout.logo_font%>" id="profile_layout_logo_font">
     <span class="caret"></span>
   </div>
 </li>
 
+<li class="field">
+  <label>Logo size</label>
+  <div class="bfh-selectbox bfh-fontsizes editable" field_name="logo_size" object="profile" data-fontsize="<%=@profile_layout.logo_size%>" data-blank="true"></div>
+</li>
 
 <li class="field">
-  <%= "Paragraph Size" %>
-  <div class="bfh-selectbox bfh-fontsizes editable" data-fontsize="<%=@profile_layout.p_size%>"  field_name="p_size" object="profile" data-blank="true"></div>
+
+  <label>Logo colour</label>
+  <input type="color" name="profile_layout[log_color]" id="log_color" class="form-control editable" field_name="log_color" object="profile" value="<%= @profile_layout.log_color %>"/>
+</li>
+
+
+
+<p class="profileCategory">Background</p>
+
+<li class="field">
+    <label class='fl'>Background image</label>
+    <input type="checkbox" name="profile_layout[background_toggle]" value="<%=@profile_layout.background_toggle%>" id="profile_layout_background_toggle" class="chkbx editable" field_name="background_toggle" object="profile">
+</li>
+
+<li class="field">
+  <label>Background upload</label>
+  <%= @profile_image_upload.html_safe %>
+</li>
+
+<li class="field">
+  <label>Background colour</label>
+  <input type="color" name="profile_layout[div_1_background_colour]" id="div_1_background_colour" class="form-control editable" field_name="div_1_background_colour" object="profile" value="<%= @profile_layout.div_1_background_colour %>" />
+</li>
+
+<p class="profileCategory">Text</p>
+
+<li class="field">
+  <label>P size</label>
+  <div class="bfh-selectbox bfh-fontsizes editable" field_name="p_size" object="profile" data-fontsize="<%=@profile_layout.p_size%>" data-blank="true"></div>
+</li>
+<li class="field">
+  <label>P colour</label>
+  <input type="color" name="profile_layout[p_colour]" id="p_colour" class="form-control editable" field_name="p_colour" object="profile" value="<%= @profile_layout.p_colour %>"/>
+</li>
+
+<li class="field">
+  <label>Content font</label>
+  <div id="<%= :content_font%>" class="fontSelect" data-font="<%=@profile_layout.content_font%>">
+    <input type="hidden" class="editable" object="profile" name="profile_layout[content_font]" field_name="content_font" value="<%=@profile_layout.content_font%>" id="profile_layout_content_font">
+    <span class="caret"></span>
+  </div>
+</li>
+
+<p class="profileCategory">Menu</p>
+
+<li class="field">
+  <label>div 1 background colour</label>
+  <input type="color" name="profile_layout[div_1_background_colour]" field_name="div_1_background_colour" object="profile" id="div_1_background_colour" class="form-control editable" value="<%= @profile_layout.div_1_background_colour %>" />
+</li>
+
+<li class="field">
+  <label>div 1 transparency</label>
+    <input type="range" class="editable form-control" object="profile" name="profile_layout[div_1_transparency]" field_name="div_1_transparency" value="<%=@profile_layout.div_1_transparency%>" id="profile_layout_div_1_transparency" min="0" max="100" onchange="updateSlider(this)" onkeyup="updateSlider(this)"/>
+
+  <div class="range-counter center"><%=@profile_layout.div_1_transparency%></div>
 </li>
 
 
 
 
 
-<%= form_for @profile_layout, :url => {:action => "update"}, :html => { :class => "edit_profile_layout", :id => "edit_profile_layout_1" }  do |f| %>
-
-    <p class="profileCategory">Logo</p>
-
-    <li class="field">
-      <%=f.label 'Logo image', :class=>'fl' %>
-        <input type="checkbox" name="profile_layout[logo_toggle]" value="<%=@profile_layout.logo_toggle%>" id="profile_layout_logo_toggle" class="chkbx">
-    </li>
-
-    <li class="field">
-      <%=f.label 'Logo upload'%>
-      <%= @logo_image_upload.html_safe %>
-    </li>
-
-    <li class="field">
-      <%=f.label :logo_font %>
-      <div id="<%= :logo_font%>" class="fontSelect" data-font="<%=@profile_layout.logo_font%>">
-        <input type="hidden" name="profile_layout[logo_font]" value="<%=@profile_layout.logo_font%>" id="profile_layout_logo_font">
-        <span class="caret"></span>
-      </div>
-    </li>
-
-    <li class="field">
-      <%= f.label :logo_size %>
-      <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.logo_size%>" data-blank="true"></div>
-    </li>
-
-    <li class="field">
-      <%= f.label 'Logo colour' %>
-      <input type="color" name="profile_layout[log_color]" id="log_color" class="form-control" value="<%= @profile_layout.log_color %>"/>
-    </li>
 
 
-   <p class="profileCategory">Background</p>
-
-    <li class="field">
-      <%=f.label 'Background image', :class=>'fl' %>
-        <input type="checkbox" name="profile_layout[background_toggle]" value="<%=@profile_layout.background_toggle%>" id="profile_layout_background_toggle" class="chkbx">
-    </li>
-
-
-
-    <li class="field">
-      <%= f.label 'Background colour'%>
-      <input type="color" name="profile_layout[background_color]" id="background_color" class="form-control" value="<%= @profile_layout.background_color %>"/>
-    </li>
-
-   <p class="profileCategory">Text</p>
-
-    <li class="field">
-      <%= f.label :p_size %>
-      <div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.p_size%>" data-blank="true"></div>
-    </li>
-    <li class="field">
-      <%= f.label :p_colour %>
-      <input type="color" name="profile_layout[p_colour]" id="p_colour" class="form-control" value="<%= @profile_layout.p_colour %>"/>
-    </li>
-
-    <li class="field">
-      <%=f.label :content_font %>
-      <div id="<%= :content_font%>" class="fontSelect" data-font="<%=@profile_layout.content_font%>">
-        <input type="hidden" name="profile_layout[content_font]" value="<%=@profile_layout.content_font%>" id="profile_layout_content_font">
-        <span class="caret"></span>
-      </div>
-    </li>
-
-   <p class="profileCategory">Menu</p>
-
-    <li class="field">
-      <%= f.label :div_1_background_colour %>
-      <input type="color" name="profile_layout[div_1_background_colour]" id="div_1_background_colour" class="form-control" value="<%= @profile_layout.div_1_background_colour %>" />
-    </li>
-
-    <li class="field">
-      <%= f.label :div_1_transparency %>
-      <%= f.range_field :div_1_transparency, :class=>"form-control", :onchange=>"updateSlider(this)", :onkeyup=>"updateSlider(this)", :min=>"0", :max=>"100" %>
-      <div class="range-counter center"><%=@profile_layout.div_1_transparency%></div>
-    </li>
-
-
-
-
-
-
-  <!--<li class="field">-->
-    <!--<%= f.label :h1_size %>-->
-    <!--<div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h1_size%>" data-input="form-control" data-blank="true">-->
-    <!--</div>-->
-  <!--</li>-->
-
-  <!--<li class="field">-->
-    <!--<%=f.label :h1_colour %>-->
-    <!--<input type="color" name="profile_layout[h1_colour]" id="h1_colour" class="form-control" value="<%= @profile_layout.h1_colour %>"/>-->
-  <!--</li>-->
-
-  <!--<li class="field">-->
-    <!--<%= f.label :h2_size %>-->
-    <!--<div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h2_size%>" data-blank="true"></div>-->
-  <!--</li>-->
-
-  <!--<li class="field">-->
-    <!--<%= f.label :h2_colour %>-->
-    <!--<input type="color" name="profile_layout[h2_colour]" id="h2_colour" class="form-control" value="<%= @profile_layout.h2_colour %>"/>-->
-  <!--</li>-->
-
-  <!--<li class="field">-->
-    <!--<%= f.label :h3_size %>-->
-    <!--<div class="bfh-selectbox bfh-fontsizes" data-fontsize="<%=@profile_layout.h3_size%>" data-blank="true"></div>-->
-  <!--</li>-->
-  <!--<li class="field">-->
-    <!--<%= f.label :h3_colour %>-->
-    <!--<input type="color" name="profile_layout[h3_colour]" id="h3_colour" class="form-control" value="<%= @profile_layout.h3_colour %>"/>-->
-  <!--</li>-->
-
-
-
-   <!--<li class="field">-->
-    <!--<%= f.label :div_1_colour %>-->
-    <!--<input type="color" name="profile_layout[div_1_colour]" id="div_1_colour" class="form-control" value="<%= @profile_layout.div_1_colour %>"/>-->
-  <!--</li>-->
-
-  <!--<li class="field">-->
-    <!--<input type="color" name="profile_layout[div_1_border_colour]" id="div_1_border_colour" class="form-control" value="<%= @profile_layout.div_1_border_colour %>" />-->
-  <!--</li>-->
-
-  <!--<li class="field">-->
-    <!--<%= f.label :div_1_border_width %>-->
-    <!--<%= f.number_field :div_1_border_width, :class=>"form-control", :min=>"0", :max=>"5" %>-->
-  <!--</li>-->
-
-   <!--<li class="field">-->
-    <!--<%= f.label :div_2_colour %>-->
-    <!--<input type="color" name="profile_layout[div_2_colour]" id="div_2_colour" class="form-control" value="<%= @profile_layout.div_2_colour %>" />-->
-  <!--</li>-->
-  <!--<li class="field">-->
-    <!--<%= f.label :div_2_transparency %>-->
-    <!--<%= f.range_field :div_2_transparency, :class=>"form-control", :onchange=>"updateSlider(this)", :onkeyup=>"updateSlider(this)", :min=>"0", :max=>"100" %>-->
-    <!--<div class="range-counter center"><%=@profile_layout.div_2_transparency%></div>-->
-  <!--</li>-->
-   <!--<li class="field">-->
-    <!--<%= f.label :div_2_border_colour %>-->
-    <!--<input type="color" name="profile_layout[div_2_border_colour]" id="div_2_border_colour" class="form-control" value="<%= @profile_layout.div_2_border_colour %>" />-->
-  <!--</li>-->
-   <!--<li class="field">-->
-    <!--<%= f.label :div_2_background_colour %>-->
-    <!--<input type="color" name="profile_layout[div_2_background_colour]" id="div_2_background_colour" class="form-control" value="<%= @profile_layout.div_2_background_colour %>" />-->
-  <!--</li>-->
-  <!--<li class="field">-->
-    <!--<%= f.label :div_2_border_width %>-->
-    <!--<%= f.number_field :div_2_border_width, :class=>"form-control", :min=>"0", :max=>"5" %>-->
-  <!--</li>-->
-
-<!--   <li class="field">
-	  <p>Use custom css? <%= f.check_box :use_css %></p>
-  </li> -->
-
-
-
-  <li class="actions">
-    <%= f.submit %>
-  </li>
-
- <input id="url_slug" name="url_slug" type="hidden" value="<%=@artist.url_slug %>" />
-
-<% end %>

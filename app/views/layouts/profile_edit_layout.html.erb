@@ -295,8 +295,15 @@
 		margin-bottom: 15px;
 	}
 
-	.editable:hover {
+	.editable:not(.bfh-selectbox):hover {
 		border: 1px solid #fff;
+	}
+
+	.bfh-selectbox:focus{
+		outline: none;
+		outline-color: none;
+		outline-style: none;
+		outline-width: 0px;
 	}
 
 	.form-control{
@@ -444,7 +451,7 @@
 
 		});
 
-		setupInputs('bfh-selectbox');
+		// setupInputs('bfh-selectbox');
 		// setupInputs('bfh-colorpicker');
 		// setupInputs('bfh-slider');
 		setupFontSelectors();
@@ -645,27 +652,27 @@
 			$(ev.currentTarget).colorpicker();
 		});
 
-		$("#edit_profile_layout_1").submit(function(e) {
-			e.preventDefault();
-			// get all the inputs into an array.
-			var profile_layout = $('#edit_profile_layout_1').serialize();
+		// $("#edit_profile_layout_1").submit(function(e) {
+		// 	e.preventDefault();
+		// 	// get all the inputs into an array.
+		// 	var profile_layout = $('#edit_profile_layout_1').serialize();
 
-			$.ajax({
-				url : '/profile_layouts/edit',
-				type:"POST",
-				data:profile_layout,
-				dataType : "json",
-				success:function (result) {
-					location.reload();
-				}
-			});
-			$(".trackInfo").live('mouseenter', function () {
-				$(this).find(".progressBarContainer").show();
-			});
-			$(".trackInfo").live('mouseleave', function () {
-				$(this).find(".progressBarContainer").hide();
-			});
-		});
+		// 	$.ajax({
+		// 		url : '/profile_layouts/edit',
+		// 		type:"POST",
+		// 		data:profile_layout,
+		// 		dataType : "json",
+		// 		success:function (result) {
+		// 			location.reload();
+		// 		}
+		// 	});
+		// 	$(".trackInfo").live('mouseenter', function () {
+		// 		$(this).find(".progressBarContainer").show();
+		// 	});
+		// 	$(".trackInfo").live('mouseleave', function () {
+		// 		$(this).find(".progressBarContainer").hide();
+		// 	});
+		// });
 
 		$('.id_list-item-link').bind('click', function(ev){
 			window.location = $(ev.target).find('a').attr('href');
@@ -810,22 +817,22 @@
 
 	}
 
-	function setupInputs(className){
-		$.each($('.' + className), function(){
-			var input = $(this).find('input'),
-				id 	  = $(this).parent().find('label').attr('for');
-            ted_log("id= "+id)
-			input.attr('id', id);
+	// function setupInputs(className){
+	// 	$.each($('.' + className), function(){
+	// 		var input = $(this).find('input'),
+	// 			id 	  = $(this).parent().find('label').attr('for');
+ //            ted_log("id= "+id)
+	// 		input.attr('id', id);
 
-			var x = id.split("_"),
-			 	z = "";
-			for(var y = 3; y < x.length; y++)
-				z += "_" + x[y];
-			name = x[0] + "_" + x[1] + "[" + x[2] + z + ']';
-            ted_log("name= "+name)
-			input.attr('name', name);
-		});
-	}
+	// 		var x = id.split("_"),
+	// 		 	z = "";
+	// 		for(var y = 3; y < x.length; y++)
+	// 			z += "_" + x[y];
+	// 		name = x[0] + "_" + x[1] + "[" + x[2] + z + ']';
+ //            ted_log("name= "+name)
+	// 		input.attr('name', name);
+	// 	});
+	// }
 
 	function setupFontSelectors(){
 	    $('.fontSelect').each(function(){
@@ -834,7 +841,7 @@
 	        'initial' : $(this).attr('data-font') || 'Open Sans, Open Sans, sans-serif',
 	        'selected' : function(style) { 
 	          $(this).attr('data-font', style); 
-	          $(this).find('input[type="hidden"]').val(style);
+	          $(this).find('input[type="hidden"]').val(style).trigger('blur');
 	        },
 	        'fonts' : [
 	          'Lekton, Lekton, sans-serif',
@@ -974,9 +981,9 @@
 	<ul class="menu-ul id_profile-menu">
 
 
-      <h2>Upload your background image</h2>
+<!--       <h2>Upload your background image</h2>
 
-      <%= @bk_image_upload.html_safe %>
+      <%= @bk_image_upload.html_safe %> -->
 		<%= @form.html_safe %>
 		<!-- <li class="id_list-item-link"><p><%= link_to 'Custom CSS', css_editor_path(@artist.url_slug) %></p></li> -->
 	</ul>
