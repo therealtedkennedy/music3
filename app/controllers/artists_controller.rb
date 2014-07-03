@@ -107,13 +107,14 @@ class ArtistsController < ApplicationController
 
 
 
+
 	@form = render_to_string('artists/_form_new_artist.html.erb',:layout => false)
   logger.info(@form)
 
 	layout(params[:layout])
     respond_to do |format|
       format.html # new.html.erb
-	  format.json {
+	   format.json {
 		  render :json => {
 				  :success => true,
 				  :".bodyArea" => render_to_string(
@@ -147,31 +148,43 @@ class ArtistsController < ApplicationController
     @artist = Artist.new(artist_params)
     #assigns User
 
+
+
     logger.info("Artist = "+@artist.to_s)
+    logger.info("artist name= "+@artist.name)
+
 
     @user = current_user
     @artist.users << @user
 
-    @form = render_to_string('artists/_form',:layout => false)
+
+
 
     #creates and assigns layout
     @artist.profile_layout = ProfileLayout.new
 
-    respond_to do |format|
-      if @artist.update_attributes(artist_params)
-        format.html { redirect_to(edit_artist_path(@artist.url_slug)) }
-        format.xml { render :xml => @artist, :status => :created, :location => @artist }
+
+
+    @form = render_to_string('artists/_form',:layout => false)
+
+
+
+
+      if @artist.save(validate: false)
+
+        redirect_to(edit_artist_path(@artist.url_slug))
+
 
       else
-        format.html { render :action => "new" }
-        format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
+           respond_to do |format|
+
+            format.html { render :action => "new", notice => 'Error saving artist. Please try again. If this happening often please contact support '  }
+            format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
+          end
       end
-    end
-
-
-
-
   end
+
+
   # PUT /artists/1
   # PUT /artists/1.xml
 
@@ -190,7 +203,7 @@ class ArtistsController < ApplicationController
 
     respond_to do |format|
       if @artist.update_attributes(artist_params)
-
+        image_upload_prep(@artist)
         format.html { redirect_to(artist_admin_path(@artist.url_slug), :notice => 'Artist was successfully updated.') }
         format.xml { head :ok }
 		format.json {
@@ -317,7 +330,7 @@ class ArtistsController < ApplicationController
 
 
 
-    def pre_delete
+  def pre_delete
 
 		@artist = Artist.find_by_url_slug(params[:url_slug])
 

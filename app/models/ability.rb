@@ -20,7 +20,7 @@ class Ability
       can :update, Artist, :users => {:id => user.id}
       can :pre_delete, Artist, :users => {:id => user.id}
       can :admin, Artist, :users => {:id => user.id}
-      can :artist_save_image, :users => {:id => user.id}
+      can :artist_save_image, Artist, :users => {:id => user.id}
 
 
       can :create, Artist
