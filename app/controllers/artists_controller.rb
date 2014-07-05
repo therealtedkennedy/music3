@@ -131,13 +131,30 @@ class ArtistsController < ApplicationController
   end
 
   # GET /artists/1/edit
+  #edit only loaded after a new artist is created from the artist new page
+  #called by the the create controller
+  #different from admin bc it is only on create.
+  #it exists to that the text in the view can be changed to guide the user through the create process
   def edit
 
-	  #edit only loaded after a new artist is created from the artist new page
-	  #called by the the create controller
-	  #different from admin bc it is only on create.
-	  #it exists to that the text in the view can be changed to guide the user through the create process
-	   admin
+
+    admin_edit_prep
+
+    respond_to do |format|
+      format.html {render :layout => 'artist_admin'}
+      format.json {
+        render :json => {
+            :success => true,
+            :"#{@hook}" => render_to_string(
+                :action => 'admin.html.erb',
+                :layout => @layout,
+            ),
+            :"edit" => "true",
+            :"admin-show" => "true",
+
+        }
+      }
+    end
   end
 
   # POST /artists
@@ -224,19 +241,8 @@ class ArtistsController < ApplicationController
 
   def admin
 
-    @artist = Artist.find_by_url_slug(params[:url_slug])
-    authorize! :admin, @artist
+  admin_edit_prep
 
-	@artist_test="blah"
-
-	image_upload_prep(@artist)
-
-	@form = render_to_string('artists/_form',:layout => false)
-
-	#varable to remove defualt artist loading.  Loads the edit layout insted
-	@edit = "true" #see new
-
-	layout(params[:layout])
 	respond_to do |format|
 		format.html {render :layout => 'artist_admin'}
 		format.json {
@@ -252,6 +258,27 @@ class ArtistsController < ApplicationController
 			}
 		}
 	end
+
+  end
+
+  #preps admin and edit forms. They redirect to diffrent pages, but use the same form.
+  def admin_edit_prep
+
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+    authorize! :admin, @artist
+
+    @artist_test="blah"
+
+    image_upload_prep(@artist)
+
+    @form = render_to_string('artists/_form',:layout => false)
+
+    #varable to remove defualt artist loading.  Loads the edit layout insted
+    @edit = "true" #see new
+
+    layout(params[:layout])
+
+
 
   end
 
@@ -349,43 +376,39 @@ class ArtistsController < ApplicationController
 
 	def artist_save_image
 
-    	@artist = Artist.find_by_url_slug(params[:url_slug])
+    @artist = Artist.find_by_url_slug(params[:url_slug])
 
-        logger.info("In artist_save_image image bucket = "+IMAGE_BUCKET)
+    logger.info("In artist_save_image image bucket = "+IMAGE_BUCKET)
 
 		#build url
-        if params[:type] == "bk_image"
+    if params[:type] == "bk_image"
 			@artist.image = "https://"+IMAGE_BUCKET+".s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
-            logger.info("in bk image")
+      logger.info("in bk image")
+      @artist.update_column(:image,@artist.image)
 		elsif params[:type] == "logo"
 			@artist.logo = "https://"+IMAGE_BUCKET+".s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
 			logger.info("in logo")
+      @artist.update_column(:logo,@artist.logo)
 
     elsif params[:type]=="profile"
       @artist.profile_image = "https://"+IMAGE_BUCKET+".s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
+      @artist.update_column(:profile_image,@artist.profile_image)
 
-		else
+    else
 			logger.info("In artist_save_image. Something is up with the image type paramiter coming from the app admin layout")
 		end
 
 
-
 		logger.info("artist image= "+@artist.image.to_s)
 		logger.info("artist logo= "+@artist.logo.to_s)
+    logger.info("artist profile= "+@artist.profile_image)
 
 		respond_to do |f|
-			if @artist.save
 				f.json {
 					render :json => {
 							:success => true}
 				}
-			else
-				f.json {
-					render :json => {
-							:success => false}
-				}
-			end
-		end
+    end
 
 	end
 end

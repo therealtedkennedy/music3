@@ -4,7 +4,7 @@
 
 
 
-<h1>Create Artist</h1>
+<h1>Create <%=@artist.name%></h1>
 
 <h3>Change Your Profile Image</h3>
 
@@ -15,6 +15,5 @@
 <h2>Info</h2>
 <%= @form.html_safe %>
 
-<%= link_to 'Show', artist_link_path(@artist.url_slug) %>
-<%= link_to 'Back', artists_path %>
+
 
