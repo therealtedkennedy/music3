@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-   before_filter :authenticate_user!, :except => [:show, :download_album,:album_code_find,:index, :zip_album, :zip,:album_play_list_create, :buy]
+   before_filter :authenticate_user!, :except => [:show, :download_album,:album_code_find,:index, :zip_album, :zip,:album_play_list_create, :buy, :download_code_redemption]
 
   # GET /albums
   # GET /albums.xml
@@ -574,9 +574,12 @@ class AlbumsController < ApplicationController
     @artist = Artist.find_by_url_slug(params[:url_slug])
 	  @code = params[:download_code]
 
-    logger.info
+    logger.info("artist= "+@artist.to_s)
+    logger.info("Code= "+@code.to_s)
 
     if @code =  AlbumCode.find_by_album_code(params[:download_code])
+
+      logger.info("in redirect for download")
 
 	  #redirect_to(album_download_path(@artist.url_slug,@code.code_album_id))
 	  #redirect_to edit_multiple_items_path(:page =>2)

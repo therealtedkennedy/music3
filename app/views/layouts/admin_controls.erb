@@ -3,21 +3,23 @@
 	<ul class="menu-ul id_main-menu">
 		<li class="uppercase title"><p>manage <a href="/<%= @artist.url_slug %>" ><%= @artist.name %></a></p></li>
 		<li class="id_artist-admin">
-			<p>Artist Info
+			<p>Artist Profile
 				<span class="nav-right"></span>
 			</p>
 		</li>
-		<li class="id_album-admin">
-			<p>Albums
-				<span class="nav-right"></span>
-			</p>
-		</li>
+
 		<li class="id_song-admin">
 			<p>Songs
 				<span class="nav-right"></span>
 			</p>
 		</li>
-		<li class="borderb id_list-item-link">
+
+        <li class="id_album-admin">
+          <p>Albums
+            <span class="nav-right"></span>
+          </p>
+        </li>
+	    <li class="borderb id_list-item-link">
 			<p><%= link_to 'Appearance', profile_edit_path(@artist.url_slug) %>
 				<span class="nav-right"></span>
 			</p>

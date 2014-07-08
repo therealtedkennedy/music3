@@ -384,7 +384,7 @@ class ArtistsController < ApplicationController
     if params[:type] == "bk_image"
 			@artist.image = "https://"+IMAGE_BUCKET+".s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
       logger.info("in bk image")
-      @artist.update_column(:image,@artist.image)
+      @artist.update_column(:image,@artist.logo)
 		elsif params[:type] == "logo"
 			@artist.logo = "https://"+IMAGE_BUCKET+".s3.amazonaws.com/Three_Repeater-"+@artist.url_slug+"-"+params[:file_name]
 			logger.info("in logo")
