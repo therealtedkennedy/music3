@@ -8,8 +8,7 @@
       <div class="hoverPlay"><span></span></div>
     </span>
   </div>
-  <a class="id_make-purchase buyLink" path="<%= artist_buy_album_path(@artist.url_slug, @album.album_url_slug) %>" href="#">Buy
-    Now</a><span class="minorDesc"><%= @album.al_amount == 0 || @album.al_amount.to_s == '' ? 'name your price' : '$' + @album.al_amount.to_s + ' or more' %></span>
+  <a class="id_make-purchase buyLink" path="<%= artist_buy_album_path(@artist.url_slug, @album.album_url_slug) %>" href="#"><%= @album.al_amount == 0 || @album.al_amount.to_s == '' ? 'Download' : 'Buy Now' %></a><span class="minorDesc"><%= @album.al_amount == 0 || @album.al_amount.to_s == '' ? 'name your price' : '$' + @album.al_amount.to_s + ' or more' %></span>
 
 
   <div class="social m15t">
