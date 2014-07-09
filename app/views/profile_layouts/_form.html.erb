@@ -51,20 +51,20 @@
 <p class="profileCategory">Text</p>
 
 <li class="field">
-  <label>P size</label>
-  <div class="bfh-selectbox bfh-fontsizes editable" field_name="p_size" object="profile" data-fontsize="<%=@profile_layout.p_size%>" data-blank="true"></div>
-</li>
-<li class="field">
-  <label>P colour</label>
-  <input type="color" name="profile_layout[p_colour]" id="p_colour" class="form-control editable" field_name="p_colour" object="profile" value="<%= @profile_layout.p_colour %>"/>
-</li>
-
-<li class="field">
-  <label>Content font</label>
+  <label>Font</label>
   <div id="<%= :content_font%>" class="fontSelect" data-font="<%=@profile_layout.content_font%>">
     <input type="hidden" class="editable" object="profile" name="profile_layout[content_font]" field_name="content_font" value="<%=@profile_layout.content_font%>" id="profile_layout_content_font">
     <span class="caret"></span>
   </div>
+</li>
+
+<li class="field">
+  <label>Size</label>
+  <div class="bfh-selectbox bfh-fontsizes editable" field_name="p_size" object="profile" data-fontsize="<%=@profile_layout.p_size%>" data-blank="true"></div>
+</li>
+<li class="field">
+  <label>Colour</label>
+  <input type="color" name="profile_layout[p_colour]" id="p_colour" class="form-control editable" field_name="p_colour" object="profile" value="<%= @profile_layout.p_colour %>"/>
 </li>
 
 <p class="profileCategory">Menu</p>

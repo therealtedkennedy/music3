@@ -371,11 +371,11 @@
 
     .bodyArea .miniPage
     {        
-        background-image: url('/images/lightblack.png');
         overflow:auto;
         margin:0 auto;
         bottom:0;
         padding:30px;
+        background-color: rgba(0,0,0,0.35);
         /*        font-family: 'verb_regularregular';
         color:#fff;*/
     }
@@ -688,11 +688,28 @@
 }
 
 .bfh-selectbox-options li {
-    padding: 5px 0px !important;
+    padding: 2px 0px !important;
 }
 
 .bfh-selectbox-options li:hover, .bfh-selectbox-options a:hover {
     background-color: #fff !important;
+}
+
+.id_profile-menu, .id_profile-menu a {
+    font-size: 14px !important;
+}
+
+.id_profile-menu a:hover {
+    font-size: 14px;
+}
+
+.bfh-fontsizes .bfh-selectbox-options {
+    width: 90%;
+    left: 5px;
+}
+
+.bfh-fontsizes .bfh-selectbox-options a:hover{
+    background-color: #ddd !important;
 }
 
 .menu-ul li:not(.title):not(.field):not(.actions):not(.bfh-selectbox-options) {
@@ -858,6 +875,7 @@ input[type=number] {
 .imageHover {
     display: inline-block;
     position: relative;
+    margin-bottom:10px;
 }
 
 

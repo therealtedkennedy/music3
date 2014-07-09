@@ -48,8 +48,8 @@ function bindMenuItems(){
             window.location = path; 
     });
 
-    $('.album-sub-trigger').click(function(el, ev){
-        var submenu = $(el.currentTarget).next();
+    $('.album-sub-trigger').click(function(ev){
+        var submenu = $(ev.currentTarget).next();
         if(submenu.css('display') === "none")
             submenu.show();
         else
