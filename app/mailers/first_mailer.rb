@@ -14,6 +14,6 @@ class FirstMailer < ActionMailer::Base
 
 	  mail :subject => "Thank you for downloading!",
 		   :to      => user.email,
-		   :from    => "no-replay@threerepeater.com"
+		   :from    => "no-reply@threerepeater.com"
   end
 end

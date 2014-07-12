@@ -44,6 +44,8 @@ Music3::Application.configure do
 	}
 
 
+  config.action_mailer.default_url_options = { :host => 'www.threerepeater.com' }
+
 
   ENV["TWITTER_KEY"] = "PkEuRrYyt4wWlQIX9BCXA"
   ENV["TWITTER_SECRET"] = "m0nZf7OO7TSDymqdmlJeaIIhsO8hulOGSufFgm40"
