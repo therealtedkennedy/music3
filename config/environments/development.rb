@@ -31,6 +31,7 @@ Music3::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
 
+
 	ActionMailer::Base.delivery_method = :smtp
   	ActionMailer::Base.smtp_settings = {
 			:address   => "smtp.mandrillapp.com",
@@ -42,6 +43,8 @@ Music3::Application.configure do
 			:domain => 'heroku.com', # your domain to identify your server when connecting
 	}
 
+
+  config.action_mailer.default_url_options = { :host => 'www.threerepeater.com' }
 
 
   ENV["TWITTER_KEY"] = "PkEuRrYyt4wWlQIX9BCXA"
