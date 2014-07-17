@@ -26,7 +26,8 @@
 <li class="field">
 
   <label>Logo colour</label>
-  <input type="color" name="profile_layout[log_color]" id="log_color" class="form-control editable" field_name="log_color" object="profile" value="<%= @profile_layout.log_color %>"/>
+<!--   <input type="color" name="profile_layout[log_color]" id="log_color" class="form-control editable" field_name="log_color" object="profile" value="<%= @profile_layout.log_color %>"/> -->
+  <input type="text" value="<%= @profile_layout.log_color %>" name="profile_layout[log_color]" class="pick-a-color form-control editable" field_name="log_color" object="profile" id="log_color"/>
 </li>
 
 
