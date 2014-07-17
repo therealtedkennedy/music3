@@ -178,6 +178,16 @@ class ProfileLayoutsController < ApplicationController
 
       end
 
+      #sets colour theme
+
+      # if params[:profile_layout][:field_name] == "colour_theme"
+      #
+      #
+      #   logger.info "colour_theme="+params[:profile_layout][:value].to_s
+      #   save_colour_theme(@artist, params[:profile_layout][:value] )
+      #
+      # end
+
 
 
 
@@ -227,6 +237,33 @@ class ProfileLayoutsController < ApplicationController
     @artist.profile_layout.p_size = p_size
 
     @artist.profile_layout.save
+
+  end
+
+  def save_colour_theme(artist, theme_name)
+
+    @artist = artist
+
+    if theme_name = "first theme"
+
+         @artist.profile_layout.p_colour = "FFFFFFF"
+         @artist.profile_layout.h1_colour = "FFFFFFF"
+         @artist.profile_layout.h2_colour = "FFFFFFF"
+         @artist.profile_layout.h3_colour = "FFFFFFF"
+         @artist.profile_layout.logo_colour = "FFFFFF"
+         @artist.profile_layout.div1_colour = "FFFFFF"
+         @artist.profile_layout.call_to_action_colour = "FFFFFF"
+         @artist.profile_layout.background_colour = "FFFFFF"
+
+         # call to action colour
+
+
+
+    elsif theme_name = "second theme"
+
+
+
+    end
 
 
 

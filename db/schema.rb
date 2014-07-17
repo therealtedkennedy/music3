@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140610235551) do
+ActiveRecord::Schema.define(:version => 20140717022922) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -148,9 +148,10 @@ ActiveRecord::Schema.define(:version => 20140610235551) do
     t.boolean  "use_css",                 :default => false
     t.boolean  "logo_toggle"
     t.integer  "logo_size",               :default => 36
-    t.string   "log_color"
-    t.string   "background_color"
+    t.string   "logo_colour"
+    t.string   "background_colour"
     t.boolean  "background_toggle"
+    t.string   "call_to_action_colour"
   end
 
   create_table "songs", :force => true do |t|
