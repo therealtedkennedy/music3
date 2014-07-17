@@ -20,7 +20,7 @@
     <tr>
 
        <td style="padding:40px 30px;text-align: right;">
-            <button name="commit" type="submit" class="id_make-purchase">Buy Now</button>
+            <button name="commit" type="submit" class="id_make-purchase" onClick="_gaq.push(['_trackEvent', 'Song', 'Buy', '<%=@artist.name+"-"+@song.song_name %>']);">Buy Now</button>
        </td>
     </tr>
   </table>
