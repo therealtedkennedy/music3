@@ -2,7 +2,8 @@
 
 <!DOCTYPE html>
 <html>
-
+	<meta http-equiv="x-ua-compatible" content="IE=10">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <head>
 <title>Music3</title>
@@ -653,7 +654,7 @@
 		$('.edit-controls').show();
 		$(".pick-a-color").pickAColor();
 		$(".pick-a-color").on("change", function (ev) {
-			$(this).val(ev.target.value);
+			$(this).val('#' + ev.target.value);
 			$(this).trigger('blur');
 		});
 
@@ -746,7 +747,7 @@
 		$(".editable").on("blur", function(){
 			ted_log ("in on blur")
 //			content = $(this).html();
-            content = $(this).attr('value');
+            content = $(this).attr('value') || $.trim($(this).text());
 
 			field_name = $(this).attr('field_name');
 			object = $(this).attr('object');
@@ -771,7 +772,9 @@
 
 			},
 			success:
-					function(){console.log("saved")}
+					function(resp){
+						console.log("saved");
+					}
 
 		})
 	}
