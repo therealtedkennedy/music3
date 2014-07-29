@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140717022922) do
+ActiveRecord::Schema.define(:version => 20140729235445) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(:version => 20140717022922) do
     t.text     "contact_info"
     t.date     "date_founded"
     t.date     "created_date"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.string   "url_slug"
     t.string   "pay_pal"
     t.string   "image"
@@ -81,10 +81,11 @@ ActiveRecord::Schema.define(:version => 20140717022922) do
     t.string   "social_title"
     t.string   "fb_page_url"
     t.string   "logo"
-    t.integer  "number_of_codes", :default => 0
+    t.integer  "number_of_codes",          :default => 0
     t.boolean  "logo_toggle"
     t.string   "profile_image"
     t.boolean  "super_toggle"
+    t.boolean  "quick_start_popup_toggle"
   end
 
   create_table "artists_songs", :id => false, :force => true do |t|
