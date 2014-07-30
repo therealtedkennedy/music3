@@ -39,6 +39,7 @@
 <script type="text/javascript" src="/javascripts/simple-expand.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.iframe-transport.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.cloudinary.js"></script>
+<script type="text/javascript" src="/assets-public/js/gettingstarted.js"></script>
 <%= cloudinary_js_config %>
 <script src="/assets-public/js/bootstrap.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="/javascripts/artist-page/admin-button-action.js"></script>
@@ -208,7 +209,6 @@ $(document).ready(function () {
 		window.addEventListener('popstate', popstate(), false);
 	}, 3000);
 
-
 	$(".content-link").live("click", function (event) {
 		event.preventDefault();
 		url = $(this).attr('href');
@@ -263,6 +263,15 @@ $(document).ready(function () {
 
 			}
 	)
+
+	$('.adminLink').click(function(){
+		if($('.admin').attr('state') === 'closed' && !$('#gsToggle').val())
+			$('body').gettingstarted($('#gsToggle'));
+	});
+
+	$('#gsToggle').bind('toggleOptOut', function(data){
+		$(this).val(data.isChecked);
+	});
 
 
 //	$('img.playable').on("hover", function (event){
@@ -646,7 +655,7 @@ function ted_log() {
 
 
 </script>
-
+<input type="hidden" id="gsToggle" data-path="/artists/<%= @artist.id.to_s%>" value="<%= @artist.quick_start_popup_toggle %>"/>
 <div class="container">
 	<div class="player_nav">
 
