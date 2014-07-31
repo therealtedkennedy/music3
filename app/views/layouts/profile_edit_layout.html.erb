@@ -652,7 +652,9 @@
 		)
 		//shows the edit controls. Hidden by defualt
 		$('.edit-controls').show();
-		$(".pick-a-color").pickAColor();
+		$(".pick-a-color").pickAColor({
+            showBasicColors: false
+        });
 		$(".pick-a-color").on("change", function (ev) {
 			$(this).val('#' + ev.target.value);
 			$(this).trigger('blur');
@@ -767,7 +769,7 @@
 			url:download_link,
 			type: "post",
 			data: {
-                profile_layout:{value: content,field_name: field_name},
+                field:{value: content,field_name: field_name},
                 object: object
 
 			},

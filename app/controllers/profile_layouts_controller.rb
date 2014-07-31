@@ -168,23 +168,23 @@ class ProfileLayoutsController < ApplicationController
 
       #saves font size
 
-      logger.info "profile layout feild name ="+params[:profile_layout][:field_name].to_s
+      logger.info "profile layout feild name ="+params[:field][:field_name].to_s
 
-      if params[:profile_layout][:field_name] == "p_size"
+      if params[:field][:field_name] == "p_size"
 
 
-         logger.info "p_size ="+params[:profile_layout][:value].to_s
-         font_size_save(@artist, params[:profile_layout][:value] )
+         logger.info "p_size ="+params[:field][:value].to_s
+         font_size_save(@artist, params[:field][:value] )
 
       end
 
       #sets colour theme
 
-      # if params[:profile_layout][:field_name] == "colour_theme"
+      # if params[:field][:field_name] == "colour_theme"
       #
       #
-      #   logger.info "colour_theme="+params[:profile_layout][:value].to_s
-      #   save_colour_theme(@artist, params[:profile_layout][:value] )
+      #   logger.info "colour_theme="+params[:field][:value].to_s
+      #   save_colour_theme(@artist, params[:field][:value] )
       #
       # end
 
@@ -198,7 +198,7 @@ class ProfileLayoutsController < ApplicationController
 			logger.info "Object"
 			logger.info object
 
-			if object.update_attribute(params[:profile_layout][:field_name],params[:profile_layout][:value])
+			if object.update_attribute(params[:field][:field_name],params[:field][:value])
 				format.json {
 					render :json => {
 							:success => true}
@@ -276,7 +276,7 @@ class ProfileLayoutsController < ApplicationController
     # NOTE: Using `strong_parameters` gem
     @user = User.find(current_user.id)
 
-    params.required(:profile_layout).permit(:logo_font,:content_font,:h1_colour,:h2_colour,:h3_colour,:p_colour,:div_1_colour,:div_1_transparency,:div_1_border_colour,:div_1_background_colour,:div_1_border_width,:div_2_colour,:div_2_transparency,:div_2_border_colour,:div_2_background_colour,:div_2_border_width,:url_slug, :value, :field_name)
+    params.required(:field).permit(:logo_font,:content_font,:h1_colour,:h2_colour,:h3_colour,:p_colour,:div_1_colour,:div_1_transparency,:div_1_border_colour,:div_1_background_colour,:div_1_border_width,:div_2_colour,:div_2_transparency,:div_2_border_colour,:div_2_background_colour,:div_2_border_width,:url_slug, :value, :field_name)
 
   end
 
