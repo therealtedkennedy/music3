@@ -25,14 +25,15 @@ $(document).ready(function($){
 		var c = $.contents[$.item];
 		this.append(html);
 		var $el = this.find('.gettingstarted');
+		var width = 450;
 		$el.find('.modal-content').css({
 			'top': '75px', 
-			'left': '35%', 
+			'left': ($(window).width() - width)/2, 
 			'background-color': '#fff', 
 			'font-size': '14px', 
 			'line-height': '20px', 
 			'position': 'absolute',
-			'width': '450px'
+			'width': width + 'px'
 		});
 		$el.find('.modal-title').css({'margin': '5px 0'});
 		$el.find('.modal-title').text(c.title);
