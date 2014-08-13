@@ -375,7 +375,7 @@
         margin:0 auto;
         bottom:0;
         padding:30px;
-        background-color: rgba(0,0,0,0.35);
+        background-color: rgba(0,0,0,<%= 1-@artist.profile_layout.div_1_transparency.to_i*0.01 || 0.35 %>);
         /*        font-family: 'verb_regularregular';
         color:#fff;*/
     }
@@ -718,8 +718,8 @@
 
 .color-menu {
     position:absolute;
-    left: -275px;
-    z-index: 2000px !important;
+    left: -220px;
+    z-index: 1 !important;
 }
 
 .color-menu li:hover{

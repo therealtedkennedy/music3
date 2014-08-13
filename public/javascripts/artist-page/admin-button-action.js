@@ -12,7 +12,6 @@ function adminMenuClick() {
             else if ((adminButtonState == "closed")) {
                 adminMenuOpen()
             }
-            ;
 
             ted_log("adminButtonState: " + adminButtonState);
 
@@ -43,9 +42,11 @@ function bindMenuItems(){
     });
 
     $('.id_list-item-link').click(function(ev){
-        var path = $(ev.target).find('a').attr('href');
-        if(path)
+        var path = $(ev.target).attr('href') || $(ev.target).find('a').attr('href');
+        if(path){
             window.location = path; 
+            return false;
+        }
     });
 
     $('.album-sub-trigger').click(function(ev){
@@ -55,10 +56,18 @@ function bindMenuItems(){
         else
             submenu.hide();
     });
+
+    $('#gsToggle').bind('toggleOptOut', function(data){
+        $(this).val(data.isChecked);
+    });
 }
 
 function adminMenuOpen(){
     $(".edit-controls").show()
+
+    if($(".admin").attr('state') === 'closed' && !$('#gsToggle').val() && $('.id_main-menu').hasClass('can-edit'))
+        $('body').gettingstarted($('#gsToggle'));
+
     $(".admin").attr('state',"open");
     $(".artistArea").addClass("span8").removeClass("span10");
 }

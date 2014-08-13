@@ -454,23 +454,13 @@
 			hideText:'Close' // the button text to show when a div is open
 
 		});
-
-		// setupInputs('bfh-selectbox');
-		// setupInputs('bfh-colorpicker');
-		// setupInputs('bfh-slider');
 		setupFontSelectors();
-
 
         //direct to s3 upload
         s3_direct_upload();
+        add_content_editable();
 
-
-        add_content_editable()
-
-//         Makes the content editable.
-        slug = find_url_slug($(location).attr('href'));
-        var download_link = href_builder(slug);
-        click_to_edit(download_link);
+        click_to_edit();
 
 	});
 
@@ -652,9 +642,9 @@
 		)
 		//shows the edit controls. Hidden by defualt
 		$('.edit-controls').show();
-		$(".pick-a-color").pickAColor({
-            showBasicColors: false
-        });
+
+		$(".pick-a-color").pickAColor({showSavedColors: false});
+
 		$(".pick-a-color").on("change", function (ev) {
 			$(this).val('#' + ev.target.value);
 			$(this).trigger('blur');
@@ -718,131 +708,50 @@
 		$("#single_line").keypress(function(e){ return e.which != 13; });
 	}
 
-	//creates url for album, song and artist edit
-	function href_builder(slug){
-       ted_log("in href Builder")
-		var build_download_link = "<%= field_save_url(@artist.url_slug)%>";
-
-	<% if params.has_key?(:song_url_slug) %>
-        ted_log("in song")
-		build_download_link = build_download_link+"?slug="+"<%=params[:song_url_slug]%>";
-
-	<% elsif params.has_key?(:album_url_slug) %>
-
-		build_download_link = build_download_link+"?slug="+"<%=params[:album_url_slug]%>";
-
-	<% else %>
-
-		build_download_link = build_download_link+"?slug="+slug
-
-	<%end%>
-
-		return build_download_link;
-		//*************************************************
-	}
-
-
-
-
-	function click_to_edit(download_link){
-         console.log ("in click to edit")
+	function click_to_edit(){
 		$(".editable").on("blur", function(){
-			ted_log ("in on blur")
-//			content = $(this).html();
-            content = $(this).attr('value') || $.trim($(this).text());
+            var content 	= $(this).attr('value') || $.trim($(this).text()),
+				field_name 	= $(this).attr('field_name'),
+				object 		= $(this).attr('object');
 
-			field_name = $(this).attr('field_name');
-			object = $(this).attr('object');
-
-
-			console.log(field_name+" "+object+" "+content);
-
-			console.log(download_link);
-			console.log(content);
-			save_edit(download_link,field_name,object,content);
+			save_edit(field_name, object, content);
 		});
 	}
 
 
-	function save_edit (download_link,field_name,object,content) {
+	function save_edit (field_name, object, content) {
+		var url = ['', '<%= @artist.url_slug%>', 'update_field', object];
 		$.ajax({
-			url:download_link,
+			url: url.join('/'),
 			type: "post",
 			data: {
+
                 field:{value: content,field_name: field_name},
                 object: object
 
 			},
 			success:
-					function(resp){
-						console.log("saved");
-					}
-
-		})
+				function(resp){
+					console.log("saved");
+				}
+		});
 	}
-
-    function find_url_slug(url){
-
-        ted_log("Url= "+url)
-
-        var index_of = url.lastIndexOf("/");
-        var	slug = url.substring(index_of+1);
-
-        ted_log("slug: "+ slug)
-
-        return slug
-
-
-    };
-
-
-
-
 
 	function loadContent(href,edit_url) {
 		$.ajax({
 
 			url:href,
 			success:function (json) {
-				ted_log(json);
-				//debugger;
 				$.each(json, function (key, value) {
 					$(key).html(value);
 				});
-
-
-				// http://www.w3schools.com/jsref/jsref_indexof.asp
-
-                find_url_slug(url)
-
-
-			add_content_editable()
-			var download_link_ajax = href_builder(slug);
-			ted_log("download link:  "+download_link_ajax)
-			click_to_edit(download_link_ajax);
-
+				add_content_editable()
+				click_to_edit();
 			},
 			dataType:"json"
 		});
 
 	}
-
-	// function setupInputs(className){
-	// 	$.each($('.' + className), function(){
-	// 		var input = $(this).find('input'),
-	// 			id 	  = $(this).parent().find('label').attr('for');
- //            ted_log("id= "+id)
-	// 		input.attr('id', id);
-
-	// 		var x = id.split("_"),
-	// 		 	z = "";
-	// 		for(var y = 3; y < x.length; y++)
-	// 			z += "_" + x[y];
-	// 		name = x[0] + "_" + x[1] + "[" + x[2] + z + ']';
- //            ted_log("name= "+name)
-	// 		input.attr('name', name);
-	// 	});
-	// }
 
 	function setupFontSelectors(){
 	    $('.fontSelect').each(function(){

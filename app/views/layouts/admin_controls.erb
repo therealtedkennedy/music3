@@ -1,6 +1,6 @@
 <!--Loads the edit controls.-->
 <% if can? :update, @artist %>
-	<ul class="menu-ul id_main-menu">
+	<ul class="menu-ul id_main-menu can-edit">
 		<li class="uppercase title"><p>manage <a href="/<%= @artist.url_slug %>" ><%= @artist.name %></a></p></li>
 		<li class="id_artist-admin">
 			<p>Artist Profile
