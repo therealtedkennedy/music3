@@ -238,6 +238,29 @@ class ArtistsController < ApplicationController
   end
 
 
+  #saves update
+
+  def field_update
+
+
+    @artist = Artist.find_by_url_slug(params[:url_slug])
+
+
+    @artist.update_attribute(params[:field][:field_name],params[:field][:value])
+
+
+     respond_to do |format|
+
+
+      format.json {
+        render :json => {
+            :success => true}
+      }
+
+    end
+  end
+
+
 
   def admin
 

@@ -125,6 +125,10 @@ Music3::Application.routes.draw do
 
 
 
+  #field save routing
+  match "/:url_slug/update_field/profile" => "profile_layout#field_update", :as => :profile_layout_field_update
+  match "/:url_slug/update_field/artist" => "artist#field_update", :as => :artist_field_update
+
 
 
 	# songs routing

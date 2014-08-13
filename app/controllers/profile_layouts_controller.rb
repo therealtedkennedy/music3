@@ -120,48 +120,10 @@ class ProfileLayoutsController < ApplicationController
 
 	end
 
-	def field_save
-		if params[:object] == "artist"
-			#field = params[:field_name]
-			logger.info "artist"
-			@artist = Artist.find_by_url_slug(params[:url_slug])
-			@artist[params[:field_name]] = params[:value]
-            object = @artist
+	def field_update
 
-
-		elsif params[:object] == "song"
-
-			@artist = Artist.find_by_url_slug(params[:url_slug])
-			logger.info "Artist"
-			logger.info @artist
-
-			find_song(@artist, params[:slug])
-			@song[params[:field_name]] = params[:value]
-            object = @song
-
-
-            logger.info "song info"
-			logger.info object
-
-			logger.info "artist"
-
-
-		elsif params[:object] == "album"
-			logger.info "album"
-			@artist = Artist.find_by_url_slug(params[:url_slug])
-			find_album(@artist,params[:slug])
-			@album[params[:field_name]] = params[:value]
-			#@album = Song.find_by_url_slug(params[:album_url_slug])
-			#@album[params[:field_name]] = params[:value]
-			object = @album
-
-    elsif params[:object] == "profile"
-      logger.info "profile"
       @artist = Artist.find_by_url_slug(params[:url_slug])
 
-      # @artist.profile_layout[params[:field_name]] = params[:value]
-
-      object = @artist.profile_layout
       strong_params =  profile_params
 
       logger.info "object ="+object.to_s
@@ -176,34 +138,30 @@ class ProfileLayoutsController < ApplicationController
          logger.info "p_size ="+params[:field][:value].to_s
          font_size_save(@artist, params[:field][:value] )
 
+
+      elsif params[:field][:field_name] == "colour_theme"
+
+        #sets colour theme
+
+         logger.info "colour_theme="+params[:field][:value].to_s
+         save_colour_theme(@artist, params[:field][:value] )
+
+
+      else
+
+       @artist.profile_layout.update_attribute(params[:field][:field_name],params[:field][:value])
+
       end
 
-      #sets colour theme
 
-      # if params[:field][:field_name] == "colour_theme"
-      #
-      #
-      #   logger.info "colour_theme="+params[:field][:value].to_s
-      #   save_colour_theme(@artist, params[:field][:value] )
-      #
-      # end
+    respond_to do |format|
 
 
+			format.json {
+				render :json => {
+				:success => true}
+			}
 
-
-		end
-
-		respond_to do |format|
-
-			logger.info "Object"
-			logger.info object
-
-			if object.update_attribute(params[:field][:field_name],params[:field][:value])
-				format.json {
-					render :json => {
-							:success => true}
-				}
-			end
 		end
 	end
 
