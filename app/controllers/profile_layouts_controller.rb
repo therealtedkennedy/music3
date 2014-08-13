@@ -1,5 +1,8 @@
 class ProfileLayoutsController < ApplicationController
 
+
+  before_filter :authenticate_user!
+
 	layout "profile_edit_layout", only: [:edit,:css_editor,:edit_song,:edit_album,:profile_albums,:profile_songs]
 
 
@@ -124,9 +127,9 @@ class ProfileLayoutsController < ApplicationController
 
       @artist = Artist.find_by_url_slug(params[:url_slug])
 
-      strong_params =  profile_params
+      authorize! :admin, @artist
 
-      logger.info "object ="+object.to_s
+      strong_params =  profile_params
 
       #saves font size
 
@@ -149,7 +152,25 @@ class ProfileLayoutsController < ApplicationController
 
       else
 
-       @artist.profile_layout.update_attribute(params[:field][:field_name],params[:field][:value])
+
+        @white_list = ["logo_font","content_font","h1_colour","h2_colour","h3_colour","p_colour","div_1_colour","div_1_transparency","div_1_border_colour","div_1_background_colour","div_1_border_width","div_2_colour","div_2_transparency","div_2_border_colour","div_2_background_colour","div_2_border_width"]
+
+        if @white_list.include?(params[:field][:field_name])
+
+
+          @artist.profile_layout.update_attribute(params[:field][:field_name],params[:field][:value])
+
+
+        else
+
+          logger.info "**************************Profile attribute not white listed.  Please add to white list*************"
+
+
+        end
+
+
+
+
 
       end
 
@@ -227,6 +248,9 @@ class ProfileLayoutsController < ApplicationController
 
   end
 
+
+
+
   private
 
 
@@ -234,7 +258,7 @@ class ProfileLayoutsController < ApplicationController
     # NOTE: Using `strong_parameters` gem
     @user = User.find(current_user.id)
 
-    params.required(:field).permit(:logo_font,:content_font,:h1_colour,:h2_colour,:h3_colour,:p_colour,:div_1_colour,:div_1_transparency,:div_1_border_colour,:div_1_background_colour,:div_1_border_width,:div_2_colour,:div_2_transparency,:div_2_border_colour,:div_2_background_colour,:div_2_border_width,:url_slug, :value, :field_name)
+    params.required(:field).permit(:logo_font,:content_font,:h1_colour,:h2_colour,:h3_colour,:p_colour,:div_1_colour,:div_1_transparency,:div_1_border_colour,:div_1_background_colour,:div_1_border_width,:div_2_colour,:div_2_transparency,:div_2_border_colour,:div_2_background_colour,:div_2_border_width,:url_slug,:field_name,:value)
 
   end
 
