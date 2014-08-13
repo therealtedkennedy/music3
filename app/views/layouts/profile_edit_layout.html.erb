@@ -652,7 +652,7 @@
 		)
 		//shows the edit controls. Hidden by defualt
 		$('.edit-controls').show();
-		$(".pick-a-color").pickAColor();
+		$(".pick-a-color").pickAColor({showSavedColors: false});
 		$(".pick-a-color").on("change", function (ev) {
 			$(this).val('#' + ev.target.value);
 			$(this).trigger('blur');
