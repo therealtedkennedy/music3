@@ -58,7 +58,7 @@ function bindMenuItems(){
     });
 
     $('#gsToggle').bind('toggleOptOut', function(data){
-        $(this).val(data.isChecked);
+        $(this).val(data.isChecked).trigger('change');
     });
 }
 

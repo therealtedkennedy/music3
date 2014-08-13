@@ -248,21 +248,34 @@ $(document).ready(function () {
 
 
 	// adds playlist
-	$(".payment").live("click", function (event) {
-
-			}
-	)
+	$(".payment").live("click", function (event) {});
 
 
 	$(".load-playlist").live("click", function (event) {
-				event.preventDefault();
-				var location = $(this).attr('href')
+		event.preventDefault();
+		var location = $(this).attr('href')
 
-				console.log("location: " + location)
-				get_playlist(location);
+		console.log("location: " + location)
+		get_playlist(location);
 
+	});
+
+	$('#gsToggle').bind('change', function (event) {
+		var $el = $(event.target);
+		var url = ['', $el.attr('data-path'), 'update_field', $el.attr('object')];
+		$.ajax({
+			url: url.join('/'),
+			type: "post",
+			data: {
+                field:{value: $el.val(), field_name: $el.attr('field_name')},
+                object: $el.attr('object')
+
+			},
+			success: function(resp){
+				console.log("saved");
 			}
-	)
+		});
+	});
 
 
 //	$('img.playable').on("hover", function (event){
@@ -646,7 +659,7 @@ function ted_log() {
 
 
 </script>
-<input type="hidden" id="gsToggle" data-path="/artists/<%= @artist.id.to_s%>" value="<%= @artist.quick_start_popup_toggle %>"/>
+<input type="hidden" id="gsToggle" data-path="<%= @artist.url_slug.to_s%>" value="<%= @artist.quick_start_popup_toggle %>" object='artist' field_name="quick_start_popup_toggle"/>
 <div class="container">
 	<div class="player_nav">
 
