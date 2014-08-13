@@ -264,15 +264,6 @@ $(document).ready(function () {
 			}
 	)
 
-	$('.adminLink').click(function(){
-		if($('.admin').attr('state') === 'closed' && !$('#gsToggle').val())
-			$('body').gettingstarted($('#gsToggle'));
-	});
-
-	$('#gsToggle').bind('toggleOptOut', function(data){
-		$(this).val(data.isChecked);
-	});
-
 
 //	$('img.playable').on("hover", function (event){
 //		var $el = $(event.target),
