@@ -40,8 +40,12 @@ $(document).ready(function($){
 		$el.find('.modal-body').html(c.message);
 		$el.find('.modal-footer button').addClass(c.buttonText).text(c.buttonText);
 		$('#overlay').click(function(){$.fn.close();});
-		$el.find('.modal-content').click(function(ev){ev.stopPropagation();})
-		$el.find('.close').click(function(){$.fn.close();});
+		$el.find('.modal-content').click(function(ev){ev.stopPropagation();});
+		$el.find('.close').click(function(){
+			if($(event.currentTarget).attr('id') === 'gsOptOut') 
+				return false; 
+			$.fn.close();
+		});
 		$el.find('.next').click(function(){
 			if($(this).hasClass('done')){
 				$.fn.close();
