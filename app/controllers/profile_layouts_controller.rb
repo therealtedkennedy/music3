@@ -223,26 +223,83 @@ class ProfileLayoutsController < ApplicationController
 
     @artist = artist
 
-    if theme_name = "first theme"
+    if theme_name = "theme_1"
 
-         @artist.profile_layout.p_colour = "FFFFFFF"
-         @artist.profile_layout.h1_colour = "FFFFFFF"
-         @artist.profile_layout.h2_colour = "FFFFFFF"
-         @artist.profile_layout.h3_colour = "FFFFFFF"
-         @artist.profile_layout.logo_colour = "FFFFFF"
-         @artist.profile_layout.div1_colour = "FFFFFF"
-         @artist.profile_layout.call_to_action_colour = "FFFFFF"
-         @artist.profile_layout.background_colour = "FFFFFF"
-
-         # call to action colour
-
+      @artist.profile_layout.p_colour = "#FFFFFFF"
+      @artist.profile_layout.h1_colour = "#FFFFFFF"
+      @artist.profile_layout.h2_colour = "#FFFFFFF"
+      @artist.profile_layout.h3_colour = "#FFFFFFF"
+      @artist.profile_layout.logo_colour = "#FFFFFF"
+      @artist.profile_layout.div1_colour = "#3D3B42"
+      @artist.profile_layout.call_to_action_colour = "#E21443"
+      @artist.profile_layout.background_colour = "#3D3B42"
+      @artist.nav_hover_colour = "#1FB0C5"
 
 
-    elsif theme_name = "second theme"
+    elsif theme_name = "theme_2"
 
+      @artist.profile_layout.p_colour = "#FFF9EF"
+      @artist.profile_layout.h1_colour = "#FFF9EF"
+      @artist.profile_layout.h2_colour = "#FFF9EF"
+      @artist.profile_layout.h3_colour = "#FFF9EF"
+      @artist.profile_layout.logo_colour = "#FFF9EF"
+      @artist.profile_layout.div1_colour = "#A8BFBD"
+      @artist.profile_layout.call_to_action_colour = "#EC4911"
+      @artist.profile_layout.background_colour = "#C1D1DE"
+      @artist.nav_hover_colour = "#1FB0C5"
+
+    elsif theme_name = "theme_3"
+
+      @artist.profile_layout.p_colour = "#DFF2ED"
+      @artist.profile_layout.h1_colour = "#DFF2ED"
+      @artist.profile_layout.h2_colour = "#DFF2ED"
+      @artist.profile_layout.h3_colour = "#DFF2ED"
+      @artist.profile_layout.logo_colour = "#DFF2ED"
+      @artist.profile_layout.div1_colour = "#C1D1DE"
+      @artist.profile_layout.call_to_action_colour = "#405F73"
+      @artist.profile_layout.background_colour = "#00303E"
+      @artist.nav_hover_colour = "#7096AD"
+
+    elsif theme_name = "theme_4"
+
+    @artist.profile_layout.p_colour = "#FFFFFF"
+    @artist.profile_layout.h1_colour = "#FFFFFF"
+    @artist.profile_layout.h2_colour = "#FFFFFF"
+    @artist.profile_layout.h3_colour = "#FFFFFF"
+    @artist.profile_layout.logo_colour = "#FFFFFF"
+    @artist.profile_layout.div1_colour = "#BFBFBF"
+    @artist.profile_layout.call_to_action_colour = "#D9302E"
+    @artist.profile_layout.background_colour = "#404040"
+    @artist.nav_hover_colour = "#E6E632"
+
+
+    elsif theme_name = "theme_5"
+
+      @artist.profile_layout.p_colour = "#FFFFFF"
+      @artist.profile_layout.h1_colour = "#FFFFFF"
+      @artist.profile_layout.h2_colour = "#FFFFFF"
+      @artist.profile_layout.h3_colour = "#FFFFFF"
+      @artist.profile_layout.logo_colour = "#FFFFFF"
+      @artist.profile_layout.div1_colour = "#5F7A87"
+      @artist.profile_layout.call_to_action_colour = "#D9302E"
+      @artist.profile_layout.background_colour = "#293B47"
+      @artist.nav_hover_colour= "#CBFF48"
+
+    elsif theme_name = "theme_6"
+
+      @artist.profile_layout.p_colour = "#F7F6F3"
+      @artist.profile_layout.h1_colour = "#F7F6F3"
+      @artist.profile_layout.h2_colour = "#F7F6F3"
+      @artist.profile_layout.h3_colour = "#F7F6F3"
+      @artist.profile_layout.logo_colour = "#F7F6F3"
+      @artist.profile_layout.div1_colour = "#5F7A87"
+      @artist.profile_layout.call_to_action_colour = "#D9302E"
+      @artist.profile_layout.background_colour = "#000000"
+      @artist.nav_hover_colour = "#FFD428"
 
 
     end
+
 
 
 
