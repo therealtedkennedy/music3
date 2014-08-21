@@ -238,7 +238,7 @@ class ArtistsController < ApplicationController
   end
 
 
-  #saves update
+  #saves update..only works for updating get started.  Need to white list if you want to save other params.  See Profile save controller
 
   def field_update
 
@@ -249,7 +249,7 @@ class ArtistsController < ApplicationController
     authorize! :admin, @artist
 
 
-    @artist.update_attribute(params[:field][:field_name],params[:field][:value])
+    @artist.update_attribute('quick_start_popup_toggle',params[:field][:value])
 
 
      respond_to do |format|
