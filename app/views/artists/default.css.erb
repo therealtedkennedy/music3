@@ -375,9 +375,7 @@
         margin:0 auto;
         bottom:0;
         padding:30px;
-        background-color: rgba(0,0,0,<%= 1-@artist.profile_layout.div_1_transparency.to_i*0.01 || 0.35 %>);
-        /*        font-family: 'verb_regularregular';
-        color:#fff;*/
+        background-color: <%= "rgba("+((@artist.profile_layout.div_1_background_colour || '#000000')[1..6].scan(/../).map{|color| color.hex})*","+","+(1-@artist.profile_layout.div_1_transparency.to_i*0.01 || 0.35).to_s+")" %>;
     }
 
 	.bodyArea .editPage
@@ -964,20 +962,8 @@ input[type=number] {
     cursor:pointer;
     color: <%= @artist.profile_layout.h2_colour %>;
 }
-
-/* plugin overwrites */
-.pick-a-color {
-    width: 58%;
-}
-
-.pick-a-color-markup .add-on{
-    height:25px;
-}
-
-.pick-a-color-markup .btn{
-    line-height:20px;
-}
-
-.pick-a-color-markup .btn .caret{
-    margin-top:15px;
+.swatch {
+    height:36px;
+    width:36px;
+    float:left;
 }
