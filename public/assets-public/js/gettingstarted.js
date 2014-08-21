@@ -7,7 +7,7 @@ $(document).ready(function($){
 		},
 		{
 			title: "What Everything Does",
-			message: "Artist Profile - Where you control information related to the artist, profile image, contact info, bio, etc.<br/><br/>Songs - Manage all your songs.<br/><br/>Albums - Manage collections of uploaded songs.",
+			message: "<b>Artist Profile</b> - Control information related to the artist, profile image, contact info, bio, etc.<br/><br/><b>Songs</b> - Manage all your songs.<br/><br/><b>Albums</b> - Manage collections of uploaded songs.",
 			buttonText: "next"
 		},
 		{
@@ -40,8 +40,12 @@ $(document).ready(function($){
 		$el.find('.modal-body').html(c.message);
 		$el.find('.modal-footer button').addClass(c.buttonText).text(c.buttonText);
 		$('#overlay').click(function(){$.fn.close();});
-		$el.find('.modal-content').click(function(ev){ev.stopPropagation();})
-		$el.find('.close').click(function(){$.fn.close();});
+		$el.find('.modal-content').click(function(ev){ev.stopPropagation();});
+		$el.find('.close').click(function(){
+			if($(event.currentTarget).attr('id') === 'gsOptOut') 
+				return false; 
+			$.fn.close();
+		});
 		$el.find('.next').click(function(){
 			if($(this).hasClass('done')){
 				$.fn.close();

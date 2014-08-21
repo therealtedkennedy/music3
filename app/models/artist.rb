@@ -16,6 +16,7 @@ class Artist < ActiveRecord::Base
  validates_format_of :pay_pal, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :allow_blank => true
  validates_presence_of :pay_pal
 
+
   before_validation :strip_whitespace
 
   include ActiveModel::ForbiddenAttributesProtection
@@ -24,7 +25,16 @@ class Artist < ActiveRecord::Base
 
   protected
   def generate_slug
-    self.url_slug = name.gsub(/\W+/, ' ').strip.downcase.gsub(/\ +/, '')
+
+   #working just wrong spot and doesnt stop save
+
+   # if ['user', 'orders', 'thank_you_sign_up'].include? name.gsub(/\W+/, ' ').strip.downcase.gsub(/\ +/, '')
+     # errors.add(:name, "already taken")
+
+   # else
+      self.url_slug = name.gsub(/\W+/, ' ').strip.downcase.gsub(/\ +/, '')
+   # end
+
   end
 
    def strip_whitespace

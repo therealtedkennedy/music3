@@ -65,7 +65,7 @@ function bindMenuItems(){
 function adminMenuOpen(){
     $(".edit-controls").show()
 
-    if($(".admin").attr('state') === 'closed' && !$('#gsToggle').val() && $('.id_main-menu').hasClass('can-edit'))
+    if($(".admin").attr('state') === 'closed' && $('#gsToggle').val() !== "true" && $('.id_main-menu').hasClass('can-edit'))
         $('body').gettingstarted($('#gsToggle'));
 
     $(".admin").attr('state',"open");
