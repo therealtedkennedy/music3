@@ -61,8 +61,8 @@ Music3::Application.routes.draw do
 
 	#transaction
 
-	match "transactions" => "transactions#index", :as => :transactions
-	match "transactions/paypal/ipn" => "transactions#ipn_save", :as => :ipn_save
+	match "/transactions" => "transactions#index", :as => :transactions
+	match "/transactions/paypal/ipn" => "transactions#ipn_save", :as => :ipn_save
 
 	# Artist Routes
 	# Url Slug Routing
@@ -107,8 +107,8 @@ Music3::Application.routes.draw do
 	match "/:url_slug/album/:album_url_slug" => "albums#show", :as => :artist_show_album
 	match "/:url_slug/album/:album_url_slug/buy" => "albums#buy", :as => :artist_buy_album
 	match "/:url_slug/album/:album_url_slug/download" => "albums#download_album", :as => :album_download
-	match ":url_slug/album/:album_url_slug/playlist-create" => "albums#album_play_list_create", :as => :album_playlist_create
-    match ":url_slug/album/:album_url_slug/edit/:id" => "albums#edit", :as => :album_edit
+	match "/:url_slug/album/:album_url_slug/playlist-create" => "albums#album_play_list_create", :as => :album_playlist_create
+  match "/:url_slug/album/:album_url_slug/edit/:id" => "albums#edit", :as => :album_edit
 	match "/:url_slug/update-image/:album_id" => "albums#album_save_image", :as => :album_save_image
 	match "/:url_slug/album/:album_url_slug/pre_delete" => "albums#pre_delete", :as => :album_pre_delete
 	match "/:url_slug/album/:album_url_slug/delete/:album_id" => "albums#destroy", :as => :album_delete
@@ -134,10 +134,10 @@ Music3::Application.routes.draw do
 	# songs routing
 
 	#match "/hooper/:test" => "songs#show", :as => :song_link
-	match "songs/upload", :as => "upload"
+	match "/songs/upload", :as => "upload"
 	#match "song/delete" => "songs#delete", :as => "delete"
 	#match "song/new/:id" => "songs#new", :as => "new_song_id"
-	match "songs/create" => "songs#create", :as => "new_song_post"
+	match "/songs/create" => "songs#create", :as => "new_song_post"
 	match "/:url_slug/add_song" => "songs#new", :as => :add_song
 	match "/:url_slug/songs" => "songs#index", :as => :artist_show_songs
 	match "/:url_slug/song/:song_url_slug" => "songs#show", :as => :artist_show_song
@@ -149,7 +149,7 @@ Music3::Application.routes.draw do
   match "/:url_slug/song/:song_url_slug/buy/:id" => "songs#buy", :as => :artist_buy_song
 
 	#get "songs/index"
-	get "songs/upload"
+	get "/songs/upload"
 	#get "songs/delete"
 
 

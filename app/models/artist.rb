@@ -1,8 +1,16 @@
 class Artist < ActiveRecord::Base
+
   has_and_belongs_to_many :songs
   has_and_belongs_to_many :albums
   has_and_belongs_to_many :users
   has_one :profile_layout
+
+
+  #
+  before_create :name_is_not_a_route
+  before_update :name_is_not_a_route
+  before_save :name_is_not_a_route
+
 
   # Creates Url Slug
   before_create :generate_slug
@@ -61,6 +69,27 @@ class Artist < ActiveRecord::Base
 	  end
   end
 
+  def name_is_not_a_route
 
+    logger.info("in name is not a route")
+
+    path = Rails.application.routes.recognize_path("/#{name}")  rescue nil
+
+    url_slug = path[:url_slug]
+
+    name_to_url_slug = name.gsub(/\W+/, ' ').strip.downcase.gsub(/\ +/, '')
+
+    logger.info("path= "+path.to_s)
+    logger.info("url_slug= "+url_slug.to_s)
+    logger.info("name_to_slug= "+name_to_url_slug.to_s)
+
+    if url_slug && url_slug == name_to_url_slug
+
+      errors.add(:name, "conflicts with existing path")
+      false
+
+    end
+
+  end
 
 end
