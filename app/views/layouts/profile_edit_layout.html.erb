@@ -711,13 +711,22 @@
 	}
 
 	function click_to_edit(){
-		$(".editable").on("blur", function(){
+		$(".editable:not(#profile_layout_div_1_transparency)").on("blur", function(){	
             var content 	= $(this).attr('value') || $.trim($(this).text()),
 				field_name 	= $(this).attr('field_name'),
 				object 		= $(this).attr('object');
 
 			save_edit(field_name, object, content);
 		});
+
+		$("#profile_layout_div_1_transparency").on("mouseup touchend", function(){
+            var content 	= $(this).attr('value') || $.trim($(this).text()),
+				field_name 	= $(this).attr('field_name'),
+				object 		= $(this).attr('object');
+
+			save_edit(field_name, object, content);
+		});
+
 	}
 
 
