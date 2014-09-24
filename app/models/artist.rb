@@ -73,18 +73,26 @@ class Artist < ActiveRecord::Base
 
     logger.info("in name is not a route")
 
-    path = Rails.application.routes.recognize_path("/#{name}")  rescue nil
+    # path = Rails.application.routes.recognize_path("/#{name}")  rescue nil
 
-    url_slug = path[:url_slug]
+    routes_list = []
 
-    name_to_url_slug = name.gsub(/\W+/, ' ').strip.downcase.gsub(/\ +/, '')
+    Rails.application.routes.routes.each do |route|
+      route = route.path.spec.to_s
+      routes_list << route if route.starts_with?("/#{name}")
+    end
 
-    logger.info("path= "+path.to_s)
-    logger.info("url_slug= "+url_slug.to_s)
-    logger.info("name_to_slug= "+name_to_url_slug.to_s)
 
-    if url_slug && url_slug == name_to_url_slug
+    # url_slug = path[:url_slug]
+    #
+    # name_to_url_slug = name.gsub(/\W+/, ' ').strip.downcase.gsub(/\ +/, '')
 
+    logger.info("routes_list= "+routes_list.to_s)
+    # logger.info("url_slug= "+url_slug.to_s)
+    # logger.info("name_to_slug= "+name_to_url_slug.to_s)
+
+    if !routes_list.blank?
+      logger.info("in conflicts with existing path")
       errors.add(:name, "conflicts with existing path")
       false
 
