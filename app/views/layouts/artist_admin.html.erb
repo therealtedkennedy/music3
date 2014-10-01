@@ -518,7 +518,11 @@ function form_upload_rails(){
 								//uploads the file.  Checks to see if album needs to be zipped.
 								 album_upload_s3(json)
 
-							});
+							}).error(function(xhr){
+                                var errors = $.parseJSON(xhr.responseText).errors
+                                ted_log("Form save failed. here is the error - "+errors)
+                                $(".errorMessage").append(errors);
+                    });
 					return false; // prevents normal behaviour
 
 				}
@@ -753,7 +757,12 @@ function ted_log() {
 	<!--<div class="notice"><%= flash[:notice] %></div>-->
 <!--<% end %>-->
 
+
+
 <div class="dynamicContent">
+
+  <p class="errorMessage bold" id="error"><%= flash[:error] %></p>
+  <p class="noticeMessage bold" id="notice"><%= flash[:notice] %></p>
 
 	  <!--Two if conditions because rails is lame. One for edit, one for show.  No idea why one doest work for both situations, but they dont. Also object type is not nil because if you define object_type="true" it fails when artist pages load becuase they don't have an artist type defined.   Change if you want to waste an hour of your life-->
 	<% if  !@object_type.nil? %>

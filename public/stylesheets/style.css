@@ -171,3 +171,8 @@
     display:block;
     margin:0 auto;
 }
+
+.errorMessage {
+
+    color:#F62217
+}

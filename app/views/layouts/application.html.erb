@@ -413,9 +413,7 @@
 </div>
 
 
-    <% if flash[:notice] %>
-		<div class="notice"><%= flash[:notice] %></div>
-    <% end %>
+
 
 
 
@@ -425,7 +423,12 @@
     <div class="pages white ">
       <div class="row-fluid">
         <div class="span8 offset2">
-            <%= yield %>
+
+          <p class="errorMessage bold" id="error"><%= flash[:error] %></p>
+          <p class="noticeMessage bold" id="notice"><%= flash[:notice] %></p>
+          <%= yield %>
+
+
         </div>
        </div>
     </div>

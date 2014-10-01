@@ -193,11 +193,12 @@ class ArtistsController < ApplicationController
 
 
       else
-           respond_to do |format|
 
-            format.html { render :action => "new", notice => 'Error saving artist. Please try again. If this happening often please contact support '  }
-            format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
-          end
+        #new_artist_path
+           logger.info("Didn't save in Artist create")
+
+           redirect_to new_artist_path, :flash => { :error => @artist.errors.full_messages.to_sentence }
+
       end
   end
 
@@ -221,18 +222,26 @@ class ArtistsController < ApplicationController
     respond_to do |format|
       if @artist.update_attributes(artist_params)
         image_upload_prep(@artist)
-        format.html { redirect_to(artist_admin_path(@artist.url_slug), :notice => 'Artist was successfully updated.') }
+        format.html {redirect_to(artist_admin_path(@artist.url_slug), :notice => 'Artist was successfully updated.') }
         format.xml { head :ok }
-		format.json {
-			render :json => {
-					:success => true,
-					:"url" => artist_link_url(@artist.url_slug),
-					:admin => true,
-			}
-		}
+        format.json {
+          render :json => {
+              :success => true,
+              :"url" => artist_link_url(@artist.url_slug),
+              :admin => true,
+          }
+		  }
       else
-        format.html { render :action => "edit" }
-        format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
+        format.html {redirect_to profile_edit_path(@artist.url_slug),  :error => @artist.errors.full_messages.to_sentence }
+        format.json {
+          render :json => {
+              :success => false,
+              :"url" => profile_edit_url(@artist.url_slug),
+              :admin => true,
+              :errors => @artist.errors.full_messages,
+          },
+          :status => 422
+        }
       end
     end
   end
