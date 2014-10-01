@@ -42,7 +42,7 @@
   </div>
 
 	<div class="field">
-		<%= f.label "Socail Description: Message when shared on twitter or facebook"  %>
+		<%= f.label "Social Description: Message when shared on twitter or facebook"  %>
 		<%= f.text_field :description,:class=>"span12" %>
 	</div>
 
@@ -58,7 +58,7 @@
   </div>
 
   <div class="field">
-    <%= f.label "Copywrite"  %>
+    <%= f.label "Copyright"  %>
     <%= f.select :al_copy_write, options_for_select([['All Rights Reserved'], ['Attribution'], ['Non Commercial'], ['No Derivative Works'], ['Share A Like']], :selected => @album.al_copy_write) %>
   </div>
   <div class="field">
