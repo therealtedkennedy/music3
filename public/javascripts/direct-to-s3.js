@@ -199,5 +199,5 @@ function file_size_check(type,size){
 }
 
 function showNotification(){
-    $('.adminLink').attr('data-icon', '*');
+    $('.bodyArea').append('<div id="uploadNotice" class="alert alert-info"><a href="#" class="close" data-dismiss="alert">&times;</a>Your file was uploaded successfully.</div></html>');
 }
