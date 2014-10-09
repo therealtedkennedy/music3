@@ -240,7 +240,7 @@ class ArtistsController < ApplicationController
               :admin => true,
               :errors => @artist.errors.full_messages,
           },
-          :status => 422
+          :status => 422  #ajax error message
         }
       end
     end
