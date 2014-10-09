@@ -93,7 +93,7 @@ class Artist < ActiveRecord::Base
 
     if !routes_list.blank?
       logger.info("in conflicts with existing path")
-      errors.add(:name, "conflicts with existing path")
+      errors.add(:name, "already exists. Please choose another.")
       false
 
     end

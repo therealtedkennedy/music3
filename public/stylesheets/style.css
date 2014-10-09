@@ -218,3 +218,7 @@
 #uploadNotice .close {
 	font-size: 25px;
 }
+
+.errorMessage {
+    color:#F62217
+}
