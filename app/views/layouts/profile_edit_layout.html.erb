@@ -652,6 +652,18 @@
 			$(this).trigger('blur');
 		});
 
+		$('#themeInput').click(function(){
+			var $el = $(this).find('#themeContainer');
+			if($el.hasClass('dn'))
+				$el.removeClass('dn');
+			else
+				$el.addClass('dn');
+		});
+
+		$('.themeItem').click(function(){
+			$('#profile_layout_colour_theme').val($(this).attr('data-value')).trigger('blur');
+		});
+
 		// $("#edit_profile_layout_1").submit(function(e) {
 		// 	e.preventDefault();
 		// 	// get all the inputs into an array.
@@ -744,6 +756,8 @@
 			success:
 				function(resp){
 					console.log("saved");
+					if(field_name === 'colour_theme')
+						window.location.reload();
 				}
 		});
 	}

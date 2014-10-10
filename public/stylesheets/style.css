@@ -172,10 +172,8 @@
     margin:0 auto;
 }
 
-.colorTheme {
-	position:relative;
-	height: 34px;
-	background-color: #f9f9f9;
+.colorTheme {	
+	height: 34px;	
 	margin: 30px 25px 10px 3px;
 	padding: 3px 12px;
 }
@@ -186,11 +184,31 @@
 	top: 24px;
 }
 
+.themePicker {
+	position:relative;
+	background-color: #f9f9f9;
+	margin-bottom:5px;
+}
+
+#themeContainer{
+	position: absolute;
+	top: 40px;
+	background-color: #f9f9f9;
+	left: 0px;
+	padding: 5px 18px 5px 14px;
+	z-index: 1;
+	border: 1px solid #ddd;
+}
+
+#themeContainer .swatch {
+	margin: 2px 1px;
+}
+
 .swatch {
 	height: 32px;
 	width: 36px;
 	float: left;
-	border: 1px solid #fff;
+	border: 1px solid #ddd;
 	margin-left:1px;
 }
 

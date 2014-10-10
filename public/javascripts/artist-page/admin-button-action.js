@@ -21,6 +21,9 @@ function adminMenuClick() {
 }
 
 function bindMenuItems(){
+    $('.id_artist-admin, .id_album-admin, .id_song-admin, .id_back, .id_list-item-link, .album-sub-trigger').unbind('click');
+    $('#gsToggle').unbind('toggleOptOut');
+
     $('.id_artist-admin').click(function(){
         $('.id_main-menu').hide();
         $('#artist-menu').show();
@@ -70,6 +73,7 @@ function adminMenuOpen(){
 
     $(".admin").attr('state',"open");
     $(".artistArea").addClass("span8").removeClass("span10");
+    bindMenuItems();
 }
 
 function adminMenuClose(){
