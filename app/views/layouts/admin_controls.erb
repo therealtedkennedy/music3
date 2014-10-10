@@ -30,6 +30,11 @@
 			<p><%= link_to 'Manage Account', show_user_path(current_user.id) %></p>
         </li>
 
+
+        <li class="id_list-item-link" data-link="<%= show_user_path(current_user.id)%>">
+          <p>Manage Account Ajax</p>
+        </li>
+
         <li class="id_list-item-link">
           <p><%= link_to "Help", support_page_path %></p>
         </li>
@@ -56,7 +61,7 @@
 		<% @artist.albums.uniq.each do |albums| %>
 			<% unless albums.album_url_slug.blank?%>
 				<li class="album-sub-trigger"><p><%= albums.al_name %></p></li>
-				<li class="sub-nested" style="display:none"><ul "menu-ul">
+				<li class="sub-nested" style="display:none"><ul class= "menu-ul">
 					<li class="id_list-item-link" data-link="<%= artist_show_album_path(@artist.url_slug,albums.album_url_slug)%>">
 						<p>View Album</p>
 					</li>
@@ -103,9 +108,10 @@
 <%elsif user_signed_in? %>
 
     <ul class="menu-ul id_main-menu">
-        <li class="id_list-item-link">
-          <p><%= link_to 'Manage Account', show_user_path(current_user.id) %></p>
-        </li>
+      <li class="id_list-item-link">
+        <p><%= link_to 'Manage Account', show_user_path(current_user.id) %></p>
+      </li>
+
     </ul>
 
 <%else%>

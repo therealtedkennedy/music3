@@ -1,6 +1,6 @@
 <div class="editPage">
 
-<h1>THIS CANNONT BE UNDONE. ARE YOU SURE YOU WANT TO DELETE?</h1>
+<h3>THIS CANNONT BE UNDONE. ARE YOU SURE YOU WANT TO DELETE?</h3>
 
 <%= button_to "yes", @artist, :method=>:delete, :class=>:destroy %>
 <%= link_to 'No Take Me Back', artist_link_path(@artist.url_slug) %>
