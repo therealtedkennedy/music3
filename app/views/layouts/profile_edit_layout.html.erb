@@ -652,12 +652,18 @@
 			$(this).trigger('blur');
 		});
 
-		$('#themeInput').click(function(){
+		$('#themeInput').click(function(ev){
 			var $el = $(this).find('#themeContainer');
 			if($el.hasClass('dn'))
 				$el.removeClass('dn');
-			else
-				$el.addClass('dn');
+			else if($(ev.target).attr('id') === 'themeInput' || $(ev.target).closest('#themeInput').length > 0)
+				return;
+
+			return false;
+		});
+
+		$('body').click(function(){
+			$('#themeContainer').addClass('dn');
 		});
 
 		$('.themeItem').click(function(){
