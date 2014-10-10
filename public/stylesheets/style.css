@@ -190,6 +190,11 @@
 	margin-bottom:5px;
 }
 
+.themeItem:not(.last){
+	height: 42px;
+	border-bottom: 1px solid #ddd;
+}
+
 #themeContainer{
 	position: absolute;
 	top: 40px;
