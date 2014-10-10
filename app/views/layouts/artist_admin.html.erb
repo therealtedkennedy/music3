@@ -304,14 +304,13 @@ $(document).ready(function () {
 
    //admin click listener
     adminMenuClick();
-    bindMenuItems();
 
 
 
 
 	// displays edit window when edit screen is loaded from html (on refresh ect)
 	<% if @edit == "true" %>
-        adminMenuOpen()
+        adminMenuOpen();
 	    ted_log("in show edit controls")
 
 	<% end %>
