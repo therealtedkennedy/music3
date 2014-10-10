@@ -2,11 +2,11 @@
 <li class="field">
   <label class='fl w100'>Colour Theme</label>
     <div id="themeInput" class="colorTheme themePicker rounded">
-      <span class="swatch rounded" style="background-color:<%= @profile_layout.p_colour %>"></span>
-      <span class="swatch rounded" style="background-color:<%= @profile_layout.div_1_background_colour %>"></span>
-      <span class="swatch rounded" style="background-color:<%= @profile_layout.call_to_action_colour %>"></span>
-      <span class="swatch rounded" style="background-color:<%= @profile_layout.background_colour %>"></span>
-      <span class="swatch rounded" style="background-color:<%= @profile_layout.nav_hover_colour %>"></span>
+      <span class="swatch rounded" style="background-color:<%= @profile_layout.p_colour || '#000' %>"></span>
+      <span class="swatch rounded" style="background-color:<%= @profile_layout.div_1_background_colour || '#000' %>"></span>
+      <span class="swatch rounded" style="background-color:<%= @profile_layout.call_to_action_colour || '#000' %>"></span>
+      <span class="swatch rounded" style="background-color:<%= @profile_layout.background_colour || '#000' %>"></span>
+      <span class="swatch rounded" style="background-color:<%= @profile_layout.nav_hover_colour || '#000'%>"></span>
       <span class="caret"></span>
       <input type="hidden" class="editable" object="profile" name="profile_layout[colour_theme]" field_name="colour_theme" id="profile_layout_colour_theme">
       <div class="dn rounded" id="themeContainer">
