@@ -114,7 +114,7 @@
     a {
         font-family: <%= @artist.profile_layout.content_font %>;
         font-size: <%= @artist.profile_layout.h3_size %>pt;
-        color: <%= @artist.profile_layout.h3_colour %>;
+        color: <%= @artist.profile_layout.call_to_action_colour %>;
     }
 
     a:hover {
@@ -248,7 +248,7 @@
     .buyLink, .buyLink:hover {
         font-family: <%= @artist.profile_layout.content_font %>;
         font-size: <%= @artist.profile_layout.h2_size %>px;
-        color: <%= @artist.profile_layout.h2_colour %>;
+        color: <%= @artist.profile_layout.call_to_action_colour %>;
     }
 
     .minorDesc {
@@ -270,6 +270,7 @@
     {
         margin:0;
         padding:0;
+        background-color: <%= @artist.profile_layout.background_colour || '#000000' %>;
         /*overflow:hidden;  removed by Ted.  Admin page needs scroll */
     }
 
@@ -291,30 +292,16 @@
         top:0;
         height:50px;
         width: auto;
-
     }
 
-
-    .bodyArea
-    {
-        /*overflow:auto;*/
-
+    .bodyArea {
         margin-top: 50px;
-        /*padding:70px;*/
-
-        /*background-color:#f4e2d2;*/
     }
 
-    .bodyArea .floatingContent
-    {
+    .bodyArea .floatingContent {
         height:100%;
         display:block;
         margin: 0 auto;
-        /*position: relative;  removed by ted. */
-    }
-
-    .bodyArea .floatingContent
-    {
         text-decoration: none;
     }
 
@@ -330,8 +317,7 @@
         max-height: 150px;
     }
 
-    .bodyArea .navArea
-    {
+    .bodyArea .navArea {
         margin-top: 50px;
 		margin-right: auto;
 		margin-left:auto;
@@ -342,35 +328,27 @@
     .navArea .nav {
         margin-bottom: 0px;
     }
-        .bodyArea .nav
-        {
-            width:25%;
-            text-align: center;
-            cursor: pointer;
-            height:50px;
-            display:inline-block;
-/*            font-family: 'verb_regularbold', sans-serif;
-            font-size:20px;*/
-            /*color:#96938f;*/
-            /*text-shadow: 0px 0px 1px rgba(0,0,0,0.4); */
-        }
 
-        .bodyArea .nav:hover
-        {
-            /*color:#5b5956;*/
-        }
+    .navArea .navLink:hover {
+       color: <%= @artist.profile_layout.nav_hover_colour || '#999' %> 
+    }
 
-        .bodyArea .nav.selected
-        {
-            /*font-family: 'verb_regularbold', sans-serif;*/
-            color:#666666;
-            background-image: url("/images/indicator.png");
-            background-position: bottom center;
-            background-repeat: no-repeat;
-        }
+    .bodyArea .nav {
+        width:25%;
+        text-align: center;
+        cursor: pointer;
+        height:50px;
+        display:inline-block;
+    }
 
-    .bodyArea .miniPage
-    {        
+    .bodyArea .nav.selected {
+        color:#666666;
+        background-image: url("/images/indicator.png");
+        background-position: bottom center;
+        background-repeat: no-repeat;
+    }
+
+    .bodyArea .miniPage {        
         overflow:auto;
         margin:0 auto;
         bottom:0;
@@ -378,63 +356,39 @@
         background-color: <%= "rgba("+((@artist.profile_layout.div_1_background_colour || '#000000')[1..6].scan(/../).map{|color| color.hex})*","+","+(1-@artist.profile_layout.div_1_transparency.to_i*0.01 || 0.35).to_s+")" %>;
     }
 
-	.bodyArea .editPage
-	{
+	.bodyArea .editPage {
 		min-height:300px;
-
-		/*max-height:600px;*/
-
-
-		/*background-image: url('/images/70black.png');*/
 		overflow:auto;
 		margin:0 auto;
 		bottom:0;
 		padding:20px;
-/*		font-family: 'verb_regularregular';
-		color:#fff;*/
 	}
 
     .miniPage .album:nth-child(3n + 1) {
         margin-left: 0;
     }
-    .miniPage .album
-    {
-        /*width:228px;*/
+    .miniPage .album {
         height:300px;
         text-align: center;
         display: inline-block;
         vertical-align: top;
     }
 
-/*    .miniPage .album:hover
-    {
-        background-image: url('/images/10black.png');
-    }*/
-
-    .miniPage .album img
-    {
+    .miniPage .album img {
         margin:0 auto;
         display:block;
         border:0;
     }
 
-    .miniPage .album h1
-    {
-/*        font-family: 'verb_regularbold';
-        font-size: 18px;*/
+    .miniPage .album h1 {
         margin:0 auto;
         display:block;
         padding:0px;
         margin:0;
         margin-top:10px;
-        /*color:#fff;*/
     }
 
-    .miniPage .album h2
-    {
-/*        font-family: 'verb_lightregular';
-        color:#aaa;
-        font-size: 14px;*/
+    .miniPage .album h2 {
         margin:0 auto;
         display:block;
         padding:0px;
@@ -449,8 +403,6 @@
     .w100 {
         width: 100%;
     }
-
-
 
         /* Defines whole top nav, including sign in/out, and the player it self */
     .player_nav {
@@ -503,6 +455,8 @@
         width: 30px;
         height: 30px;
         float: right;
+        color: <%= @artist.profile_layout.nav_hover_colour || '#999' %>;
+        cursor: pointer;
     }
 
     .audio {
@@ -520,16 +474,9 @@
 
 
 	.edit-controls {
-
-		/*displays edit controls where value edit is passed from the controller.  Used for new, and edit views*/
-
-		/*float: right;*/
-		/*display: inline-block;*/
-		/*width: 320px;*/
 		background: #2E2E2E;
 		padding: 5px;
         margin-bottom: 50px;
-        /*top:60px;*/
         position:relative;
 	}
 
@@ -571,12 +518,7 @@
 
     .item-description {
       padding-left:30px; 
-      /*color:#999;*/
     }
-
-/*    .bio {
-      color:#999;
-    }*/
 
     /*songs*/
     #song-content {
@@ -589,24 +531,23 @@
     }
 
     table.song-table tbody {
-        color: <%= @artist.profile_layout.h2_colour %>; 
-        /*font-size:90%;*/
+        color: <%= @artist.profile_layout.h2_colour || '#fff' %>; 
     }
 
     a.content-link {
         text-decoration: none;
-        color: <%= @artist.profile_layout.h3_colour %>;
+        color: <%= @artist.profile_layout.h3_colour || '#fff' %>;
     }
 
     a.music-button {
         text-decoration: none;
-        color: <%= @artist.profile_layout.h2_colour %>;
+        color: <%= @artist.profile_layout.h2_colour || '#fff' %>;
     }
 
     div.song-footer {
         text-align: center; 
         /*font-size: 90%; */
-        color: <%= @artist.profile_layout.h2_colour %>;
+        color: <%= @artist.profile_layout.h2_colour || '#fff' %>;
     }
 
     /*chrome custom scrollbar*/
@@ -837,14 +778,14 @@ input[type=color] {width:89%; border-radius:3px;}
     top:10px; 
     right:10px;
     font-size: <%= @artist.profile_layout.h2_size %>px;
-    color: <%= @artist.profile_layout.p_colour %>;
+    color: <%= @artist.profile_layout.p_colour || '#fff' %>;
     font-weight: normal; 
     text-shadow: none;
     opacity: 0.8;
 }
 
 .close:hover {
-    color: <%= @artist.profile_layout.p_colour %>;
+    color: <%= @artist.profile_layout.p_colour || '#fff' %>;
     cursor:pointer;
     opacity:1;
 }
@@ -935,6 +876,10 @@ input[type=number] {
     margin-top: -32px;
 }
 
+.jp-play-bar {
+    background-color: <%= @artist.profile_layout.call_to_action_colour || '#CF5300' %>;
+}
+
 .songList li {
     position: relative;
 }
@@ -960,5 +905,5 @@ input[type=number] {
 .social-media-icons a:hover {
     text-decoration:none;
     cursor:pointer;
-    color: <%= @artist.profile_layout.h2_colour %>;
+    color: <%= @artist.profile_layout.h2_colour || '#fff' %>;
 }

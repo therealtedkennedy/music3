@@ -579,7 +579,6 @@ function adjustContentHeight(){
 	var top = $('.miniPage').offset() ? $('.miniPage').offset().top : 0;
     var height = document.documentElement.clientHeight - top - 135;
     $('.miniPage').css("height", height > 0 ? height : 100 + "px");
-    ted_log("in adjust content height ="+height)
 }
 
 //was for changing meta information on content load
