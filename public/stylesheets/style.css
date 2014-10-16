@@ -245,3 +245,7 @@
 .errorMessage {
     color:#F62217
 }
+
+#uploadNotice {
+	text-transform: capitalize;
+}

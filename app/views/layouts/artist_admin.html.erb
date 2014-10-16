@@ -513,7 +513,6 @@ function form_upload_rails(){
 						dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
 					}).success(function(json){
 								 loadContent(json.url,json.admin)
-								 showNotification();
 								//uploads the file.  Checks to see if album needs to be zipped.
 								 album_upload_s3(json)
 
@@ -543,8 +542,7 @@ function form_upload_rails(){
 				type: 'POST',
 				dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
 			}).success(function(json){
-						ted_log("album_uploaded")
-
+				showNotification('Album uploaded successfully.');
 			});
 		}
 	}

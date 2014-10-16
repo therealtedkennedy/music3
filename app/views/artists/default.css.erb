@@ -459,6 +459,13 @@
         cursor: pointer;
     }
 
+    .alert-info {
+        background-color: <%= @artist.profile_layout.div_1_background_colour || '#ddd' %>;
+        color: <%= @artist.profile_layout.p_colour || '#fff' %>;
+        border: 1px solid <%= @artist.profile_layout.p_colour || '#fff' %>;
+        opacity: 0.7;
+    }
+
     .audio {
         position: fixed;
         top: 0;

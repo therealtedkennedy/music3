@@ -79,7 +79,7 @@ function s3_direct_upload(){
                             save_s3_meta_name(file_name_ext_remv, meta_url)
                             $('input[name="song[song_name]"]').val(file_name_ext_remv)
                         };
-
+                        showNotification(s3ObjectType + ' uploaded successfully.');
                         ted_log ('data from server')
                         ted_log (s3Id)
                         ted_log (ajaxData.key)
@@ -196,8 +196,4 @@ function file_size_check(type,size){
     };
 
 
-}
-
-function showNotification(){
-    $('.bodyArea').append('<div id="uploadNotice" class="alert alert-info"><a href="#" class="close" data-dismiss="alert">&times;</a>Your file was uploaded successfully.</div></html>');
 }
