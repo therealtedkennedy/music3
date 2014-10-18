@@ -81,3 +81,14 @@ function adminMenuClose(){
     $(".admin").attr('state',"closed");
     $(".artistArea").removeClass("span8").addClass("span10");
 }
+
+function showNotification(msg){
+    if($('#uploadNotice').length)
+        return;
+    $('.bodyArea').append('<div id="uploadNotice" class="alert alert-info"><a href="#" class="close" data-dismiss="alert">&times;</a>'+msg+'</div></html>');
+    setTimeout(function(){
+        $( "#uploadNotice" ).fadeOut(2000, function() {
+            this.remove();
+          });
+    }, 3000)
+}
