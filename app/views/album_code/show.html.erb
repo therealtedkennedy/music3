@@ -12,8 +12,8 @@
 
 		<ul>
 			<li>Email them </li>
-			<li>Print lables - Here's some links to print your self or online - <a href="http://www.labelmakr.com/sheet/avery-5160/mail-merge-csv.html" target="_blank">www.lablemakr.com</a> or <a href="http://dpo.print.avery.com/dpo7/app/CA_en/dpo.jsp?productCategoryId=1e7a947bf248363b561302e156a5ff04" target="_blank">Avery.com</a> </li>
-			<li>Download Cards </li>
+			<li>Print lables - Here's some links to print your self or online - <a href="http://www.labelmakr.com/sheet/avery-5160/mail-merge-csv.html" target="_blank">www.lablemakr.com</a> or <a href="http://dpo.print.avery.com/dpo7/app/CA_en/dpo.jsp?productCategoryId=1e7a947bf248363b561302e156a5ff04" target="_blank">Avery.com</a> or <a href="https://www.google.ca/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#safe=off&q=avery%20google%20docs">Avery Google Doc Merge</a></li>
+		    <li>Download Cards </li>
 			<li>Write them on the back of your merch </li>
 			<li>Put it pretty much anywhere.. </li>
             <li>Redeem codes at www.threerepeater.com/<%=@artist.url_slug%>/download-code/***Code Here ***</li>
@@ -22,8 +22,11 @@
 
 	<%= @form.html_safe %>
 
-	<h2>Download Keys</h2>
-	<p><%= link_to "Download CSV", album_codes_csv_path(@album.id,format: "csv") %></p>
+	<h2>Your Codes</h2>
+    <%= button_to "Download CSV", album_codes_csv_path(@album.id,format: "csv"), :method => "get", :class => "btn" %>
+    <!--<div class="btn">-->
+    <!--<a href="<%= album_codes_csv_path(@album.id,format: "csv") %>">Download CSV</a>-->
+    <!--</div>-->
 
 	<ul>
 	 <% @album.album_codes.each do |t| %>
