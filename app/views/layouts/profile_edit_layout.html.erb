@@ -301,6 +301,10 @@
 	.editable:not(.bfh-selectbox):hover {
 		border: 1px solid #fff;
 	}
+	.bfh-selectbox-toggle:hover{
+		color: #555;
+		cursor: pointer;
+	}
 
 	.bfh-selectbox:focus{
 		outline: none;
@@ -727,24 +731,28 @@
 		//stops enter on single line
 		$("#single_line").keypress(function(e){ return e.which != 13; });
 	}
-
+// change.bfhselectbox bfh-selectbox
 	function click_to_edit(){
-		$(".editable:not(#profile_layout_div_1_transparency)").on("blur", function(){	
-            var content 	= $(this).attr('value') || $.trim($(this).text()),
-				field_name 	= $(this).attr('field_name'),
-				object 		= $(this).attr('object');
+		$(".editable:not(#profile_layout_div_1_transparency):not(.bfh-selectbox)").on("blur", function(){	
+			inputChange($(this));
+		});
 
-			save_edit(field_name, object, content);
+		$(".bfh-selectbox.editable").on("change.bfhselectbox", function(){	
+			inputChange($(this));
 		});
 
 		$("#profile_layout_div_1_transparency").on("mouseup touchend", function(){
-            var content 	= $(this).attr('value') || $.trim($(this).text()),
-				field_name 	= $(this).attr('field_name'),
-				object 		= $(this).attr('object');
-
-			save_edit(field_name, object, content);
+			inputChange($(this));
 		});
 
+	}
+
+	function inputChange($el){
+        var content 	= $el.attr('value') || $.trim($(el).text()),
+			field_name 	= $el.attr('field_name'),
+			object 		= $el.attr('object');
+
+		save_edit(field_name, object, content);		
 	}
 
 
@@ -789,8 +797,9 @@
 	        'hide_fallbacks' : true,
 	        'initial' : $(this).attr('data-font') || 'Open Sans, Open Sans, sans-serif',
 	        'selected' : function(style) { 
-	          $(this).attr('data-font', style); 
-	          $(this).find('input[type="hidden"]').val(style).trigger('blur');
+	       	  var font = style.replace(/'/g, "");
+	          $(this).attr('data-font', font); 
+	          $(this).find('input[type="hidden"]').val(font).trigger('blur');
 	        },
 	        'fonts' : [
 	          'Lekton, Lekton, sans-serif',
@@ -798,7 +807,7 @@
 	          'Lato, Lato, sans-serif',
 	          'Arvo, Arvo, serif',
 	          'Cabin, Cabin, sans-serif',
-	          'Playfair Display, Playfair Display, serif',
+	          "Playfair Display, Playfair Display, serif",
 	          'Lora, Lora, serif',
 	          'PT Sans, PT Sans, sans-serif',
 	          'Ubuntu, Ubuntu, sans-serif',
