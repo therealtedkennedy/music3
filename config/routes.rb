@@ -90,6 +90,7 @@ Music3::Application.routes.draw do
   match "/:url_slug/profile-edit/albums" => "profile_layouts#edit", :as => :profile_songs
 	match "/:url_slug/profile-edit/css-editor/update" => "profile_layouts#css_editor_update", :as => :css_editor_update
 	match "/:url_slug/update_profile_layout" => "profile_layouts#update"
+  match "/:url_slug/profile-edit/albums" => "profile_layouts#save_colour_theme", :as => :profile_songs
 
 
   #artist admin urls
