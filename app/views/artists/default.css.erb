@@ -330,7 +330,7 @@
     }
 
     .navArea .navLink:hover {
-       color: <%= @artist.profile_layout.nav_hover_colour || '#999' %> 
+       color: <%= @artist.profile_layout.nav_hover_colour || '#999' %> ;
     }
 
     .bodyArea .nav {
@@ -342,10 +342,27 @@
     }
 
     .bodyArea .nav.selected {
-        color:#666666;
-        background-image: url("/images/indicator.png");
-        background-position: bottom center;
-        background-repeat: no-repeat;
+        color: <%= @artist.profile_layout.nav_hover_colour || '#999' %>; 
+        position:relative;
+    }
+
+    .bodyArea .nav:not(.selected) span {
+        display:none;
+    }
+
+    .bodyArea .nav.selected span {
+        font-size:28px;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        line-height: 17px;
+        transform:scale(1.5,1); /* W3C */
+        -webkit-transform:scale(1.5,1); /* Safari and Chrome */
+        -moz-transform:scale(1.5,1); /* Firefox */
+        -ms-transform:scale(1.5,1); /* IE 9 */
+        -o-transform:scale(1.5,1); /* Opera */
+        color: <%= "rgba("+((@artist.profile_layout.div_1_background_colour || '#000000')[1..6].scan(/../).map{|color| color.hex})*","+","+(1-@artist.profile_layout.div_1_transparency.to_i*0.01 || 0.35).to_s+")" %>; 
     }
 
     .bodyArea .miniPage {        

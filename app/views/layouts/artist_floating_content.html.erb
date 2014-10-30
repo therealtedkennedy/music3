@@ -18,7 +18,7 @@
 
 
 	<div class="navArea">
-      <a href="/<%= @artist.url_slug %>" class="content-link navLink"><div class="nav <%=@tag_info %>" id="info">INFO</div></a><a href="<%= artist_show_songs_path(@artist.url_slug) %>" class="content-link navLink"><div class="nav" id="songs">SONGS</div></a><a href="<%= artist_show_albums_path(@artist.url_slug) %>" class="content-link navLink"><div class="nav" id="albums">ALBUMS</div></a>
+      <a href="/<%= @artist.url_slug %>" class="content-link navLink"><div class="nav <%=@tag_info %>" id="info"><span>&#9650;</span>INFO</div></a><a href="<%= artist_show_songs_path(@artist.url_slug) %>" class="content-link navLink"><div class="nav" id="songs"><span>&#9650;</span>SONGS</div></a><a href="<%= artist_show_albums_path(@artist.url_slug) %>" class="content-link navLink"><div class="nav" id="albums"><span>&#9650;</span>ALBUMS</div></a>
 	</div>
 
 	<div class="miniPage" id="content"><%= yield %></div>
