@@ -840,6 +840,17 @@
 	    });
 	}
 
+	function showNotification(msg){
+	    if($('#uploadNotice').length)
+	        return;
+	    $('.bodyArea').append('<div id="uploadNotice" class="alert alert-info"><a href="#" class="close" data-dismiss="alert">&times;</a>'+msg+'</div></html>');
+	    setTimeout(function(){
+	        $( "#uploadNotice" ).fadeOut(2000, function() {
+	            this.remove();
+	          });
+	    }, 3000)
+	}
+
 
 	function ted_log() {
 		if (typeof console !== undefined && DEBUGGING) {
