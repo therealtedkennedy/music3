@@ -733,8 +733,12 @@
 	}
 // change.bfhselectbox bfh-selectbox
 	function click_to_edit(){
-		$(".editable:not(#profile_layout_div_1_transparency):not(.bfh-selectbox)").on("blur", function(){	
+		$(".editable:not(#profile_layout_div_1_transparency):not(.bfh-selectbox):not([type=checkbox]").on("blur", function(){	
 			inputChange($(this));
+		});
+
+		$('input.editable').on('change', function(){
+			save_edit($(this).attr('field_name'), $(this).attr('object'), $(this).is(':checked'))
 		});
 
 		$(".bfh-selectbox.editable").on("change.bfhselectbox", function(){	

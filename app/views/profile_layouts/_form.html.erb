@@ -60,7 +60,7 @@
 
 <li class="field">
   <label class='fl'>Logo image</label>
-    <input type="checkbox" name="profile_layout[logo_toggle]" field_name="logo_toggle" object="profile" value="<%=@profile_layout.logo_toggle%>" id="profile_layout_logo_toggle" class="chkbx editable">
+    <input type="checkbox" name="profile_layout[logo_toggle]" field_name="logo_toggle" object="profile" <%=@profile_layout.logo_toggle ? 'checked' : ''%> id="profile_layout_logo_toggle" class="chkbx editable">
 </li>
 
 <li class="field">
@@ -97,9 +97,8 @@
 
 <li class="field">
     <label class='fl'>Background image</label>
-    <input type="checkbox" name="profile_layout[background_toggle]" value="<%=@profile_layout.background_toggle%>" id="profile_layout_background_toggle" class="chkbx editable" field_name="background_toggle" object="profile">
+    <input type="checkbox" name="profile_layout[background_toggle]" <%=@profile_layout.background_toggle ? 'checked' : '' %> id="profile_layout_background_toggle" class="chkbx editable" field_name="background_toggle" object="profile">
 </li>
-
 <li class="field">
   <label>Background upload</label>
   <%= @bk_image_upload.html_safe %>
