@@ -759,7 +759,7 @@
 	}
 
 	function inputChange($el){
-        var content 	= $el.attr('value') || $.trim($(el).text()),
+        var content 	= $el.attr('value') || $.trim($el.text()),
 			field_name 	= $el.attr('field_name'),
 			object 		= $el.attr('object');
 
