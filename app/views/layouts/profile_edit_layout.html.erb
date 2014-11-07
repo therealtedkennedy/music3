@@ -700,7 +700,14 @@
 			window.location = $(ev.target).find('a').attr('href');
 		});
 
+		$(".navLink").click(function (event) {
+			ted_log("in nav slector click function");
 
+			var nav_id = "#"+event.target.id
+			ted_log("nav id "+nav_id);
+			$( ".navArea div" ).parent().find('div').removeClass("selected");
+			$(nav_id).addClass("selected")
+		});
 
 
 	});
