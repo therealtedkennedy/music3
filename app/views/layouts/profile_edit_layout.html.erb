@@ -703,7 +703,14 @@
 			window.location = $(ev.target).find('a').attr('href');
 		});
 
+		$(".navLink").click(function (event) {
+			ted_log("in nav slector click function");
 
+			var nav_id = "#"+event.target.id
+			ted_log("nav id "+nav_id);
+			$( ".navArea div" ).parent().find('div').removeClass("selected");
+			$(nav_id).addClass("selected")
+		});
 
 
 	});
@@ -736,8 +743,12 @@
 	}
 // change.bfhselectbox bfh-selectbox
 	function click_to_edit(){
-		$(".editable:not(#profile_layout_div_1_transparency):not(.bfh-selectbox)").on("blur", function(){	
+		$(".editable:not(#profile_layout_div_1_transparency):not(.bfh-selectbox):not([type=checkbox]").on("blur", function(){	
 			inputChange($(this));
+		});
+
+		$('input.editable').on('change', function(){
+			save_edit($(this).attr('field_name'), $(this).attr('object'), $(this).is(':checked'))
 		});
 
 		$(".bfh-selectbox.editable").on("change.bfhselectbox", function(){	
@@ -751,7 +762,7 @@
 	}
 
 	function inputChange($el){
-        var content 	= $el.attr('value') || $.trim($(el).text()),
+        var content 	= $el.attr('value') || $.trim($el.text()),
 			field_name 	= $el.attr('field_name'),
 			object 		= $el.attr('object');
 
@@ -830,6 +841,17 @@
             ]
 	      });
 	    });
+	}
+
+	function showNotification(msg){
+	    if($('#uploadNotice').length)
+	        return;
+	    $('.bodyArea').append('<div id="uploadNotice" class="alert alert-info"><a href="#" class="close" data-dismiss="alert">&times;</a>'+msg+'</div></html>');
+	    setTimeout(function(){
+	        $( "#uploadNotice" ).fadeOut(2000, function() {
+	            this.remove();
+	          });
+	    }, 3000)
 	}
 
 
