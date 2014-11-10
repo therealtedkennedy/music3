@@ -189,6 +189,8 @@ class ArtistsController < ApplicationController
 
       if @artist.save(validate: false)
 
+        save_colour_theme(@artist, "theme_1")
+
         redirect_to(edit_artist_path(@artist.url_slug))
 
 
