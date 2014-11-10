@@ -4,7 +4,7 @@
 
   <% if @artist.profile_layout.background_toggle == true %>
 
-         $.backstretch("<%=@artist.image.to_s%>");
+         $.backstretch("<%=@artist.profile_layout.background_image.to_s%>");
   <% end %>
 
 
