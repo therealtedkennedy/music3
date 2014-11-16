@@ -31,7 +31,7 @@ class Song< ActiveRecord::Base
 	 unless self.song_name.nil?
 		 self.song_name = self.song_name.strip
 		 self.song_artist = self.song_artist.strip
-		 self.song_contribute_artist = self.song_contribute_artist.strip
+		 # self.song_contribute_artist = self.song_contribute_artist.strip
 		 self.song_written = self.song_written.strip
 		 self.lyrics = self.lyrics.strip
 	end

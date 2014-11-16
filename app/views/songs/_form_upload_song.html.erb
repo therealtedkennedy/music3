@@ -17,41 +17,49 @@
 
    <!--<%= f.file_field :s3_name%>-->
 
-   <div class="field">
-     <%= f.label :song_name %>
-     <%= f.text_field :song_name,:class=>"span12" %>
-   </div>
+    <div class="field">
+      <%= f.label :song_name %>
+      <%= f.text_field :song_name, :class=>"span12" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :song_artist %><br />
-    <%= f.text_field :song_artist, :value => @artist.name,:class=>"span12" %>
-  </div>
+    <div class="field">
+      <%= f.label :song_artist %>
+      <%= f.text_field :song_artist, :value => @artist.name,:class=>"span12"  %>
+    </div>
 
-  <div class="field">
-    <%=f.label :song_contribute_artist %><br />
-    <%=f.text_field :song_contribute_artist,:class=>"span12" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :song_written %><br />
-    <%= f.text_field :song_written,:class=>"span12" %>
-  </div>
-  <div class="field">
-    <%= f.label :song_licence_type %><br />
-    <%= f.select :song_licence_type, [["CopyWrite", "copywrite"], ["Licence 1", "licence_1"], ["Licence 2", "licence_2"] ] %>
-  </div>
-  <div class="field">
-    <%= f.label :release_date %><br />
-    <%= f.date_select :release_date, :start_year => 1900   %>
-  </div>
-   <div class="field">
-    <%= f.label :song_url_slug %><br />
-    <%= f.text_field :song_url_slug,:class=>"span12" %>
-  </div>
-  <div class="field">
-    <%= f.label :lyrics %><br />
-    <%= f.text_area :lyrics,:class=>"span12",:rows => "5" %>
-  </div>
+
+    <div class="field">
+      <%= f.label "Song Writer(s)" %>
+      <%= f.text_field :song_written,:class=>"span12" %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Producer(s)" %>
+      <%= f.text_field :producer,:class=>"span12" %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Licence" %>
+      <%= f.select :song_licence_type, options_for_select([['All Rights Reserved'], ['Attribution'], ['Non Commercial'], ['No Derivative Works'], ['Share A Like']], :selected => @song.song_licence_type) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :label %>
+      <%= f.text_field :label, :class=>"span12" %>
+    </div>
+
+
+    <div class="field">
+      <%= f.label :release_date %>
+      <%= f.date_select :release_date, :start_year => 1900   %>
+    </div>
+
+    <div class="field">
+      <%= f.label :lyrics %>
+      <%= f.text_area :lyrics, :escape => false,:class=>"span12",:rows => "5" %>
+    </div>
+
 
   <div class="actions">
     </div>

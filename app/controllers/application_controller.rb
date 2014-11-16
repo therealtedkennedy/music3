@@ -433,10 +433,25 @@ class ApplicationController < ActionController::Base
       @artist.profile_layout.h3_colour = "#FFFFFF"
       @artist.profile_layout.logo_colour = "#FFFFFF"
       @artist.profile_layout.div_1_colour = "#FFFFFF"
+      @artist.profile_layout.nav_text_colour = "#FFFFFF"
       @artist.profile_layout.div_1_background_colour = "#6B6B70"
       @artist.profile_layout.call_to_action_colour = "#E21443"
       @artist.profile_layout.background_colour = "#3D3B42"
       @artist.profile_layout.nav_hover_colour = "#1FB0C5"
+
+    elsif theme_name == "theme_1_inverse"
+
+        @artist.profile_layout.p_colour = "#FFFFFF"
+        @artist.profile_layout.h1_colour = "#FFFFFF"
+        @artist.profile_layout.h2_colour = "#FFFFFF"
+        @artist.profile_layout.h3_colour = "#FFFFFF"
+        @artist.profile_layout.logo_colour = "#3D3B42"
+        @artist.profile_layout.div_1_colour = "#FFFFFF"
+        @artist.profile_layout.div_1_background_colour = "#3D3B42"
+        @artist.profile_layout.call_to_action_colour = "#E21443"
+        @artist.profile_layout.background_colour = "#FFFFFF"
+        @artist.profile_layout.nav_text_colour = "#3D3B42"
+        @artist.profile_layout.nav_hover_colour = "#1FB0C5"
 
 
     elsif theme_name == "theme_2"
@@ -450,6 +465,7 @@ class ApplicationController < ActionController::Base
       @artist.profile_layout.div_1_background_colour = "#607B94"
       @artist.profile_layout.call_to_action_colour = "#405F73"
       @artist.profile_layout.background_colour = "#295073"
+      @artist.profile_layout.nav_text_colour = "#DFF2ED"
       @artist.profile_layout.nav_hover_colour = "#6D848C"
 
     elsif theme_name == "theme_3"
@@ -463,6 +479,7 @@ class ApplicationController < ActionController::Base
       @artist.profile_layout.div_1_background_colour = "#48616C"
       @artist.profile_layout.call_to_action_colour = "#EC4911"
       @artist.profile_layout.background_colour = "#00303E"
+      @artist.profile_layout.nav_text_colour = "#FFF9EF"
       @artist.profile_layout.nav_hover_colour = "#7096AD"
 
     elsif theme_name == "theme_4"
@@ -476,6 +493,7 @@ class ApplicationController < ActionController::Base
       @artist.profile_layout.div_1_background_colour = "#6F6F6F"
       @artist.profile_layout.call_to_action_colour = "#CD4B3D"
       @artist.profile_layout.background_colour = "#404040"
+      @artist.profile_layout.nav_text_colour = "#FFFFF"
       @artist.profile_layout.nav_hover_colour = "#E6E632"
 
 
@@ -490,6 +508,7 @@ class ApplicationController < ActionController::Base
       @artist.profile_layout.div_1_background_colour = "#5E6A73"
       @artist.profile_layout.call_to_action_colour = "#00ADA9"
       @artist.profile_layout.background_colour = "#293B47"
+      @artist.profile_layout.nav_text_colour = "#FFFFF"
       @artist.profile_layout.nav_hover_colour= "#CBFF48"
 
     elsif theme_name == "theme_6"
@@ -503,6 +522,7 @@ class ApplicationController < ActionController::Base
       @artist.profile_layout.div_1_background_colour = "#424241"
       @artist.profile_layout.call_to_action_colour = "#CC0015"
       @artist.profile_layout.background_colour = "#000000"
+      @artist.profile_layout.nav_text_colour = "#F7F6F3"
       @artist.profile_layout.nav_hover_colour = "#FFD428"
 
 

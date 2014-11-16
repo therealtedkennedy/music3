@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141110025544) do
+ActiveRecord::Schema.define(:version => 20141116204648) do
 
   create_table "album_codes", :force => true do |t|
     t.string   "album_code"
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(:version => 20141110025544) do
     t.string   "p_font"
     t.string   "p_colour"
     t.string   "div_1_colour"
-    t.string   "div_1_transparency"
+    t.string   "div_1_transparency",      :default => "50"
     t.string   "div_1_border_colour"
     t.string   "div_1_background_colour"
     t.string   "div_1_border_width"
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(:version => 20141110025544) do
     t.string   "call_to_action_colour"
     t.string   "nav_hover_colour"
     t.string   "background_image"
+    t.string   "nav_text_colour"
   end
 
   create_table "songs", :force => true do |t|
