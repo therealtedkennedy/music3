@@ -743,7 +743,10 @@
 	}
 // change.bfhselectbox bfh-selectbox
 	function click_to_edit(){
-		$(".editable:not(#profile_layout_div_1_transparency):not(.bfh-selectbox):not([type=checkbox]").on("blur", function(){	
+		$(".editable[field_name=colour_theme").on("blur", function(){	
+			inputChange($(this));
+		});
+		$(".editable.pick-a-color").on("change", function(){	
 			inputChange($(this));
 		});
 
@@ -762,11 +765,11 @@
 	}
 
 	function inputChange($el){
-        var content 	= $el.attr('value') || $.trim($el.text()),
+        var content 	= $el.val() || $.trim($el.text()),
 			field_name 	= $el.attr('field_name'),
 			object 		= $el.attr('object');
 
-		if(field_name.indexOf('colour') > -1 && content.indexOf('#') === -1)
+		if(field_name.indexOf('colour') > 0 && content.indexOf('#') === -1)
 			content = "#" + content;
 		save_edit(field_name, object, content);		
 	}
