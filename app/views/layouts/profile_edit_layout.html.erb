@@ -747,7 +747,7 @@
 			inputChange($(this));
 		});
 
-		$('input.editable').on('change', function(){
+		$('input[type=checkbox].editable').on('change', function(){
 			save_edit($(this).attr('field_name'), $(this).attr('object'), $(this).is(':checked'))
 		});
 
