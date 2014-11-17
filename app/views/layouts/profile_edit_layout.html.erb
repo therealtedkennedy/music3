@@ -439,9 +439,12 @@
 
 <!-- Master template -->
 <script>
-	$(function () {
-		$.backstretch("<%=@artist.image.to_s%>");
-	});
+
+    <% if @artist.profile_layout.background_toggle == true %>
+        $(function () {
+            $.backstretch("<%=@artist.image.to_s%>");
+        });
+    <% end %>
 
 
 </script>

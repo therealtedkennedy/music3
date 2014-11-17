@@ -154,7 +154,7 @@ class ProfileLayoutsController < ApplicationController
 
 
 
-        @white_list = ["logo_font","logo_size","logo_colour","content_font","logo_toggle","h1_colour","h2_colour","h3_colour","p_colour","div_1_colour","div_1_transparency","div_1_border_colour","div_1_background_colour","div_1_border_width","div_2_colour","div_2_transparency","div_2_border_colour","div_2_background_colour","div_2_border_width","background_colour"]
+        @white_list = ["logo_font","logo_size","logo_colour","content_font","logo_toggle","h1_colour","h2_colour","h3_colour","p_colour","div_1_colour","div_1_transparency","div_1_border_colour","div_1_background_colour","div_1_border_width","div_2_colour","div_2_transparency","div_2_border_colour","div_2_background_colour","div_2_border_width","background_colour","background_toggle"]
 
 
         if @white_list.include?(params[:field][:field_name])

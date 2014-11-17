@@ -1,7 +1,13 @@
 <!--what goes into the floating content div-->
 
 <script type="text/javascript">
-  $.backstretch("<%=@artist.image.to_s%>");
+
+  <% if @artist.profile_layout.background_toggle == true %>
+
+         $.backstretch("<%=@artist.profile_layout.background_image.to_s%>");
+  <% end %>
+
+
 </script>
 
 <div class="pageType" id="<%= @artist.url_slug %>"></div>
