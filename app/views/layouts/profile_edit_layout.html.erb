@@ -766,6 +766,8 @@
 			field_name 	= $el.attr('field_name'),
 			object 		= $el.attr('object');
 
+		if(field_name.indexOf('colour') > -1 && content.indexOf('#') === -1)
+			content = "#" + content;
 		save_edit(field_name, object, content);		
 	}
 
