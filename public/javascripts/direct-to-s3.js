@@ -148,7 +148,10 @@ function s3_direct_upload(){
                     $(this).find('.bar').css('width', 0)
                 });
                 $(this).find('.s3_upload').fadeOut();
-                showNotification(s3ObjectType + ' uploaded successfully.');
+                if(form.find('[name=file]').attr('id') === 'bk_image')
+                    window.location.reload();
+                else
+                    showNotification(s3ObjectType + ' uploaded successfully.');
             }
         })
     })
