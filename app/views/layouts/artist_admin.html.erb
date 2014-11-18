@@ -132,7 +132,7 @@ $(document).ready(function () {
 		$('html').addClass('non-mobile');
 
 	$(document).keydown(function(e){
-		if(e.which === 8 && !$(e.target).is("input"))
+		if(e.which === 8 && !$(e.target).is("input") && !$(e.target).is("textarea"))
 			return false;
 	});
 

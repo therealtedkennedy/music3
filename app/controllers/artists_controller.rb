@@ -430,7 +430,7 @@ class ArtistsController < ApplicationController
       @artist.update_column(:profile_image,@artist.profile_image)
 
     else
-			logger.info("In artist_save_image. Something is up with the image type paramiter coming from the app admin layout")
+			logger.info("In artist_save_image. Something is up with the image type parameter coming from the app admin layout")
 		end
 
 
