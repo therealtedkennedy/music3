@@ -743,7 +743,7 @@
 	}
 // change.bfhselectbox bfh-selectbox
 	function click_to_edit(){
-		$(".editable[field_name=colour_theme], .editable[field_name=logo_font]").on("blur", function(){	
+		$(".editable[field_name=colour_theme], .fontSelect .editable").on("blur", function(){	
 			inputChange($(this));
 		});
 
