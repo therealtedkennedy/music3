@@ -237,19 +237,19 @@ span.jp-pause:hover {
 }
 
 .trackInfo {
+	margin: 12px 20px 0px 0px;
+	height: 20px;
 	display: inline-block;
 	position: relative;
 	color: #ffffff;
 }
 
 .trackInfo .track_name {
-	line-height: 50px;
+	line-height: 20px;
 	display: inline-block;
 	font-style:italic;
 
 }
-
-
 
 .trackInfo .progressBarContainer {
 	display: none;
