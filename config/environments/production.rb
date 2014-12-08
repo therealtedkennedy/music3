@@ -2,13 +2,13 @@ Music3::Application.configure do
 
 
 
-    if ENV['SITE_NAME'] == "dev_kennedy"
+    # if ENV['SITE_NAME'] == "dev_kennedy"
       config.middleware.use '::Rack::Auth::Basic' do |u, p|
         [u, p] == ["trentr", "notnin1988"]
       end
-    else
-
-    end
+    # else
+    #
+    # end
 
 
 
