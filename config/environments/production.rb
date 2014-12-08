@@ -1,4 +1,15 @@
 Music3::Application.configure do
+
+  unless ENV['SITE_NAME'].nil?
+
+    if ENV['SITE_NAME'] == "dev_kennedy"
+      config.middleware.use '::Rack::Auth::Basic' do |u, p|
+        [u, p] == ["trentr", "notnin1988"]
+      end
+    end
+
+  end
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.
@@ -35,11 +46,7 @@ Music3::Application.configure do
   # In production, Apache or nginx will already do this
   config.serve_static_assets = true
 
-  if ENV['SITE_NAME'].exists?
-    config.middleware.use '::Rack::Auth::Basic' do |u, p|
-      [u, p] == ["trentr", "notnin1988"]
-    end
-  end
+
 
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
