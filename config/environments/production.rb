@@ -1,7 +1,7 @@
 Music3::Application.configure do
 
 
-
+  #checks to see if heroku  is dev-kennedy.
      if ENV['SITE_NAME'] == "dev-kennedy"
       config.middleware.use '::Rack::Auth::Basic' do |u, p|
         [u, p] == ["trentr", "notnin1988"]
