@@ -659,7 +659,11 @@ function ted_log() {
 
 
 </script>
+
+<% unless @artist.nil? %>
 <input type="hidden" id="gsToggle" data-path="<%= @artist.url_slug.to_s%>" value="<%= @artist.quick_start_popup_toggle %>" object='artist' field_name="quick_start_popup_toggle"/>
+<%end%>
+
 <div class="container">
 	<div class="player_nav">
 

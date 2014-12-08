@@ -1,13 +1,15 @@
 Music3::Application.configure do
+
+
   # Settings specified here will take precedence over those in config/application.rb
 
-
+  # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
-  config.action_controller.perform_caching = true
+  config.action_controller.perform_caching = false
 
   # Specifies the header that your server uses for sending files
   config.action_dispatch.x_sendfile_header = "X-Sendfile"
@@ -55,26 +57,27 @@ Music3::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :test
+    ActiveMerchant::Billing::Base.mode = :production
     paypal_options = {
-        :login => "therea_1326852847_biz_api1.gmail.com",
-        :password => "1326852885",
-        :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31ASJSfLthOmKchEACDPMUl0iUA9Kt",
+        :login => "edward_api1.threerepeater.com",
+        :password => "5YBTC3CZQL98LPZG",
+        :signature => "A6w6jWnkH74Y9di4mPMOP2PPzHR.A92o3GLeoI0LQ-cRkW.iDVcwaQGG",
 
     }
     ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
     ::CHAINED_GATEWAY =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
-        :login => "therea_1326852847_biz_api1.gmail.com",
-        :password => "1326852885",
-        :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31ASJSfLthOmKchEACDPMUl0iUA9Kt",
-        :appid => "APP-80W284485P519543T"
+        :login => "edward_api1.threerepeater.com",
+        :password => "5YBTC3CZQL98LPZG",
+        :signature => "A6w6jWnkH74Y9di4mPMOP2PPzHR.A92o3GLeoI0LQ-cRkW.iDVcwaQGG",
+        :appid => "APP-4H042466LH878382M",
     )
 
 #mailer configuration
     config.default_url_options = { :host => 'threerepeater.com'}
 # Don't care if the mailer can't send
     config.action_mailer.raise_delivery_errors = true
+
 
     ActionMailer::Base.delivery_method = :smtp
 #config.action_mailer.delivery_method = :smtp
@@ -89,4 +92,5 @@ Music3::Application.configure do
     }
   end
 
+  config.action_mailer.default_url_options = { :host => 'www.threerepeater.com' }
 end

@@ -35,6 +35,12 @@ Music3::Application.configure do
   # In production, Apache or nginx will already do this
   config.serve_static_assets = true
 
+  if ENV['SITE_NAME'].exists?
+    config.middleware.use '::Rack::Auth::Basic' do |u, p|
+      [u, p] == ["trentr", "notnin1988"]
+    end
+  end
+
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets-public.example.com"
