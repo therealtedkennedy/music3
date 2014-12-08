@@ -1,14 +1,16 @@
 Music3::Application.configure do
 
-  unless ENV['SITE_NAME'].nil?
+
 
     if ENV['SITE_NAME'] == "dev_kennedy"
       config.middleware.use '::Rack::Auth::Basic' do |u, p|
         [u, p] == ["trentr", "notnin1988"]
       end
+    else
+
     end
 
-  end
+
 
   # Settings specified here will take precedence over those in config/application.rb
 
