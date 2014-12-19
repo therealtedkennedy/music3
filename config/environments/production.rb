@@ -1,4 +1,17 @@
 Music3::Application.configure do
+
+
+  #checks to see if heroku  is dev-kennedy.
+     if ENV['SITE_NAME'] == "dev-kennedy"
+      config.middleware.use '::Rack::Auth::Basic' do |u, p|
+        [u, p] == ["trentr", "notnin1988"]
+      end
+    else
+
+    end
+
+
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.
@@ -34,6 +47,8 @@ Music3::Application.configure do
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
   config.serve_static_assets = true
+
+
 
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
