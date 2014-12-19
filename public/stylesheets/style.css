@@ -249,3 +249,5 @@
 #uploadNotice {
 	text-transform: capitalize;
 }
+
+.navLink:focus {outline: none;}
